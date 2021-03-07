@@ -23,6 +23,11 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using Unity;
+using Unity.Interception;
+using Unity.Interception.ContainerIntegration;
+using Unity.Interception.Interceptors.InstanceInterceptors.InterfaceInterception;
+using Unity.Interception.PolicyInjection;
 using Xceed.Wpf.AvalonDock;
 
 
@@ -84,10 +89,13 @@ namespace AIStudio.Wpf.Client
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
-        { 
+        {
+            var container = PrismIocExtensions.GetContainer(containerRegistry);
+            container.AddNewExtension<Interception>()//add Extension Aop
+                .RegisterSingleton<IDataProvider, DataProvider>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
+        
             containerRegistry.RegisterSingleton<IOperator, Operator>();
             containerRegistry.RegisterSingleton<IUserData, UserData>();
-            containerRegistry.RegisterSingleton<IDataProvider, DataProvider>();
             containerRegistry.RegisterSingleton<IWSocketClient, WSocketClient>();
             containerRegistry.RegisterSingleton<IUserConfig, UserConfig>();
             containerRegistry.Register<ILogger, Logger>();

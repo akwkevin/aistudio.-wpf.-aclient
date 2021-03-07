@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AIStudio.AOP\AIStudio.AOP.csproj" />
     <ProjectReference Include="..\AIStudio.Core\AIStudio.Core.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
     <ProjectReference Include="..\Prism8\Prism.Core\Prism.Core.csproj" />
