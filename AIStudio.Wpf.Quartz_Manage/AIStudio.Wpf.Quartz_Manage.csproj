@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp3.1;net472</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>  
+ 
+  <ItemGroup>
+    <ProjectReference Include="..\AIStudio.Core\AIStudio.Core.csproj">
+      <Project>{29426db9-0346-44fa-b324-6fdc06c4ddfb}</Project>
+      <Name>AIStudio.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj">
+      <Project>{7c0e0add-860c-41d7-ba1f-ba3ef26ed9bb}</Project>
+      <Name>AIStudio.Wpf.BasePage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj">
+      <Project>{0BBB5043-9C0D-45A4-8A83-61408DF8CB1A}</Project>
+      <Name>AIStudio.Wpf.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prism8\Prism.Core\Prism.Core.csproj">
+      <Project>{04cf1e4a-f0c2-4190-add9-14e661a196f4}</Project>
+      <Name>Prism.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prism8\Wpf\Prism.Unity.Wpf\Prism.Unity.Wpf.csproj">
+      <Project>{3f90544d-b6de-41c9-9059-104222a7db55}</Project>
+      <Name>Prism.Unity.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prism8\Wpf\Prism.Wpf\Prism.Wpf.csproj">
+      <Project>{1a1061f3-0c2d-4506-ae41-d0ca0cc7276d}</Project>
+      <Name>Prism.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj">
+      <Project>{52a5187e-1697-4972-bbbb-6298d71e0b09}</Project>
+      <Name>Dataforge.PrismAvalonExtensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe">
+      <Version>4.7.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Threading.Tasks.Extensions">
+      <Version>4.5.4</Version>
+    </PackageReference>
+    <PackageReference Include="System.ValueTuple">
+      <Version>4.5.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

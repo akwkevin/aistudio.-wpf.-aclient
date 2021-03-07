@@ -1,0 +1,314 @@
+﻿<util:Flyout x:Class="AIStudio.Wpf.HomePage.Views.SystemSetView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AIStudio.Wpf.HomePage.Views"
+             xmlns:model="clr-namespace:AIStudio.Wpf.HomePage.Models"
+             xmlns:util="https://astudio.github.io/utilcontrol"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" Style="{StaticResource DefaultFlyoutStyle}"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"  
+             Position="Right"
+             Header="{DynamicResource 系统设置}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <util:Flyout.Resources>
+        <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.ThemeBackground}" />
+            <Setter Property="HorizontalContentAlignment"
+                        Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+            <Setter Property="VerticalContentAlignment"
+                        Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+            <Setter Property="Margin" Value="1" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Grid>
+                            <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true" BorderBrush="Transparent">
+                                <ContentPresenter
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Border>
+                            <util:FButton x:Name="checkbtn" Grid.Row="2" FIcon="&#xe62a;" FIconSize="15" CommandParameter="{Binding }" Foreground="{DynamicResource DangerBrush}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource FButton_Transparency}" AllowsAnimation="True" Visibility="Collapsed"></util:FButton>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}" />
+                                <Setter TargetName="checkbtn" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="true" />
+                                    <Condition Property="Selector.IsSelectionActive" Value="false" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background"
+                                            Value="{DynamicResource TitleBackgroundBrush}" />
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground"
+                                            Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </util:Flyout.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <StackPanel Width="230">
+            <GroupBox Header="{DynamicResource 页面风格}">
+                <WrapPanel>
+                    <ListBox x:Name="listAppNavigations"
+                             ItemsSource="{Binding AppNavigations, Mode=OneWay}" 
+                             SelectedItem="{Binding SelectedAppNavigation}"
+                             ItemContainerStyle="{DynamicResource ListBoxItemStyle}" >
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:Name="tile" ToolTip="{Binding Name}">
+                                    <Grid Width="24" Height="24">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Border x:Name="leftborder" Background="{DynamicResource MahApps.Brushes.Accent}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,1,0,1" />
+                                        <Border Grid.Column="1" Background="{DynamicResource MahApps.Brushes.ThemeBackground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="0,1,1,1" />
+                                        <Border Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="16" Height="16"  Background="{DynamicResource MahApps.Brushes.Accent4}" BorderBrush="{DynamicResource MahApps.Brushes.Accent4}" />
+                                    </Grid>
+                                    <!--<util:FButton x:Name="checkbtn" FIcon="&#xe62a;" FIconSize="15" CommandParameter="{Binding }" Foreground="{DynamicResource DangerBrush}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource FButton_Transparency}" AllowsAnimation="True" Visibility="Collapsed"></util:FButton>-->
+                                </Grid>                                
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding NavigationAccent}" Value="Light">
+                                        <Setter TargetName="leftborder" Property="Background" Value="{DynamicResource MahApps.Brushes.ThemeBackground}"/>
+                                    </DataTrigger>
+                                    <!--<DataTrigger Binding="{Binding IsSelected,RelativeSource={RelativeSource TemplatedParent}}" Value="True">
+                                        <Setter TargetName="checkbtn" Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>-->
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding ChangeNavigationAccentCommand}" CommandParameter="{Binding Path=SelectedItem, ElementName=listAppNavigations}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBox>
+                    <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource VerticalSeparatorStyle}"/>
+                    <ListBox x:Name="listAppThemes" 
+                             ItemsSource="{Binding AppThemes, Mode=OneWay}" 
+                             SelectedItem="{Binding SelectedAppTheme}"
+                             ItemContainerStyle="{DynamicResource ListBoxItemStyle}" >
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:Name="tile" ToolTip="{Binding Name}">
+                                    <Rectangle Width="24" Height="24" StrokeThickness="1" Stroke="{Binding BorderColorBrush, Mode=OneWay}" Fill="{Binding ColorBrush, Mode=OneWay}" />
+                                </Grid>                               
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding ChangeThemeCommand}" CommandParameter="{Binding Path=SelectedItem, ElementName=listAppThemes}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBox>
+                </WrapPanel>
+            </GroupBox>
+            <GroupBox Header="{DynamicResource 主题}">
+                <ListBox x:Name="listAccentColors"
+                         ItemsSource="{Binding AccentColors, Mode=OneWay}" 
+                         SelectedItem="{Binding SelectedAccentColor}"
+                         ItemContainerStyle="{DynamicResource ListBoxItemStyle}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid x:Name="tile" ToolTip="{Binding Name}">
+                                <Rectangle Width="24" Height="24" StrokeThickness="1" Fill="{Binding ColorBrush, Mode=OneWay}" />                                
+                            </Grid>                          
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ChangeAccentCommand}" CommandParameter="{Binding Path=SelectedItem, ElementName=listAccentColors}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBox>
+            </GroupBox>
+            <GroupBox Header="{DynamicResource 导航模式及标题风格}">
+                <WrapPanel>
+                    <ListBox x:Name="listNavigationLocation"
+                         SelectedIndex="{Binding SelectedNavigationLocation}"
+                         ItemContainerStyle="{DynamicResource ListBoxItemStyle}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBoxItem Tag="Left">
+                            <Grid Width="24" Height="24" ToolTip="左侧导航栏">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,1,0,1" />
+                                <Border Grid.Column="1" Background="{DynamicResource MahApps.Brushes.ThemeBackground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="0,1,1,1" />
+                            </Grid>                           
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Top">
+                            <Grid Width="24" Height="24" ToolTip="顶部导航栏">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="2*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Border Background="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,1,1,0" />
+                                <Border Grid.Row="1" Background="{DynamicResource MahApps.Brushes.ThemeBackground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,0,1,1"/>
+                            </Grid>                           
+                        </ListBoxItem>
+                        <ListBoxItem Tag="None">
+                            <Grid Width="24" Height="24" ToolTip="隐藏导航栏">
+                                <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,1,1,1"/>
+                            </Grid>
+                        </ListBoxItem>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding NavigationLocationCommand}" CommandParameter="{Binding Path=SelectedIndex, ElementName=listNavigationLocation}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBox>   
+                    <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource VerticalSeparatorStyle}"/>
+                    <ListBox x:Name="listTitleAccent"
+                         SelectedIndex="{Binding SelectedTitleAccent}"
+                         ItemContainerStyle="{DynamicResource ListBoxItemStyle}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBoxItem Tag="Normal">
+                            <Grid Width="24" Height="24" ToolTip="标题栏普通颜色">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="2*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Border Background="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,1,1,0"/>
+                                <Border Grid.Row="1" Background="{DynamicResource MahApps.Brushes.ThemeBackground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,0,1,1"/>
+                            </Grid>
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Accent">
+                            <Grid Width="24" Height="24" ToolTip="标题栏主题颜色">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="2*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Border Background="{DynamicResource MahApps.Brushes.Accent}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,1,1,0"/>
+                                <Border Grid.Row="1" Background="{DynamicResource MahApps.Brushes.ThemeBackground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,0,1,1"/>
+                            </Grid>
+                        </ListBoxItem>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding TitleAccentCommand}" CommandParameter="{Binding Path=SelectedIndex, ElementName=listTitleAccent}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBox>
+                    <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource VerticalSeparatorStyle}"/>
+                    <ListBox x:Name="listToolBarLocation"        
+                         SelectedIndex="{Binding SelectedToolBarLocation}"
+                         ItemContainerStyle="{DynamicResource ListBoxItemStyle}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBoxItem Tag="None">
+                            <Grid Width="24" Height="24" ToolTip="工具栏隐藏">
+                                <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,1,1,1"/>
+                            </Grid>
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Top">
+                            <Grid Width="24" Height="24" ToolTip="工具栏显示">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="3*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,1,1,0"/>
+                                <Border Grid.Row="1" Background="{DynamicResource MahApps.Brushes.Accent}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,0,1,0"/>
+                                <Border Grid.Row="2" Background="{DynamicResource MahApps.Brushes.ThemeBackground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,0,1,1"/>                               
+                            </Grid>
+                        </ListBoxItem>                     
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding ToolBarLocationCommand}" CommandParameter="{Binding Path=SelectedIndex, ElementName=listToolBarLocation}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBox>
+                    <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource VerticalSeparatorStyle}"/>
+                    <ListBox x:Name="listStatusBarLocation"    
+                         SelectedIndex="{Binding SelectedStatusBarLocation}"
+                         ItemContainerStyle="{DynamicResource ListBoxItemStyle}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBoxItem Tag="None">
+                            <Grid Width="24" Height="24" ToolTip="状态栏隐藏">
+                                <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,1,1,1"/>
+                            </Grid>
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Top">
+                            <Grid Width="24" Height="24" ToolTip="状态栏显示">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="4*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,1,1,0"/>
+                                <Border Grid.Row="1" Background="{DynamicResource MahApps.Brushes.Accent}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,0,1,1"/>
+                            </Grid>
+                        </ListBoxItem> 
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding StatusBarLocationCommand}" CommandParameter="{Binding Path=SelectedIndex, ElementName=listStatusBarLocation}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBox>
+                </WrapPanel>
+            </GroupBox>
+            <GroupBox Header="{DynamicResource 字体大小}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Slider x:Name="slider" Value="{Binding FontSize,Delay=200}" Style="{DynamicResource FlatSlider}" Minimum="8" Maximum="32" Orientation="Horizontal" SmallChange="1" LargeChange="2" IsSnapToTickEnabled="True" />
+                    <TextBlock Text="{Binding Value,ElementName=slider}" Foreground="{DynamicResource MahApps.Brushes.Accent}" Margin="2" Grid.Column="1"></TextBlock>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="{DynamicResource 字体选择}">
+                <ComboBox ItemsSource="{Binding SystemFontFamilies}" SelectedItem="{Binding FontFamily}" DisplayMemberPath="Source"  />
+            </GroupBox>
+            <GroupBox Header="{DynamicResource 语言设置}">
+                <ToggleButton HorizontalAlignment="Left"
+                              IsChecked="{Binding IsChinese}" 
+                              util:ToggleButtonAssist.OnContent="{DynamicResource 中文}"
+                              Content="{DynamicResource 英文}"
+                              Style="{StaticResource SwitchToggleButton}" />
+            </GroupBox>
+        </StackPanel>
+    </ScrollViewer>
+</util:Flyout>

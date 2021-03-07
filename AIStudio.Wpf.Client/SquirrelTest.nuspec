@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<package >
+<metadata>
+    <id>AIStudio.Wpf.Client</id>
+    <version>1.0.20210301-rc4</version>
+    <authors>AIStudio</authors>
+    <owners>AIStudio</owners>
+    <description>AIStudio.Wpf.Client</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright ©  2020</copyright>
+</metadata>
+<files>
+    <file src="bin\Release\net472\*.*" target="lib\net472\" exclude="*.pdb;*.vshost.*"/>
+</files>
+</package>
