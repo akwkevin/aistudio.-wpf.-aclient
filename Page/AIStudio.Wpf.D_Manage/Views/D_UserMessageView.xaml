@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="AIStudio.Wpf.D_Manage.Views.D_UserMessageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:util="https://astudio.github.io/utilcontrol" 
+             xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:AIStudio.Wpf.D_Manage.Views" 
+             xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
+			 xmlns:converter="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
+             xmlns:converter2="clr-namespace:AIStudio.Wpf.BasePage.Converters;assembly=AIStudio.Wpf.BasePage"
+             xmlns:view="clr-namespace:AIStudio.Wpf.BasePage.Controls;assembly=AIStudio.Wpf.BasePage"
+             xmlns:command="clr-namespace:AIStudio.Core.ExCommand;assembly=AIStudio.Core"
+             xmlns:perm="clr-namespace:AIStudio.Wpf.BasePage.Permission;assembly=AIStudio.Wpf.BasePage"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Width="250">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DockPanel>
+                <Button DockPanel.Dock="Right" util:ControlAttachProperty.CornerRadius="2" Height="Auto" Width="Auto" Margin="3" Command="{Binding AddCommand}" Style="{StaticResource DefaultButtonStyle}" >
+                    <svg:PackSvg Height="16" Width="16" Margin="6"   
+                                         Kind="usergroup-add" 
+                                         Fill="{DynamicResource MahApps.Brushes.ThemeBackground}"/>
+                </Button>
+                <ComboBox x:Name="combox" IsEditable="True" ItemsSource="{Binding UserDatas}" Margin="3" util:ControlAttachProperty.CornerRadius="3"
+                          DisplayMemberPath="UserName" SelectedValuePath="UserName" Style="{StaticResource ClearButtonComboBox}" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SearchCommand}" CommandParameter="{Binding Path=SelectedValue, ElementName=combox}" />
+                        </i:EventTrigger>                      
+                    </i:Interaction.Triggers>
+
+                </ComboBox>
+            </DockPanel>
+            <ListView x:Name="listView" Grid.Row="1" ItemsSource="{Binding UserDatas}" SelectedItem="{Binding SelectedUser,Mode=TwoWay}" Style="{StaticResource DefaultListView}" BorderThickness="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image x:Name="img" Grid.RowSpan="2" Width="30" Height="30" Margin="3" Stretch="Fill" util:ImageProperty.CornerRadius="2" 
+                                    Source="{Binding Avatar,Converter={converter2:StringToAvatarSourceConverter}}" >
+                                <Image.Effect>
+                                    <util:GrayScaleEffect/>
+                                </Image.Effect>
+                            </Image>
+                            <TextBlock Grid.Column="1" Text="{Binding UserName}" ></TextBlock>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding LastMessage}" TextTrimming="CharacterEllipsis"></TextBlock>
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding LastDateTime,Converter={converter2:FilterDateConverter}}"></TextBlock>
+                        </Grid>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Online}" Value="True">
+                                <Setter TargetName="img" Property="Effect" Value="{x:Null}"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding EditCommand}" CommandParameter="{Binding Path=SelectedItem, ElementName=listView}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListView>
+        </Grid>
+        <Border Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource MahApps.Brushes.Gray8}" />
+        <view:ChatBox ChatInfos="{Binding D_UserMessageEditViewModel.Data}" Grid.Column="2">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="ChatSendChanged">
+                    <command:ExInvokeCommandAction Command="{Binding D_UserMessageEditViewModel.SendComamnd}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="HistorySearchChanged">
+                    <command:ExInvokeCommandAction Command="{Binding D_UserMessageEditViewModel.HistorySearchComamnd}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </view:ChatBox>
+    </Grid>
+</UserControl>

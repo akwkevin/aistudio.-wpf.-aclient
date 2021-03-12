@@ -1,0 +1,28 @@
+﻿<prism:PrismApplication x:Class="AIStudio.Wpf.Client.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"            
+             xmlns:local="clr-namespace:AIStudio.Wpf.Client">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
+
+                <ResourceDictionary Source="pack://application:,,,/Util.Controls;component/Style/Style.xaml"/>
+                <ResourceDictionary Source="/AIStudio.Resource;component/Brushs/Brushes.xaml" />
+                <ResourceDictionary Source="/AIStudio.Resource;component/Themes/Generic.xaml" />
+                
+                <ResourceDictionary Source="/AIStudio.Resource;component/Themes/en-us.xaml" />
+                <ResourceDictionary Source="/AIStudio.Resource;component/Themes/zh-cn.xaml" />
+                <ResourceDictionary Source="/AIStudio.Wpf.HomePage;component/Themes/FontSizeDictionary.xaml"/>
+                <ResourceDictionary Source="/AIStudio.Wpf.HomePage;component/Themes/FontFamilyDictionary.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+
+         
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

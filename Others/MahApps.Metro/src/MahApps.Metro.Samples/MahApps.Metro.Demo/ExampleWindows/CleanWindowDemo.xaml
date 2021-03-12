@@ -1,0 +1,225 @@
+﻿<mah:MetroWindow x:Class="MetroDemo.ExampleWindows.CleanWindowDemo"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:models="clr-namespace:MetroDemo.Models"
+                 x:Name="ThisView"
+                 Title="CleanWindowDemo"
+                 Width="800"
+                 Height="400"
+                 GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
+                 Icon="..\mahapps.metro.logo2.ico"
+                 ResizeMode="CanResizeWithGrip"
+                 ShowIconOnTitleBar="True"
+                 Style="{DynamicResource MahApps.Styles.MetroWindow.Clean}">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Clean/Controls.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <ObjectDataProvider x:Key="HorizontalAlignmentEnumValues"
+                                MethodName="GetValues"
+                                ObjectType="{x:Type HorizontalAlignment}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="HorizontalAlignment" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <DataTemplate x:Key="Temp0">
+                <TextBlock Text="Nothing selected" />
+            </DataTemplate>
+            <DataTemplate x:Key="Temp1">
+                <TextBlock Text="Something about Item 1" />
+            </DataTemplate>
+            <DataTemplate x:Key="Temp2">
+                <TextBlock Text="Another thing about Item 2" />
+            </DataTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands>
+            <Button Content="Test" />
+        </mah:WindowCommands>
+    </mah:MetroWindow.LeftWindowCommands>
+
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <Button Content="Another Test" />
+            <ToggleButton Content="ToggleButton" />
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+
+    <mah:MetroWindow.Flyouts>
+        <mah:FlyoutsControl>
+            <mah:Flyout x:Name="settingsFlyout"
+                        Width="500"
+                        Header="Settings"
+                        Position="Right">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Something above the ScrollPanel" />
+
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Orientation="Vertical">
+                            <TextBox mah:TextBoxHelper.Watermark="TextBox 01" />
+                            <TextBox Margin="0 5 0 0" mah:TextBoxHelper.Watermark="TextBox 02" />
+                            <TextBox Margin="0 5 0 0" mah:TextBoxHelper.Watermark="TextBox 03" />
+                            <TextBox Margin="0 5 0 0" mah:TextBoxHelper.Watermark="TextBox 04" />
+                            <TextBox Margin="0 5 0 0" mah:TextBoxHelper.Watermark="TextBox 05" />
+                            <TextBox Margin="0 5 0 0" mah:TextBoxHelper.Watermark="TextBox 06" />
+                            <TextBox Margin="0 5 0 0" mah:TextBoxHelper.Watermark="TextBox 07" />
+                            <TextBox Margin="0 5 0 0" mah:TextBoxHelper.Watermark="TextBox 08" />
+                            <TextBox Margin="0 5 0 0" mah:TextBoxHelper.Watermark="TextBox 09" />
+                            <TextBox Margin="0 5 0 0" mah:TextBoxHelper.Watermark="TextBox 10" />
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <UniformGrid Grid.Row="2"
+                                 Margin="10"
+                                 Columns="2">
+                        <Button Margin="10"
+                                Content="Create"
+                                Style="{DynamicResource MahApps.Styles.Button.Square}" />
+                        <Button Margin="10"
+                                Content="Cancel"
+                                Style="{DynamicResource MahApps.Styles.Button.Square}" />
+                    </UniformGrid>
+
+                </Grid>
+            </mah:Flyout>
+        </mah:FlyoutsControl>
+    </mah:MetroWindow.Flyouts>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <DockPanel>
+                <TextBlock Margin="4"
+                           VerticalAlignment="Center"
+                           Text="Play, Previous, Next, Volume and Seek bar here.">
+                    <TextBlock.ContextMenu>
+                        <!--  This would cause a memory leak with MahApps.DropShadowEffect.Menu: [x:Shared = True]  -->
+                        <ContextMenu HasDropShadow="True">
+                            <MenuItem Header="Some menu option" />
+                        </ContextMenu>
+                    </TextBlock.ContextMenu>
+                </TextBlock>
+                <!--  This would cause a memory leak with MahApps.DropShadowEffect.WaitingForData: [x:Shared = True]  -->
+                <TextBox Width="120"
+                         Margin="4"
+                         VerticalAlignment="Center"
+                         mah:TextBoxHelper.IsWaitingForData="True"
+                         DockPanel.Dock="Right" />
+                <TextBlock HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           DockPanel.Dock="Right"
+                           Text="Quick search:" />
+            </DockPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="300" />
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Grid.Column="0"
+                      Padding="5"
+                      mah:HeaderedControlHelper.HeaderFontSize="30"
+                      Header="artists">
+                <ListBox x:Name="artist"
+                         ItemsSource="{x:Static models:SampleData.Artists}"
+                         Style="{DynamicResource MahApps.Styles.ListBox.Virtualized}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:Artist}">
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} - {1}">
+                                        <Binding Mode="OneWay" Path="ArtistId" />
+                                        <Binding Mode="OneWay" Path="Name" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </GroupBox>
+
+            <mah:MetroTabControl x:Name="TC" Grid.Column="1">
+                <mah:MetroTabItem Header="artist">
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="24"
+                               Text="{Binding ElementName=artist, Path=SelectedItem.Name, TargetNullValue=''}" />
+                </mah:MetroTabItem>
+                <mah:MetroTabItem Header="albums">
+                    <DataGrid x:Name="albums"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              ItemsSource="{Binding ElementName=artist, Path=SelectedItem.Albums}"
+                              Style="{DynamicResource MahApps.Styles.DataGrid.Azure}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Artist.Name}" Header="Artist" />
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate DataType="{x:Type models:Album}">
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} - {1}">
+                                                    <Binding Mode="OneWay" Path="Title" />
+                                                    <Binding Mode="OneWay" Path="Price" />
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </mah:MetroTabItem>
+            </mah:MetroTabControl>
+
+            <GroupBox Grid.Column="2"
+                      Padding="5"
+                      mah:HeaderedControlHelper.HeaderFontSize="30"
+                      Header="some tests">
+                <StackPanel MinWidth="100"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Vertical">
+                    <Button Margin="2"
+                            Click="Button_Click"
+                            Content="Flyout"
+                            Style="{DynamicResource MahApps.Styles.Button.Flat}" />
+                    <Button Margin="2"
+                            Click="Button_Click_1"
+                            Content="Dialog"
+                            Style="{DynamicResource MahApps.Styles.Button.Flat}" />
+                    <ComboBox Margin="2"
+                              ItemsSource="{Binding Source={StaticResource HorizontalAlignmentEnumValues}}"
+                              SelectedItem="{Binding ElementName=ThisView, Path=TitleAlignment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>MahApps.Metro Clean Window</StatusBarItem>
+            <Separator Style="{StaticResource MahApps.Styles.Separator.Clean}" />
+            <StatusBarItem>Some stuff</StatusBarItem>
+        </StatusBar>
+    </Grid>
+
+</mah:MetroWindow>

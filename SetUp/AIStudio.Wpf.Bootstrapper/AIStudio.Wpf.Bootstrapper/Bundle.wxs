@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"  xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension"  xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Bundle Name="HeartBeats" Version="4.5.1.0" Manufacturer="stoneniqiu" UpgradeCode="{8675A2E9-4625-4891-8166-5F1EB0535F51}"    Compressed="yes" UpdateUrl="http://www.delta-china.com.cn/" >
+
+    <!--<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense"   />-->
+
+    <BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost"   >
+
+      <Payload SourceFile="$(var.AIStudio.Wpf.BootstrapperCustomBA.TargetDir)CustomBA.dll" />
+      <Payload SourceFile="$(var.AIStudio.Wpf.BootstrapperCustomBA.TargetDir)BootstrapperCore.config" />
+
+    </BootstrapperApplicationRef>
+
+
+    <!--log not work-->
+    <!--<Variable  Name="MyLogDestination" Type="string" Value="D:\DIAViewSetupLog.txt" />
+    <Log PathVariable="MyLogDestination" Disable="yes" Prefix='[WixBundleOriginalSource]' Extension=".txt" />-->
+    <!--<Variable Type="string" Value="" Name="InstallFolder" />-->
+
+    <Chain DisableRollback='yes'>
+      <PackageGroupRef Id="Netfx4Full"  />
+      <MsiPackage Id="HeartBeats" SourceFile="..\AIStudio.Wpf.WixSetUp.msi" Compressed="yes"  DisplayInternalUI="no" >
+        <MsiProperty Name="INSTALLFOLDER" Value="[InstallFolder]"/>
+      </MsiPackage>
+    </Chain>
+  </Bundle>
+
+  <Fragment>
+    <WixVariable Id="WixMbaPrereqPackageId" Value="Netfx4Full" />
+    <WixVariable Id="WixMbaPrereqLicenseUrl" Value="NetfxLicense.rtf" />
+
+    <util:RegistrySearch Root="HKLM" Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full" Value="Version" Variable="Netfx4FullVersion" />
+    <util:RegistrySearch Root="HKLM" Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full" Value="Version" Variable="Netfx4x64FullVersion" Win64="yes" />
+    <PackageGroup Id="Netfx4Full">
+      <ExePackage
+          Id="Netfx4Full"
+          Cache="yes"
+          Compressed="yes"
+          PerMachine="yes"
+          Permanent="yes"
+          Vital="yes"
+          SourceFile="D:\软件\Setup.exe"
+          InstallCommand="/q /norestart "
+          DownloadUrl="http://go.microsoft.com/fwlink/?LinkId=164193"
+          DetectCondition="Netfx4FullVersion AND (NOT VersionNT64 OR Netfx4x64FullVersion)"/>
+    </PackageGroup>
+  </Fragment>
+</Wix>

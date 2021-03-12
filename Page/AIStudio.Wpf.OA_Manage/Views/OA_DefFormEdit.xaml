@@ -1,0 +1,176 @@
+﻿<util:BaseDialog x:Class="AIStudio.Wpf.OA_Manage.Views.OA_DefFormEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="AIStudio.Wpf.OA_Manage.Views"
+             xmlns:util="https://astudio.github.io/utilcontrol"
+             xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
+             xmlns:converter="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
+             xmlns:flowchart="clr-namespace:Aga.Diagrams.TestExtend.Flowchart;assembly=Aga.Diagrams.TestExtend"
+              VerticalAlignment ="Center"
+             HorizontalAlignment="Center"
+             mc:Ignorable="d" >
+    <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}"  CornerRadius="3">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                   Margin="10,0"
+                   Text="{Binding Title}"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"/>
+            <Border Grid.Row="1" VerticalAlignment="Bottom" BorderBrush="{DynamicResource GrayBrush4}" SnapsToDevicePixels="True" BorderThickness="0,1,0,1" >
+                 <ScrollViewer>
+                    <Grid DataContext="{Binding Data}" VerticalAlignment="Center" Margin="10,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <HeaderedContentControl Style="{StaticResource LeftFormItemStyle}">
+                            <HeaderedContentControl.Header>
+                                <TextBlock VerticalAlignment="Center">
+                                    <Run Foreground="Red">*</Run>
+                                    <Run>分类</Run>
+                                </TextBlock>
+                            </HeaderedContentControl.Header>
+                            <ComboBox ItemsSource="{Binding DataContext.Types, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" DisplayMemberPath="Name" SelectedValuePath="Name" SelectedValue="{Binding Type}" />
+                        </HeaderedContentControl>
+                        <HeaderedContentControl Grid.Column="1" Style="{StaticResource LeftFormItemStyle}">
+                            <HeaderedContentControl.Header>
+                                <TextBlock VerticalAlignment="Center">
+                                    <Run Foreground="Red">*</Run>
+                                    <Run>标题</Run>
+                                </TextBlock>
+                            </HeaderedContentControl.Header>
+                            <TextBox Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource ToolTipErrorTextBox}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </HeaderedContentControl>
+                        <HeaderedContentControl Grid.Column="2" Style="{StaticResource LeftFormItemStyle}">
+                            <HeaderedContentControl.Header>
+                                <TextBlock VerticalAlignment="Center">
+                                    <Run Foreground="Red">*</Run>
+                                    <Run>摘要</Run>
+                                </TextBlock>
+                            </HeaderedContentControl.Header>
+                            <TextBox Text="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource ToolTipErrorTextBox}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </HeaderedContentControl>
+                        <HeaderedContentControl Grid.Row="1" Style="{StaticResource LeftFormItemStyle}">
+                            <HeaderedContentControl.Header>
+                                <TextBlock VerticalAlignment="Center">
+                                    <Run Foreground="Red">*</Run>
+                                    <Run>排序</Run>
+                                </TextBlock>
+                            </HeaderedContentControl.Header>
+                            <TextBox Text="{Binding Sort,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource ToolTipErrorTextBox}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </HeaderedContentControl>
+                        <HeaderedContentControl Grid.Row="1" Grid.Column="1" Style="{StaticResource LeftFormItemStyle}">
+                            <HeaderedContentControl.Header>
+                                <TextBlock VerticalAlignment="Center">
+                                    <Run Foreground="Red">*</Run>
+                                    <Run>权限角色</Run>
+                                </TextBlock>
+                            </HeaderedContentControl.Header>
+                            <util:MultiComboBox ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                            core:CustomeSelectionItems.SelectedItems="{Binding DataContext.SelectedRoles, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                            DisplayMemberPath="RoleName" SelectedValuePath="Id"></util:MultiComboBox>
+                        </HeaderedContentControl>
+                        <HeaderedContentControl Grid.Row="1" Grid.Column="2" Style="{StaticResource LeftFormItemStyle}">
+                            <HeaderedContentControl.Header>
+                                <TextBlock VerticalAlignment="Center">
+                                    <Run Foreground="Red">*</Run>
+                                    <Run>流程图</Run>
+                                </TextBlock>
+                            </HeaderedContentControl.Header>
+                            <TextBox Text="{Binding WorkflowJSON,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource ToolTipErrorTextBox}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </HeaderedContentControl>
+                        <Grid Grid.Row="3" Grid.ColumnSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <flowchart:OAFlowEditor x:Name="editor"                           
+                                FlowchartModel="{util:ControlBinding FlowchartModel}" 
+                                Mode="{util:ControlBinding Mode}"
+                                util:ThemeChangedHelper.AcceptThemeChanged="True"/>
+                            <util:PropertiesView Grid.Column="1" Margin="5,0,0,0" NeedBrowsable="False" 
+                                                 IsEnabled="{util:ControlBinding Mode,Converter={converter:ConverterValueMapToBool},ConverterParameter='Edit'}"
+                                                 SelectedObject="{Binding ElementName=editor,Path=SelectedObject}">
+                                <util:PropertiesView.Resources>
+                                    <Style x:Key="ActTypeStyle" TargetType="{x:Type ContentControl}">
+                                        <Setter Property="ContentTemplate">
+                                            <Setter.Value>
+                                                <DataTemplate>
+                                                    <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                                                        <ComboBox 
+                                                            BorderThickness="0"                                                             
+                                                            Text="{Binding ActType}" >
+                                                            <ComboBoxItem Content="or"/>
+                                                            <ComboBoxItem Content="and"/>
+                                                        </ComboBox>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                    <Style x:Key="UserIdsStyle" TargetType="{x:Type ContentControl}">
+                                        <Setter Property="ContentTemplate">
+                                            <Setter.Value>
+                                                <DataTemplate>
+                                                    <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                                                        <util:MultiComboBox BorderThickness="0" 
+                                                            ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type util:BaseDialog}}}" 
+                                                            core:CustomeSelectionValues.SelectedValues="{Binding UserIds}"
+                                                            DisplayMemberPath="UserName" SelectedValuePath="Id"></util:MultiComboBox>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                    <Style x:Key="RoleIdsStyle" TargetType="{x:Type ContentControl}">
+                                        <Setter Property="ContentTemplate">
+                                            <Setter.Value>
+                                                <DataTemplate>
+                                                    <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                                                        <util:MultiComboBox 
+                                                            BorderThickness="0" 
+                                                            ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type util:BaseDialog}}}" 
+                                                            core:CustomeSelectionValues.SelectedValues="{Binding RoleIds}"
+                                                            DisplayMemberPath="RoleName" SelectedValuePath="Id"></util:MultiComboBox>       
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </util:PropertiesView.Resources>
+                            </util:PropertiesView>
+                        </Grid>
+                    </Grid>
+				</ScrollViewer>
+            </Border>
+            <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right" Margin="10,0">
+                <util:FButton CornerRadius="2" x:Name="PART_AffirmativeButton"
+                    Height="25"
+                    MinWidth="60"
+                    Content="确定"
+                    Margin="0 0 5 0" />
+                <util:FButton CornerRadius="2" x:Name="PART_NegativeButton"
+                    Height="25"
+                    MinWidth="60"
+                    Content="取消"
+                    Margin="5 0 5 0" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</util:BaseDialog>

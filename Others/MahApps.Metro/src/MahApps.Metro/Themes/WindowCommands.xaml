@@ -1,0 +1,299 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mah="clr-namespace:MahApps.Metro.Controls">
+
+    <ControlTemplate x:Key="MahApps.Templates.Button.WindowCommands" TargetType="{x:Type Button}">
+        <Grid Background="{TemplateBinding Background}">
+            <mah:ContentControlEx x:Name="PART_ContentControlEx"
+                                  Padding="{TemplateBinding Padding}"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  Content="{TemplateBinding Content}"
+                                  ContentCharacterCasing="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mah:ControlsHelper.ContentCharacterCasing)}"
+                                  ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                  RecognizesAccessKey="{TemplateBinding mah:ControlsHelper.RecognizesAccessKey}"
+                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MahApps.Templates.ToggleButton.WindowCommands" TargetType="{x:Type ToggleButton}">
+        <Grid Background="{TemplateBinding Background}">
+            <mah:ContentControlEx x:Name="PART_ContentControlEx"
+                                  Padding="{TemplateBinding Padding}"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  Content="{TemplateBinding Content}"
+                                  ContentCharacterCasing="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mah:ControlsHelper.ContentCharacterCasing)}"
+                                  ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                  RecognizesAccessKey="{TemplateBinding mah:ControlsHelper.RecognizesAccessKey}"
+                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+        </Grid>
+    </ControlTemplate>
+
+    <Style x:Key="MahApps.Styles.Control.WindowCommands" TargetType="{x:Type Control}">
+        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Transparent}" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground), Mode=OneWay}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Opacity" Value="0.5" />
+        <Setter Property="Padding" Value="8 0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Gray9}" />
+                <Setter Property="Opacity" Value="1" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MahApps.Styles.Button.WindowCommands"
+           BasedOn="{StaticResource MahApps.Styles.Control.WindowCommands}"
+           TargetType="{x:Type ButtonBase}">
+        <Setter Property="Template" Value="{StaticResource MahApps.Templates.Button.WindowCommands}" />
+    </Style>
+
+    <Style x:Key="MahApps.Styles.ToggleButton.WindowCommands"
+           BasedOn="{StaticResource MahApps.Styles.Control.WindowCommands}"
+           TargetType="{x:Type ToggleButton}">
+        <Setter Property="Template" Value="{StaticResource MahApps.Templates.ToggleButton.WindowCommands}" />
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Opacity" Value="0.8" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="1" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MahApps.Styles.SplitButton.Button.WindowCommands"
+           BasedOn="{StaticResource MahApps.Styles.Control.WindowCommands}"
+           TargetType="{x:Type Control}">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="4 0 0 0" />
+        <Setter Property="Template" Value="{StaticResource MahApps.Templates.Button.WindowCommands}" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="1" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MahApps.Styles.SplitButton.ButtonArrow.WindowCommands"
+           BasedOn="{StaticResource MahApps.Styles.SplitButton.Button.WindowCommands}"
+           TargetType="{x:Type Control}">
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0 0 4 0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="MahApps.Styles.SplitButton.WindowCommands" TargetType="{x:Type mah:SplitButton}">
+        <Setter Property="ArrowBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground), Mode=OneWay}" />
+        <Setter Property="ArrowMouseOverBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground), Mode=OneWay}" />
+        <Setter Property="ArrowPressedBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground), Mode=OneWay}" />
+        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Transparent}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="ButtonArrowStyle" Value="{StaticResource MahApps.Styles.SplitButton.ButtonArrow.WindowCommands}" />
+        <Setter Property="ButtonStyle" Value="{StaticResource MahApps.Styles.SplitButton.Button.WindowCommands}" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground), Mode=OneWay}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="MinHeight" Value="0" />
+        <Setter Property="Padding" Value="4 0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="ArrowBrush" Value="{DynamicResource MahApps.Brushes.Gray9}" />
+                <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Gray9}" />
+                <Setter Property="Opacity" Value="1" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MahApps.Styles.DropDownButton.Button.WindowCommands"
+           BasedOn="{StaticResource MahApps.Styles.SplitButton.Button.WindowCommands}"
+           TargetType="{x:Type Control}">
+        <Setter Property="Padding" Value="4 0 4 0" />
+    </Style>
+
+    <Style x:Key="MahApps.Styles.DropDownButton.WindowCommands" TargetType="{x:Type mah:DropDownButton}">
+        <Setter Property="ArrowBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground), Mode=OneWay}" />
+        <Setter Property="ArrowMouseOverBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground), Mode=OneWay}" />
+        <Setter Property="ArrowPressedBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground), Mode=OneWay}" />
+        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Transparent}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="ButtonStyle" Value="{StaticResource MahApps.Styles.DropDownButton.Button.WindowCommands}" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground), Mode=OneWay}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="MinHeight" Value="0" />
+        <Setter Property="Padding" Value="4 0 8 0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="ArrowBrush" Value="{DynamicResource MahApps.Brushes.Gray9}" />
+                <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Gray9}" />
+                <Setter Property="Opacity" Value="1" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MahApps.Styles.ToggleButton.ToolBarOverflow" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Transparent}" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid Name="Bd"
+                          Background="{TemplateBinding Background}"
+                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Path Name="Arrow"
+                              Width="7"
+                              Margin="4"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Bottom"
+                              Data="M16.59,5.59L18,7L12,13L6,7L7.41,5.59L12,10.17L16.59,5.59M16.59,11.59L18,13L12,19L6,13L7.41,11.59L12,16.17L16.59,11.59Z"
+                              Fill="{TemplateBinding Foreground}"
+                              Opacity="0.75"
+                              Stretch="Uniform" />
+                        <ContentPresenter />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="Arrow" Property="Opacity" Value="1" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MahApps.Brushes.Gray2}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MahApps.Brushes.Gray2}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MahApps.Brushes.Gray2}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="MahApps.Templates.WindowCommands" TargetType="mah:WindowCommands">
+        <DockPanel>
+            <ToggleButton x:Name="PART_ToggleButton"
+                          AutomationProperties.Name="OverflowToggleButton"
+                          ClickMode="Press"
+                          DockPanel.Dock="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(DockPanel.Dock), Mode=OneWay}"
+                          Foreground="{TemplateBinding Foreground}"
+                          IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsOverflowOpen, Mode=TwoWay}"
+                          IsEnabled="false"
+                          Style="{StaticResource MahApps.Styles.ToggleButton.ToolBarOverflow}"
+                          Visibility="Collapsed">
+                <Popup x:Name="OverflowPopup"
+                       AllowsTransparency="true"
+                       Focusable="false"
+                       IsOpen="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsOverflowOpen}"
+                       Placement="Bottom"
+                       PopupAnimation="Slide"
+                       StaysOpen="false">
+                    <Grid x:Name="DropDownBorder" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type mah:MetroWindow}}, Path=Background, Mode=OneWay}">
+                        <ToolBarOverflowPanel x:Name="PART_ToolBarOverflowPanel"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch"
+                                              Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type mah:MetroWindow}}, Path=WindowTitleBrush, Mode=OneWay}"
+                                              FocusVisualStyle="{x:Null}"
+                                              Focusable="true"
+                                              KeyboardNavigation.DirectionalNavigation="Cycle"
+                                              KeyboardNavigation.TabNavigation="Cycle" />
+                    </Grid>
+                </Popup>
+            </ToggleButton>
+            <ToolBarPanel x:Name="PART_ToolBarPanel"
+                          Margin="0"
+                          Background="{TemplateBinding Background}"
+                          IsItemsHost="true" />
+        </DockPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="HasOverflowItems" Value="true">
+                <Setter TargetName="PART_ToggleButton" Property="IsEnabled" Value="true" />
+                <Setter TargetName="PART_ToggleButton" Property="Visibility" Value="Visible" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="MahApps.Styles.WindowCommandsItem" TargetType="{x:Type mah:WindowCommandsItem}">
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Self}, Path=ParentWindowCommands.Foreground, Mode=OneWay}" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="MinHeight" Value="{Binding RelativeSource={RelativeSource Self}, Path=ParentWindowCommands.ParentWindow.TitleBarHeight, Mode=OneWay}" />
+        <Setter Property="Padding" Value="1 0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type mah:WindowCommandsItem}">
+                    <StackPanel HorizontalAlignment="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type mah:WindowCommandsItem}}, Path=ParentWindowCommands.HorizontalContentAlignment, Mode=OneWay}"
+                                VerticalAlignment="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type mah:WindowCommandsItem}}, Path=ParentWindowCommands.VerticalContentAlignment, Mode=OneWay}"
+                                Orientation="Horizontal">
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          Margin="{TemplateBinding Padding}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        <Rectangle x:Name="PART_Separator"
+                                   Width="1"
+                                   Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type mah:WindowCommandsItem}}, Path=ParentWindowCommands.SeparatorHeight, Mode=OneWay}"
+                                   Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type mah:WindowCommandsItem}}, Path=ParentWindowCommands.Foreground, Mode=OneWay}"
+                                   IsHitTestVisible="False"
+                                   Opacity="0.25"
+                                   SnapsToDevicePixels="True"
+                                   UseLayoutRounding="True" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSeparatorVisible" Value="False">
+                            <Setter TargetName="PART_Separator" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MahApps.Styles.WindowCommands.Base" TargetType="{x:Type mah:WindowCommands}">
+        <Style.Resources>
+            <ResourceDictionary>
+                <Style BasedOn="{StaticResource MahApps.Styles.Button.WindowCommands}" TargetType="{x:Type Button}" />
+                <Style BasedOn="{StaticResource MahApps.Styles.ToggleButton.WindowCommands}" TargetType="{x:Type ToggleButton}" />
+                <Style BasedOn="{StaticResource MahApps.Styles.SplitButton.WindowCommands}" TargetType="{x:Type mah:SplitButton}" />
+                <Style BasedOn="{StaticResource MahApps.Styles.DropDownButton.WindowCommands}" TargetType="{x:Type mah:DropDownButton}" />
+            </ResourceDictionary>
+        </Style.Resources>
+        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Transparent}" />
+        <Setter Property="DarkTemplate" Value="{StaticResource MahApps.Templates.WindowCommands}" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.ThemeForeground}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="KeyboardNavigation.ControlTabNavigation" Value="Continue" />
+        <Setter Property="KeyboardNavigation.DirectionalNavigation" Value="Continue" />
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue" />
+        <Setter Property="LightTemplate" Value="{StaticResource MahApps.Templates.WindowCommands}" />
+        <Setter Property="Template" Value="{StaticResource MahApps.Templates.WindowCommands}" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="mah:ControlsHelper.ContentCharacterCasing" Value="Normal" />
+    </Style>
+
+    <Style x:Key="MahApps.Styles.WindowCommands"
+           BasedOn="{StaticResource MahApps.Styles.WindowCommands.Base}"
+           TargetType="{x:Type mah:WindowCommands}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ParentWindow.ShowTitleBar}" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

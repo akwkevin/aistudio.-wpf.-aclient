@@ -1,0 +1,47 @@
+﻿using AIStudio.Core;
+using Dataforge.PrismAvalonExtensions.ViewModels;
+using AIStudio.Wpf.%areaName%.Views;
+using AIStudio.Wpf.BasePage.ViewModels;
+using AIStudio.Wpf.PetaPoco;
+using AIStudio.Wpf.Service.AppClient;
+using AIStudio.Wpf.Service.IAppClient;
+using Prism.Ioc;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows.Input;
+using Util.Controls;
+using Util.Controls.DialogBox;
+
+namespace AIStudio.Wpf.%areaName%.ViewModels
+{
+    public class %entityName%ViewModel : BaseWindowViewModel<%entityName%DTO>
+    {
+        public %entityName%ViewModel():base("%areaName%", typeof(%entityName%EditViewModel), typeof(%entityName%Edit))
+        {
+			GetData();
+        }        
+
+        protected override void GetData(bool iswaiting = false)
+        {
+            base.GetData(iswaiting);
+        }
+
+        protected override void Edit(%entityName%DTO para = null)
+        {
+            base.Edit(para);
+        }
+
+        protected override void Delete(string id = null)
+        {
+            base.Delete(id);
+        }
+
+        protected override void Search(object para=null)
+        {
+            base.Search(para);
+        }
+    }
+}

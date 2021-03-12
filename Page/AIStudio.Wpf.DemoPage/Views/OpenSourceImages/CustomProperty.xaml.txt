@@ -1,0 +1,21 @@
+﻿
+<util:PropertyGrid >
+    <util:PropertyGrid.Properties>
+
+      <util:CustomPropertyItem DisplayName="First Name" 
+                               Value="Nancy" 
+                               Category="Name" />
+
+      <util:CustomPropertyItem DisplayName="Age" 
+                               Value="29" 
+                               Category="Other" 
+                               DefinitionKey="{x:Type s:Int32}" />
+            
+      <util:CustomPropertyItem DisplayName="Picture" Category="Other">
+          <util:CustomPropertyItem.Editor>
+            <Image Source="/Views/Resources/woman.png" />
+          </util:CustomPropertyItem.Editor>
+      </util:CustomPropertyItem>
+
+    </util:PropertyGrid.Properties>
+</util:PropertyGrid>

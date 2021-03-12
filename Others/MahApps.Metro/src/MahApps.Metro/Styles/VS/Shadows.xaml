@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    mc:Ignorable="po">
+
+    <DropShadowEffect x:Key="MahApps.DropShadowEffect.Menu.VisualStudio"
+                      x:Shared="False"
+                      ShadowDepth="2"
+                      Color="{DynamicResource MahApps.Colors.MenuShadow}"
+                      po:Freeze="True" />
+
+</ResourceDictionary>

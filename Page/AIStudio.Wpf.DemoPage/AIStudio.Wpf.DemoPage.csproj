@@ -1,0 +1,2338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B3F98692-2DAB-4A48-A7D9-808A21F3EC14}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AIStudio.Wpf.DemoPage</RootNamespace>
+    <AssemblyName>AIStudio.Wpf.DemoPage</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aga.Diagrams, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5fa1b73ec27e3ba2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AIStudio.Wpf.Controls\Aga.Diagrams.dll</HintPath>
+    </Reference>
+    <Reference Include="Aga.Diagrams.TestExtend, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AIStudio.Wpf.Controls\Aga.Diagrams.TestExtend.dll</HintPath>
+    </Reference>
+    <Reference Include="GongSolutions.WPF.DragDrop">
+      <HintPath>..\AIStudio.Wpf.Controls\GongSolutions.WPF.DragDrop.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\packages\AvalonEdit.5.0.4\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.4.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AIStudio.Wpf.Controls\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\AIStudio.Wpf.Controls\Microsoft.mshtml.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Petzold.Text3D, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AIStudio.Wpf.Controls\Petzold.Text3D.dll</HintPath>
+    </Reference>
+    <Reference Include="ShowMeTheXAML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ShowMeTheXAML.1.0.12\lib\net45\ShowMeTheXAML.dll</HintPath>
+    </Reference>
+    <Reference Include="ShowMeTheXAML.AvalonEdit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ShowMeTheXAML.AvalonEdit.1.0.12\lib\net45\ShowMeTheXAML.AvalonEdit.dll</HintPath>
+    </Reference>
+    <Reference Include="Smith.WPF.HtmlEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AIStudio.Wpf.Controls\Smith.WPF.HtmlEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg2Xaml, Version=0.3.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AIStudio.Wpf.Controls\Svg2Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg2XamlTestExtension, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AIStudio.Wpf.Controls\Svg2XamlTestExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Utility, Version=3.0.0.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AIStudio.Wpf.Controls\System.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Text3DExtend, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AIStudio.Wpf.Controls\Text3DExtend.dll</HintPath>
+    </Reference>
+    <Reference Include="Util.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AIStudio.Wpf.Controls\Util.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Util.Controls.DialogBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AIStudio.Wpf.Controls\Util.Controls.DialogBox.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AIStudio.Wpf.Controls\WpfAnimatedGif.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock">
+      <HintPath>..\AIStudio.Wpf.Controls\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.MyMetro">
+      <HintPath>..\AIStudio.Wpf.Controls\Xceed.Wpf.AvalonDock.Themes.MyMetro.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\CodeBox.cs" />
+    <Compile Include="Converters\AbsoluteAdditionConverter.cs" />
+    <Compile Include="Converters\ComboBoxToVisibilityConverter.cs" />
+    <Compile Include="Converters\CustomFormatToBoolConverter.cs" />
+    <Compile Include="Converters\DateTimeToTimeSpanConverter.cs" />
+    <Compile Include="Converters\DimensionConverter.cs" />
+    <Compile Include="Converters\IntegerToTimespanConverter.cs" />
+    <Compile Include="Converters\IntToBoolConverter.cs" />
+    <Compile Include="Converters\PointConverter.cs" />
+    <Compile Include="Converters\RangeSliderEnabledConverter.cs" />
+    <Compile Include="Converters\RectConverter.cs" />
+    <Compile Include="Converters\SimpleConverter.cs" />
+    <Compile Include="Converters\SliceLabelConverter.cs" />
+    <Compile Include="Converters\FIcon2StringConverter.cs" />
+    <Compile Include="Converters\StringToAvatarSourceConverter.cs" />
+    <Compile Include="Converters\ViewFinderConverter.cs" />
+    <Compile Include="Converters\ViewNameConverter.cs" />
+    <Compile Include="Converters\ViewStackCountConverter.cs" />
+    <Compile Include="Converters\SvgIcon2StringConverter.cs" />
+    <Compile Include="Converters\VisibilityConverter.cs" />
+    <Compile Include="Converters\WindowStateToBoolConverter.cs" />
+    <Compile Include="Core\CodeFormatting\CSharpFormat.cs" />
+    <Compile Include="Core\CodeFormatting\XamlFormat.cs" />
+    <Compile Include="Core\Converters\ZeroToBoolConverter.cs" />
+    <Compile Include="Core\CSharpFormatter.cs" />
+    <Compile Include="Core\XamlFormatter.cs" />
+    <Compile Include="Helper\DemoHelper.cs" />
+    <Compile Include="DemoPageModule.cs" />
+    <Compile Include="Helper\XamlDisplayEx.cs" />
+    <Compile Include="Models\AvatarModel.cs" />
+    <Compile Include="Models\CardModel.cs" />
+    <Compile Include="Models\Coordinates.cs" />
+    <Compile Include="Models\CoverViewDemoModel.cs" />
+    <Compile Include="Models\DemoDataModel.cs" />
+    <Compile Include="Models\DemoInfoModel.cs" />
+    <Compile Include="Models\DemoItemModel.cs" />
+    <Compile Include="Models\Dimension.cs" />
+    <Compile Include="Models\FormatObject.cs" />
+    <Compile Include="Models\GenderData.cs" />
+    <Compile Include="Models\IFull.cs" />
+    <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\PersonModel.cs" />
+    <Compile Include="Models\Range.cs" />
+    <Compile Include="Models\StepBarDemoModel.cs" />
+    <Compile Include="Models\TabControlDemoModel.cs" />
+    <Compile Include="Models\TextFormatterEnum.cs" />
+    <Compile Include="Models\WindowModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="ViewModels\AnimationPathViewModel.cs" />
+    <Compile Include="ViewModels\BadgeViewModel.cs" />
+    <Compile Include="ViewModels\BusyIndicatorViewModel.cs" />
+    <Compile Include="ViewModels\ButtonGroupViewModel.cs" />
+    <Compile Include="ViewModels\CalculatorViewModel.cs" />
+    <Compile Include="ViewModels\CalendarWithClockViewModel.cs" />
+    <Compile Include="ViewModels\CalendarViewModel.cs" />
+    <Compile Include="ViewModels\CardViewModel.cs" />
+    <Compile Include="ViewModels\ChatBubbleViewModel.cs" />
+    <Compile Include="ViewModels\CheckBoxViewModel.cs" />
+    <Compile Include="ViewModels\ChildWindowViewModel.cs" />
+    <Compile Include="ViewModels\CirclePanelViewModel.cs" />
+    <Compile Include="ViewModels\ClockViewModel.cs" />
+    <Compile Include="ViewModels\ColorPickerViewModel.cs" />
+    <Compile Include="ViewModels\ComboBoxViewModel.cs" />
+    <Compile Include="ViewModels\CompareSliderViewModel.cs" />
+    <Compile Include="ViewModels\ControlNavigationViewModel.cs" />
+    <Compile Include="ViewModels\CoverFlowViewModel.cs" />
+    <Compile Include="ViewModels\CoverViewViewModel.cs" />
+    <Compile Include="ViewModels\DatePickerViewModel.cs" />
+    <Compile Include="ViewModels\DateTimePickerViewModel.cs" />
+    <Compile Include="ViewModels\DemoBuildCodeViewModel.cs" />
+    <Compile Include="ViewModels\DividerViewModel.cs" />
+    <Compile Include="ViewModels\DrawerViewModel.cs" />
+    <Compile Include="ViewModels\DropDownViewModel.cs" />
+    <Compile Include="ViewModels\EffectsViewModel.cs" />
+    <Compile Include="ViewModels\ExpanderViewModel.cs" />
+    <Compile Include="ViewModels\FIconViewModel.cs" />
+    <Compile Include="ViewModels\FlipClockViewModel.cs" />
+    <Compile Include="ViewModels\FloatingBlockViewModel.cs" />
+    <Compile Include="ViewModels\FlowchartViewModel.cs" />
+    <Compile Include="ViewModels\FlowDocumentViewModel.cs" />
+    <Compile Include="ViewModels\FontAwesomeViewModel.cs" />
+    <Compile Include="ViewModels\FrameViewModel.cs" />
+    <Compile Include="ViewModels\GeometryAnimationViewModel.cs" />
+    <Compile Include="ViewModels\GifImageViewModel.cs" />
+    <Compile Include="ViewModels\GotoTopViewModel.cs" />
+    <Compile Include="ViewModels\GravatarViewModel.cs" />
+    <Compile Include="ViewModels\GridViewModel.cs" />
+    <Compile Include="ViewModels\GroupBoxViewModel.cs" />
+    <Compile Include="ViewModels\GrowlViewModel.cs" />
+    <Compile Include="ViewModels\HatchBrushGeneratorViewModel.cs" />
+    <Compile Include="ViewModels\HoneycombPanelViewModel.cs" />
+    <Compile Include="ViewModels\ImageBlockViewModel.cs" />
+    <Compile Include="ViewModels\ImageBrowserViewModel.cs" />
+    <Compile Include="ViewModels\ImageViewModel.cs" />
+    <Compile Include="ViewModels\LabelViewModel.cs" />
+    <Compile Include="ViewModels\LazyLoadedViewModel.cs" />
+    <Compile Include="ViewModels\ListBoxViewModel.cs" />
+    <Compile Include="ViewModels\ListViewViewModel.cs" />
+    <Compile Include="ViewModels\LoadingViewModel.cs" />
+    <Compile Include="ViewModels\MagnifierViewModel.cs" />
+    <Compile Include="ViewModels\MediaPlayerViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\NotificationViewModel.cs" />
+    <Compile Include="ViewModels\NotifyIconViewModel.cs" />
+    <Compile Include="ViewModels\NumericUpDownViewModel.cs" />
+    <Compile Include="ViewModels\OutlineTextViewModel.cs" />
+    <Compile Include="ViewModels\PasswordBoxViewModel.cs" />
+    <Compile Include="ViewModels\PieChartViewModel.cs" />
+    <Compile Include="ViewModels\PinBoxViewModel.cs" />
+    <Compile Include="ViewModels\PoptipViewModel.cs" />
+    <Compile Include="ViewModels\PracticalViewModel.cs" />
+    <Compile Include="ViewModels\PreviewSliderViewModel.cs" />
+    <Compile Include="ViewModels\ProgressBarViewModel.cs" />
+    <Compile Include="ViewModels\ProgressButtonViewModel.cs" />
+    <Compile Include="ViewModels\PropertyGridViewModel.cs" />
+    <Compile Include="ViewModels\RadioButtonViewModel.cs" />
+    <Compile Include="ViewModels\RangeSliderViewModel.cs" />
+    <Compile Include="ViewModels\RateViewModel.cs" />
+    <Compile Include="ViewModels\RelativePanelViewModel.cs" />
+    <Compile Include="ViewModels\RepeatButtonViewModel.cs" />
+    <Compile Include="ViewModels\RichTextBoxViewModel.cs" />
+    <Compile Include="ViewModels\RunningBlockViewModel.cs" />
+    <Compile Include="ViewModels\ScreenshotViewModel.cs" />
+    <Compile Include="ViewModels\ScrollViewerViewModel.cs" />
+    <Compile Include="ViewModels\SearchBarViewModel.cs" />
+    <Compile Include="ViewModels\ShieldViewModel.cs" />
+    <Compile Include="ViewModels\SideMenuViewModel.cs" />
+    <Compile Include="ViewModels\SplitButtonViewModel.cs" />
+    <Compile Include="ViewModels\SpriteViewModel.cs" />
+    <Compile Include="ViewModels\StepBarViewModel.cs" />
+    <Compile Include="ViewModels\SvgIconViewModel.cs" />
+    <Compile Include="ViewModels\SwitchPanelViewModel.cs" />
+    <Compile Include="ViewModels\TabControlViewModel.cs" />
+    <Compile Include="ViewModels\TagViewModel.cs" />
+    <Compile Include="ViewModels\TimeBarViewModel.cs" />
+    <Compile Include="ViewModels\TimePickerViewModel.cs" />
+    <Compile Include="ViewModels\ToggleButtonViewModel.cs" />
+    <Compile Include="ViewModels\ToolBarViewModel.cs" />
+    <Compile Include="ViewModels\TextBlockViewModel.cs" />
+    <Compile Include="ViewModels\BorderViewModel.cs" />
+    <Compile Include="ViewModels\BrushViewModel.cs" />
+    <Compile Include="ViewModels\EditorViewModel.cs" />
+    <Compile Include="ViewModels\DataGridViewModel.cs" />
+    <Compile Include="ViewModels\PaginationViewModel.cs" />
+    <Compile Include="ViewModels\SliderViewModel.cs" />
+    <Compile Include="ViewModels\TransferViewModel.cs" />
+    <Compile Include="ViewModels\TransitioningContentControlViewModel.cs" />
+    <Compile Include="ViewModels\TreeViewViewModel.cs" />
+    <Compile Include="ViewModels\TextBoxViewModel.cs" />
+    <Compile Include="ViewModels\ButtonViewModel.cs" />
+    <Compile Include="ViewModels\CarouselViewModel.cs" />
+    <Compile Include="ViewModels\ColorZonesViewModel.cs" />
+    <Compile Include="ViewModels\DialogViewModel.cs" />
+    <Compile Include="ViewModels\PackIconViewModel.cs" />
+    <Compile Include="ViewModels\UploadFileViewModel.cs" />
+    <Compile Include="ViewModels\VerifyViewModel.cs" />
+    <Compile Include="ViewModels\WaterfallPanelViewModel.cs" />
+    <Compile Include="ViewModels\NativeWindowViewModel.cs" />
+    <Compile Include="ViewModels\WebBrowserViewModel.cs" />
+    <Compile Include="ViewModels\WindowContainerViewModel.cs" />
+    <Compile Include="ViewModels\WizardViewModel.cs" />
+    <Compile Include="ViewModels\ZoomboxViewModel.cs" />
+    <Compile Include="Views\AnimationPathView.xaml.cs">
+      <DependentUpon>AnimationPathView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BadgeView.xaml.cs">
+      <DependentUpon>BadgeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Basic\ChatBox.xaml.cs">
+      <DependentUpon>ChatBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BorderView.xaml.cs">
+      <DependentUpon>BorderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BrushView.xaml.cs">
+      <DependentUpon>BrushView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BusyIndicatorView.xaml.cs">
+      <DependentUpon>BusyIndicatorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ButtonGroupView.xaml.cs">
+      <DependentUpon>ButtonGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CalculatorView.xaml.cs">
+      <DependentUpon>CalculatorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CalendarWithClockView.xaml.cs">
+      <DependentUpon>CalendarWithClockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CalendarView.xaml.cs">
+      <DependentUpon>CalendarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CardView.xaml.cs">
+      <DependentUpon>CardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChatBubbleView.xaml.cs">
+      <DependentUpon>ChatBubbleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CheckBoxView.xaml.cs">
+      <DependentUpon>CheckBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChildWindowView.xaml.cs">
+      <DependentUpon>ChildWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CirclePanelView.xaml.cs">
+      <DependentUpon>CirclePanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClockView.xaml.cs">
+      <DependentUpon>ClockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ColorPickerView.xaml.cs">
+      <DependentUpon>ColorPickerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ComboBoxView.xaml.cs">
+      <DependentUpon>ComboBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CompareSliderView.xaml.cs">
+      <DependentUpon>CompareSliderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ControlNavigationView.xaml.cs">
+      <DependentUpon>ControlNavigationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CoverFlowView.xaml.cs">
+      <DependentUpon>CoverFlowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CoverViewView.xaml.cs">
+      <DependentUpon>CoverViewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DatePickerView.xaml.cs">
+      <DependentUpon>DatePickerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DateTimePickerView.xaml.cs">
+      <DependentUpon>DateTimePickerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DemoBuildCodeView.xaml.cs">
+      <DependentUpon>DemoBuildCodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ButtonView.xaml.cs">
+      <DependentUpon>ButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CarouselView.xaml.cs">
+      <DependentUpon>CarouselView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ColorZonesView.xaml.cs">
+      <DependentUpon>ColorZonesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Basic\Avatar.xaml.cs">
+      <DependentUpon>Avatar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Demos\DialogTest.xaml.cs">
+      <DependentUpon>DialogTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Demos\DynamicFlyout.xaml.cs">
+      <DependentUpon>DynamicFlyout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Demos\InteractiveDialog.xaml.cs">
+      <DependentUpon>InteractiveDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Demos\InteractiveDialogViewModel.cs" />
+    <Compile Include="Views\Demos\TextDialog.xaml.cs">
+      <DependentUpon>TextDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Demos\TextDialogWithTimer.xaml.cs">
+      <DependentUpon>TextDialogWithTimer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Demos\WindowTest.xaml.cs">
+      <DependentUpon>WindowTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogView.xaml.cs">
+      <DependentUpon>DialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DividerView.xaml.cs">
+      <DependentUpon>DividerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DrawerView.xaml.cs">
+      <DependentUpon>DrawerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DropDownView.xaml.cs">
+      <DependentUpon>DropDownView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditorView.xaml.cs">
+      <DependentUpon>EditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EffectsView.xaml.cs">
+      <DependentUpon>EffectsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExpanderView.xaml.cs">
+      <DependentUpon>ExpanderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FIconView.xaml.cs">
+      <DependentUpon>FIconView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FlipClockView.xaml.cs">
+      <DependentUpon>FlipClockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FloatingBlockView.xaml.cs">
+      <DependentUpon>FloatingBlockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FlowchartView.xaml.cs">
+      <DependentUpon>FlowchartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FlowDocumentView.xaml.cs">
+      <DependentUpon>FlowDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FontAwesomeView.xaml.cs">
+      <DependentUpon>FontAwesomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrameView.xaml.cs">
+      <DependentUpon>FrameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GeometryAnimationView.xaml.cs">
+      <DependentUpon>GeometryAnimationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GifImageView.xaml.cs">
+      <DependentUpon>GifImageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GotoTopView.xaml.cs">
+      <DependentUpon>GotoTopView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GravatarView.xaml.cs">
+      <DependentUpon>GravatarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GridView.xaml.cs">
+      <DependentUpon>GridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GroupBoxView.xaml.cs">
+      <DependentUpon>GroupBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GrowlView.xaml.cs">
+      <DependentUpon>GrowlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HatchBrushGeneratorView.xaml.cs">
+      <DependentUpon>HatchBrushGeneratorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HoneycombPanelView.xaml.cs">
+      <DependentUpon>HoneycombPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImageBlockView.xaml.cs">
+      <DependentUpon>ImageBlockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImageBrowserView.xaml.cs">
+      <DependentUpon>ImageBrowserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImageView.xaml.cs">
+      <DependentUpon>ImageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LabelView.xaml.cs">
+      <DependentUpon>LabelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LazyLoadedView.xaml.cs">
+      <DependentUpon>LazyLoadedView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListBoxView.xaml.cs">
+      <DependentUpon>ListBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewView.xaml.cs">
+      <DependentUpon>ListViewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoadingView.xaml.cs">
+      <DependentUpon>LoadingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MagnifierView.xaml.cs">
+      <DependentUpon>MagnifierView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MediaPlayerView.xaml.cs">
+      <DependentUpon>MediaPlayerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NotificationView.xaml.cs">
+      <DependentUpon>NotificationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NotifyIconView.xaml.cs">
+      <DependentUpon>NotifyIconView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NumericUpDownView.xaml.cs">
+      <DependentUpon>NumericUpDownView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OutlineTextView.xaml.cs">
+      <DependentUpon>OutlineTextView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PackIconView.xaml.cs">
+      <DependentUpon>PackIconView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PaginationView.xaml.cs">
+      <DependentUpon>PaginationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PasswordBoxView.xaml.cs">
+      <DependentUpon>PasswordBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PieChartView.xaml.cs">
+      <DependentUpon>PieChartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PinBoxView.xaml.cs">
+      <DependentUpon>PinBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PoptipView.xaml.cs">
+      <DependentUpon>PoptipView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PracticalView.xaml.cs">
+      <DependentUpon>PracticalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PreviewSliderView.xaml.cs">
+      <DependentUpon>PreviewSliderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProgressBarView.xaml.cs">
+      <DependentUpon>ProgressBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProgressButtonView.xaml.cs">
+      <DependentUpon>ProgressButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PropertyGridView.xaml.cs">
+      <DependentUpon>PropertyGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RadioButtonView.xaml.cs">
+      <DependentUpon>RadioButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RangeSliderView.xaml.cs">
+      <DependentUpon>RangeSliderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RateView.xaml.cs">
+      <DependentUpon>RateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RelativePanelView.xaml.cs">
+      <DependentUpon>RelativePanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RepeatButtonView.xaml.cs">
+      <DependentUpon>RepeatButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Resources\LastNameUserControlEditor.xaml.cs">
+      <DependentUpon>LastNameUserControlEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Resources\WindowModelEditor.xaml.cs">
+      <DependentUpon>WindowModelEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RichTextBoxView.xaml.cs">
+      <DependentUpon>RichTextBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RunningBlockView.xaml.cs">
+      <DependentUpon>RunningBlockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScreenshotView.xaml.cs">
+      <DependentUpon>ScreenshotView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScrollViewerView.xaml.cs">
+      <DependentUpon>ScrollViewerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchBarView.xaml.cs">
+      <DependentUpon>SearchBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShieldView.xaml.cs">
+      <DependentUpon>ShieldView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SideMenuView.xaml.cs">
+      <DependentUpon>SideMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SliderView.xaml.cs">
+      <DependentUpon>SliderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SplitButtonView.xaml.cs">
+      <DependentUpon>SplitButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SpriteView.xaml.cs">
+      <DependentUpon>SpriteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StepBarView.xaml.cs">
+      <DependentUpon>StepBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SubViews\NavigationControlDemo.xaml.cs">
+      <DependentUpon>NavigationControlDemo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SubViews\SubNavigationControlDemo.xaml.cs">
+      <DependentUpon>SubNavigationControlDemo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SvgIconView.xaml.cs">
+      <DependentUpon>SvgIconView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SwitchPanelView.xaml.cs">
+      <DependentUpon>SwitchPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabControlView.xaml.cs">
+      <DependentUpon>TabControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TagView.xaml.cs">
+      <DependentUpon>TagView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TextBlockView.xaml.cs">
+      <DependentUpon>TextBlockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TextBoxView.xaml.cs">
+      <DependentUpon>TextBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TimeBarView.xaml.cs">
+      <DependentUpon>TimeBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TimePickerView.xaml.cs">
+      <DependentUpon>TimePickerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToggleButtonView.xaml.cs">
+      <DependentUpon>ToggleButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolBarView.xaml.cs">
+      <DependentUpon>ToolBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransferView.xaml.cs">
+      <DependentUpon>TransferView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransitioningContentControlView.xaml.cs">
+      <DependentUpon>TransitioningContentControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TreeViewView.xaml.cs">
+      <DependentUpon>TreeViewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UploadFileView.xaml.cs">
+      <DependentUpon>UploadFileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VerifyView.xaml.cs">
+      <DependentUpon>VerifyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WaterfallPanelView.xaml.cs">
+      <DependentUpon>WaterfallPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WebBrowserView.xaml.cs">
+      <DependentUpon>WebBrowserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WindowContainerView.xaml.cs">
+      <DependentUpon>WindowContainerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\BlurWindow.xaml.cs">
+      <DependentUpon>BlurWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\CommonWindow.xaml.cs">
+      <DependentUpon>CommonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\CustomNonClientAreaWindow.xaml.cs">
+      <DependentUpon>CustomNonClientAreaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\DialogDemoViewModel.cs" />
+    <Compile Include="Views\Windows\DialogDemoWindow.xaml.cs">
+      <DependentUpon>DialogDemoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\GlowWindow.xaml.cs">
+      <DependentUpon>GlowWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\GrowlDemoViewModel.cs" />
+    <Compile Include="Views\Windows\GrowlDemoWindow.xaml.cs">
+      <DependentUpon>GrowlDemoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\HandyWindow.xaml.cs">
+      <DependentUpon>HandyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\HandyWindowContent.xaml.cs">
+      <DependentUpon>HandyWindowContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\Main\ItemsDisplayViewModel.cs" />
+    <Compile Include="Views\Windows\HandyWindowViewModel.cs" />
+    <Compile Include="Views\Windows\Main\AppNotification.xaml.cs">
+      <DependentUpon>AppNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\Main\AppSprite.xaml.cs">
+      <DependentUpon>AppSprite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\Main\BlogsView.xaml.cs">
+      <DependentUpon>BlogsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\Main\ContributorsView.xaml.cs">
+      <DependentUpon>ContributorsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\Main\LeftMainContent.xaml.cs">
+      <DependentUpon>LeftMainContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\Main\MainContent.xaml.cs">
+      <DependentUpon>MainContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\Main\NoUserContent.xaml.cs">
+      <DependentUpon>NoUserContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\Main\ProjectsView.xaml.cs">
+      <DependentUpon>ProjectsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\Main\QQGroupView.xaml.cs">
+      <DependentUpon>QQGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\Main\UnderConstruction.xaml.cs">
+      <DependentUpon>UnderConstruction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\Main\WebsitesView.xaml.cs">
+      <DependentUpon>WebsitesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\NativeCommonWindow.xaml.cs">
+      <DependentUpon>NativeCommonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\NavigationWindow.xaml.cs">
+      <DependentUpon>NavigationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\NoNonClientAreaDragableWindow.xaml.cs">
+      <DependentUpon>NoNonClientAreaDragableWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\Main\NoUserViewModel.cs" />
+    <Compile Include="Views\NativeWindowView.xaml.cs">
+      <DependentUpon>NativeWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WizardView.xaml.cs">
+      <DependentUpon>WizardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ZoomboxView.xaml.cs">
+      <DependentUpon>ZoomboxView.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <Resource Include="Views\Resources\SampleText.rtf" />
+    <Resource Include="DemoInfo.json" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Resources\DemoStyleResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Dock\AnimationPathViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\CalculatorViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\BadgeViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\BusyIndicatorViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ButtonGroupViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\CalendarWithClockViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\CalendarViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\CardViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ChatBubbleViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\CheckBoxViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ChildWindowViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\CirclePanelViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ClockViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ColorPickerViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ComboBoxViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\CompareSliderViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ControlNavigationViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\CoverFlowViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\CoverViewViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\DatePickerViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\DateTimePickerViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\DemoBuildCodeViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\DividerViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\DrawerViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\DropDownViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\EffectsViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ExpanderViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\FIconViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\FlipClockViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\FloatingBlockViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\FlowchartViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\FlowDocumentViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\FontAwesomeViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\FrameViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\GeometryAnimationViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\GifImageViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\GotoTopViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\GravatarViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\GridViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\GroupBoxViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\GrowlViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\HatchBrushGeneratorViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\HoneycombPanelViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ImageBlockViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ImageBrowserViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ImageViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\LabelViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\LazyLoadedViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ListBoxViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ListViewViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\LoadingViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\MagnifierViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\MediaPlayerViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\MenuViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\NotificationViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\NotifyIconViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\NumericUpDownViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\OutlineTextViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\PasswordBoxViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\PieChartViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\PinBoxViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\PoptipViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\PreviewSliderViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ProgressBarViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ProgressButtonViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\PropertyGridViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\RadioButtonViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\RangeSliderViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\RateViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\RelativePanelViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\RepeatButtonViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\RichTextBoxViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\RunningBlockViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ScreenshotViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ScrollViewerViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\SearchBarViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ShieldViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\SideMenuViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\SplitButtonViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\SpriteViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\StepBarViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\SvgIconViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\SwitchPanelViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\TabControlViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\TagViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\TimeBarViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\TimePickerViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ToggleButtonViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ToolBarViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\TextBlockViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\SliderViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\BorderViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\BrushViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\EditorViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\DataGridViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\PaginationViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\TransferViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\TransitioningContentControlViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\TreeViewViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\TextBoxViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\CarouselViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ColorZonesViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\DialogViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ButtonViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\PackIconViewResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Dock\UploadFileViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\VerifyViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\WaterfallPanelViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\NativeWindowViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\WebBrowserViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\WindowContainerViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\ZoomboxViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dock\WizardViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\XamlDisplayResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AnimationPathView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BadgeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Basic\ChatBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BorderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BrushView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BusyIndicatorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ButtonGroupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CalculatorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CalendarWithClockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CalendarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CardView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ChatBubbleView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CheckBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ChildWindowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CirclePanelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ClockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ColorPickerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ComboBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CompareSliderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ControlNavigationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CoverFlowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CoverViewView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DatePickerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DateTimePickerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DemoBuildCodeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ButtonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CarouselView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ColorZonesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Basic\Avatar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Demos\DialogTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Demos\DynamicFlyout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Demos\InteractiveDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Demos\TextDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Demos\TextDialogWithTimer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Demos\WindowTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DividerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DrawerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DropDownView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EffectsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ExpanderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FIconView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FlipClockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FloatingBlockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FlowchartView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FlowDocumentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FontAwesomeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FrameView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GeometryAnimationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GifImageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GotoTopView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GravatarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GroupBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GrowlView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\HatchBrushGeneratorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\HoneycombPanelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ImageBlockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ImageBrowserView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ImageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LabelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LazyLoadedView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ListBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ListViewView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LoadingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MagnifierView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MediaPlayerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NotificationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NotifyIconView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NumericUpDownView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OutlineTextView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PackIconView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PaginationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PasswordBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PieChartView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PinBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PoptipView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PracticalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PreviewSliderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProgressBarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProgressButtonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PropertyGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RadioButtonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RangeSliderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RateView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RelativePanelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RepeatButtonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Resources\FancyStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Resources\LastNameUserControlEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Resources\WindowModelEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RichTextBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RunningBlockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ScreenshotView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ScrollViewerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SearchBarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ShieldView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SideMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SliderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SplitButtonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SpriteView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StepBarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SubViews\NavigationControlDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SubViews\SubNavigationControlDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SvgIconView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SwitchPanelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TabControlView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TagView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TextBlockView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TextBoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TimeBarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TimePickerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ToggleButtonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ToolBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TransferView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TransitioningContentControlView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TreeViewView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UploadFileView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\VerifyView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WaterfallPanelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WebBrowserView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WindowContainerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\AboutWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\BlurWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\CommonWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\CustomNonClientAreaWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\DialogDemoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Windows\GlowWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\GrowlDemoWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\HandyWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\HandyWindowContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\Main\AppNotification.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\Main\AppSprite.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\Main\BlogsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\Main\ContributorsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\Main\LeftMainContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\Main\MainContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\Main\NoUserContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\Main\ProjectsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\Main\QQGroupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\Main\UnderConstruction.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\Main\WebsitesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\NativeCommonWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\NavigationWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\NoNonClientAreaDragableWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NativeWindowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WizardView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ZoomboxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Album\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Album\10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Album\2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Album\3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Album\4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Album\5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Album\6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Album\7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Album\8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Album\9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Avatar\avatar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Avatar\avatar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Avatar\avatar3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Avatar\avatar4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Avatar\avatar5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Avatar\avatar6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\b1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\b2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\car_chase.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Chat\chat_back1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Chat\chat_back2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\cloud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Cover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Dance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\DevOps\DevOps-Boards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\DevOps\DevOps-Overview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\DevOps\DevOps-Pipelines.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\DevOps\DevOps-Repos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\DevOps\DevOps-TestPlans.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Flag\cn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Flag\en.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Flag\fa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Flag\fr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\icon-white.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Animation_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\BorderElement_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\brackets_Square_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Brush_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Bubble_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ButtonClick_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ButtonGroup_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Calendar_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Carousel_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\CheckBox_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ColorPalette_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ColorWheel_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ComboBox_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ContextMenu_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\DataGenerator_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\DataGrid_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\DatePicker_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\DetailDataView_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Dialog_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\DotLarge_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\DottedSplitter_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Dynamic_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Effects_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Ellipsis_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Expander_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\FlipVertical_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Flow_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\frame_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\GoToTop_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\GridPane_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\GroupBox_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\HandyControl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\HoverMenu_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ImageBrowser_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ImageStack_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Label_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\LinearCarousel_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ListBox_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ListView_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Loading_Blue_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\MainMenuControl_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Message_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\NotificationHub_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\NumericListBox_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\OutlinedRectangleTool_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Paginator_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Panel_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\PasswordBox_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Path_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\PolygonHexagon_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\PopupCursor_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Procedure_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ProgressBar_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ProgressButton_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\RadioButton_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\RepeatButton_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\RichTextBox_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ScrollBox_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Search_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Shield_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Slider_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\SortAscending_grey_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\SplitButton_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\SplitterControl_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\TabPage_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Tag_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\TextBlock_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\TextBox_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\thumbs_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Time_color_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Timeline_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\TimePicker_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Toggle_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\ToolBar_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\Transfer_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\TransformRelative_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\TransitioningContentControl_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\TreeView_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\User_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\View_Portrait_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\VSO_Card_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\WindowScreenshot_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\WindowsForm_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\LeftMainContent\WPFFlowDocument_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\QQ\1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\QQ\10.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\QQ\2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\QQ\3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\QQ\4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\QQ\5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\QQ\6.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\QQ\7.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\QQ\8.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\QQ\9.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\qq_group_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\qq_group_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\under_construction.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Resources\xceed_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Resources\PencilTool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Resources\Default.jpg" />
+    <Resource Include="Views\Resources\ZoomboxProperties.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Resources\woman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\OpenSourceImages\CustomProperty.xaml.txt" />
+    <Resource Include="Views\OpenSourceImages\DefinitionKey.cs.txt" />
+    <Resource Include="Views\OpenSourceImages\DefinitionKey.xaml.txt" />
+    <Resource Include="Views\OpenSourceImages\EditorDefinitions.xaml.txt" />
+    <Resource Include="Views\OpenSourceImages\ExpandingNonPrimitives.png" />
+    <Resource Include="Views\OpenSourceImages\Localization.png" />
+    <Resource Include="Views\OpenSourceImages\MultiSelectedObjects.png" />
+    <Resource Include="Views\OpenSourceImages\Properties.cs.txt" />
+    <Resource Include="Views\OpenSourceImages\Properties.xaml.txt" />
+    <Resource Include="Views\OpenSourceImages\PropertiesSource.cs.txt" />
+    <Resource Include="Views\OpenSourceImages\PropertiesSource.xaml.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Resources\CdBurning32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BuildCodeTemplate\demo_resource.txt" />
+    <Resource Include="BuildCodeTemplate\demo_view.txt" />
+    <Resource Include="BuildCodeTemplate\demo_viewcs.txt" />
+    <Resource Include="BuildCodeTemplate\demo_viewmodel.txt" />
+    <Content Include="Resources\Media\intro.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Prism8\Prism.Core\Prism.Core.csproj">
+      <Project>{04cf1e4a-f0c2-4190-add9-14e661a196f4}</Project>
+      <Name>Prism.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prism8\Wpf\Prism.Unity.Wpf\Prism.Unity.Wpf.csproj">
+      <Project>{3f90544d-b6de-41c9-9059-104222a7db55}</Project>
+      <Name>Prism.Unity.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prism8\Wpf\Prism.Wpf\Prism.Wpf.csproj">
+      <Project>{1a1061f3-0c2d-4506-ae41-d0ca0cc7276d}</Project>
+      <Name>Prism.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj">
+      <Project>{52A5187E-1697-4972-BBBB-6298D71E0B09}</Project>
+      <Name>Dataforge.PrismAvalonExtensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets" Condition="Exists('..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets'))" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties demoinfo_1json__JsonSchema="http://json.schemastore.org/netlify.json" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

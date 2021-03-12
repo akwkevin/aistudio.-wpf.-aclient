@@ -1,0 +1,374 @@
+﻿<UserControl x:Class="MetroDemo.ExampleViews.TabControlExamples"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:exampleViews="clr-namespace:MetroDemo.ExampleViews"
+             xmlns:local="clr-namespace:MetroDemo"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DataContext="{d:DesignInstance local:MainWindowViewModel}"
+             d:DesignHeight="600"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="TabStripPlacementEnumValues"
+                            MethodName="GetValues"
+                            ObjectType="{x:Type Dock}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Dock" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="UnderlinedEnumValues"
+                            MethodName="GetValues"
+                            ObjectType="{x:Type mah:UnderlinedType}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="mah:UnderlinedType" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="UnderlinePlacementEnumValues"
+                            MethodName="GetDockValues"
+                            ObjectType="{x:Type exampleViews:DockHelper}" />
+
+        <ControlTemplate x:Key="TabControlConfigDataTemplate">
+            <Grid d:DataContext="{d:DesignInstance TabControl}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5 5"
+                               VerticalAlignment="Center"
+                               Text="Underlined type" />
+                    <ComboBox x:Name="UnderlinedComboBox"
+                              Width="100"
+                              Margin="5 5"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              ItemsSource="{Binding Source={StaticResource UnderlinedEnumValues}}"
+                              SelectedItem="{Binding Path=(mah:TabControlHelper.Underlined), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Margin="5 5"
+                               VerticalAlignment="Center"
+                               Text="TabStripPlacement" />
+                    <ComboBox x:Name="TabStripPlacementComboBox"
+                              Width="100"
+                              Margin="5 5"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              ItemsSource="{Binding Source={StaticResource TabStripPlacementEnumValues}}"
+                              SelectedItem="{Binding Path=TabStripPlacement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Margin="5 5"
+                               VerticalAlignment="Center"
+                               Text="UnderlinePlacement" />
+                    <ComboBox x:Name="UnderlinePlacementComboBox"
+                              Width="100"
+                              Margin="5 5"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              ItemsSource="{Binding Source={StaticResource UnderlinePlacementEnumValues}}"
+                              SelectedItem="{Binding Path=(mah:TabControlHelper.UnderlinePlacement), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="MetroTabControlConfigDataTemplate">
+            <Grid d:DataContext="{d:DesignInstance mah:MetroTabControl}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5 5"
+                               VerticalAlignment="Center"
+                               Text="Keep VisualTree in memory" />
+                    <CheckBox x:Name="KeepVisualTreeInMemoryCheckBox"
+                              Margin="5 5"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding Path=KeepVisualTreeInMemoryWhenChangingTabs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Margin="5 5"
+                               VerticalAlignment="Center"
+                               Text="Underlined type" />
+                    <ComboBox x:Name="UnderlinedComboBox"
+                              Width="100"
+                              Margin="5 5"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              ItemsSource="{Binding Source={StaticResource UnderlinedEnumValues}}"
+                              SelectedItem="{Binding Path=(mah:TabControlHelper.Underlined), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Margin="5 5"
+                               VerticalAlignment="Center"
+                               Text="TabStripPlacement" />
+                    <ComboBox x:Name="TabStripPlacementComboBox"
+                              Width="100"
+                              Margin="5 5"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              ItemsSource="{Binding Source={StaticResource TabStripPlacementEnumValues}}"
+                              SelectedItem="{Binding Path=TabStripPlacement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Margin="5 5"
+                               VerticalAlignment="Center"
+                               Text="UnderlinePlacement" />
+                    <ComboBox x:Name="UnderlinePlacementComboBox"
+                              Width="100"
+                              Margin="5 5"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              ItemsSource="{Binding Source={StaticResource UnderlinePlacementEnumValues}}"
+                              SelectedItem="{Binding Path=(mah:TabControlHelper.UnderlinePlacement), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Resources>
+
+    <StackPanel Margin="5 10 5 0">
+        <Expander Margin="0"
+                  Header="_Default TabControl"
+                  IsExpanded="True">
+            <StackPanel Margin="15 5 15 5">
+                <Label Content="Default TabControl" Style="{DynamicResource DescriptionHeaderStyle}" />
+                <ContentControl DataContext="{Binding ElementName=DefaultTabControl}" Template="{StaticResource TabControlConfigDataTemplate}" />
+                <TabControl x:Name="DefaultTabControl"
+                            Height="200"
+                            mah:HeaderedControlHelper.HeaderFontFamily="Segoe Script"
+                            mah:HeaderedControlHelper.HeaderFontSize="18">
+                    <TabItem Header="Item _1">
+                        <TextBlock FontSize="30" Text="Content" />
+                    </TabItem>
+                    <TabItem Header="Item _2">
+                        <TextBlock FontSize="30" Text="More content" />
+                    </TabItem>
+                    <TabItem Header="Item _3">
+                        <TextBlock FontSize="30" Text="More more content" />
+                    </TabItem>
+                    <TabItem Header="Item _4">
+                        <TextBlock FontSize="30" Text="So much content!" />
+                    </TabItem>
+                    <TabItem Header="Item _5">
+                        <TextBlock FontSize="30" Text="Content!" />
+                    </TabItem>
+                    <TabItem Header="Item _6">
+                        <TextBlock FontSize="30" Text="This is not content (it is)" />
+                    </TabItem>
+                </TabControl>
+
+                <Label Margin="0 5 0 0"
+                       Content="Default TabControl with MahApps.Styles.TabControl.Animated"
+                       Style="{DynamicResource DescriptionHeaderStyle}" />
+                <ContentControl DataContext="{Binding ElementName=AnimatedTabControl}" Template="{StaticResource TabControlConfigDataTemplate}" />
+                <Grid>
+                    <TabControl x:Name="AnimatedTabControl"
+                                Height="150"
+                                Style="{DynamicResource MahApps.Styles.TabControl.Animated}">
+                        <TabItem Header="this tabcontrol">
+                            <TextBlock FontSize="30" Text="Cool transition" />
+                        </TabItem>
+                        <mah:MetroTabItem Header="animates its content">
+                            <TextBlock FontSize="30" Text="More cool transition" />
+                        </mah:MetroTabItem>
+                        <mah:MetroTabItem Header="with a transition">
+                            <TextBlock FontSize="30" Text="Animate everything!" />
+                        </mah:MetroTabItem>
+                    </TabControl>
+                </Grid>
+
+                <Label Margin="0 5 0 0"
+                       Content="Default TabControl with MahApps.Styles.TabControl.AnimatedSingleRow"
+                       Style="{DynamicResource DescriptionHeaderStyle}" />
+                <ContentControl DataContext="{Binding ElementName=AnimatedSingleRowTabControl}" Template="{StaticResource TabControlConfigDataTemplate}" />
+                <Grid>
+                    <TabControl x:Name="AnimatedSingleRowTabControl"
+                                Height="150"
+                                Style="{DynamicResource MahApps.Styles.TabControl.AnimatedSingleRow}">
+                        <TabItem Header="these tabs">
+                            <TextBlock FontSize="30" Text="first content" />
+                        </TabItem>
+                        <mah:MetroTabItem Header="appear only on a single line">
+                            <TextBlock FontSize="30" Text="second one" />
+                        </mah:MetroTabItem>
+                        <mah:MetroTabItem Header="if they are overflowing">
+                            <TextBlock FontSize="30" Text="3" />
+                        </mah:MetroTabItem>
+                        <TabItem Header="instead of wrapping them">
+                            <TextBlock FontSize="30" Text="last of them" />
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+
+            </StackPanel>
+        </Expander>
+
+        <Expander Margin="0 10 0 0"
+                  Header="_Generic theme TabControls"
+                  IsExpanded="True">
+            <StackPanel Margin="15 5 15 5">
+                <Label Content="MetroAnimatedTabControl" Style="{DynamicResource DescriptionHeaderStyle}" />
+                <ContentControl DataContext="{Binding ElementName=MetroAnimatedTabControl}" Template="{StaticResource TabControlConfigDataTemplate}" />
+                <mah:MetroAnimatedTabControl x:Name="MetroAnimatedTabControl" Height="150">
+                    <TabItem Header="this tabcontrol">
+                        <TextBlock FontSize="30" Text="Cool transition" />
+                    </TabItem>
+                    <mah:MetroTabItem Header="animates its content">
+                        <TextBlock FontSize="30" Text="More cool transition" />
+                    </mah:MetroTabItem>
+                    <mah:MetroTabItem Header="with a transition">
+                        <TextBlock FontSize="30" Text="Animate everything!" />
+                    </mah:MetroTabItem>
+                </mah:MetroAnimatedTabControl>
+
+                <Label Margin="0 5 0 0"
+                       Content="MetroAnimatedSingleRowTabControl"
+                       Style="{DynamicResource DescriptionHeaderStyle}" />
+                <ContentControl DataContext="{Binding ElementName=MetroAnimatedSingleRowTabControl}" Template="{StaticResource TabControlConfigDataTemplate}" />
+                <mah:MetroAnimatedSingleRowTabControl x:Name="MetroAnimatedSingleRowTabControl" Height="150">
+                    <TabItem Header="these tabs">
+                        <TextBlock FontSize="30" Text="first content" />
+                    </TabItem>
+                    <mah:MetroTabItem Header="appear only on a single line">
+                        <TextBlock FontSize="30" Text="second one" />
+                    </mah:MetroTabItem>
+                    <mah:MetroTabItem Header="if they are overflowing">
+                        <TextBlock FontSize="30" Text="3" />
+                    </mah:MetroTabItem>
+                    <TabItem Header="instead of wrapping them">
+                        <TextBlock FontSize="30" Text="last of them" />
+                    </TabItem>
+                </mah:MetroAnimatedSingleRowTabControl>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <mah:MetroAnimatedSingleRowTabControl Height="100" TabStripPlacement="Left">
+                        <TabControl.Resources>
+                            <Style BasedOn="{StaticResource {x:Type TabItem}}" TargetType="{x:Type TabItem}">
+                                <Setter Property="HeaderTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <ContentPresenter Content="{TemplateBinding Content}">
+                                                <ContentPresenter.LayoutTransform>
+                                                    <RotateTransform Angle="270" />
+                                                </ContentPresenter.LayoutTransform>
+                                            </ContentPresenter>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TabControl.Resources>
+                        <TabItem Header="Test1">
+                            <TextBlock FontSize="12" Text="TabStripPlacement Left Test 1" />
+                        </TabItem>
+                        <TabItem Header="Test2">
+                            <TextBlock FontSize="12" Text="TabStripPlacement Left Test 2" />
+                        </TabItem>
+                        <TabItem Header="Test3">
+                            <TextBlock FontSize="12" Text="TabStripPlacement Left Test 3" />
+                        </TabItem>
+                    </mah:MetroAnimatedSingleRowTabControl>
+                    <mah:MetroAnimatedSingleRowTabControl Grid.Column="1"
+                                                          Height="100"
+                                                          TabStripPlacement="Right">
+                        <TabControl.Resources>
+                            <Style BasedOn="{StaticResource {x:Type TabItem}}" TargetType="{x:Type TabItem}">
+                                <Setter Property="HeaderTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <ContentPresenter Content="{TemplateBinding Content}">
+                                                <ContentPresenter.LayoutTransform>
+                                                    <RotateTransform Angle="90" />
+                                                </ContentPresenter.LayoutTransform>
+                                            </ContentPresenter>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TabControl.Resources>
+                        <TabItem Header="Test1">
+                            <TextBlock FontSize="12" Text="TabStripPlacement Right Test 1" />
+                        </TabItem>
+                        <TabItem Header="Test2">
+                            <TextBlock FontSize="12" Text="TabStripPlacement Right Test 2" />
+                        </TabItem>
+                        <TabItem Header="Test3">
+                            <TextBlock FontSize="12" Text="TabStripPlacement Right Test 3" />
+                        </TabItem>
+                    </mah:MetroAnimatedSingleRowTabControl>
+                </Grid>
+
+                <Label Margin="0 5 0 0"
+                       Content="MetroTabControl w/ Closable Items"
+                       Style="{DynamicResource DescriptionHeaderStyle}" />
+                <ContentControl DataContext="{Binding ElementName=MetroTabControlClosable}" Template="{StaticResource MetroTabControlConfigDataTemplate}" />
+                <mah:MetroTabControl x:Name="MetroTabControlClosable" TabItemClosingEvent="MetroTabControl_TabItemClosingEvent">
+                    <mah:MetroTabItem mah:HeaderedControlHelper.HeaderFontSize="20"
+                                      CloseButtonEnabled="True"
+                                      CloseTabCommand="{Binding SingleCloseTabCommand}"
+                                      CloseTabCommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Header}"
+                                      Header="headers">
+                        <TextBlock FontSize="30" Text="you can bind to a command" />
+                    </mah:MetroTabItem>
+                    <mah:MetroTabItem mah:HeaderedControlHelper.HeaderFontSize="22"
+                                      CloseButtonEnabled="True"
+                                      CloseTabCommand="{Binding NeverCloseTabCommand}"
+                                      CloseTabCommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Header}"
+                                      Header="can">
+                        <TextBlock FontSize="30" Text="and ensure the command never closes" />
+                    </mah:MetroTabItem>
+                    <mah:MetroTabItem mah:HeaderedControlHelper.HeaderFontSize="24"
+                                      CloseButtonEnabled="True"
+                                      Header="have">
+                        <TextBlock FontSize="30" Text="More more content" />
+                    </mah:MetroTabItem>
+                    <mah:MetroTabItem mah:HeaderedControlHelper.HeaderFontSize="26"
+                                      CloseButtonEnabled="True"
+                                      Header="different">
+                        <TextBlock FontSize="30" Text="So much content!" />
+                    </mah:MetroTabItem>
+                    <mah:MetroTabItem mah:HeaderedControlHelper.HeaderFontSize="28"
+                                      CloseButtonEnabled="True"
+                                      Header="font">
+                        <TextBlock FontSize="30" Text="Content!" />
+                    </mah:MetroTabItem>
+                    <mah:MetroTabItem mah:HeaderedControlHelper.HeaderFontSize="30"
+                                      CloseButtonEnabled="True"
+                                      Header="sizes">
+                        <TextBlock FontSize="30" Text="This is not content (it is). This one won't close." />
+                    </mah:MetroTabItem>
+                    <mah:MetroTabItem mah:HeaderedControlHelper.HeaderFontSize="36"
+                                      CloseButtonEnabled="True"
+                                      Header="close button">
+                        <TextBlock FontSize="24" Text="The size of close button will be changed proportionately considering its header size." />
+                    </mah:MetroTabItem>
+                </mah:MetroTabControl>
+
+                <Label Margin="0 5 0 0"
+                       Content="MetroTabControl style"
+                       Style="{DynamicResource DescriptionHeaderStyle}" />
+                <ContentControl DataContext="{Binding ElementName=MetroTabControl}" Template="{StaticResource MetroTabControlConfigDataTemplate}" />
+                <mah:MetroTabControl x:Name="MetroTabControl"
+                                     Height="200"
+                                     KeepVisualTreeInMemoryWhenChangingTabs="True">
+                    <mah:MetroTabItem mah:HeaderedControlHelper.HeaderFontSize="18" Header="item _1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="30" Text="Load-Count: " />
+                            <TextBlock FontSize="30"
+                                       Loaded="TextBlock_OnLoaded"
+                                       Text="0" />
+                        </StackPanel>
+                    </mah:MetroTabItem>
+                    <mah:MetroTabItem mah:HeaderedControlHelper.HeaderFontSize="18" Header="item _2 more">
+                        <TextBlock FontSize="30" Text="More content" />
+                    </mah:MetroTabItem>
+                    <mah:MetroTabItem mah:HeaderedControlHelper.HeaderFontSize="18" Header="item _3 header here">
+                        <TextBlock FontSize="30" Text="More more content" />
+                    </mah:MetroTabItem>
+                    <mah:MetroTabItem mah:HeaderedControlHelper.HeaderFontSize="18" Header="item _4 ">
+                        <TextBlock FontSize="30" Text="So much content!" />
+                    </mah:MetroTabItem>
+                    <mah:MetroTabItem mah:HeaderedControlHelper.HeaderFontSize="18"
+                                      CloseButtonEnabled="True"
+                                      Header="item _5">
+                        <TextBlock FontSize="30" Text="Content!" />
+                    </mah:MetroTabItem>
+                    <mah:MetroTabItem mah:HeaderedControlHelper.HeaderFontSize="18" Header="item _6">
+                        <TextBlock FontSize="30" Text="This is not content (it is)" />
+                    </mah:MetroTabItem>
+                </mah:MetroTabControl>
+            </StackPanel>
+
+        </Expander>
+    </StackPanel>
+
+</UserControl>

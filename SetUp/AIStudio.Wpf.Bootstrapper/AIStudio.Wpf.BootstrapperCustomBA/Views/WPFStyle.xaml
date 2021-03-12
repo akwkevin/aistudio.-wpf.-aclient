@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Converters -->
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+    <Style TargetType="Window">
+        <Setter Property="FontFamily" Value="Segoe UI" />
+       
+    </Style>
+    <!--定义按钮样式·通用按钮-->
+    <Style TargetType="Button" x:Key="BuleBt">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Foreground" Value="#FFFFFF" />
+        <Setter Property="Background" Value="#0ABEFA" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FlowDirection" Value="LeftToRight" />
+        <Setter Property="BorderThickness" Value="0" />
+        <!--修改模板属性-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <!--控件模板-->
+                <ControlTemplate TargetType="Button"  >
+                    <!--背景色-->
+                    <Border x:Name="back" Opacity="0.8" CornerRadius="3" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border x:Name="fore" BorderThickness="0">
+                            <!--按钮内容-->
+                            <ContentPresenter x:Name="content" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{TemplateBinding Content}">
+                                <ContentPresenter.BitmapEffect>
+                                    <DropShadowBitmapEffect Color="#000" Direction="-90" ShadowDepth="1" Softness="0.1" Opacity="0.3" />
+                                </ContentPresenter.BitmapEffect>
+                            </ContentPresenter>
+                        </Border>
+                    </Border>
+                    <!--触发器-->
+                    <ControlTemplate.Triggers>
+                        <!--鼠标移入移出-->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard HandoffBehavior="Compose">
+                                    <Storyboard>
+                                        <DoubleAnimation To="1" Duration="0:0:0.1" Storyboard.TargetName="back" Storyboard.TargetProperty="Opacity" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard HandoffBehavior="SnapshotAndReplace">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.1" Storyboard.TargetName="back" Storyboard.TargetProperty="Opacity" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <!--按钮按下弹起-->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation To="0.6" Duration="0:0:0.3" Storyboard.TargetName="back" Storyboard.TargetProperty="Opacity" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.3" Storyboard.TargetName="back" Storyboard.TargetProperty="Opacity" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <!--按钮失效-->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation To="1" Duration="0:0:0.2" Storyboard.TargetName="back" Storyboard.TargetProperty="Opacity" />
+                                        <DoubleAnimation To="1" Duration="0:0:0.1" Storyboard.TargetName="content" Storyboard.TargetProperty="(ContentPresenter.BitmapEffect).(DropShadowBitmapEffect.Opacity)" />
+                                        <DoubleAnimation To="-135" Duration="0:0:0.1" Storyboard.TargetName="content" Storyboard.TargetProperty="(ContentPresenter.BitmapEffect).(DropShadowBitmapEffect.Direction)" />
+                                        <ColorAnimation To="#FFF" Duration="0:0:0.3" Storyboard.TargetName="content" Storyboard.TargetProperty="(ContentPresenter.BitmapEffect).(DropShadowBitmapEffect.Color)" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.2" Storyboard.TargetName="back" Storyboard.TargetProperty="Opacity" />
+                                        <DoubleAnimation Duration="0:0:0.1" Storyboard.TargetName="content" Storyboard.TargetProperty="(ContentPresenter.BitmapEffect).(DropShadowBitmapEffect.Opacity)" />
+                                        <DoubleAnimation Duration="0:0:0.1" Storyboard.TargetName="content" Storyboard.TargetProperty="(ContentPresenter.BitmapEffect).(DropShadowBitmapEffect.Direction)" />
+                                        <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="content" Storyboard.TargetProperty="(ContentPresenter.BitmapEffect).(DropShadowBitmapEffect.Color)" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style  TargetType ="Hyperlink" >
+        <Setter  Property ="Foreground"  Value ="#209AC2" />
+        <!-- 清除文字修饰(去掉下划线) -->
+        <Setter  Property ="TextBlock.TextDecorations"  Value ="{x:Null}" />
+        <Style.Triggers >
+            <Trigger  Property ="IsMouseOver"  Value ="True" >
+                <Setter  Property ="Foreground"  Value ="#F27D00"   />
+                <!-- 在鼠标悬停时显示下划线 -->
+                <Setter  Property ="TextBlock.TextDecorations" >
+                    <Setter.Value >
+                        <TextDecorationCollection >
+                            <TextDecoration  Location ="Underline" />
+                        </TextDecorationCollection >
+                    </Setter.Value >
+                </Setter >
+            </Trigger >
+        </Style.Triggers >
+    </Style >
+
+    <Style TargetType="Button" x:Key="ControlBt">
+        <Setter Property="Width" Value="20"></Setter>
+        <Setter Property="Height" Value="20"></Setter>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="#333"/>
+        <Setter Property="Cursor" Value="Hand" />
+
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{x:Null}"></Setter>
+        <Setter Property="BorderBrush" Value="{x:Null}"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <!--修改模板属性-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <!--控件模板-->
+                <ControlTemplate TargetType="Button"  >
+                    <!--背景色-->
+                    <Border x:Name="back" Opacity="0.8" CornerRadius="3" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border x:Name="fore" BorderThickness="0">
+                            <!--按钮内容-->
+                            <ContentPresenter x:Name="content" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{TemplateBinding Content}">
+                                <ContentPresenter.BitmapEffect>
+                                    <DropShadowBitmapEffect Color="#000" Direction="-90" ShadowDepth="1" Softness="0.1" Opacity="0.3" />
+                                </ContentPresenter.BitmapEffect>
+                            </ContentPresenter>
+                        </Border>
+                    </Border>
+                    <!--触发器-->
+                    <ControlTemplate.Triggers>
+                        <!--鼠标移入移出-->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard HandoffBehavior="Compose">
+                                    <Storyboard>
+                                        <DoubleAnimation To="1" Duration="0:0:0.1" Storyboard.TargetName="back" Storyboard.TargetProperty="Opacity" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard HandoffBehavior="SnapshotAndReplace">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.1" Storyboard.TargetName="back" Storyboard.TargetProperty="Opacity" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <!--按钮按下弹起-->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation To="0.6" Duration="0:0:0.3" Storyboard.TargetName="back" Storyboard.TargetProperty="Opacity" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.3" Storyboard.TargetName="back" Storyboard.TargetProperty="Opacity" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <!--按钮失效-->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation To="1" Duration="0:0:0.2" Storyboard.TargetName="back" Storyboard.TargetProperty="Opacity" />
+                                        <DoubleAnimation To="1" Duration="0:0:0.1" Storyboard.TargetName="content" Storyboard.TargetProperty="(ContentPresenter.BitmapEffect).(DropShadowBitmapEffect.Opacity)" />
+                                        <DoubleAnimation To="-135" Duration="0:0:0.1" Storyboard.TargetName="content" Storyboard.TargetProperty="(ContentPresenter.BitmapEffect).(DropShadowBitmapEffect.Direction)" />
+                                        <ColorAnimation To="#FFF" Duration="0:0:0.3" Storyboard.TargetName="content" Storyboard.TargetProperty="(ContentPresenter.BitmapEffect).(DropShadowBitmapEffect.Color)" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.2" Storyboard.TargetName="back" Storyboard.TargetProperty="Opacity" />
+                                        <DoubleAnimation Duration="0:0:0.1" Storyboard.TargetName="content" Storyboard.TargetProperty="(ContentPresenter.BitmapEffect).(DropShadowBitmapEffect.Opacity)" />
+                                        <DoubleAnimation Duration="0:0:0.1" Storyboard.TargetName="content" Storyboard.TargetProperty="(ContentPresenter.BitmapEffect).(DropShadowBitmapEffect.Direction)" />
+                                        <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="content" Storyboard.TargetProperty="(ContentPresenter.BitmapEffect).(DropShadowBitmapEffect.Color)" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="Grid" x:Key="ToolGrid">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Height" Value="30" ></Setter>
+        <Setter Property="Margin" Value="0" ></Setter>
+    </Style>
+
+    <ControlTemplate x:Key="ProgressBarTemplateKey" TargetType="{x:Type ProgressBar}">
+        <Grid Name="TemplateRoot" SnapsToDevicePixels="true">
+            <Rectangle Fill="{TemplateBinding Background}" />
+            <Rectangle Name="PART_Track" />
+            <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
+                <Grid Name="Foreground">
+                    <Rectangle x:Name="Indicator" Fill="{TemplateBinding Foreground}"/>
+                </Grid>
+            </Decorator>
+        </Grid>
+    </ControlTemplate>
+
+
+    <Style TargetType="ProgressBar">
+        <Setter Property="Background" Value="Gainsboro" >
+          
+        </Setter>
+        <Setter Property="Foreground" Value="#0ABEFA" />
+            <Setter Property="Template" Value="{StaticResource ProgressBarTemplateKey}"/>
+    </Style>
+    
+    
+    <Style TargetType="StackPanel" x:Key="InstallGrid">
+        <Setter Property="Background" Value="AliceBlue" />
+        <Setter Property="Margin" Value="0 0 0 10" ></Setter>
+    </Style>
+    <Style TargetType="Grid" x:Key="DirGrid">
+        <Setter Property="Background" Value="White" />
+    </Style>
+    <!-- Brushes -->
+    <LinearGradientBrush x:Key="BackgroundBrush" EndPoint="1.015,0.735" StartPoint="0.098,0.223">
+        <GradientStop Color="#88000000" Offset="0"/>
+        <GradientStop Color="#88452E2E" Offset="0.108"/>
+        <GradientStop Color="#88000000" Offset="0.228"/>
+        <GradientStop Color="#886A3C3C" Offset="0.414"/>
+        <GradientStop Color="#88000000" Offset="0.586"/>
+        <GradientStop Color="#885E4242" Offset="0.737"/>
+        <GradientStop Color="#88000000" Offset="0.948"/>
+    </LinearGradientBrush>
+
+    
+    <Style x:Key="FocusStyle">  
+    <Setter Property="Control.Template">  
+        <Setter.Value>  
+            <ControlTemplate>  
+                <Rectangle Stroke="Red" StrokeThickness="1"/>  
+            </ControlTemplate>  
+        </Setter.Value>  
+    </Setter>  
+</Style>  
+    <Style TargetType="{x:Type CheckBox}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusStyle}"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Foreground" Value="#333"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <BulletDecorator FlowDirection="LeftToRight" VerticalAlignment="Center">
+                        <BulletDecorator.Bullet>
+                            <Border x:Name="bd"  
+                                BorderThickness="1"  
+                                BorderBrush="Gray"  
+                                MinHeight="15"  
+                                MinWidth="15"  
+                                VerticalAlignment="Center">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0"  
+                                                     EndPoint="1,1">
+                                        <GradientStop Color="LightGray" Offset="0.2"/>
+                                        <GradientStop Color="White" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Path x:Name="cp" Width="12" Height="12"  
+                                  Stroke="DarkGreen"  
+                                  StrokeThickness="2"/>
+                            </Border>
+                        </BulletDecorator.Bullet>
+                        <ContentPresenter Margin="2,0"/>
+                    </BulletDecorator>
+                    <!-- 
+                    控件触发器 
+                -->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <!-- 画上一个勾 -->
+                            <Setter TargetName="cp" Property="Data"  
+                                Value="M 0,6 L 6,12 12,0"/>
+                            <Setter Property="Foreground" Value="#333"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bd" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="Orange" Offset="0.12"/>
+                                        <GradientStop Color="Yellow" Offset="0.92"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

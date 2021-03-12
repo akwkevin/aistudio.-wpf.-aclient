@@ -1,0 +1,47 @@
+﻿<!--***********************************************************************************
+
+   Extended WPF Toolkit
+
+   Copyright (C) 2007-2013 Xceed Software Inc.
+
+   This program is provided to you under the terms of the Microsoft Public
+   License (Ms-PL) as published at http://wpftoolkit.codeplex.com/license 
+
+   For more features, controls, and fast professional support,
+   pick up the Plus Edition at http://xceed.com/wpf_toolkit
+
+   Stay informed: follow @datagrid on Twitter or Like http://facebook.com/datagrids
+
+  **********************************************************************************-->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMetro_BaseColor1" 
+                     Color="{DynamicResource MahApps.Colors.ThemeBackground}"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMetro_BaseColor2" 
+                     Color="{DynamicResource MahApps.Colors.ThemeForeground}"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMetro_BaseColor3" 
+                     Color="{DynamicResource MahApps.Colors.Accent}"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMetro_BaseColor4" 
+                     Color="{DynamicResource MahApps.Colors.Accent4}"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMetro_BaseColor5" 
+                     Color="{DynamicResource MahApps.Colors.Accent}"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMetro_BaseColor6" 
+                     Color="{DynamicResource MahApps.Colors.Highlight}"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMetro_BaseColor7" 
+                     Color="{DynamicResource MahApps.Colors.ThemeForeground}"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMetro_BaseColor8" 
+                     Color="{DynamicResource MahApps.Colors.MahApps.Colors.Gray8}"/>
+    
+    
+
+</ResourceDictionary>
