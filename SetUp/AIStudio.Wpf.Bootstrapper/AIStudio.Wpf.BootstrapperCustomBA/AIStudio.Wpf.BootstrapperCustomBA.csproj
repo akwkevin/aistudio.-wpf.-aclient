@@ -70,6 +70,7 @@
   <ItemGroup>
     <None Include="BootstrapperCore.config">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -97,7 +98,9 @@
     <Resource Include="Resources\wrench.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\A.ico" />
     <Content Include="Resources\Slider\slider.png" />
+    <Resource Include="Resources\weixin.jpg" />
     <Resource Include="Resources\Slider\b1.png" />
     <Resource Include="Resources\heart.ico" />
     <Resource Include="Resources\niqiu.png" />

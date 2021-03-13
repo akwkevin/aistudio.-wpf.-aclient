@@ -188,10 +188,10 @@
                         <RowDefinition />
                         <RowDefinition Height="50" />
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="1" Grid.Column="1" Content="{Binding InstallFinished}"  HorizontalAlignment="Center"  VerticalAlignment="Top"  Foreground="Green"  FontSize="25" ></Label>
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Content="{Binding InstallFinished}"  HorizontalAlignment="Center"  VerticalAlignment="Top"  Foreground="Green"  FontSize="25" ></Label>
                     <StackPanel Grid.Row="2" Grid.Column="1">
-                        <CheckBox HorizontalAlignment="Left" IsChecked="True" Margin="30 10 0 0">查看最新特性</CheckBox>
-                        <CheckBox HorizontalAlignment="Left"  Margin="30 10  0 0">设置deltagreentech为首页</CheckBox>
+                        <CheckBox HorizontalAlignment="Left" IsChecked="True" Margin="30 10 0 0" Visibility="Collapsed">查看最新特性</CheckBox>
+                        <CheckBox HorizontalAlignment="Left"  Margin="30 10  0 0" Visibility="Collapsed">设置deltagreentech为首页</CheckBox>
                         <Image Source="{Binding WeiXin}" Width="100" HorizontalAlignment="Left" Margin="30 10  0 0" ></Image>
                     </StackPanel>
                     <!--<Label Content="http://www.cnblogs.com/stoneniqiu/" Grid.Row="3" Foreground="Gray" Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2"></Label>-->

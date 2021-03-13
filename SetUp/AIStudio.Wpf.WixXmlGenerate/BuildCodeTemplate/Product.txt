@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Product Id="*" Name="AIStudio.Wpf.Client"
+ Language="1033" Version="1.0.0.0" Manufacturer="AIStudio" UpgradeCode="CD6679E6-FEDC-4F9A-ABEC-DFBF48C89C10">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate />
+
+    <!--安装列表-->
+    <Feature Id="ProductFeature" Title="AIStudio.Wpf.Client" Level="1">
+      <!--<ComponentGroupRef Id="ProductComponents" />-->
+      <ComponentRef Id="myapplication.exe"/>
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentRef Id="DesktopFolderShortcut" />
+%componentRef%
+    </Feature>
+
+    <!--自定义安装界面-->
+    <!--<WixVariable Id="WixUILicenseRtf" Value="lisences.rtf" />-->
+    <!--<WixVariable Id="WixUIDialogBmp" Value="bb.jpg"/>
+    <WixVariable Id="WixUIBannerBmp" Value="top.jpg"/>-->
+
+    <!--安装完成后启动程序-->
+    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Thank you for installing this product." />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch this Application " />
+    <Property Id="WixShellExecTarget" Value="[#myapplication.exe]" />
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
+
+    <!--UI风格-->
+    <UI>
+      <UIRef Id="WixUI_InstallDir" />
+      <Publish Dialog="ExitDialog"
+         Control="Finish"
+         Event="DoAction" Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+    </UI>
+
+  </Product>
+
+
+  <!--目标安装目录-->
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="AIStudio.Wpf.Client" >
+%dir%
+        </Directory>
+      </Directory>
+
+      <!--增加菜单栏快捷方式-->
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="AIStudio.Wpf.Client"/>
+      </Directory>
+
+      <!--增加桌面快捷方式-->
+      <Directory Id="DesktopFolder" Name="Desktop" />
+
+    </Directory>
+  </Fragment>
+
+  <!--安装文件目录-->
+  <Fragment>
+    <!--<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="ProductComponent">
+        <File Id="myapplication.exe"  Source="$(var.MyApplication.TargetPath)" />
+      </Component>
+    </ComponentGroup>-->
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Component Id="myapplication.exe" Guid="600CF2D5-CF52-45FA-9941-CA49754BA1BB">
+%file%
+      </Component>
+    </DirectoryRef>
+
+%dirComponent%
+
+    <!--增加菜单栏快捷方式-->
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="5A254682-DD5F-453D-8333-144457282026">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="AIStudio.Wpf.Client"
+                  Description="my first application installed by wix"
+                  Target="[INSTALLFOLDER]AIStudio.Wpf.Client.exe"
+                  WorkingDirectory="INSTALLFOLDER">
+          <Icon Id="MyApplicationIcon.exe" SourceFile="content/MyApplicationIcon.exe.ico"/>
+        </Shortcut>
+        <util:InternetShortcut Id="OnlineDocumentationShortcut"
+             Name="欢迎访问我的博客"
+                    Target="https://www.cnblogs.com/akwkevin/"/>
+        <!--<Shortcut Id="UninstallProduct"
+                          Name="Uninstall"
+                          Description="Uninstalls My Application"
+                          Target="[SystemFolder]msiexec.exe"
+                          Arguments="/x [ProductCode]" />-->
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\AIStudio.Wpf.Client" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <!--增加桌面快捷方式-->
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="DesktopFolderShortcut" Guid="5A254682-DD1F-453D-8333-144457282026">
+        <Shortcut Id="DesktopShortcut" Directory="DesktopFolder"   Name="AIStudio.Wpf.Client" Target="[INSTALLFOLDER]AIStudio.Wpf.Client.exe"  WorkingDirectory="INSTALLFOLDER" Icon="MyApplicationIcon.exe">
+        </Shortcut>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\AIStudio.Wpf.Client" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+  </Fragment>
+</Wix>

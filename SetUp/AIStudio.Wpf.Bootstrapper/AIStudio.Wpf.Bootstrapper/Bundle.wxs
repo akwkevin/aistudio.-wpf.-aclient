@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"  xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension"  xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-  <Bundle Name="HeartBeats" Version="4.5.1.0" Manufacturer="stoneniqiu" UpgradeCode="{8675A2E9-4625-4891-8166-5F1EB0535F51}"    Compressed="yes" UpdateUrl="http://www.delta-china.com.cn/" >
+  <Bundle Name="AIStudio.Wpf.Client" Version="2.0.0.0" Manufacturer="AIStudio" UpgradeCode="{8675A2E9-4625-4891-8166-5F1EB0535F51}"    Compressed="yes" UpdateUrl="http://www.delta-china.com.cn/" >
 
     <!--<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense"   />-->
 
@@ -19,7 +19,7 @@
 
     <Chain DisableRollback='yes'>
       <PackageGroupRef Id="Netfx4Full"  />
-      <MsiPackage Id="HeartBeats" SourceFile="..\AIStudio.Wpf.WixSetUp.msi" Compressed="yes"  DisplayInternalUI="no" >
+      <MsiPackage Id="AIStudio.Wpf.Client" SourceFile="..\AIStudio.Wpf.WixSetUp.msi" Compressed="yes"  DisplayInternalUI="no" >
         <MsiProperty Name="INSTALLFOLDER" Value="[InstallFolder]"/>
       </MsiPackage>
     </Chain>
@@ -39,10 +39,11 @@
           PerMachine="yes"
           Permanent="yes"
           Vital="yes"
-          SourceFile="D:\软件\Setup.exe"
+          SourceFile="NDP472-KB4054531-Web.exe"
           InstallCommand="/q /norestart "
           DownloadUrl="http://go.microsoft.com/fwlink/?LinkId=164193"
           DetectCondition="Netfx4FullVersion AND (NOT VersionNT64 OR Netfx4x64FullVersion)"/>
     </PackageGroup>
+    
   </Fragment>
 </Wix>
