@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AIStudio.Wpf.HomePage.Models
+namespace AIStudio.Wpf.Home.Models
 {
     public enum StatusBarLocation
     {

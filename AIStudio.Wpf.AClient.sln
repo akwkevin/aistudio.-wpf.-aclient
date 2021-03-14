@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.AIStudio.Wpf.Page", "01.AIStudio.Wpf.Page", "{2DB0339B-B66B-420F-B02D-E328D6C1DD07}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIStudio.Wpf.HomePage", "Page\AIStudio.Wpf.HomePage\AIStudio.Wpf.HomePage.csproj", "{AFCF92D4-7595-4AB9-9F34-81D790AEFA6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIStudio.Wpf.Home", "Page\AIStudio.Wpf.HomePage\AIStudio.Wpf.Home.csproj", "{AFCF92D4-7595-4AB9-9F34-81D790AEFA6E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIStudio.Resource", "Application\AIStudio.Resource\AIStudio.Resource.csproj", "{209756FD-173D-417D-BF17-134106E541D6}"
 EndProject

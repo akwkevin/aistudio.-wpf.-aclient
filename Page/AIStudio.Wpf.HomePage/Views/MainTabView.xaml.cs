@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace AIStudio.Wpf.HomePage.Views
+namespace AIStudio.Wpf.Home.Views
 {
     /// <summary>
     /// MainTabView.xaml 的交互逻辑

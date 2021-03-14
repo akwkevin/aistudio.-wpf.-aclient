@@ -46,7 +46,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 try
                 {
                     ShowWait();
-                    viewmodel.Data.actionsJson = JsonConvert.SerializeObject(BaseTreeItemViewModelHelper.GetChecked(viewmodel.ActionsTreeData).OfType<Base_ActionTree>().Select(p => p.Id).ToArray());
+                    viewmodel.Data.Actions = BaseTreeItemViewModelHelper.GetChecked(viewmodel.ActionsTreeData).OfType<Base_ActionTree>().Select(p => p.Id).ToList();
                     var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Role/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                     if (!result.IsOK)
                     {

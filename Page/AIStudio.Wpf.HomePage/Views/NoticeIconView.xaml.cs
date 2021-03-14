@@ -1,9 +1,9 @@
-﻿using AIStudio.Wpf.HomePage.ViewModels;
+﻿using AIStudio.Wpf.Home.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 using Util.Controls;
 
-namespace AIStudio.Wpf.HomePage.Views
+namespace AIStudio.Wpf.Home.Views
 {
     /// <summary>
     /// NoticeIconView.xaml 的交互逻辑

@@ -61,7 +61,7 @@
                                                     <util:MultiComboBox BorderThickness="0" 
                                                             ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type util:BaseDialog}}}" 
                                                             core:CustomeSelectionValues.SelectedValues="{Binding UserIds}"
-                                                            DisplayMemberPath="UserName" SelectedValuePath="Id"></util:MultiComboBox>
+                                                            DisplayMemberPath="text" SelectedValuePath="value"></util:MultiComboBox>
                                                 </Grid>
                                             </DataTemplate>
                                         </Setter.Value>
@@ -76,7 +76,7 @@
                                                             BorderThickness="0" 
                                                             ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type util:BaseDialog}}}" 
                                                             core:CustomeSelectionValues.SelectedValues="{Binding RoleIds}"
-                                                            DisplayMemberPath="RoleName" SelectedValuePath="Id"></util:MultiComboBox>
+                                                            DisplayMemberPath="text" SelectedValuePath="value"></util:MultiComboBox>
                                                 </Grid>
                                             </DataTemplate>
                                         </Setter.Value>

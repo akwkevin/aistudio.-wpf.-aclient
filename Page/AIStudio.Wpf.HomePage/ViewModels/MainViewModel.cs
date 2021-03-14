@@ -5,8 +5,8 @@ using AIStudio.Wpf.BasePage.Events;
 using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Business.DTOModels;
-using AIStudio.Wpf.HomePage.Models;
-using AIStudio.Wpf.HomePage.Views;
+using AIStudio.Wpf.Home.Models;
+using AIStudio.Wpf.Home.Views;
 using AIStudio.Wpf.Service.AppClient;
 using AIStudio.Wpf.Service.IAppClient;
 using AIStudio.Wpf.Service.IWebSocketClient;
@@ -28,7 +28,7 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using Util.Controls;
 
-namespace AIStudio.Wpf.HomePage.ViewModels
+namespace AIStudio.Wpf.Home.ViewModels
 {
     class MainViewModel : Prism.Mvvm.BindableBase, INavigationAware
     {
@@ -82,11 +82,19 @@ namespace AIStudio.Wpf.HomePage.ViewModels
 
         public void OpenHomePage()
         {
-            NavigationParameters paras = new NavigationParameters();
-            paras.Add("Title", "首页");
-            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)delegate { 
-                _regionManager.RequestNavigate(RegionName, "HomeView", NavigationComplete, paras);
-            });
+            var item = SearchMenus.FirstOrDefault(p => p.Label == "框架介绍");
+            if (item != null)
+            {
+                NavigationParameters paras = new NavigationParameters();
+                paras.Add("Title", item.Label);
+                paras.Add("Identifier", Identifier);
+
+
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)delegate
+                {
+                    _regionManager.RequestNavigate(RegionName, item.WpfCode, NavigationComplete, paras);
+                });
+            }
         }
 
         public void OpenFullScreenWindow()
@@ -165,7 +173,7 @@ namespace AIStudio.Wpf.HomePage.ViewModels
                     _operator.Avatar = userinfo.ResponseItem.UserInfo.Avatar;
 
                     control.WaitInfo = "正在获取菜单信息";
-                    var menuinfo = await _dataProvider.GetData<List<Base_ActionTree>>("/Base_Manage/Home/GetMenuList");
+                    var menuinfo = await _dataProvider.GetData<List<Base_ActionTree>>("/Base_Manage/Home/GetOperatorMenuList");
                     if (!menuinfo.IsOK)
                     {
                         throw new System.Exception(menuinfo.ErrorMessage);
@@ -262,20 +270,22 @@ namespace AIStudio.Wpf.HomePage.ViewModels
             var nodes = base_Actions.Where(p => string.IsNullOrEmpty(p.ParentId));
             foreach (var node in nodes)
             {
-                AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Name, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
+                AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
                 MenuItems.Add(aMenuItem);
-                SubBuildMenu(aMenuItem, base_Actions, aMenuItem.Id);
+                SubBuildMenu(aMenuItem, node, aMenuItem.Id);
             }
         }
 
-        private void SubBuildMenu(AMenuItem menuItem, List<Base_ActionTree> base_Actions, string parentid)
+        private void SubBuildMenu(AMenuItem menuItem, Base_ActionTree parent, string parentid)
         {
-            var nodes = base_Actions.Where(p => p.ParentId == parentid);
-            foreach (var node in nodes)
+            if (parent.Children != null)
             {
-                AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Name, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
-                menuItem.AddChildren(aMenuItem);
-                SubBuildMenu(aMenuItem, base_Actions, aMenuItem.Id);
+                foreach (var node in parent.Children)
+                {
+                    AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
+                    menuItem.AddChildren(aMenuItem);
+                    SubBuildMenu(aMenuItem, node, aMenuItem.Id);
+                }
             }
         }
 

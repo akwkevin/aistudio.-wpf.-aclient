@@ -40,10 +40,15 @@ namespace AIStudio.Wpf.BasePage.Models
                     return Code;
 
                 var subcode = Code.Replace("/Index", "IndexView").Replace("/TreeList", "TreeView").Replace("/List", "View").Split(new string[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
-                if (subcode.Length == 1)
+                   if (subcode.Length == 1)
                     return Code;
                 
                 subcode[subcode.Length - 1] = $"Views.{subcode[subcode.Length - 1]}";
+
+                if (!subcode[subcode.Length - 1].EndsWith("View"))
+                {
+                    subcode[subcode.Length - 1] = subcode[subcode.Length - 1] + "View";
+                }
 
                 return $"AIStudio.Wpf.{string.Join(".", subcode)}";
             }

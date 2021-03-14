@@ -1,6 +1,7 @@
 ﻿using Prism.Regions;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +22,23 @@ namespace Dataforge.PrismAvalonExtensions.Test.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string dir = System.AppDomain.CurrentDomain.BaseDirectory;
         public MainWindow(IRegionManager regionManager)
         {
             InitializeComponent();
 
+            this.Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists(dir + "Layout.xml"))
+                SerializationHelper.Deserialize(dock, "ContentRegion2", "Layout.xml");
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            SerializationHelper.Serialize(dock, "Layout.xml");
         }
     }
 }

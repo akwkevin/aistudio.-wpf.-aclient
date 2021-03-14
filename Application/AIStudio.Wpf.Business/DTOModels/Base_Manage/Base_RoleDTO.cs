@@ -76,12 +76,4 @@ namespace AIStudio.Wpf.Business.DTOModels
             }
         }
     }
-
-    //[MapFrom(typeof(Base_Role))]
-    //[MapTo(typeof(Base_Role))]
-    public class Base_RoleEasy
-    {
-        public string Id { get; set; }
-        public string RoleName { get; set; }
-    }
 }

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AIStudio.Wpf.HomePage.Views
+namespace AIStudio.Wpf.Home.Views
 {
     /// <summary>
-    /// HomeView.xaml 的交互逻辑
+    /// IntroduceView.xaml 的交互逻辑
     /// </summary>
-    public partial class HomeView : UserControl
+    public partial class IntroduceView : UserControl
     {
-        public HomeView()
+        public IntroduceView()
         {
             InitializeComponent();
         }

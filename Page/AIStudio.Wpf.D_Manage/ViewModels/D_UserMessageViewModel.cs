@@ -163,7 +163,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                     ShowWait();
                 }
 
-                var result = await _dataProvider.GetData<List<D_OnlineUserDTO>>($"/D_Manage/D_UserMessage/GetDataList");
+                var result = await _dataProvider.GetData<List<D_OnlineUserDTO>>($"/D_Manage/D_UserMessage/GetUserList");
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);
@@ -238,8 +238,8 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
 
                     if (res == BaseDialogResult.OK)//修改
                     {
-                        viewmodel.Data.UserIds = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.Id)) + "^";
-                        viewmodel.Data.UserNames = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.UserName)) + "^";
+                        viewmodel.Data.UserIds = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.value)) + "^";
+                        viewmodel.Data.UserNames = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.text)) + "^";
                         viewmodel.Data.Avatar = viewmodel.Data.Avatar ?? "/Images/group.jpg";
                         var result = await _dataProvider.GetData<AjaxResult>($"/D_Manage/D_UserMessage/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                         if (!result.IsOK)
@@ -251,9 +251,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                     {
                         if (viewmodel.Disabled == false)//解散
                         {
-                            Dictionary<string, string> data = new Dictionary<string, string>();
-                            data.Add("ids", JsonConvert.SerializeObject(new string[] { viewmodel.Data.Id }));
-                            var result = await _dataProvider.GetData<AjaxResult>($"/D_Manage/D_UserMessage/DeleteData", data);
+                            var result = await _dataProvider.GetData<AjaxResult>($"/D_Manage/D_UserMessage/DeleteData", JsonConvert.SerializeObject(new string[] { viewmodel.Data.Id }));
                             if (!result.IsOK)
                             {
                                 throw new Exception(result.ErrorMessage);
@@ -261,9 +259,9 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                         }
                         else//退出
                         {
-                            viewmodel.SelectedUsers.Remove(viewmodel.SelectedUsers.Where(p => p.Id == _operator?.Property?.Id).FirstOrDefault());
-                            viewmodel.Data.UserIds = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.Id)) + "^";
-                            viewmodel.Data.UserNames = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.UserName)) + "^";
+                            viewmodel.SelectedUsers.Remove(viewmodel.SelectedUsers.Where(p => p.value == _operator?.Property?.Id).FirstOrDefault());
+                            viewmodel.Data.UserIds = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.value)) + "^";
+                            viewmodel.Data.UserNames = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.text)) + "^";
 
                             var result = await _dataProvider.GetData<AjaxResult>($"/D_Manage/D_UserMessage/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                             if (!result.IsOK)

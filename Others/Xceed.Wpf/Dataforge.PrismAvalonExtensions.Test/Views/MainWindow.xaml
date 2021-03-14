@@ -32,8 +32,9 @@
                     <Button Command="{Binding NavigateCommand2}" CommandParameter="TestView" Margin="5">Navigate to Test</Button>
                     <Button Command="{Binding NavigateCommand2}" CommandParameter="Test2View" Margin="5">Navigate to Test2</Button>
                     <Button Command="{Binding NavigateCommand2}" CommandParameter="Test3View" Margin="5">Navigate to Test3</Button>
+                    <Button x:Name="btnSave" Margin="5" Click="btnSave_Click">保存布局</Button>
                 </StackPanel>
-                <avalonDock:DockingManager prism:RegionManager.RegionName="ContentRegion2">
+                <avalonDock:DockingManager x:Name="dock" prism:RegionManager.RegionName="ContentRegion2">
                     <avalonDock:LayoutRoot>
                         <avalonDock:LayoutPanel Orientation="Horizontal">
                             <avalonDock:LayoutDocumentPaneGroup DockWidth="100" Orientation="Vertical">

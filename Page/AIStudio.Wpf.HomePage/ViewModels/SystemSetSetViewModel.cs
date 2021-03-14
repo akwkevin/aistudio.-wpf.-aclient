@@ -1,6 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
-using AIStudio.Wpf.HomePage.Models;
+using AIStudio.Wpf.Home.Models;
 using ControlzEx.Theming;
 using MahApps.Metro;
 using Newtonsoft.Json;
@@ -17,7 +17,7 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using Util.Controls;
 
-namespace AIStudio.Wpf.HomePage.ViewModels
+namespace AIStudio.Wpf.Home.ViewModels
 {
     public class SystemSetViewModel : BindableBase
     {
@@ -372,7 +372,7 @@ namespace AIStudio.Wpf.HomePage.ViewModels
             #region 加载字体大小
             List<ResourceDictionary> dictionaryList = Application.Current.Resources.MergedDictionaries.ToList();
 
-            string requestedCulture = @"/AIStudio.Wpf.HomePage;component/Themes/FontSizeDictionary.xaml";
+            string requestedCulture = @"/AIStudio.Wpf.Home;component/Themes/FontSizeDictionary.xaml";
             ResourceDictionary resourceDictionary = dictionaryList.Where(d => d.Source != null && d.Source.OriginalString.Equals(requestedCulture)).FirstOrDefault();
 
             resourceDictionary.Clear();
@@ -438,7 +438,7 @@ namespace AIStudio.Wpf.HomePage.ViewModels
             if (fontFamily == null)
                 return;
 
-            string requestedCulture = @"/AIStudio.Wpf.HomePage;component/Themes/FontFamilyDictionary.xaml";
+            string requestedCulture = @"/AIStudio.Wpf.Home;component/Themes/FontFamilyDictionary.xaml";
             ResourceDictionary resourceDictionary = dictionaryList.Where(d => d.Source != null && d.Source.OriginalString.Equals(requestedCulture)).FirstOrDefault();
 
             resourceDictionary.Clear();

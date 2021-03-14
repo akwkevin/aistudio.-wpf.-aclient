@@ -112,6 +112,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     {
                         throw new Exception(result.ErrorMessage);
                     }
+                    MessageBoxHelper.ShowInfo("操作成功");
                                     
                     GetData(true);
                 }

@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Util.Controls;
 
-namespace AIStudio.Wpf.HomePage.Views
+namespace AIStudio.Wpf.Home.Views
 {
     /// <summary>
     /// SystemSetView.xaml 的交互逻辑

@@ -1,6 +1,7 @@
 ﻿using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business.DTOModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -50,7 +51,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
                 control.WaitInfo = "正在获取数据";
 
-                var result = await _dataProvider.GetData<Base_RoleDTO>($"/Base_Manage/Base_Role/GetTheData?id={para.Id}");
+                var result = await _dataProvider.GetData<Base_RoleDTO>($"/Base_Manage/Base_Role/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);

@@ -14,8 +14,8 @@
 
                 <ResourceDictionary Source="/AIStudio.Resource;component/Themes/en-us.xaml" />
                 <ResourceDictionary Source="/AIStudio.Resource;component/Themes/zh-cn.xaml" />
-                <ResourceDictionary Source="/AIStudio.Wpf.HomePage;component/Themes/FontSizeDictionary.xaml"/>
-                <ResourceDictionary Source="/AIStudio.Wpf.HomePage;component/Themes/FontFamilyDictionary.xaml"/>
+                <ResourceDictionary Source="/AIStudio.Wpf.Home;component/Themes/FontSizeDictionary.xaml"/>
+                <ResourceDictionary Source="/AIStudio.Wpf.Home;component/Themes/FontFamilyDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

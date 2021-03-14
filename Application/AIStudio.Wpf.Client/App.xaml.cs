@@ -1,8 +1,8 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Client.ViewModels;
-using AIStudio.Wpf.HomePage;
-using AIStudio.Wpf.HomePage.ViewModels;
+using AIStudio.Wpf.Home;
+using AIStudio.Wpf.Home.ViewModels;
 using AIStudio.Wpf.LocalConfiguration;
 using AIStudio.Wpf.Service.AppClient;
 using AIStudio.Wpf.Service.AppClient.HttpClients;

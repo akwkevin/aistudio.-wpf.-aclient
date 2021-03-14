@@ -2,7 +2,7 @@
 using System;
 using System.Configuration;
 
-namespace AIStudio.Wpf.HomePage.Models
+namespace AIStudio.Wpf.Home.Models
 {
     public class WindowSetting : BindableBase
     {

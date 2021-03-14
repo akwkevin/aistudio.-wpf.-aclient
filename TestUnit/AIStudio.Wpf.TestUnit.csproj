@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Page\AIStudio.Wpf.HomePage\AIStudio.Wpf.HomePage.csproj" />
+    <ProjectReference Include="..\Page\AIStudio.Wpf.HomePage\AIStudio.Wpf.Home.csproj" />
   </ItemGroup>
 
   <ItemGroup>

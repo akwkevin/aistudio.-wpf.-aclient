@@ -1,5 +1,5 @@
-﻿using AIStudio.Wpf.HomePage.Models;
-using AIStudio.Wpf.HomePage.ViewModels;
+﻿using AIStudio.Wpf.Home.Models;
+using AIStudio.Wpf.Home.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Util.Controls;
 
-namespace AIStudio.Wpf.HomePage.Views
+namespace AIStudio.Wpf.Home.Views
 {
     /// <summary>
     /// ToolBarSetView.xaml 的交互逻辑

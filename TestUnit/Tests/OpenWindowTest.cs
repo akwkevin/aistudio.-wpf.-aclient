@@ -1,6 +1,6 @@
 ﻿using AIStudio.Core;
-using AIStudio.Wpf.HomePage;
-using AIStudio.Wpf.HomePage.Views;
+using AIStudio.Wpf.Home;
+using AIStudio.Wpf.Home.Views;
 using AIStudio.Wpf.TestUnit.TestHelpers;
 using System.Threading.Tasks;
 using System.Windows;

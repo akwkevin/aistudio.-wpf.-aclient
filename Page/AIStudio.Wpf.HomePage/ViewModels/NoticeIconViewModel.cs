@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace AIStudio.Wpf.HomePage.ViewModels
+namespace AIStudio.Wpf.Home.ViewModels
 {
     class NoticeIconViewModel : BaseWaitingViewModel
     {
@@ -174,15 +174,20 @@ namespace AIStudio.Wpf.HomePage.ViewModels
             {
                 ShowWait();
 
-                Dictionary<string, string> data = new Dictionary<string, string>();
-                data.Add("PageIndex", UserMail_Pagination.PageIndex.ToString());
-                data.Add("PageRows", UserMail_Pagination.PageRows.ToString());
-                data.Add("SortField", UserMail_Pagination.SortField ?? "Id");
-                data.Add("SortType", UserMail_Pagination.SortType);
-                data.Add("userId", _operator?.Property?.Id);
-                data.Add("markflag", true.ToString());
+                var data = new
+                {
+                    PageIndex = UserMail_Pagination.PageIndex,
+                    PageRows = UserMail_Pagination.PageRows,
+                    SortField = UserMail_Pagination.SortField,
+                    SortType = UserMail_Pagination.SortType,
+                    Search = new
+                    {
+                        userId = _operator?.Property?.Id,
+                        markflag = true,
+                    }
+                };
 
-                var result = await _dataProvider.GetData<List<D_UserMailDTO>>($"/D_Manage/D_UserMail/GetHistoryDataList", data);
+                var result = await _dataProvider.GetData<List<D_UserMailDTO>>($"/D_Manage/D_UserMail/GetPageHistoryDataList", JsonConvert.SerializeObject(data));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);
@@ -210,11 +215,20 @@ namespace AIStudio.Wpf.HomePage.ViewModels
             {
                 ShowWait();
 
-                Dictionary<string, string> data = new Dictionary<string, string>();
-                data.Add("userId", _operator?.Property?.Id);
-                data.Add("markflag", true.ToString());
+                var data = new
+                {
+                    PageIndex = UserMessage_Pagination.PageIndex,
+                    PageRows = UserMessage_Pagination.PageRows,
+                    SortField = UserMessage_Pagination.SortField,
+                    SortType = UserMessage_Pagination.SortType,
+                    Search = new
+                    {
+                        userId = _operator?.Property?.Id,
+                        markflag = true,
+                    }
+                };
 
-                var result = await _dataProvider.GetData<List<GroupData>>($"/D_Manage/D_UserMessage/GetHistoryGroupDataList", data);
+                var result = await _dataProvider.GetData<List<GroupData>>($"/D_Manage/D_UserMessage/GetPageHistoryGroupDataList",JsonConvert.SerializeObject(data));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);
@@ -242,14 +256,19 @@ namespace AIStudio.Wpf.HomePage.ViewModels
             {
                 ShowWait();
 
-                Dictionary<string, string> data = new Dictionary<string, string>();
-                data.Add("PageIndex", UserForm_Pagination.PageIndex.ToString());
-                data.Add("PageRows", UserForm_Pagination.PageRows.ToString());
-                data.Add("SortField", UserForm_Pagination.SortField ?? "Id");
-                data.Add("SortType", UserForm_Pagination.SortType);
-                data.Add("userId", _operator?.Property?.Id);
+                var data = new
+                {
+                    PageIndex = UserMessage_Pagination.PageIndex,
+                    PageRows = UserMessage_Pagination.PageRows,
+                    SortField = UserMessage_Pagination.SortField,
+                    SortType = UserMessage_Pagination.SortType,
+                    Search = new
+                    {
+                        userId = _operator?.Property?.Id,
+                    }
+                };
 
-                var result = await _dataProvider.GetData<List<OA_UserFormDTO>>($"/OA_Manage/OA_UserForm/GetHistoryDataList", data);
+                var result = await _dataProvider.GetData<List<OA_UserFormDTO>>($"/OA_Manage/OA_UserForm/GetPageHistoryDataList", JsonConvert.SerializeObject(data));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);

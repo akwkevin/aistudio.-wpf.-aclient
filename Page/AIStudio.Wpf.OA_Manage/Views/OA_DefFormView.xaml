@@ -78,7 +78,7 @@
                         <DataTemplate>
                             <util:MultiComboBox ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
                                             core:CustomeSelectionItems.SelectedItems="{Binding Roles}" IsEnabled="False"
-                                            DisplayMemberPath="RoleName" SelectedValuePath="Id" ExceededTextFiller=""
+                                            DisplayMemberPath="text" SelectedValuePath="value" ExceededTextFiller=""
                                             Visibility="{Binding Roles.Count,Converter={converter:IntVisibilityConverter}}">
                                 
                             </util:MultiComboBox>

@@ -1,6 +1,8 @@
-﻿using Prism.Commands;
+﻿using Dataforge.PrismAvalonExtensions.Test.Views;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
+using System.Windows;
 
 namespace Dataforge.PrismAvalonExtensions.Test.ViewModels
 {

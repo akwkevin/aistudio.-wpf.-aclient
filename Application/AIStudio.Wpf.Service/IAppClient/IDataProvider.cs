@@ -15,10 +15,10 @@ namespace AIStudio.Wpf.Service.IAppClient
         Task<WebResponse<string>> GetToken();
 
         [LogHandler]
-        Task<WebResponse<T>> GetData<T>(string url, Dictionary<string, string> data = null);
+        Task<WebResponse<T>> GetData<T>(string url, Dictionary<string, string> data);
 
         [LogHandler]
-        Task<WebResponse<T>> GetData<T>(string url, string json);
+        Task<WebResponse<T>> GetData<T>(string url, string json = "{}");
         Task<UploadResult> UploadFileByForm(string path);
     }
 }

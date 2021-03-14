@@ -26,7 +26,7 @@ namespace AIStudio.Wpf.Client
 
         public MainWindow(IRegionManager regionManager, IModuleManager moduleManager, IEventAggregator eventAggregator, IWSocketClient wSocketClient, ILogger logger)
         {
-            HomePage.ViewModels.SystemSetViewModel.InitSetting();
+            Home.ViewModels.SystemSetViewModel.InitSetting();
 
             InitializeComponent();
 

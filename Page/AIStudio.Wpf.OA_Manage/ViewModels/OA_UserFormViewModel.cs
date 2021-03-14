@@ -38,7 +38,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         //无效参数，做个标记
         public OA_UserFormViewModel(string[] id) : base("OA_Manage", typeof(OA_UserFormEditViewModel), typeof(OA_UserFormEdit))
         {
-            
+
         }
 
         protected override void Initialize()
@@ -61,18 +61,22 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 var alreadyUserIds = Status == "finish" ? _operator?.Property.Id : "";
                 var creatorId = Status == "created" ? _operator?.Property.Id : "";
 
-                Dictionary<string, string> data = new Dictionary<string, string>();
-                data.Add("PageIndex", Pagination.PageIndex.ToString());
-                data.Add("PageRows", Pagination.PageRows.ToString());
-                data.Add("SortField", Pagination.SortField ?? "Id");
-                data.Add("SortType", Pagination.SortType);
-                data.Add("keyword", KeyWord ?? "");
-                data.Add("condition", ConditionItem != null ? ConditionItem.Tag.ToString() : "");
-                data.Add("userId", userId);
-                data.Add("applicantUserId", applicantUserId);
-                data.Add("creatorId", creatorId);
-                data.Add("alreadyUserIds", alreadyUserIds);
-                var result = await _dataProvider.GetData<List<OA_UserFormDTO>>("/OA_Manage/OA_UserForm/GetDataList", data);
+                var data = new
+                {
+                    PageIndex = Pagination.PageIndex,
+                    PageRows = Pagination.PageRows,
+                    SortField = Pagination.SortField,
+                    SortType = Pagination.SortType,
+                    Search = new
+                    {
+                        userId = userId,
+                        applicantUserId = applicantUserId,
+                        creatorId = creatorId,
+                        alreadyUserIds = alreadyUserIds,
+                    }
+                };
+
+                var result = await _dataProvider.GetData<List<OA_UserFormDTO>>("/OA_Manage/OA_UserForm/GetDataList", JsonConvert.SerializeObject(data));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);
@@ -130,7 +134,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
                     if (res == BaseDialogResult.Other1)
                     {
-                        var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/DisCardData?id={viewmodel.Data.Id}");
+                        var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/DisCardData", JsonConvert.SerializeObject(new { id = viewmodel.Data.Id }));
                         if (!result.IsOK)
                         {
                             throw new Exception(result.ErrorMessage);
@@ -138,18 +142,16 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     }
                     else if (res == BaseDialogResult.Other2)
                     {
-                        var myEvent = new
+                        var data = new
                         {
+                            eventName = "MyEvent",
+                            eventKey = viewmodel.Data.Id + viewmodel.Data.CurrentStepId,
                             UserId = _operator?.Property?.Id,
                             UserName = _operator?.Property?.UserName,
                             Status = viewmodel.Status,
                             Remarks = viewmodel.Remark
                         };
-                        Dictionary<string, string> data = new Dictionary<string, string>();
-                        data.Add("eventName", "MyEvent");
-                        data.Add("eventKey", viewmodel.Data.Id + viewmodel.Data.CurrentStepId);
-                        data.Add("eventDataJson", JsonConvert.SerializeObject(myEvent));
-                        var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/EventData", data);
+                        var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/EventData", JsonConvert.SerializeObject(data));
                         if (!result.IsOK)
                         {
                             throw new Exception(result.ErrorMessage);

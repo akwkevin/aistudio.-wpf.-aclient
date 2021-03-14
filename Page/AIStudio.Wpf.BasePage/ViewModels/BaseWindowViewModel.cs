@@ -162,17 +162,22 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 if (iswaiting == false)
                 {
                     ShowWait();
-                }
+                }              
 
-                Dictionary<string, string> data = new Dictionary<string, string>();
-                data.Add("PageIndex", Pagination.PageIndex.ToString());
-                data.Add("PageRows", Pagination.PageRows.ToString());
-                data.Add("SortField", Pagination.SortField ?? "Id");
-                data.Add("SortType", Pagination.SortType);
-                data.Add("keyword", KeyWord ?? "");
-                data.Add("condition", ConditionItem != null ? ConditionItem.Tag.ToString() : "");
+                var data = new
+                {
+                    PageIndex = Pagination.PageIndex,
+                    PageRows = Pagination.PageRows,
+                    SortField = Pagination.SortField,
+                    SortType = Pagination.SortType,
+                    Search = new
+                    {
+                        keyword = KeyWord,
+                        condition = ConditionItem?.Tag,
+                    }
+                };
 
-                var result = await _dataProvider.GetData<List<T>>($"/{Area}/{typeof(T).Name.Replace("DTO","")}/{GetDataList}", data);
+                var result = await _dataProvider.GetData<List<T>>($"/{Area}/{typeof(T).Name.Replace("DTO","")}/{GetDataList}", JsonConvert.SerializeObject(data));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);
@@ -198,7 +203,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 
         protected virtual async void Edit(T para = null)
         {
-            var viewmodel = Activator.CreateInstance(Type, new object[] { para, Area, "编辑表单" }) as BaseEditViewModel<T>;
+            var viewmodel = Activator.CreateInstance(Type, new object[] { para, Area, Identifier, "编辑表单" }) as BaseEditViewModel<T>;
             var dialog = Activator.CreateInstance(EditType, new object[] { viewmodel }) as BaseDialog;
             dialog.ValidationAction = (() =>
             {
@@ -248,11 +253,9 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             {
                 try
                 {
-                    ShowWait();
-                    Dictionary<string, string> data = new Dictionary<string, string>();
-                    data.Add("ids", JsonConvert.SerializeObject(ids));
+                    ShowWait();          
 
-                    var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/DeleteData", data);
+                    var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/DeleteData", JsonConvert.SerializeObject(ids));
                     if (!result.IsOK)
                     {
                         throw new Exception(result.ErrorMessage);

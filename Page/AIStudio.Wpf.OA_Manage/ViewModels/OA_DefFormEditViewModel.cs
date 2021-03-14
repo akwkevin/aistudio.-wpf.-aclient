@@ -2,6 +2,7 @@
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business.DTOModels;
 using AIStudio.Wpf.OA_Manage.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -44,8 +45,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private List<Base_RoleEasy> _roles;
-        public List<Base_RoleEasy> Roles
+        private List<SelectOption> _roles;
+        public List<SelectOption> Roles
         {
             get { return _roles; }
             set
@@ -54,8 +55,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private ObservableCollection<Base_RoleEasy> _selectedRoles = new ObservableCollection<Base_RoleEasy>();
-        public ObservableCollection<Base_RoleEasy> SelectedRoles
+        private ObservableCollection<SelectOption> _selectedRoles = new ObservableCollection<SelectOption>();
+        public ObservableCollection<SelectOption> SelectedRoles
         {
             get { return _selectedRoles; }
             set
@@ -64,8 +65,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private List<Base_UserEasy> _users;
-        public List<Base_UserEasy> Users
+        private List<SelectOption> _users;
+        public List<SelectOption> Users
         {
             get { return _users; }
             set
@@ -102,7 +103,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             {
                 ShowWait();
 
-                var result = await _dataProvider.GetData<OA_DefFormDTO>($"/OA_Manage/OA_DefForm/GetTheData?id={para.Id}");
+                var result = await _dataProvider.GetData<OA_DefFormDTO>($"/OA_Manage/OA_DefForm/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);
@@ -128,7 +129,16 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         }   
         private async Task GetTypes()
         {
-            var result = await _dataProvider.GetData<List<OA_DefTypeDTO>>($"/OA_Manage/OA_DefType/GetDataList?condition=Type&keyword=分类");
+            var data = new
+            {
+                Search = new
+                {
+                    condition = "Type",
+                    keyword = "分类"
+                }
+            };
+
+            var result = await _dataProvider.GetData<List<OA_DefTypeDTO>>($"/OA_Manage/OA_DefType/GetDataList", JsonConvert.SerializeObject(data));
             if (!result.IsOK)
             {
                 throw new Exception(result.ErrorMessage);
@@ -141,7 +151,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             Roles = await _userData.GetAllRole();
             if (Data != null && Data.ValueRoles != null)
             {
-                SelectedRoles = new ObservableCollection<Base_RoleEasy>(Roles.Where(p => Data.ValueRoles.Contains(p.Id)));
+                SelectedRoles = new ObservableCollection<SelectOption>(Roles.Where(p => Data.ValueRoles.Contains(p.value)));
             }
         }
 

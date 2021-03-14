@@ -17,17 +17,17 @@ namespace AIStudio.Wpf.Service.TempService
 
         }
 
-        private List<Base_UserEasy> alluser { get; set; }
+        private List<SelectOption> alluser { get; set; }
 
-        private List<Base_RoleEasy> allrole { get; set; }
+        private List<SelectOption> allrole { get; set; }
 
         private List<TreeModel> alldepartment { get; set; }
 
-        public async Task<List<Base_UserEasy>> GetAllUser()
+        public async Task<List<SelectOption>> GetAllUser()
         {
             if (alluser == null)
             {
-                var result = await _dataProvider.GetData<List<Base_UserEasy>>("/Base_Manage/Base_User/GetAllEasyDataList");
+                var result = await _dataProvider.GetData<List<SelectOption>>("/Base_Manage/Base_User/GetOptionList");
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);
@@ -46,11 +46,11 @@ namespace AIStudio.Wpf.Service.TempService
             alluser = null;
         }
 
-        public async Task<List<Base_RoleEasy>> GetAllRole()
+        public async Task<List<SelectOption>> GetAllRole()
         {
             if (allrole == null)
             {
-                var result = await _dataProvider.GetData<List<Base_RoleEasy>>("/Base_Manage/Base_Role/GetAllEasyDataList");
+                var result = await _dataProvider.GetData<List<SelectOption>>("/Base_Manage/Base_Role/GetOptionList");
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);

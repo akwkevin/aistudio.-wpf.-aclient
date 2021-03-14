@@ -2,6 +2,7 @@
 using AIStudio.Wpf.Business.DTOModels;
 using AIStudio.Wpf.Service.IAppClient;
 using AIStudio.Wpf.Service.ITempService;
+using Newtonsoft.Json;
 using Prism.Ioc;
 using Prism.Mvvm;
 using System;
@@ -74,7 +75,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             {
                 ShowWait();
 
-                var result = await _dataProvider.GetData<T>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/GetTheData?id={para.Id}");
+                var result = await _dataProvider.GetData<T>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);

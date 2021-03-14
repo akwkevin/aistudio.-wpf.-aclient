@@ -184,7 +184,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             foreach (var entityName in entityNames)
             {
                 #region Model
-                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.HomePage", "BuildCodeTemplate", "DTO.txt"));
+                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.Home", "BuildCodeTemplate", "DTO.txt"));
 
                 tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
 
@@ -199,7 +199,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 #endregion
 
                 #region ViewModel
-                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.HomePage", "BuildCodeTemplate", "Listviewmodel.txt"));
+                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.Home", "BuildCodeTemplate", "Listviewmodel.txt"));
 
                 tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
 
@@ -211,7 +211,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
                 FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
 
-                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.HomePage", "BuildCodeTemplate", "EditFormviewmodel.txt"));
+                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.Home", "BuildCodeTemplate", "EditFormviewmodel.txt"));
 
                 tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
 
@@ -255,7 +255,7 @@ $"				<DataGridTextColumn Header=\"{info.Name}\"  Binding=\"{{Binding {info.Name
 
                 }
 
-                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.HomePage", "BuildCodeTemplate", "List.txt"));
+                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.Home", "BuildCodeTemplate", "List.txt"));
 
                 tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
 
@@ -270,7 +270,7 @@ $"				<DataGridTextColumn Header=\"{info.Name}\"  Binding=\"{{Binding {info.Name
 
                 FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
 
-                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.HomePage", "BuildCodeTemplate", "EditForm.txt"));
+                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.Home", "BuildCodeTemplate", "EditForm.txt"));
 
                 tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
 
@@ -286,7 +286,7 @@ $"				<DataGridTextColumn Header=\"{info.Name}\"  Binding=\"{{Binding {info.Name
                 #endregion
 
                 #region View.cs
-                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.HomePage", "BuildCodeTemplate", "Listcs.txt"));
+                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.Home", "BuildCodeTemplate", "Listcs.txt"));
 
                 tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
 
@@ -298,7 +298,7 @@ $"				<DataGridTextColumn Header=\"{info.Name}\"  Binding=\"{{Binding {info.Name
 
                 FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
 
-                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.HomePage", "BuildCodeTemplate", "EditFormcs.txt"));
+                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.Home", "BuildCodeTemplate", "EditFormcs.txt"));
 
                 tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
 
@@ -312,7 +312,7 @@ $"				<DataGridTextColumn Header=\"{info.Name}\"  Binding=\"{{Binding {info.Name
                 #endregion
 
                 #region Resource
-                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.HomePage", "BuildCodeTemplate", "Listresource.txt"));
+                tmpFileText = File.ReadAllText(Path.Combine(directory, "AIStudio.Wpf.Home", "BuildCodeTemplate", "Listresource.txt"));
 
                 tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
 

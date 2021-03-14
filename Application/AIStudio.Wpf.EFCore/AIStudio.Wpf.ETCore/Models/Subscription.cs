@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
+#nullable disable
 
 namespace AIStudio.Wpf.EFCore.Models
 {

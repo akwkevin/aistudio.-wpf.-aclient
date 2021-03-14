@@ -87,28 +87,10 @@
                                     <Hyperlink Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                         CommandParameter="{Binding .}" Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock Text="编辑" /> </Hyperlink>
                                 </TextBlock>
-                                <util:DropDown Margin="10,0,0,0" >
-                                    <util:DropDown.Content>
-                                        <TextBlock  Text="更多"/>
-                                    </util:DropDown.Content>
-                                    <util:DropDown.Child>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                            </Grid.RowDefinitions>
-                                            <Grid Grid.Row="0">
-                                                <Button 
-                                                    Height="30"
-                                                    Width="Auto"
-                                                    VerticalAlignment="Center"  
-                                                    Content="删除" 
-                                                    Command="{Binding DataContext.DeleteOneCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                                    CommandParameter="{Binding .}"
-                                                    Style="{StaticResource LinkButtonStyle}"/>
-                                            </Grid>
-                                        </Grid>
-                                    </util:DropDown.Child>
-                                </util:DropDown>
+                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" perm:PermissionHelper.HasPerm="Base_User.Edit">
+                                    <Hyperlink Command="{Binding DataContext.DeleteOneCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                        CommandParameter="{Binding Id}" Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock Text="删除" /> </Hyperlink>
+                                </TextBlock>                               
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

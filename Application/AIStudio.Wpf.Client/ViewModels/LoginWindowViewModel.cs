@@ -210,7 +210,7 @@ namespace AIStudio.Wpf.Client.ViewModels
                 }
                 else
                 {
-                    _dataProvider.Init(ServerIP, UserName, MD5Password, 1, TimeSpan.FromSeconds(8));
+                    _dataProvider.Init(ServerIP, UserName, Password, 1, TimeSpan.FromSeconds(8));
                     var token = await _dataProvider.GetToken();
                     if (!token.IsOK)
                     {

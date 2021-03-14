@@ -27,7 +27,7 @@ namespace AIStudio.Wpf.Service.AppClient
             {
                 AppTokenHeader header = Header as AppTokenHeader;
 
-                var content = await HttpClientHelper.Instance.PostAsync((string.Format("{0}/Base_Manage/Home/SubmitLogin?userName={1}&password={2}", Url, header.UserName, header.Password)), content: null, TimeSpan);
+                var content = await HttpClientHelper.Instance.PostAsyncJson((string.Format("{0}/Base_Manage/Home/SubmitLogin", Url)), JsonConvert.SerializeObject(new { userName = header.UserName, password = header.Password }), TimeSpan);
                 var result = JsonConvert.DeserializeObject<AjaxResult>(content);
                 header.Token = result.Data as string;
                 return result;

@@ -5,8 +5,6 @@
     /// </summary>
     public class Pagination : BindableBase
     {
-
-
         #region 默认方案
 
         private int pageIndex = 1;

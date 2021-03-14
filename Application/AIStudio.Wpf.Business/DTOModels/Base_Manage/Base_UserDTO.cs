@@ -123,12 +123,4 @@ namespace AIStudio.Wpf.Business.DTOModels
         public List<string> Permissions { get; set; }
     }
 
-    //[MapFrom(typeof(Base_User))]
-    //[MapTo(typeof(Base_User))]
-    public class Base_UserEasy
-    {
-        public string Id { get; set; }
-        public string UserName { get; set; }
-        public string DepartmentId { get; set; }
-    }
 }

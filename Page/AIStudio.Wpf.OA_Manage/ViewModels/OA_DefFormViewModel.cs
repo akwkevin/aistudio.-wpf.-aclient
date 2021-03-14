@@ -20,8 +20,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
     public class OA_DefFormViewModel : BaseWindowViewModel<OA_DefFormDTO>
     {
-        private List<Base_RoleEasy> _roles;
-        public List<Base_RoleEasy> Roles
+        private List<SelectOption> _roles;
+        public List<SelectOption> Roles
         {
             get { return _roles; }
             set
@@ -94,15 +94,20 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     ShowWait();
                 }
 
-                Dictionary<string, string> data = new Dictionary<string, string>();
-                data.Add("PageIndex", Pagination.PageIndex.ToString());
-                data.Add("PageRows", Pagination.PageRows.ToString());
-                data.Add("SortField", Pagination.SortField ?? "Id");
-                data.Add("SortType", Pagination.SortType);
-                data.Add("keyword", KeyWord ?? "");
-                data.Add("condition", ConditionItem != null ? ConditionItem.Tag.ToString() : "");
+                var data = new
+                {
+                    PageIndex = Pagination.PageIndex,
+                    PageRows = Pagination.PageRows,
+                    SortField = Pagination.SortField,
+                    SortType = Pagination.SortType,
+                    Search = new
+                    {
+                        keyword = KeyWord,
+                        condition = ConditionItem?.Tag,
+                    }
+                };
 
-                var result = await _dataProvider.GetData<List<OA_DefFormDTO>>($"/{Area}/{typeof(OA_DefFormDTO).Name.Replace("DTO", "")}/{GetDataList}", data);
+                var result = await _dataProvider.GetData<List<OA_DefFormDTO>>($"/{Area}/{typeof(OA_DefFormDTO).Name.Replace("DTO", "")}/{GetDataList}", JsonConvert.SerializeObject(data));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);
@@ -116,7 +121,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     foreach (var item in Data)
                     {
                         if (item.ValueRoles != null)
-                            item.Roles = Roles.Where(p => item.ValueRoles.Contains(p.Id)).ToList();
+                            item.Roles = Roles.Where(p => item.ValueRoles.Contains(p.value)).ToList();
                     }                    
                 }
             }
@@ -163,7 +168,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                         FlowChartHelper.FlowChartToG6(viewmodel.FlowchartModel, viewmodel.OAData);
                         viewmodel.Data.WorkflowJSON = JsonConvert.SerializeObject(viewmodel.OAData); 
                     }
-                    viewmodel.Data.Value = viewmodel.SelectedRoles.Count == 0 ? null: "^" + string.Join("^" , viewmodel.SelectedRoles.Select(p => p.Id)) + "^";
+                    viewmodel.Data.Value = viewmodel.SelectedRoles.Count == 0 ? null: "^" + string.Join("^" , viewmodel.SelectedRoles.Select(p => p.value)) + "^";
                     var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                     if (!result.IsOK)
                     {

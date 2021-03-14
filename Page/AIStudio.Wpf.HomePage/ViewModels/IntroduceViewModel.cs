@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AIStudio.Wpf.HomePage.ViewModels
+namespace AIStudio.Wpf.Home.ViewModels
 {
-    class HomeViewModel : DockWindowViewModel
+    class IntroduceViewModel : DockWindowViewModel
     {
-        public HomeViewModel()
+        public IntroduceViewModel()
         {
 
         }

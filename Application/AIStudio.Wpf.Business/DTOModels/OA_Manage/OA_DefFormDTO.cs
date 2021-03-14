@@ -50,8 +50,8 @@ namespace AIStudio.Wpf.Business.DTOModels
             }
         }
 
-        private List<Base_RoleEasy> _roles = new List<Base_RoleEasy>();
-        public List<Base_RoleEasy> Roles
+        private List<SelectOption> _roles = new List<SelectOption>();
+        public List<SelectOption> Roles
         {
             get { return _roles; }
             set

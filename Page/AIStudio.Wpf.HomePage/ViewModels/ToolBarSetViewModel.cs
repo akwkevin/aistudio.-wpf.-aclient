@@ -11,7 +11,7 @@ using System.Linq;
 using System.Windows.Input;
 using Util.Controls;
 
-namespace AIStudio.Wpf.HomePage.ViewModels
+namespace AIStudio.Wpf.Home.ViewModels
 {
     class ToolBarSetViewModel : BindableBase
     {

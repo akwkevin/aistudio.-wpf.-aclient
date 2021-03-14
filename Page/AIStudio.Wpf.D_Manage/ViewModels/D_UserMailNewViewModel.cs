@@ -17,8 +17,8 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
 {
     public class D_UserMailNewViewModel : BaseEditViewModel<D_UserMailDTO>
     {
-        private List<Base_UserEasy> _users;
-        public List<Base_UserEasy> Users
+        private List<SelectOption> _users;
+        public List<SelectOption> Users
         {
             get { return _users; }
             set
@@ -28,8 +28,8 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
         }
 
 
-        private ObservableCollection<Base_UserEasy> _selectedUsers = new ObservableCollection<Base_UserEasy>();
-        public ObservableCollection<Base_UserEasy> SelectedUsers
+        private ObservableCollection<SelectOption> _selectedUsers = new ObservableCollection<SelectOption>();
+        public ObservableCollection<SelectOption> SelectedUsers
         {
             get { return _selectedUsers; }
             set
@@ -81,7 +81,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
         protected override async void InitData()
         {
             Data = new D_UserMailDTO();
-            SelectedUsers = new ObservableCollection<Base_UserEasy>();
+            SelectedUsers = new ObservableCollection<SelectOption>();
             await GetUsers();
         }
 
@@ -90,7 +90,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             Users = await _userData.GetAllUser();
             if (Data != null && Data.UserIds != null)
             {
-                SelectedUsers = new ObservableCollection<Base_UserEasy>(Users.Where(p => Data.UserIds.Contains($"^{p.Id}^")));
+                SelectedUsers = new ObservableCollection<SelectOption>(Users.Where(p => Data.UserIds.Contains($"^{p.value}^")));
             }
         }
     
@@ -106,8 +106,8 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
 
                 this.Data.CreatorName = $"^{_operator?.Property?.UserName}^";
                 this.Data.CreatorId = $"^{_operator?.Property?.Id}^";
-                this.Data.UserIds = "^" + string.Join("^", this.SelectedUsers.Select(p => p.Id)) + "^";
-                this.Data.UserNames = "^" + string.Join("^", this.SelectedUsers.Select(p => p.UserName)) + "^";
+                this.Data.UserIds = "^" + string.Join("^", this.SelectedUsers.Select(p => p.value)) + "^";
+                this.Data.UserNames = "^" + string.Join("^", this.SelectedUsers.Select(p => p.text)) + "^";
                 this.Data.IsDraft = isDraft;
 
                 var result = await _dataProvider.GetData<AjaxResult>("/D_Manage/D_UserMail/SaveData", JsonConvert.SerializeObject(this.Data));

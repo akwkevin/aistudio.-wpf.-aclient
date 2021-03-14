@@ -23,7 +23,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             GetData();
         }
 
-        public List<Base_RoleEasy> Roles { get; set; }
+        public List<SelectOption> Roles { get; set; }
 
         public List<TreeModel> Departments { get; set; }     
 
@@ -49,7 +49,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 try
                 {
                     ShowWait();
-                    viewmodel.Data.roleIdsJson = JsonConvert.SerializeObject(viewmodel.SelectedRoles.Select(p => p.Id));
+                    viewmodel.Data.RoleIdList = viewmodel.SelectedRoles.Select(p => p.value).ToList();
                     viewmodel.Data.DepartmentId = viewmodel.SelectedDepartment?.Id;
                     var result = await _dataProvider.GetData<AjaxResult>("/Base_Manage/Base_User/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                     if (!result.IsOK)

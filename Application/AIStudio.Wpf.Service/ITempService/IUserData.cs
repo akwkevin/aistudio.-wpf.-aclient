@@ -6,9 +6,9 @@ namespace AIStudio.Wpf.Service.ITempService
 {
     public interface IUserData
     {
-        Task<List<Base_UserEasy>> GetAllUser();
+        Task<List<SelectOption>> GetAllUser();
         void ClearAllUser();
-        Task<List<Base_RoleEasy>> GetAllRole();
+        Task<List<SelectOption>> GetAllRole();
         void ClearAllRole();
         Task<List<TreeModel>> GetAllDepartment();
         void ClearAllDepartment();

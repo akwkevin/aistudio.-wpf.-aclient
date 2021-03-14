@@ -1,4 +1,4 @@
-﻿using AIStudio.Wpf.HomePage.ViewModels;
+﻿using AIStudio.Wpf.Home.ViewModels;
 using System;
 using System.Linq;
 using System.Windows;
@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Util.Controls;
 
-namespace AIStudio.Wpf.HomePage.Views
+namespace AIStudio.Wpf.Home.Views
 {
     /// <summary>
     /// MainContentRegion.xaml 的交互逻辑

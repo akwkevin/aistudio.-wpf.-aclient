@@ -53,8 +53,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private List<Base_UserEasy> _users;
-        public List<Base_UserEasy> Users
+        private List<SelectOption> _users;
+        public List<SelectOption> Users
         {
             get { return _users; }
             set
@@ -104,7 +104,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             {
                 ShowWait();
 
-                var result = await _dataProvider.GetData<OA_UserFormDTO>($"/OA_Manage/OA_UserForm/GetTheData?id={para.Id}");
+                var result = await _dataProvider.GetData<OA_UserFormDTO>($"/OA_Manage/OA_UserForm/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);
@@ -130,7 +130,15 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         private async Task GetTypes()
         {
-            var result = await _dataProvider.GetData<List<OA_DefTypeDTO>>($"/OA_Manage/OA_DefType/GetDataList?condition=Type&keyword={Data?.Type}");
+            var data = new
+            {
+                Search = new
+                {
+                    condition = "Type",
+                    keyword = Data?.Type
+                }
+            };
+            var result = await _dataProvider.GetData<List<OA_DefTypeDTO>>($"/OA_Manage/OA_DefType/GetDataList", JsonConvert.SerializeObject(data));
             if (!result.IsOK)
             {
                 throw new Exception(result.ErrorMessage);

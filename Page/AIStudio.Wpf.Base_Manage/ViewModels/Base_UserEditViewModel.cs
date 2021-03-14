@@ -1,6 +1,7 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business.DTOModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,8 +12,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
     public class Base_UserEditViewModel : BaseEditViewModel<Base_UserDTO>
     {
-        private List<Base_RoleEasy> _roles;
-        public List<Base_RoleEasy> Roles
+        private List<SelectOption> _roles;
+        public List<SelectOption> Roles
         {
             get { return _roles; }
             set
@@ -21,8 +22,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        private ObservableCollection<Base_RoleEasy> _selectedRoles = new ObservableCollection<Base_RoleEasy>();
-        public ObservableCollection<Base_RoleEasy> SelectedRoles
+        private ObservableCollection<SelectOption> _selectedRoles = new ObservableCollection<SelectOption>();
+        public ObservableCollection<SelectOption> SelectedRoles
         {
             get { return _selectedRoles; }
             set
@@ -79,7 +80,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
                 control.WaitInfo = "正在获取数据";
 
-                var result = await _dataProvider.GetData<Base_UserDTO>($"/{Area}/{typeof(Base_UserDTO).Name.Replace("DTO", "")}/GetTheData?id={para.Id}");
+                var result = await _dataProvider.GetData<Base_UserDTO>($"/{Area}/{typeof(Base_UserDTO).Name.Replace("DTO", "")}/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);
@@ -104,7 +105,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             Roles = await _userData.GetAllRole();
             if (Data != null && Data.RoleIdList != null)
             {
-                SelectedRoles = new ObservableCollection<Base_RoleEasy>(Roles.Where(p => Data.RoleIdList.Contains(p.Id)));
+                SelectedRoles = new ObservableCollection<SelectOption>(Roles.Where(p => Data.RoleIdList.Contains(p.value)));
             }
         }
 

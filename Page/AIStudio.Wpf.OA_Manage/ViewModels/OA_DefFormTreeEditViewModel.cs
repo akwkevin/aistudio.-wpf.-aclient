@@ -23,8 +23,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private List<Base_RoleEasy> _roles;
-        public List<Base_RoleEasy> Roles
+        private List<SelectOption> _roles;
+        public List<SelectOption> Roles
         {
             get { return _roles; }
             set
@@ -34,8 +34,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         }
 
 
-        private List<Base_UserEasy> _users;
-        public List<Base_UserEasy> Users
+        private List<SelectOption> _users;
+        public List<SelectOption> Users
         {
             get { return _users; }
             set

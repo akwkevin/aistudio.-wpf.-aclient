@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace AIStudio.Wpf.HomePage.Models
+namespace AIStudio.Wpf.Home.Models
 {
     public class AccentColorMenuData
     {

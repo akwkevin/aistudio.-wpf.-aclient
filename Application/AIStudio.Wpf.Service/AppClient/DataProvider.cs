@@ -72,7 +72,7 @@ namespace AIStudio.Wpf.Service.AppClient
             }
         }
 
-        public async Task<WebResponse<T>> GetData<T>(string url, Dictionary<string, string> data = null)
+        public async Task<WebResponse<T>> GetData<T>(string url, Dictionary<string, string> data)
         {
             try
             {

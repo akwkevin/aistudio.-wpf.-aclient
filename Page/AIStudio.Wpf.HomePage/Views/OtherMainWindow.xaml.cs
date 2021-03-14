@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Input;
 using Util.Controls;
 
-namespace AIStudio.Wpf.HomePage
+namespace AIStudio.Wpf.Home
 {
     /// <summary>
     /// OtherMainWindow.xaml 的交互逻辑

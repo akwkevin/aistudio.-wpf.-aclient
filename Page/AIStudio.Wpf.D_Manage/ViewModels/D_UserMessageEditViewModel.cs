@@ -192,15 +192,19 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                     try
                     {
                         ShowWait();
-                        Dictionary<string, string> data = new Dictionary<string, string>();
-                        data.Add("creatorId", _operator.Property?.Id);
-                        data.Add("creatorAvatar", _operator.Property?.Avatar??"");
-                        data.Add("userId", this.SelectedUser?.UserId);
-                        data.Add("userAvatar", this.SelectedUser?.Avatar??"");
-                        data.Add("isGroup", this.SelectedUser?.IsGroup.ToString());
-                        data.Add("start", start.ToString("yyyy-MM-dd HH:mm:ss"));
-                        data.Add("end", end.ToString("yyyy-MM-dd HH:mm:ss"));
-                        var result = await _dataProvider.GetData<List<D_UserMessageDTO>>($"/D_Manage/D_UserMessage/GetHistoryDataDialogList", data);
+                        var data = new
+                        {
+                            Search = new
+                            {
+                                creatorId = _operator.Property?.Id,
+                                userId = this.SelectedUser?.UserId,
+                                isGroup = this.SelectedUser?.IsGroup,
+                                start = start.ToString("yyyy - MM - dd HH:mm: ss"),
+                                end = end.ToString("yyyy - MM - dd HH:mm: ss")
+                            }
+                        };
+
+                        var result = await _dataProvider.GetData<List<D_UserMessageDTO>>($"/D_Manage/D_UserMessage/GetHistoryDataList", JsonConvert.SerializeObject(data));
                         if (!result.IsOK)
                         {
                             throw new Exception(result.ErrorMessage);
@@ -230,13 +234,18 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
 
                 if (this.SelectedUser != null)
                 {
-                    Dictionary<string, string> data = new Dictionary<string, string>();
-                    data.Add("userId", _operator.Property?.Id);
-                    data.Add("creatorId", this.SelectedUser?.UserId);
-                    data.Add("markflag", true.ToString());
-                    data.Add("isGroup", this.SelectedUser?.IsGroup.ToString());
+                    var data = new
+                    {
+                        Search = new
+                        {
+                            userId = _operator.Property?.Id,
+                            creatorId = this.SelectedUser?.UserId,
+                            markflag = true,
+                            isGroup = this.SelectedUser?.IsGroup
+                        }
+                    };
 
-                    var result = await _dataProvider.GetData<List<D_UserMessageDTO>>($"/D_Manage/D_UserMessage/GetHistoryDataList", data);
+                    var result = await _dataProvider.GetData<List<D_UserMessageDTO>>($"/D_Manage/D_UserMessage/GetPageHistoryDataList", JsonConvert.SerializeObject(data));
                     if (!result.IsOK)
                     {
                         throw new Exception(result.ErrorMessage);

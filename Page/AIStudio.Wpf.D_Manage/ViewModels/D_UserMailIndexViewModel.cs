@@ -76,6 +76,10 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             SendViewModel = new D_UserMailViewModel(1, Identifier);
             ReceiveViewModel = new D_UserMailViewModel(2, Identifier);
             DraftViewModel = new D_UserMailViewModel(3, Identifier);
+
+            SendViewModel.Initialize();
+            ReceiveViewModel.Initialize();
+            DraftViewModel.Initialize();
         }
 
         public D_UserMailIndexViewModel(string[] id)//无效参数，做个标记

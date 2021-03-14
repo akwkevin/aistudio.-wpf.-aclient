@@ -31,7 +31,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         }
 
         private ObservableCollection<Base_UserDTO> _data2;
-        public  ObservableCollection<Base_UserDTO> Data2
+        public ObservableCollection<Base_UserDTO> Data2
         {
             get { return _data2; }
             set
@@ -79,7 +79,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             {
                 return this._subAddCommand ?? (this._subAddCommand = new CanExecuteDelegateCommand<Base_DepartmentTree>(para => this.Edit(para, true)));
             }
-        }        
+        }
 
         private ICommand _selectedCommand;
         public ICommand SelectedCommand
@@ -90,7 +90,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_DepartmentViewModel():base("Base_Manage", typeof(Base_DepartmentEditViewModel), typeof(Base_DepartmentEdit))
+        public Base_DepartmentViewModel() : base("Base_Manage", typeof(Base_DepartmentEditViewModel), typeof(Base_DepartmentEdit))
         {
             Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue };
         }
@@ -139,7 +139,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             var viewmodel = new Base_DepartmentEditViewModel(isSubAdd ? null : paraTree, Area, Identifier);
             if (isSubAdd)
             {
-                viewmodel.SelectedDepartment = TreeHelper.GetTreeModel(viewmodel.Departments, paraTree.Id); 
+                viewmodel.SelectedDepartment = TreeHelper.GetTreeModel(viewmodel.Departments, paraTree.Id);
             }
             var dialog = new Base_DepartmentEdit(viewmodel);
             dialog.ValidationAction = (() =>
@@ -180,7 +180,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             base.Delete(id);
         }
 
-        protected override void Search(object para=null)
+        protected override void Search(object para = null)
         {
             base.Search(para);
         }
@@ -192,7 +192,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
                 control.WaitInfo = "正在获取数据";
 
-                var result = await _dataProvider.GetData<List<Base_UserDTO>>($"/Base_Manage/Base_User/GetAllDataListByDepartment?departmentid={para.Id}");
+                var result = await _dataProvider.GetData<List<Base_UserDTO>>($"/Base_Manage/Base_User/GetDataListByDepartment", JsonConvert.SerializeObject(new { id = para.Id }));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);

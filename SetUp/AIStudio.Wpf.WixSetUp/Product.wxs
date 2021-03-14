@@ -134,8 +134,8 @@
         <File Id="AIStudio.Wpf.DemoPage.dll"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Release\net472\AIStudio.Wpf.DemoPage.dll" />
         <File Id="AIStudio.Wpf.D_Manage.dll"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Release\net472\AIStudio.Wpf.D_Manage.dll" />
         <File Id="AIStudio.Wpf.D_Manage.dll.config"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Release\net472\AIStudio.Wpf.D_Manage.dll.config" />
-        <File Id="AIStudio.Wpf.HomePage.dll"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Release\net472\AIStudio.Wpf.HomePage.dll" />
-        <File Id="AIStudio.Wpf.HomePage.dll.config"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Release\net472\AIStudio.Wpf.HomePage.dll.config" />
+        <File Id="AIStudio.Wpf.Home.dll"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Release\net472\AIStudio.Wpf.Home.dll" />
+        <File Id="AIStudio.Wpf.Home.dll.config"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Release\net472\AIStudio.Wpf.Home.dll.config" />
         <File Id="AIStudio.Wpf.LocalConfiguration.dll"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Release\net472\AIStudio.Wpf.LocalConfiguration.dll" />
         <File Id="AIStudio.Wpf.OA_Manage.dll"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Release\net472\AIStudio.Wpf.OA_Manage.dll" />
         <File Id="AIStudio.Wpf.OA_Manage.dll.config"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Release\net472\AIStudio.Wpf.OA_Manage.dll.config" />

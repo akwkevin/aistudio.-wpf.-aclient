@@ -41,7 +41,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             Identifier = identifier;
         }
 
-        protected override void Initialize()
+        public new void Initialize()
         {
             base.Initialize();
             GetData();
@@ -59,29 +59,25 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                 if (iswaiting == false)
                 {
                     ShowWait();
-                }
+                }             
 
-                Dictionary<string, string> data = new Dictionary<string, string>();
-                data.Add("PageIndex", Pagination.PageIndex.ToString());
-                data.Add("PageRows", Pagination.PageRows.ToString());
-                data.Add("SortField", Pagination.SortField ?? "Id");
-                data.Add("SortType", Pagination.SortType);
-                data.Add("keyword", KeyWord ?? "");
-                data.Add("condition", ConditionItem != null ? ConditionItem.Tag.ToString() : "");
-                if (this.IndexType == 1)
+                var data = new
                 {
-                    data.Add("userId", _operator.Property?.Id);
-                }
-                if (this.IndexType == 2 || this.IndexType == 3)
-                {
-                    data.Add("creatorId", _operator.Property?.Id);
-                }
-                if (this.IndexType == 3)
-                {
-                    data.Add("draft", "True");
-                }
+                    PageIndex = Pagination.PageIndex,
+                    PageRows = Pagination.PageRows,
+                    SortField = Pagination.SortField,
+                    SortType = Pagination.SortType,
+                    Search = new
+                    {
+                        keyword = KeyWord,
+                        condition = ConditionItem?.Tag,
+                        userId = this.IndexType == 1 ? _operator.Property?.Id : "",
+                        creatorId = this.IndexType == 2 || this.IndexType == 3 ? _operator.Property?.Id : "",
+                        draft = this.IndexType == 3 ? true : false,
+                    }                    
+                };
 
-                var result = await _dataProvider.GetData<List<D_UserMailDTO>>($"/D_Manage/D_UserMail/GetDataList", data);
+                var result = await _dataProvider.GetData<List<D_UserMailDTO>>($"/D_Manage/D_UserMail/GetDataList", JsonConvert.SerializeObject(data));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);

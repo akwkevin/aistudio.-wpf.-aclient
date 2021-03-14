@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace AIStudio.Wpf.Business.DTOModels
 {
-    public partial class Base_LogDTO : Base_Log, INotifyPropertyChanged, IIsChecked
+    public partial class Base_UserLogDTO : Base_UserLog, INotifyPropertyChanged, IIsChecked
     {
         private bool isChecked;
         public bool IsChecked
@@ -35,7 +35,7 @@ namespace AIStudio.Wpf.Business.DTOModels
         }
     }
 
-    public partial class Base_LogDTO : IDataErrorInfo
+    public partial class Base_UserLogDTO : IDataErrorInfo
     {
         class Base_LogDTOMetadata
         {

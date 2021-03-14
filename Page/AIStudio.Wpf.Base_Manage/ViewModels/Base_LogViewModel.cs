@@ -8,7 +8,7 @@ using Util.Controls;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_LogViewModel : BaseWindowViewModel<Base_LogDTO>
+    public class Base_LogViewModel : BaseWindowViewModel<Base_UserLogDTO>
     {
         private string _logContent;
         public string LogContent
@@ -122,7 +122,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_LogViewModel():base("Base_Manage", typeof(BaseEditViewModel<Base_LogDTO>), typeof(BaseDialog))
+        public Base_LogViewModel():base("Base_Manage", typeof(BaseEditViewModel<Base_UserLogDTO>), typeof(BaseDialog))
         {
             
         }
@@ -193,7 +193,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 {
                     data.Add("endTime", EndTime.Value.ToString("yyyy-MM-dd hh:mm:ss"));
                 }
-                var result = await _dataProvider.GetData<List<Base_LogDTO>>($"/Base_Manage/Base_Log/GetLogList", data);
+                var result = await _dataProvider.GetData<List<Base_UserLogDTO>>($"/Base_Manage/Base_Log/GetLogList", data);
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);
@@ -201,7 +201,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 else
                 {
                     Pagination.Total = result.Total;
-                    Data = new ObservableCollection<Base_LogDTO>(result.ResponseItem);
+                    Data = new ObservableCollection<Base_UserLogDTO>(result.ResponseItem);
                 }
             }
             catch (Exception ex)

@@ -7,7 +7,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System.Windows.Input;
 
-namespace AIStudio.Wpf.HomePage.ViewModels
+namespace AIStudio.Wpf.Home.ViewModels
 {
     public class OtherMainWindowViewModel : BindableBase
     {      

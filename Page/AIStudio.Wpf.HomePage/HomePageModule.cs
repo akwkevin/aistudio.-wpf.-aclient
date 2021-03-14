@@ -1,13 +1,13 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
-using AIStudio.Wpf.HomePage.Views;
+using AIStudio.Wpf.Home.Views;
 using AIStudio.Core;
 using System.Reflection;
 using Util.Controls;
 using System.Windows.Controls;
 
-namespace AIStudio.Wpf.HomePage
+namespace AIStudio.Wpf.Home
 {
     public class HomePageModule : IModule
     {
@@ -23,7 +23,7 @@ namespace AIStudio.Wpf.HomePage
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<MainView>();
-            containerRegistry.RegisterForNavigation<HomeView>();
+            containerRegistry.RegisterForNavigation(typeof(IntroduceView), typeof(IntroduceView).FullName);
 
 #if DEBUG
             Assembly assembly = Assembly.Load("AIStudio.Wpf.DemoPage");

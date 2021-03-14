@@ -73,14 +73,20 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     ShowWait();
                 }
 
-                Dictionary<string, string> data = new Dictionary<string, string>();
-                data.Add("PageIndex", Pagination.PageIndex.ToString());
-                data.Add("PageRows", Pagination.PageRows.ToString());
-                data.Add("SortField", Pagination.SortField ?? "Id");
-                data.Add("SortType", Pagination.SortType);
-                data.Add("keyword", KeyWord ?? "");
-                data.Add("condition", ConditionItem != null ? ConditionItem.Tag.ToString() : "");
-                var result = await _dataProvider.GetData<List<OA_DefTypeTree>>($"/OA_Manage/OA_DefType/GetTreeDataList", data);
+                var data = new
+                {
+                    PageIndex = Pagination.PageIndex,
+                    PageRows = Pagination.PageRows,
+                    SortField = Pagination.SortField,
+                    SortType = Pagination.SortType,
+                    Search = new
+                    {
+                        keyword = KeyWord,
+                        condition = ConditionItem?.Tag,
+                    }
+                };
+
+                var result = await _dataProvider.GetData<List<OA_DefTypeTree>>($"/OA_Manage/OA_DefType/GetTreeDataList", JsonConvert.SerializeObject(data));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);
