@@ -40,16 +40,28 @@ namespace AIStudio.Wpf.Client.Views
                 AutoUpdater.LetUserSelectRemindLater = true;
                 AutoUpdater.RemindLaterTimeSpan = RemindLaterFormat.Minutes;
                 AutoUpdater.RemindLaterAt = 1;
-                AutoUpdater.ReportErrors = true;
+                AutoUpdater.ReportErrors = false;
                 AutoUpdater.Synchronous = true;
-                AutoUpdater.Start(LocalSetting.UpdateAddress); 
+                AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
+                AutoUpdater.Start(LocalSetting.UpdateAddress);
+
+                
             }
             catch (Exception ex)
             {
                 _logger.Log(LogLevel.Error, LogType.系统异常, ex.ToString());
             }
 
-            this.DialogResult = true;
+            if (IsVisible)
+            {
+                this.DialogResult = true;
+            }
+
+        }
+
+        private void AutoUpdater_ApplicationExitEvent()
+        {
+            this.DialogResult = false;
         }
     }
 }

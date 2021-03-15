@@ -2,7 +2,7 @@
 <package >
 <metadata>
     <id>AIStudio.Wpf.Client</id>
-    <version>1.0.20210309-rc1</version>
+    <version>1.0.0-rc1</version>
     <authors>AIStudio</authors>
     <owners>AIStudio</owners>
     <description>AIStudio.Wpf.Client</description>
