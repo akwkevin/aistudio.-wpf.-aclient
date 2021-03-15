@@ -1,0 +1,6 @@
+<item>
+  <version>2.0.0.0</version>
+  <url>http://localhost:5000/Update/AutoUpdaterTest.zip</url>
+  <changelog>http://localhost:5000/Update/changelog.html</changelog>
+  <mandatory>false</mandatory>
+</item>

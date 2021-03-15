@@ -286,7 +286,8 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 ThemeManager.Current.ChangeThemeBaseColor(Application.Current, data.Name);
                 LocalSetting.SetAppSetting("Theme", data.Name);
-               
+                InitThemeAddition();
+
                 if (ThemeChangedHelper.IsThemeChanged !=null)
                     ThemeChangedHelper.IsThemeChanged();
             }
@@ -298,28 +299,11 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 ThemeManager.Current.ChangeThemeColorScheme(Application.Current, data.Name);
                 LocalSetting.SetAppSetting("Accent", data.Name);
+                InitThemeAddition();
 
-            
                 if (ThemeChangedHelper.IsThemeChanged != null)
                     ThemeChangedHelper.IsThemeChanged();
             }
-        }
-
-        private void DoChangeAddition(string oldname, string newname)
-        {
-            try
-            {
-                string requestedStyle = "/AIStudio.Resource;component/Colors/Themes/" + oldname + "Addition.xaml";
-                ResourceDictionary resourceAdditionDictionary = Application.Current.Resources.MergedDictionaries.FirstOrDefault(d => d.Source.OriginalString.Equals(@requestedStyle));
-                Application.Current.Resources.MergedDictionaries.Remove(resourceAdditionDictionary);
-                requestedStyle = "/AIStudio.Resource;component/Colors/Themes/" + newname + "Addition.xaml";
-                resourceAdditionDictionary = new ResourceDictionary();
-                resourceAdditionDictionary.Source = new Uri(@requestedStyle, UriKind.RelativeOrAbsolute);
-                Application.Current.Resources.MergedDictionaries.Add(resourceAdditionDictionary);
-                resourceAdditionDictionary.Add("TitleBackgroundBrush", resourceAdditionDictionary[LocalSetting.TitleAccent == "Accent" ? "TitleBackgroundBrush2" : "TitleBackgroundBrush1"]);
-                resourceAdditionDictionary.Add("TitleForegroundBrush", resourceAdditionDictionary[LocalSetting.TitleAccent == "Accent" ? "TitleForegroundBrush2" : "TitleForegroundBrush1"]);
-            }
-            catch { }
         }
 
         private void DoChangeNavigationAccent(object sender)

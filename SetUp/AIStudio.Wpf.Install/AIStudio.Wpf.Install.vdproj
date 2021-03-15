@@ -27,7 +27,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CB86E0944BFB47B0B12B4880106960E6"
+        "MsmKey" = "8:_AF5242D8B3894B0E81358E2D8DBE6D5E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B762198DCE8E4E2A8604842603928B36"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -56,6 +62,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -354,7 +368,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_CB86E0944BFB47B0B12B4880106960E6"
+            "Target" = "8:"
             "Folder" = "8:_2647CC4E26924F06A899363E1FB87B8A"
             "WorkingFolder" = "8:_F2F0EBF4FF9944D28DFE579C0FBBB164"
             "Icon" = "8:_81798D9EC03049969BDBFE6CF8D880B1"
@@ -396,7 +410,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_CB86E0944BFB47B0B12B4880106960E6"
+            "Target" = "8:"
             "Folder" = "8:_481680E25DC44DC8AF0DD595EC5DC48D"
             "WorkingFolder" = "8:_F2F0EBF4FF9944D28DFE579C0FBBB164"
             "Icon" = "8:_81798D9EC03049969BDBFE6CF8D880B1"
@@ -801,9 +815,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CB86E0944BFB47B0B12B4880106960E6"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_AF5242D8B3894B0E81358E2D8DBE6D5E"
             {
-            "SourcePath" = "8:..\\..\\Application\\AIStudio.Wpf.Client\\obj\\Release\\net472\\AIStudio.Wpf.Client.exe"
+            "SourcePath" = "8:..\\..\\Application\\AIStudio.Wpf.Client\\obj\\Release\\netcoreapp3.1\\AIStudio.Wpf.Client.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_F2F0EBF4FF9944D28DFE579C0FBBB164"
@@ -823,13 +837,41 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{8B514D7B-F259-483A-98F2-2FA2A7BD1282}"
+            "OutputProjectGuid" = "8:{73F212A5-7C61-49F6-AD3D-848DAD5E7174}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_DB583B2D443D4EEAA4FE81658596C446"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B762198DCE8E4E2A8604842603928B36"
+            {
+            "SourcePath" = "8:..\\..\\Application\\AIStudio.Wpf.Client\\obj\\Release\\netcoreapp3.1\\AIStudio.Wpf.Client.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F2F0EBF4FF9944D28DFE579C0FBBB164"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:PublishItemsOutputGroup"
+            "OutputProjectGuid" = "8:{73F212A5-7C61-49F6-AD3D-848DAD5E7174}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E0F3004BE5A64ACFB18500D0995EDE91"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
@@ -850,8 +892,8 @@
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:PublishItemsOutputGroup"
-            "OutputProjectGuid" = "8:{8B514D7B-F259-483A-98F2-2FA2A7BD1282}"
+            "OutputGroupCanonicalName" = "8:XmlSerializer"
+            "OutputProjectGuid" = "8:{73F212A5-7C61-49F6-AD3D-848DAD5E7174}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

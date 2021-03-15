@@ -11,7 +11,7 @@
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" TextElement.FontSize="20">
             <TextBlock x:Name="CurrentVersion" Text="Loading..."/>
-            <TextBlock x:Name="NewVersion" />
+            <util:BusyIndicator IsBusy="True" Content="正在检查更新..." />
         </StackPanel>
     </Grid>
 </util:WindowBase>

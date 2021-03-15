@@ -17,7 +17,7 @@ namespace AIStudio.Wpf.TestUnit.Tests
         {
             await TestHost.SwitchToAppThread();
             
-            var homeView = new HomeView();
+            var homeView = new IntroduceView();
             var window = new Window();
             window.Content = homeView;
             window.ShowDialog();

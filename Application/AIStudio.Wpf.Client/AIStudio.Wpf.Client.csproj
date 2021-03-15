@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>net472</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net472</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>A.ico</ApplicationIcon>
   </PropertyGroup>
@@ -18,12 +18,12 @@
   <ItemGroup>
     <PackageReference Include="ShowMeTheXAML" Version="2.0.0" />
     <PackageReference Include="ShowMeTheXAML.MSBuild" Version="2.0.0" />
-    <PackageReference Include="squirrel.windows" Version="2.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj" />
     <ProjectReference Include="..\..\Page\AIStudio.Wpf.HomePage\AIStudio.Wpf.Home.csproj" />
+    <ProjectReference Include="..\..\SetUp\AutoUpdater.NET\AutoUpdater.NET\AutoUpdater.NET.csproj" />
   </ItemGroup>
 
   <ItemGroup>

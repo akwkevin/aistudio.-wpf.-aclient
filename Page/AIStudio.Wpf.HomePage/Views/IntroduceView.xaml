@@ -13,7 +13,7 @@
         <FlowDocument Foreground="{DynamicResource MahApps.Brushes.Text}" 
                       FontFamily="{DynamicResource MahApps.Fonts.Family.Control}"
                       FontSize="{DynamicResource MahApps.Font.Size.Content}">
-            <Paragraph>本框架为.NET Core3.0+Wpf（CS-重点）/Ant Design Vue版（此处不在介绍）</Paragraph>
+            <Paragraph>本框架为.NET Core5.0+Wpf（CS-重点）/Ant Design Vue版（此处不在介绍）/Vant(手机端-稍微介绍下) </Paragraph>
             <Paragraph>本框架旨在极大的提高开发效率</Paragraph>
             <Paragraph>
                 使用技术栈：
@@ -51,7 +51,9 @@
                 相关链接:
                 <LineBreak />
                 本框架链接,欢迎点星支持:
-                <Hyperlink core:HyperlinkHelper.ViewInBrower="True" NavigateUri="https://gitee.com/akwkevin/AClient">https://gitee.com/akwkevin/AClient</Hyperlink>
+                <Hyperlink core:HyperlinkHelper.ViewInBrower="True" NavigateUri="https://gitee.com/akwkevin/aistudio.-wpf.-aclient">https://gitee.com/akwkevin/aistudio.-wpf.-aclient</Hyperlink>
+                本框架Vue链接,欢迎点星支持:
+                <Hyperlink core:HyperlinkHelper.ViewInBrower="True" NavigateUri="https://gitee.com/akwkevin/aistudio.-vue.-aclient">https://gitee.com/akwkevin/aistudio.-vue.-aclient</Hyperlink>
                 <LineBreak />
                 个人GitHub,欢迎点星支持:
                 <Hyperlink core:HyperlinkHelper.ViewInBrower="True" NavigateUri="https://gitee.com/akwkevin">https://gitee.com/akwkevin</Hyperlink>

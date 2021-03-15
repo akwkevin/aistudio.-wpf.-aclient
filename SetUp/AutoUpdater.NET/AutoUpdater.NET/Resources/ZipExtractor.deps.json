@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "ZipExtractor/1.2.2": {
+        "dependencies": {
+          "ILRepack.Lib.MSBuild.Task": "2.0.18.1",
+          "ZipStorer": "3.6.0"
+        },
+        "runtime": {
+          "ZipExtractor.dll": {}
+        }
+      },
+      "ILRepack.Lib.MSBuild.Task/2.0.18.1": {},
+      "ZipStorer/3.6.0": {
+        "runtime": {
+          "lib/netstandard2.0/ZipStorer.dll": {
+            "assemblyVersion": "3.6.0.0",
+            "fileVersion": "3.6.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ZipExtractor/1.2.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ILRepack.Lib.MSBuild.Task/2.0.18.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qZ7CfC96nRO47N3IC5DYtmGCJHUzVPqrGyN6J22Drfvk97u/LK8b/weFSbJPhTv8Z2kL6RkOO/vTL+FJeRovag==",
+      "path": "ilrepack.lib.msbuild.task/2.0.18.1",
+      "hashPath": "ilrepack.lib.msbuild.task.2.0.18.1.nupkg.sha512"
+    },
+    "ZipStorer/3.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YSlVMo9/6Ozi0xzdmhY5PlGmLIThor3KmPUYQ8xqME2+m47wXpezul8xYy42y4tyztBzOJgNJjddWSLGKlax3A==",
+      "path": "zipstorer/3.6.0",
+      "hashPath": "zipstorer.3.6.0.nupkg.sha512"
+    }
+  }
+}

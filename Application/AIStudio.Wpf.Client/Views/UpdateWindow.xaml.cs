@@ -1,7 +1,10 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
-using Squirrel;
+using AutoUpdaterDotNET;
 using System;
+using System.Globalization;
+using System.Reflection;
+using System.Threading;
 using System.Windows;
 using Util.Controls;
 
@@ -24,29 +27,22 @@ namespace AIStudio.Wpf.Client.Views
             this.Loaded += UpdateWindow_OnLoaded;
         }
 
-        private async void UpdateWindow_OnLoaded(object sender, RoutedEventArgs e)
+        private void UpdateWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            //http://192.168.0.5:8080/SquirrelReleases
             try
             {
-                using (var updateManager = new UpdateManager(LocalSetting.UpdateAddress))
-                {
-                    CurrentVersion.Text = $"Current version: {updateManager.CurrentlyInstalledVersion()}";
+                Assembly assembly = Assembly.GetEntryAssembly();
+                CurrentVersion.Text = $"Current Version: {assembly.GetName().Version}";
+                LocalSetting.SetAppSetting("Version", CurrentVersion.Text);
 
-                    LocalSetting.SetAppSetting("Version", updateManager.CurrentlyInstalledVersion().ToString());
-
-                    var releaseEntry = await updateManager.UpdateApp();
-                    NewVersion.Text = $"Update Version: {releaseEntry?.Version.ToString() ?? "No update"}";
-                    if (releaseEntry != null)
-                    {
-                        this.Visibility = Visibility.Visible;
-                        var r = System.Windows.MessageBox.Show("检测到新版本，是否重启更新？");
-                        if (r == MessageBoxResult.OK)
-                        {
-                            UpdateManager.RestartApp();
-                        }
-                    }
-                }
+                Thread.CurrentThread.CurrentCulture =
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture("zh");
+                AutoUpdater.LetUserSelectRemindLater = true;
+                AutoUpdater.RemindLaterTimeSpan = RemindLaterFormat.Minutes;
+                AutoUpdater.RemindLaterAt = 1;
+                AutoUpdater.ReportErrors = true;
+                AutoUpdater.Synchronous = true;
+                AutoUpdater.Start(LocalSetting.UpdateAddress); 
             }
             catch (Exception ex)
             {
