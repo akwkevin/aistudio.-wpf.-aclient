@@ -8,10 +8,6 @@
     <Version>1.0.0</Version>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
-    <WarningLevel>5</WarningLevel>
-  </PropertyGroup>
-
   <ItemGroup>
     <None Remove="A.ico" />
   </ItemGroup>

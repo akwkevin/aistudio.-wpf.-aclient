@@ -307,8 +307,8 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
         {
             if (itemsControl is MultiSelector)
             {
-                ((MultiSelector)itemsControl).SelectedItem = null;
-                ((MultiSelector)itemsControl).SelectedItem = item;
+                 ((MultiSelector)itemsControl).SetCurrentValue(Selector.SelectedItemProperty, null);
+                ((MultiSelector)itemsControl).SetCurrentValue(Selector.SelectedItemProperty, item);
             }
             else if (itemsControl is ListBox)
             {
@@ -316,13 +316,13 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
                 try
                 {
                     // change SelectionMode for UpdateAnchorAndActionItem
-                    ((ListBox)itemsControl).SelectionMode = SelectionMode.Single;
-                    ((ListBox)itemsControl).SelectedItem = null;
-                    ((ListBox)itemsControl).SelectedItem = item;
+                    ((ListBox)itemsControl).SetCurrentValue(ListBox.SelectionModeProperty, SelectionMode.Single);
+                    ((ListBox)itemsControl).SetCurrentValue(Selector.SelectedItemProperty, null);
+                    ((ListBox)itemsControl).SetCurrentValue(Selector.SelectedItemProperty, item);
                 }
                 finally
                 {
-                    ((ListBox)itemsControl).SelectionMode = selectionMode;
+                    ((ListBox)itemsControl).SetCurrentValue(ListBox.SelectionModeProperty, selectionMode);
                 }
             }
             else if (itemsControl is TreeViewItem)
@@ -337,7 +337,7 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
                         var prevSelectedTreeViewItem = treeView.ItemContainerGenerator.ContainerFromItem(prevSelectedItem) as TreeViewItem;
                         if (prevSelectedTreeViewItem != null)
                         {
-                            prevSelectedTreeViewItem.IsSelected = false;
+                            prevSelectedTreeViewItem.SetCurrentValue(TreeViewItem.IsSelectedProperty, false);
                         }
                     }
                 }
@@ -346,7 +346,7 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
                 var treeViewItem = ((TreeViewItem)itemsControl).ItemContainerGenerator.ContainerFromItem(item) as TreeViewItem;
                 if (treeViewItem != null)
                 {
-                    treeViewItem.IsSelected = true;
+                    treeViewItem.SetCurrentValue(TreeViewItem.IsSelectedProperty, true);
                 }
             }
             else if (itemsControl is TreeView)
@@ -358,7 +358,7 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
                     var prevSelectedTreeViewItem = ((TreeView)itemsControl).ItemContainerGenerator.ContainerFromItem(prevSelectedItem) as TreeViewItem;
                     if (prevSelectedTreeViewItem != null)
                     {
-                        prevSelectedTreeViewItem.IsSelected = false;
+                        prevSelectedTreeViewItem.SetCurrentValue(TreeViewItem.IsSelectedProperty, false);
                     }
                 }
                 // set new selected item
@@ -366,13 +366,13 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
                 var treeViewItem = ((TreeView)itemsControl).ItemContainerGenerator.ContainerFromItem(item) as TreeViewItem;
                 if (treeViewItem != null)
                 {
-                    treeViewItem.IsSelected = true;
+                    treeViewItem.SetCurrentValue(TreeViewItem.IsSelectedProperty, true);
                 }
             }
             else if (itemsControl is Selector)
             {
-                ((Selector)itemsControl).SelectedItem = null;
-                ((Selector)itemsControl).SelectedItem = item;
+                ((Selector)itemsControl).SetCurrentValue(Selector.SelectedItemProperty, null);
+                ((Selector)itemsControl).SetCurrentValue(Selector.SelectedItemProperty, item);
             }
         }
 
@@ -388,14 +388,14 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
                 {
                     ((MultiSelector)itemsControl).SelectedItems.Clear();
                 }
-                ((MultiSelector)itemsControl).SelectedItem = null;
+                ((MultiSelector)itemsControl).SetCurrentValue(Selector.SelectedItemProperty, null);
             }
             else if (itemsControl is ListBox)
             {
                 if (((ListBox)itemsControl).CanSelectMultipleItems())
                 {
                     ((ListBox)itemsControl).SelectedItems.Clear();
-                    ((ListBox)itemsControl).SelectedItem = null;
+                    ((ListBox)itemsControl).SetCurrentValue(Selector.SelectedItemProperty, null);
                 }
             }
             else if (itemsControl is TreeViewItem)
@@ -412,13 +412,13 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
                     var prevSelectedTreeViewItem = ((TreeView)itemsControl).ItemContainerGenerator.ContainerFromItem(prevSelectedItem) as TreeViewItem;
                     if (prevSelectedTreeViewItem != null)
                     {
-                        prevSelectedTreeViewItem.IsSelected = false;
+                        prevSelectedTreeViewItem.SetCurrentValue(TreeViewItem.IsSelectedProperty, false);
                     }
                 }
             }
             else if (itemsControl is Selector)
             {
-                ((Selector)itemsControl).SelectedItem = null;
+                ((Selector)itemsControl).SetCurrentValue(Selector.SelectedItemProperty, null);
             }
         }
 
@@ -522,10 +522,10 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
                 }
                 else
                 {
-                    multiSelector.SelectedItem = null;
+                    multiSelector.SetCurrentValue(Selector.SelectedItemProperty, null);
                     if (itemSelected)
                     {
-                        multiSelector.SelectedItem = item;
+                        multiSelector.SetCurrentValue(Selector.SelectedItemProperty, item);
                     }
                 }
             }
@@ -546,10 +546,10 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
                 }
                 else
                 {
-                    listBox.SelectedItem = null;
+                    listBox.SetCurrentValue(Selector.SelectedItemProperty, null);
                     if (itemSelected)
                     {
-                        listBox.SelectedItem = item;
+                        listBox.SetCurrentValue(Selector.SelectedItemProperty, item);
                     }
                 }
             }

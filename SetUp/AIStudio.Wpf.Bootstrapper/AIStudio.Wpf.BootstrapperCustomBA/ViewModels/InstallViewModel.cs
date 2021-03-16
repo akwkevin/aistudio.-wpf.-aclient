@@ -50,7 +50,6 @@ namespace CustomBA.ViewModels
         private int cacheProgress;
         private int executeProgress;
         private Version _version = new Version("2.0.0.0");
-        private bool _installEnabled;
         private int progressPhases=1;
         private bool isUnstalling=false;
         #region Command
@@ -302,8 +301,6 @@ namespace CustomBA.ViewModels
         private bool _lableback=true;
         private string _repairText = "Repair";
         private string _installFollder = "";
-        private bool _step1;
-        private bool _step2;
         private string _spaceInfo = "所需空间200M 可用空间30G";
         private bool _isAgree=true;
 

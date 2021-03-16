@@ -90,7 +90,7 @@ namespace AutoUpdaterDotNET
             }
 
             try
-            {
+            {                
                 if (asyncCompletedEventArgs.Error != null)
                 {
                     throw asyncCompletedEventArgs.Error;

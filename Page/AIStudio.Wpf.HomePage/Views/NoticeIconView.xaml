@@ -26,7 +26,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <util:DropDown.Content>
-                <util:Badged HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding TotalCount,Converter={converter2:ConutTo99PlusConverter}}" >
+                <util:Badged HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding TotalCount,Converter={converter2:CountTo99PlusConverter}}" >
                     <TextBlock Text="&#xf0a2;" FontSize="15" Foreground="{DynamicResource TitleForegroundBrush}" Style="{StaticResource FAwesome}">
                     </TextBlock>
                 </util:Badged>
@@ -36,7 +36,7 @@
                     <TabControl controls:TabControlHelper.Underlined="TabItems" SelectedIndex="{Binding SelectedIndex}">
                         <TabItem>
                             <TabItem.Header>
-                                <util:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding UserMail_Pagination.Total,Converter={converter2:ConutTo99PlusConverter}}" >
+                                <util:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding UserMail_Pagination.Total,Converter={converter2:CountTo99PlusConverter}}" >
                                     <TextBlock  Text="&#xf003; 通知" FontSize="{DynamicResource MahApps.Font.Size.Menu}" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource FAwesome}">
                                     </TextBlock>
                                 </util:Badged>
@@ -75,7 +75,7 @@
                         </TabItem>
                         <TabItem >
                             <TabItem.Header>
-                                <util:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding UserMessage_Pagination.Total,Converter={converter2:ConutTo99PlusConverter}}" >
+                                <util:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding UserMessage_Pagination.Total,Converter={converter2:CountTo99PlusConverter}}" >
                                     <TextBlock Text="&#xf27b; 消息" FontSize="{DynamicResource MahApps.Font.Size.Menu}" HorizontalAlignment="Right" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource FAwesome}">
                                     </TextBlock>
                                 </util:Badged>
@@ -115,7 +115,7 @@
                         </TabItem>
                         <TabItem>
                             <TabItem.Header>
-                                <util:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding UserForm_Pagination.Total,Converter={converter2:ConutTo99PlusConverter}}" >
+                                <util:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding UserForm_Pagination.Total,Converter={converter2:CountTo99PlusConverter}}" >
                                     <TextBlock Text="&#xf017; 待办" FontSize="{DynamicResource MahApps.Font.Size.Menu}" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource FAwesome}">
                                     </TextBlock>
                                 </util:Badged>

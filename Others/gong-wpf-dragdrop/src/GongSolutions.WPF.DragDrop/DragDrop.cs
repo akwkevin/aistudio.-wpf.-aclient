@@ -78,7 +78,7 @@ namespace GongSolutions.Wpf.DragDrop
             {
                 if (useDefaultDragAdorner)
                 {
-                    adornment.Opacity = GetDefaultDragAdornerOpacity(dragInfo.VisualSource);
+                    adornment.SetCurrentValue(UIElement.OpacityProperty, GetDefaultDragAdornerOpacity(dragInfo.VisualSource));
                 }
 
                 var rootElement = RootElementFinder.FindRoot(dropInfo.VisualTarget ?? dragInfo.VisualSource);
@@ -609,7 +609,7 @@ namespace GongSolutions.Wpf.DragDrop
                         var adornerBrush = GetDropTargetAdornerBrush(dropInfo.VisualTarget);
                         if (adornerBrush != null)
                         {
-                            adorner.Pen.Brush = adornerBrush;
+                            adorner.Pen.SetCurrentValue(Pen.BrushProperty, adornerBrush);                            
                         }
                         adorner.DropInfo = dropInfo;
                         adorner.InvalidateVisual();

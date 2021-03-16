@@ -27,6 +27,7 @@ namespace AIStudio.Core
                 catch (Exception ex)
                 {
                     hssfworkbook = new HSSFWorkbook(fileStream);
+                    Console.WriteLine(ex.Message);
                 }
 
                 fileStream.Close();
@@ -238,7 +239,7 @@ namespace AIStudio.Core
             }
             if (boldweight != null)
             {
-                font.Boldweight = (short)FontBoldWeight.Bold;
+                font.IsBold = true;
             }
 
             //给样式添加字体
@@ -330,7 +331,7 @@ namespace AIStudio.Core
             }
             if (boldweight != null)
             {
-                font.Boldweight = (short)FontBoldWeight.Bold;
+                font.IsBold = true;
             }
 
             //给样式添加字体

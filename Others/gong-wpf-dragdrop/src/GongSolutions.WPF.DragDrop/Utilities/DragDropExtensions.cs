@@ -10,7 +10,7 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
     public static class DragDropExtensions
     {
         /// <summary>
-        /// Determines whether the given element is ignored on drag start (<see cref="DragDrop.DragSourceIgnore"/>).
+        /// Determines whether the given element is ignored on drag start (<see cref="DragDrop.DragSourceIgnoreProperty"/>).
         /// </summary>
         /// <param name="element">The given element.</param>
         /// <returns>Element is ignored or not.</returns>
@@ -20,7 +20,7 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
         }
 
         /// <summary>
-        /// Determines whether the given element is ignored on drop action (<see cref="DragDrop.IsDragSource"/>).
+        /// Determines whether the given element is ignored on drop action (<see cref="DragDrop.IsDragSourceProperty"/>).
         /// </summary>
         /// <param name="element">The given element.</param>
         /// <returns>Element is ignored or not.</returns>
@@ -30,7 +30,7 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
         }
 
         /// <summary>
-        /// Determines whether the given element is ignored on drop action (<see cref="DragDrop.IsDropTarget"/>).
+        /// Determines whether the given element is ignored on drop action (<see cref="DragDrop.IsDropTargetProperty"/>).
         /// </summary>
         /// <param name="element">The given element.</param>
         /// <returns>Element is ignored or not.</returns>

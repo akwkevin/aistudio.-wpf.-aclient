@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 
 namespace AIStudio.Wpf.BasePage.Converters
 {
-    public class ConutTo99PlusConverter : MarkupExtension, IValueConverter
+    public class CountTo99PlusConverter : MarkupExtension, IValueConverter
     {
         #region Converter
 

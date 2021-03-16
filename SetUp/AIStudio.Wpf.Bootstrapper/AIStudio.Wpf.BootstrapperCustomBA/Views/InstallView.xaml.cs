@@ -90,7 +90,7 @@ namespace CustomBA.Views
             }
             catch (Exception ex)
             {
-                //  MessageBox.Show(ex.ToString(),"错误");
+               Console.WriteLine(ex.ToString());
             }
         }
 
