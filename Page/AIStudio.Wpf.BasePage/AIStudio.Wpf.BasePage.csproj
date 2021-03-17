@@ -4,6 +4,10 @@
     <TargetFrameworks>netcoreapp3.1;net472</TargetFrameworks>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\print.png" />
+  </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\..\Application\AIStudio.Core\AIStudio.Core.csproj" />
@@ -47,6 +51,10 @@
     </PackageReference>
     <PackageReference Include="Util.Controls" Version="1.1.7" />
     <PackageReference Include="Util.Controls.DialogBox" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\print.png" />
   </ItemGroup>
 
 </Project>

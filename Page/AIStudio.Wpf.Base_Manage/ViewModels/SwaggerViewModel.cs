@@ -8,7 +8,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
     {
         public SwaggerViewModel()
         {
-            Url = LocalSetting.ServerIP + "/index.html";
+            Url = LocalSetting.ServerIP + "/swagger/index.html";
         }
         private string _url;
         public string Url

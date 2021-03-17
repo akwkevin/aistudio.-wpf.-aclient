@@ -1,0 +1,135 @@
+﻿<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:local="clr-namespace:AIStudio.Wpf.Base_Manage.Views"
+              ColumnWidth="400" FontSize="14" FontFamily="宋体"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+              TextOptions.TextFormattingMode="Display">
+    <FlowDocument.Resources>
+        <Style TargetType="Table" x:Key="BorderedTable">
+            <Setter Property="CellSpacing" Value="0"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderBrush" Value="#000"></Setter>
+        </Style>
+        <Style TargetType="TableCell" x:Key="BorderedCell">
+            <Setter Property="BorderThickness" Value="0.5"></Setter>
+            <Setter Property="BorderBrush" Value="#000"></Setter>
+            <Setter Property="Padding" Value="3"></Setter>
+        </Style>
+    </FlowDocument.Resources>
+    
+    <Paragraph>
+        <Run Text="{Binding UserName}"></Run>
+    </Paragraph>
+
+    <Table Style="{StaticResource BorderedTable}">
+        <Table.Columns>
+            <TableColumn Width="2*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+        </Table.Columns>
+        <TableRowGroup Name="rowsDetails">
+            <TableRow FontWeight="Bold" >
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>设备</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>单位</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>0h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>1h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>2h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>3h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>4h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>5h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>6h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>7h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>8h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>9h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>10h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>11h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>12h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>13h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>14h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>15h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>16h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>17h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>18h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>19h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>20h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>21h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>22h</Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>23h</Paragraph>
+                </TableCell>
+            </TableRow>
+        </TableRowGroup>
+    </Table>
+</FlowDocument>

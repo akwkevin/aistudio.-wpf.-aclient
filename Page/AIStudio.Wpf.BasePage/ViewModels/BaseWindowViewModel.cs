@@ -108,6 +108,15 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             }
         }
 
+        private ICommand _printCommand;
+        public ICommand PrintCommand
+        {
+            get
+            {
+                return this._printCommand ?? (this._printCommand = new CanExecuteDelegateCommand(() => this.Print(), () => this.Data != null && this.Data.Count(p => p.IsChecked) > 0));
+            }
+        }
+
         private ICommand _deleteOneCommand;
         public ICommand DeleteOneCommand
         {
@@ -271,6 +280,11 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                     HideWait();
                 }
             }
+        }
+
+        protected virtual void Print()
+        {
+
         }
 
         protected virtual void Search(object para = null)
