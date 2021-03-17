@@ -39,9 +39,11 @@ Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.ex
 账号密码：Admin，Admin。
 如果不连服务器，只看DemoPage，账号密码LocalUser，LocalUser。
 
-注：引用的控件包（比较乱，没有整理，后期再公开），需要添加在nuget包管理器中添加源 http://121.36.12.76:8020/v3/index.json。
+注1：引用的控件包（比较乱，没有整理，后期再公开），需要添加在nuget包管理器中添加源 http://121.36.12.76:8020/v3/index.json。
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0316/221422_67f12595_4799126.png "809298-20210316220213368-2073205544.png")
+
+注2：如果不想引用控件包，可以去仓库https://gitee.com/akwkevin/aistudio.-wpf.-min-aclient下载裁剪版本，下载后可直接运行，但是没有集成oa和消息。
 
 
 个人QQ:80267720
