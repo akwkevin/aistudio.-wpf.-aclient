@@ -1,0 +1,39 @@
+﻿<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:local="clr-namespace:AIStudio.Wpf.Base_Manage.Views"
+              ColumnWidth="400" FontSize="14" FontFamily="宋体"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+              TextOptions.TextFormattingMode="Display">
+    <FlowDocument.Resources>
+        <Style TargetType="Table" x:Key="BorderedTable">
+            <Setter Property="CellSpacing" Value="0"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderBrush" Value="#000"></Setter>
+        </Style>
+        <Style TargetType="TableCell" x:Key="BorderedCell">
+            <Setter Property="BorderThickness" Value="0.5"></Setter>
+            <Setter Property="BorderBrush" Value="#000"></Setter>
+            <Setter Property="Padding" Value="3"></Setter>
+        </Style>
+    </FlowDocument.Resources>   
+
+    <Table Style="{StaticResource BorderedTable}">
+        <Table.Columns>
+            <TableColumn Width="*"></TableColumn>
+
+            <TableColumn Width="*"></TableColumn>
+
+        </Table.Columns>
+        <TableRowGroup Name="rowsDetails">
+            <TableRow FontWeight="Bold" >
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>LogType</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>LogContent</Paragraph>
+               </TableCell>
+
+            </TableRow>
+        </TableRowGroup>
+    </Table>
+</FlowDocument>

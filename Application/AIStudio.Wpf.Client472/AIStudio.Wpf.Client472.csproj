@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj" />
-    <ProjectReference Include="..\..\Page\AIStudio.Wpf.HomePage\AIStudio.Wpf.Home.csproj" />
+    <ProjectReference Include="..\..\Page\AIStudio.Wpf.Home\AIStudio.Wpf.Home.csproj" />
   </ItemGroup>
 
   <ItemGroup>

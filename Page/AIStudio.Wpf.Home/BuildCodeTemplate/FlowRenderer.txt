@@ -1,0 +1,29 @@
+﻿using AIStudio.Core.Helpers;
+using AIStudio.Wpf.Business.DTOModels;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Documents;
+
+namespace AIStudio.Wpf.%areaName%.ViewModels
+{
+    class %entityName%DocumentRenderer : IDocumentRenderer
+    {
+        public void Render(FlowDocument doc, object data)
+        {
+            if (data is ObservableCollection<%entityName%DTO> items)
+            {
+                TableRowGroup groupDetails = doc.FindName("rowsDetails") as TableRowGroup;
+
+                Style styleCell = doc.Resources["BorderedCell"] as Style;
+                foreach (var item in items)
+                {
+                    TableRow row = new TableRow();
+                    TableCell cell;
+%tablerow%
+
+                    groupDetails.Rows.Add(row);
+                }
+            }
+        }
+    }
+}

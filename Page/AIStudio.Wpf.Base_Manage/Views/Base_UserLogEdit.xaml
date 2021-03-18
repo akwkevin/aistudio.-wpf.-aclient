@@ -1,4 +1,4 @@
-﻿<util:BaseDialog x:Class="AIStudio.Wpf.Base_Manage.Views.BuildCodeEdit"
+﻿<util:BaseDialog x:Class="AIStudio.Wpf.Base_Manage.Views.Base_UserLogEdit"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,10 +10,10 @@
              HorizontalAlignment="Center"
              mc:Ignorable="d" >
     <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}"  CornerRadius="3">
-        <Grid Width="650">
+        <Grid Width="450">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="40" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0"
@@ -22,34 +22,28 @@
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"/>
             <Border Grid.Row="1" VerticalAlignment="Bottom" BorderBrush="{DynamicResource GrayBrush4}" SnapsToDevicePixels="True" BorderThickness="0,1,0,1" >
-                <ScrollViewer>
-                    <StackPanel VerticalAlignment="Center" Margin="50,0">
+                 <ScrollViewer>
+					<StackPanel DataContext="{Binding Data}" VerticalAlignment="Center" Margin="50,0">
                         <HeaderedContentControl Style="{StaticResource LeftFormItemStyle}">
                             <HeaderedContentControl.Header>
                                 <TextBlock VerticalAlignment="Center">
-                                <Run Foreground="Red">*</Run>
-                                <Run>生成类型</Run>
+                                    <Run Foreground="Red">*</Run>
+                                    <Run>LogType</Run>
                                 </TextBlock>
                             </HeaderedContentControl.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0,0,2,0" IsChecked="{Binding BuildType[0]}" VerticalAlignment="Center">实体层</CheckBox>
-                                <CheckBox Margin="0,0,2,0" IsChecked="{Binding BuildType[1]}" VerticalAlignment="Center">业务层</CheckBox>
-                                <CheckBox Margin="0,0,2,0" IsChecked="{Binding BuildType[2]}" VerticalAlignment="Center">接口层</CheckBox>
-                                <CheckBox Margin="0,0,2,0" IsChecked="{Binding BuildType[4]}" VerticalAlignment="Center">Wpf页面层</CheckBox>
-                                <CheckBox Margin="0,0,2,0" IsChecked="{Binding IsCover}" VerticalAlignment="Center">Wpf覆盖生成</CheckBox>
-                            </StackPanel>
+                            <TextBox Text="{Binding LogType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource ToolTipErrorTextBox}" IsReadOnly="{ Binding Disabled}"></TextBox>
                         </HeaderedContentControl>
                         <HeaderedContentControl Style="{StaticResource LeftFormItemStyle}">
                             <HeaderedContentControl.Header>
                                 <TextBlock VerticalAlignment="Center">
-                                <Run Foreground="Red">*</Run>
-                                <Run>生成区域</Run>
+                                    <Run Foreground="Red">*</Run>
+                                    <Run>LogContent</Run>
                                 </TextBlock>
                             </HeaderedContentControl.Header>
-                            <TextBox Text="{Binding AreaName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource ToolTipErrorTextBox}" ></TextBox>
+                            <TextBox Text="{Binding LogContent,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource ToolTipErrorTextBox}" IsReadOnly="{ Binding Disabled}"></TextBox>
                         </HeaderedContentControl>
-                    </StackPanel>
-                </ScrollViewer>
+					</StackPanel>
+				</ScrollViewer>
             </Border>
             <StackPanel Grid.Row="2"
                     Orientation="Horizontal"

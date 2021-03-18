@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AIStudio.Wpf.Business.DTOModels.DTOModels
+namespace AIStudio.Wpf.Business.DTOModels
 {
     /// <summary>
     /// 数据库所有表的信息

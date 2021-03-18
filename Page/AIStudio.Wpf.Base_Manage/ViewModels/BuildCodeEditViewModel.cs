@@ -1,5 +1,5 @@
 ﻿using AIStudio.Wpf.BasePage.ViewModels;
-using AIStudio.Wpf.Business.DTOModels.DTOModels;
+using AIStudio.Wpf.Business.DTOModels;
 using System.Collections.Generic;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
