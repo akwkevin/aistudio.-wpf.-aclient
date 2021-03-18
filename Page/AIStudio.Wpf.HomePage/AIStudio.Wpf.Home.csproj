@@ -4,7 +4,12 @@
     <TargetFrameworks>netcoreapp3.1;net472</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
-  </PropertyGroup>  
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="BuildCodeTemplate\FlowForm.txt" />
+    <None Remove="BuildCodeTemplate\FlowRenderer.txt" />
+  </ItemGroup>  
   
   <ItemGroup>
     <ProjectReference Include="..\..\Application\AIStudio.Core\AIStudio.Core.csproj" />
@@ -27,13 +32,12 @@
     <ProjectReference Include="..\AIStudio.Wpf.Quartz_Manage\AIStudio.Wpf.Quartz_Manage.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="BuildCodeTemplate\FlowForm.txt" />
+    <Resource Include="BuildCodeTemplate\FlowRenderer.txt" />
     <Resource Include="Images\default.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BuildCodeTemplate\demo_view.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="BuildCodeTemplate\demo_resource.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BuildCodeTemplate\demo_viewmodel.txt" />
@@ -61,9 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="BuildCodeTemplate\DTO.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="BuildCodeTemplate\Listresource.txt" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper">

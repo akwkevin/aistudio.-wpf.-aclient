@@ -24,7 +24,17 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             {
                 SetProperty(ref _buildType, value);
             }
-        }      
+        }
+
+        private bool _isCover;
+        public bool IsCover
+        {
+            get { return _isCover; }
+            set
+            {
+                SetProperty(ref _isCover, value);
+            }
+        }
 
         public BuildCodeEditViewModel(BuildCode data, string identifier, string title= "编辑表单") : base(data, identifier, title)
         {

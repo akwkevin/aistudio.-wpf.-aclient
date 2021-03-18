@@ -18,33 +18,11 @@
 
     <Table Style="{StaticResource BorderedTable}">
         <Table.Columns>
-            <TableColumn Width="*"></TableColumn>
-            <TableColumn Width="*"></TableColumn>
-            <TableColumn Width="*"></TableColumn>
-            <TableColumn Width="*"></TableColumn>
-            <TableColumn Width="*"></TableColumn>
-            <TableColumn Width="*"></TableColumn>
+%tablecolumns%
         </Table.Columns>
         <TableRowGroup Name="rowsDetails">
             <TableRow FontWeight="Bold" >
-                <TableCell Style="{StaticResource BorderedCell}">
-                    <Paragraph>用户名</Paragraph>
-                </TableCell>
-                <TableCell Style="{StaticResource BorderedCell}">
-                    <Paragraph>姓名</Paragraph>
-                </TableCell>
-                <TableCell Style="{StaticResource BorderedCell}">
-                    <Paragraph>性别</Paragraph>
-                </TableCell>
-                <TableCell Style="{StaticResource BorderedCell}">
-                    <Paragraph>出生日期</Paragraph>
-                </TableCell>
-                <TableCell Style="{StaticResource BorderedCell}">
-                    <Paragraph>所属部门</Paragraph>
-                </TableCell>
-                <TableCell Style="{StaticResource BorderedCell}">
-                    <Paragraph>所属角色</Paragraph>
-                </TableCell>           
+%tablecells%
             </TableRow>
         </TableRowGroup>
     </Table>

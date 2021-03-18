@@ -113,7 +113,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         {
             get
             {
-                return this._printCommand ?? (this._printCommand = new CanExecuteDelegateCommand(() => this.Print(), () => this.Data != null && this.Data.Count(p => p.IsChecked) > 0));
+                return this._printCommand ?? (this._printCommand = new CanExecuteDelegateCommand(() => this.Print(), () => this.Data != null));
             }
         }
 

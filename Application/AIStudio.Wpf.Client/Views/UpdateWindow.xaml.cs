@@ -33,7 +33,7 @@ namespace AIStudio.Wpf.Client.Views
             {
                 Assembly assembly = Assembly.GetEntryAssembly();
                 CurrentVersion.Text = $"Current Version: {assembly.GetName().Version}";
-                LocalSetting.SetAppSetting("Version", CurrentVersion.Text);
+                LocalSetting.SetAppSetting("Version", assembly.GetName().Version.ToString());
 
                 Thread.CurrentThread.CurrentCulture =
                     Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture("zh");

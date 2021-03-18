@@ -33,7 +33,7 @@ namespace AIStudio.Wpf.BasePage.Views
             {
                 renderer.Render(doc, data);
                 DocumentPaginator paginator = ((IDocumentPaginatorSource)doc).DocumentPaginator;
-                paginator.PageSize = new Size(1188, 840);
+                paginator.PageSize = new Size(595, 842);
                 //doc.PagePadding = new Thickness(50, 50, 50, 50);
                 doc.ColumnWidth = double.PositiveInfinity;
             }
@@ -56,6 +56,12 @@ namespace AIStudio.Wpf.BasePage.Views
                 Dispatcher.BeginInvoke(new PrintHelper.LoadXpsMethod(PrintHelper.LoadXps), DispatcherPriority.ApplicationIdle, m_doc, docViewer);
             }
 
+        }
+
+        public PrintPreviewWindow(string strTmplName, System.Collections.IList data, IDocumentRenderer renderer = null) : this()
+        {
+            var m_doc = LoadDocumentAndRender(strTmplName, data, renderer);
+            Dispatcher.BeginInvoke(new PrintHelper.LoadXpsMethod(PrintHelper.LoadXps), DispatcherPriority.ApplicationIdle, m_doc, docViewer);
         }
     }
 }

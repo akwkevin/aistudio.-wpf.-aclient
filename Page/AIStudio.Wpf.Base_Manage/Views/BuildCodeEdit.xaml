@@ -36,6 +36,7 @@
                                 <CheckBox Margin="0,0,2,0" IsChecked="{Binding BuildType[1]}" VerticalAlignment="Center">业务层</CheckBox>
                                 <CheckBox Margin="0,0,2,0" IsChecked="{Binding BuildType[2]}" VerticalAlignment="Center">接口层</CheckBox>
                                 <CheckBox Margin="0,0,2,0" IsChecked="{Binding BuildType[4]}" VerticalAlignment="Center">Wpf页面层</CheckBox>
+                                <CheckBox Margin="0,0,2,0" IsChecked="{Binding IsCover}" VerticalAlignment="Center">Wpf覆盖生成</CheckBox>
                             </StackPanel>
                         </HeaderedContentControl>
                         <HeaderedContentControl Style="{StaticResource LeftFormItemStyle}">
