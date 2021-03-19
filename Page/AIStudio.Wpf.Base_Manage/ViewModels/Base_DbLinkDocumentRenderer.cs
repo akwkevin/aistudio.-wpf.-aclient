@@ -19,15 +19,15 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 {
                     TableRow row = new TableRow();
                     TableCell cell;
-                    cell = new TableCell(new Paragraph(new Run(item.LinkName.ToString())));
+                    cell = new TableCell(new Paragraph(new Run(item.LinkName)));
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 
-                    cell = new TableCell(new Paragraph(new Run(item.ConnectionStr.ToString())));
+                    cell = new TableCell(new Paragraph(new Run(item.ConnectionStr)));
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 
-                    cell = new TableCell(new Paragraph(new Run(item.DbType.ToString())));
+                    cell = new TableCell(new Paragraph(new Run(item.DbType)));
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 

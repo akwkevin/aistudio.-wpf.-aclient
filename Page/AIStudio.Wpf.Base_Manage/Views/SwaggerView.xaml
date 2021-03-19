@@ -8,6 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <util:WebBrowser Source="{Binding Url}"/>
+        <util:WebBrowser IsBrowserOpen="True"  Source="{Binding Url}"/>
     </Grid>
 </UserControl>

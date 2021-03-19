@@ -19,55 +19,42 @@
     <Table Style="{StaticResource BorderedTable}">
         <Table.Columns>
             <TableColumn Width="*"></TableColumn>
-
             <TableColumn Width="*"></TableColumn>
-
             <TableColumn Width="*"></TableColumn>
-
             <TableColumn Width="*"></TableColumn>
-
             <TableColumn Width="*"></TableColumn>
-
             <TableColumn Width="*"></TableColumn>
-
             <TableColumn Width="*"></TableColumn>
-
-            <TableColumn Width="*"></TableColumn>
-
         </Table.Columns>
         <TableRowGroup Name="rowsDetails">
             <TableRow FontWeight="Bold" >
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>ParentId</Paragraph>
+                    <Paragraph>菜单名</Paragraph>
                </TableCell>
 
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Type</Paragraph>
+                    <Paragraph>类型</Paragraph>
                </TableCell>
 
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Name</Paragraph>
+                    <Paragraph>路径</Paragraph>
                </TableCell>
 
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Url</Paragraph>
+                    <Paragraph>需要权限</Paragraph>
                </TableCell>
 
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Value</Paragraph>
+                    <Paragraph>页面权限</Paragraph>
+                </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>图标</Paragraph>
                </TableCell>
 
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>NeedAction</Paragraph>
-               </TableCell>
-
-                <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Icon</Paragraph>
-               </TableCell>
-
-                <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Sort</Paragraph>
-               </TableCell>
+                    <Paragraph>排序</Paragraph>
+               </TableCell>  
 
             </TableRow>
         </TableRowGroup>

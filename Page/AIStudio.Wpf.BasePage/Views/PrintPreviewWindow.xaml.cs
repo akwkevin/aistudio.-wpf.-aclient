@@ -32,11 +32,12 @@ namespace AIStudio.Wpf.BasePage.Views
             if (renderer != null)
             {
                 renderer.Render(doc, data);
-                DocumentPaginator paginator = ((IDocumentPaginatorSource)doc).DocumentPaginator;
-                paginator.PageSize = new Size(595, 842);
-                //doc.PagePadding = new Thickness(50, 50, 50, 50);
-                doc.ColumnWidth = double.PositiveInfinity;
             }
+
+            DocumentPaginator paginator = ((IDocumentPaginatorSource)doc).DocumentPaginator;
+            paginator.PageSize = new Size(595, 842);
+            //doc.PagePadding = new Thickness(50, 50, 50, 50);
+            doc.ColumnWidth = double.PositiveInfinity;
             return doc;
         }
         public PrintPreviewWindow(string strTmplName, Object data, IDocumentRenderer renderer = null) : this()

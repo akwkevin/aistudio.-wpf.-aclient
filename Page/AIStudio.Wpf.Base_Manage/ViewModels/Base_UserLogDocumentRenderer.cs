@@ -19,14 +19,21 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 {
                     TableRow row = new TableRow();
                     TableCell cell;
-                    cell = new TableCell(new Paragraph(new Run(item.LogType.ToString())));
+                    cell = new TableCell(new Paragraph(new Run(item.LogType)));
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 
-                    cell = new TableCell(new Paragraph(new Run(item.LogContent.ToString())));
+                    cell = new TableCell(new Paragraph(new Run(item.LogContent)));
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 
+                    cell = new TableCell(new Paragraph(new Run(item.CreatorName)));
+                    cell.Style = styleCell;
+                    row.Cells.Add(cell);
+
+                    cell = new TableCell(new Paragraph(new Run(item.CreateTime.ToString("yyyy-MM-dd HH:mm:ss"))));
+                    cell.Style = styleCell;
+                    row.Cells.Add(cell);
 
                     groupDetails.Rows.Add(row);
                 }

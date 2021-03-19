@@ -8,7 +8,7 @@ using Util.Controls;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_LogViewModel : BaseWindowViewModel<Base_UserLogDTO>
+    public class Base_UserLogViewModel : BaseWindowViewModel<Base_UserLogDTO>
     {
         private string _logContent;
         public string LogContent
@@ -122,7 +122,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_LogViewModel():base("Base_Manage", typeof(BaseEditViewModel<Base_UserLogDTO>), typeof(BaseDialog))
+        public Base_UserLogViewModel():base("Base_Manage", typeof(BaseEditViewModel<Base_UserLogDTO>), typeof(BaseDialog))
         {
             
         }
@@ -142,7 +142,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetLogTypeList()
         {
-            var result = await _dataProvider.GetData<List<SelectOption>>($"/Base_Manage/Base_Log/GetLogTypeList");
+            var result = await _dataProvider.GetData<List<SelectOption>>($"/Base_Manage/Base_UserLog/GetLogTypeList");
             if (!result.IsOK)
             {
                 throw new Exception(result.ErrorMessage);
@@ -156,7 +156,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetLoglevelList()
         {
-            var result = await _dataProvider.GetData<List<SelectOption>>($"/Base_Manage/Base_Log/GetLoglevelList");
+            var result = await _dataProvider.GetData<List<SelectOption>>($"/Base_Manage/Base_UserLog/GetLoglevelList");
             if (!result.IsOK)
             {
                 throw new Exception(result.ErrorMessage);
@@ -193,7 +193,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 {
                     data.Add("endTime", EndTime.Value.ToString("yyyy-MM-dd hh:mm:ss"));
                 }
-                var result = await _dataProvider.GetData<List<Base_UserLogDTO>>($"/Base_Manage/Base_Log/GetLogList", data);
+                var result = await _dataProvider.GetData<List<Base_UserLogDTO>>($"/Base_Manage/Base_UserLog/GetLogList", data);
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);

@@ -21,6 +21,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
             <util:FButton CornerRadius="2" FIcon="&#xe62c;" Margin="3" Content="新建" Command="{Binding AddCommand}" ></util:FButton>
             <util:FButton CornerRadius="2" FIcon="&#xe62d;" Margin="3" Content="删除" Command="{Binding DeleteCommand}"></util:FButton>
+            <util:FButton CornerRadius="2" FIcon="&#xf02f;" FIconFamily="FAwesome" Margin="3" Content="打印" Command="{Binding PrintCommand}"></util:FButton>
             <util:FButton CornerRadius="2" FIcon="&#xe641;" Margin="3" Content="刷新" Command="{Binding RefreshCommand}"></util:FButton>
         </StackPanel>
         <util:TreeDataGrid Grid.Row="1" x:Name="table" ItemsSource="{Binding Data}" 

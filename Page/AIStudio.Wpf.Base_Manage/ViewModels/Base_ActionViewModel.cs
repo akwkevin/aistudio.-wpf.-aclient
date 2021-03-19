@@ -2,6 +2,7 @@
 using AIStudio.Wpf.Base_Manage.Views;
 using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.ViewModels;
+using AIStudio.Wpf.BasePage.Views;
 using AIStudio.Wpf.Business.DTOModels;
 using AIStudio.Wpf.Service.AppClient;
 using Newtonsoft.Json;
@@ -141,6 +142,11 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         protected override void Delete(string id = null)
         {
             base.Delete(id);
+        }
+
+        protected override void Print()
+        {
+            base.Print(Data);
         }
 
         protected override void Search(object para = null)

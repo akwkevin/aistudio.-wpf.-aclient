@@ -335,7 +335,7 @@ $"				<DataGridTextColumn Header=\"{info.Name}\"  Binding=\"{{Binding {info.Name
                 foreach (System.Reflection.PropertyInfo info in type.GetProperties().Where(p => !ignoreProperties.Contains(p.Name)))
                 {
                     tableColumnsList.Add(
-$"            <TableColumn Width=\"*\"></TableColumn>\r\n");
+$"            <TableColumn Width=\"*\"></TableColumn>");
 
                     tableCellsList.Add(
 "                <TableCell Style=\"{ StaticResource BorderedCell}\">\r\n" +
@@ -364,10 +364,20 @@ $"                    <Paragraph>{info.Name}</Paragraph>\r\n" +
 
                 foreach (System.Reflection.PropertyInfo info in type.GetProperties().Where(p => !ignoreProperties.Contains(p.Name)))
                 {
-                    tableRowsList.Add(
-$"                    cell = new TableCell(new Paragraph(new Run(item.{info.Name}.ToString())));\r\n" +
+                    if (info.PropertyType.ToString() == "System.String")
+                    {
+                        tableRowsList.Add(
+$"                    cell = new TableCell(new Paragraph(new Run(item.{info.Name})));\r\n" +
 "                    cell.Style = styleCell;\r\n" +
 "                    row.Cells.Add(cell);\r\n");
+                    }
+                    else
+                    {
+                        tableRowsList.Add(
+    $"                    cell = new TableCell(new Paragraph(new Run(item.{info.Name}.ToString())));\r\n" +
+    "                    cell.Style = styleCell;\r\n" +
+    "                    row.Cells.Add(cell);\r\n");
+                    }
                 }
 
 

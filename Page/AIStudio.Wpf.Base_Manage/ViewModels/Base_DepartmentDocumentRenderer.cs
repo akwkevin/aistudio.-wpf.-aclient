@@ -19,26 +19,13 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 {
                     TableRow row = new TableRow();
                     TableCell cell;
-                    cell = new TableCell(new Paragraph(new Run(item.Name.ToString())));
+                    cell = new TableCell(new Paragraph(new Run(item.Name)));
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 
-                    cell = new TableCell(new Paragraph(new Run(item.ParentId.ToString())));
+                    cell = new TableCell(new Paragraph(new Run(item.ParentNames)));
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
-
-                    cell = new TableCell(new Paragraph(new Run(item.ParentIds.ToString())));
-                    cell.Style = styleCell;
-                    row.Cells.Add(cell);
-
-                    cell = new TableCell(new Paragraph(new Run(item.ParentNames.ToString())));
-                    cell.Style = styleCell;
-                    row.Cells.Add(cell);
-
-                    cell = new TableCell(new Paragraph(new Run(item.Level.ToString())));
-                    cell.Style = styleCell;
-                    row.Cells.Add(cell);
-
 
                     groupDetails.Rows.Add(row);
                 }

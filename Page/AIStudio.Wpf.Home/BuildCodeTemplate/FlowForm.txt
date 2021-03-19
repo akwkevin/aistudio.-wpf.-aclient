@@ -1,5 +1,4 @@
 ﻿<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-              xmlns:local="clr-namespace:AIStudio.Wpf.Base_Manage.Views"
               ColumnWidth="400" FontSize="14" FontFamily="宋体"
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
               TextOptions.TextFormattingMode="Display">

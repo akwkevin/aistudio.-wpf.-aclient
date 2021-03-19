@@ -77,8 +77,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         protected override void Print()
         {
-            PrintPreviewWindow previewWnd = new PrintPreviewWindow("/AIStudio.Wpf.Base_Manage;component/Views/Base_UserFlowDocument.xaml", Data, new Base_UserDocumentRenderer());
-            previewWnd.ShowDialog();
+            base.Print(Data);
         }
 
         protected override void Search(object para=null)

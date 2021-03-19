@@ -210,6 +210,14 @@
                     Command="{util:ControlBinding OpenEditorCommand}"
                     CommandParameter="{Binding Data}">                  
                 </util:FButton>
+                <util:FButton CornerRadius="2" 
+                    Height="25"
+                    MinWidth="60"
+                    Content="打印"
+                    Margin="5 0 5 0"
+                    Command="{util:ControlBinding PrintCommand}"
+                    CommandParameter="{Binding Data}">
+                </util:FButton>
             </StackPanel>
             <StackPanel Grid.Row="2"
                     Orientation="Horizontal"

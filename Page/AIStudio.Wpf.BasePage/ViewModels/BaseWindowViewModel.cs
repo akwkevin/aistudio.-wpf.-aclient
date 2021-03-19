@@ -1,4 +1,6 @@
 ﻿using AIStudio.Core;
+using AIStudio.Core.Helpers;
+using AIStudio.Wpf.BasePage.Views;
 using AIStudio.Wpf.Business.DTOModels;
 using AIStudio.Wpf.Service.AppClient;
 using AIStudio.Wpf.Service.IAppClient;
@@ -113,7 +115,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         {
             get
             {
-                return this._printCommand ?? (this._printCommand = new CanExecuteDelegateCommand(() => this.Print(), () => this.Data != null));
+                return this._printCommand ?? (this._printCommand = new CanExecuteDelegateCommand(() => this.Print()));
             }
         }
 
@@ -284,8 +286,26 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 
         protected virtual void Print()
         {
-
+            Print(Data);
         }
+
+        protected virtual void Print(System.Collections.IList data)
+        {
+            try
+            {
+                string fullClassName = $"AIStudio.Wpf.{Area}.ViewModels.{typeof(T).Name.Replace("DTO", "")}DocumentRenderer";
+
+                //根据类名称创建类实例
+                var type = System.Reflection.Assembly.Load($"AIStudio.Wpf.{Area}").GetType(fullClassName);
+
+                PrintPreviewWindow previewWnd = new PrintPreviewWindow($"/AIStudio.Wpf.{Area};component/Views/{typeof(T).Name.Replace("DTO", "")}FlowDocument.xaml", data, Activator.CreateInstance(type) as IDocumentRenderer);
+                previewWnd.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }    
 
         protected virtual void Search(object para = null)
         {

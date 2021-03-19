@@ -32,25 +32,11 @@
         <TableRowGroup Name="rowsDetails">
             <TableRow FontWeight="Bold" >
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Name</Paragraph>
+                    <Paragraph>部门名</Paragraph>
                </TableCell>
-
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>ParentId</Paragraph>
+                    <Paragraph>组织机构</Paragraph>
                </TableCell>
-
-                <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>ParentIds</Paragraph>
-               </TableCell>
-
-                <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>ParentNames</Paragraph>
-               </TableCell>
-
-                <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Level</Paragraph>
-               </TableCell>
-
             </TableRow>
         </TableRowGroup>
     </Table>

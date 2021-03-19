@@ -192,6 +192,11 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             base.Delete(id);
         }
 
+        protected override void Print()
+        {
+            base.Print(Data);
+        }
+
         protected override void Search(object para=null)
         {
             base.Search(para);

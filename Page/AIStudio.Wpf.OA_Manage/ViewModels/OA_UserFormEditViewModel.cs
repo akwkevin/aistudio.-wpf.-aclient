@@ -1,4 +1,5 @@
 ﻿using AIStudio.Wpf.BasePage.ViewModels;
+using AIStudio.Wpf.BasePage.Views;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Business.DTOModels;
 using AIStudio.Wpf.OA_Manage.Views;
@@ -50,6 +51,15 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             get
             {
                 return this._preStepCommand ?? (this._preStepCommand = new DelegateCommand<OA_UserFormDTO>(para => this.PreStep(para)));
+            }
+        }
+
+        private ICommand _printCommand;
+        public ICommand PrintCommand
+        {
+            get
+            {
+                return this._printCommand ?? (this._printCommand = new DelegateCommand<OA_UserFormDTO>(para => this.Print(para)));
             }
         }
 
@@ -169,6 +179,19 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             finally
             {
                 HideWait();
+            }
+        }
+
+        private void Print(OA_UserFormDTO para)
+        {
+            try
+            {
+                PrintPreviewWindow previewWnd = new PrintPreviewWindow($"/AIStudio.Wpf.OA_Manage;component/Views/OA_UserFormEditFlowDocument.xaml", para);
+                previewWnd.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
