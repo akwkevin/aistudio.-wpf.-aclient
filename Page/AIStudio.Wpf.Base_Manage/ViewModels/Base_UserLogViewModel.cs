@@ -1,8 +1,10 @@
 ﻿using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business.DTOModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Util.Controls;
 
@@ -136,7 +138,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         private async void InitData()
         {
             await GetLogTypeList();
-            await GetLoglevelList();
             GetData();
         }
 
@@ -150,20 +151,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             else
             {
                 LogTypeList = result.ResponseItem;
-                LogType = "系统任务执行";
-            }
-        }
-
-        private async Task GetLoglevelList()
-        {
-            var result = await _dataProvider.GetData<List<SelectOption>>($"/Base_Manage/Base_UserLog/GetLoglevelList");
-            if (!result.IsOK)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
-            else
-            {
-                LoglevelList = result.ResponseItem;
+                LogTypeList.Insert(0, new SelectOption() { value = "", text = "" });
+                LogType = "";
             }
         }
 
@@ -174,26 +163,25 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 if (iswaiting == false)
                 {
                     ShowWait();
-                }
+                }               
 
-                Dictionary<string, string> data = new Dictionary<string, string>();
-                data.Add("PageIndex", Pagination.PageIndex.ToString());
-                data.Add("PageRows", Pagination.PageRows.ToString());
-                data.Add("SortField", Pagination.SortField ?? "Id");
-                data.Add("SortType", Pagination.SortType);
-                data.Add("logContent", LogContent ?? "");
-                data.Add("level", Level ?? "");
-                data.Add("logType", LogType ?? "");
-                data.Add("opUserName", OpUserName ?? "");
-                if (StartTime != null)
+                var data = new
                 {
-                    data.Add("startTime", StartTime.Value.ToString("yyyy-MM-dd hh:mm:ss"));
-                }
-                if (EndTime != null)
-                {
-                    data.Add("endTime", EndTime.Value.ToString("yyyy-MM-dd hh:mm:ss"));
-                }
-                var result = await _dataProvider.GetData<List<Base_UserLogDTO>>($"/Base_Manage/Base_UserLog/GetLogList", data);
+                    PageIndex = Pagination.PageIndex,
+                    PageRows = Pagination.PageRows,
+                    SortField = Pagination.SortField,
+                    SortType = Pagination.SortType,
+                    Search = new
+                    {
+                        logContent = LogContent,
+                        logType = LogType,
+                        opUserName = OpUserName,
+                        startTime = StartTime.HasValue? StartTime.Value.ToString("yyyy-MM-dd hh:mm:ss") : "",
+                        endTime = EndTime.HasValue ? EndTime.Value.ToString("yyyy-MM-dd hh:mm:ss") : "",
+                    }
+                };
+
+                var result = await _dataProvider.GetData<List<Base_UserLogDTO>>($"/Base_Manage/Base_UserLog/GetLogList", JsonConvert.SerializeObject(data));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);

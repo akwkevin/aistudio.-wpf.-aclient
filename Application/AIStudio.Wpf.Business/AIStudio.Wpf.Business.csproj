@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Others\Prism8\Prism.Core\Prism.Core.csproj" />
     <ProjectReference Include="..\AIStudio.Core\AIStudio.Core.csproj" />
+    <ProjectReference Include="..\AIStudio.Wpf.EFCore\AIStudio.Wpf.EFCore\AIStudio.Wpf.EFCore.csproj" />
   </ItemGroup>
   
 </Project>

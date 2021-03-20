@@ -23,8 +23,8 @@
         </Table.Columns>
         <TableRowGroup Name="rowsDetails">
             <TableRow FontWeight="Bold" >
-                <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>RoleName</Paragraph>
+                <TableCell Style="{StaticResource BorderedCell}">
+                    <Paragraph>角色名</Paragraph>
                </TableCell>
 
             </TableRow>

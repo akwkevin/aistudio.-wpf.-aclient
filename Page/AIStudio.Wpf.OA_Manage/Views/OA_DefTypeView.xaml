@@ -18,22 +18,24 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-            <util:FButton CornerRadius="2" FIcon="&#xe62c;" Margin="3" Content="新建" perm:PermissionHelper.HasPerm="OA_DefType.Add" Command="{Binding AddCommand}" ></util:FButton>
-            <util:FButton CornerRadius="2" FIcon="&#xe62d;" Margin="3" Content="删除" perm:PermissionHelper.HasPerm="OA_DefType.Delete" Command="{Binding DeleteCommand}"></util:FButton>
-            <util:FButton CornerRadius="2" FIcon="&#xe641;" Margin="3" Content="刷新" Command="{Binding RefreshCommand}"></util:FButton>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" util:ControlAttachProperty.CornerRadius="3"  Style="{StaticResource ClearButtonComboBox}"
+        <DockPanel>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                <util:FButton CornerRadius="2" FIcon="&#xe62c;" Margin="3" Content="新建" perm:PermissionHelper.HasPerm="OA_DefType.Add" Command="{Binding AddCommand}" ></util:FButton>
+                <util:FButton CornerRadius="2" FIcon="&#xe62d;" Margin="3" Content="删除" perm:PermissionHelper.HasPerm="OA_DefType.Delete" Command="{Binding DeleteCommand}"></util:FButton>
+                <util:FButton CornerRadius="2" FIcon="&#xe641;" Margin="3" Content="刷新" Command="{Binding RefreshCommand}"></util:FButton>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
+                <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" util:ControlAttachProperty.CornerRadius="3"  Style="{StaticResource ClearButtonComboBox}"
                       Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
-                <ComboBoxItem Tag="Type">类型</ComboBoxItem>
-            </ComboBox>
-            <util:SearchBar Width="220" Margin="4,3" 
+                    <ComboBoxItem Tag="Type">类型</ComboBoxItem>
+                </ComboBox>
+                <util:SearchBar Width="220" Margin="4,3" 
                      Text="{Binding KeyWord}"
                      Command="{Binding SearchCommand}"
                      Style="{StaticResource DefalutSearchBar}">
-            </util:SearchBar>
-        </StackPanel>
+                </util:SearchBar>
+            </StackPanel>
+        </DockPanel>
         <util:TreeDataGrid Grid.Row="1" x:Name="table" ItemsSource="{Binding Data}"
                   Margin="3"
                   IsReadOnly="False"

@@ -92,16 +92,19 @@ namespace AIStudio.Wpf.Business.DTOModels
         public static TreeModel GetTreeModel(IEnumerable<TreeModel> trees, string id)
         {
             TreeModel treemodel = null;
-            foreach (var tree in trees)
+            if (trees != null)
             {
-                if (tree.Id == id)
+                foreach (var tree in trees)
                 {
-                    treemodel = tree;
-                    break;
-                }
-                else if (tree.Children != null)
-                {
-                    treemodel = GetTreeModel(tree.Children, id);
+                    if (tree.Id == id)
+                    {
+                        treemodel = tree;
+                        break;
+                    }
+                    else if (tree.Children != null)
+                    {
+                        treemodel = GetTreeModel(tree.Children, id);
+                    }
                 }
             }
             return treemodel;

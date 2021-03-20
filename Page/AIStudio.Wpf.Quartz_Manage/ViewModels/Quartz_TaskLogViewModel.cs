@@ -1,6 +1,8 @@
 ﻿using AIStudio.Core;
+using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Business.DTOModels;
 using AIStudio.Wpf.Service.IAppClient;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -67,14 +69,20 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                 var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
                 control.WaitInfo = "正在获取数据";
 
-                Dictionary<string, string> data = new Dictionary<string, string>();
-                data.Add("PageIndex", Pagination.PageIndex.ToString());
-                data.Add("PageRows", Pagination.PageRows.ToString());
-                data.Add("SortField", Pagination.SortField ?? "Id");
-                data.Add("SortType", Pagination.SortType);
-                data.Add("data", FullName);
+                var data = new
+                {
+                    PageIndex = Pagination.PageIndex,
+                    PageRows = Pagination.PageRows,
+                    SortField = Pagination.SortField,
+                    SortType = Pagination.SortType,
+                    Search = new
+                    {
+                        logType = LogType.系统任务,
+                        logContent = FullName,
+                    }
+                };
 
-                var result = await _dataProvider.GetData<List<Base_UserLogDTO>>($"/Base_Manage/Base_Log/GetLogList", data);
+                var result = await _dataProvider.GetData<List<Base_UserLogDTO>>($"/Base_Manage/Base_UserLog/GetLogList", JsonConvert.SerializeObject(data));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);

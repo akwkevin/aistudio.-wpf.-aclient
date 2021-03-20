@@ -11,8 +11,7 @@ namespace AIStudio.Wpf.Service.IAppClient
    
     public interface IDataProvider
     {
-        void Init(string url, string userName, string password, int headMode, TimeSpan timeout);
-        Task<WebResponse<string>> GetToken();
+        Task<WebResponse<string>> GetToken(string url, string userName, string password, int headMode, TimeSpan timeout);
 
         [LogHandler]
         Task<WebResponse<T>> GetData<T>(string url, Dictionary<string, string> data);

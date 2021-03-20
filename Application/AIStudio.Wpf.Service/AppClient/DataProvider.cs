@@ -72,6 +72,12 @@ namespace AIStudio.Wpf.Service.AppClient
             }
         }
 
+        public async Task<WebResponse<string>> GetToken(string url, string userName, string password, int headMode, TimeSpan timeout)
+        {     
+            Init(url, userName, password, headMode, timeout);
+            return await GetToken();
+        }
+
         public async Task<WebResponse<T>> GetData<T>(string url, Dictionary<string, string> data)
         {
             try

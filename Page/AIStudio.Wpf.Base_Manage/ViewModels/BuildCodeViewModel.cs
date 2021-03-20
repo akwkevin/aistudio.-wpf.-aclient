@@ -148,13 +148,16 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
                     if (types.Count > 0)
                     {
-                        Dictionary<string, string> data = new Dictionary<string, string>();
-                        data.Add("linkId", LinkId);
-                        data.Add("areaName", viewmodel.AreaName);
-                        data.Add("tablesJson", JsonConvert.SerializeObject(ids));
-                        data.Add("buildTypesJson", JsonConvert.SerializeObject(types));
 
-                        var result = await _dataProvider.GetData<AjaxResult>("/Base_Manage/BuildCode/Build", data);
+                        var data = new
+                        {
+                            linkId = LinkId,
+                            areaName = viewmodel.AreaName,
+                            tablesJson = JsonConvert.SerializeObject(ids),
+                            buildTypesJson = JsonConvert.SerializeObject(types)
+                        };
+
+                        var result = await _dataProvider.GetData<AjaxResult>("/Base_Manage/BuildCode/Build", JsonConvert.SerializeObject(data));
                         if (!result.IsOK)
                         {
                             throw new Exception(result.ErrorMessage);

@@ -18,9 +18,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-            <TextBlock Style="{StaticResource TextBlockDefault}">级别</TextBlock>
-            <ComboBox Width="100" Margin="3" ItemsSource="{Binding LoglevelList}" DisplayMemberPath="text" SelectedValuePath="value" Text="{Binding Level}" util:ControlAttachProperty.CornerRadius="3"  Style="{StaticResource DefaultComboBox}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">          
             <TextBlock Style="{StaticResource TextBlockDefault}">类别</TextBlock>
             <ComboBox Width="100" Margin="3" ItemsSource="{Binding LogTypeList}" DisplayMemberPath="text" SelectedValuePath="value" Text="{Binding LogType}" util:ControlAttachProperty.CornerRadius="3"  Style="{StaticResource DefaultComboBox}"/>
             <TextBlock Style="{StaticResource TextBlockDefault}">操作人</TextBlock>

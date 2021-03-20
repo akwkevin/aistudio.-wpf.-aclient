@@ -2,7 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-#nullable disable
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace AIStudio.Wpf.EFCore.Models
 {
@@ -17,50 +19,45 @@ namespace AIStudio.Wpf.EFCore.Models
         {
         }
 
-        public virtual DbSet<Base_Action> Base_Actions { get; set; }
-        public virtual DbSet<Base_AppSecret> Base_AppSecrets { get; set; }
-        public virtual DbSet<Base_DbLink> Base_DbLinks { get; set; }
-        public virtual DbSet<Base_Department> Base_Departments { get; set; }
-        public virtual DbSet<Base_Role> Base_Roles { get; set; }
-        public virtual DbSet<Base_RoleAction> Base_RoleActions { get; set; }
-        public virtual DbSet<Base_User> Base_Users { get; set; }
-        public virtual DbSet<Base_UserLog> Base_UserLogs { get; set; }
-        public virtual DbSet<Base_UserRole> Base_UserRoles { get; set; }
-        public virtual DbSet<D_UserGroup> D_UserGroups { get; set; }
-        public virtual DbSet<D_UserMail> D_UserMails { get; set; }
-        public virtual DbSet<D_UserMessage> D_UserMessages { get; set; }
-        public virtual DbSet<D_UserMessage_202102> D_UserMessage_202102s { get; set; }
-        public virtual DbSet<D_UserMessage_202103> D_UserMessage_202103s { get; set; }
-        public virtual DbSet<D_UserMessage_202104> D_UserMessage_202104s { get; set; }
-        public virtual DbSet<Event> Events { get; set; }
-        public virtual DbSet<ExecutionError> ExecutionErrors { get; set; }
-        public virtual DbSet<ExecutionPointer> ExecutionPointers { get; set; }
-        public virtual DbSet<ExtensionAttribute> ExtensionAttributes { get; set; }
-        public virtual DbSet<OA_DefForm> OA_DefForms { get; set; }
-        public virtual DbSet<OA_DefType> OA_DefTypes { get; set; }
-        public virtual DbSet<OA_UserForm> OA_UserForms { get; set; }
-        public virtual DbSet<OA_UserFormStep> OA_UserFormSteps { get; set; }
-        public virtual DbSet<Quartz_Task> Quartz_Tasks { get; set; }
-        public virtual DbSet<Subscription> Subscriptions { get; set; }
-        public virtual DbSet<Workflow> Workflows { get; set; }
+        public virtual DbSet<Base_Action> Base_Action { get; set; }
+        public virtual DbSet<Base_AppSecret> Base_AppSecret { get; set; }
+        public virtual DbSet<Base_DbLink> Base_DbLink { get; set; }
+        public virtual DbSet<Base_Department> Base_Department { get; set; }
+        public virtual DbSet<Base_Role> Base_Role { get; set; }
+        public virtual DbSet<Base_RoleAction> Base_RoleAction { get; set; }
+        public virtual DbSet<Base_User> Base_User { get; set; }
+        public virtual DbSet<Base_UserLog> Base_UserLog { get; set; }
+        public virtual DbSet<Base_UserRole> Base_UserRole { get; set; }
+        public virtual DbSet<D_UserGroup> D_UserGroup { get; set; }
+        public virtual DbSet<D_UserMail> D_UserMail { get; set; }
+        public virtual DbSet<D_UserMessage> D_UserMessage { get; set; }
+        public virtual DbSet<D_UserMessage_202103> D_UserMessage_202103 { get; set; }
+        public virtual DbSet<D_UserMessage_202104> D_UserMessage_202104 { get; set; }
+        public virtual DbSet<Event> Event { get; set; }
+        public virtual DbSet<ExecutionError> ExecutionError { get; set; }
+        public virtual DbSet<ExecutionPointer> ExecutionPointer { get; set; }
+        public virtual DbSet<ExtensionAttribute> ExtensionAttribute { get; set; }
+        public virtual DbSet<OA_DefForm> OA_DefForm { get; set; }
+        public virtual DbSet<OA_DefType> OA_DefType { get; set; }
+        public virtual DbSet<OA_UserForm> OA_UserForm { get; set; }
+        public virtual DbSet<OA_UserFormStep> OA_UserFormStep { get; set; }
+        public virtual DbSet<Quartz_Task> Quartz_Task { get; set; }
+        public virtual DbSet<Subscription> Subscription { get; set; }
+        public virtual DbSet<Workflow> Workflow { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.;Database=Colder.Admin.AntdVue;Trusted_Connection=True;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Data Source=121.36.12.76;Initial Catalog=Colder.Admin.AntdVue;uid=sa;pwd=aic3600!");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "Chinese_PRC_CI_AS");
-
             modelBuilder.Entity<Base_Action>(entity =>
             {
-                entity.ToTable("Base_Action");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -110,8 +107,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<Base_AppSecret>(entity =>
             {
-                entity.ToTable("Base_AppSecret");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -151,8 +146,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<Base_DbLink>(entity =>
             {
-                entity.ToTable("Base_DbLink");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -192,8 +185,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<Base_Department>(entity =>
             {
-                entity.ToTable("Base_Department");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -231,8 +222,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<Base_Role>(entity =>
             {
-                entity.ToTable("Base_Role");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -268,8 +257,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<Base_RoleAction>(entity =>
             {
-                entity.ToTable("Base_RoleAction");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -307,8 +294,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<Base_User>(entity =>
             {
-                entity.ToTable("Base_User");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -358,8 +343,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<Base_UserLog>(entity =>
             {
-                entity.ToTable("Base_UserLog");
-
                 entity.Property(e => e.Id).HasComment("自然主键");
 
                 entity.Property(e => e.CreateTime).HasComment("创建时间");
@@ -375,8 +358,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<Base_UserRole>(entity =>
             {
-                entity.ToTable("Base_UserRole");
-
                 entity.Property(e => e.Id).HasComment("主键");
 
                 entity.Property(e => e.CreateTime).HasComment("创建时间");
@@ -392,8 +373,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<D_UserGroup>(entity =>
             {
-                entity.ToTable("D_UserGroup");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -433,8 +412,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<D_UserMail>(entity =>
             {
-                entity.ToTable("D_UserMail");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -468,43 +445,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<D_UserMessage>(entity =>
             {
-                entity.ToTable("D_UserMessage");
-
-                entity.Property(e => e.Id)
-                    .HasMaxLength(50)
-                    .HasComment("自然主键");
-
-                entity.Property(e => e.CreateTime).HasComment("创建时间");
-
-                entity.Property(e => e.CreatorId)
-                    .HasMaxLength(50)
-                    .HasComment("创建人Id");
-
-                entity.Property(e => e.CreatorName)
-                    .HasMaxLength(255)
-                    .HasComment("创建人");
-
-                entity.Property(e => e.Deleted).HasComment("否已删除");
-
-                entity.Property(e => e.ModifyId)
-                    .HasMaxLength(50)
-                    .HasComment("修改人Id");
-
-                entity.Property(e => e.ModifyName)
-                    .HasMaxLength(255)
-                    .HasComment("修改人");
-
-                entity.Property(e => e.ModifyTime).HasComment("修改时间");
-
-                entity.Property(e => e.TenantId)
-                    .HasMaxLength(50)
-                    .HasComment("租户Id");
-            });
-
-            modelBuilder.Entity<D_UserMessage_202102>(entity =>
-            {
-                entity.ToTable("D_UserMessage_202102");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -538,8 +478,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<D_UserMessage_202103>(entity =>
             {
-                entity.ToTable("D_UserMessage_202103");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -573,8 +511,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<D_UserMessage_202104>(entity =>
             {
-                entity.ToTable("D_UserMessage_202104");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -612,15 +548,15 @@ namespace AIStudio.Wpf.EFCore.Models
 
                 entity.ToTable("Event", "wfc");
 
-                entity.HasIndex(e => e.EventId, "IX_Event_EventId")
+                entity.HasIndex(e => e.EventId)
                     .IsUnique()
                     .HasFilter("([EventId] IS NOT NULL)");
 
-                entity.HasIndex(e => new { e.EventName, e.EventKey }, "IX_Event_EventName_EventKey");
+                entity.HasIndex(e => e.EventTime);
 
-                entity.HasIndex(e => e.EventTime, "IX_Event_EventTime");
+                entity.HasIndex(e => e.IsProcessed);
 
-                entity.HasIndex(e => e.IsProcessed, "IX_Event_IsProcessed");
+                entity.HasIndex(e => new { e.EventName, e.EventKey });
 
                 entity.Property(e => e.EventKey).HasMaxLength(200);
 
@@ -644,7 +580,7 @@ namespace AIStudio.Wpf.EFCore.Models
 
                 entity.ToTable("ExecutionPointer", "wfc");
 
-                entity.HasIndex(e => e.WorkflowId, "IX_ExecutionPointer_WorkflowId");
+                entity.HasIndex(e => e.WorkflowId);
 
                 entity.Property(e => e.EventKey).HasMaxLength(100);
 
@@ -657,7 +593,7 @@ namespace AIStudio.Wpf.EFCore.Models
                 entity.Property(e => e.StepName).HasMaxLength(100);
 
                 entity.HasOne(d => d.Workflow)
-                    .WithMany(p => p.ExecutionPointers)
+                    .WithMany(p => p.ExecutionPointer)
                     .HasForeignKey(d => d.WorkflowId);
             });
 
@@ -667,19 +603,17 @@ namespace AIStudio.Wpf.EFCore.Models
 
                 entity.ToTable("ExtensionAttribute", "wfc");
 
-                entity.HasIndex(e => e.ExecutionPointerId, "IX_ExtensionAttribute_ExecutionPointerId");
+                entity.HasIndex(e => e.ExecutionPointerId);
 
                 entity.Property(e => e.AttributeKey).HasMaxLength(100);
 
                 entity.HasOne(d => d.ExecutionPointer)
-                    .WithMany(p => p.ExtensionAttributes)
+                    .WithMany(p => p.ExtensionAttribute)
                     .HasForeignKey(d => d.ExecutionPointerId);
             });
 
             modelBuilder.Entity<OA_DefForm>(entity =>
             {
-                entity.ToTable("OA_DefForm");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -723,8 +657,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<OA_DefType>(entity =>
             {
-                entity.ToTable("OA_DefType");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -764,8 +696,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<OA_UserForm>(entity =>
             {
-                entity.ToTable("OA_UserForm");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -825,8 +755,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<OA_UserFormStep>(entity =>
             {
-                entity.ToTable("OA_UserFormStep");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -862,8 +790,6 @@ namespace AIStudio.Wpf.EFCore.Models
 
             modelBuilder.Entity<Quartz_Task>(entity =>
             {
-                entity.ToTable("Quartz_Task");
-
                 entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasComment("自然主键");
@@ -917,11 +843,11 @@ namespace AIStudio.Wpf.EFCore.Models
 
                 entity.ToTable("Subscription", "wfc");
 
-                entity.HasIndex(e => e.EventKey, "IX_Subscription_EventKey");
+                entity.HasIndex(e => e.EventKey);
 
-                entity.HasIndex(e => e.EventName, "IX_Subscription_EventName");
+                entity.HasIndex(e => e.EventName);
 
-                entity.HasIndex(e => e.SubscriptionId, "IX_Subscription_SubscriptionId")
+                entity.HasIndex(e => e.SubscriptionId)
                     .IsUnique()
                     .HasFilter("([SubscriptionId] IS NOT NULL)");
 
@@ -946,11 +872,11 @@ namespace AIStudio.Wpf.EFCore.Models
 
                 entity.ToTable("Workflow", "wfc");
 
-                entity.HasIndex(e => e.InstanceId, "IX_Workflow_InstanceId")
+                entity.HasIndex(e => e.InstanceId)
                     .IsUnique()
                     .HasFilter("([InstanceId] IS NOT NULL)");
 
-                entity.HasIndex(e => e.NextExecution, "IX_Workflow_NextExecution");
+                entity.HasIndex(e => e.NextExecution);
 
                 entity.Property(e => e.Description).HasMaxLength(500);
 

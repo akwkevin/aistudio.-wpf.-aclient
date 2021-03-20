@@ -19,24 +19,12 @@
     <Table Style="{StaticResource BorderedTable}">
         <Table.Columns>
             <TableColumn Width="*"></TableColumn>
-
-            <TableColumn Width="*"></TableColumn>
-
-            <TableColumn Width="*"></TableColumn>
-
-            <TableColumn Width="*"></TableColumn>
-
-            <TableColumn Width="*"></TableColumn>
-
         </Table.Columns>
         <TableRowGroup Name="rowsDetails">
             <TableRow FontWeight="Bold" >
                 <TableCell Style="{ StaticResource BorderedCell}">
                     <Paragraph>部门名</Paragraph>
-               </TableCell>
-                <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>组织机构</Paragraph>
-               </TableCell>
+                </TableCell>
             </TableRow>
         </TableRowGroup>
     </Table>

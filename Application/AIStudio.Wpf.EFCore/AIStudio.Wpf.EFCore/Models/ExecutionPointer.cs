@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable disable
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace AIStudio.Wpf.EFCore.Models
 {
@@ -9,7 +11,7 @@ namespace AIStudio.Wpf.EFCore.Models
     {
         public ExecutionPointer()
         {
-            ExtensionAttributes = new HashSet<ExtensionAttribute>();
+            ExtensionAttribute = new HashSet<ExtensionAttribute>();
         }
 
         public long PersistenceId { get; set; }
@@ -35,6 +37,6 @@ namespace AIStudio.Wpf.EFCore.Models
         public int Status { get; set; }
 
         public virtual Workflow Workflow { get; set; }
-        public virtual ICollection<ExtensionAttribute> ExtensionAttributes { get; set; }
+        public virtual ICollection<ExtensionAttribute> ExtensionAttribute { get; set; }
     }
 }

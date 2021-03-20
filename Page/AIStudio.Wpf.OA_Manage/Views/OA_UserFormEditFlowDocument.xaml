@@ -3,7 +3,22 @@
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
               TextOptions.TextFormattingMode="Display">
     <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold">
-        <Run Text="{Binding DefFormName}"></Run>
-        
+        <Run Text="{Binding DefFormName}"></Run>        
+    </Paragraph>
+    <Paragraph>
+        <Run Text="因"></Run>
+        <Run Text="{Binding Text}" TextDecorations="Underline"></Run>
+        <Run Text="，本人想"></Run>
+        <Run Text="{Binding SubType}"></Run>
+        <Run Text="{Binding Flag}" TextDecorations="Underline"></Run>
+        <Run Text="{Binding Unit}"></Run>
+        <Run Text="，望领导批准！"></Run>
+    </Paragraph>
+    <Paragraph TextAlignment="Right">
+        <Run Text="谢谢!"></Run>
+    </Paragraph>
+    <Paragraph TextAlignment="Right">
+        <Run Text="申请人:"></Run>
+        <Run Text="{Binding ApplicantUserId}" TextDecorations="Underline"></Run>
     </Paragraph>
 </FlowDocument>
