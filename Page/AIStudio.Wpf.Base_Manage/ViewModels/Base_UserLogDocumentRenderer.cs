@@ -1,5 +1,5 @@
 ﻿using AIStudio.Core.Helpers;
-using AIStudio.Wpf.Business.DTOModels;
+using AIStudio.Wpf.EFCore.DTOModels;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Documents;

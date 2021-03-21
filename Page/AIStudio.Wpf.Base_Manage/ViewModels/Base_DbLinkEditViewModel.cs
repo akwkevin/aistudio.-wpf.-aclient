@@ -1,5 +1,5 @@
 ﻿using AIStudio.Wpf.BasePage.ViewModels;
-using AIStudio.Wpf.Business.DTOModels;
+using AIStudio.Wpf.EFCore.DTOModels;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {

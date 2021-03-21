@@ -24,8 +24,8 @@
     <PackageReference Include="System.ComponentModel.Annotations">
       <Version>5.0.0</Version>
     </PackageReference>
-    <Reference Include="ReachFramework" Condition="$(DefineConstants.Contains(NETCOREAPP)) == false"/>
-    <Reference Include="System.Printing" Condition="$(DefineConstants.Contains(NETCOREAPP)) == false"/>
+    <Reference Include="ReachFramework" Condition="$(DefineConstants.Contains(NETCOREAPP)) == false" />
+    <Reference Include="System.Printing" Condition="$(DefineConstants.Contains(NETCOREAPP)) == false" />
   </ItemGroup>
  
 

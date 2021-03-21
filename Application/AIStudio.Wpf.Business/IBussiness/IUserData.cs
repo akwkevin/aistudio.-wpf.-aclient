@@ -1,4 +1,4 @@
-﻿using AIStudio.Wpf.Business.DTOModels;
+﻿using AIStudio.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

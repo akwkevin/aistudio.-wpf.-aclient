@@ -1,6 +1,7 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Client.ViewModels;
+using AIStudio.Wpf.EFBusiness;
 using AIStudio.Wpf.Home;
 using AIStudio.Wpf.Home.ViewModels;
 using AIStudio.Wpf.LocalConfiguration;
@@ -85,9 +86,21 @@ namespace AIStudio.Wpf.Client
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             var container = PrismIocExtensions.GetContainer(containerRegistry);
-            container.AddNewExtension<Interception>()//add Extension Aop
-                .RegisterSingleton<IDataProvider, ApiDataProvider>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
-        
+
+            //api接口模式
+            if (LocalSetting.ServerIP.StartsWith("http"))
+            {
+                container.AddNewExtension<Interception>()//add Extension Aop
+                    .RegisterSingleton<IDataProvider, ApiDataProvider>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
+
+            }
+            else//直接访问数据库模式，目前只实现了SqlServer
+            {
+                container.AddNewExtension<Interception>()//add Extension Aop
+                    .RegisterType(typeof(IDataProvider), typeof(EFCoreDataProvider), new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
+
+                containerRegistry.AddEFCoreServices();
+            }
             containerRegistry.RegisterSingleton<IOperator, Operator>();
             containerRegistry.RegisterSingleton<IUserData, UserData>();
             containerRegistry.RegisterSingleton<IWSocketClient, WSocketClient>();

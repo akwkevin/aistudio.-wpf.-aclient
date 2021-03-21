@@ -1,6 +1,4 @@
-﻿using AIStudio.Wpf.Business.DTOModels;
-using AIStudio.Wpf.Business;
-using AIStudio.Wpf.Business;
+﻿using AIStudio.Core;
 using Prism.Ioc;
 using System;
 using System.Collections.Generic;

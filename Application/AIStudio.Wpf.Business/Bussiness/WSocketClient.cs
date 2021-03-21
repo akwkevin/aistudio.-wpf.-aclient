@@ -1,5 +1,4 @@
 ﻿using AIStudio.Core;
-using AIStudio.Wpf.Service.AppClient;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Ioc;

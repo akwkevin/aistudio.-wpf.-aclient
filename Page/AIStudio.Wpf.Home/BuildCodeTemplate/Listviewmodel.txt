@@ -2,7 +2,7 @@
 using Dataforge.PrismAvalonExtensions.ViewModels;
 using AIStudio.Wpf.%areaName%.Views;
 using AIStudio.Wpf.BasePage.ViewModels;
-using AIStudio.Wpf.Business.DTOModels;
+using AIStudio.Wpf.EFCore.DTOModels;
 using AIStudio.Wpf.Service.AppClient;
 using AIStudio.Wpf.Business;
 using Prism.Ioc;

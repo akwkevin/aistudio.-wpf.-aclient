@@ -1,7 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
-using AIStudio.Wpf.Business.DTOModels;
-using AIStudio.Wpf.Business;
+using AIStudio.Wpf.EFCore.DTOModels;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Ioc;

@@ -5,6 +5,10 @@ namespace AIStudio.Wpf.Business
 {
     public interface IOperator
     {
+        /// <summary>
+        /// 当前操作者UserId
+        /// </summary>
+        string UserId { get; }
         string UserName { get; set; }
         string Avatar { get; set; }
         /// <summary>

@@ -8,6 +8,7 @@ namespace AIStudio.Wpf.Business
     /// </summary>
     public class Operator : IOperator
     {
+        public string UserId { get { return Property?.Id; } }
         /// <summary>
         /// 当前操作者UserName
         /// </summary>

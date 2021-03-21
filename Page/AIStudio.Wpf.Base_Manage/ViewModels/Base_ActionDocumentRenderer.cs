@@ -1,6 +1,6 @@
 ﻿using AIStudio.Core.Helpers;
 using AIStudio.Wpf.BasePage.DTOModels;
-using AIStudio.Wpf.Business.DTOModels;
+using AIStudio.Wpf.EFCore.DTOModels;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;

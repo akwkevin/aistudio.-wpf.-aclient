@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace AIStudio.Wpf.Business.DTOModels
+namespace AIStudio.Wpf.EFCore.DTOModels
 {
     public partial class %entityName%DTO : %entityName%, INotifyPropertyChanged, IIsChecked
     {

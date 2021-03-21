@@ -1,4 +1,5 @@
-﻿using AIStudio.Wpf.Service.AppClient.HttpClients;
+﻿using AIStudio.Core;
+using AIStudio.Wpf.Service.AppClient.HttpClients;
 using AIStudio.Wpf.Service.AppClient.Models;
 using Newtonsoft.Json;
 using System;

@@ -1,10 +1,9 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.BasePage.ViewModels;
-using AIStudio.Wpf.Business.DTOModels;
+using AIStudio.Wpf.Business;
+using AIStudio.Wpf.EFCore.DTOModels;
 using AIStudio.Wpf.OA_Manage.Models;
 using AIStudio.Wpf.OA_Manage.Views;
-using AIStudio.Wpf.Service.AppClient;
-using AIStudio.Wpf.Business;
 using Newtonsoft.Json;
 using Prism.Ioc;
 using System;

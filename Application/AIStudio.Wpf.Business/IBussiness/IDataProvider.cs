@@ -1,5 +1,5 @@
 ﻿using AIStudio.AOP;
-using AIStudio.Wpf.Service.AppClient;
+using AIStudio.Core;
 using AIStudio.Wpf.Service.AppClient.Models;
 using System;
 using System.Collections.Generic;

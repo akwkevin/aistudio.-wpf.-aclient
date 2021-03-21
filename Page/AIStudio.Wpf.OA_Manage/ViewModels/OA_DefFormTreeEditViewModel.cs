@@ -1,5 +1,5 @@
 ﻿using Aga.Diagrams.TestExtend.Flowchart;
-using AIStudio.Wpf.Business.DTOModels;
+using AIStudio.Wpf.EFCore.DTOModels;
 using AIStudio.Wpf.OA_Manage.Models;
 using AIStudio.Wpf.Business;
 using Prism.Ioc;
@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Util.Controls;
+using AIStudio.Core;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {

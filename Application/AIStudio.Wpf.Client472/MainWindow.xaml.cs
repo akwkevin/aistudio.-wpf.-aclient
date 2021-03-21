@@ -1,7 +1,6 @@
 ﻿using AIStudio.Wpf.BasePage.Events;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Client.Views;
-using AIStudio.Wpf.Service.IWebSocketClient;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Modularity;

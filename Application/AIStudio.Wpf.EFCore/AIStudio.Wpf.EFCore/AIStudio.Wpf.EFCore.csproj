@@ -17,4 +17,8 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\AIStudio.Core\AIStudio.Core.csproj" />
+  </ItemGroup>
+
 </Project>
