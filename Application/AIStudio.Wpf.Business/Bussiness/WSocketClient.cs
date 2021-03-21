@@ -1,7 +1,5 @@
 ﻿using AIStudio.Core;
-using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Service.AppClient;
-using AIStudio.Wpf.Service.IWebSocketClient;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Ioc;
@@ -13,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using WebSocket4Net;
 
-namespace AIStudio.Wpf.Service.WebSocketClient
+namespace AIStudio.Wpf.Business
 {
     public class WSocketClient : BindableBase, IWSocketClient
     {

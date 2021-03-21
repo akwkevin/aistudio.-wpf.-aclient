@@ -4,13 +4,7 @@ using AIStudio.Wpf.Client.ViewModels;
 using AIStudio.Wpf.Home;
 using AIStudio.Wpf.Home.ViewModels;
 using AIStudio.Wpf.LocalConfiguration;
-using AIStudio.Wpf.Service.AppClient;
 using AIStudio.Wpf.Service.AppClient.HttpClients;
-using AIStudio.Wpf.Service.IAppClient;
-using AIStudio.Wpf.Service.ITempService;
-using AIStudio.Wpf.Service.IWebSocketClient;
-using AIStudio.Wpf.Service.TempService;
-using AIStudio.Wpf.Service.WebSocketClient;
 using AutoMapper;
 using Dataforge.PrismAvalonExtensions.Regions;
 using Prism.Ioc;
@@ -92,7 +86,7 @@ namespace AIStudio.Wpf.Client
         {
             var container = PrismIocExtensions.GetContainer(containerRegistry);
             container.AddNewExtension<Interception>()//add Extension Aop
-                .RegisterSingleton<IDataProvider, DataProvider>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
+                .RegisterSingleton<IDataProvider, ApiDataProvider>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
         
             containerRegistry.RegisterSingleton<IOperator, Operator>();
             containerRegistry.RegisterSingleton<IUserData, UserData>();

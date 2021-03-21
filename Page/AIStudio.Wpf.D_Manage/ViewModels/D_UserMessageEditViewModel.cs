@@ -5,7 +5,6 @@ using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Business.DTOModels;
 using AIStudio.Wpf.Service.AppClient;
-using AIStudio.Wpf.Service.IWebSocketClient;
 using Newtonsoft.Json;
 using Prism.Ioc;
 using System;

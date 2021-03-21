@@ -2,7 +2,7 @@
 using AIStudio.Core.Validation;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.LocalConfiguration;
-using AIStudio.Wpf.Service.IAppClient;
+using AIStudio.Wpf.Business;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;

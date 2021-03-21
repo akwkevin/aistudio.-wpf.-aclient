@@ -1,12 +1,12 @@
 ﻿using AIStudio.Wpf.Business.DTOModels;
-using AIStudio.Wpf.Service.IAppClient;
-using AIStudio.Wpf.Service.ITempService;
+using AIStudio.Wpf.Business;
+using AIStudio.Wpf.Business;
 using Prism.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AIStudio.Wpf.Service.TempService
+namespace AIStudio.Wpf.Business
 {
     public class UserData: IUserData
     {

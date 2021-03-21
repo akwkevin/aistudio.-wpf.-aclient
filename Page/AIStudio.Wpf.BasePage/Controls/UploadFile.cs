@@ -1,4 +1,4 @@
-﻿using AIStudio.Wpf.Service.IAppClient;
+﻿using AIStudio.Wpf.Business;
 using Prism.Ioc;
 using System;
 using System.Collections.ObjectModel;

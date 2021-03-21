@@ -3,7 +3,7 @@ using AIStudio.Core.Helpers;
 using AIStudio.Wpf.BasePage.Views;
 using AIStudio.Wpf.Business.DTOModels;
 using AIStudio.Wpf.Service.AppClient;
-using AIStudio.Wpf.Service.IAppClient;
+using AIStudio.Wpf.Business;
 using Dataforge.PrismAvalonExtensions.ViewModels;
 using Newtonsoft.Json;
 using Prism.Ioc;

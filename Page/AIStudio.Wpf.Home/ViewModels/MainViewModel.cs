@@ -1,5 +1,4 @@
 ﻿using AIStudio.Core;
-using AIStudio.Wpf.Base_Manage.ViewModels;
 using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.Events;
 using AIStudio.Wpf.BasePage.Models;
@@ -8,9 +7,6 @@ using AIStudio.Wpf.Business.DTOModels;
 using AIStudio.Wpf.Home.Models;
 using AIStudio.Wpf.Home.Views;
 using AIStudio.Wpf.Service.AppClient;
-using AIStudio.Wpf.Service.IAppClient;
-using AIStudio.Wpf.Service.IWebSocketClient;
-using AIStudio.Wpf.Service.WebSocketClient;
 using AutoMapper;
 using Dataforge.PrismAvalonExtensions.Events;
 using Prism.Commands;

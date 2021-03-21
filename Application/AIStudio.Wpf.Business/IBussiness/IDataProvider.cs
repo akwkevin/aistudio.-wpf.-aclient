@@ -3,12 +3,11 @@ using AIStudio.Wpf.Service.AppClient;
 using AIStudio.Wpf.Service.AppClient.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace AIStudio.Wpf.Service.IAppClient
+namespace AIStudio.Wpf.Business
 {
-   
+
     public interface IDataProvider
     {
         Task<WebResponse<string>> GetToken(string url, string userName, string password, int headMode, TimeSpan timeout);

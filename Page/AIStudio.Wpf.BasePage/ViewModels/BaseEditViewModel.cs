@@ -1,7 +1,6 @@
 ﻿using AIStudio.Core;
+using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Business.DTOModels;
-using AIStudio.Wpf.Service.IAppClient;
-using AIStudio.Wpf.Service.ITempService;
 using Newtonsoft.Json;
 using Prism.Ioc;
 using Prism.Mvvm;

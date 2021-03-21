@@ -1,5 +1,4 @@
-﻿using AIStudio.Wpf.Service.AppClient;
-using System;
+﻿using AIStudio.Wpf.Business;
 
 namespace AIStudio.Wpf.ServiceTest
 {
@@ -7,7 +6,7 @@ namespace AIStudio.Wpf.ServiceTest
     {
         static void Main(string[] args)
         {
-            DataProvider dataProvider = new DataProvider("http://localhost:5000", "Admin", "Admin", 1);
+            ApiDataProvider dataProvider = new ApiDataProvider("http://localhost:5000", "Admin", "Admin", 1);
             var token = dataProvider.GetToken().Result;
         }
     }

@@ -11,10 +11,31 @@ namespace AIStudio.Wpf.Service.AppClient
 {
     public class NetworkTransfer
     {
+        private static NetworkTransfer instance = null;
+        private static object obj = new object();
+
+        public static NetworkTransfer Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (obj)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new NetworkTransfer();
+                        }
+                    }
+                }
+                return instance;
+            }
+        }
+
         public string Url { get; set; }
         public IAppHeader Header { get; set; }
         public TimeSpan TimeSpan { get; set; }
-        public NetworkTransfer(string url, IAppHeader header, TimeSpan timeout)
+        public void Init(string url, IAppHeader header, TimeSpan timeout)
         {
             Url = url;
             Header = header;
@@ -38,6 +59,10 @@ namespace AIStudio.Wpf.Service.AppClient
 
         public async Task<AjaxResult> GetData(string url, Dictionary<string, string> data)
         {
+            if (!url.StartsWith("http"))
+            {
+                url = Url + url;
+            }
             MultipartFormDataContent stringContent = null;
             if (data != null)
             {
@@ -55,6 +80,10 @@ namespace AIStudio.Wpf.Service.AppClient
 
         public async Task<AjaxResult> GetData(string url, string json)
         {
+            if (!url.StartsWith("http"))
+            {
+                url = Url + url;
+            }
             var content = await HttpClientHelper.Instance.PostAsyncJson(url, json, TimeSpan, Header.SetHeader());
             var result = JsonConvert.DeserializeObject<AjaxResult>(content);
             return result;

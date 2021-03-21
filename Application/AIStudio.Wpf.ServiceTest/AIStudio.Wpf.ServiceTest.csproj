@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj" />
+    <ProjectReference Include="..\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
   </ItemGroup>
 
 </Project>

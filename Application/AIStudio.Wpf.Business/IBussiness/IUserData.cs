@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AIStudio.Wpf.Service.ITempService
+namespace AIStudio.Wpf.Business
 {
     public interface IUserData
     {

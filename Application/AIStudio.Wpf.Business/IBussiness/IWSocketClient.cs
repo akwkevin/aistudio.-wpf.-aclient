@@ -2,7 +2,7 @@
 using AIStudio.Wpf.Service.AppClient;
 using System;
 
-namespace AIStudio.Wpf.Service.IWebSocketClient
+namespace AIStudio.Wpf.Business
 {
     public interface IWSocketClient:IDisposable
     {

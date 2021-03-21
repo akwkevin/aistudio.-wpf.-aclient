@@ -1,64 +1,55 @@
-﻿using AIStudio.Wpf.Service.AppClient.HttpClients;
+﻿using AIStudio.Wpf.Service.AppClient;
+using AIStudio.Wpf.Service.AppClient.HttpClients;
 using AIStudio.Wpf.Service.AppClient.Models;
-using AIStudio.Wpf.Service.IAppClient;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AIStudio.Wpf.Service.AppClient
+namespace AIStudio.Wpf.Business
 {
-    public class DataProvider : IDataProvider
+    public class ApiDataProvider : IDataProvider
     {
-        private NetworkTransfer _transfer = null;
-        public string Url { get; set; }
-        public IAppHeader Header { get; set; }
+        public ApiDataProvider()
+        {
 
+        }
         #region 密匙模式
-        public DataProvider(string url, string appId, string appSecret)
+        public ApiDataProvider(string url, string appId, string appSecret)
            : this(url, appId, appSecret, TimeSpan.FromSeconds(30))
         {
         }
 
-        public DataProvider(string url, string appId, string appSecret, TimeSpan timeout)
+        public ApiDataProvider(string url, string appId, string appSecret, TimeSpan timeout)
         {
-            Url = url;
-            Header = new AppSecretHeader(appId, appSecret);
-            _transfer = new NetworkTransfer(url, Header, timeout);
+            var header = new AppSecretHeader(appId, appSecret);
+            NetworkTransfer.Instance.Init(url, header, timeout);
         }
         #endregion
 
         #region Token模式
-        public DataProvider(string url, string userName, string password, int headMode)
+        public ApiDataProvider(string url, string userName, string password, int headMode)
          : this(url, userName, password, headMode, TimeSpan.FromSeconds(30))
         {
         }
 
-        public DataProvider(string url, string userName, string password, int headMode,  TimeSpan timeout)
+        public ApiDataProvider(string url, string userName, string password, int headMode, TimeSpan timeout)
         {
-            Url = url;
-            Header = new AppTokenHeader(userName, password);
-            _transfer = new NetworkTransfer(url, Header, timeout);
+            Init(url, userName, password, headMode, timeout);
         }
         #endregion
 
-        public DataProvider()
-        {
-
-        }
-
         public void Init(string url, string userName, string password, int headMode, TimeSpan timeout)
         {
-            Url = url;
-            Header = new AppTokenHeader(userName, password);
-            _transfer = new NetworkTransfer(url, Header, timeout);
+            var header = new AppTokenHeader(userName, password);
+            NetworkTransfer.Instance.Init(url, header, timeout);
         }
 
         public async Task<WebResponse<string>> GetToken()
         {
             try
             {
-                var response = await _transfer.GetToken();
+                var response = await NetworkTransfer.Instance.GetToken();
                 if (response.Success == true)
                 {
                     return WebResponse<string>.Success(response.Data as string, response.Total);
@@ -73,7 +64,7 @@ namespace AIStudio.Wpf.Service.AppClient
         }
 
         public async Task<WebResponse<string>> GetToken(string url, string userName, string password, int headMode, TimeSpan timeout)
-        {     
+        {
             Init(url, userName, password, headMode, timeout);
             return await GetToken();
         }
@@ -82,11 +73,7 @@ namespace AIStudio.Wpf.Service.AppClient
         {
             try
             {
-                if (!url.StartsWith("http"))
-                {
-                    url = Url + url;
-                }
-                var response = await _transfer.GetData(url, data);
+                var response = await NetworkTransfer.Instance.GetData(url, data);
                 if (response.Success == true)
                 {
                     if (response is T)
@@ -111,11 +98,7 @@ namespace AIStudio.Wpf.Service.AppClient
         {
             try
             {
-                if (!url.StartsWith("http"))
-                {
-                    url = Url + url;
-                }
-                var response = await _transfer.GetData(url, json);
+                var response = await NetworkTransfer.Instance.GetData(url, json);
                 if (response.Success == true)
                 {
                     if (response is T)
@@ -148,7 +131,7 @@ namespace AIStudio.Wpf.Service.AppClient
         {
             try
             {
-                var response = await _transfer.Query(typeof(T).Name, columns, condition, args, zip);
+                var response = await NetworkTransfer.Instance.Query(typeof(T).Name, columns, condition, args, zip);
                 if (response.Success == true)
                 {
                     return WebResponse<List<T>>.Success(JsonConvert.DeserializeObject<List<T>>((response.Data ?? "").ToString()), response.Total);
@@ -172,7 +155,7 @@ namespace AIStudio.Wpf.Service.AppClient
         {
             try
             {
-                var response = await _transfer.Add(typeof(T).Name, StandardTimeFormatJsonConvertor.SerializeObject(objs), columns, zip);
+                var response = await NetworkTransfer.Instance.Add(typeof(T).Name, StandardTimeFormatJsonConvertor.SerializeObject(objs), columns, zip);
                 if (response.Success == true)
                 {
                     return WebResponse<List<T>>.Success(JsonConvert.DeserializeObject<List<T>>((response.Data ?? "").ToString()), response.Total);
@@ -197,7 +180,7 @@ namespace AIStudio.Wpf.Service.AppClient
         {
             try
             {
-                var response = await _transfer.Modify(typeof(T).Name, columns, StandardTimeFormatJsonConvertor.SerializeObject(objs), zip);
+                var response = await NetworkTransfer.Instance.Modify(typeof(T).Name, columns, StandardTimeFormatJsonConvertor.SerializeObject(objs), zip);
                 if (response.Success == true)
                 {
                     return WebResponse.Success();
@@ -222,7 +205,7 @@ namespace AIStudio.Wpf.Service.AppClient
         {
             try
             {
-                var response = await _transfer.Delete(typeof(T).Name, primaryKeyColumn, ids, zip);
+                var response = await NetworkTransfer.Instance.Delete(typeof(T).Name, primaryKeyColumn, ids, zip);
                 if (response.Success == true)
                 {
                     return WebResponse.Success();
@@ -251,7 +234,7 @@ namespace AIStudio.Wpf.Service.AppClient
         {
             try
             {
-                var response = await _transfer.ComplexOperation(StandardTimeFormatJsonConvertor.SerializeObject(addObjs),
+                var response = await NetworkTransfer.Instance.ComplexOperation(StandardTimeFormatJsonConvertor.SerializeObject(addObjs),
                     StandardTimeFormatJsonConvertor.SerializeObject(modifyObjs),
                     StandardTimeFormatJsonConvertor.SerializeObject(deleteObjs), zip);
                 if (response.Success == true)
@@ -279,7 +262,7 @@ namespace AIStudio.Wpf.Service.AppClient
         {
             try
             {
-                var response = await _transfer.ComplexQuery(queries, zip);
+                var response = await NetworkTransfer.Instance.ComplexQuery(queries, zip);
                 if (response.Success == true)
                 {
                     ComplexQueryResult result = JsonConvert.DeserializeObject<ComplexQueryResult>((response.Data ?? "").ToString());
@@ -309,7 +292,7 @@ namespace AIStudio.Wpf.Service.AppClient
         {
             try
             {
-                var response = await _transfer.QueryWithCustomSQL(typeof(T).Name, sql, args, zip);
+                var response = await NetworkTransfer.Instance.QueryWithCustomSQL(typeof(T).Name, sql, args, zip);
                 if (response.Success == true)
                 {
                     return WebResponse<List<T>>.Success(JsonConvert.DeserializeObject<List<T>>((response.Data ?? "").ToString()), response.Total);
@@ -334,7 +317,7 @@ namespace AIStudio.Wpf.Service.AppClient
         {
             try
             {
-                var response = await _transfer.UploadFile(path, fileName, remark);
+                var response = await NetworkTransfer.Instance.UploadFile(path, fileName, remark);
                 if (response.Success == true)
                 {
                     return WebResponse.Success();
@@ -359,7 +342,7 @@ namespace AIStudio.Wpf.Service.AppClient
         {
             try
             {
-                var response = await _transfer.DownLoadFile(fullpath, savepath);
+                var response = await NetworkTransfer.Instance.DownLoadFile(fullpath, savepath);
                 if (response.Success == true)
                 {
                     return WebResponse.Success();
@@ -384,7 +367,7 @@ namespace AIStudio.Wpf.Service.AppClient
         {
             try
             {
-                var response = await _transfer.UploadFileByForm(path);               
+                var response = await NetworkTransfer.Instance.UploadFileByForm(path);
 
                 return response;
             }
