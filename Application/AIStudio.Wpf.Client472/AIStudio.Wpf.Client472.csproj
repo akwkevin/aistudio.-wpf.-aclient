@@ -5,14 +5,8 @@
     <TargetFrameworks>net472</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>A.ico</ApplicationIcon>
-    <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
-    <RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
-    <Version>1.0.0.0</Version>
+    <Version>2.0.0.0</Version>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="A.ico" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="ShowMeTheXAML" Version="2.0.0" />
@@ -21,8 +15,35 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="..\AIStudio.Wpf.Client\**\*.xaml" />
+    <Compile Include="..\AIStudio.Wpf.Client\**\*.cs" />
+    <Compile Remove="..\AIStudio.Wpf.Client\App.xaml" />
+    <Compile Remove="..\AIStudio.Wpf.Client\MainWindow.xaml" />
+    <Compile Remove="..\AIStudio.Wpf.Client\Views\LoginWindow.xaml" />
+    <Compile Remove="..\AIStudio.Wpf.Client\Views\LoginWindow.xaml.cs" />
+    <Compile Remove="..\AIStudio.Wpf.Client\Views\UpdateWindow.xaml" />
+    <Compile Remove="..\AIStudio.Wpf.Client\Views\UpdateWindow.xaml.cs" />
+    <Compile Remove="..\AIStudio.Wpf.Client\obj\**" />
+    <Compile Remove="..\AIStudio.Wpf.Client\bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="A.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="..\AIStudio.Wpf.Client\App.xaml" />
+    <None Include="..\AIStudio.Wpf.Client\App.config" Link="App.config" />
+    <None Include="..\AIStudio.Wpf.Client\nlog.config" Link="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Page Include="..\AIStudio.Wpf.Client\MainWindow.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj" />
     <ProjectReference Include="..\..\Page\AIStudio.Wpf.Home\AIStudio.Wpf.Home.csproj" />
+    <ProjectReference Include="..\AIStudio.Wpf.DataBusiness\AIStudio.Wpf.DataBusiness.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,9 +51,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="nlog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="SquirrelSetup.nuspec">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

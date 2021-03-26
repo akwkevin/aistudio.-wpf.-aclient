@@ -1,30 +1,20 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Linq;
-using System.Text;
+using System.Data.SqlClient;
+
 
 namespace AIStudio.Wpf.DataRepository
 {
-
-    internal class SqlServerRepository : DbRepository, IRepository
+    internal class SqlServerDbAccessor : GenericDbAccessor, IDbAccessor
     {
-        #region 构造函数
-
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        /// <param name="conStr">数据库连接名</param>
-        /// <param name="rules"></param>
-        public SqlServerRepository(string conStr, ICollection<TableMapperRule> rules)
-            : base(conStr, DatabaseType.SqlServer, rules)
+        public SqlServerDbAccessor(string conString, ICollection<TableMapperRule> rules)
+            : base(conString, DatabaseType.SqlServer, rules)
         {
         }
-
-        #endregion
 
         protected override string FormatFieldName(string name)
         {

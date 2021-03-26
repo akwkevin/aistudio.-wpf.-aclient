@@ -40,7 +40,7 @@ namespace AIStudio.Wpf.EFBusiness.Base_Manage
         public bool NeedAction { get; set; }
         public string TypeText { get => ((ActionType)Type).ToString(); }
         public string NeedActionText { get => NeedAction ? "是" : "否"; }
-        public object children { get => Children; }
+        public new object children { get => Children; }
         public string title { get => Text; }
         public string value { get => Id; }
         public string key { get => Id; }

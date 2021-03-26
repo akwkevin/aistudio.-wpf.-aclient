@@ -31,7 +31,15 @@ namespace AIStudio.Core
 
         public static string ServerIP { get; set; } = ConfigurationManager.AppSettings["ServerIP"];
 
+        public static bool ApiMode { get; set; } = !string.IsNullOrEmpty(ConfigurationManager.AppSettings["ServerIP"]);
+
         public static string UpdateAddress { get; set; } = ConfigurationManager.AppSettings["UpdateAddress"];
+
+        public static string ConString { get; } = ConfigurationManager.AppSettings["ConString"];
+
+        public static string DatabaseType { get; } = ConfigurationManager.AppSettings["DatabaseType"] ?? "SqlServer";
+
+        public static string DeleteMode { get; } = ConfigurationManager.AppSettings["DeleteMode"] ?? "Logic";
 
         public static Action<string> SettingChanged;
 

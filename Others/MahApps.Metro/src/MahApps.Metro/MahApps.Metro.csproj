@@ -65,6 +65,13 @@
       <ProjectReference Include="..\..\..\ControlzEx\src\ControlzEx\ControlzEx.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Update="JetBrains.Annotations" Version="2020.3.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>compile; build</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
     <!-- <ItemGroup> -->
     <!--     <Compile DependentUpon="%(Filename)" SubType="Code" Update="**\obj\**\*.g$(DefaultLanguageSourceExtension)" /> -->
     <!--     <Compile DependentUpon="%(Filename)" SubType="Designer" Update="**\*.xaml$(DefaultLanguageSourceExtension)" /> -->

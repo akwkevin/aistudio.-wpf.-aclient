@@ -1,7 +1,7 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Client.ViewModels;
-using AIStudio.Wpf.EFBusiness;
+using AIStudio.Wpf.DataBusiness;
 using AIStudio.Wpf.Home;
 using AIStudio.Wpf.Home.ViewModels;
 using AIStudio.Wpf.LocalConfiguration;
@@ -88,7 +88,7 @@ namespace AIStudio.Wpf.Client
             var container = PrismIocExtensions.GetContainer(containerRegistry);
 
             //api接口模式
-            if (LocalSetting.ServerIP.StartsWith("http"))
+            if (LocalSetting.ApiMode)
             {
                 container.AddNewExtension<Interception>()//add Extension Aop
                     .RegisterSingleton<IDataProvider, ApiDataProvider>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
@@ -101,6 +101,7 @@ namespace AIStudio.Wpf.Client
 
                 containerRegistry.AddEFCoreServices();
             }
+
             containerRegistry.RegisterSingleton<IOperator, Operator>();
             containerRegistry.RegisterSingleton<IUserData, UserData>();
             containerRegistry.RegisterSingleton<IWSocketClient, WSocketClient>();

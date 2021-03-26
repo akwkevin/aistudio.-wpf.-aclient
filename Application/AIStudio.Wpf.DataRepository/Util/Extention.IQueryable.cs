@@ -1,9 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore.Query;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
-using System.Collections;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+
+using Microsoft.EntityFrameworkCore.Query;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace AIStudio.Wpf.DataRepository
 {
@@ -114,14 +118,33 @@ namespace AIStudio.Wpf.DataRepository
         /// <returns></returns>
         public static (string sql, IReadOnlyDictionary<string, object> parameters) ToSql(this IQueryable query)
         {
-            var enumerator = query.Provider.Execute<IEnumerable>(query.Expression).GetEnumerator();
-            var queryContext = enumerator.GetGetFieldValue("_relationalQueryContext") as RelationalQueryContext;
-            var relationalCommandCache = enumerator.GetGetFieldValue("_relationalCommandCache");
-            var selectExpression = relationalCommandCache.GetGetFieldValue("_selectExpression") as SelectExpression;
-            var factory = relationalCommandCache.GetGetFieldValue("_querySqlGeneratorFactory") as IQuerySqlGeneratorFactory;
+            TypeInfo QueryCompilerTypeInfo = typeof(QueryCompiler).GetTypeInfo();
+            FieldInfo QueryCompilerField = typeof(EntityQueryProvider).GetTypeInfo().DeclaredFields.First(x => x.Name == "_queryCompiler");
+            FieldInfo QueryModelGeneratorField = QueryCompilerTypeInfo.DeclaredFields.First(x => x.Name == "_queryModelGenerator");
+            FieldInfo queryContextFactoryField = QueryCompilerTypeInfo.DeclaredFields.First(x => x.Name == "_queryContextFactory");
+            FieldInfo loggerField = QueryCompilerTypeInfo.DeclaredFields.First(x => x.Name == "_logger");
+            FieldInfo DataBaseField = QueryCompilerTypeInfo.DeclaredFields.Single(x => x.Name == "_database");
+            PropertyInfo DatabaseDependenciesField = typeof(Database).GetTypeInfo().DeclaredProperties.Single(x => x.Name == "Dependencies");
 
-            var sqlGenerator = factory.Create();
-            var command = sqlGenerator.GetCommand(selectExpression);
+            var queryCompiler = (QueryCompiler)QueryCompilerField.GetValue(query.Provider);
+            var queryContextFactory = (IQueryContextFactory)queryContextFactoryField.GetValue(queryCompiler);
+            var logger = (Microsoft.EntityFrameworkCore.Diagnostics.IDiagnosticsLogger<DbLoggerCategory.Query>)loggerField.GetValue(queryCompiler);
+            var queryContext = queryContextFactory.Create();
+            var modelGenerator = (QueryModelGenerator)QueryModelGeneratorField.GetValue(queryCompiler);
+            var newQueryExpression = modelGenerator.ExtractParameters(logger, query.Expression, queryContext);
+            var queryModel = modelGenerator.ParseQuery(newQueryExpression);
+            var database = (IDatabase)DataBaseField.GetValue(queryCompiler);
+            var databaseDependencies = (DatabaseDependencies)DatabaseDependenciesField.GetValue(database);
+            var queryCompilationContext = databaseDependencies.QueryCompilationContextFactory.Create(false);
+            var modelVisitor = (RelationalQueryModelVisitor)queryCompilationContext.CreateQueryModelVisitor();
+
+            modelVisitor.GetType()
+                .GetMethod("CreateQueryExecutor")
+                .MakeGenericMethod(query.ElementType)
+                .Invoke(modelVisitor, new object[] { queryModel });
+
+            var command = modelVisitor.Queries.First().CreateDefaultQuerySqlGenerator()
+                .GenerateSql(queryContext.ParameterValues);
 
             return (command.CommandText, queryContext.ParameterValues);
         }

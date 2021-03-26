@@ -18,5 +18,10 @@ namespace AIStudio.Wpf.DataRepository
         /// 映射的表名
         /// </summary>
         public string TableName { get; set; }
+
+        /// <summary>
+        /// 表名后缀(分表时需要)
+        /// </summary>
+        public string TableSuffix { get; set; }
     }
 }

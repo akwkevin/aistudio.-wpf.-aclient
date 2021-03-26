@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AIStudio.Wpf.EFCore.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -96,8 +98,21 @@ namespace AIStudio.Wpf.DataRepository
                 allTypes.AddRange(aAssembly.GetTypes());
             });
 
-            List<Type> types = allTypes
-                .ToList();
+
+            //Model First 用这个方法
+            //List<Type> types = allTypes
+            //      .Where(x => x.GetCustomAttribute(typeof(TableAttribute), false) != null).ToList();
+            //DB First 用这个方法
+            List<Type> types = new List<Type>();
+            var db = typeof(ColderAdminAntdVueContext);
+            foreach(var pro in db.GetProperties())
+            {
+                var type = allTypes.FirstOrDefault(p => p.Name == pro.Name);
+                if (type != null)
+                {
+                    types.Add(type);
+                }
+            }
 
             types.ForEach(aType =>
             {

@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.DataRepository
 {
-    public interface IRepository: IBaseRepository
+    /// <summary>
+    /// 操作接口
+    /// </summary>
+    public interface IDbAccessor : IBaseDbAccessor, ITransaction
     {
         #region 数据库相关
 
@@ -21,6 +24,33 @@ namespace AIStudio.Wpf.DataRepository
         /// 数据库类型
         /// </summary>
         DatabaseType DbType { get; }
+
+        /// <summary>
+        /// 获取完整DbAccessor,通过此接口可以操作逻辑删除的数据
+        /// </summary>
+        IDbAccessor FullDbAccessor { get; }
+
+        /// <summary>
+        /// 保存修改到数据库(需要GetIQueryable开启实体追踪)
+        /// </summary>
+        /// <param name="tracking">是否开启实体追踪</param>
+        /// <returns></returns>
+        int SaveChanges(bool tracking = true);
+
+        /// <summary>
+        /// 保存修改到数据库(需要GetIQueryable开启实体追踪)
+        /// </summary>
+        /// <param name="tracking">是否开启实体追踪</param>
+        /// <returns></returns>
+        Task<int> SaveChangesAsync(bool tracking = true);
+
+        /// <summary>
+        /// 跟踪
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <returns></returns>
+        EntityEntry Entry(object entity);
+
         #endregion
 
         #region 增加数据

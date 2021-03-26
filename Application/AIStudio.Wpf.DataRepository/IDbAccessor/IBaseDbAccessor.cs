@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.DataRepository
 {
-    public interface IBaseRepository
+    /// <summary>
+    /// 通用基接口
+    /// </summary>
+    public interface IBaseDbAccessor : ITransaction
     {
         #region 增加数据
 

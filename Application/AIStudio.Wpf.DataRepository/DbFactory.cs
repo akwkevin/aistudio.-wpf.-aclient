@@ -19,13 +19,14 @@ namespace AIStudio.Wpf.DataRepository
         /// <param name="dbType">数据库类型,默认为GlobalSwitch.DatabaseType</param>
         /// <param name="rules"></param>
         /// <returns></returns>
-        public static IRepository GetRepository(string conString, DatabaseType dbType, ICollection<TableMapperRule> rules = null)
+        public static IDbAccessor GetDbAccessor(string conString, DatabaseType dbType, ICollection<TableMapperRule> rules = null, bool logicDelete = false, string deletedField = "Deleted", string keyField = "Id")
         {
-            Type dbRepositoryType = Type.GetType("AIStudio.Wpf.DataRepository." + DbProviderFactoryHelper.DbTypeToDbTypeStr(dbType) + "Repository");
+            Type dbRepositoryType = Type.GetType("AIStudio.Wpf.DataRepository." + DbProviderFactoryHelper.DbTypeToDbTypeStr(dbType) + "DbAccessor");
 
-            var repository = Activator.CreateInstance(dbRepositoryType, new object[] { conString, rules }) as IRepository;
-
-            return repository;
+            var dbAccessor = Activator.CreateInstance(dbRepositoryType, new object[] { conString, rules }) as IDbAccessor;
+            if (logicDelete)
+                dbAccessor = new LogicDeleteDbAccessor(dbAccessor, logicDelete, deletedField, keyField);
+            return dbAccessor;
         }
 
         /// <summary>
@@ -35,9 +36,9 @@ namespace AIStudio.Wpf.DataRepository
         /// <param name="dbType"></param>
         /// <param name="rules"></param>
         /// <returns></returns>
-        internal static BaseDbContext GetDbContext([NotNull] string conString, DatabaseType dbType, ICollection<TableMapperRule> rules = null)
+        internal static BaseDbContext GetDbContext(string conString, DatabaseType dbType, ICollection<TableMapperRule> rules = null)
         {
-            return new BaseDbContext(CreateDbContextOption(conString, dbType).Options);
+            return new BaseDbContext(CreateDbContextOption(conString, dbType, rules).Options);
         }
 
         public static DbContextOptionsBuilder CreateDbContextOption(string conString, DatabaseType dbType, ICollection<TableMapperRule> rules = null)

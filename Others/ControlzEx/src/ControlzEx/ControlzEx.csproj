@@ -52,6 +52,10 @@
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.*" PrivateAssets="All" IncludeAssets="build; native" />
     </ItemGroup>
     <ItemGroup>
+      <PackageReference Update="JetBrains.Annotations" Version="2020.3.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>compile; build</IncludeAssets>
+      </PackageReference>
       <PackageReference Update="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
     </ItemGroup>
 </Project>

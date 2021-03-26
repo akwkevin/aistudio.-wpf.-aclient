@@ -11,9 +11,9 @@
     <!-- reference includes -->
     <ItemGroup>
         <PackageReference Include="WpfAnalyzers" Version="2.4.0" PrivateAssets="All" />
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2*" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Update="JetBrains.Annotations" Version="2020.1.0" />
+      <PackageReference Update="JetBrains.Annotations" Version="2020.3.0" />
     </ItemGroup>
 </Project>

@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using MahApps.Metro.Controls;
 using Xunit;
 
 namespace AIStudio.Wpf.TestUnit.TestHelpers
@@ -45,16 +44,6 @@ namespace AIStudio.Wpf.TestUnit.TestHelpers
             window.Show();
 
             return completionSource.Task;
-        }
-
-        public static void AssertWindowCommandsColor(this MetroWindow window, Color color)
-        {
-            foreach (var element in window.RightWindowCommands.Items.OfType<Button>())
-            {
-                Assert.Equal(color, ((SolidColorBrush)element.Foreground).Color);
-            }
-
-            Assert.Equal(color, ((SolidColorBrush)window.WindowButtonCommands.Foreground).Color);
         }
     }
 }

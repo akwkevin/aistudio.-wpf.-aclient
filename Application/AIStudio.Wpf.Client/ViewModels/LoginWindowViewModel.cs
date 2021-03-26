@@ -130,6 +130,7 @@ namespace AIStudio.Wpf.Client.ViewModels
         IDataProvider _dataProvider { get; }
         IUserConfig _localConfig { get; }
 
+
         public LoginWindowViewModel(IEventAggregator aggregator, IOperator ioperator, IDataProvider dataProvider, IUserConfig localConfig)
         {
             _aggregator = aggregator;
@@ -139,7 +140,7 @@ namespace AIStudio.Wpf.Client.ViewModels
             _localConfig = localConfig;
 
             LoginInfo = _localConfig.LoginInfo;
-            ServerIP = LocalSetting.ServerIP;
+            ServerIP = LocalSetting.ApiMode ? LocalSetting.ServerIP : LocalSetting.ConString;
             Version = LocalSetting.Version;
 
             var info = LoginInfo.FirstOrDefault();
@@ -227,8 +228,11 @@ namespace AIStudio.Wpf.Client.ViewModels
                         _localConfig.AddLoginInfo(new LoginInfo() { UserName = UserName, Password = MD5Password, });
                     }
                     _operator.UserName = UserName;
-                    //登陆操作成功后，发送消息                   
-                    LocalSetting.SetAppSetting("ServerIP", ServerIP);
+  
+                    if (LocalSetting.ApiMode)
+                    {
+                        LocalSetting.SetAppSetting("ServerIP", ServerIP);
+                    }
 
                     _window.DialogResult = success;
                     _window.Close();
