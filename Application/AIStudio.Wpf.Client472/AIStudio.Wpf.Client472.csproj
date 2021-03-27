@@ -33,6 +33,9 @@
 
   <ItemGroup>
     <ApplicationDefinition Include="..\AIStudio.Wpf.Client\App.xaml" />
+    <None Include="..\AIStudio.Wpf.Client\Admin.db" Link="Admin.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="..\AIStudio.Wpf.Client\App.config" Link="App.config" />
     <None Include="..\AIStudio.Wpf.Client\nlog.config" Link="nlog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
