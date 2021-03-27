@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using AIStudio.Wpf.DataBusiness.AOP;
 using AIStudio.Wpf.EFCore.Models;
 using LinqKit;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,7 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             return await q.Where(where).GetPageResultAsync(input);
         }
 
+    
         public async Task<Base_AppSecret> GetTheDataAsync(IdInputDTO input)
         {
             return await GetEntityAsync(input.id);
@@ -44,23 +46,18 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             return theData?.AppSecret;
         }
 
-        //[DataRepeatValidate(new string[] { "AppId" },
-        //    new string[] { "应用Id" })]
-        //[DataAddLog(UserLogType.接口密钥管理, "AppId", "应用Id")]
+  
         public async Task AddDataAsync(Base_AppSecret newData)
         {
             await InsertAsync(newData);
         }
 
-        //[DataRepeatValidate(new string[] { "AppId" },
-        //    new string[] { "应用Id" })]
-        //[DataEditLog(UserLogType.接口密钥管理, "AppId", "应用Id")]
         public async Task UpdateDataAsync(Base_AppSecret theData)
         {
             await UpdateAsync(theData);
         }
 
-        //[DataDeleteLog(UserLogType.接口密钥管理, "AppId", "应用Id")]
+        [DataDeleteLog(UserLogType.接口密钥管理, "AppId", "应用Id")]
         public async Task DeleteDataAsync(List<string> ids)
         {
             await DeleteAsync(ids);
@@ -72,6 +69,8 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
 
         #endregion
 
+        [DataRepeatValidate(new string[] { "AppId" }, new string[] { "应用Id" },Order =1)]
+        [DataSaveLog(UserLogType.接口密钥管理, "AppId", "应用Id", Order =2)]
         public async Task SaveDataAsync(Base_AppSecret theData)
         {
             if (theData.Id.IsNullOrEmpty())

@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using AIStudio.Wpf.DataBusiness.AOP;
 using AIStudio.Wpf.EFCore.Models;
 using LinqKit;
 using Microsoft.EntityFrameworkCore;
@@ -59,21 +60,19 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             return await GetEntityAsync(input.id);
         }
 
-        //[DataRepeatValidate(new string[] { "Name" }, new string[] { "部门名" })]
-        //[DataAddLog(UserLogType.部门管理, "Name", "部门名")]
+
         public async Task AddDataAsync(Base_Department newData)
         {
             await InsertAsync(newData);
         }
 
-        //[DataRepeatValidate(new string[] { "Name" }, new string[] { "部门名" })]
-        //[DataEditLog(UserLogType.部门管理, "Name", "部门名")]
+
         public async Task UpdateDataAsync(Base_Department theData)
         {
             await UpdateAsync(theData);
         }
 
-        //[DataDeleteLog(UserLogType.部门管理, "Name", "部门名")]
+        [DataDeleteLog(UserLogType.部门管理, "Name", "部门名")]
         public async Task DeleteDataAsync(List<string> ids)
         {
             if (await GetIQueryable().AnyAsync(x => ids.Contains(x.ParentId)))
@@ -83,6 +82,9 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
         }
 
         #endregion
+
+        [DataRepeatValidate(new string[] { "Name" }, new string[] { "部门名" }, Order = 1)]
+        [DataSaveLog(UserLogType.部门管理, "Name", "部门名", Order = 2)]
 
         public async Task SaveDataAsync(Base_Department theData)
         {

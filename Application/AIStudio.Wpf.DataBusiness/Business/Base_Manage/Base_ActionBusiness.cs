@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using AIStudio.Wpf.DataBusiness.AOP;
 using AIStudio.Wpf.EFCore.Models;
 using AutoMapper;
 using Coldairarrow.Util;
@@ -82,14 +83,14 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             return await GetEntityAsync(input.id);
         }
 
-        //[Transactional]
+        [Transactional]
         public async Task AddDataAsync(ActionEditInputDTO input)
         {
             await InsertAsync(_mapper.Map<Base_Action>(input));
             await SavePermissionAsync(input.Id, input.permissionList);
         }
 
-        //[Transactional]
+        [Transactional]
         public async Task UpdateDataAsync(ActionEditInputDTO input)
         {
             await UpdateAsync(_mapper.Map<Base_Action>(input));

@@ -8,6 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Unity;
+using Unity.Interception;
+using Unity.Interception.ContainerIntegration;
+using Unity.Interception.Interceptors.InstanceInterceptors.InterfaceInterception;
+using Unity.Interception.PolicyInjection;
 
 namespace AIStudio.Wpf.DataBusiness
 {
@@ -22,34 +27,36 @@ namespace AIStudio.Wpf.DataBusiness
             AllTypes = assembly.GetTypes().ToList();
         }
 
-        public static void AddEFCoreServices(this IContainerRegistry container)
+        public static void AddEFCoreServices(this IUnityContainer container)
         {
             List<Type> lifeTimeMap = new List<Type>
             {
-                typeof(ITransientDependency), 
-                typeof(IScopedDependency), 
+                typeof(ITransientDependency),
+                typeof(IScopedDependency),
                 typeof(ISingletonDependency)
             };
 
             AllTypes.ForEach(aType =>
             {
                 lifeTimeMap.ForEach(theDependency =>
-                { 
+                {
                     if (theDependency.IsAssignableFrom(aType) && theDependency != aType && !aType.IsAbstract && aType.IsClass)
-                    {    
+                    {
                         var interfaces = AllTypes.Where(x => x.IsAssignableFrom(aType) && x.IsInterface && x != theDependency).ToList();
                         //有接口则注入接口
                         if (interfaces.Count > 0)
                         {
                             interfaces.ForEach(aInterface =>
                             {
-                                container.Register(aInterface, aType);
+                                container.AddNewExtension<Interception>()//add Extension Aop
+                                .RegisterType(aInterface, aType, new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
                             });
                         }
                         //无接口则注入自己
                         else
                         {
-                            container.Register(aType);
+                            container.AddNewExtension<Interception>()//add Extension Aop
+                               .RegisterType(aType, new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
                         }
                     }
                 });
@@ -62,7 +69,7 @@ namespace AIStudio.Wpf.DataBusiness
                    //.UseZookeeper("127.0.0.1:2181", 200, GlobalSwitch.ProjectName)
                    .Boot();
 
-        
+
 
         }
 
@@ -89,7 +96,7 @@ namespace AIStudio.Wpf.DataBusiness
                 cfg.AddMaps(DbModelFactory.Assemblies);
 
                 _assemblies.ForEach(p => cfg.AddMaps(p));
-            });        
+            });
 
             return config.CreateMapper();
         }

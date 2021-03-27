@@ -1,13 +1,14 @@
-﻿using System;
+﻿using AIStudio.AOP;
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Unity;
 using Unity.Interception.PolicyInjection.Pipeline;
 using Unity.Interception.PolicyInjection.Policies;
 
-namespace AIStudio.AOP
+namespace AIStudio.Wpf.DataBusiness.AOP
 {
-    public class LogHandler : BaseAOPHandler
+    public class TestHandler : BaseAOPHandler
     {
         public override void Befor(IMethodInvocation input)
         {
@@ -38,11 +39,11 @@ namespace AIStudio.AOP
     }
 
 
-    public class LogHandlerAttribute : HandlerAttribute
+    public class TestHandlerAttribute : HandlerAttribute
     {
         public override ICallHandler CreateHandler(IUnityContainer container)
         {
-            return new LogHandler() { Order = this.Order };
+            return new TestHandler() { Order = this.Order };
         }
     }
 }

@@ -209,7 +209,10 @@ namespace AIStudio.Wpf.Business
             this._isRunning = false;
             try
             {
-                _thread.Abort();
+                if (_thread != null)
+                {
+                    _thread.Abort();
+                }
             }
             catch
             {

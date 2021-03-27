@@ -1,4 +1,5 @@
-﻿using AIStudio.Core;
+﻿using AIStudio.AOP;
+using AIStudio.Core;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.DataBusiness.Base_Manage;
 using AIStudio.Wpf.Service.AppClient.Models;
@@ -39,21 +40,25 @@ namespace AIStudio.Wpf.DataBusiness
         {
             throw new Exception("暂不支持");
         }
-
-        ///Base_Manage/Base_Role/GetOptionList
+   
         public async Task<WebResponse<T>> GetData<T>(string url, string json)
         {
             try
             {
+                //url固定是三段，例：Base_Manage/Base_Role/GetOptionList
                 var paras = url.Split(new string[] { @"/" }, StringSplitOptions.RemoveEmptyEntries);
+                //第一段暂时可以
+                //第二段对应不用的business
                 var type = EFCoreDataProviderExtension.AllTypes.FirstOrDefault(p => p.Name == $"I{paras[1]}Business");
                 if (type == null)
                     return WebResponse<T>.Failed((int)ResponseCode.CLIENT_EXCEPTION, "暂不支持");
 
+                //获取接口
                 var business = ContainerLocator.Current.Resolve(type);
                 if (business == null)
                     return WebResponse<T>.Failed((int)ResponseCode.CLIENT_EXCEPTION, "暂不支持");
 
+                //第三段为函数，根据名称获取方法
                 Task task;
                 MethodInfo methodInfo = business.GetType().GetMethod($"{paras[2]}Async");
                 var para = methodInfo.GetParameters()?.FirstOrDefault();
@@ -68,17 +73,18 @@ namespace AIStudio.Wpf.DataBusiness
                 }
 
                 await task;
+                //获取执行结果
                 var response = task.GetType().GetProperty("Result").GetValue(task, null);     
-                if (response is AjaxResult)
-                {
+                if (response is AjaxResult) //解析分页数据
+                {                   
                     var pageResult = (response as AjaxResult).ChangeType<AjaxResult<T>>();
                     return WebResponse<T>.Success(pageResult.Data, pageResult.Total);                       
                 }
-                else if (response is T result)
+                else if (response is T result) //直接解析数据
                 {
                     return WebResponse<T>.Success(result, 1);
                 }
-                else
+                else//解析数据（强制转换）
                 {
                     return WebResponse<T>.Success(response.ChangeType<T>(), 1);
                 }

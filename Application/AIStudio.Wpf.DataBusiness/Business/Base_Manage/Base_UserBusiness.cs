@@ -1,5 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
+using AIStudio.Wpf.DataBusiness.AOP;
 using AIStudio.Wpf.EFCore.DTOModels;
 using AIStudio.Wpf.EFCore.Models;
 using AutoMapper;
@@ -116,22 +117,14 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             }
         }
 
-        //[DataAddLog(UserLogType.系统用户管理, "UserName", "用户")]
-        //[DataRepeatValidate(
-        //    new string[] { "UserName" },
-        //    new string[] { "用户名" })]
-        //[Transactional]
+
         public async Task AddDataAsync(UserEditInputDTO input)
         {
             await InsertAsync(_mapper.Map<Base_User>(input));
             await SetUserRoleAsync(input.Id, input.RoleIdList);
         }
 
-        //[DataEditLog(UserLogType.系统用户管理, "UserName", "用户")]
-        //[DataRepeatValidate(
-        //    new string[] { "UserName" },
-        //    new string[] { "用户名" })]
-        //[Transactional]
+
         public async Task UpdateDataAsync(UserEditInputDTO input)
         {
             if (input.Id == GlobalData.ADMINID && _operator?.UserId != input.Id)
@@ -141,8 +134,8 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             await SetUserRoleAsync(input.Id, input.RoleIdList);
         }
 
-        //[DataDeleteLog(UserLogType.系统用户管理, "UserName", "用户")]
-        //[Transactional]
+        [DataDeleteLog(UserLogType.系统用户管理, "UserName", "用户", Order =1)]
+        [Transactional(Order = 2)]
         public async Task DeleteDataAsync(List<string> ids)
         {
             if (ids.Contains(GlobalData.ADMINID))
@@ -181,6 +174,9 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             return user?.Avatar;
         }
 
+        [DataSaveLog(UserLogType.系统用户管理, "UserName", "用户", Order = 1)]
+        [DataRepeatValidate( new string[] { "UserName" }, new string[] { "用户名" }, Order = 2)]
+        [Transactional(Order = 3)]
         public async Task SaveDataAsync(UserEditInputDTO input)
         {
             if (!input.newPwd.IsNullOrEmpty())

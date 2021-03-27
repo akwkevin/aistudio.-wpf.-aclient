@@ -12,10 +12,10 @@ namespace AIStudio.Wpf.Business
     {
         Task<WebResponse<string>> GetToken(string url, string userName, string password, int headMode, TimeSpan timeout);
 
-        [LogHandler]
+        //[LogHandler]
         Task<WebResponse<T>> GetData<T>(string url, Dictionary<string, string> data);
 
-        [LogHandler]
+        //[LogHandler]
         Task<WebResponse<T>> GetData<T>(string url, string json = "{}");
         Task<UploadResult> UploadFileByForm(string path);
     }

@@ -10,6 +10,7 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
     {
         Task<PageResult<Base_UserLog>> GetLogListAsync(PageInput<UserLogsInputDTO> input);
         Task<List<SelectOption>> GetLogTypeListAsync();
+        Task WriteUserLog(UserLogType userLogType, string msg);
     }
 
     public class UserLogsInputDTO
