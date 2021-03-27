@@ -54,9 +54,9 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             return children;
         }
 
-        public async Task<Base_Department> GetTheDataAsync(string id)
+        public async Task<Base_Department> GetTheDataAsync(IdInputDTO input)
         {
-            return await GetEntityAsync(id);
+            return await GetEntityAsync(input.id);
         }
 
         //[DataRepeatValidate(new string[] { "Name" }, new string[] { "部门名" })]

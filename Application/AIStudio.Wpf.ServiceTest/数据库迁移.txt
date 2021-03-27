@@ -1,0 +1,3 @@
+﻿一、迁移项目（ 使用 Package Manager Console ）：   
+   3、Add-Migration InitialCreate
+   6、Update-Database 

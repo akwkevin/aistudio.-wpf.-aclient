@@ -21,7 +21,7 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
         async Task<string[]> GetUserActionIds(string userId)
         {
             var where = LinqHelper.False<Base_Action>();
-            var theUser = await _userBus.GetTheDataAsync(userId);
+            var theUser = await _userBus.GetTheDataAsync(new IdInputDTO() { id = userId });
 
             //不需要权限的菜单
             where = where.Or(x => x.NeedAction == false);

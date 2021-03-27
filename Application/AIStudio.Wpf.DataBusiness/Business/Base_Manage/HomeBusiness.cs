@@ -51,7 +51,7 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
         }
         public async Task<object> GetOperatorInfoAsync()
         {
-            var theInfo = await _userBus.GetTheDataAsync(_operator.UserId);
+            var theInfo = await _userBus.GetTheDataAsync(new IdInputDTO() { id = _operator.UserId });
             var permissions = await _permissionBus.GetUserPermissionValuesAsync(_operator.UserId);
             var resObj = new
             {

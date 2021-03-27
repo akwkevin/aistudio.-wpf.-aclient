@@ -6,7 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AIStudio.Wpf.DataBusiness\AIStudio.Wpf.DataBusiness.csproj" />
   </ItemGroup>
 
 </Project>

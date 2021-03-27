@@ -1,4 +1,6 @@
 ﻿using AIStudio.Core;
+using AIStudio.Wpf.DataRepository;
+using AutoMapper;
 using Coldairarrow.Util;
 using Microsoft.Extensions.DependencyInjection;
 using Prism.Ioc;
@@ -60,6 +62,47 @@ namespace AIStudio.Wpf.DataBusiness
                    //.UseZookeeper("127.0.0.1:2181", 200, GlobalSwitch.ProjectName)
                    .Boot();
 
+        
+
+        }
+
+        public static IMapper AddAutoMapper(IEnumerable<string> _assemblies)
+        {
+            List<(Type from, Type[] targets)> maps = new List<(Type from, Type[] targets)>();
+
+            maps.AddRange(DbModelFactory.AllTypes.Where(x => x.GetCustomAttribute<MapAttribute>() != null)
+                .Select(x => (x, x.GetCustomAttribute<MapAttribute>().TargetTypes)));
+
+            maps.AddRange(AllTypes.Where(x => x.GetCustomAttribute<MapAttribute>() != null)
+              .Select(x => (x, x.GetCustomAttribute<MapAttribute>().TargetTypes)));
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                maps.ForEach(aMap =>
+                {
+                    aMap.targets.ToList().ForEach(aTarget =>
+                    {
+                        cfg.CreateMap(aMap.from, aTarget).IgnoreAllNonExisting(aMap.from, aTarget).ReverseMap();
+                    });
+                });
+
+                cfg.AddMaps(DbModelFactory.Assemblies);
+
+                _assemblies.ForEach(p => cfg.AddMaps(p));
+            });        
+
+            return config.CreateMapper();
+        }
+
+        public static IMappingExpression IgnoreAllNonExisting(this IMappingExpression expression, Type from, Type to)
+        {
+            var flags = BindingFlags.Public | BindingFlags.Instance;
+            to.GetProperties(flags).Where(x => from.GetProperty(x.Name, flags) == null).ForEach(aProperty =>
+            {
+                expression.ForMember(aProperty.Name, opt => opt.Ignore());
+            });
+
+            return expression;
         }
     }
 }

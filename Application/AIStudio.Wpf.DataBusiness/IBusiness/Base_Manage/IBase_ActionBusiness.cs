@@ -11,7 +11,7 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
     {
         Task<List<Base_Action>> GetDataListAsync(Base_ActionsInputDTO input);
         Task<List<Base_ActionDTO>> GetTreeDataListAsync(Base_ActionsInputDTO input);
-        Task<Base_Action> GetTheDataAsync(string id);
+        Task<Base_Action> GetTheDataAsync(IdInputDTO input);
         Task AddDataAsync(ActionEditInputDTO input);
         Task UpdateDataAsync(ActionEditInputDTO input);
         Task DeleteDataAsync(List<string> ids);

@@ -607,7 +607,7 @@ namespace AIStudio.Wpf.DataBusiness
         /// <param name="valueField">值字段</param>
         /// <param name="source">指定数据源</param>
         /// <returns></returns>
-        public async Task<List<SelectOption>> GetOptionListAsync(OptionListInputDTO input, string textFiled, string valueField, IQueryable<T> source = null)
+        protected async Task<List<SelectOption>> GetOptionListAsync(OptionListInputDTO input, string textFiled, string valueField, IQueryable<T> source = null)
         {
             PageInput pageInput = new PageInput
             {

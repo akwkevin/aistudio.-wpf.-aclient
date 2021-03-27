@@ -8,7 +8,7 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
     public interface IBase_RoleBusiness : IBaseBusiness<Base_Role>
     {
         Task<PageResult<Base_RoleInfoDTO>> GetDataListAsync(PageInput<RolesInputDTO> input);
-        Task<Base_RoleInfoDTO> GetTheDataAsync(string id);
+        Task<Base_RoleInfoDTO> GetTheDataAsync(IdInputDTO input);
         Task AddDataAsync(Base_RoleInfoDTO input);
         Task UpdateDataAsync(Base_RoleInfoDTO input);
         Task DeleteDataAsync(List<string> ids);
@@ -24,7 +24,7 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
     [Map(typeof(Base_Role))]
     public class Base_RoleInfoDTO : Base_Role
     {
-        public RoleTypes? RoleType { get => RoleName?.ToEnum<RoleTypes>(); }
+        public RoleTypes? RoleType { get { try { return RoleName?.ToEnum<RoleTypes>(); } catch { return null; } } }
         public List<string> Actions { get; set; } = new List<string>();
     }
 }

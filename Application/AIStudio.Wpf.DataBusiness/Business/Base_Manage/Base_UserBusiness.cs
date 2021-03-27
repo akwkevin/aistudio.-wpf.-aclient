@@ -37,7 +37,7 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
         {
             Expression<Func<Base_User, Base_Department, Base_UserDTO>> select = (a, b) => new Base_UserDTO
             {
-                //DepartmentName = b.Name
+                DepartmentName = b.Name
             };
             var search = input.Search;
             select = select.BuildExtendSelectExpre();
@@ -85,10 +85,10 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
         }
 
 
-        public async Task<object> GetDataListAsyncByDepartment(string departmentid)
+        public async Task<object> GetDataListByDepartmentAsync(IdInputDTO input)
         {
-            var departments = await _departmentBusiness.GetIQueryable().Where(p => p.ParentIds.Contains(departmentid)).Select(p => p.Id).ToListAsync();
-            departments.Add(departmentid);
+            var departments = await _departmentBusiness.GetIQueryable().Where(p => p.ParentIds.Contains(input.id)).Select(p => p.Id).ToListAsync();
+            departments.Add(input.id);
 
             List<Base_User> users = new List<Base_User>();
             foreach (var department in departments)
@@ -98,21 +98,21 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             return users;
         }
 
-        public async Task<Base_UserDTO> GetTheDataAsync(string id)
+        public async Task<Base_UserDTO> GetTheDataAsync(IdInputDTO input)
         {
-            if (id.IsNullOrEmpty())
+            if (input.id.IsNullOrEmpty())
                 return null;
             else
             {
-                PageInput<Base_UsersInputDTO> input = new PageInput<Base_UsersInputDTO>
+                PageInput<Base_UsersInputDTO> pageinput = new PageInput<Base_UsersInputDTO>
                 {
                     Search = new Base_UsersInputDTO
                     {
                         all = true,
-                        userId = id
+                        userId = input.id
                     }
                 };
-                return (await GetDataListAsync(input)).Data.FirstOrDefault();
+                return (await GetDataListAsync(pageinput)).Data.FirstOrDefault();
             }
         }
 
@@ -175,7 +175,7 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
         {
             if (string.IsNullOrEmpty(userId))
                 return null;
-           
+
             var user = await GetEntityAsync(userId);
 
             return user?.Avatar;

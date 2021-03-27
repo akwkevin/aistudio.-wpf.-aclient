@@ -77,9 +77,9 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             }
         }
 
-        public async Task<Base_Action> GetTheDataAsync(string id)
+        public async Task<Base_Action> GetTheDataAsync(IdInputDTO input)
         {
-            return await GetEntityAsync(id);
+            return await GetEntityAsync(input.id);
         }
 
         //[Transactional]

@@ -80,13 +80,23 @@ namespace AIStudio.Wpf.Client
             {
                 window = null;
             }
+           
             return window;
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            var container = PrismIocExtensions.GetContainer(containerRegistry);
+            var container = PrismIocExtensions.GetContainer(containerRegistry);          
 
+            containerRegistry.RegisterSingleton<IOperator, Operator>();
+            containerRegistry.RegisterSingleton<IUserData, UserData>();
+            containerRegistry.RegisterSingleton<IWSocketClient, WSocketClient>();
+            containerRegistry.RegisterSingleton<IUserConfig, UserConfig>();
+            containerRegistry.Register<ILogger, Logger>();
+
+            //AutoMapper            
+            containerRegistry.RegisterInstance<IMapper>(new MapperProvider(containerRegistry).GetMapper());//containerRegistry.RegisterInstance(typeof(IMapper), new MapperProvider(containerRegistry).GetMapper());
+            
             //api接口模式
             if (LocalSetting.ApiMode)
             {
@@ -100,16 +110,10 @@ namespace AIStudio.Wpf.Client
                     .RegisterType(typeof(IDataProvider), typeof(EFCoreDataProvider), new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
 
                 containerRegistry.AddEFCoreServices();
+
+                //初始化数据
+                SeedData.EnsureSeedData();
             }
-
-            containerRegistry.RegisterSingleton<IOperator, Operator>();
-            containerRegistry.RegisterSingleton<IUserData, UserData>();
-            containerRegistry.RegisterSingleton<IWSocketClient, WSocketClient>();
-            containerRegistry.RegisterSingleton<IUserConfig, UserConfig>();
-            containerRegistry.Register<ILogger, Logger>();
-
-            //AutoMapper            
-            containerRegistry.RegisterInstance<IMapper>(new MapperProvider(containerRegistry).GetMapper());//containerRegistry.RegisterInstance(typeof(IMapper), new MapperProvider(containerRegistry).GetMapper());
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
@@ -244,12 +248,19 @@ namespace AIStudio.Wpf.Client
 
         public IMapper GetMapper()
         {
-            var config = new MapperConfiguration(cfg =>
+            if (LocalSetting.ApiMode)
             {
-                cfg.AddMaps("AIStudio.Wpf.BasePage");
-            });
-
-            return config.CreateMapper();
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.AddMaps("AIStudio.Wpf.BasePage");
+                });
+                return config.CreateMapper();
+            }
+            else
+            {
+                IMapper mapper = EFCoreDataProviderExtension.AddAutoMapper(new string[] { "AIStudio.Wpf.BasePage" });
+                return mapper;
+            }
         }
     }
 }

@@ -47,6 +47,16 @@ namespace AIStudio.Wpf.Client.ViewModels
             }
         }
 
+        public Visibility _serverIPVisibility;
+        public Visibility ServerIPVisibility
+        {
+            get { return _serverIPVisibility; }
+            set
+            {
+                SetProperty(ref _serverIPVisibility, value);
+            }
+        }
+
         private string _userName;
         public string UserName
         {
@@ -141,6 +151,7 @@ namespace AIStudio.Wpf.Client.ViewModels
 
             LoginInfo = _localConfig.LoginInfo;
             ServerIP = LocalSetting.ApiMode ? LocalSetting.ServerIP : LocalSetting.ConString;
+            ServerIPVisibility = LocalSetting.ApiMode ? Visibility.Visible : Visibility.Collapsed;
             Version = LocalSetting.Version;
 
             var info = LoginInfo.FirstOrDefault();

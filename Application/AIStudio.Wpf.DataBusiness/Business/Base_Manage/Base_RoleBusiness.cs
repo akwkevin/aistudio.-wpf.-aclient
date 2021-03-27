@@ -60,9 +60,9 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             }
         }
 
-        public async Task<Base_RoleInfoDTO> GetTheDataAsync(string id)
+        public async Task<Base_RoleInfoDTO> GetTheDataAsync(IdInputDTO input)
         {
-            return (await GetDataListAsync(new PageInput<RolesInputDTO> { Search = new RolesInputDTO { roleId = id } })).Data.FirstOrDefault();
+            return (await GetDataListAsync(new PageInput<RolesInputDTO> { Search = new RolesInputDTO { roleId = input.id } })).Data.FirstOrDefault();
         }
 
         //[DataAddLog(UserLogType.系统角色管理, "RoleName", "角色")]

@@ -32,9 +32,9 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             return await q.Where(where).GetPageResultAsync(input);
         }
 
-        public async Task<Base_AppSecret> GetTheDataAsync(string id)
+        public async Task<Base_AppSecret> GetTheDataAsync(IdInputDTO input)
         {
-            return await GetEntityAsync(id);
+            return await GetEntityAsync(input.id);
         }
 
         public async Task<string> GetAppSecretAsync(string appId)

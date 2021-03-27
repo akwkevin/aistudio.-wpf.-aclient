@@ -127,7 +127,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetPermissionList()
         {
-            var result = await _dataProvider.GetData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetPermissionList?parentId={Data.Id}");
+            var result = await _dataProvider.GetData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetPermissionList", JsonConvert.SerializeObject(new {parentId=Data.Id}));
             if (!result.IsOK)
             {
                 throw new Exception(result.ErrorMessage);

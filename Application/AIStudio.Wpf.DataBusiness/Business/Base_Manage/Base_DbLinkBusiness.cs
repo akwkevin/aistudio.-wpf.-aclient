@@ -18,9 +18,9 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             return await GetIQueryable().GetPageResultAsync(input);
         }
 
-        public async Task<Base_DbLink> GetTheDataAsync(string id)
+        public async Task<Base_DbLink> GetTheDataAsync(IdInputDTO input)
         {
-            return await GetEntityAsync(id);
+            return await GetEntityAsync(input.id);
         }
 
         public async Task AddDataAsync(Base_DbLink newData)

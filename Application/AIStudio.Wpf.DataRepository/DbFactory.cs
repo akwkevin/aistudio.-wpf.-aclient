@@ -50,7 +50,8 @@ namespace AIStudio.Wpf.DataRepository
             switch (dbType)
             {
                 //暂时只写了SqlServer，大家请自行添加
-                case DatabaseType.SqlServer: builder.UseSqlServer(conString); break;
+                case DatabaseType.SqlServer: builder.UseSqlServer(conString, x => x.UseRowNumberForPaging()); break;
+                case DatabaseType.SQLite:builder.UseSqlite(conString, x => x.UseNetTopologySuite());break;
                 default: throw new Exception("暂不支持该数据库！");
             }
             builder.EnableSensitiveDataLogging();

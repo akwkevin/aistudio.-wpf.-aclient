@@ -2,6 +2,7 @@
 using System;
 using System.Data.Common;
 using System.Linq;
+using Microsoft.Data.Sqlite;
 
 namespace AIStudio.Wpf.DataRepository
 {
@@ -23,6 +24,7 @@ namespace AIStudio.Wpf.DataRepository
             switch (dbType)
             {
                 case DatabaseType.SqlServer: factory = SqlClientFactory.Instance; break;
+                case DatabaseType.SQLite: factory = SqliteFactory.Instance; break;
                 default: throw new Exception("请传入有效的数据库！");
             }
 
@@ -88,6 +90,7 @@ namespace AIStudio.Wpf.DataRepository
                     case "mysql": return DatabaseType.MySql;
                     case "oracle": return DatabaseType.Oracle;
                     case "postgresql": return DatabaseType.PostgreSql;
+                    case "sqlite": return DatabaseType.SQLite;
                     default: throw new Exception("请输入合法的数据库类型字符串！");
                 }
             }
@@ -109,6 +112,7 @@ namespace AIStudio.Wpf.DataRepository
                     case DatabaseType.MySql: return "MySql";
                     case DatabaseType.Oracle: return "Oracle";
                     case DatabaseType.PostgreSql: return "PostgreSql";
+                    case DatabaseType.SQLite: return "SQLite";
                     default: throw new Exception("请输入合法的数据库类型！");
                 }
             }

@@ -17,7 +17,7 @@
         x:Name="loginWin"
         Title="{x:Static core:LocalSetting.Title}" Height="288" Width="450">
     <Grid>
-        <Grid x:Name="LoginGrid" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='Input'}">           
+        <Grid x:Name="LoginGrid" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='Input'}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
@@ -35,7 +35,8 @@
                 </Grid.RowDefinitions>
 
                 <TextBox Grid.Row="0" Height="30" util:ControlAttachProperty.Watermark="服务器" Style="{StaticResource UnderlineTextBox}" TabIndex="0"
-                             Text="{Binding ServerIP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
+                             Text="{Binding ServerIP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                         Visibility="{Binding ServerIPVisibility}">
                     <util:ControlAttachProperty.LabelTemplate>
                         <ControlTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -73,7 +74,7 @@
                 <Button Grid.Row="4" Height="30" Content="登录" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=loginWin}" Style="{DynamicResource RaisedButton}" IsDefault="True" TabIndex="4"/>
             </Grid>
             <TextBlock Grid.Row="2" Text="{Binding LoginError}" HorizontalAlignment="Center" Foreground="Red"/>
-            <TextBlock  Grid.Row="3" Text="{Binding Version}" HorizontalAlignment="Left"/>           
+            <TextBlock  Grid.Row="3" Text="{Binding Version}" HorizontalAlignment="Left"/>
         </Grid>
         <Grid x:Name="VerifyGrid">
             <util:SliderVerify x:Name="Slider" Height="288" Width="450" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='Slider'}" >
@@ -110,7 +111,7 @@
                         <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result,ElementName=Drag}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-            </util:DragVerify>            
+            </util:DragVerify>
         </Grid>
     </Grid>
 </util:WindowBase>

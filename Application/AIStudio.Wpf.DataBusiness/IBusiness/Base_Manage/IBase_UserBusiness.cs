@@ -9,8 +9,8 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
     public interface IBase_UserBusiness : IBaseBusiness<Base_User>
     {
         Task<PageResult<Base_UserDTO>> GetDataListAsync(PageInput<Base_UsersInputDTO> input);
-        Task<object> GetDataListAsyncByDepartment(string departmentid);
-        Task<Base_UserDTO> GetTheDataAsync(string id);
+        Task<object> GetDataListByDepartmentAsync(IdInputDTO input);
+        Task<Base_UserDTO> GetTheDataAsync(IdInputDTO input);
         Task AddDataAsync(UserEditInputDTO input);
         Task UpdateDataAsync(UserEditInputDTO input);
         Task DeleteDataAsync(List<string> ids);

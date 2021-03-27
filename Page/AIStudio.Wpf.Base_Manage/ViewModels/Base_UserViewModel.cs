@@ -38,7 +38,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             var dialog = new Base_UserEdit(viewmodel);
             dialog.ValidationAction = (() =>
             {
-                if (!string.IsNullOrEmpty(para.Error))
+                if (!string.IsNullOrEmpty(viewmodel.Data.Error))
                     return false;
                 else
                     return true;

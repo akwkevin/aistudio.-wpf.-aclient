@@ -35,7 +35,8 @@
                 </Grid.RowDefinitions>
 
                 <TextBox Grid.Row="0" Height="30" util:ControlAttachProperty.Watermark="服务器" Style="{StaticResource UnderlineTextBox}" TabIndex="0"
-                             Text="{Binding ServerIP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
+                             Text="{Binding ServerIP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                         Visibility="{Binding ServerIPVisibility}">
                     <util:ControlAttachProperty.LabelTemplate>
                         <ControlTemplate>
                             <StackPanel Orientation="Horizontal">

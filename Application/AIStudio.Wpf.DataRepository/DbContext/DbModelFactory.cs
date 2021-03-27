@@ -14,10 +14,12 @@ namespace AIStudio.Wpf.DataRepository
 {
     public static class DbModelFactory
     {
-        static readonly List<string> _assemblies =
+        public static readonly List<string> Assemblies =
                 new List<string> {
                 "AIStudio.Wpf.EFCore",
     };
+
+        public static List<Type> AllTypes;
 
         #region 构造函数
 
@@ -91,11 +93,11 @@ namespace AIStudio.Wpf.DataRepository
 
         private static void InitEntityType()
         {
-            var assemblys = _assemblies.Select(x => Assembly.Load(x)).ToList();
-            List<Type> allTypes = new List<Type>();
+            var assemblys = Assemblies.Select(x => Assembly.Load(x)).ToList();
+            AllTypes = new List<Type>();
             assemblys.ForEach(aAssembly =>
             {
-                allTypes.AddRange(aAssembly.GetTypes());
+                AllTypes.AddRange(aAssembly.GetTypes());
             });
 
 
@@ -107,7 +109,7 @@ namespace AIStudio.Wpf.DataRepository
             var db = typeof(ColderAdminAntdVueContext);
             foreach(var pro in db.GetProperties())
             {
-                var type = allTypes.FirstOrDefault(p => p.Name == pro.Name);
+                var type = AllTypes.FirstOrDefault(p => p.Name == pro.Name);
                 if (type != null)
                 {
                     types.Add(type);
@@ -129,6 +131,7 @@ namespace AIStudio.Wpf.DataRepository
             switch (dbType)
             {
                 case DatabaseType.SqlServer: conventionSet = SqlServerConventionSetBuilder.Build(); break;
+                case DatabaseType.SQLite: conventionSet = SqliteConventionSetBuilder.Build(); break;
                 default: throw new Exception("暂不支持该数据库!");
             }
             ModelBuilder modelBuilder = new ModelBuilder(conventionSet);
