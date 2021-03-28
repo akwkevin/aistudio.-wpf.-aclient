@@ -21,8 +21,14 @@ namespace AIStudio.Wpf.%areaName%.ViewModels
     {
         public %entityName%ViewModel():base("%areaName%", typeof(%entityName%EditViewModel), typeof(%entityName%Edit))
         {
-			GetData();
+		
         }        
+
+        protected override void Initialize()
+        {
+            base.Initialize();
+            GetData();
+        }
 
         protected override void GetData(bool iswaiting = false)
         {

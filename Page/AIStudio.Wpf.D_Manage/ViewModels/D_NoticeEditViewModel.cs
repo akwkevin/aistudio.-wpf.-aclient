@@ -8,11 +8,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace AIStudio.Wpf.%areaName%.ViewModels
+namespace AIStudio.Wpf.D_Manage.ViewModels
 {
-    public class %entityName%EditViewModel : BaseEditViewModel<%entityName%DTO>
+    public class D_NoticeEditViewModel : BaseEditViewModel<D_NoticeDTO>
     {
-        public %entityName%EditViewModel(%entityName%DTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
+        public D_NoticeEditViewModel(D_NoticeDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
         {
             if (Data == null)
             {
@@ -26,10 +26,10 @@ namespace AIStudio.Wpf.%areaName%.ViewModels
 
 		protected override void InitData()
 		{
-			Data = new %entityName%DTO();
+			Data = new D_NoticeDTO();
 		}
 
-        protected override void GetData(%entityName%DTO para)
+        protected override void GetData(D_NoticeDTO para)
         {
             base.GetData(para);
         }       

@@ -195,7 +195,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 savePath = Path.Combine(
                                directory,
                                "Application",
-                               "AIStudio.Wpf.Business",
+                               "AIStudio.Wpf.EFCore",
                                "DTOModels",
                                $"{areaName}",
                                $"{entityName}DTO.cs");
@@ -238,7 +238,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 string fullClassName = "AIStudio.Wpf.EFCore.Models." + entityName;
 
                 //根据类名称创建类实例
-                var type = System.Reflection.Assembly.Load("AIStudio.Wpf.Business").GetType(fullClassName);
+                var type = System.Reflection.Assembly.Load("AIStudio.Wpf.EFCore").GetType(fullClassName);
                 List<string> selectOptionsList = new List<string>();
                 List<string> listColumnsList = new List<string>();
                 List<string> formColumnsList = new List<string>();
