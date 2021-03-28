@@ -86,8 +86,6 @@ namespace AIStudio.Wpf.Client
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            var container = PrismIocExtensions.GetContainer(containerRegistry);          
-
             containerRegistry.RegisterSingleton<IOperator, Operator>();
             containerRegistry.RegisterSingleton<IUserData, UserData>();
             containerRegistry.RegisterSingleton<IWSocketClient, WSocketClient>();
@@ -96,7 +94,8 @@ namespace AIStudio.Wpf.Client
 
             //AutoMapper            
             containerRegistry.RegisterInstance<IMapper>(new MapperProvider(containerRegistry).GetMapper());//containerRegistry.RegisterInstance(typeof(IMapper), new MapperProvider(containerRegistry).GetMapper());
-            
+
+            var container = PrismIocExtensions.GetContainer(containerRegistry);
             //api接口模式
             if (LocalSetting.ApiMode)
             {
