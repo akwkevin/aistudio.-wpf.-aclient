@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AIStudio.Wpf.EFCore.Models
 {
-    public partial class D_UserMessage_202103
+    public partial class D_UserMessage_202102
     {
         public string Id { get; set; }
         public int Type { get; set; }

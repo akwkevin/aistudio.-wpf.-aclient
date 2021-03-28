@@ -47,7 +47,7 @@
                                 </TextBlock>
                             </HeaderedContentControl.Header>
                             <TextBox Text="{Binding Title,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" 
-                                     IsReadOnly="{Binding IsDraft,Converter={converter:ConverterValueMapToOppositeBool},ConverterParameter='True',Mode=OneWay}"></TextBox>
+                                     IsReadOnly="{Binding Status,Converter={converter:ConverterValueMapToOppositeBool},ConverterParameter='0',Mode=OneWay}"></TextBox>
                         </HeaderedContentControl>
                         <HeaderedContentControl Style="{StaticResource LeftFormItemStyle}" Height="200">
                             <HeaderedContentControl.Header>
@@ -65,7 +65,7 @@
                                 </TextBlock>
                             </HeaderedContentControl.Header>
                             <controls:UploadFile File="{Binding Appendix,Mode=TwoWay}"
-                                             Disable="{Binding IsDraft,Converter={converter:ConverterValueMapToOppositeBool},ConverterParameter='True',Mode=OneWay}"></controls:UploadFile>
+                                             Disable="{Binding Status,Converter={converter:ConverterValueMapToOppositeBool},ConverterParameter='0',Mode=OneWay}"></controls:UploadFile>
                         </HeaderedContentControl>
                     </StackPanel>
                 </ScrollViewer>
@@ -77,12 +77,12 @@
             Height="25"
             MinWidth="60"
             Content="存草稿"
-            Margin="5 0 5 0" IsEnabled="{Binding Data.IsDraft}" />
+            Margin="5 0 5 0" IsEnabled="{Binding Data.Status,Converter={converter:ConverterValueMapToOppositeBool},ConverterParameter='0',Mode=OneWay}" />
                 <util:FButton CornerRadius="2" x:Name="PART_AffirmativeButton"
             Height="25"
             MinWidth="60"
             Content="发送"
-            Margin="5 0 5 0" IsEnabled="{Binding Data.IsDraft}"/>
+            Margin="5 0 5 0" IsEnabled="{Binding Data.Status,Converter={converter:ConverterValueMapToOppositeBool},ConverterParameter='0',Mode=OneWay}"/>
                 <util:FButton CornerRadius="2" x:Name="PART_NegativeButton"
             Height="25"
             MinWidth="60"

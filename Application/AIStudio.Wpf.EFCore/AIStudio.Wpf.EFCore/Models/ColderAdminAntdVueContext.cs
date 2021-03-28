@@ -2,10 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
-
 namespace AIStudio.Wpf.EFCore.Models
 {
     public partial class ColderAdminAntdVueContext : DbContext
@@ -28,9 +24,12 @@ namespace AIStudio.Wpf.EFCore.Models
         public virtual DbSet<Base_User> Base_User { get; set; }
         public virtual DbSet<Base_UserLog> Base_UserLog { get; set; }
         public virtual DbSet<Base_UserRole> Base_UserRole { get; set; }
+        public virtual DbSet<D_Notice> D_Notice { get; set; }
+        public virtual DbSet<D_NoticeReadingMarks> D_NoticeReadingMarks { get; set; }
         public virtual DbSet<D_UserGroup> D_UserGroup { get; set; }
         public virtual DbSet<D_UserMail> D_UserMail { get; set; }
         public virtual DbSet<D_UserMessage> D_UserMessage { get; set; }
+        public virtual DbSet<D_UserMessage_202102> D_UserMessage_202102 { get; set; }
         public virtual DbSet<D_UserMessage_202103> D_UserMessage_202103 { get; set; }
         public virtual DbSet<D_UserMessage_202104> D_UserMessage_202104 { get; set; }
         public virtual DbSet<OA_DefForm> OA_DefForm { get; set; }

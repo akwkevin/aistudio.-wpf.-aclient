@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
-
 namespace AIStudio.Wpf.EFCore.Models
 {
     public partial class D_UserMail
@@ -17,7 +13,6 @@ namespace AIStudio.Wpf.EFCore.Models
         public string ReadingMarks { get; set; }
         public bool StarMark { get; set; }
         public string Appendix { get; set; }
-        public bool IsDraft { get; set; }
         public bool Deleted { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime? ModifyTime { get; set; }
@@ -29,5 +24,6 @@ namespace AIStudio.Wpf.EFCore.Models
         public string UserIds { get; set; }
         public string UserNames { get; set; }
         public string Text { get; set; }
+        public int Status { get; set; }
     }
 }

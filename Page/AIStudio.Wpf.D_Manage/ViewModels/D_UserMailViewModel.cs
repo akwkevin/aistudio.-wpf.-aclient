@@ -74,7 +74,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                         condition = ConditionItem?.Tag,
                         userId = this.IndexType == 1 ? _operator.Property?.Id : "",
                         creatorId = this.IndexType == 2 || this.IndexType == 3 ? _operator.Property?.Id : "",
-                        draft = this.IndexType == 3 ? true : false,
+                        status = this.IndexType == 3 ? 0 : 1,
                     }                    
                 };
 
@@ -132,11 +132,11 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                     ShowWait();
                     if (res == BaseDialogResult.Other1)
                     {
-                        viewmodel.Data.IsDraft = true;
+                        viewmodel.Data.Status = 0;
                     }
                     else
                     {
-                        viewmodel.Data.IsDraft = false;
+                        viewmodel.Data.Status = 1;
                     }
 
                     var result = await _dataProvider.GetData<AjaxResult>($"/D_Manage/D_UserMail/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
