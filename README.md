@@ -40,11 +40,13 @@ Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.ex
 如果不连服务器，只看DemoPage，账号密码LocalUser，LocalUser。
 
 如果不连服务器，还可以使用SQLite本地数据，客户端可以独立运行。账号密码Admin, Admin
-<!--<add key="ServerIP" value="http://121.36.12.76:5000"/>--> 
+```
+<add key="ServerIP" value=""/> 
 <add key="UpdateAddress" value="http://121.36.12.76:5000/Update/AutoUpdater.xml"/>
 <add key="ConString" value="Data Source=Admin.db"/>
 <add key="DatabaseType" value="SQLite"/>
 <add key="DeleteMode" value="Logic"/>
+```
 注释掉ServerIP，那么是使用efcore获取数据，改变ConString和DatabaseType即可。另外，默认数据库删除模式为软删除。
 
 
