@@ -23,30 +23,25 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 
-                    cell = new TableCell(new Paragraph(new Run(item.Type.ToString())));
-                    cell.Style = styleCell;
-                    row.Cells.Add(cell);
-
-                    cell = new TableCell(new Paragraph(new Run(item.Appendix)));
-                    cell.Style = styleCell;
-                    row.Cells.Add(cell);
-
                     cell = new TableCell(new Paragraph(new Run(item.Text)));
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 
-                    cell = new TableCell(new Paragraph(new Run(item.Status.ToString())));
+                    cell = new TableCell(new Paragraph(new Run(item.TypeText)));
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 
-                    cell = new TableCell(new Paragraph(new Run(item.Mode.ToString())));
+                    cell = new TableCell(new Paragraph(new Run(item.StatusText)));
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 
-                    cell = new TableCell(new Paragraph(new Run(item.AnyId)));
+                    cell = new TableCell(new Paragraph(new Run(item.CreateTime.ToString("yyyy-MM-dd HH:mm:ss"))));
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 
+                    cell = new TableCell(new Paragraph(new Run(item.CreatorName)));
+                    cell.Style = styleCell;
+                    row.Cells.Add(cell);
 
                     groupDetails.Rows.Add(row);
                 }

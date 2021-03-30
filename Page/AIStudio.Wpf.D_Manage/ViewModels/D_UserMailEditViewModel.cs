@@ -88,40 +88,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             {
                 SelectedUsers = new ObservableCollection<SelectOption>(Users.Where(p => Data.UserIds.Contains($"^{p.value}^")));
             }
-        }
-
-        private async void Edit(bool isDraft = false)
-        {
-            if (!string.IsNullOrEmpty(Data.Error))
-                return;
-
-            try
-            {
-                ShowWait();
-
-                this.Data.CreatorName = $"^{_operator?.Property?.UserName}^";
-                this.Data.CreatorId = $"^{_operator?.Property?.Id}^";
-                this.Data.UserIds = "^" + string.Join("^", this.SelectedUsers.Select(p => p.value)) + "^";
-                this.Data.UserNames = "^" + string.Join("^", this.SelectedUsers.Select(p => p.text)) + "^";
-                this.Data.Status = isDraft ? 0 : 1;
-
-                var result = await _dataProvider.GetData<AjaxResult>("/D_Manage/D_UserMail/SaveData", JsonConvert.SerializeObject(this.Data));
-                if (!result.IsOK)
-                {
-                    throw new Exception(result.ErrorMessage);
-                }
-                InitData();
-                WindowBase.ShowMessageQueue(result.ResponseItem?.Msg, Identifier);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                HideWait();
-            }
-        }
+        }        
 
     }
 }

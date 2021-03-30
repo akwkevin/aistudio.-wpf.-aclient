@@ -122,6 +122,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIStudio.Wpf.DataBusiness",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIStudio.Wpf.Client472", "Application\AIStudio.Wpf.Client472\AIStudio.Wpf.Client472.csproj", "{37684C83-37C1-4D43-B341-281EF3D2E1FC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DF553B06-A73D-4FE1-AAD5-92826CB6E721}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Others\Prism8\Containers\Prism.Unity.Shared\Prism.Unity.Shared.projitems*{3f90544d-b6de-41c9-9059-104222a7db55}*SharedItemsImports = 5

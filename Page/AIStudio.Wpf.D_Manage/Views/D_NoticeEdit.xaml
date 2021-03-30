@@ -33,11 +33,11 @@
                                     <Run>类型</Run>
                                 </TextBlock>
                             </HeaderedContentControl.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <RadioButton IsChecked="{Binding Mode,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter=0},ConverterParameter=0}" Content="全部"/>
-                                <RadioButton IsChecked="{Binding Mode,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter=1},ConverterParameter=1}" Content="按用户"/>
-                                <RadioButton IsChecked="{Binding Mode,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter=2},ConverterParameter=2}" Content="按角色"/>
-                                <RadioButton IsChecked="{Binding Mode,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter=3},ConverterParameter=3}" Content="按部门" IsEnabled="False"/>
+                            <StackPanel Orientation="Horizontal" IsEnabled="{Binding Status,Converter={converter:ConverterValueMapSetToBool},ConverterParameter='0',Mode=OneWay}">
+                                <RadioButton IsChecked="{Binding Mode,Converter={converter:ConverterValueMapToBool Parameter=0},ConverterParameter=0}" Content="全部"/>
+                                <RadioButton IsChecked="{Binding Mode,Converter={converter:ConverterValueMapToBool Parameter=1},ConverterParameter=1}" Content="按用户"/>
+                                <RadioButton IsChecked="{Binding Mode,Converter={converter:ConverterValueMapToBool Parameter=2},ConverterParameter=2}" Content="按角色"/>
+                                <RadioButton IsChecked="{Binding Mode,Converter={converter:ConverterValueMapToBool Parameter=3},ConverterParameter=3}" Content="按部门" IsEnabled="False"/>
                             </StackPanel>
                         </HeaderedContentControl>
                         <HeaderedContentControl Style="{StaticResource LeftFormItemStyle}" Visibility="{Binding Mode,Converter={converter:ConverterValueMapToVisibility},ConverterParameter=1}">
@@ -81,7 +81,8 @@
                                     <Run>正文</Run>
                                 </TextBlock>
                             </HeaderedContentControl.Header>
-                            <ex:HtmlEditor x:Name="Editor" util:ThemeChangedHelper.AcceptThemeChanged="True" BindingContent="{Binding Text, Mode=TwoWay}" />
+                            <ex:HtmlEditor x:Name="Editor" util:ThemeChangedHelper.AcceptThemeChanged="True" BindingContent="{Binding Text, Mode=TwoWay}" 
+                                           IsEnabled="{Binding Status,Converter={converter:ConverterValueMapSetToBool},ConverterParameter='0',Mode=OneWay}"/>
                         </HeaderedContentControl>
                         <HeaderedContentControl Style="{StaticResource LeftFormItemStyle}" Height="Auto">
                             <HeaderedContentControl.Header>
@@ -102,12 +103,12 @@
             Height="25"
             MinWidth="60"
             Content="存草稿"
-            Margin="5 0 5 0" IsEnabled="{Binding Data.Status,Converter={converter:ConverterValueMapToOppositeBool},ConverterParameter='0',Mode=OneWay}" />
+            Margin="5 0 5 0" IsEnabled="{Binding Data.Status,Converter={converter:ConverterValueMapSetToBool},ConverterParameter=0,Mode=OneWay}" />
                 <util:FButton CornerRadius="2" x:Name="PART_AffirmativeButton"
             Height="25"
             MinWidth="60"
             Content="发送"
-            Margin="5 0 5 0" IsEnabled="{Binding Data.Status,Converter={converter:ConverterValueMapToOppositeBool},ConverterParameter='0',Mode=OneWay}"/>
+            Margin="5 0 5 0" IsEnabled="{Binding Data.Status,Converter={converter:ConverterValueMapSetToBool},ConverterParameter=0,Mode=OneWay}"/>
                 <util:FButton CornerRadius="2" x:Name="PART_NegativeButton"
             Height="25"
             MinWidth="60"

@@ -36,8 +36,47 @@
                     <TabControl controls:TabControlHelper.Underlined="TabItems" SelectedIndex="{Binding SelectedIndex}">
                         <TabItem>
                             <TabItem.Header>
+                                <util:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding Notice_Pagination.Total,Converter={converter2:CountTo99PlusConverter}}" >
+                                    <TextBlock  Text="&#xf003; 通告" FontSize="{DynamicResource MahApps.Font.Size.Menu}" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource FAwesome}">
+                                    </TextBlock>
+                                </util:Badged>
+                            </TabItem.Header>
+                            <StackPanel>
+                                <ListBox x:Name="notice" ItemsSource="{Binding Notice}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Image x:Name="Avatar" Grid.RowSpan="2" Width="24" Height="24" Margin="3" util:ImageProperty.CornerRadius="50"  Stretch="Fill" VerticalAlignment="Center" 
+                                                                           Source="{Binding Avatar,Converter={converter2:StringToAvatarSourceConverter}}"
+                                                                           ToolTip="{Binding CreatorName}"/>
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Title}" Margin="3" />
+                                                </StackPanel>
+                                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CreateTime,StringFormat=yyyy-MM-dd HH:mm:ss}" Margin="3" Foreground="{DynamicResource MahApps.Brushes.Gray1}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseUp">
+                                            <command:ExInvokeCommandAction Command="{Binding EditCommand}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ListBox>
+                                <util:FButton Command="{Binding MoreCommand}" CommandParameter="D_NoticeDTO" HorizontalAlignment="Right" Style="{StaticResource FButton_LinkButton}" Content ="查看更多" />
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem>
+                            <TabItem.Header>
                                 <util:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding UserMail_Pagination.Total,Converter={converter2:CountTo99PlusConverter}}" >
-                                    <TextBlock  Text="&#xf003; 通知" FontSize="{DynamicResource MahApps.Font.Size.Menu}" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource FAwesome}">
+                                    <TextBlock  Text="&#xf003; 信件" FontSize="{DynamicResource MahApps.Font.Size.Menu}" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource FAwesome}">
                                     </TextBlock>
                                 </util:Badged>
                             </TabItem.Header>

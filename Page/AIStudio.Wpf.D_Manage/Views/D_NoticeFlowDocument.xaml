@@ -28,33 +28,28 @@
         <TableRowGroup Name="rowsDetails">
             <TableRow FontWeight="Bold" >
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Title</Paragraph>
+                    <Paragraph>标题</Paragraph>
                </TableCell>
 
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Type</Paragraph>
+                    <Paragraph>摘要</Paragraph>
+                </TableCell>
+                
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>类型</Paragraph>
                </TableCell>
 
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Appendix</Paragraph>
+                    <Paragraph>状态</Paragraph>
                </TableCell>
 
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Text</Paragraph>
+                    <Paragraph>发布时间</Paragraph>
                </TableCell>
 
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Status</Paragraph>
+                    <Paragraph>发布人</Paragraph>
                </TableCell>
-
-                <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>Mode</Paragraph>
-               </TableCell>
-
-                <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>AnyId</Paragraph>
-               </TableCell>
-
             </TableRow>
         </TableRowGroup>
     </Table>

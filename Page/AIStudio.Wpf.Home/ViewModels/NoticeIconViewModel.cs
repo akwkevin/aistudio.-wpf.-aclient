@@ -35,6 +35,16 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
+        private ObservableCollection<D_NoticeDTO> _notice;
+        public ObservableCollection<D_NoticeDTO> Notice
+        {
+            get { return _notice; }
+            set
+            {
+                SetProperty(ref _notice, value);
+            }
+        }
+
         private ObservableCollection<D_UserMailDTO> _userMail;
         public ObservableCollection<D_UserMailDTO> UserMail
         {
@@ -105,6 +115,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
+        public Core.Models.Pagination Notice_Pagination { get; set; } = new Core.Models.Pagination() { PageRows = 5 };
 
         public Core.Models.Pagination UserMail_Pagination { get; set; } = new Core.Models.Pagination() { PageRows = 5 };
 
@@ -136,10 +147,11 @@ namespace AIStudio.Wpf.Home.ViewModels
             if (type == WSMessageType.PushType)
             {
                 var resmsg = JsonConvert.DeserializeObject<PushMessageData>(message);
+                Notice_Pagination.Total = resmsg.NoticeCount;
                 UserMail_Pagination.Total = resmsg.UserMailCount;
                 UserMessage_Pagination.Total = resmsg.UserMessageCount;
                 UserForm_Pagination.Total = resmsg.UserFormCount;
-                TotalCount = UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
+                TotalCount = Notice_Pagination.Total + UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
                 var clearcache = resmsg.Clearcache;
 
                 if (clearcache.Contains("Base_User"))
@@ -159,11 +171,54 @@ namespace AIStudio.Wpf.Home.ViewModels
         {
             switch (SelectedIndex)
             {
-                case 0: await GetUserMail(); break;
-                case 1: await GetUserMessage(); break;
-                case 2: await GetUserForm(); break;
+                case 0: await GetNotice(); break;
+                case 1: await GetUserMail(); break;
+                case 2: await GetUserMessage(); break;
+                case 3: await GetUserForm(); break;
             }
         }
+
+        private async Task GetNotice()
+        {
+            try
+            {
+                ShowWait();
+
+                var data = new
+                {
+                    PageIndex = Notice_Pagination.PageIndex,
+                    PageRows = Notice_Pagination.PageRows,
+                    SortField = Notice_Pagination.SortField,
+                    SortType = Notice_Pagination.SortType,
+                    Search = new
+                    {
+                        userId = _operator?.Property?.Id,
+                        markflag = true,
+                    }
+                };
+
+                var result = await _dataProvider.GetData<List<D_NoticeDTO>>($"/D_Manage/D_Notice/GetPageHistoryDataList", JsonConvert.SerializeObject(data));
+                if (!result.IsOK)
+                {
+                    throw new Exception(result.ErrorMessage);
+                }
+                else
+                {
+                    Notice_Pagination.Total = result.Total;
+                    Notice = new ObservableCollection<D_NoticeDTO>(result.ResponseItem);
+                    TotalCount = Notice_Pagination.Total + UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                HideWait();
+            }
+        }
+
         private async Task GetUserMail()
         {
             try
@@ -192,7 +247,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 {
                     UserMail_Pagination.Total = result.Total;
                     UserMail = new ObservableCollection<D_UserMailDTO>(result.ResponseItem);
-                    TotalCount = UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
+                    TotalCount = Notice_Pagination.Total + UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
                 }
             }
             catch (Exception ex)
@@ -233,7 +288,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 {
                     UserMessage_Pagination.Total = result.ResponseItem.Sum(p => p.Total);
                     UserMessage = new ObservableCollection<GroupData>(result.ResponseItem);
-                    TotalCount = UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
+                    TotalCount = Notice_Pagination.Total + UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
                 }
             }
             catch (Exception ex)
@@ -273,7 +328,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 {
                     UserForm_Pagination.Total = result.Total;
                     UserForm = new ObservableCollection<OA_UserFormDTO>(result.ResponseItem);
-                    TotalCount = UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
+                    TotalCount = Notice_Pagination.Total + UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
                 }
             }
             catch (Exception ex)
@@ -288,6 +343,7 @@ namespace AIStudio.Wpf.Home.ViewModels
 
         private Dictionary<string, string> Dictionary = new Dictionary<string, string>()
         {
+            { "D_NoticeDTO", "/D_Manage/D_Notice/List" },
             { "D_UserMailDTO", "/D_Manage/D_UserMail/Index" },
             { "D_UserMessageDTO", "/D_Manage/D_UserMessage/List" },
             { "OA_UserFormDTO", "/D_Manage/OA_UserForm/List" },
@@ -304,7 +360,11 @@ namespace AIStudio.Wpf.Home.ViewModels
             var exCommandParameter = para as ExCommandParameter;
             var obj = (exCommandParameter.Sender as ListBox).SelectedItem;
 
-            if (obj is D_UserMailDTO)
+            if (obj is D_NoticeDTO)
+            {
+                await D_NoticeViewModel.EditShow(new D_NoticeDTO() { Id = (obj as D_NoticeDTO).Id }, Identifier);
+            }
+            else if (obj is D_UserMailDTO)
             {
                 await D_UserMailViewModel.EditShow(new D_UserMailDTO() { Id = (obj as D_UserMailDTO).Id }, Identifier);
             }
@@ -325,6 +385,8 @@ namespace AIStudio.Wpf.Home.ViewModels
         public string[] Clearcache { get; set; }
 
         public List<GroupData> UserMessage { get; set; }
+
+        public int NoticeCount { get; set; }
         public int UserMessageCount { get; set; }
         public int UserMailCount { get; set; }
         public int UserFormCount { get; set; }

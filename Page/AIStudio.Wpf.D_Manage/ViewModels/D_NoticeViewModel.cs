@@ -143,6 +143,17 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                         viewmodel.Data.Status = 1;
                     }
 
+                    viewmodel.Data.CreatorName = $"^{_operator?.Property?.UserName}^";
+                    viewmodel.Data.CreatorId = $"^{_operator?.Property?.Id}^";
+                    if (viewmodel.Data.Mode == 1)
+                    {
+                        viewmodel.Data.AnyId = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.value)) + "^";
+                    }
+                    else if (viewmodel.Data.Mode == 2)
+                    {
+                        viewmodel.Data.AnyId = "^" + string.Join("^", viewmodel.SelectedRoles.Select(p => p.value)) + "^";
+                    }
+
                     var result = await _dataProvider.GetData<AjaxResult>($"/D_Manage/D_Notice/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                     if (!result.IsOK)
                     {
