@@ -1,5 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
+using AIStudio.Wpf.EFCore.DTOModels;
 using AIStudio.Wpf.EFCore.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +36,7 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             if (theUser.IsNullOrEmpty())
                 throw new BusException("账号或密码不正确！");
 
-            _operator.Property = theUser;
+            _operator.Property = _mapper.Map<Base_UserDTO>(theUser);
             return theUser.Id;
         }
 

@@ -78,6 +78,8 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                     Search = new
                     {
                         userId = _operator.UserId,
+                        roleIdList = _operator.Property?.RoleIdList,
+                        departmentId = _operator.Property?.DepartmentId,
                         status = status,
                     }
                 };

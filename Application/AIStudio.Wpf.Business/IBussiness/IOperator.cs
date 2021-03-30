@@ -1,4 +1,5 @@
-﻿using AIStudio.Wpf.EFCore.Models;
+﻿using AIStudio.Wpf.EFCore.DTOModels;
+using AIStudio.Wpf.EFCore.Models;
 using System.Collections.Generic;
 
 namespace AIStudio.Wpf.Business
@@ -14,7 +15,7 @@ namespace AIStudio.Wpf.Business
         /// <summary>
         /// 当前操作者
         /// </summary>
-        Base_User Property { get; set; }
+        Base_UserDTO Property { get; set; }
 
         List<string> Permissions { get; set; }
 

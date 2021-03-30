@@ -1,4 +1,5 @@
-﻿using AIStudio.Wpf.EFCore.Models;
+﻿using AIStudio.Wpf.EFCore.DTOModels;
+using AIStudio.Wpf.EFCore.Models;
 using System.Collections.Generic;
 
 namespace AIStudio.Wpf.Business
@@ -16,7 +17,7 @@ namespace AIStudio.Wpf.Business
 
         public string Avatar { get; set; }
 
-        public Base_User Property { get; set; }
+        public Base_UserDTO Property { get; set; }
 
         public List<string> Permissions { get; set; }      
     }

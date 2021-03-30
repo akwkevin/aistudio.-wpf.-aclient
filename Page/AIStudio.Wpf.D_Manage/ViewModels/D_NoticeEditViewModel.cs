@@ -119,7 +119,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             Roles = await _userData.GetAllRole();
             if (Data != null && Data.Mode == 2 && Data.AnyId != null)
             {
-                SelectedRoles = new ObservableCollection<SelectOption>(Users.Where(p => Data.AnyId.Contains($"^{p.value}^")));
+                SelectedRoles = new ObservableCollection<SelectOption>(Roles.Where(p => Data.AnyId.Contains($"^{p.value}^")));
             }
         }
        
