@@ -7,8 +7,7 @@ using System.Reflection;
 
 namespace AIStudio.Wpf.EFCore.DTOModels
 {
-    //[MapFrom(typeof(Base_User))]
-    //[MapTo(typeof(Base_User))]
+    [Map(typeof(Base_User))]
     public partial class Base_UserDTO : Base_User, INotifyPropertyChanged, IIsChecked
     {
         //private string userName;
