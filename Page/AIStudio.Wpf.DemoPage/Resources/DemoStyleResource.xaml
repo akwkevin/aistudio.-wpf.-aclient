@@ -1,0 +1,307 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:utilhandy="https://astudio.github.io/utilcontrol.handy"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+    <ObjectDataProvider x:Key="DemoTypes" MethodName="GetValues" ObjectType="system:Enum">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type Type="utilhandy:DemoType"/>
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+
+    <ObjectDataProvider x:Key="ShowAnimations" MethodName="GetValues" ObjectType="system:Enum">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type TypeName="utilhandy:ShowAnimation"/>
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+
+    <ObjectDataProvider x:Key="HatchStyles" MethodName="GetValues" ObjectType="system:Enum">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type Type="utilhandy:HatchStyle"/>
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+
+    <Style x:Key="CirclePanelButton" BasedOn="{StaticResource ButtonCustom}" TargetType="Button">
+        <Setter Property="UseLayoutRounding" Value="False"/>
+        <Setter Property="Height" Value="77"/>
+        <Setter Property="Width" Value="36.06"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Path Data="{StaticResource CirclePanelDemoGeometry}" Fill="{DynamicResource MahApps.Brushes.Accent}" Height="77" Width="36.06"/>
+                        <Path Data="{StaticResource CirclePanelRightGeometry}" Stretch="Uniform" Margin="12" Fill="White"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value=".9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value=".6"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TabItemTransparent" BasedOn="{StaticResource TabItemInLine}" TargetType="TabItem">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <Style x:Key="ListBoxItemTransparent" BasedOn="{StaticResource ListBoxItemBaseStyle}" TargetType="ListBoxItem">
+        <Setter Property="utilhandy:BorderElement.CornerRadius" Value="4"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <Style x:Key="ListBoxItemNew" BasedOn="{StaticResource ListBoxItemTransparent}" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Path VerticalAlignment="Center" Data="{StaticResource NewGeometry}" Stretch="Uniform" Margin="10,0,0,0" Width="30" Height="14" Fill="{DynamicResource DangerBrush}"/>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="utilhandy:EdgeElement.ShowEdgeContent" Value="true">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Width="16" Height="16" Content="{Binding Path=(utilhandy:EdgeElement.LeftContent),RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    <ContentPresenter Margin="6,0,0,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    <Path VerticalAlignment="Center" Data="{StaticResource NewGeometry}" Stretch="Uniform" Margin="10,0,0,0" Width="30" Height="14" Fill="{DynamicResource DangerBrush}"/>
+                                </StackPanel>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ListBoxTransparent" BasedOn="{StaticResource ListBoxBaseStyle}" TargetType="ListBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemTransparent}"/>
+    </Style>
+
+    <ItemsPanelTemplate x:Key="FluidMoveBehaviorWrapPanelItemsPanelTemplate">
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" utilhandy:PanelElement.FluidMoveBehavior="{StaticResource BehaviorXY200}"/>
+    </ItemsPanelTemplate>
+
+    <Style x:Key="MessageBoxCustom" TargetType="utilhandy:MessageBoxWindow" BasedOn="{StaticResource {x:Type utilhandy:MessageBoxWindow}}">
+        <Setter Property="NonClientAreaBackground" Value="#262e2f"/>
+        <Setter Property="OtherButtonHoverBackground" Value="#888580"/>
+        <Setter Property="OtherButtonForeground" Value="White"/>
+        <Setter Property="OtherButtonHoverForeground" Value="White"/>
+        <Setter Property="NonClientAreaForeground" Value="White"/>
+        <Setter Property="CloseButtonForeground" Value="White"/>
+        <Setter Property="Icon" Value="/AIStudio.Wpf.DemoPage;component/Resources/Img/icon.ico"/>
+    </Style>
+
+    <Style x:Key="TextBlockFabricIcons" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource FabricIcons}"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style TargetType="utilhandy:Sprite" BasedOn="{StaticResource {x:Type utilhandy:Sprite}}">
+        <Setter Property="Padding" Value="25"/>
+    </Style>
+
+    <Storyboard x:Key="Custom1Transition" x:Shared="False">
+        <DoubleAnimation From="50" To="0" Duration="0:0:0.4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+            <DoubleAnimation.EasingFunction>
+                <ElasticEase Oscillations="1"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+    </Storyboard>
+
+    <Storyboard x:Key="Custom2Transition" x:Shared="False">
+        <DoubleAnimation From="10" To="0" Duration="0:0:0.4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+            <DoubleAnimation.EasingFunction>
+                <ElasticEase Oscillations="1"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+    </Storyboard>
+
+    <Storyboard x:Key="Custom3Transition" x:Shared="False">
+        <DoubleAnimation From=".8" To="1" Duration="0:0:0.4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+            <DoubleAnimation.EasingFunction>
+                <ElasticEase Oscillations="1"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+    </Storyboard>
+
+    <DrawingBrush o:Freeze="True" Opacity=".1" x:Key="CloudDrawingBrush" RenderOptions.CacheInvalidationThresholdMinimum="0.5" RenderOptions.CacheInvalidationThresholdMaximum="2.0" RenderOptions.CachingHint="Cache" Viewport="0,0,314,157" ViewportUnits="Absolute" Stretch="Uniform" TileMode="Tile">
+        <DrawingBrush.Drawing>
+            <DrawingGroup o:Freeze="True">
+                <ImageDrawing ImageSource="/AIStudio.Wpf.DemoPage;component/Resources/Img/cloud.png" Rect="0,0,314,157"/>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush o:Freeze="True" x:Key="MainContentForegroundDrawingBrush" RenderOptions.CacheInvalidationThresholdMinimum="0.5" RenderOptions.CacheInvalidationThresholdMaximum="2.0" RenderOptions.CachingHint="Cache" Viewport="0,0,16,16" ViewportUnits="Absolute" Stretch="None" TileMode="Tile">
+        <DrawingBrush.Drawing>
+            <DrawingGroup o:Freeze="True">
+                <GeometryDrawing o:Freeze="True" Brush="{DynamicResource MainContentForegroundBrush}">
+                    <GeometryDrawing.Geometry>
+                        <GeometryGroup o:Freeze="True">
+                            <RectangleGeometry o:Freeze="True" Rect="0,0,8,8" />
+                            <RectangleGeometry o:Freeze="True" Rect="8,8,8,8" />
+                        </GeometryGroup>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush o:Freeze="True" x:Key="GitHubDrawingBrush" RenderOptions.CacheInvalidationThresholdMinimum="0.5" RenderOptions.CacheInvalidationThresholdMaximum="2.0" RenderOptions.CachingHint="Cache" Viewport="0,0,200,100" ViewportUnits="Absolute" Stretch="Uniform" TileMode="Tile">
+        <DrawingBrush.Transform>
+            <TransformGroup o:Freeze="True">
+                <RotateTransform o:Freeze="True" Angle="20"/>
+            </TransformGroup>
+        </DrawingBrush.Transform>
+        <DrawingBrush.Drawing>
+            <DrawingGroup o:Freeze="True">
+                <GeometryDrawing o:Freeze="True" Brush="{DynamicResource DarkMaskBrush}" Geometry="{StaticResource GitHubStrGeometry}"/>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush o:Freeze="True" x:Key="QqDrawingBrush" RenderOptions.CacheInvalidationThresholdMinimum="0.5" RenderOptions.CacheInvalidationThresholdMaximum="2.0" RenderOptions.CachingHint="Cache" Viewport="0,0,100,200" ViewportUnits="Absolute" Stretch="Uniform" TileMode="Tile">
+        <DrawingBrush.Transform>
+            <TransformGroup o:Freeze="True">
+                <RotateTransform o:Freeze="True" Angle="20"/>
+            </TransformGroup>
+        </DrawingBrush.Transform>
+        <DrawingBrush.Drawing>
+            <DrawingGroup o:Freeze="True">
+                <GeometryDrawing o:Freeze="True" Brush="{DynamicResource DarkMaskBrush}" Geometry="{StaticResource QqGeometry}"/>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush o:Freeze="True" x:Key="BlogDrawingBrush" RenderOptions.CacheInvalidationThresholdMinimum="0.5" RenderOptions.CacheInvalidationThresholdMaximum="2.0" RenderOptions.CachingHint="Cache" Viewport="0,0,160,100" ViewportUnits="Absolute" Stretch="Uniform" TileMode="Tile">
+        <DrawingBrush.Transform>
+            <TransformGroup o:Freeze="True">
+                <RotateTransform o:Freeze="True" Angle="20"/>
+            </TransformGroup>
+        </DrawingBrush.Transform>
+        <DrawingBrush.Drawing>
+            <GeometryDrawing o:Freeze="True">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry o:Freeze="True" Rect="0,0,160,100"></RectangleGeometry>
+                </GeometryDrawing.Geometry>
+                <GeometryDrawing.Brush>
+                    <VisualBrush o:Freeze="True" RenderOptions.CachingHint="Cache" RenderOptions.CacheInvalidationThresholdMinimum="0.5" RenderOptions.CacheInvalidationThresholdMaximum="2.0" >
+                        <VisualBrush.Visual>
+                            <StackPanel>
+                                <TextBlock Text="Blog" Foreground="{DynamicResource DarkMaskBrush}"/>
+                            </StackPanel>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </GeometryDrawing.Brush>
+            </GeometryDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush o:Freeze="True" x:Key="WebsiteDrawingBrush" RenderOptions.CacheInvalidationThresholdMinimum="0.5" RenderOptions.CacheInvalidationThresholdMaximum="2.0" RenderOptions.CachingHint="Cache" Viewport="0,0,320,100" ViewportUnits="Absolute" Stretch="Uniform" TileMode="Tile">
+        <DrawingBrush.Transform>
+            <TransformGroup o:Freeze="True">
+                <RotateTransform o:Freeze="True" Angle="20"/>
+            </TransformGroup>
+        </DrawingBrush.Transform>
+        <DrawingBrush.Drawing>
+            <GeometryDrawing o:Freeze="True">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry o:Freeze="True" Rect="0,0,320,100"></RectangleGeometry>
+                </GeometryDrawing.Geometry>
+                <GeometryDrawing.Brush>
+                    <VisualBrush o:Freeze="True" RenderOptions.CachingHint="Cache" RenderOptions.CacheInvalidationThresholdMinimum="0.5" RenderOptions.CacheInvalidationThresholdMaximum="2.0">
+                        <VisualBrush.Visual>
+                            <StackPanel>
+                                <TextBlock Text="Website" Foreground="{DynamicResource DarkMaskBrush}"/>
+                            </StackPanel>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </GeometryDrawing.Brush>
+            </GeometryDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush o:Freeze="True" x:Key="ProjectDrawingBrush" RenderOptions.CacheInvalidationThresholdMinimum="0.5" RenderOptions.CacheInvalidationThresholdMaximum="2.0" RenderOptions.CachingHint="Cache" Viewport="0,0,240,100" ViewportUnits="Absolute" Stretch="Uniform" TileMode="Tile">
+        <DrawingBrush.Transform>
+            <TransformGroup o:Freeze="True">
+                <RotateTransform o:Freeze="True" Angle="20"/>
+            </TransformGroup>
+        </DrawingBrush.Transform>
+        <DrawingBrush.Drawing>
+            <GeometryDrawing o:Freeze="True">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry o:Freeze="True" Rect="0,0,240,100"></RectangleGeometry>
+                </GeometryDrawing.Geometry>
+                <GeometryDrawing.Brush>
+                    <VisualBrush o:Freeze="True" RenderOptions.CachingHint="Cache" RenderOptions.CacheInvalidationThresholdMinimum="0.5" RenderOptions.CacheInvalidationThresholdMaximum="2.0" >
+                        <VisualBrush.Visual>
+                            <StackPanel>
+                                <TextBlock Text="Project" Foreground="{DynamicResource DarkMaskBrush}"/>
+                            </StackPanel>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </GeometryDrawing.Brush>
+            </GeometryDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <LinearGradientBrush o:Freeze="True" x:Key="MenuButtonBorderBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop o:Freeze="True" Color="White" Offset="0"/>
+        <GradientStop o:Freeze="True" Color="#F2F2F2" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush o:Freeze="True" x:Key="ToolBarBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop o:Freeze="True" Color="#F5F4F5" Offset="0"/>
+        <GradientStop o:Freeze="True" Color="#D1CFD1" Offset="1"/>
+    </LinearGradientBrush>
+
+    <SolidColorBrush o:Freeze="True" x:Key="MainBackgroundBrush" Color="{DynamicResource MainBackgroundColor}"/>
+    <SolidColorBrush o:Freeze="True" x:Key="MainContentForegroundBrush" Color="{DynamicResource MainContentForegroundColor}"/>
+    <SolidColorBrush o:Freeze="True" x:Key="MainContentBackgroundBrush" Color="{DynamicResource MainContentBackgroundColor}"/>
+
+    <!-- Header in samples -->
+    <Style x:Key="Header" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground"
+              Value="#FFC72035" />
+        <Setter Property="Margin" Value="0,5" />
+    </Style>
+
+    <Style x:Key="DisableGrayText" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="Gray" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="DisableGrayComboBox"
+          TargetType="ComboBox">
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                  Value="False">
+                <Setter Property="Foreground"
+                    Value="Gray" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

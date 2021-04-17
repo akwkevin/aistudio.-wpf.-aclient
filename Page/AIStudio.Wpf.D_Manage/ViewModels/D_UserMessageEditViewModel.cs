@@ -12,7 +12,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using Util.Controls.Data;
 
 namespace AIStudio.Wpf.D_Manage.ViewModels
 {
@@ -50,7 +49,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             }
         }
 
-        private ObservableCollection<D_UserMessageDTO> _data;
+        private ObservableCollection<D_UserMessageDTO> _data = new ObservableCollection<D_UserMessageDTO>();
         public new ObservableCollection<D_UserMessageDTO> Data
         {
             get { return _data; }

@@ -12,6 +12,9 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
 
                 <ResourceDictionary Source="pack://application:,,,/Util.Controls;component/Style/Style.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Util.Controls.Handy;component/Style/Style.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Util.Controls.Xceed;component/Style/Style.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Util.Controls.Shared;component/Style/Style.xaml"/>
                 <ResourceDictionary Source="/AIStudio.Resource;component/Brushs/Brushes.xaml" />
                 <ResourceDictionary Source="/AIStudio.Resource;component/Themes/Generic.xaml" />
                 

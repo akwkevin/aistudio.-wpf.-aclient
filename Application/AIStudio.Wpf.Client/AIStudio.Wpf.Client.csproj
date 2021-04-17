@@ -20,11 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ShowMeTheXAML" Version="2.0.0" />
-    <PackageReference Include="ShowMeTheXAML.MSBuild" Version="2.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj" />
     <ProjectReference Include="..\..\Page\AIStudio.Wpf.Home\AIStudio.Wpf.Home.csproj" />
     <ProjectReference Include="..\..\SetUp\AutoUpdater.NET\AutoUpdater.NET\AutoUpdater.NET.csproj" />
@@ -46,5 +41,5 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
+  
 </Project>

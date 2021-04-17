@@ -4,8 +4,7 @@
                     xmlns:controls="clr-namespace:AIStudio.Wpf.BasePage.Controls"
                     xmlns:converter="clr-namespace:AIStudio.Wpf.BasePage.Converters">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Util.Controls;component/Basic/Converters.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Util.Controls;component/Basic/Geometries.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Util.Controls;component/Style/Geometries.xaml"/>
         <ResourceDictionary>
             <util:StringToImageSourceConverter x:Key="StringToImageSourceConverter"/>
             <util:DateTimeToStringConverter x:Key="DateTimeToStringConverter"/>

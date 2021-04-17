@@ -293,7 +293,7 @@
                                     </util:DropDown>
                                 </Grid>
                                 
-                                <util:RunningBlock Margin="10,0" BorderThickness="0" Foreground="{DynamicResource MahApps.Brushes.Text}" Content="{Binding NoticeText}" Width="200"/>
+                                <!--<util:RunningBlock Margin="10,0" BorderThickness="0" Foreground="{DynamicResource MahApps.Brushes.Text}" Content="{Binding NoticeText}" Width="200"/>-->
                             </StackPanel>
                         </ControlTemplate>
                     </Setter.Value>

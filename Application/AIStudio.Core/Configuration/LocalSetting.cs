@@ -24,8 +24,7 @@ namespace AIStudio.Core
     
         public static string StatusBarLocation { get; set; } = ConfigurationManager.AppSettings["StatusBarLocation"];
 
-        public static string VerifyMode { get; set; } = Convert.ToString(ConfigurationManager.AppSettings["VerifyMode"]);
-    
+        public static string VerifyMode { get; set; } = Convert.ToString(ConfigurationManager.AppSettings["VerifyMode"]);    
         public static string ScreenMode { get; set; } = ConfigurationManager.AppSettings["ScreenMode"];
         public static string Version { get; set; } = Convert.ToString(ConfigurationManager.AppSettings["Version"]);
 

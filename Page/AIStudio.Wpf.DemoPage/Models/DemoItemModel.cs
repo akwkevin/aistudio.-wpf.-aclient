@@ -1,0 +1,15 @@
+﻿using Prism.Mvvm;
+
+namespace AIStudio.Wpf.DemoPage.Models
+{
+    public class DemoItemModel: BindableBase
+    {
+        public string Name { get; set; }
+
+        public string TargetCtlName { get; set; }
+
+        public string ImageName { get; set; }
+
+        public bool IsNew { get; set; }
+    }
+}

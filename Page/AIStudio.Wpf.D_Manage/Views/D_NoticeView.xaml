@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:util="https://astudio.github.io/utilcontrol" 
+             xmlns:utilhandy="https://astudio.github.io/utilcontrol.handy" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:AIStudio.Wpf.D_Manage.Views" 
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
@@ -20,11 +21,11 @@
         </Grid.RowDefinitions>
         <DockPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                <util:ButtonGroup Margin="3">
+                <utilhandy:ButtonGroup Margin="3">
                     <RadioButton IsChecked="{Binding DataContext.Status,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter='processing'},ConverterParameter='processing'}" Content="未读"/>
                     <RadioButton IsChecked="{Binding DataContext.Status,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter='waiting'},ConverterParameter='finish'}" Content="已读"/>
                     <RadioButton IsChecked="{Binding DataContext.Status,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter='all'},ConverterParameter='all'}" Content="全部"/>
-                </util:ButtonGroup>
+                </utilhandy:ButtonGroup>
                 <util:FButton CornerRadius="2" FIcon="&#xe62c;" Margin="3" Content="新建" Command="{Binding AddCommand}" ></util:FButton>
                 <util:FButton CornerRadius="2" FIcon="&#xe62d;" Margin="3" Content="删除" Command="{Binding DeleteCommand}"></util:FButton>
                 <util:FButton CornerRadius="2" FIcon="&#xf02f;" FIconFamily="FAwesome" Margin="3" Content="打印" Command="{Binding PrintCommand}"></util:FButton>

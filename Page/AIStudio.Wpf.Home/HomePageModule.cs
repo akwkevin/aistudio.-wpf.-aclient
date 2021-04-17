@@ -6,6 +6,9 @@ using AIStudio.Core;
 using System.Reflection;
 using Util.Controls;
 using System.Windows.Controls;
+using System;
+using System.Windows;
+using ShowMeTheXAML;
 
 namespace AIStudio.Wpf.Home
 {
@@ -27,14 +30,27 @@ namespace AIStudio.Wpf.Home
 
 #if DEBUG
             Assembly assembly = Assembly.Load("AIStudio.Wpf.DemoPage");
-            foreach (var type in assembly.GetTypes())
-            {
-                if (!type.IsSubclassOf(typeof(BaseDialog)) && type.IsSubclassOf(typeof(UserControl)))
+
+                foreach (var type in assembly.GetTypes())
                 {
-                    containerRegistry.RegisterForNavigation(type, type.FullName);
+                    if (!type.IsSubclassOf(typeof(BaseDialog)) && type.IsSubclassOf(typeof(UserControl)))
+                    {
+                        containerRegistry.RegisterForNavigation(type, type.FullName);
+                    }
                 }
-            }
-#endif
+
+                XamlDisplay.Init(assembly);
+
+                string xamlDisplayResourceCulture = @"/AIStudio.Wpf.DemoPage;component/Resources/XamlDisplayResource.xaml";
+                ResourceDictionary xamlDisplayResourceDictionary = new ResourceDictionary();
+                xamlDisplayResourceDictionary.Source = new Uri(xamlDisplayResourceCulture, UriKind.RelativeOrAbsolute);
+                Application.Current.Resources.MergedDictionaries.Add(xamlDisplayResourceDictionary);
+
+                string demoStyleResourceCulture = @"/AIStudio.Wpf.DemoPage;component/Resources/DemoStyleResource.xaml";
+                ResourceDictionary demoStyleResourceDictionary = new ResourceDictionary();
+                demoStyleResourceDictionary.Source = new Uri(demoStyleResourceCulture, UriKind.RelativeOrAbsolute);
+                Application.Current.Resources.MergedDictionaries.Add(demoStyleResourceDictionary);
+#endif       
         }
     }
 }

@@ -8,8 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Util.Controls;
-using Util.Controls.Data;
-using Util.Controls.Tools;
+using Util.Controls.Handy.Tools;
 
 namespace AIStudio.Wpf.BasePage.Controls
 {
@@ -51,7 +50,8 @@ namespace AIStudio.Wpf.BasePage.Controls
         {
             if (_scrollViewer == null)
             {
-                _scrollViewer = VisualHelper.GetChild<System.Windows.Controls.ScrollViewer>(ListBoxChat);
+                _scrollViewer = ControlExtession.FindChild<System.Windows.Controls.ScrollViewer>(ListBoxChat, string.Empty);
+        
             }
 
             _scrollViewer?.ScrollToBottom();
@@ -176,10 +176,11 @@ namespace AIStudio.Wpf.BasePage.Controls
             {
                 if (info.Type == (int)ChatMessageType.Image)
                 {
-                    new Util.Controls.Windows.ImageBrowser(new Uri(info.Text))
+                    new Util.Controls.Handy.Windows.ImageBrowser(new Uri(info.Text))
                     {
                         Owner = WindowHelper.GetActiveWindow()
                     }.Show();
+                    //System.Diagnostics.Process.Start("explorer.exe", info.Text);
                 }
                 else if (info.Type == (int)ChatMessageType.Audio)
                 {
@@ -231,7 +232,7 @@ namespace AIStudio.Wpf.BasePage.Controls
                     var info = new D_UserMessageDTO
                     {
                         Text = fileName,
-                        Type = type,                      
+                        Type = type,
                     };
                     RaiseChatSendChanged(info);
                 }
@@ -341,5 +342,18 @@ namespace AIStudio.Wpf.BasePage.Controls
     {
         public string Emjio { get; set; }
         public string Uri { get; set; }
+    }
+
+    public enum ChatMessageType
+    {
+        String = 1,
+        Image = 2,
+        Video = 3,
+        Audio = 4,
+        Upload = 5,
+        Money = 6,
+        Custom = 7,
+        Phonetics = 8,
+        System = 10000
     }
 }

@@ -9,8 +9,8 @@
   <ItemGroup>
     <None Remove="BuildCodeTemplate\FlowForm.txt" />
     <None Remove="BuildCodeTemplate\FlowRenderer.txt" />
-  </ItemGroup>  
-  
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\Application\AIStudio.Core\AIStudio.Core.csproj" />
     <ProjectReference Include="..\..\Application\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
@@ -27,6 +27,7 @@
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Xceed.Wpf.AvalonDock\Xceed.Wpf.AvalonDock.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.Base_Manage\AIStudio.Wpf.Base_Manage.csproj" />
+    <ProjectReference Include="..\AIStudio.Wpf.DemoPage\AIStudio.Wpf.DemoPage.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.D_Manage\AIStudio.Wpf.D_Manage.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.OA_Manage\AIStudio.Wpf.OA_Manage.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.Quartz_Manage\AIStudio.Wpf.Quartz_Manage.csproj" />
@@ -84,4 +85,11 @@
       <Version>4.5.0</Version>
     </PackageReference>
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ShowMeTheXAML" Version="2.0.0" />
+    <PackageReference Include="ShowMeTheXAML.MSBuild" Version="2.0.0" />
+    <PackageReference Include="ShowMeTheXAML.AvalonEdit" Version="2.0.0" />
+  </ItemGroup>
+
 </Project>

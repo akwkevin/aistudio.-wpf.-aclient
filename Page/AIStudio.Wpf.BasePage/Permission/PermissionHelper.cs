@@ -1,7 +1,7 @@
 ﻿using AIStudio.Wpf.Business;
 using Prism.Ioc;
 using System.Windows;
-using Util.Controls.Tools;
+using Util.Controls;
 
 namespace AIStudio.Wpf.BasePage.Permission
 {

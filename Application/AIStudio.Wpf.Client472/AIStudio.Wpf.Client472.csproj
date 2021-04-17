@@ -9,8 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ShowMeTheXAML" Version="2.0.0" />
-    <PackageReference Include="ShowMeTheXAML.MSBuild" Version="2.0.0" />
     <PackageReference Include="squirrel.windows" Version="2.0.1" />
   </ItemGroup>
 
@@ -59,4 +57,33 @@
     </None>
   </ItemGroup>
 
+  <!--<ItemGroup Condition=" '$(TargetFramework)' == 'net472' ">
+    <Reference Include="Util.Controls" >
+      <HintPath>..\..\Others\Controls\net472\Util.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Util.Controls.Handy" >
+      <HintPath>..\..\Others\Controls\net472\Util.Controls.Handy.dll</HintPath>
+    </Reference>
+    <Reference Include="Util.Controls.Xceed" >
+      <HintPath>..\..\Others\Controls\net472\Util.Controls.Xceed.dll</HintPath>
+    </Reference>
+    <Reference Include="Util.Controls.Shared" >
+      <HintPath>..\..\Others\Controls\net472\Util.Controls.Shared.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
+    <Reference Include="Util.Controls" >
+      <HintPath>..\..\Others\Controls\netcoreapp3.1\Util.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Util.Controls.Handy" >
+      <HintPath>..\..\Others\Controls\netcoreapp3.1\Util.Controls.Handy.dll</HintPath>
+    </Reference>
+    <Reference Include="Util.Controls.Xceed" >
+      <HintPath>..\..\Others\Controls\netcoreapp3.1\Util.Controls.Xceed.dll</HintPath>
+    </Reference>
+    <Reference Include="Util.Controls.Shared" >
+      <HintPath>..\..\Others\Controls\netcoreapp3.1\Util.Controls.Shared.dll</HintPath>
+    </Reference>
+  </ItemGroup>-->
 </Project>

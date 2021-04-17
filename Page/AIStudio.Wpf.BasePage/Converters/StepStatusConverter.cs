@@ -1,14 +1,7 @@
-﻿using AIStudio.Core.Helpers;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Markup;
-using System.Windows.Media.Imaging;
-using Util.Controls.Data;
 
 namespace AIStudio.Wpf.BasePage.Converters
 {
@@ -23,20 +16,20 @@ namespace AIStudio.Wpf.BasePage.Converters
                 switch((int)value)
                 {
                     case 100:
-                        return StepStatus.Complete;
+                        return "Complete";
                     case 1:
                     case 7:
                     case 10:
                     case 99:
-                        return StepStatus.UnderWay;
+                        return "UnderWay";
                     case 2:
                     case 3:
                     case 4:
                     case 5:
                     case 8:
-                        return StepStatus.Error;
-                    default: 
-                        return StepStatus.Waiting;
+                        return "Error";
+                    default:
+                        return "Waiting";
                 }
             }
             return value.ToString();

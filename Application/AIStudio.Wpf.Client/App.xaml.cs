@@ -126,16 +126,6 @@ namespace AIStudio.Wpf.Client
                 InitializationMode = InitializationMode.WhenAvailable
             });
 
-#if DEBUG
-            //var demoPageModule = typeof(DemoPageModule);
-            //moduleCatalog.AddModule(new ModuleInfo()
-            //{
-            //    ModuleName = demoPageModule.Name,
-            //    ModuleType = demoPageModule.AssemblyQualifiedName,
-            //    InitializationMode = InitializationMode.WhenAvailable
-            //});
-#endif
-
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(p => p.FullName.StartsWith("AIStudio.Wpf")).ToList();
 
             foreach (var assembly in assemblies)
@@ -201,21 +191,6 @@ namespace AIStudio.Wpf.Client
 
         protected override void OnStartup(StartupEventArgs e)
         {
-#if DEBUG
-            Assembly assembly = Assembly.Load("AIStudio.Wpf.DemoPage");
-            XamlDisplay.Init(assembly);
-
-            string xamlDisplayResourceCulture = @"/AIStudio.Wpf.DemoPage;component/Resources/XamlDisplayResource.xaml";
-            ResourceDictionary xamlDisplayResourceDictionary = new ResourceDictionary();
-            xamlDisplayResourceDictionary.Source = new Uri(xamlDisplayResourceCulture, UriKind.RelativeOrAbsolute);
-            Application.Current.Resources.MergedDictionaries.Add(xamlDisplayResourceDictionary);
-
-            string demoStyleResourceCulture = @"/AIStudio.Wpf.DemoPage;component/Resources/DemoStyleResource.xaml";
-            ResourceDictionary demoStyleResourceDictionary = new ResourceDictionary();
-            demoStyleResourceDictionary.Source = new Uri(demoStyleResourceCulture, UriKind.RelativeOrAbsolute);
-            Application.Current.Resources.MergedDictionaries.Add(demoStyleResourceDictionary);
-
-#endif
             Assembly.Load("AIStudio.Wpf.Base_Manage");
             Assembly.Load("AIStudio.Wpf.D_Manage");
             Assembly.Load("AIStudio.Wpf.OA_Manage");
