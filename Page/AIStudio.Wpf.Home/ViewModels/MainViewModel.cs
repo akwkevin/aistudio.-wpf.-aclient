@@ -469,15 +469,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-        private ICommand _titleClickCommand;
-        public ICommand TitleClickCommand
-        {
-            get
-            {
-                return this._titleClickCommand ?? (this._titleClickCommand = new DelegateCommand<object>(para => this.TitleClick(para)));
-            }
-        }
-
         private ICommand _searchCommand;
         public ICommand SearchCommand
         {
@@ -590,11 +581,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-        private void TitleClick(object para)
-        {
-            WindowBase.SetWindowStatus("WindowState", Identifier);
-        }
-
         void SelectedMenuItemChanged(AMenuItem item)
         {
             if (item == null || string.IsNullOrEmpty(item.Code))
@@ -675,7 +661,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-        void Search(AMenuItem item)
+        private void Search(AMenuItem item)
         {
             if (item == null)
             {
@@ -686,7 +672,7 @@ namespace AIStudio.Wpf.Home.ViewModels
         }
 
 
-        async void ToolBarConfig()
+        private async void ToolBarConfig()
         {
             var dialog = new ToolBarSetView();
             var viewmodel = new ToolBarSetViewModel(MenuItems, _mapper.Map<List<AToolItem>>(ToolItems), Identifier);
@@ -712,5 +698,6 @@ namespace AIStudio.Wpf.Home.ViewModels
 
             }
         }
+
     }
 }

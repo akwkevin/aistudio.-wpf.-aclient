@@ -194,7 +194,18 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ContentControl}">
-                            <StackPanel Orientation="Horizontal">
+                            <StatusBar>
+                                <StatusBar.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+                                    </ItemsPanelTemplate>
+                                </StatusBar.ItemsPanel>
                                 <Grid Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}">
                                     <util:DropDown Grid.Column="0" Height="30" Margin="8,0,8,0"                                          
                                                ToolTip="{Binding WSocketClient.ServerIP}"
@@ -294,7 +305,9 @@
                                 </Grid>
                                 
                                 <!--<util:RunningBlock Margin="10,0" BorderThickness="0" Foreground="{DynamicResource MahApps.Brushes.Text}" Content="{Binding NoticeText}" Width="200"/>-->
-                            </StackPanel>
+
+
+                            </StatusBar>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -310,16 +323,12 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="Titlebar"  
+        <Grid x:Name="Titlebar" util:WindowBase.TitleTag="true"
               Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"       
               Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=ShowTitleBar,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}">
-            <Grid.InputBindings>
-                <MouseBinding MouseAction="LeftDoubleClick"
-                                  Command="{Binding TitleClickCommand}"
-                                  CommandParameter="{Binding }"/>
-            </Grid.InputBindings>
             <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"
                         FontSize="{DynamicResource MahApps.Font.Size.Window.Title}"
                         Foreground="{DynamicResource TitleForegroundBrush}"                              
@@ -378,8 +387,6 @@
             </Grid.Style>
         </Grid>
 
-
-
         <util:HamburgerTreeMenu Grid.Row="2"
             VerticalAlignment="Stretch"
             x:Name="HamburgerMenuControl"
@@ -429,7 +436,6 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" Visibility="{Binding WindowSetting.ToolBarLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Top'}">
                             <ContentControl Style="{DynamicResource ToolBarStyle}" />
@@ -438,15 +444,24 @@
                         <Grid Grid.Row="1" prism:RegionManager.RegionManager="{Binding _regionManager}">
                             <local:MainTabView />
                         </Grid>
-
-                        <Grid Grid.Row="2" Visibility="{Binding WindowSetting.StatusBarLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Bottom'}">
-                            <ContentControl Style="{DynamicResource StatusBarStyle}" />
-                        </Grid>
                     </Grid>
                 </DataTemplate>
             </util:HamburgerTreeMenu.ContentTemplate>
         </util:HamburgerTreeMenu>
 
-
+        <Grid Grid.Row="3"  Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"    
+              Visibility="{Binding WindowSetting.StatusBarLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Bottom'}">
+            <ContentControl Style="{DynamicResource StatusBarStyle}" />
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding WindowSetting.NavigationAccent}" Value="Light">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+        </Grid>
     </Grid>
 </UserControl>

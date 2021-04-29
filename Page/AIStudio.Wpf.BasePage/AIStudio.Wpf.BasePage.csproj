@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Util.Controls" Version="1.2.2" />
+    <PackageReference Include="Util.Controls" Version="1.2.4" />
     <PackageReference Include="Util.Controls.Handy" Version="1.2.0" />
     <PackageReference Include="Util.Controls.Xceed" Version="1.2.0" />
     <PackageReference Include="Util.Controls.Shared" Version="1.0.0" />
