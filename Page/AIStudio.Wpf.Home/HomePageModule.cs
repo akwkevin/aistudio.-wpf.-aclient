@@ -27,6 +27,7 @@ namespace AIStudio.Wpf.Home
         {
             containerRegistry.RegisterForNavigation<MainView>();
             containerRegistry.RegisterForNavigation(typeof(IntroduceView), typeof(IntroduceView).FullName);
+            containerRegistry.RegisterForNavigation(typeof(UserConsoleView), typeof(UserConsoleView).FullName);
 
 #if DEBUG
             Assembly assembly = Assembly.Load("AIStudio.Wpf.DemoPage");

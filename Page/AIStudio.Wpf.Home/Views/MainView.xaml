@@ -139,7 +139,7 @@
                                             </Grid>
                                         </util:DropDown.Child>
                                     </util:DropDown>
-                                    <TextBlock Margin="2,0" VerticalAlignment="Center" Foreground="{DynamicResource TitleForegroundBrush}" Text="{Binding Operator.UserName}"></TextBlock>
+                                    <util:FButton Margin="2,0" VerticalAlignment="Center" Command="{Binding OpenUserConsoleCommand}" Foreground="{DynamicResource TitleForegroundBrush}" Content="{Binding Operator.UserName}" Style="{StaticResource FButton_LinkButton}" FontSize="{DynamicResource MahApps.Font.Size.Content}" MouseOverForeground="{DynamicResource MahApps.Brushes.Gray8}"/>
                                 </StackPanel>
                             </StackPanel>
                         </ControlTemplate>

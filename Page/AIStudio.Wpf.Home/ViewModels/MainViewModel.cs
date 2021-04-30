@@ -84,12 +84,12 @@ namespace AIStudio.Wpf.Home.ViewModels
                 paras.Add("Title", item.Label);
                 paras.Add("Identifier", Identifier);
 
-
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)delegate
                 {
                     _regionManager.RequestNavigate(RegionName, item.WpfCode, NavigationComplete, paras);
                 });
             }
+
         }
 
         public void OpenFullScreenWindow()
@@ -488,6 +488,14 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
+        private ICommand _openUserConsoleCommand;
+        public ICommand OpenUserConsoleCommand
+        {
+            get
+            {
+                return this._openUserConsoleCommand ?? (this._openUserConsoleCommand = new DelegateCommand(() => this.OpenUserConsole()));
+            }
+        }
         #endregion
 
         private void SettingChanged(string key)
@@ -697,6 +705,19 @@ namespace AIStudio.Wpf.Home.ViewModels
                 ToolItems = viewmodel.ToolItems;
 
             }
+        }
+
+        private void OpenUserConsole()
+        {
+
+            NavigationParameters paras = new NavigationParameters();
+            paras.Add("Title", "我的控制台");
+            paras.Add("Identifier", Identifier);
+            paras.Add("MenuItems", MenuItems);
+            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)delegate
+            {
+                _regionManager.RequestNavigate(RegionName, typeof(UserConsoleView).FullName, NavigationComplete, paras);
+            });
         }
 
     }

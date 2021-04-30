@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="AIStudio.Wpf.Home.Views.UserConsoleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:utilpanel="https://astudio.github.io/utilpanel"
+             xmlns:util="https://astudio.github.io/utilcontrol"
+             xmlns:prism="http://prismlibrary.com/"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <util:FButton Command="{Binding EditCommand}" FIcon="&#xe657;" Background="Transparent" Foreground="{DynamicResource MahApps.Brushes.Accent}" FontSize="12"  Content="添加卡片"  />
+            <util:DropDown DropDownPlacement="Bottom">
+                <util:DropDown.Content>
+                    <util:FButton FIcon="&#xe604;" Background="Transparent" Foreground="{DynamicResource MahApps.Brushes.Accent}" Content="设置卡片布局" />
+                </util:DropDown.Content>
+                <util:DropDown.Child>
+                    <Grid>
+                        <TextBlock Margin="2" Text="布局类型" VerticalAlignment="Center"/>
+                        <ComboBox Margin="2" x:Name="checkPanelType" IsEditable="False" SelectedIndex="1" Width="200" VerticalAlignment="Center" HorizontalAlignment="Left" Background="Transparent" >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=., Converter={StaticResource EnumDescriptionConverter}}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </Grid>
+                </util:DropDown.Child>
+            </util:DropDown>
+        </StackPanel>
+        <utilpanel:ResizableItemsControl Grid.Row="1" prism:RegionManager.RegionName="UserContentRegion" />
+    </Grid>
+</UserControl>
