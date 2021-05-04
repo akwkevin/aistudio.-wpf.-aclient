@@ -714,6 +714,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             paras.Add("Title", "我的控制台");
             paras.Add("Identifier", Identifier);
             paras.Add("MenuItems", MenuItems);
+            paras.Add("SearchMenus", SearchMenus);
             Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)delegate
             {
                 _regionManager.RequestNavigate(RegionName, typeof(UserConsoleView).FullName, NavigationComplete, paras);

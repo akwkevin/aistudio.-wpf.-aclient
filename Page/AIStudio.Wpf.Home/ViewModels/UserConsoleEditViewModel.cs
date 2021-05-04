@@ -53,7 +53,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 //_baseDialog
                 SelectedMenuItem = aMenuItem;
-                _baseDialog.OKToken.ThrowIfCancellationRequested();
+                _baseDialog.OKSource.Cancel();
             }
         }
        

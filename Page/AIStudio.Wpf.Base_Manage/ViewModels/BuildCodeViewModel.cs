@@ -67,7 +67,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             directory = basedir.Substring(0, basedir.IndexOf("Application"));
         }
 
-        protected override void Initialize()
+        public override void Initialize()
         {
             base.Initialize();
             GetData();

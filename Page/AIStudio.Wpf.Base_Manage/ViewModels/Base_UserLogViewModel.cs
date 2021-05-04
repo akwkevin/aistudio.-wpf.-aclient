@@ -130,7 +130,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             
         }
 
-        protected override void Initialize()
+        public override void Initialize()
         {
             base.Initialize();
             InitData();

@@ -86,6 +86,11 @@ namespace Dataforge.PrismAvalonExtensions.ViewModels
             this.CanFloat = true;
         }
 
+
+        public virtual void Initialize()
+        {
+
+        }
         /// <summary>
         /// 释放标记
         /// </summary>

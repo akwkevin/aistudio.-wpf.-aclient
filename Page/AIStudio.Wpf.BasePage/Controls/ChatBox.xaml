@@ -271,13 +271,13 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Border BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Gray8}">
-                <util:EmojiRichTextBox x:Name="sendText" Text="{Binding ChatString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}">
+                <util:RichTextBox x:Name="sendText" Text="{Binding ChatString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="KeyUp">
                             <i:InvokeCommandAction Command="{Binding SendStringCmd,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}" PassEventArgsToCommand="True" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                </util:EmojiRichTextBox>
+                </util:RichTextBox>
             </Border>
             <util:FButton Grid.Row="1" HorizontalAlignment="Right" Margin="2" Content="发送" Command="{Binding SendStringCmd,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}">
             </util:FButton>

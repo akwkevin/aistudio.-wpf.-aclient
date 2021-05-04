@@ -207,13 +207,13 @@
                                     </ItemsPanelTemplate>
                                 </StatusBar.ItemsPanel>
                                 <Grid Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}">
-                                    <util:DropDown Grid.Column="0" Height="30" Margin="8,0,8,0"                                          
+                                    <util:DropDown Grid.Column="0" Margin="6,0,6,0"                                          
                                                ToolTip="{Binding WSocketClient.ServerIP}"
                                                Visibility="{Binding WSocketClient.IsInit,Converter={StaticResource bool2VisibilityConverter}}">
                                         <util:DropDown.Content>
                                             <util:Badged HorizontalAlignment="Center" VerticalAlignment="Bottom">
                                                 <util:Badged.Badge>
-                                                    <TextBlock Text="{Binding WSocketClient.DelayMS,StringFormat={}{0}ms,TargetNullValue=''}"/>
+                                                    <TextBlock Text="{Binding WSocketClient.DelayMS}" ToolTip="{Binding WSocketClient.DelayMS,StringFormat={}{0}ms,TargetNullValue=''}"/>
                                                 </util:Badged.Badge>
                                                 <util:Badged.Style>
                                                     <Style TargetType="{x:Type util:Badged}" BasedOn="{StaticResource DefaultBadgedStyle}">

@@ -15,7 +15,7 @@ namespace AIStudio.Wpf.Home
     public class HomePageModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)
-        {        
+        {
             var regionManager = containerProvider.Resolve<IRegionManager>();
             //regionManager.RegisterViewWithRegion(RegionName.MainContentRegion, typeof(MainView));
             NavigationParameters paras = new NavigationParameters();
@@ -32,25 +32,25 @@ namespace AIStudio.Wpf.Home
 #if DEBUG
             Assembly assembly = Assembly.Load("AIStudio.Wpf.DemoPage");
 
-                foreach (var type in assembly.GetTypes())
+            foreach (var type in assembly.GetTypes())
+            {
+                if (!type.IsSubclassOf(typeof(BaseDialog)) && type.IsSubclassOf(typeof(UserControl)))
                 {
-                    if (!type.IsSubclassOf(typeof(BaseDialog)) && type.IsSubclassOf(typeof(UserControl)))
-                    {
-                        containerRegistry.RegisterForNavigation(type, type.FullName);
-                    }
+                    containerRegistry.RegisterForNavigation(type, type.FullName);
                 }
+            }
 
-                XamlDisplay.Init(assembly);
+            XamlDisplay.Init(assembly);
 
-                string xamlDisplayResourceCulture = @"/AIStudio.Wpf.DemoPage;component/Resources/XamlDisplayResource.xaml";
-                ResourceDictionary xamlDisplayResourceDictionary = new ResourceDictionary();
-                xamlDisplayResourceDictionary.Source = new Uri(xamlDisplayResourceCulture, UriKind.RelativeOrAbsolute);
-                Application.Current.Resources.MergedDictionaries.Add(xamlDisplayResourceDictionary);
+            string xamlDisplayResourceCulture = @"/AIStudio.Wpf.DemoPage;component/Resources/XamlDisplayResource.xaml";
+            ResourceDictionary xamlDisplayResourceDictionary = new ResourceDictionary();
+            xamlDisplayResourceDictionary.Source = new Uri(xamlDisplayResourceCulture, UriKind.RelativeOrAbsolute);
+            Application.Current.Resources.MergedDictionaries.Add(xamlDisplayResourceDictionary);
 
-                string demoStyleResourceCulture = @"/AIStudio.Wpf.DemoPage;component/Resources/DemoStyleResource.xaml";
-                ResourceDictionary demoStyleResourceDictionary = new ResourceDictionary();
-                demoStyleResourceDictionary.Source = new Uri(demoStyleResourceCulture, UriKind.RelativeOrAbsolute);
-                Application.Current.Resources.MergedDictionaries.Add(demoStyleResourceDictionary);
+            string demoStyleResourceCulture = @"/AIStudio.Wpf.DemoPage;component/Resources/DemoStyleResource.xaml";
+            ResourceDictionary demoStyleResourceDictionary = new ResourceDictionary();
+            demoStyleResourceDictionary.Source = new Uri(demoStyleResourceCulture, UriKind.RelativeOrAbsolute);
+            Application.Current.Resources.MergedDictionaries.Add(demoStyleResourceDictionary);
 #endif       
         }
     }

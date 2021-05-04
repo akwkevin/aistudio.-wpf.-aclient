@@ -343,9 +343,9 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             Initialize();
         }
 
-        protected virtual void Initialize()
+        public override void Initialize()
         {
-            
+            base.Initialize();
         }
 
     }

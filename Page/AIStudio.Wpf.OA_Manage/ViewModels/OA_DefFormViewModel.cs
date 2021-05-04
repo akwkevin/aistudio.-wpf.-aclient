@@ -72,7 +72,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                       
         }
 
-        protected override void Initialize()
+        public override void Initialize()
         {
             base.Initialize();
             GetData();

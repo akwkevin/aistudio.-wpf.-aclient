@@ -99,7 +99,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             D_UserMessageEditViewModel = new D_UserMessageEditViewModel(null, "D_Manage", Identifier);
         }
 
-        protected override void Initialize()
+        public override void Initialize()
         {
             base.Initialize();
             GetData();

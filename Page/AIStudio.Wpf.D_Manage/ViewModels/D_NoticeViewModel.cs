@@ -40,7 +40,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             _operator = ContainerLocator.Current.Resolve<IOperator>();
         }
 
-        protected override void Initialize()
+        public override void Initialize()
         {
             base.Initialize();
             GetData();

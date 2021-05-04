@@ -63,7 +63,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue };          
         }
 
-        protected override void Initialize()
+        public override void Initialize()
         {
             base.Initialize();
             GetData();
