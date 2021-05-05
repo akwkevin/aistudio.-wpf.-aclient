@@ -34,7 +34,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             PanelTypes = new List<PanelType>()
             {
                 Util.Panels.PanelType.TilePanel,
-                Util.Panels.PanelType.MaximizedTile
+                Util.Panels.PanelType.MaximizedTilePanel
             };          
         }
 

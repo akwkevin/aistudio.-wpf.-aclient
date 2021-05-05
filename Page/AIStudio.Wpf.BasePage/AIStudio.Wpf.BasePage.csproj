@@ -30,7 +30,7 @@
     <PackageReference Include="Aga.Diagrams" Version="1.2.0" />
     <PackageReference Include="Aga.Diagrams.TestExtend" Version="1.2.0" />
     <PackageReference Include="ComeCapture" Version="1.2.0" />
-    <PackageReference Include="Util.Panels" Version="1.2.5" />
+    <PackageReference Include="Util.Panels" Version="1.2.6" />
     <PackageReference Include="WPF.HtmlEditor" Version="1.2.0" />
     <PackageReference Include="Util.Svg2Xaml" Version="1.2.0" />
     <PackageReference Include="Util.Svg2XamlTestExtension" Version="1.2.0" />
