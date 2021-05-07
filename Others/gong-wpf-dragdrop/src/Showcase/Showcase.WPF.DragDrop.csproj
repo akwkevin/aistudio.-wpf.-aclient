@@ -13,9 +13,6 @@
         <NoWarn>SA1652</NoWarn>
         <ApplicationManifest>app.manifest</ApplicationManifest>
     </PropertyGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\GongSolutions.WPF.DragDrop\GongSolutions.WPF.DragDrop.csproj" />
-    </ItemGroup>
     <!-- reference includes -->
     <ItemGroup>
         <PackageReference Include="Fody" Version="6.0.0" PrivateAssets="All" />
@@ -31,5 +28,8 @@
         <AppConfigWithTargetPath Include="App.$(TargetFramework).config">
             <TargetPath>$(AssemblyName).config</TargetPath>
         </AppConfigWithTargetPath>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\GongSolutions.WPF.DragDrop\GongSolutions.WPF.DragDrop.csproj" />
     </ItemGroup>
 </Project>

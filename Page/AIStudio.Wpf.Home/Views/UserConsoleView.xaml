@@ -6,6 +6,7 @@
              xmlns:utilpanel="https://astudio.github.io/utilpanel"
              xmlns:util="https://astudio.github.io/utilcontrol"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:dd="urn:gong-wpf-dragdrop"
              xmlns:local="clr-namespace:AIStudio.Wpf.Home.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -62,6 +63,15 @@
                 </util:DropDown.Child>
             </util:DropDown>          
         </StackPanel>
-        <utilpanel:ResizableItemsControl ItemsSource="{Binding UserConsoleData.Data}" AllowDrop="True" BindingWidthAndHeight="True" RowNum="{Binding UserConsoleData.RowNum,Mode=OneWay}" ColumnNum="{Binding UserConsoleData.ColumnNum,Mode=OneWay}" ShowTitle="True" PanelType="{Binding UserConsoleData.PanelType,Mode=OneWay}" Grid.Row="1" />
+        <utilpanel:ResizableItemsControl 
+            Grid.Row="1"
+            AllowDrop="True"
+            ItemsSource="{Binding UserConsoleData.Data}" 
+            BindingWidthAndHeight="True" 
+            RowNum="{Binding UserConsoleData.RowNum,Mode=OneWay}" 
+            ColumnNum="{Binding UserConsoleData.ColumnNum,Mode=OneWay}" 
+            ShowTitle="True" 
+            PanelType="{Binding UserConsoleData.PanelType,Mode=OneWay}" 
+            />
     </Grid>
 </UserControl>

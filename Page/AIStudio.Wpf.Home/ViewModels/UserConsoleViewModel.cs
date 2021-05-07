@@ -51,14 +51,16 @@ namespace AIStudio.Wpf.Home.ViewModels
             MenuItems = navigationContext.Parameters["MenuItems"] as ObservableCollection<AMenuItem>;
             SearchMenus = navigationContext.Parameters["SearchMenus"] as ObservableCollection<AMenuItem>;
 
-            await System.Threading.Tasks.Task.Delay(1000);
-            UserConsoleData = _userConfig.ReadConfig<UserConsoleData>(this);
-            
+            ShowWait();
+            await System.Threading.Tasks.Task.Delay(500);//偷下懒，延迟等待界面Loaded，再初始化布局
+            UserConsoleData = _userConfig.ReadConfig<UserConsoleData>(this);            
             foreach (var item in UserConsoleData.Data)
             {
                 var control = InitControl(item.Type);
                 item.Content = control;
             }
+            HideWait();
+
         }
 
         protected string Identifier { get; set; } = LocalSetting.RootWindow;
@@ -111,6 +113,17 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 return this._rectangleGridCommand ?? (this._rectangleGridCommand = new DelegateCommand<RoutedPropertyChangedEventArgs<RectangleGridEventArgs>>(obj => this.RectangleGrid(obj)));
             }
+        }
+
+        protected void ShowWait()
+        {
+            var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
+            control.WaitInfo = "正在获取数据";
+        }
+
+        protected void HideWait()
+        {
+            Util.Controls.WindowBase.HideWaiting(Identifier);
         }
 
         private void RectangleGrid(RoutedPropertyChangedEventArgs<RectangleGridEventArgs> obj)
