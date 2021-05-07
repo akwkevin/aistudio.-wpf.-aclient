@@ -137,6 +137,7 @@ namespace AIStudio.Wpf.DemoPage.ViewModels
         public async void ShowDialog()
         {
             var dialog = new DialogTest();
+            
             var res = await WindowBase.ShowDialogAsync(dialog, "RootWindow");
         }
 
@@ -171,6 +172,8 @@ namespace AIStudio.Wpf.DemoPage.ViewModels
             win.Owner = Application.Current.MainWindow;
             win.Show();
         }
+
+
 
         private ICommand _showNoticeWindowCommand;
         public ICommand ShowNoticeWindowCommand

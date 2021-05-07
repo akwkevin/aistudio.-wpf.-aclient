@@ -95,8 +95,8 @@
                               IsReadOnly="True" 
                               TextFormatter="{StaticResource rtfFormatter}" 
                               FontSize="10" >
-                            <utilxceed:MagnifierManager_V1.Magnifier>
-                                <utilxceed:Magnifier_V1 x:Name="_magnifier"
+                            <utilxceed:MagnifierManager.Magnifier>
+                                <utilxceed:Magnifier x:Name="_magnifier"
                                Background="White"
                                Radius="80"
                                ZoomFactor="0.4"
@@ -107,7 +107,7 @@
                                Height="160"
                                IsUsingZoomOnMouseWheel="True"
                                ZoomFactorOnMouseWheel="0.1"/>
-                            </utilxceed:MagnifierManager_V1.Magnifier>
+                            </utilxceed:MagnifierManager.Magnifier>
                         </utilxceed:RichTextBox>
                     </StackPanel>
                 </Grid>

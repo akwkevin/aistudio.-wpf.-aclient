@@ -25,5 +25,10 @@ namespace AIStudio.Wpf.DemoPage.Views
         {
             InitializeComponent();
         }
+
+        private void btnTest_Click(object sender, RoutedEventArgs e)
+        {
+            this.OKSource.Cancel();
+        }
     }
 }

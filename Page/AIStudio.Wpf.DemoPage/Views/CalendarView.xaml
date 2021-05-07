@@ -23,7 +23,7 @@
                         <Calendar  Style="{StaticResource DefaultCalendar}" IsEnabled="False"></Calendar>
                     </smtx:XamlDisplay>
                     <smtx:XamlDisplay UniqueKey="calendar_4" Margin="2">
-                        <util:Calendar_V1  BorderBrush="LightGray"
+                        <util:Calendar  BorderBrush="LightGray"
                                 BorderThickness="1"
                                 Height="300"
                                 Width="300"

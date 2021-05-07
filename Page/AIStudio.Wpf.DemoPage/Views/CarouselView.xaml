@@ -19,7 +19,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <smtx:XamlDisplay UniqueKey="carousel_1" Margin="2">
-                    <util:Carousel_V1 x:Name="CrlCustom"
+                    <util:Carousel x:Name="CrlCustom"
                            AutoPlayInterval="0"
                                  BorderBrush="LightGray"
                                  BorderThickness="1">
@@ -47,7 +47,7 @@
                                        Foreground="White"
                                        Text="Page4/4" />
                         </Grid>
-                    </util:Carousel_V1>
+                    </util:Carousel>
                 </smtx:XamlDisplay>
                 <smtx:XamlDisplay UniqueKey="carousel_2" Grid.Column="1" Margin="2">
                     <controls:FlipView x:Name="FlipView1st"

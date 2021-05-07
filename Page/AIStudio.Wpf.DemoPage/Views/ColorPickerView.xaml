@@ -48,7 +48,7 @@
             <TabItem Header="hand" IsSelected="True">
                 <util:WrapBreakPanel>
                     <smtx:XamlDisplay UniqueKey="colorPicker_1" Margin="2">
-                        <utilhandy:ColorPicker_V1 Name="ColorPicker"/>
+                        <utilhandy:ColorPicker Name="ColorPicker"/>
                     </smtx:XamlDisplay>
                 </util:WrapBreakPanel>
             </TabItem>

@@ -21,7 +21,7 @@
     </UserControl.Resources>
     <Grid>
         <TabControl>
-            <TabItem Header="hand" IsSelected="True">
+            <TabItem Header="util">
                 <util:WrapBreakPanel>
                     <smtx:XamlDisplay UniqueKey="dropDown_1" Margin="2">
                         <util:DropDown Grid.Column="1" Width="36" Height="36">
@@ -30,6 +30,72 @@
                                            Stretch="Fill"                
                                            util:ImageProperty.CornerRadius="50"       
                                            Source="pack://application:,,,/AIStudio.Wpf.DemoPage;component/Resources/Img/Avatar/avatar1.png"/>
+                            </util:DropDown.Content>
+                            <util:DropDown.Child>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Button 
+                                                    Height="30"
+                                                    Width="100"
+                                                    VerticalAlignment="Center"  
+                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
+                                                    Content="&#xf2c0; 个人中心" 
+                                                    Command="{Binding UserDropCommand}"
+                                                    CommandParameter="UserCenter"
+                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Button 
+                                                    Height="30"
+                                                    Width="100"
+                                                    VerticalAlignment="Center"  
+                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
+                                                    Content="&#xf013; 个人设置" 
+                                                    Command="{Binding UserDropCommand}"
+                                                    CommandParameter="UserSet"
+                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                    </Grid>
+                                    <Grid Grid.Row="2">
+                                        <Button 
+                                                    Height="30"
+                                                    Width="100"
+                                                    VerticalAlignment="Center"  
+                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
+                                                    Content="&#xf023; 修改密码" 
+                                                    Command="{Binding UserDropCommand}"
+                                                    CommandParameter="EditPwd"
+                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                    </Grid>
+                                    <Border Grid.Row="2"
+                                                VerticalAlignment="Bottom"
+                                                BorderBrush="{DynamicResource MahApps.Brushes.Gray4}"
+                                                SnapsToDevicePixels="True"
+                                                BorderThickness="0,0,0,1" />
+                                    <Grid Grid.Row="3">
+                                        <Button 
+                                                    Height="30"
+                                                    Width="100"
+                                                    VerticalAlignment="Center"  
+                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
+                                                    Content="&#xf08b; 退出登录" 
+                                                    Command="{Binding UserDropCommand}"
+                                                    CommandParameter="Logout"
+                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                    </Grid>
+                                </Grid>
+                            </util:DropDown.Child>
+                        </util:DropDown>
+                    </smtx:XamlDisplay>
+                    <smtx:XamlDisplay UniqueKey="dropDown_2" Margin="2">
+                        <util:DropDown Grid.Column="1" DropDownPlacement="Bottom" >
+                            <util:DropDown.Content>
+                                <TextBlock Text="下拉列表" VerticalAlignment="Center"/>
                             </util:DropDown.Content>
                             <util:DropDown.Child>
                                 <Grid>
@@ -174,7 +240,7 @@
                                 <TextBlock Text="SplitButton Usage:"
                           Grid.Column="1"
                           Style="{StaticResource Header}" />
-                                <utilxceed:SplitButton_V1 x:Name="_splitButton"
+                                <utilxceed:SplitButton x:Name="_splitButton"
                                  Grid.Row="1"
                                  Grid.Column="1"
                                  Margin="10"
@@ -184,14 +250,14 @@
                                  MaxDropDownHeight="{Binding Value, ElementName=maxDropDownHeight}"
                                  DropDownPosition="{Binding SelectedItem, ElementName=dropDownPosition}"
                                  Click="SplitButton_Click">
-                                    <utilxceed:SplitButton_V1.DropDownContent>
+                                    <utilxceed:SplitButton.DropDownContent>
                                         <StackPanel>
                                             <utilxceed:ColorCanvas />
                                             <Button Click="Button_Click"
                                 Margin="10">OK</Button>
                                         </StackPanel>
-                                    </utilxceed:SplitButton_V1.DropDownContent>
-                                </utilxceed:SplitButton_V1>
+                                    </utilxceed:SplitButton.DropDownContent>
+                                </utilxceed:SplitButton>
                             </Grid>
                         </StackPanel>
                     </StackPanel>

@@ -17,11 +17,14 @@
                     <smtx:XamlDisplay UniqueKey="gifImage_1" Margin="2">
                         <Image Width="400" Height="300" gif:ImageBehavior.AnimatedSource="/AIStudio.Wpf.DemoPage;component/Resources/Img/car_chase.gif" gif:ImageBehavior.AutoStart="True"/>
                     </smtx:XamlDisplay>
+                    <smtx:XamlDisplay UniqueKey="gifImage_2" Margin="2">
+                        <util:GifImage Width="400" Height="300" Source="/AIStudio.Wpf.DemoPage;component/Resources/Img/car_chase.gif" />
+                    </smtx:XamlDisplay>
                 </util:WrapBreakPanel>
             </TabItem>
              <TabItem Header="hand" IsSelected="True">
                 <util:WrapBreakPanel>
-                    <smtx:XamlDisplay UniqueKey="gifImage_2" Margin="2">
+                    <smtx:XamlDisplay UniqueKey="gifImage_3" Margin="2">
                         <utilhandy:GifImage x:Name="GifImageMain" Width="400" Height="300" Uri="/AIStudio.Wpf.DemoPage;component/Resources/Img/car_chase.gif"/>
                     </smtx:XamlDisplay>
                 </util:WrapBreakPanel>

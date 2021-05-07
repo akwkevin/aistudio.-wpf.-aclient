@@ -30,7 +30,7 @@ namespace AIStudio.Wpf.DemoPage.Views
 
         private void ButtonMouseFollow_OnClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            var picker = SingleOpenHelper.CreateControl<ColorPicker_V1>();
+            var picker = SingleOpenHelper.CreateControl<ColorPicker>();
             var window = new PopupWindow
             {
                 PopupElement = picker
@@ -42,7 +42,7 @@ namespace AIStudio.Wpf.DemoPage.Views
 
         private void ButtonCustomContent_OnClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            var picker = SingleOpenHelper.CreateControl<ColorPicker_V1>();
+            var picker = SingleOpenHelper.CreateControl<ColorPicker>();
             var window = new PopupWindow
             {
                 PopupElement = picker,

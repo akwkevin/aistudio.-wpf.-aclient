@@ -242,10 +242,10 @@
                     </UniformGrid>
                     <utilhandy:ScrollViewer HorizontalScrollBarVisibility="Auto">
                         <interactivity:Interaction.Triggers>
-                            <interactivity:RoutedEventTrigger RoutedEvent="util:TabItem.Closing">
+                            <interactivity:RoutedEventTrigger RoutedEvent="utilhandy:TabItem.Closing">
                                 <interactivity:EventToCommand Command="{Binding ClosingCmd}" PassEventArgsToCommand="True" />
                             </interactivity:RoutedEventTrigger>
-                            <interactivity:RoutedEventTrigger RoutedEvent="util:TabItem.Closed">
+                            <interactivity:RoutedEventTrigger RoutedEvent="utilhandy:TabItem.Closed">
                                 <interactivity:EventToCommand Command="{Binding ClosedCmd}" PassEventArgsToCommand="True" />
                             </interactivity:RoutedEventTrigger>
                         </interactivity:Interaction.Triggers>
@@ -260,7 +260,7 @@
                                         <utilhandy:SimplePanel Background="{DynamicResource DarkDangerBrush}"/>
                                     </utilhandy:TabItem>
                                     <utilhandy:TabItem Header="TabItem3">
-                                        <utilhandy:SimplePanel Background="{DynamicResource MahApps.Brushes.Accent}"/>
+                                        <utilhandy:SimplePanel Background="{DynamicResource AccentBrush}"/>
                                     </utilhandy:TabItem>
                                     <utilhandy:TabItem Header="TabItem4">
                                         <utilhandy:SimplePanel Background="{DynamicResource DarkInfoBrush}"/>

@@ -117,7 +117,7 @@
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center">
                                 <TextBlock x:Name="TextContentMin"
-                                   Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type utilxceed:RangeSlider_V1}}, Path=Minimum, StringFormat=\{0:00.00\}}"
+                                   Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type utilxceed:RangeSlider}}, Path=Minimum, StringFormat=\{0:00.00\}}"
                                    Foreground="White"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center" />
@@ -126,7 +126,7 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center" />
                                 <TextBlock x:Name="TextContentLower"
-                                   Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type utilxceed:RangeSlider_V1}}, Path=LowerValue, StringFormat=\{0:00.00\}}"
+                                   Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type utilxceed:RangeSlider}}, Path=LowerValue, StringFormat=\{0:00.00\}}"
                                    Foreground="White"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center" />
@@ -238,7 +238,7 @@
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center">
                                 <TextBlock x:Name="TextContentLower"
-                                   Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type utilxceed:RangeSlider_V1}}, Path=LowerValue, StringFormat=\{0:00.00\}}"
+                                   Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type utilxceed:RangeSlider}}, Path=LowerValue, StringFormat=\{0:00.00\}}"
                                    Foreground="White"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center" />
@@ -247,7 +247,7 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center" />
                                 <TextBlock x:Name="TextContentHigher"
-                                   Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type utilxceed:RangeSlider_V1}}, Path=HigherValue, StringFormat=\{0:00.00\}}"
+                                   Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type utilxceed:RangeSlider}}, Path=HigherValue, StringFormat=\{0:00.00\}}"
                                    Foreground="White"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center" />
@@ -377,7 +377,7 @@
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center">
                                 <TextBlock x:Name="TextContentHigher"
-                                   Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type utilxceed:RangeSlider_V1}}, Path=HigherValue, StringFormat=\{0:00.00\}}"
+                                   Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type utilxceed:RangeSlider}}, Path=HigherValue, StringFormat=\{0:00.00\}}"
                                    Foreground="White"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center" />
@@ -386,7 +386,7 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center" />
                                 <TextBlock x:Name="TextContentMax"
-                                   Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type utilxceed:RangeSlider_V1}}, Path=Maximum, StringFormat=\{0:00.00\}}"
+                                   Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type utilxceed:RangeSlider}}, Path=Maximum, StringFormat=\{0:00.00\}}"
                                    Foreground="White"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center" />
@@ -795,7 +795,7 @@
                   Margin="10">
                         <TextBlock Text="Usage:"
                     Style="{StaticResource Header}" />
-                        <utilxceed:RangeSlider_V1 x:Name="_rangeSlider"
+                        <utilxceed:RangeSlider x:Name="_rangeSlider"
                            Width="600"
                            Height="225"
                            HorizontalAlignment="Center"
@@ -820,7 +820,7 @@
                            TickFrequency="1"
                            AutoToolTipPlacement="None"
                            AutoToolTipPrecision="0">                          
-                        </utilxceed:RangeSlider_V1>
+                        </utilxceed:RangeSlider>
                     </StackPanel>
                 </Grid>
             </TabItem>

@@ -48,7 +48,7 @@
             <TabItem Header="util">
                 <util:WrapBreakPanel>
                     <smtx:XamlDisplay UniqueKey="dateTimePicker_1" Margin="2" util:WrapBreakPanel.LineBreakBefore="True">
-                        <util:DateTimePicker_V1 
+                        <util:DateTimePicker 
                                 BorderBrush="LightGray"
                                 BorderThickness="1"
                                 Height="30"
@@ -56,7 +56,7 @@
                 DateTimePickerMode="Date"/>
                     </smtx:XamlDisplay>
                     <smtx:XamlDisplay UniqueKey="dateTimePicker_2" Margin="2">
-                        <util:DateTimePicker_V1 
+                        <util:DateTimePicker 
                                 BorderBrush="LightGray"
                                 BorderThickness="1"
                                 Height="30"
@@ -64,7 +64,7 @@
                 DateTimePickerMode="DateTime"/>
                     </smtx:XamlDisplay>
                     <smtx:XamlDisplay UniqueKey="dateTimePicker_3" Margin="2">
-                        <util:DateTimePicker_V1 
+                        <util:DateTimePicker 
                                 BorderBrush="LightGray"
                                 BorderThickness="1"
                                 Height="30"
@@ -198,7 +198,7 @@
 
                         <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left">
                             <TextBlock Text="DateTimePicker Usage: " Margin="0,10,0,0" Style="{StaticResource Header}" />
-                            <util:DateTimePicker_V2 x:Name="_datetimePicker"
+                            <util:DateTimePicker x:Name="_datetimePicker"
                                  Width="300"
                                  VerticalAlignment="Top"
                                  IsReadOnly="False"
@@ -248,7 +248,7 @@
 
                             <StackPanel>
                                 <TextBlock Text="TimePicker Usage: " Style="{StaticResource Header}" />
-                                <util:TimePicker_V2 x:Name="_timePicker"
+                                <util:TimePicker x:Name="_timePicker"
                                  VerticalAlignment="Top"
                                  Format="{Binding Source={x:Reference _timeFormat}, Path=SelectedItem}"
                                  FormatString="{Binding Text, ElementName=_timeFormatString}"

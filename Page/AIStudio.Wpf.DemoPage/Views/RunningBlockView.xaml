@@ -20,31 +20,53 @@
                 <ScrollViewer>
                     <StackPanel Margin="32" VerticalAlignment="Center">
                         <smtx:XamlDisplay UniqueKey="runningBlock_1" Margin="2">
-                            <utilhandy:RunningBlock Content="Text"/>
+                            <utilhandy:RunningBlock Content="TextTextTextTextTextTextTextText"/>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="runningBlock_2" Margin="2">
-                            <utilhandy:RunningBlock Runaway="False" Content="Text" />
+                            <utilhandy:RunningBlock Runaway="False" Content="TextTextTextTextTextTextTextText" />
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="runningBlock_3" Margin="2">
-                            <utilhandy:RunningBlock HorizontalAlignment="Left" AutoRun="True" Width="100" Runaway="False" Content="Text" Duration="0:0:2" />
+                            <utilhandy:RunningBlock Reverse="True" Width="150" Content="TextTextTextTextTextTextTextText"/>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="runningBlock_4" Margin="2">
-                            <utilhandy:RunningBlock HorizontalAlignment="Left" AutoReverse="True" AutoRun="True" Width="100" Content="Text" />
+                            <utilhandy:RunningBlock Runaway="False" Width="150" Reverse="True" Content="TextTextTextTextTextTextTextText" />
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="runningBlock_5" Margin="2">
-                            <utilhandy:RunningBlock HorizontalAlignment="Left" AutoRun="True" Width="200" Content="Text" />
+                            <utilhandy:RunningBlock HorizontalAlignment="Left" AutoRun="True" Width="100" Runaway="False" Content="TextTextTextTextTextTextTextText" Duration="0:0:2" />
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="runningBlock_6" Margin="2">
-                            <utilhandy:RunningBlock Content="Text" FontSize="20" FontWeight="Bold" Foreground="OrangeRed" Duration="0:0:10" />
+                            <utilhandy:RunningBlock HorizontalAlignment="Left" AutoReverse="True" AutoRun="True" Width="100" Content="TextTextTextTextTextTextTextText" />
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="runningBlock_7" Margin="2">
-                            <utilhandy:RunningBlock AutoReverse="True" Content="Text" FontSize="20" FontWeight="Bold" Foreground="OrangeRed" Duration="0:0:10" />
+                            <utilhandy:RunningBlock HorizontalAlignment="Left" AutoRun="True" Width="200" Content="TextTextTextTextTextTextTextText" />
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="runningBlock_8" Margin="2">
-                            <utilhandy:RunningBlock Orientation="Vertical" Content="Text" FontSize="20" FontWeight="Bold" Foreground="OrangeRed" Duration="0:0:4" />
+                            <utilhandy:RunningBlock Content="TextTextTextTextTextTextTextText" FontSize="20" FontWeight="Bold" Foreground="OrangeRed" Duration="0:0:10" />
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="runningBlock_9" Margin="2">
+                            <utilhandy:RunningBlock AutoReverse="True" Content="TextTextTextTextTextTextTextText" FontSize="20" FontWeight="Bold" Foreground="OrangeRed" Duration="0:0:10" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="runningBlock_10" Margin="2">
+                            <utilhandy:RunningBlock Orientation="Vertical" Content="TextTextTextTextTextTextTextText" FontSize="20" FontWeight="Bold" Foreground="OrangeRed" Duration="0:0:4" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="runningBlock_11" Margin="2">
                             <utilhandy:RunningBlock  Duration="0:0:20" IsRunning="{Binding IsMouseOver,RelativeSource={RelativeSource Self},Converter={StaticResource Boolean2BooleanReConverter}}">
+                                <StackPanel Orientation="Horizontal">
+                                    <utilhandy:GifImage Width="32" Height="32" Uri="/AIStudio.Wpf.DemoPage;component/Resources/Img/QQ/1.gif" Margin="10,0"/>
+                                    <utilhandy:GifImage Width="32" Height="32" Uri="/AIStudio.Wpf.DemoPage;component/Resources/Img/QQ/2.gif" Margin="10,0"/>
+                                    <utilhandy:GifImage Width="32" Height="32" Uri="/AIStudio.Wpf.DemoPage;component/Resources/Img/QQ/3.gif" Margin="10,0"/>
+                                    <utilhandy:GifImage Width="32" Height="32" Uri="/AIStudio.Wpf.DemoPage;component/Resources/Img/QQ/4.gif" Margin="10,0"/>
+                                    <utilhandy:GifImage Width="32" Height="32" Uri="/AIStudio.Wpf.DemoPage;component/Resources/Img/QQ/5.gif" Margin="10,0"/>
+                                    <utilhandy:GifImage Width="32" Height="32" Uri="/AIStudio.Wpf.DemoPage;component/Resources/Img/QQ/6.gif" Margin="10,0"/>
+                                    <utilhandy:GifImage Width="32" Height="32" Uri="/AIStudio.Wpf.DemoPage;component/Resources/Img/QQ/7.gif" Margin="10,0"/>
+                                    <utilhandy:GifImage Width="32" Height="32" Uri="/AIStudio.Wpf.DemoPage;component/Resources/Img/QQ/8.gif" Margin="10,0"/>
+                                    <utilhandy:GifImage Width="32" Height="32" Uri="/AIStudio.Wpf.DemoPage;component/Resources/Img/QQ/9.gif" Margin="10,0"/>
+                                    <utilhandy:GifImage Width="32" Height="32" Uri="/AIStudio.Wpf.DemoPage;component/Resources/Img/QQ/10.gif" Margin="10,0"/>
+                                </StackPanel>
+                            </utilhandy:RunningBlock>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="runningBlock_12" Margin="2">
+                            <utilhandy:RunningBlock  Duration="0:0:20" Runaway="False" Width="150" Reverse="True" IsRunning="{Binding IsMouseOver,RelativeSource={RelativeSource Self},Converter={StaticResource Boolean2BooleanReConverter}}">
                                 <StackPanel Orientation="Horizontal">
                                     <utilhandy:GifImage Width="32" Height="32" Uri="/AIStudio.Wpf.DemoPage;component/Resources/Img/QQ/1.gif" Margin="10,0"/>
                                     <utilhandy:GifImage Width="32" Height="32" Uri="/AIStudio.Wpf.DemoPage;component/Resources/Img/QQ/2.gif" Margin="10,0"/>

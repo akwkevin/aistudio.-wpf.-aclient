@@ -119,6 +119,11 @@ namespace AIStudio.Wpf.DemoPage.Views
             e.Handled = true;
         }
         #endregion
+
+        private void OnLayoutComboSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
 

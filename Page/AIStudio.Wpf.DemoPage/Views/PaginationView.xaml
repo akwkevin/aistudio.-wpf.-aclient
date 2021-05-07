@@ -95,13 +95,13 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <smtx:XamlDisplay UniqueKey="pagination_4" Grid.Row="1"  Margin="2">
-                        <utilhandy:Pagination_V2  MaxPageCount="10" PageIndex="{Binding PageIndex}">
+                        <utilhandy:Pagination  MaxPageCount="10" PageIndex="{Binding PageIndex}">
                             <interactivity:Interaction.Triggers>
                                 <interactivity:EventTrigger EventName="PageUpdated">
                                     <interactivity:EventToCommand Command="{Binding PageUpdatedCmd}" PassEventArgsToCommand="True" />
                                 </interactivity:EventTrigger>
                             </interactivity:Interaction.Triggers>
-                        </utilhandy:Pagination_V2>
+                        </utilhandy:Pagination>
                     </smtx:XamlDisplay>
                 </Grid>
             </TabItem>

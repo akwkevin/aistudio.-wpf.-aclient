@@ -11,13 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Util.Controls;
 
 namespace AIStudio.Wpf.DemoPage.Views
 {
     /// <summary>
     /// WindowTest.xaml 的交互逻辑
     /// </summary>
-    public partial class WindowTest : Window
+    public partial class WindowTest : WindowBase
     {
         public WindowTest()
         {

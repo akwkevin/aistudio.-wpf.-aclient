@@ -110,7 +110,7 @@
         <TabControl>
             <TabItem Header="util">
                 <util:WrapBreakPanel>
-   
+                    <util:Arc Rect="0,0,100,100" Stroke="SkyBlue" StrokeThickness="1" StartAngle="20" EndAngle="90"/>
                 </util:WrapBreakPanel>
             </TabItem>
             <TabItem Header="xceed" IsSelected="True">

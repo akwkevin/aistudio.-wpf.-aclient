@@ -75,13 +75,13 @@
                         <ProgressBar  Value="{Binding Path=Value,Mode=OneWay,ElementName=slider}" Width="100" Height="30" x:Name="pro5" Background="LightSteelBlue" Foreground="OrangeRed" Style="{StaticResource SimpleProgressBar}"></ProgressBar>
                     </smtx:XamlDisplay>
                     <smtx:XamlDisplay UniqueKey="waiting_8" Margin="2" util:WrapBreakPanel.LineBreakBefore="True">
-                        <ProgressBar Width="100" Height="100" Style="{StaticResource LoopProcessBar}" Value="{Binding Path=Value,Mode=OneWay,ElementName=slider}"  x:Name="pro1" ></ProgressBar>
+                        <ProgressBar Width="100" Height="100" Maximum="1" Style="{StaticResource LoopProcessBar}" Value="{Binding Path=Value,Mode=OneWay,ElementName=slider}" util:ProgressBarHelper.IsPercentVisible="True"  x:Name="pro1" ></ProgressBar>
                     </smtx:XamlDisplay>
                     <smtx:XamlDisplay UniqueKey="waiting_9" Margin="2">
-                        <ProgressBar Style="{StaticResource LoopProcessBar}" Value="{Binding Path=Value,Mode=OneWay,ElementName=slider}" x:Name="pro2" Margin="0" Width="100" Height="100" BorderThickness="20" BorderBrush="#EF436F"/>
+                        <ProgressBar Style="{StaticResource LoopProcessBar}" Value="{Binding Path=Value,Mode=OneWay,ElementName=slider}" x:Name="pro2" Margin="0" Width="100" Height="100"  Maximum="1" BorderThickness="20" BorderBrush="#EF436F" util:ProgressBarHelper.IsPercentVisible="True"/>
                     </smtx:XamlDisplay>
                     <smtx:XamlDisplay UniqueKey="waiting_10" Margin="2">
-                        <ProgressBar Style="{StaticResource LoopProcessBar}" x:Name="pro3" Value="{Binding Path=Value,Mode=OneWay,ElementName=slider}" Width="100" Height="100" BorderThickness="10" BorderBrush="#EFBF0E"></ProgressBar>
+                        <ProgressBar Style="{StaticResource LoopProcessBar}" x:Name="pro3" Value="{Binding Path=Value,Mode=OneWay,ElementName=slider}" Width="100" Height="100"  Maximum="1" BorderThickness="10" BorderBrush="#EFBF0E" util:ProgressBarHelper.IsPercentVisible="True"></ProgressBar>
                     </smtx:XamlDisplay>
                 </util:WrapBreakPanel>
             </TabItem>

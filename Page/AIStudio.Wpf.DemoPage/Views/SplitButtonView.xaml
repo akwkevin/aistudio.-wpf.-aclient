@@ -50,7 +50,7 @@
             </TabItem>
             <TabItem Header="xceed">
                 <util:WrapBreakPanel>
-                    <utilxceed:SplitButton_V1 x:Name="_splitButton"
+                    <utilxceed:SplitButton x:Name="_splitButton"
                                  Grid.Row="1"
                                  Grid.Column="1"
                                  Margin="10"
@@ -58,12 +58,12 @@
                                  HorizontalAlignment="Left"
                                  Content="Click Me"
                                  Command="{Binding SelectCmd}" CommandParameter="Command1">
-                        <utilxceed:SplitButton_V1.DropDownContent>
+                        <utilxceed:SplitButton.DropDownContent>
                             <StackPanel>
                                 <Button Command="{Binding SelectCmd}" CommandParameter="Command2" Margin="10">OK</Button>
                             </StackPanel>
-                        </utilxceed:SplitButton_V1.DropDownContent>
-                    </utilxceed:SplitButton_V1>
+                        </utilxceed:SplitButton.DropDownContent>
+                    </utilxceed:SplitButton>
                 </util:WrapBreakPanel>
             </TabItem>
         </TabControl>
