@@ -1,21 +1,14 @@
 ﻿using AutoMapper;
-using MahApps.Metro.Controls;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Util.Controls;
 
-namespace AIStudio.Wpf.BasePage.Models
+namespace AIStudio.Core.Models
 {
     [AutoMap(typeof(AToolItem))]
-    public class AMenuItem : HamburgerTreeMenuGlyphItem
+    public class AMenuItem : TreeMenuItem
     {
         private string glyph;
         [Browsable(true)]
-        [StyleName("GlyphStyle")]
         public new string Glyph
         {
             get { return glyph; }

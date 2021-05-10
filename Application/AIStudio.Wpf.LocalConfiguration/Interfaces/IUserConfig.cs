@@ -13,8 +13,8 @@ namespace AIStudio.Wpf.LocalConfiguration
         void AddLoginInfo(LoginInfo info);
 
         void WriteConfig(string file, object info);
-        void WriteConfig(object obj, object info);
+        void WriteConfig(object obj, object info, string identifier = null);
         T ReadConfig<T>(string file) where T : new();
-        T ReadConfig<T>(object obj) where T : new();
+        T ReadConfig<T>(object obj, string identifier = null) where T : new();
     }
 }

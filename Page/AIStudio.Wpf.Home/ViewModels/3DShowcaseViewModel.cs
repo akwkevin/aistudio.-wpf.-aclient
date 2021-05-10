@@ -1,9 +1,13 @@
 ﻿using AIStudio.Core;
+using AIStudio.Core.Models;
+using AIStudio.Wpf.BasePage.Models;
+using AIStudio.Wpf.BasePage.ViewModels;
+using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Home.Views;
 using AIStudio.Wpf.LocalConfiguration;
 using Dataforge.PrismAvalonExtensions.ViewModels;
+using Newtonsoft.Json;
 using Prism.Commands;
-using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
@@ -12,60 +16,57 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Util._3DWall.Wall;
 using Util.Controls;
-using Util.Panels;
-using Util.Panels.Controls;
-using Newtonsoft.Json;
-using AIStudio.Core.Models;
-using AIStudio.Wpf.Business;
-using AIStudio.Wpf.BasePage.ViewModels;
-using AIStudio.Wpf.BasePage.Models;
 
 namespace AIStudio.Wpf.Home.ViewModels
 {
-    class UserConsoleViewModel : BasePageViewModel
-    {   
+    class _3DShowcaseViewModel : BasePageViewModel
+    {
         private IUserConfig _userConfig { get; }
         private IOperator _operator { get; }
 
-        public UserConsoleViewModel(IUserConfig userConfig, IOperator __operator)
+        public _3DShowcaseViewModel(IUserConfig userConfig, IOperator __operator)
         {
             _userConfig = userConfig;
             _operator = __operator;
 
-            UserConsoleData = new UserConsoleData();
-            PanelTypes = new List<PanelType>()
-            {
-                Util.Panels.PanelType.TilePanel,
-                Util.Panels.PanelType.MaximizedTilePanel
-            };
+            User3DData = new User3DData();
 
             MenuItems = _operator.MenuItems;
             SearchMenus = _operator.SearchMenus;
         }
 
-        public override async void OnNavigatedTo(NavigationContext navigationContext)
+
+        public override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
 
             try
             {
                 ShowWait();
-                await System.Threading.Tasks.Task.Delay(500);//偷下懒，延迟等待界面Loaded，再初始化布局
-                UserConsoleData = _userConfig.ReadConfig<UserConsoleData>(this, Identifier);
-                foreach (var item in UserConsoleData.Data)
+                User3DData = _userConfig.ReadConfig<User3DData>(this, Identifier);
+                for (int i = 0; i < User3DData.Data.Count; i++)
                 {
-                    var control = InitControl(item.Type);
-                    item.Content = control;
+                    var item = User3DData.Data[i];
+                    Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        if (item.Content == null)
+                        {
+                            item.Content = InitControl(item.WpfCode);
+                        }
+                    }));
                 }
             }
             finally
             {
                 HideWait();
             }
+
         }
 
         private ObservableCollection<AMenuItem> SearchMenus { get; set; }
@@ -80,15 +81,13 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-        public List<PanelType> PanelTypes { get; set; }
-
-        private UserConsoleData _userConsoleData;
-        public UserConsoleData UserConsoleData
+        private User3DData _user3DData;
+        public User3DData User3DData
         {
-            get { return _userConsoleData; }
+            get { return _user3DData; }
             set
             {
-                SetProperty(ref _userConsoleData, value);
+                SetProperty(ref _user3DData, value);
             }
         }
 
@@ -110,34 +109,30 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-        private ICommand _rectangleGridCommand;
-        public ICommand RectangleGridCommand
-        {
-            get
-            {
-                return this._rectangleGridCommand ?? (this._rectangleGridCommand = new DelegateCommand<RoutedPropertyChangedEventArgs<RectangleGridEventArgs>>(obj => this.RectangleGrid(obj)));
-            }
-        }
-
-        private void RectangleGrid(RoutedPropertyChangedEventArgs<RectangleGridEventArgs> obj)
-        {
-            UserConsoleData.RowNum = obj.NewValue.Row;
-            UserConsoleData.ColumnNum = obj.NewValue.Column;
-        }
-
         private async void Edit()
         {
-            var dialog = new UserConsoleEditView();
-            var viewmodel = new UserConsoleEditViewModel(MenuItems, Identifier, dialog);
+            var dialog = new _3DShowcaseEditView();
+            var viewmodel = new _3DShowcaseEditViewModel(MenuItems, User3DData.Data, Identifier);
             dialog.DataContext = viewmodel;
+
             var res = (BaseDialogResult)await WindowBase.ShowDialogAsync(dialog, Identifier);
             if (res == BaseDialogResult.OK)
             {
-                var control = InitControl(viewmodel.SelectedMenuItem.WpfCode);
-                if (control != null)
+                List<_3DItemData> list = new List<_3DItemData>();
+                for (int i = 0; i < viewmodel._3DItems.Count; i++)
                 {
-                    UserConsoleData.Data.Add(new UserItemData() { Title = viewmodel.SelectedMenuItem.Label, Content = control, CanClose = true, Type = viewmodel.SelectedMenuItem.WpfCode });
+                    var item = viewmodel._3DItems[i];
+                    Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        if (item.Content == null)
+                        {
+                            item.Content = InitControl(item.WpfCode);
+                        }
+                    }));
+                    list.Add(item);
                 }
+
+                User3DData.Data = new ObservableCollection<_3DItemData>(list);
             }
         }
 
@@ -159,14 +154,12 @@ namespace AIStudio.Wpf.Home.ViewModels
                     var control = Activator.CreateInstance(type) as UserControl;
                     ViewModelLocator.SetAutoWireViewModel(control, true);
 
-
                     if (control.DataContext is NavigationDockWindowViewModel)
                     {
                         NavigationContext context = new NavigationContext(null, null);
                         context.Parameters.Add("Identifier", Identifier);
                         (control.DataContext as NavigationDockWindowViewModel).OnNavigatedTo(context);
                     }
-
 
                     return control;
                 }
@@ -175,9 +168,10 @@ namespace AIStudio.Wpf.Home.ViewModels
             return new PromptUserControl("该菜单没有实现");
         }
 
+
         private void Save()
         {
-            _userConfig.WriteConfig(this, UserConsoleData, Identifier);
+            _userConfig.WriteConfig(this, User3DData, Identifier);
         }
     }
 

@@ -6,8 +6,7 @@
              xmlns:utilpanel="https://astudio.github.io/utilpanel"
              xmlns:util="https://astudio.github.io/utilcontrol"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:dd="urn:gong-wpf-dragdrop"
-             xmlns:local="clr-namespace:AIStudio.Wpf.Home.ViewModels"
+             xmlns:model="clr-namespace:AIStudio.Wpf.BasePage.Models;assembly=AIStudio.Wpf.BasePage"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -16,7 +15,7 @@
                 <ResourceDictionary Source="pack://application:,,,/Util.Panels;component/Themes/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <utilpanel:EnumDescriptionConverter x:Key="EnumDescriptionConverter"/>
-            <DataTemplate DataType="{x:Type local:UserItemData}">
+            <DataTemplate DataType="{x:Type model:UserItemData}">
                 <ContentControl Content="{Binding Content}"/>
             </DataTemplate>
         </ResourceDictionary>

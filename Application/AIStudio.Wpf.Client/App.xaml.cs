@@ -226,13 +226,13 @@ namespace AIStudio.Wpf.Client
             {
                 var config = new MapperConfiguration(cfg =>
                 {
-                    cfg.AddMaps("AIStudio.Wpf.BasePage");
+                    cfg.AddMaps("AIStudio.Wpf.BasePage", "AIStudio.Core");
                 });
                 return config.CreateMapper();
             }
             else
             {
-                IMapper mapper = EFCoreDataProviderExtension.AddAutoMapper(new string[] { "AIStudio.Wpf.BasePage" });
+                IMapper mapper = EFCoreDataProviderExtension.AddAutoMapper(new string[] { "AIStudio.Wpf.BasePage", "AIStudio.Core" });
                 return mapper;
             }
         }

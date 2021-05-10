@@ -92,4 +92,10 @@
     <PackageReference Include="ShowMeTheXAML.AvalonEdit" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Views\3DShowcaseEditView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

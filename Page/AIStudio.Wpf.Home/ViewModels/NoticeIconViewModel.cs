@@ -1,6 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Core.ExCommand;
-using AIStudio.Wpf.BasePage.Models;
+using AIStudio.Core.Models;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.D_Manage.ViewModels;

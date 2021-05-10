@@ -1,10 +1,9 @@
 ﻿using AIStudio.Core;
 using AIStudio.Core.Models;
+using AIStudio.Wpf.BasePage.Models;
 using AutoMapper;
 using Prism.Commands;
 using Prism.Ioc;
-using Prism.Mvvm;
-using Svg2XamlTestExtension;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,14 +12,14 @@ using Util.Controls;
 
 namespace AIStudio.Wpf.Home.ViewModels
 {
-    class ToolBarSetViewModel : Prism.Mvvm.BindableBase
+    class _3DShowcaseEditViewModel : Prism.Mvvm.BindableBase
     {
         private static IMapper _mapper { get => ContainerLocator.Current.Resolve<IMapper>(); }
-        public ToolBarSetViewModel(IEnumerable<AMenuItem> menuItems, IEnumerable<AToolItem> aToolItems, string identifier)
+        public _3DShowcaseEditViewModel(IEnumerable<AMenuItem> menuItems, IEnumerable<_3DItemData> aToolItems, string identifier)
         {
             Identifier = identifier;
             MenuItems = new ObservableCollection<AMenuItem>(menuItems);
-            ToolItems = new ObservableCollection<AToolItem>(aToolItems);
+            _3DItems = new ObservableCollection<_3DItemData>(aToolItems);
         }
 
         private ObservableCollection<AMenuItem> _menuItems;
@@ -33,19 +32,17 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-        private ObservableCollection<AToolItem> _toolItems;
-        public ObservableCollection<AToolItem> ToolItems
+        private ObservableCollection<_3DItemData> _3dItems;
+        public ObservableCollection<_3DItemData> _3DItems
         {
-            get { return _toolItems; }
+            get { return _3dItems; }
             set
             {
-                SetProperty(ref _toolItems, value);
+                SetProperty(ref _3dItems, value);
             }
         }
 
         protected string Identifier { get; set; } = LocalSetting.RootWindow;
-
-        public List<string> Glyphs { get; set; } = PackSvg.DataIndex.Value.Keys.Where(p => p.Item1 == "outline").Select(p => p.Item2).ToList();
 
         private ICommand _doubleClickAddDataCommand;
         public ICommand DoubleClickAddDataCommand
@@ -70,23 +67,26 @@ namespace AIStudio.Wpf.Home.ViewModels
             AMenuItem aMenuItem = para as AMenuItem;
             if (aMenuItem != null && aMenuItem.Type == 1)
             {
-                if (ToolItems.Any(p => p.Code == aMenuItem.Code))
+                if (_3DItems.Any(p => p.Code == aMenuItem.Code))
                 {
                     WindowBase.ShowMessageQueue($"不能重复添加菜单-{aMenuItem.Label}", Identifier);
                 }
                 else
                 {
-                    ToolItems.Add(_mapper.Map<AToolItem>(aMenuItem));
+                    var item = _mapper.Map<_3DItemData>(aMenuItem);
+                    item.Identifier = Identifier;
+
+                    _3DItems.Add(item);
                 }
             }
         }
 
         private void Delete(object para)
         {
-            AToolItem aToolItem = para as AToolItem;
+            _3DItemData aToolItem = para as _3DItemData;
             if (aToolItem != null)
             {
-                ToolItems.Remove(aToolItem);
+                _3DItems.Remove(aToolItem);
             }
         }
 

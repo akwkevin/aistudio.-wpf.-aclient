@@ -125,9 +125,13 @@ namespace AIStudio.Wpf.LocalConfiguration
 
         }
 
-        public void WriteConfig(object obj, object info)
+        public void WriteConfig(object obj, object info, string identifier)
         {
             string file = obj.GetType().Name;
+            if (!string.IsNullOrEmpty(identifier))
+            {
+                file += $"_{identifier}";
+            }
             WriteConfig(file, info);
         }
 
@@ -155,9 +159,13 @@ namespace AIStudio.Wpf.LocalConfiguration
             }
         }
 
-        public T ReadConfig<T>(object obj) where T : new()
+        public T ReadConfig<T>(object obj, string identifier) where T : new()
         {
             string file = obj.GetType().Name;
+            if (!string.IsNullOrEmpty(identifier))
+            {
+                file += $"_{identifier}";
+            }
             return ReadConfig<T>(file);
         }
 

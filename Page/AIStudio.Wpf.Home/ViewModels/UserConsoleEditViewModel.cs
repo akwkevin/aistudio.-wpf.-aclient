@@ -1,19 +1,14 @@
 ﻿using AIStudio.Core;
-using AIStudio.Wpf.BasePage.Models;
-using AutoMapper;
+using AIStudio.Core.Models;
 using Prism.Commands;
-using Prism.Ioc;
-using Prism.Mvvm;
-using Svg2XamlTestExtension;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows.Input;
 using Util.Controls;
 
 namespace AIStudio.Wpf.Home.ViewModels
 {
-    class UserConsoleEditViewModel : BindableBase
+    class UserConsoleEditViewModel : Prism.Mvvm.BindableBase
     {
         public UserConsoleEditViewModel(IEnumerable<AMenuItem> menuItems, string identifier, BaseDialog baseDialog)
         {

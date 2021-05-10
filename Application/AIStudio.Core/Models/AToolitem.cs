@@ -1,15 +1,8 @@
 ﻿using AutoMapper;
 using AutoMapper.Configuration.Annotations;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using Util.Controls;
 
-namespace AIStudio.Wpf.BasePage.Models
+namespace AIStudio.Core.Models
 {
     [AutoMap(typeof(AMenuItem))]
     public class AToolItem : AMenuItem

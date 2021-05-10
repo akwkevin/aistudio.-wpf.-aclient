@@ -1,7 +1,7 @@
 ﻿using AIStudio.Core;
+using AIStudio.Core.Models;
 using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.Events;
-using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.EFCore.DTOModels;
 using AIStudio.Wpf.Home.Models;
@@ -77,7 +77,17 @@ namespace AIStudio.Wpf.Home.ViewModels
 
         public void OpenHomePage()
         {
-            var item = SearchMenus.FirstOrDefault(p => p.Label == "框架介绍");
+            OpenPage("框架介绍");
+        }
+
+        private void OpenUserConsole()
+        {
+            OpenPage("我的控制台");
+        }
+
+        private void OpenPage(string title)
+        {
+            var item = SearchMenus.FirstOrDefault(p => p.Label == title);
             if (item != null)
             {
                 NavigationParameters paras = new NavigationParameters();
@@ -89,7 +99,6 @@ namespace AIStudio.Wpf.Home.ViewModels
                     _regionManager.RequestNavigate(RegionName, item.WpfCode, NavigationComplete, paras);
                 });
             }
-
         }
 
         public void OpenFullScreenWindow()
@@ -245,6 +254,9 @@ namespace AIStudio.Wpf.Home.ViewModels
 
             MenuItems.Add(winStatus);
             SearchMenus = new ObservableCollection<AMenuItem>(AddTotalMenu(MenuItems));
+
+            _operator.MenuItems = MenuItems;
+            _operator.SearchMenus = SearchMenus;
             #endregion
 
             IsMain = Identifier == LocalSetting.RootWindow;
@@ -707,19 +719,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-        private void OpenUserConsole()
-        {
 
-            NavigationParameters paras = new NavigationParameters();
-            paras.Add("Title", "我的控制台");
-            paras.Add("Identifier", Identifier);
-            paras.Add("MenuItems", MenuItems);
-            paras.Add("SearchMenus", SearchMenus);
-            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)delegate
-            {
-                _regionManager.RequestNavigate(RegionName, typeof(UserConsoleView).FullName, NavigationComplete, paras);
-            });
-        }
 
     }
 }
