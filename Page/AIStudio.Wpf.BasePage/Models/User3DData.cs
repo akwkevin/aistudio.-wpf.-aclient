@@ -23,7 +23,6 @@ namespace AIStudio.Wpf.BasePage.Models
         public string Label { get; set; }
         public string Code { get; set; }
         public string WpfCode { get; set; }
-        public string Identifier { get; set; }
     }
 
     public class User3DData : Prism.Mvvm.BindableBase

@@ -17,7 +17,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}"  CornerRadius="3">
-        <Grid Width="350" Margin="5,0">
+        <Grid Width="450" Margin="5,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="*" />
@@ -30,7 +30,7 @@
                    VerticalAlignment="Center"/>
             <Grid Grid.Row="1" Height="280">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TreeView x:Name="treeview" ItemsSource="{Binding MenuItems}" Style="{StaticResource DefaultMetroTreeView}" ItemTemplate="{StaticResource HamburgerMenuImageItem}">
@@ -51,6 +51,11 @@
                          dd:DragDrop.IsDropTarget="True"
                          dd:DragDrop.DropTargetAdornerBrush="Coral"
                          dd:DragDrop.UseDefaultEffectDataTemplate="True">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="{Binding Path=ActualWidth, Mode=OneWay,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

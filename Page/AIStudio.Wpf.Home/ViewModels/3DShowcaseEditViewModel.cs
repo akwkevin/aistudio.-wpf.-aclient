@@ -74,8 +74,6 @@ namespace AIStudio.Wpf.Home.ViewModels
                 else
                 {
                     var item = _mapper.Map<_3DItemData>(aMenuItem);
-                    item.Identifier = Identifier;
-
                     _3DItems.Add(item);
                 }
             }
