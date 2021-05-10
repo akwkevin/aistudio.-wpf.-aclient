@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\AControl\AIStudio.Util.Layout\Util.3DWall\Util.3DWall.csproj" />
     <ProjectReference Include="..\..\Application\AIStudio.Core\AIStudio.Core.csproj" />
     <ProjectReference Include="..\..\Application\AIStudio.Resource\AIStudio.Resource.csproj" />
     <ProjectReference Include="..\..\Application\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
@@ -24,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--<PackageReference Include="Util.3DWall" Version="1.2.9" />-->
+    <PackageReference Include="Util.3DWall" Version="1.3.0" />
     <PackageReference Include="Util.Controls" Version="1.3.2" />
     <PackageReference Include="Util.Controls.Handy" Version="1.3.2" />
     <PackageReference Include="Util.Controls.Xceed" Version="1.3.2" />
