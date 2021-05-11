@@ -6,6 +6,7 @@
              xmlns:model="clr-namespace:AIStudio.Wpf.BasePage.Models;assembly=AIStudio.Wpf.BasePage"
              xmlns:utilwall="https://astudio.github.io/utilwall"
              xmlns:util="https://astudio.github.io/utilcontrol"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -36,8 +37,17 @@
             <util:FButton Command="{Binding EditCommand}" FIcon="&#xe657;" Background="Transparent" Foreground="{DynamicResource MahApps.Brushes.Accent}" FontSize="12"  Content="编辑卡片"  />
             <util:FButton Command="{Binding SaveCommand}" FIcon="&#xe61A;" Background="Transparent" Foreground="{DynamicResource MahApps.Brushes.Accent}" FontSize="12"  Content="保存布局"  />
         </StackPanel>
-        <utilwall:WallControl x:Name="_mainwall" Grid.Row="1" FillAll="False" Orientation="Vertical"  ItemsSource="{Binding User3DData.Data}" />
-        <Rectangle x:Name="_rec" Stretch="Fill" Fill="Bisque" Opacity=".3" Visibility="Collapsed" />
-        <Canvas  x:Name="_grid" />
+        <utilwall:WallControl x:Name="_mainwall" Grid.Row="1" FillAll="False" Orientation="Vertical"  ItemsSource="{Binding User3DData.Data}" >
+            <!--<i:Interaction.Triggers>
+                <i:EventTrigger EventName="ItemClick">
+                    <i:InvokeCommandAction Command="{Binding OpenCommand}" PassEventArgsToCommand="True" />
+                </i:EventTrigger>
+                <i:EventTrigger EventName="PreviewMouseDown">
+                    <i:InvokeCommandAction Command="{Binding CloseCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>-->
+        </utilwall:WallControl>
+        <Rectangle x:Name="_rec" Grid.RowSpan="2" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Bisque" Opacity=".3" Visibility="Collapsed" />
+        <Grid  x:Name="_grid" Grid.RowSpan="2"/>
     </Grid>
 </UserControl>

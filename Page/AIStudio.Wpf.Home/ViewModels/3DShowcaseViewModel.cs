@@ -109,6 +109,24 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
+        //private ICommand _openCommand;
+        //public ICommand OpenCommand
+        //{
+        //    get
+        //    {
+        //        return this._openCommand ?? (this._openCommand = new DelegateCommand<object>(para => this.Open(para)));
+        //    }
+        //}
+
+        //private ICommand _closeCommand;
+        //public ICommand CloseCommand
+        //{
+        //    get
+        //    {
+        //        return this._closeCommand ?? (this._closeCommand = new DelegateCommand(() => this.Close()));
+        //    }
+        //}      
+
         private async void Edit()
         {
             var dialog = new _3DShowcaseEditView();
@@ -136,7 +154,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-        private Control InitControl(string fullname)
+        public Control InitControl(string fullname)
         {
             if (!SearchMenus.Any(p => p.WpfCode == fullname))
             {
@@ -173,6 +191,44 @@ namespace AIStudio.Wpf.Home.ViewModels
         {
             _userConfig.WriteConfig(this, User3DData, Identifier);
         }
+
+        //如果想弹窗实现。
+        //Util.Controls.PopupWindow window;
+        //private void Open(object para)
+        //{
+        //    if (window != null)
+        //    {
+        //        return;
+        //    }
+        //    WallControl.ItemclickEventArg arg = para as WallControl.ItemclickEventArg;
+        //    if (arg != null && arg.Data is _3DItemData item)
+        //    {
+        //        var control = InitControl(item.WpfCode);
+        //        control.Width = 500;
+        //        control.Height = 300;
+        //        window = new Util.Controls.PopupWindow
+        //        {
+        //            Owner = WindowBase.GetWindowBase(Identifier),
+        //            PopupElement = control,
+        //            WindowStartupLocation = WindowStartupLocation.CenterOwner,
+        //            AllowsTransparency = true,
+        //            WindowStyle = WindowStyle.None,
+        //            Title = item.Label,
+        //            PopupAnimation = Util.Controls.CustomizePopupAnimation.Rotate
+        //        };
+        //        window.Show();
+        //    }
+        //}
+
+        //private void Close()
+        //{
+        //    if (window != null)
+        //    {
+        //        window.Close();
+        //        window = null;
+        //    }
+        //}
+
     }
 
 
