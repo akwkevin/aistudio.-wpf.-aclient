@@ -47,7 +47,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>-->
         </utilwall:WallControl>
-        <Rectangle x:Name="_rec" Grid.RowSpan="2" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Bisque" Opacity=".3" Visibility="Collapsed" />
+        <Rectangle x:Name="_rec" Grid.RowSpan="2" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="{DynamicResource MahApps.Brushes.Gray8}" Opacity=".3" Visibility="Collapsed" />
         <Grid  x:Name="_grid" Grid.RowSpan="2"/>
     </Grid>
 </UserControl>

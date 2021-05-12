@@ -49,6 +49,8 @@ namespace AIStudio.Wpf.Home.Views
 
             Popwindow = new Popwindow();
             Popwindow.Background = Application.Current.Resources["MahApps.Brushes.ThemeBackground"] as Brush;
+            Popwindow.BorderBrush = Application.Current.Resources["MahApps.Brushes.Accent"] as Brush;
+            Popwindow.BorderThickness = new Thickness(1);
             Popwindow.Padding = new Thickness(10);
             Popwindow.VerticalAlignment = VerticalAlignment.Center;
             Popwindow.HorizontalAlignment = HorizontalAlignment.Center;
