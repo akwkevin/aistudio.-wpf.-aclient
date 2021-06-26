@@ -1,6 +1,7 @@
 ﻿using AIStudio.Core;
 using AIStudio.Core.Validation;
 using AIStudio.Wpf.Business;
+using AIStudio.Wpf.Client.Views;
 using AIStudio.Wpf.LocalConfiguration;
 using Prism.Commands;
 using Prism.Events;
@@ -189,10 +190,7 @@ namespace AIStudio.Wpf.Client.ViewModels
 
             try
             {
-                if (window != null)
-                {
-                    _window = window;
-                }
+                _window = window;
                 Loginning = true;
                 if (!string.IsNullOrEmpty(Error))
                 {
@@ -246,7 +244,7 @@ namespace AIStudio.Wpf.Client.ViewModels
                     }
 
                     _window.DialogResult = success;
-                    _window.Close();
+                    _window.Close();          
                 }
             }
             catch (Exception ex)
@@ -263,7 +261,7 @@ namespace AIStudio.Wpf.Client.ViewModels
         {
             if ((bool)result == true)
             {
-                Login(null);
+                Login(_window);
             }
         }
     }

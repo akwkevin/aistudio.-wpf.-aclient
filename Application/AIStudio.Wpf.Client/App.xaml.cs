@@ -1,6 +1,7 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Client.ViewModels;
+using AIStudio.Wpf.Client.Views;
 using AIStudio.Wpf.DataBusiness;
 using AIStudio.Wpf.Home;
 using AIStudio.Wpf.Home.ViewModels;
@@ -74,14 +75,33 @@ namespace AIStudio.Wpf.Client
         #endregion
 
         protected override Window CreateShell()
-        {
+        {   
             var window = Container.Resolve<MainWindow>();
-            if (window.Visibility == Visibility.Collapsed || window.Visibility == Visibility.Hidden)
-            {
-                window = null;
-            }
-           
+            //if (window.Visibility == Visibility.Collapsed || window.Visibility == Visibility.Hidden)
+            //{
+            //    window = null;
+            //}
+            Home.ViewModels.SystemSetViewModel.InitSetting();
             return window;
+        }
+
+        protected override void InitializeShell(Window shell)
+        {
+            UpdateWindow update = new UpdateWindow(_logger);
+            if (update.ShowDialog() == false)
+            {
+                Application.Current.Shutdown();
+                return;
+            }
+
+            LoginWindow login = new LoginWindow();
+            if (login.ShowDialog() == false)
+            {
+                Application.Current.Shutdown();
+                return;
+            }
+
+            base.InitializeShell(shell);
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -123,7 +143,7 @@ namespace AIStudio.Wpf.Client
             {
                 ModuleName = homePageModule.Name,
                 ModuleType = homePageModule.AssemblyQualifiedName,
-                InitializationMode = InitializationMode.WhenAvailable
+                InitializationMode = InitializationMode.OnDemand
             });
 
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(p => p.FullName.StartsWith("AIStudio.Wpf")).ToList();
@@ -191,6 +211,8 @@ namespace AIStudio.Wpf.Client
 
         protected override void OnStartup(StartupEventArgs e)
         {
+
+
             Assembly.Load("AIStudio.Wpf.Base_Manage");
             Assembly.Load("AIStudio.Wpf.D_Manage");
             Assembly.Load("AIStudio.Wpf.OA_Manage");
