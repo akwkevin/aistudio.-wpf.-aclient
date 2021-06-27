@@ -34,6 +34,8 @@ namespace AIStudio.Wpf.Client
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (this.IsVisible == false) return;
+
             MessageBoxResult result = MessageBoxHelper.ShowSure("确定要退出系统?", this);
             if (result != MessageBoxResult.OK)
             {
