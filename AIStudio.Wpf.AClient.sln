@@ -10,9 +10,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIStudio.Core", "Application\AIStudio.Core\AIStudio.Core.csproj", "{29426DB9-0346-44FA-B324-6FDC06C4DDFB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00.AIStudio.Application", "00.AIStudio.Application", "{F0F5D2C5-59B1-4C86-9858-45D89B92EC36}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\Desktop\Setup.iss = ..\..\..\Desktop\Setup.iss
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIStudio.Wpf.Service", "Application\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj", "{0BBB5043-9C0D-45A4-8A83-61408DF8CB1A}"
 EndProject

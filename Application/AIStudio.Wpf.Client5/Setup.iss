@@ -13,7 +13,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{4F15FCF6-E47B-4A36-987C-16594994BDA2}
+AppId={{04875527-2B64-49C1-8922-039DB14E7D28}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -22,18 +22,19 @@ AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
-ChangesAssociations=yes
 DisableProgramGroupPage=yes
-; Uncomment the following line to run in non administrative install mode (install for current user only.)
-;PrivilegesRequired=lowest
-OutputDir=D:\ClientSetUp
-OutputBaseFilename=mysetup
+; Remove the following line to run in administrative install mode (install for all users.)
+PrivilegesRequired=lowest
+OutputDir=E:\Dev
+OutputBaseFilename={#MyAppName}
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+UsePreviousAppDir=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
+;Name: "chinesesimplified"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
@@ -43,17 +44,32 @@ Source: "F:\AClient\Application\AIStudio.Wpf.Client\bin\Release\netcoreapp3.1\pu
 Source: "F:\AClient\Application\AIStudio.Wpf.Client\bin\Release\netcoreapp3.1\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
-[Registry]
-Root: HKA; Subkey: "Software\Classes\{#MyAppAssocExt}\OpenWithProgids"; ValueType: string; ValueName: "{#MyAppAssocKey}"; ValueData: ""; Flags: uninsdeletevalue
-Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}"; ValueType: string; ValueName: ""; ValueData: "{#MyAppAssocName}"; Flags: uninsdeletekey
-Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\{#MyAppExeName},0"
-Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
-Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes"; ValueType: string; ValueName: ".myp"; ValueData: ""
-
-[Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+;[Icons]
+;Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+;Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
+
+[Code]
+procedure InitializeWizard();
+begin
+    WizardForm.BorderStyle:=bsNone;
+end; 
+procedure CurPageChanged(CurPageID: Integer);
+begin
+   WizardForm.ClientWidth := ScaleX(0)
+   WizardForm.ClientHeight := ScaleY(0)
+if CurPageID = wpWelcome then
+WizardForm.NextButton.OnClick(WizardForm);
+if CurPageID >= wpInstalling then
+    WizardForm.Visible := False
+  else
+    WizardForm.Visible := True;
+ end;
+ 
+function ShouldSkipPage(PageID: Integer): Boolean;
+begin
+result := true;
+end;
