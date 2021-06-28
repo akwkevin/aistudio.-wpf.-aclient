@@ -7,6 +7,6 @@ using System.Windows;
 namespace AIStudio.Wpf.TestUnit
 {
     public partial class TestApp : Application
-    {
+    {   
     }
 }
