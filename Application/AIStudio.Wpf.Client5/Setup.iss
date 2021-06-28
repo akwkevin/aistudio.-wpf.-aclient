@@ -25,7 +25,7 @@ DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
-OutputDir=E:\Dev
+OutputDir=D:\Update
 OutputBaseFilename={#MyAppName}
 Compression=lzma
 SolidCompression=yes
