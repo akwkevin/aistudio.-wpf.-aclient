@@ -70,7 +70,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
 
         }
 
-        protected void Initialize()
+        public override void Initialize()
         {
             NewViewModel = new D_UserMailNewViewModel("D_Manage", Identifier);
             SendViewModel = new D_UserMailViewModel(1, Identifier);

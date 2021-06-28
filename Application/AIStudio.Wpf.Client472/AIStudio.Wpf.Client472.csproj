@@ -5,7 +5,7 @@
     <TargetFrameworks>net472</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>A.ico</ApplicationIcon>
-    <Version>2.0.0.0</Version>
+    <Version>1.0.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,8 +19,7 @@
     <Compile Remove="..\AIStudio.Wpf.Client\MainWindow.xaml" />
     <Compile Remove="..\AIStudio.Wpf.Client\Views\LoginWindow.xaml" />
     <Compile Remove="..\AIStudio.Wpf.Client\Views\LoginWindow.xaml.cs" />
-    <Compile Remove="..\AIStudio.Wpf.Client\Views\UpdateWindow.xaml" />
-    <Compile Remove="..\AIStudio.Wpf.Client\Views\UpdateWindow.xaml.cs" />
+    <Compile Remove="..\AIStudio.Wpf.Client\Views\UpdateHelper.cs" />
     <Compile Remove="..\AIStudio.Wpf.Client\obj\**" />
     <Compile Remove="..\AIStudio.Wpf.Client\bin\**" />
   </ItemGroup>

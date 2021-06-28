@@ -5,7 +5,7 @@
     <TargetFrameworks>net5-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>A.ico</ApplicationIcon>
-    <Version>2.0.0.0</Version>
+    <Version>1.0.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,8 +15,7 @@
     <Compile Remove="..\AIStudio.Wpf.Client\MainWindow.xaml" />
     <Compile Remove="..\AIStudio.Wpf.Client\Views\LoginWindow.xaml" />
     <Compile Remove="..\AIStudio.Wpf.Client\Views\LoginWindow.xaml.cs" />
-    <Compile Remove="..\AIStudio.Wpf.Client\Views\UpdateWindow.xaml" />
-    <Compile Remove="..\AIStudio.Wpf.Client\Views\UpdateWindow.xaml.cs" />
+	<Compile Remove="..\AIStudio.Wpf.Client\Views\UpdateHelper.cs" />
     <Compile Remove="..\AIStudio.Wpf.Client\obj\**" />
     <Compile Remove="..\AIStudio.Wpf.Client\bin\**" />
   </ItemGroup>
@@ -33,13 +32,13 @@
     <None Include="..\AIStudio.Wpf.Client\nlog.config" Link="nlog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <PackageReference Include="NetSparkleUpdater.UI.WPF" Version="2.0.5" />
     <Page Include="..\AIStudio.Wpf.Client\MainWindow.xaml" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj" />
     <ProjectReference Include="..\..\Page\AIStudio.Wpf.Home\AIStudio.Wpf.Home.csproj" />
+    <ProjectReference Include="..\..\SetUp\NetSparkle\src\NetSparkle.UI.WPF\NetSparkle.UI.WPF.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.DataBusiness\AIStudio.Wpf.DataBusiness.csproj" />
   </ItemGroup>
 

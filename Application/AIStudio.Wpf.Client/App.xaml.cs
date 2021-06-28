@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using AIStudio.Core.Helper;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Client.ViewModels;
 using AIStudio.Wpf.Client.Views;
@@ -85,19 +86,18 @@ namespace AIStudio.Wpf.Client
             return window;
         }
 
+
         protected override void InitializeShell(Window shell)
         {
-            UpdateWindow update = new UpdateWindow(_logger);
-            if (update.ShowDialog() == false)
-            {
-                Application.Current.Shutdown();
-                return;
-            }
+            UpdateHelper.CheckUpdate();
 
             LoginWindow login = new LoginWindow();
             if (login.ShowDialog() == false)
             {
-                Application.Current.Shutdown();
+                if (Application.Current != null)
+                {
+                    Application.Current.Shutdown();
+                }
                 return;
             }
 
@@ -211,7 +211,6 @@ namespace AIStudio.Wpf.Client
 
         protected override void OnStartup(StartupEventArgs e)
         {
-
 
             Assembly.Load("AIStudio.Wpf.Base_Manage");
             Assembly.Load("AIStudio.Wpf.D_Manage");
