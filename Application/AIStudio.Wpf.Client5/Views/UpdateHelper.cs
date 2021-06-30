@@ -13,21 +13,22 @@ namespace AIStudio.Wpf.Client.Views
     {
         public static async void CheckUpdate()
         {
-            string manifestModuleName = System.Reflection.Assembly.GetEntryAssembly().ManifestModule.FullyQualifiedName;
-            var icon = System.Drawing.Icon.ExtractAssociatedIcon(manifestModuleName);
-
-            SparkleUpdater sparkle = new SparkleUpdater(LocalSetting.UpdateAddress, new Ed25519Checker(NetSparkleUpdater.Enums.SecurityMode.Unsafe, "base_64_public_key"))
+            try
             {
-                UIFactory = new NetSparkleUpdater.UI.WPF.UIFactory(NetSparkleUpdater.UI.WPF.IconUtilities.ToImageSource(icon))
-                {
-                    HideReleaseNotes = false,
-                    HideSkipButton = true,
-                },
-                ShowsUIOnMainThread = true,
-            };
+                string manifestModuleName = System.Reflection.Assembly.GetEntryAssembly().ManifestModule.FullyQualifiedName;
+                var icon = System.Drawing.Icon.ExtractAssociatedIcon(manifestModuleName);
 
-            //AsyncHelper.RunSync(async () =>
-            //{
+                SparkleUpdater sparkle = new SparkleUpdater(LocalSetting.UpdateAddress, new Ed25519Checker(NetSparkleUpdater.Enums.SecurityMode.Unsafe, "base_64_public_key"))
+                {
+                    UIFactory = new NetSparkleUpdater.UI.WPF.UIFactory(NetSparkleUpdater.UI.WPF.IconUtilities.ToImageSource(icon))
+                    {
+                        HideReleaseNotes = false,
+                        HideSkipButton = true,
+                    },
+                    ShowsUIOnMainThread = true,
+                };
+
+
                 var sparkleInfo = await sparkle.CheckForUpdatesQuietly();
                 switch (sparkleInfo.Status)
                 {
@@ -42,7 +43,11 @@ namespace AIStudio.Wpf.Client.Views
                         break;
                     default: break;
                 }
-            //});
+            }
+            catch (Exception ex)
+            {
+
+            }
 
         }
     }
