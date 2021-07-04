@@ -51,5 +51,5 @@ Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.ex
 
 
 个人QQ:80267720
-QQ技术交流群:51286643
+QQ技术交流群:51286643（进群提供服务端的开源代码地址）
 个人博客:https://www.cnblogs.com/akwkevin/
