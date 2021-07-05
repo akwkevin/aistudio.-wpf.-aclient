@@ -153,8 +153,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                         {
                             linkId = LinkId,
                             areaName = viewmodel.AreaName,
-                            tablesJson = JsonConvert.SerializeObject(ids),
-                            buildTypesJson = JsonConvert.SerializeObject(types)
+                            tables = ids.ToArray(),
+                            buildTypes = types.ToArray()
                         };
 
                         var result = await _dataProvider.GetData<AjaxResult>("/Base_Manage/BuildCode/Build", JsonConvert.SerializeObject(data));
