@@ -76,7 +76,7 @@ namespace AIStudio.Wpf.Client
         #endregion
 
         protected override Window CreateShell()
-        {   
+        {
             var window = Container.Resolve<MainWindow>();
             //if (window.Visibility == Visibility.Collapsed || window.Visibility == Visibility.Hidden)
             //{
@@ -89,7 +89,10 @@ namespace AIStudio.Wpf.Client
 
         protected override void InitializeShell(Window shell)
         {
+#if DEBUG
+#else
             UpdateHelper.CheckUpdate();
+#endif
 
             LoginWindow login = new LoginWindow();
             if (login.ShowDialog() == false)
