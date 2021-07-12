@@ -1,13 +1,20 @@
-﻿using AIStudio.Core.Validation;
-using AIStudio.Wpf.EFCore.Models;
+﻿using AIStudio.Wpf.EFCore.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Reflection;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace AIStudio.Wpf.EFCore.DTOModels
 {
     public partial class Base_DbLinkDTO : Base_DbLink, INotifyPropertyChanged, IIsChecked
     {
+        [Required(ErrorMessage = "必填")]
+        public new string LinkName { get; set; }
+        [Required(ErrorMessage = "必填")]
+        public new string ConnectionStr { get; set; }
+        [Required(ErrorMessage = "必填")]
+        public new string DbType { get; set; }
+
         private bool isChecked;
         public bool IsChecked
         {
@@ -37,43 +44,33 @@ namespace AIStudio.Wpf.EFCore.DTOModels
 
     public partial class Base_DbLinkDTO : IDataErrorInfo
     {
-        class Base_DbLinkDTOMetadata
+
+        public string this[string columnName]
         {
-            [StringNullValidation(ErrorMessage = "必填")]
-            public string LinkName { get; set; }
-            [StringNullValidation(ErrorMessage = "必填")]
-            public string ConnectionStr { get; set; }
-            [StringNullValidation(ErrorMessage = "必填")]
-            public string DbType { get; set; }
+            get
+            {
+                List<ValidationResult> validationResults = new List<ValidationResult>();
+
+                bool result = Validator.TryValidateProperty(
+                    GetType().GetProperty(columnName).GetValue(this),
+                    new ValidationContext(this)
+                    {
+                        MemberName = columnName
+                    },
+                    validationResults);
+
+                if (result)
+                    return null;
+
+                return validationResults.First().ErrorMessage;
+            }
         }
 
         public string Error
         {
             get
             {
-                string error = null;
-                PropertyInfo[] propertys = this.GetType().GetProperties();
-                foreach (PropertyInfo pinfo in propertys)
-                {
-                    //循环遍历属性
-                    if (pinfo.CanRead && pinfo.CanWrite)
-                    {
-                        error = this.ValidateProperty<Base_DbLinkDTOMetadata>(pinfo.Name);
-                        if (error != null && error.Length > 0)
-                        {
-                            break;
-                        }
-                    }
-                }
-                return error;
-            }
-        }
-
-        public string this[string columnName]
-        {
-            get
-            {
-                return this.ValidateProperty<Base_DbLinkDTOMetadata>(columnName);
+                return null;
             }
         }
     }   

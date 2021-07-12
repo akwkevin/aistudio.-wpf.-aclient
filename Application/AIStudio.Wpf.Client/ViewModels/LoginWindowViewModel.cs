@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using AIStudio.Core.Models;
 using AIStudio.Core.Validation;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Client.Views;
@@ -7,8 +8,10 @@ using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -16,7 +19,7 @@ using System.Windows.Input;
 
 namespace AIStudio.Wpf.Client.ViewModels
 {
-    public partial class LoginWindowViewModel : BindableBase
+    public partial class LoginWindowViewModel : DataErrorInfoBindableBase
     {
         private ObservableCollection<LoginInfo> _loginInfo;
         public ObservableCollection<LoginInfo> LoginInfo
@@ -59,6 +62,7 @@ namespace AIStudio.Wpf.Client.ViewModels
         }
 
         private string _userName;
+        [Required(ErrorMessage = "用户名不能为空")]
         public string UserName
         {
             get { return _userName; }
@@ -72,6 +76,7 @@ namespace AIStudio.Wpf.Client.ViewModels
         }
 
         private string _password;
+        [Required(ErrorMessage = "密码不能为空")]
         public string Password
         {
             get { return _password; }
@@ -266,44 +271,5 @@ namespace AIStudio.Wpf.Client.ViewModels
         }
     }
 
-    public partial class LoginWindowViewModel : IDataErrorInfo
-    {
-        class LoginWindowViewModelMetadata
-        {
-            [StringNullValidation(ErrorMessage = "用户名不能为空")]
-            public string UserName { get; set; }
-            [StringNullValidation(ErrorMessage = "密码不能为空")]
-            public string Password { get; set; }
-        }
-
-        public string Error
-        {
-            get
-            {
-                string error = null;
-                PropertyInfo[] propertys = this.GetType().GetProperties();
-                foreach (PropertyInfo pinfo in propertys)
-                {
-                    //循环遍历属性
-                    if (pinfo.CanRead && pinfo.CanWrite)
-                    {
-                        error = this.ValidateProperty<LoginWindowViewModelMetadata>(pinfo.Name);
-                        if (error != null && error.Length > 0)
-                        {
-                            break;
-                        }
-                    }
-                }
-                return error;
-            }
-        }
-
-        public string this[string columnName]
-        {
-            get
-            {
-                return this.ValidateProperty<LoginWindowViewModelMetadata>(columnName);
-            }
-        }
-    }
+   
 }

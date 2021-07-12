@@ -1,13 +1,18 @@
-﻿using AIStudio.Core.Validation;
-using AIStudio.Wpf.EFCore.Models;
+﻿using AIStudio.Wpf.EFCore.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Reflection;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace AIStudio.Wpf.EFCore.DTOModels
 {
     public partial class OA_UserFormDTO : OA_UserForm, INotifyPropertyChanged, IIsChecked
     {
+        [Required(ErrorMessage = "摘要不能为空")]
+        public new string Text { get; set; }
+        [Required(ErrorMessage = "申请人不能为空")]
+        public new string ApplicantUserId { get; set; }
+
         private bool _isChecked;
         public bool IsChecked
         {
@@ -78,41 +83,32 @@ namespace AIStudio.Wpf.EFCore.DTOModels
 
     public partial class OA_UserFormDTO : IDataErrorInfo
     {
-        class OA_UserFormDTOMetadata
+        public string this[string columnName]
         {
-            [StringNullValidation(ErrorMessage = "摘要不能为空")]
-            public string Text { get; set; }
-            [StringNullValidation(ErrorMessage = "申请人不能为空")]
-            public string ApplicantUserId { get; set; }
+            get
+            {
+                List<ValidationResult> validationResults = new List<ValidationResult>();
+
+                bool result = Validator.TryValidateProperty(
+                    GetType().GetProperty(columnName).GetValue(this),
+                    new ValidationContext(this)
+                    {
+                        MemberName = columnName
+                    },
+                    validationResults);
+
+                if (result)
+                    return null;
+
+                return validationResults.First().ErrorMessage;
+            }
         }
 
         public string Error
         {
             get
             {
-                string error = null;
-                PropertyInfo[] propertys = this.GetType().GetProperties();
-                foreach (PropertyInfo pinfo in propertys)
-                {
-                    //循环遍历属性
-                    if (pinfo.CanRead && pinfo.CanWrite)
-                    {
-                        error = this.ValidateProperty<OA_UserFormDTOMetadata>(pinfo.Name);
-                        if (error != null && error.Length > 0)
-                        {
-                            break;
-                        }
-                    }
-                }
-                return error;
-            }
-        }
-
-        public string this[string columnName]
-        {
-            get
-            {
-                return this.ValidateProperty<OA_UserFormDTOMetadata>(columnName);
+                return null;
             }
         }
     }   

@@ -1,14 +1,21 @@
-﻿using AIStudio.Core.Validation;
-using AIStudio.Core;
+﻿using AIStudio.Core;
 using AIStudio.Wpf.EFCore.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Reflection;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace AIStudio.Wpf.EFCore.DTOModels
 {
     public partial class OA_DefFormDTO : OA_DefForm, INotifyPropertyChanged, IIsChecked
     {
+        [Required(ErrorMessage = "标题不能为空")]
+        public new string Name { get; set; }
+        [Required(ErrorMessage = "分类不能为空")]
+        public new string Type { get; set; }
+        [Required(ErrorMessage = "摘要不能为空")]
+        public new string Text { get; set; }
+
         private bool _isChecked;
         public bool IsChecked
         {
@@ -68,44 +75,33 @@ namespace AIStudio.Wpf.EFCore.DTOModels
 
     public partial class OA_DefFormDTO : IDataErrorInfo
     {
-        class OA_DefFormDTOMetadata
-        {
-            [StringNullValidation(ErrorMessage = "标题不能为空")]
-            public string Name { get; set; }
-            [StringNullValidation(ErrorMessage = "分类不能为空")]
-            public string Type { get; set; }
 
-            [StringNullValidation(ErrorMessage = "摘要不能为空")]
-            public string Text { get; set; }
+        public string this[string columnName]
+        {
+            get
+            {
+                List<ValidationResult> validationResults = new List<ValidationResult>();
+
+                bool result = Validator.TryValidateProperty(
+                    GetType().GetProperty(columnName).GetValue(this),
+                    new ValidationContext(this)
+                    {
+                        MemberName = columnName
+                    },
+                    validationResults);
+
+                if (result)
+                    return null;
+
+                return validationResults.First().ErrorMessage;
+            }
         }
 
         public string Error
         {
             get
             {
-                string error = null;
-                PropertyInfo[] propertys = this.GetType().GetProperties();
-                foreach (PropertyInfo pinfo in propertys)
-                {
-                    //循环遍历属性
-                    if (pinfo.CanRead && pinfo.CanWrite)
-                    {
-                        error = this.ValidateProperty<OA_DefFormDTOMetadata>(pinfo.Name);
-                        if (error != null && error.Length > 0)
-                        {
-                            break;
-                        }
-                    }
-                }
-                return error;
-            }
-        }
-
-        public string this[string columnName]
-        {
-            get
-            {
-                return this.ValidateProperty<OA_DefFormDTOMetadata>(columnName);
+                return null;
             }
         }
     }

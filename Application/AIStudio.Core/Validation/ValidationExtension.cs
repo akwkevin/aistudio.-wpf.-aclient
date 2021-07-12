@@ -10,6 +10,27 @@ namespace AIStudio.Core.Validation
 {
     public static class ValidationExtension
     {
+        /// <summary>
+        /// 验证数据的方法
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="results"></param>
+        /// <returns></returns>
+        public static bool Validate<T>(this T obj, out ICollection<ValidationResult> results)
+        {
+            results = new List<ValidationResult>();
+
+            return Validator.TryValidateObject(obj, new ValidationContext(obj), results, true);
+        }
+
+        /// <summary>
+        /// 这个方法在netcore不生效
+        /// </summary>
+        /// <typeparam name="MetadataType"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
         public static string ValidateProperty<MetadataType>(this object obj, string propertyName)
         {
             if (string.IsNullOrEmpty(propertyName))
