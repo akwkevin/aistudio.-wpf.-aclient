@@ -1,8 +1,8 @@
-﻿using AIStudio.Core.Validation;
-using AIStudio.Wpf.EFCore.Models;
+﻿using AIStudio.Wpf.EFCore.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Reflection;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace AIStudio.Wpf.EFCore.DTOModels
 {
@@ -43,38 +43,32 @@ namespace AIStudio.Wpf.EFCore.DTOModels
 
     public partial class D_UserMessageDTO : IDataErrorInfo
     {
-        class D_UserMessageDTOMetadata
+        public string this[string columnName]
         {
+            get
+            {
+                List<ValidationResult> validationResults = new List<ValidationResult>();
 
+                bool result = Validator.TryValidateProperty(
+                    GetType().GetProperty(columnName).GetValue(this),
+                    new ValidationContext(this)
+                    {
+                        MemberName = columnName
+                    },
+                    validationResults);
+
+                if (result)
+                    return null;
+
+                return validationResults.First().ErrorMessage;
+            }
         }
 
         public string Error
         {
             get
             {
-                string error = null;
-                PropertyInfo[] propertys = this.GetType().GetProperties();
-                foreach (PropertyInfo pinfo in propertys)
-                {
-                    //循环遍历属性
-                    if (pinfo.CanRead && pinfo.CanWrite)
-                    {
-                        error = this.ValidateProperty<D_UserMessageDTOMetadata>(pinfo.Name);
-                        if (error != null && error.Length > 0)
-                        {
-                            break;
-                        }
-                    }
-                }
-                return error;
-            }
-        }
-
-        public string this[string columnName]
-        {
-            get
-            {
-                return this.ValidateProperty<D_UserMessageDTOMetadata>(columnName);
+                return null;
             }
         }
     }

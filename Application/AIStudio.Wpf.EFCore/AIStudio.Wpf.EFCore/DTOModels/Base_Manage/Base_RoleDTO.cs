@@ -1,13 +1,16 @@
-﻿using AIStudio.Core.Validation;
-using AIStudio.Wpf.EFCore.Models;
+﻿using AIStudio.Wpf.EFCore.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Reflection;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace AIStudio.Wpf.EFCore.DTOModels
 {
     public partial class Base_RoleDTO : Base_Role, INotifyPropertyChanged, IIsChecked
     {
+        [Required(ErrorMessage = "角色名不能为空")]
+        public new string RoleName { get; set; }
+
         private bool isChecked;
         public bool IsChecked
         {
@@ -40,39 +43,32 @@ namespace AIStudio.Wpf.EFCore.DTOModels
 
     public partial class Base_RoleDTO : IDataErrorInfo
     {
-        class Base_RoleDTOMetadata
+        public string this[string columnName]
         {
-            [StringNullValidation(ErrorMessage = "角色名不能为空")]
-            public string RoleName { get; set; }
+            get
+            {
+                List<ValidationResult> validationResults = new List<ValidationResult>();
+
+                bool result = Validator.TryValidateProperty(
+                    GetType().GetProperty(columnName).GetValue(this),
+                    new ValidationContext(this)
+                    {
+                        MemberName = columnName
+                    },
+                    validationResults);
+
+                if (result)
+                    return null;
+
+                return validationResults.First().ErrorMessage;
+            }
         }
 
         public string Error
         {
             get
             {
-                string error = null;
-                PropertyInfo[] propertys = this.GetType().GetProperties();
-                foreach (PropertyInfo pinfo in propertys)
-                {
-                    //循环遍历属性
-                    if (pinfo.CanRead && pinfo.CanWrite)
-                    {
-                        error = this.ValidateProperty<Base_RoleDTOMetadata>(pinfo.Name);
-                        if (error != null && error.Length > 0)
-                        {
-                            break;
-                        }
-                    }
-                }
-                return error;
-            }
-        }
-
-        public string this[string columnName]
-        {
-            get
-            {
-                return this.ValidateProperty<Base_RoleDTOMetadata>(columnName);
+                return null;
             }
         }
     }

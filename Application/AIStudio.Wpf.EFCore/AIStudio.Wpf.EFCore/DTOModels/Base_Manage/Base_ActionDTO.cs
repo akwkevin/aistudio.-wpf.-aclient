@@ -1,14 +1,16 @@
-﻿using AIStudio.Core.Validation;
-using AIStudio.Wpf.EFCore.Models;
+﻿using AIStudio.Wpf.EFCore.Models;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Reflection;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace AIStudio.Wpf.EFCore.DTOModels
 {
     public partial class Base_ActionDTO : Base_Action, INotifyPropertyChanged, IIsChecked
     {
+        [Required(ErrorMessage = "请输入菜单名")]
+        public new string Name { get; set; }
+
         private bool isChecked;
         public bool IsChecked
         {
@@ -50,46 +52,37 @@ namespace AIStudio.Wpf.EFCore.DTOModels
                 }
             }
         }
-
     }
-    public partial class Base_ActionDTO : IDataErrorInfo, IIsChecked
+
+    public partial class Base_ActionDTO : IDataErrorInfo
     {
-        class Base_ActionDTOMetadata
+        public string this[string columnName]
         {
-            [StringNullValidation(ErrorMessage = "请输入菜单名")]
-            public string Name { get; set; }
+            get
+            {
+                List<ValidationResult> validationResults = new List<ValidationResult>();
+
+                bool result = Validator.TryValidateProperty(
+                    GetType().GetProperty(columnName).GetValue(this),
+                    new ValidationContext(this)
+                    {
+                        MemberName = columnName
+                    },
+                    validationResults);
+
+                if (result)
+                    return null;
+
+                return validationResults.First().ErrorMessage;
+            }
         }
 
         public string Error
         {
             get
             {
-                string error = null;
-                PropertyInfo[] propertys = this.GetType().GetProperties();
-                foreach (PropertyInfo pinfo in propertys)
-                {
-                    //循环遍历属性
-                    if (pinfo.CanRead && pinfo.CanWrite)
-                    {
-                        error = this.ValidateProperty<Base_ActionDTOMetadata>(pinfo.Name);
-                        if (error != null && error.Length > 0)
-                        {
-                            break;
-                        }
-                    }
-                }
-                return error;
-            }
-        }
-
-        public string this[string columnName]
-        {
-            get
-            {
-                return this.ValidateProperty<Base_ActionDTOMetadata>(columnName);
+                return null;
             }
         }
     }
-
-
 }

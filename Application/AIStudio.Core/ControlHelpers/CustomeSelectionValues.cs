@@ -77,7 +77,6 @@ namespace AIStudio.Core
                     }
                 }
             }
-
         }
 
 

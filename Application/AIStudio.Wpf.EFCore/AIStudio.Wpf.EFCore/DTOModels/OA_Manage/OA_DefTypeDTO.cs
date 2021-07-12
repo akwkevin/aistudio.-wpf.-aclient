@@ -1,13 +1,18 @@
-﻿using AIStudio.Core.Validation;
-using AIStudio.Wpf.EFCore.Models;
-using System.Collections.ObjectModel;
+﻿using AIStudio.Wpf.EFCore.Models;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.Reflection;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace AIStudio.Wpf.EFCore.DTOModels
 {
     public partial class OA_DefTypeDTO : OA_DefType, INotifyPropertyChanged, IIsChecked
     {
+        [Required(ErrorMessage = "字段名称不能为空")]
+        public new string Name { get; set; }
+        [Required(ErrorMessage = "类型不能为空")]
+        public new string Type { get; set; }
+
         private bool _isChecked;
         public bool IsChecked
         {
@@ -37,41 +42,32 @@ namespace AIStudio.Wpf.EFCore.DTOModels
 
     public partial class OA_DefTypeDTO : IDataErrorInfo
     {
-        class OA_DefTypeDTOMetadata
+        public string this[string columnName]
         {
-            [StringNullValidation(ErrorMessage = "字段名称不能为空")]
-            public string Name { get; set; }
-            [StringNullValidation(ErrorMessage = "类型不能为空")]
-            public string Type { get; set; }
+            get
+            {
+                List<ValidationResult> validationResults = new List<ValidationResult>();
+
+                bool result = Validator.TryValidateProperty(
+                    GetType().GetProperty(columnName).GetValue(this),
+                    new ValidationContext(this)
+                    {
+                        MemberName = columnName
+                    },
+                    validationResults);
+
+                if (result)
+                    return null;
+
+                return validationResults.First().ErrorMessage;
+            }
         }
 
         public string Error
         {
             get
             {
-                string error = null;
-                PropertyInfo[] propertys = this.GetType().GetProperties();
-                foreach (PropertyInfo pinfo in propertys)
-                {
-                    //循环遍历属性
-                    if (pinfo.CanRead && pinfo.CanWrite)
-                    {
-                        error = this.ValidateProperty<OA_DefTypeDTOMetadata>(pinfo.Name);
-                        if (error != null && error.Length > 0)
-                        {
-                            break;
-                        }
-                    }
-                }
-                return error;
-            }
-        }
-
-        public string this[string columnName]
-        {
-            get
-            {
-                return this.ValidateProperty<OA_DefTypeDTOMetadata>(columnName);
+                return null;
             }
         }
     }
