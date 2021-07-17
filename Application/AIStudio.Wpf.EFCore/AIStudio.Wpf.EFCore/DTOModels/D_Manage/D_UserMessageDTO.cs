@@ -1,4 +1,5 @@
-﻿using AIStudio.Wpf.EFCore.Models;
+﻿using AIStudio.Core.Validation;
+using AIStudio.Wpf.EFCore.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -68,7 +69,10 @@ namespace AIStudio.Wpf.EFCore.DTOModels
         {
             get
             {
-                return null;
+                ICollection<ValidationResult> results;
+                this.Validate(out results);
+
+                return results.FirstOrDefault()?.ErrorMessage;
             }
         }
     }
