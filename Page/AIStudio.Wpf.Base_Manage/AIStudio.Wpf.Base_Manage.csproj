@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net472</TargetFrameworks>
+    <TargetFrameworks>net5-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
@@ -10,18 +10,6 @@
     <ProjectReference Include="..\..\Application\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj">
       <Project>{0BBB5043-9C0D-45A4-8A83-61408DF8CB1A}</Project>
       <Name>AIStudio.Wpf.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Others\Prism8\Prism.Core\Prism.Core.csproj">
-      <Project>{04cf1e4a-f0c2-4190-add9-14e661a196f4}</Project>
-      <Name>Prism.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Others\Prism8\Wpf\Prism.Unity.Wpf\Prism.Unity.Wpf.csproj">
-      <Project>{3f90544d-b6de-41c9-9059-104222a7db55}</Project>
-      <Name>Prism.Unity.Wpf</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Others\Prism8\Wpf\Prism.Wpf\Prism.Wpf.csproj">
-      <Project>{1a1061f3-0c2d-4506-ae41-d0ca0cc7276d}</Project>
-      <Name>Prism.Wpf</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj">
       <Project>{52A5187E-1697-4972-BBBB-6298D71E0B09}</Project>

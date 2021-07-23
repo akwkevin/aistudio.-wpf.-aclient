@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net461</TargetFrameworks>
+    <TargetFrameworks>net5-windows</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="NLog" Version="4.7.2" />
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
     <PackageReference Include="WebSocket4Net" Version="0.15.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Others\Prism8\Prism.Core\Prism.Core.csproj" />
     <ProjectReference Include="..\AIStudio.AOP\AIStudio.AOP.csproj" />
     <ProjectReference Include="..\AIStudio.Core\AIStudio.Core.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.EFCore\AIStudio.Wpf.EFCore\AIStudio.Wpf.EFCore.csproj" />

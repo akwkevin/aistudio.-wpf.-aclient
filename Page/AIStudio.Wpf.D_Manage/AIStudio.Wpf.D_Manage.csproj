@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net472</TargetFrameworks>
+    <TargetFrameworks>net5-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
@@ -10,9 +10,6 @@
     <ProjectReference Include="..\..\Application\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
     <ProjectReference Include="..\..\Application\AIStudio.Wpf.LocalConfiguration\AIStudio.Wpf.LocalConfiguration.csproj" />
     <ProjectReference Include="..\..\Application\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj" />
-    <ProjectReference Include="..\..\Others\Prism8\Prism.Core\Prism.Core.csproj" />
-    <ProjectReference Include="..\..\Others\Prism8\Wpf\Prism.Unity.Wpf\Prism.Unity.Wpf.csproj" />
-    <ProjectReference Include="..\..\Others\Prism8\Wpf\Prism.Wpf\Prism.Wpf.csproj" />
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
   </ItemGroup>

@@ -7,9 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Prism8\Prism.Core\Prism.Core.csproj" />
-    <ProjectReference Include="..\..\Prism8\Wpf\Prism.Unity.Wpf\Prism.Unity.Wpf.csproj" />
-    <ProjectReference Include="..\..\Prism8\Wpf\Prism.Wpf\Prism.Wpf.csproj" />
     <ProjectReference Include="..\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj" />
   </ItemGroup>
 
