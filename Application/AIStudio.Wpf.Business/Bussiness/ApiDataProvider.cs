@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using AIStudio.Core.Models;
 using AIStudio.Wpf.Service.AppClient;
 using AIStudio.Wpf.Service.AppClient.HttpClients;
 using AIStudio.Wpf.Service.AppClient.Models;
