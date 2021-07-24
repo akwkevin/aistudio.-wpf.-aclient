@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AIStudio.Wpf.Service.AppClient.Models
+namespace AIStudio.Core.Models
 {
     public enum ResponseCode
     {
