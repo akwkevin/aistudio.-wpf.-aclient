@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AIStudio.Wpf.Home.Views
+namespace AIStudio.Wpf.BasePage.Views
 {
     /// <summary>
     /// PromptUserControl.xaml 的交互逻辑

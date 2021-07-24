@@ -10,7 +10,7 @@ using System.Linq;
 using System.Windows.Input;
 using Util.Controls;
 
-namespace AIStudio.Wpf.Home.ViewModels
+namespace AIStudio.Wpf.LayoutPage.ViewModels
 {
     class _3DShowcaseEditViewModel : Prism.Mvvm.BindableBase
     {

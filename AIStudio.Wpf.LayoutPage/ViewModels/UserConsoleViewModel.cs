@@ -1,30 +1,27 @@
 ﻿using AIStudio.Core;
+using AIStudio.Core.Models;
+using AIStudio.Wpf.BasePage.Models;
+using AIStudio.Wpf.BasePage.ViewModels;
+using AIStudio.Wpf.BasePage.Views;
+using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Home.Views;
 using AIStudio.Wpf.LocalConfiguration;
 using Dataforge.PrismAvalonExtensions.ViewModels;
 using Prism.Commands;
-using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Util.Controls;
 using Util.Panels;
 using Util.Panels.Controls;
-using Newtonsoft.Json;
-using AIStudio.Core.Models;
-using AIStudio.Wpf.Business;
-using AIStudio.Wpf.BasePage.ViewModels;
-using AIStudio.Wpf.BasePage.Models;
 
-namespace AIStudio.Wpf.Home.ViewModels
+namespace AIStudio.Wpf.LayoutPage.ViewModels
 {
     class UserConsoleViewModel : BasePageViewModel
     {   

@@ -1,15 +1,9 @@
 ﻿using AIStudio.Wpf.BasePage.Models;
-using AIStudio.Wpf.Home.ViewModels;
-using Dataforge.PrismAvalonExtensions.ViewModels;
-using Prism.Mvvm;
-using Prism.Regions;
-using System.IO;
+using AIStudio.Wpf.LayoutPage.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Markup;
 using System.Windows.Media;
-using System.Xml;
 using Util._3DWall.Wall;
 
 namespace AIStudio.Wpf.Home.Views

@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Documents;
 
-namespace AIStudio.Wpf.OA_Manage.ViewModels
+namespace AIStudio.Wpf.BasePage.ViewModels
 {
     public class BaseDocumentRenderer : IDocumentRenderer
     {

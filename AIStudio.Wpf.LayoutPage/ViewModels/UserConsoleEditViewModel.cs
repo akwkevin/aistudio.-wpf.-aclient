@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Util.Controls;
 
-namespace AIStudio.Wpf.Home.ViewModels
+namespace AIStudio.Wpf.LayoutPage.ViewModels
 {
     class UserConsoleEditViewModel : Prism.Mvvm.BindableBase
     {
