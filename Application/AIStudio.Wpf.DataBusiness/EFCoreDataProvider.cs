@@ -1,5 +1,6 @@
 ﻿using AIStudio.AOP;
 using AIStudio.Core;
+using AIStudio.Core.Models;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.DataBusiness.Base_Manage;
 using AIStudio.Wpf.Service.AppClient.Models;
