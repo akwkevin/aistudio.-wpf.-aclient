@@ -344,7 +344,7 @@
                         <MenuItem Icon="&#xE633;" Header="{DynamicResource 系统设置}" Command="{Binding SystemManageCommand}" CommandParameter="Setting" Style="{StaticResource TransparentHeaderMenuItem}"/>
                         <MenuItem Icon="&#xe61b;" Header="本地日志" Command="{Binding SystemManageCommand}" CommandParameter="Logs" Style="{StaticResource TransparentHeaderMenuItem}"/>
                         <MenuItem Icon="&#xe64a;" Header="修改密码" Command="{Binding SystemManageCommand}" CommandParameter="EditPwd" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                        <Separator Style="{StaticResource HorizontalSeparatorStyle}"/>
+                        <Separator Background="{DynamicResource DynamicResource MahApps.Brushes.TextBox.Border.Focus}"/>
                         <MenuItem Icon="&#xe657;" Header="问题反馈" Style="{StaticResource TransparentHeaderMenuItem}"/>
                         <MenuItem Icon="&#xe61e;" Header="技术支持" Style="{StaticResource TransparentHeaderMenuItem}"/>
                         <MenuItem Icon="&#xe60e;" Header="帮助" Command="{Binding SystemManageCommand}" CommandParameter="Helper" Style="{StaticResource TransparentHeaderMenuItem}"/>

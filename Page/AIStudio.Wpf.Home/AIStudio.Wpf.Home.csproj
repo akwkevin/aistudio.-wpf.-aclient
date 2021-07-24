@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AIStudio.Wpf.LayoutPage\AIStudio.Wpf.LayoutPage.csproj" />
     <ProjectReference Include="..\..\Application\AIStudio.Core\AIStudio.Core.csproj" />
     <ProjectReference Include="..\..\Application\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
     <ProjectReference Include="..\..\Application\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj" />
@@ -21,8 +20,8 @@
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Xceed.Wpf.AvalonDock\Xceed.Wpf.AvalonDock.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.Base_Manage\AIStudio.Wpf.Base_Manage.csproj" />
-    <ProjectReference Include="..\AIStudio.Wpf.DemoPage\AIStudio.Wpf.DemoPage.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.D_Manage\AIStudio.Wpf.D_Manage.csproj" />
+    <ProjectReference Include="..\AIStudio.Wpf.LayoutPage\AIStudio.Wpf.LayoutPage.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.OA_Manage\AIStudio.Wpf.OA_Manage.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.Quartz_Manage\AIStudio.Wpf.Quartz_Manage.csproj" />
   </ItemGroup>

@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:util="https://astudio.github.io/utilcontrol" 
-             xmlns:utilhandy="https://astudio.github.io/utilcontrol.handy"
              xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:AIStudio.Wpf.D_Manage.Views" 
@@ -57,10 +56,7 @@
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Image x:Name="img" Grid.RowSpan="2" Width="30" Height="30" Margin="3" Stretch="Fill" util:ImageProperty.CornerRadius="2" 
-                                    Source="{Binding Avatar,Converter={converter2:StringToAvatarSourceConverter}}" >
-                                <Image.Effect>
-                                    <utilhandy:GrayScaleEffect/>
-                                </Image.Effect>
+                                    Source="{Binding Avatar,Converter={converter2:StringToAvatarSourceConverter}}" core:ImageAttached.Gray8="True">        
                             </Image>
                             <TextBlock Grid.Column="1" Text="{Binding UserName}" ></TextBlock>
                             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding LastMessage}" TextTrimming="CharacterEllipsis"></TextBlock>
@@ -68,7 +64,7 @@
                         </Grid>
                         <DataTemplate.Triggers>
                             <DataTrigger Binding="{Binding Online}" Value="True">
-                                <Setter TargetName="img" Property="Effect" Value="{x:Null}"/>
+                                <Setter TargetName="img" Property="core:ImageAttached.Gray8" Value="false"/>
                             </DataTrigger>
                         </DataTemplate.Triggers>
                     </DataTemplate>

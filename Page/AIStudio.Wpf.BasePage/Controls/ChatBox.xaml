@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:util="https://astudio.github.io/utilcontrol"           
-             xmlns:interactivity="https://astudio.github.io/utilcontrol.handy"
              xmlns:controls="clr-namespace:AIStudio.Wpf.BasePage.Controls"
              xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
@@ -193,11 +192,11 @@
                         Style="{StaticResource ChatBubbleBaseStyle}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            <interactivity:Interaction.Triggers>
-                <interactivity:RoutedEventTrigger RoutedEvent="controls:ChatBubble.Selected">
-                    <interactivity:EventToCommand Command="{Binding ReadMessageCmd,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}" PassEventArgsToCommand="True" />
-                </interactivity:RoutedEventTrigger>
-            </interactivity:Interaction.Triggers>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Selected">
+                    <i:InvokeCommandAction Command="{Binding ReadMessageCmd,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}" PassEventArgsToCommand="True" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </ListBox>
 
         <ItemsControl Grid.Row="1"

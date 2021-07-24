@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="AIStudio.Wpf.OA_Manage.Views"
              xmlns:util="https://astudio.github.io/utilcontrol"
-             xmlns:utilhandy="https://astudio.github.io/utilcontrol.handy"
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
              xmlns:converter="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
              xmlns:converter2="clr-namespace:AIStudio.Wpf.BasePage.Converters;assembly=AIStudio.Wpf.BasePage"
@@ -29,8 +28,8 @@
             <Border Grid.Row="1" VerticalAlignment="Bottom" BorderBrush="{DynamicResource GrayBrush4}" SnapsToDevicePixels="True" BorderThickness="0,1,0,1" >
                 <ScrollViewer>
                     <StackPanel DataContext="{Binding Data}" VerticalAlignment="Center" Margin="10,0">
-                        <utilhandy:StepBar UseItemStatus="True" IsDot="True" ItemsSource="{Binding Steps}" Visibility="{Binding Steps.Count, Converter={converter:IntVisibilityConverter}}">
-                            <utilhandy:StepBar.ItemTemplate>
+                        <util:StepBar UseItemStatus="True" IsDot="True" ItemsSource="{Binding Steps}" Visibility="{Binding Steps.Count, Converter={converter:IntVisibilityConverter}}">
+                            <util:StepBar.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel>
                                         <TextBlock
@@ -43,13 +42,13 @@
                                         </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
-                            </utilhandy:StepBar.ItemTemplate>
-                            <utilhandy:StepBar.ItemContainerStyle>
-                                <Style TargetType="{x:Type utilhandy:StepBarItem}" BasedOn="{StaticResource StepBarItemHorizontalTop}">
+                            </util:StepBar.ItemTemplate>
+                            <util:StepBar.ItemContainerStyle>
+                                <Style TargetType="{x:Type util:StepBarItem}" BasedOn="{StaticResource StepBarItemHorizontalTop}">
                                     <Setter Property="Status" Value="{Binding Status,Converter={converter2:StepStatusConverter},Mode=OneWay}" />
                                 </Style>
-                            </utilhandy:StepBar.ItemContainerStyle>
-                        </utilhandy:StepBar>
+                            </util:StepBar.ItemContainerStyle>
+                        </util:StepBar>
                         <StackPanel Orientation="Horizontal">
                             <HeaderedContentControl Width="360" Style="{StaticResource LeftFormItemStyle}">
                                 <HeaderedContentControl.Header>

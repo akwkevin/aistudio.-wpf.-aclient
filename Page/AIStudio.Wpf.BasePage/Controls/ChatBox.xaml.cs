@@ -8,7 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Util.Controls;
-using Util.Controls.Handy.Tools;
 
 namespace AIStudio.Wpf.BasePage.Controls
 {
@@ -176,11 +175,7 @@ namespace AIStudio.Wpf.BasePage.Controls
             {
                 if (info.Type == (int)ChatMessageType.Image)
                 {
-                    new Util.Controls.Handy.Windows.ImageBrowser(new Uri(info.Text))
-                    {
-                        Owner = WindowHelper.GetActiveWindow()
-                    }.Show();
-                    //System.Diagnostics.Process.Start("explorer.exe", info.Text);
+                    System.Diagnostics.Process.Start("explorer.exe", info.Text);
                 }
                 else if (info.Type == (int)ChatMessageType.Audio)
                 {

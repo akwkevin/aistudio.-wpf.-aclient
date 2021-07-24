@@ -216,20 +216,6 @@ namespace AIStudio.Wpf.Home.ViewModels
                 subcode.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1 });
                 code.AddChildren(subcode);
             }
-
-            var demoinfo = DemoPage.Service.DataService.GetDemoInfo();
-            foreach (var info in demoinfo)
-            {
-                subcode = new AMenuItem() { Glyph = "code", Label = info.Title, Code = "Demo", Type = 0 };
-                code.AddChildren(subcode);
-
-                foreach (var item in info.DemoItemList)
-                {
-                    var aMenuItem = new AMenuItem() { Label = item.Name, Code = $"AIStudio.Wpf.DemoPage.Views.{item.TargetCtlName}", Type = 1 };
-                    subcode.AddChildren(aMenuItem);
-                }
-            }
-
 #endif
             var tool = new AMenuItem() { Glyph = "tool", Label = "工具", Code = "Tool", Type = 0 };
             var screenshot = new AMenuItem() { Label = (string)Application.Current.Resources["截屏"], Code = "Screenshot", Type = 1 };
