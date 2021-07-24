@@ -1,4 +1,4 @@
-﻿using AIStudio.Wpf.BasePage.Models;
+﻿using AIStudio.Wpf.LayoutPage.Models;
 using AIStudio.Wpf.LayoutPage.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
@@ -6,7 +6,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using Util._3DWall.Wall;
 
-namespace AIStudio.Wpf.Home.Views
+namespace AIStudio.Wpf.LayoutPage.Views
 {
     /// <summary>
     /// _3DShowcaseView.xaml 的交互逻辑

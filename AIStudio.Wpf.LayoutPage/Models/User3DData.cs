@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Controls;
 
-namespace AIStudio.Wpf.BasePage.Models
+namespace AIStudio.Wpf.LayoutPage.Models
 {
     [AutoMap(typeof(AMenuItem))]
     public class _3DItemData

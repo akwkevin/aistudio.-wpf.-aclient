@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows.Controls;
 using Util.Panels;
 
-namespace AIStudio.Wpf.BasePage.Models
+namespace AIStudio.Wpf.LayoutPage.Models
 {
     public class UserItemData : MDIItemData
     {

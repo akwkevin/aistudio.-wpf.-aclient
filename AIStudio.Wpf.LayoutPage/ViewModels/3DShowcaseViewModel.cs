@@ -1,10 +1,10 @@
 ﻿using AIStudio.Core;
 using AIStudio.Core.Models;
-using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.BasePage.Views;
 using AIStudio.Wpf.Business;
-using AIStudio.Wpf.Home.Views;
+using AIStudio.Wpf.LayoutPage.Models;
+using AIStudio.Wpf.LayoutPage.Views;
 using AIStudio.Wpf.LocalConfiguration;
 using Dataforge.PrismAvalonExtensions.ViewModels;
 using Prism.Commands;

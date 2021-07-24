@@ -171,11 +171,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Aga.Diagrams.TestExtend" Version="1.2.0" />
     <PackageReference Include="AvalonEdit" Version="6.0.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="ShowMeTheXAML" Version="2.0.0" />
     <PackageReference Include="ShowMeTheXAML.MSBuild" Version="2.0.0" />
     <PackageReference Include="ShowMeTheXAML.AvalonEdit" Version="2.0.0" />
+    <PackageReference Include="Unofficial.Microsoft.mshtml.NetStandard" Version="7.0.3300.2" />
+    <PackageReference Include="WPF.HtmlEditor" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>

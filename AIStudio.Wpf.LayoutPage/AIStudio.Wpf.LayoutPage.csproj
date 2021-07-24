@@ -10,6 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Util.3DWall" Version="1.3.0" />
+    <PackageReference Include="Util.Panels" Version="1.2.8" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Application\AIStudio.Wpf.LocalConfiguration\AIStudio.Wpf.LocalConfiguration.csproj" />
     <ProjectReference Include="..\Page\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using Util.Controls;
 
-namespace AIStudio.Wpf.Home.Views
+namespace AIStudio.Wpf.LayoutPage.Views
 {
     /// <summary>
     /// ToolBarSetView.xaml 的交互逻辑

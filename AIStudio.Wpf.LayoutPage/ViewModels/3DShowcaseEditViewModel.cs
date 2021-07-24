@@ -1,6 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Core.Models;
-using AIStudio.Wpf.BasePage.Models;
+using AIStudio.Wpf.LayoutPage.Models;
 using AutoMapper;
 using Prism.Commands;
 using Prism.Ioc;
