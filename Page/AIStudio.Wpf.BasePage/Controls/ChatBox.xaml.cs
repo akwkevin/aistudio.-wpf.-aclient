@@ -1,4 +1,4 @@
-﻿using AIStudio.Wpf.EFCore.DTOModels;
+﻿using AIStudio.Wpf.Entity.DTOModels;
 using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;

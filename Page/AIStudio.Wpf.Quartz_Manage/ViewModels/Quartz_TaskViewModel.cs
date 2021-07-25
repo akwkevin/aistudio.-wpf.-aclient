@@ -1,6 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.BasePage.ViewModels;
-using AIStudio.Wpf.EFCore.DTOModels;
+using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.Quartz_Manage.Views;
 using Newtonsoft.Json;
 using System;

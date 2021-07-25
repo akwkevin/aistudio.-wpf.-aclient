@@ -1,11 +1,11 @@
 ﻿using AIStudio.Core.Validation;
-using AIStudio.Wpf.EFCore.Models;
+using AIStudio.Wpf.Entity.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace AIStudio.Wpf.EFCore.DTOModels
+namespace AIStudio.Wpf.Entity.DTOModels
 {
     public partial class %entityName%DTO : %entityName%, INotifyPropertyChanged, IIsChecked
     {

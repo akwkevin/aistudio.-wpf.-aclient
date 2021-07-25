@@ -11,10 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AIStudio.AOP\AIStudio.AOP.csproj" />
-    <ProjectReference Include="..\AIStudio.Core\AIStudio.Core.csproj" />
-    <ProjectReference Include="..\AIStudio.Wpf.EFCore\AIStudio.Wpf.EFCore\AIStudio.Wpf.EFCore.csproj" />
-    <ProjectReference Include="..\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj" />
+    <ProjectReference Include="..\..\Util\AIStudio.AOP\AIStudio.AOP.csproj" />
+    <ProjectReference Include="..\..\Util\AIStudio.Core\AIStudio.Core.csproj" />
+    <ProjectReference Include="..\AIStudio.Wpf.Entity\AIStudio.Wpf.Entity.csproj" />
+    <ProjectReference Include="..\api\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj" />
   </ItemGroup>
   
 </Project>

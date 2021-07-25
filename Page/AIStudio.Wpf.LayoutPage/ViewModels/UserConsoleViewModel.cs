@@ -5,7 +5,7 @@ using AIStudio.Wpf.BasePage.Views;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.LayoutPage.Models;
 using AIStudio.Wpf.LayoutPage.Views;
-using AIStudio.Wpf.LocalConfiguration;
+using AIStudio.LocalConfiguration;
 using Dataforge.PrismAvalonExtensions.ViewModels;
 using Prism.Commands;
 using Prism.Mvvm;

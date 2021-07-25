@@ -6,15 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Application\AIStudio.Core\AIStudio.Core.csproj" />
-    <ProjectReference Include="..\..\Application\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj">
-      <Project>{0BBB5043-9C0D-45A4-8A83-61408DF8CB1A}</Project>
-      <Name>AIStudio.Wpf.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Others\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj">
-      <Project>{52A5187E-1697-4972-BBBB-6298D71E0B09}</Project>
-      <Name>Dataforge.PrismAvalonExtensions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
   </ItemGroup>
 

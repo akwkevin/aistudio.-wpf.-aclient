@@ -4,7 +4,7 @@ using AIStudio.Core.Models;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.D_Manage.ViewModels;
-using AIStudio.Wpf.EFCore.DTOModels;
+using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.OA_Manage.ViewModels;
 using Newtonsoft.Json;
 using Prism.Commands;

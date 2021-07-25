@@ -136,7 +136,7 @@
         <File Id="AIStudio.Wpf.D_Manage.dll.config"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Debug\net472\AIStudio.Wpf.D_Manage.dll.config" />
         <File Id="AIStudio.Wpf.Home.dll"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Debug\net472\AIStudio.Wpf.Home.dll" />
         <File Id="AIStudio.Wpf.Home.dll.config"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Debug\net472\AIStudio.Wpf.Home.dll.config" />
-        <File Id="AIStudio.Wpf.LocalConfiguration.dll"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Debug\net472\AIStudio.Wpf.LocalConfiguration.dll" />
+        <File Id="AIStudio.LocalConfiguration.dll"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Debug\net472\AIStudio.LocalConfiguration.dll" />
         <File Id="AIStudio.Wpf.OA_Manage.dll"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Debug\net472\AIStudio.Wpf.OA_Manage.dll" />
         <File Id="AIStudio.Wpf.OA_Manage.dll.config"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Debug\net472\AIStudio.Wpf.OA_Manage.dll.config" />
         <File Id="AIStudio.Wpf.Quartz_Manage.dll"  Source="F:\AClient\Application\AIStudio.Wpf.Client\bin\Debug\net472\AIStudio.Wpf.Quartz_Manage.dll" />

@@ -24,9 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Others\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj" />
     <ProjectReference Include="..\..\Page\AIStudio.Wpf.Home\AIStudio.Wpf.Home.csproj" />
-    <ProjectReference Include="..\AIStudio.Wpf.DataBusiness\AIStudio.Wpf.DataBusiness.csproj" />
+    <ProjectReference Include="..\api\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

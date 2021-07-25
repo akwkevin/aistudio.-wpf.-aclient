@@ -18,14 +18,14 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">          
-            <TextBlock Style="{StaticResource TextBlockDefault}">类别</TextBlock>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+            <TextBlock Foreground="{DynamicResource MahApps.Brushes.Text}">类别</TextBlock>
             <ComboBox Width="100" Margin="3" ItemsSource="{Binding LogTypeList}" DisplayMemberPath="text" SelectedValuePath="value" Text="{Binding LogType}" util:ControlAttachProperty.CornerRadius="3"  Style="{StaticResource DefaultComboBox}"/>
-            <TextBlock Style="{StaticResource TextBlockDefault}">操作人</TextBlock>
+            <TextBlock Foreground="{DynamicResource MahApps.Brushes.Text}">操作人</TextBlock>
             <TextBox Width="100" Margin="3" Style="{StaticResource DefaultTextBox}" util:ControlAttachProperty.CornerRadius="3"  Text="{Binding OpUserName}"/>
-            <TextBlock Style="{StaticResource TextBlockDefault}">时间</TextBlock>
+            <TextBlock Foreground="{DynamicResource MahApps.Brushes.Text}">时间</TextBlock>
             <DatePicker Margin="3" SelectedDate="{Binding StartTime,Mode=TwoWay}"  util:ControlAttachProperty.CornerRadius="3" Style="{StaticResource DefaultDatePicker}"></DatePicker>
-            <TextBlock Style="{StaticResource TextBlockDefault}">-</TextBlock>
+            <TextBlock Foreground="{DynamicResource MahApps.Brushes.Text}">-</TextBlock>
             <DatePicker Margin="3" SelectedDate="{Binding EndTime,Mode=TwoWay}"  util:ControlAttachProperty.CornerRadius="3" Style="{StaticResource DefaultDatePicker}"></DatePicker>
             <util:SearchBar Width="220" Margin="4,3" 
                      util:ControlAttachProperty.Watermark="内容" 

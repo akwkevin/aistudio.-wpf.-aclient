@@ -1,10 +1,8 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Base_Manage.Views;
 using AIStudio.Wpf.BasePage.ViewModels;
-using AIStudio.Wpf.EFCore.DTOModels;
-using AIStudio.Wpf.Service.AppClient;
+using AIStudio.Wpf.Entity.DTOModels;
 using Newtonsoft.Json;
-using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -195,7 +193,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 savePath = Path.Combine(
                                directory,
                                "Application",
-                               "AIStudio.Wpf.EFCore",
+                               "AIStudio.Wpf.Entity",
                                "DTOModels",
                                $"{areaName}",
                                $"{entityName}DTO.cs");
@@ -235,10 +233,10 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 #endregion
 
                 #region View
-                string fullClassName = "AIStudio.Wpf.EFCore.Models." + entityName;
+                string fullClassName = "AIStudio.Wpf.Entity.Models." + entityName;
 
                 //根据类名称创建类实例
-                var type = System.Reflection.Assembly.Load("AIStudio.Wpf.EFCore").GetType(fullClassName);
+                var type = System.Reflection.Assembly.Load("AIStudio.Wpf.Entity").GetType(fullClassName);
                 List<string> selectOptionsList = new List<string>();
                 List<string> listColumnsList = new List<string>();
                 List<string> formColumnsList = new List<string>();

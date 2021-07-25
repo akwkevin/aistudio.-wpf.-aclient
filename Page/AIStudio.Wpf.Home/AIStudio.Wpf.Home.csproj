@@ -12,10 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Application\AIStudio.Core\AIStudio.Core.csproj" />
     <ProjectReference Include="..\..\Application\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
-    <ProjectReference Include="..\..\Application\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj" />
-    <ProjectReference Include="..\..\Others\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj" />
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Xceed.Wpf.AvalonDock.Themes.MyMetro\Xceed.Wpf.AvalonDock.Themes.MyMetro.csproj" />
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Xceed.Wpf.AvalonDock\Xceed.Wpf.AvalonDock.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
@@ -29,15 +26,6 @@
     <Resource Include="BuildCodeTemplate\FlowForm.txt" />
     <Resource Include="BuildCodeTemplate\FlowRenderer.txt" />
     <Resource Include="Images\default.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="BuildCodeTemplate\demo_view.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="BuildCodeTemplate\demo_viewmodel.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="BuildCodeTemplate\demo_viewcs.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="BuildCodeTemplate\List.txt" />

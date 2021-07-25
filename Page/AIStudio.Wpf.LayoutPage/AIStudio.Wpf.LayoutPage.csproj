@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Application\AIStudio.Wpf.LocalConfiguration\AIStudio.Wpf.LocalConfiguration.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
   </ItemGroup>
 

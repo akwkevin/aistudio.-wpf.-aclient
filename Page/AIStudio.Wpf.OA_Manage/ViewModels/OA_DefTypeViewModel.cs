@@ -1,9 +1,8 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.ViewModels;
-using AIStudio.Wpf.EFCore.DTOModels;
+using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.OA_Manage.Views;
-using AIStudio.Wpf.Service.AppClient;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

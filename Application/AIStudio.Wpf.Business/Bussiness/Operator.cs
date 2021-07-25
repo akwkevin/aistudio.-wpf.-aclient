@@ -1,6 +1,6 @@
 ﻿using AIStudio.Core.Models;
-using AIStudio.Wpf.EFCore.DTOModels;
-using AIStudio.Wpf.EFCore.Models;
+using AIStudio.Wpf.Entity.DTOModels;
+using AIStudio.Wpf.Entity.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 

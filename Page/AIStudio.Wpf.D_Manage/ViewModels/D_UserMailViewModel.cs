@@ -1,8 +1,8 @@
-﻿using AIStudio.Wpf.BasePage.ViewModels;
+﻿using AIStudio.Core;
+using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.D_Manage.Views;
-using AIStudio.Wpf.EFCore.DTOModels;
-using AIStudio.Wpf.Service.AppClient;
+using AIStudio.Wpf.Entity.DTOModels;
 using Newtonsoft.Json;
 using Prism.Ioc;
 using System;
@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Util.Controls;
-using AIStudio.Core;
 
 namespace AIStudio.Wpf.D_Manage.ViewModels
 {

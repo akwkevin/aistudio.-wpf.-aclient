@@ -1,7 +1,7 @@
 ﻿using Aga.Diagrams.TestExtend.Flowchart;
 using AIStudio.Core;
 using AIStudio.Wpf.BasePage.ViewModels;
-using AIStudio.Wpf.EFCore.DTOModels;
+using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.OA_Manage.Models;
 using Newtonsoft.Json;
 using System;

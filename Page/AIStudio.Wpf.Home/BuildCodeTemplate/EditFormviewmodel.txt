@@ -1,5 +1,5 @@
 ﻿using AIStudio.Wpf.BasePage.ViewModels;
-using AIStudio.Wpf.EFCore.DTOModels;
+using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.Business;
 using Prism.Ioc;
 using Prism.Mvvm;

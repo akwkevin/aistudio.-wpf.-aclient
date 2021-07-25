@@ -3,7 +3,7 @@ using AIStudio.Core.Models;
 using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.Events;
 using AIStudio.Wpf.Business;
-using AIStudio.Wpf.EFCore.DTOModels;
+using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.Home.Models;
 using AIStudio.Wpf.Home.Views;
 using AutoMapper;
@@ -209,12 +209,10 @@ namespace AIStudio.Wpf.Home.ViewModels
             AMenuItem subcode = null;
             if (_operator.UserName != "LocalUser")
             {
-                subcode = new AMenuItem() { Glyph = "code", Label = "辅助工具", Code = "Demo", Type = 0 };
-                subcode.AddChildren(new AMenuItem() { Label = "数据库连接", Code = "/Base_Manage/Base_DbLinkView/", Type = 1 });
-                subcode.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1 });
-                subcode.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1 });
-                subcode.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1 });
-                code.AddChildren(subcode);
+                code.AddChildren(new AMenuItem() { Label = "数据库连接", Code = "/Base_Manage/Base_DbLinkView/", Type = 1 });
+                code.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1 });
+                code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1 });
+                code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1 });
             }
 #endif
             var tool = new AMenuItem() { Glyph = "tool", Label = "工具", Code = "Tool", Type = 0 };
