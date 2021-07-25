@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFrameworks>net6-windows</TargetFrameworks>
+    <TargetFrameworks>net5-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Application\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
-    <ProjectReference Include="..\..\Application\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj" />
+    <ProjectReference Include="..\..\Application\api\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj" />
     <ProjectReference Include="..\..\Application\db\AIStudio.Wpf.DataBusiness\AIStudio.Wpf.DataBusiness.csproj" />
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj" />
     <ProjectReference Include="..\..\Util\AIStudio.Core\AIStudio.Core.csproj" />
