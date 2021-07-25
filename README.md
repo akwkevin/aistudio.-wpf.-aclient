@@ -1,5 +1,7 @@
 # AClient
 
+写在前面，下载请选择net5的分支
+
 #### 介绍
 Wpf客户端，AIStudio.Wpf.AClient
 
