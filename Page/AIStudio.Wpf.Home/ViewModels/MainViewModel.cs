@@ -48,8 +48,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             _mapper = mapper;
 
             LocalSetting.SettingChanged += SettingChanged;
-
-            _aggregator.GetEvent<KeyExcuteEvent>().Subscribe(KeyExcuteEventReceived, (ev) => { return ev.Item1 == Identifier; });
+          
             _aggregator.GetEvent<SelectedDocumentEvent>().Subscribe(SelectedDocumentEventReceived);
         }
 
@@ -129,10 +128,6 @@ namespace AIStudio.Wpf.Home.ViewModels
 
         }
 
-        private void KeyExcuteEventReceived(Tuple<string, string> key)
-        {
-            KeyExcute(key.Item2);
-        }
 
         public async void InitData()
         {
@@ -549,7 +544,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-        private void KeyExcute(string key)
+        public void KeyExcute(string key)
         {
             switch (key)
             {
@@ -576,7 +571,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                         UserDrop("Logout");
                         break;
                     }
-                case "Ctrl+Q":
+                case "Control+Q":
                     {
                         IsFocusSearchText = false;
                         IsFocusSearchText = true;

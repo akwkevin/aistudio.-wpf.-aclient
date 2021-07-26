@@ -2,10 +2,13 @@
 using AIStudio.Wpf.Base_Manage.Views;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Entity.DTOModels;
+using AIStudio.Wpf.Service.AppClient;
 using Newtonsoft.Json;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -52,7 +55,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             {
                 return this._addCommand ?? (this._addCommand = new CanExecuteDelegateCommand(() => this.Edit(), () => Data != null && Data.Count(p => p.IsChecked) > 0));
             }
-        }      
+        }
 
         private string directory;
         private string tmpFileText;
@@ -117,7 +120,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 {
                     HideWait();
                 }
-            }          
+            }
         }
 
         protected override async void Edit(BuildCode para = null)
@@ -179,9 +182,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         }
 
         private static readonly List<string> ignoreProperties =
-            new List<string> { "Id", "CreateTime", "CreatorId", "CreatorName", "Deleted","ModifyTime", "ModifyId", "ModifyName", "TenantId" };
+            new List<string> { "Id", "CreateTime", "CreatorId", "CreatorName", "Deleted", "ModifyTime", "ModifyId", "ModifyName", "TenantId" };
 
-        private void Generate(string areaName,List<string> entityNames,bool isCover)
+        private void Generate(string areaName, List<string> entityNames, bool isCover)
         {
             foreach (var entityName in entityNames)
             {
@@ -190,10 +193,12 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
                 tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
 
+
                 savePath = Path.Combine(
                                directory,
                                "Application",
                                "AIStudio.Wpf.Entity",
+                               "AIStudio.Wpf.Entity", //这里由于AIStudio.Wpf.Entity带sln文件,改为项目后本行可删除
                                "DTOModels",
                                $"{areaName}",
                                $"{entityName}DTO.cs");
@@ -240,21 +245,28 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 List<string> selectOptionsList = new List<string>();
                 List<string> listColumnsList = new List<string>();
                 List<string> formColumnsList = new List<string>();
-
+                string fieldDesc = string.Empty;
                 foreach (System.Reflection.PropertyInfo info in type.GetProperties().Where(p => !ignoreProperties.Contains(p.Name)))
                 {
+                    fieldDesc = info.Name;
+                    object[] objs = info.GetCustomAttributes(typeof(DescriptionAttribute), true);
+                    if (objs.Length > 0)
+                    {
+                        fieldDesc = ((DescriptionAttribute)objs[0]).Description;
+                    }
+
                     selectOptionsList.Add(
-$"				<ComboBoxItem Tag=\"{info.Name}\">{info.Name}</ComboBoxItem>");
+$"				<ComboBoxItem Tag=\"{info.Name}\">{fieldDesc}</ComboBoxItem>");
 
                     listColumnsList.Add(
-$"				<DataGridTextColumn Header=\"{info.Name}\"  Binding=\"{{Binding {info.Name}}}\" IsReadOnly=\"True\"/>");
+$"				<DataGridTextColumn Header=\"{fieldDesc}\"  Binding=\"{{Binding {info.Name}}}\" IsReadOnly=\"True\"/>");
 
                     formColumnsList.Add(
 "                        <HeaderedContentControl Style=\"{StaticResource LeftFormItemStyle}\">" + "\r\n" +
 "                            <HeaderedContentControl.Header>" + "\r\n" +
 "                                <TextBlock VerticalAlignment=\"Center\">" + "\r\n" +
 "                                    <Run Foreground=\"Red\">*</Run>" + "\r\n" +
-"                                    <Run>" + info.Name + "</Run>" + "\r\n" +
+"                                    <Run>" + fieldDesc + "</Run>" + "\r\n" +
 "                                </TextBlock>" + "\r\n" +
 "                            </HeaderedContentControl.Header>" + "\r\n" +
 "                            <TextBox Text=\"{Binding " + info.Name + ",Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}\" Style=\"{StaticResource ToolTipErrorTextBox}\" IsReadOnly=\"{ Binding Disabled}\"></TextBox>" + "\r\n" +
@@ -335,12 +347,19 @@ $"				<DataGridTextColumn Header=\"{info.Name}\"  Binding=\"{{Binding {info.Name
 
                 foreach (System.Reflection.PropertyInfo info in type.GetProperties().Where(p => !ignoreProperties.Contains(p.Name)))
                 {
+                     fieldDesc = info.Name;
+                    object[] objs = info.GetCustomAttributes(typeof(DescriptionAttribute), true);
+                    if (objs.Length > 0)
+                    {
+                        fieldDesc = ((DescriptionAttribute)objs[0]).Description;
+                    }
+
                     tableColumnsList.Add(
 $"            <TableColumn Width=\"*\"></TableColumn>");
 
                     tableCellsList.Add(
 "                <TableCell Style=\"{ StaticResource BorderedCell}\">\r\n" +
-$"                    <Paragraph>{info.Name}</Paragraph>\r\n" +
+$"                    <Paragraph>{fieldDesc}</Paragraph>\r\n" +
 "               </TableCell>\r\n");
                 }
 
@@ -365,6 +384,8 @@ $"                    <Paragraph>{info.Name}</Paragraph>\r\n" +
 
                 foreach (System.Reflection.PropertyInfo info in type.GetProperties().Where(p => !ignoreProperties.Contains(p.Name)))
                 {
+
+
                     if (info.PropertyType.ToString() == "System.String")
                     {
                         tableRowsList.Add(

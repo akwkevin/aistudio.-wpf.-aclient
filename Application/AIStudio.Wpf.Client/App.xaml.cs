@@ -1,11 +1,15 @@
 ﻿using AIStudio.Core;
 using AIStudio.LocalConfiguration;
+using AIStudio.Wpf.Base_Manage;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Client.ViewModels;
 using AIStudio.Wpf.Client.Views;
+using AIStudio.Wpf.D_Manage;
 using AIStudio.Wpf.DataBusiness;
 using AIStudio.Wpf.Home;
 using AIStudio.Wpf.Home.ViewModels;
+using AIStudio.Wpf.OA_Manage;
+using AIStudio.Wpf.Quartz_Manage;
 using AIStudio.Wpf.Service.AppClient.HttpClients;
 using AutoMapper;
 using Dataforge.PrismAvalonExtensions.Regions;
@@ -142,36 +146,38 @@ namespace AIStudio.Wpf.Client
                 ModuleName = homePageModule.Name,
                 ModuleType = homePageModule.AssemblyQualifiedName,
                 InitializationMode = InitializationMode.OnDemand
+            });           
+
+            var base_ManageModule = typeof(Base_ManageModule);
+            moduleCatalog.AddModule(new ModuleInfo()
+            {
+                ModuleName = base_ManageModule.Name,
+                ModuleType = base_ManageModule.AssemblyQualifiedName,
+                InitializationMode = InitializationMode.WhenAvailable
             });
 
-            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(p => p.FullName.StartsWith("AIStudio.Wpf")).ToList();
-
-            foreach (var assembly in assemblies)
+            var d_ManageModule = typeof(D_ManageModule);
+            moduleCatalog.AddModule(new ModuleInfo()
             {
-                foreach (var type in assembly.GetTypes())
-                {
-                    if (typeof(IModule).IsAssignableFrom(type))
-                    {
-                        if (!moduleCatalog.Modules.Any(p => p.ModuleName == type.Name))
-                        {
-                            moduleCatalog.AddModule(new ModuleInfo()
-                            {
-                                ModuleName = type.Name,
-                                ModuleType = type.AssemblyQualifiedName,
-                                InitializationMode = InitializationMode.WhenAvailable
-                            });
-                        }
-                    }
-                }
-            }
+                ModuleName = d_ManageModule.Name,
+                ModuleType = d_ManageModule.AssemblyQualifiedName,
+                InitializationMode = InitializationMode.WhenAvailable
+            });
 
-            //var base_ManageModule = typeof(Base_ManageModule);
-            //moduleCatalog.AddModule(new ModuleInfo()
-            //{
-            //    ModuleName = base_ManageModule.Name,
-            //    ModuleType = base_ManageModule.AssemblyQualifiedName,
-            //    InitializationMode = InitializationMode.WhenAvailable
-            //});    
+            var oa_ManageModule = typeof(OA_ManageModule);
+            moduleCatalog.AddModule(new ModuleInfo()
+            {
+                ModuleName = oa_ManageModule.Name,
+                ModuleType = oa_ManageModule.AssemblyQualifiedName,
+                InitializationMode = InitializationMode.WhenAvailable
+            });
+            var quartz_ManageModule = typeof(Quartz_ManageModule);
+            moduleCatalog.AddModule(new ModuleInfo()
+            {
+                ModuleName = quartz_ManageModule.Name,
+                ModuleType = quartz_ManageModule.AssemblyQualifiedName,
+                InitializationMode = InitializationMode.WhenAvailable
+            });
         }
 
         protected override void ConfigureViewModelLocator()
@@ -209,11 +215,6 @@ namespace AIStudio.Wpf.Client
 
         protected override void OnStartup(StartupEventArgs e)
         {
-
-            Assembly.Load("AIStudio.Wpf.Base_Manage");
-            Assembly.Load("AIStudio.Wpf.D_Manage");
-            Assembly.Load("AIStudio.Wpf.OA_Manage");
-            Assembly.Load("AIStudio.Wpf.Quartz_Manage");
 
             HttpClientHelper.Instance.HandleLog = log =>
             {

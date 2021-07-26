@@ -1,19 +1,13 @@
 ﻿using AIStudio.Core;
 using AIStudio.Core.Models;
-using AIStudio.Core.Validation;
-using AIStudio.Wpf.Business;
-using AIStudio.Wpf.Client.Views;
 using AIStudio.LocalConfiguration;
+using AIStudio.Wpf.Business;
 using Prism.Commands;
 using Prism.Events;
-using Prism.Mvvm;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 

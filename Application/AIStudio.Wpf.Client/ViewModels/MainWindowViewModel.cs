@@ -26,10 +26,6 @@ namespace AIStudio.Wpf.Client.ViewModels
             _operator = ioperator;
             _eventAggregator = eventAggregator;
             _wSocketClient = wSocketClient;
-
-            //var xx = ContainerLocator.Current.Resolve(typeof(IEventAggregator));
-            //var xx2 = ContainerLocator.Current.Resolve<IEventAggregator>();
-
         }
 
         private string _identifier = LocalSetting.RootWindow;
@@ -42,24 +38,11 @@ namespace AIStudio.Wpf.Client.ViewModels
             }
         }
 
-        private ICommand keyCommand;
-        public ICommand KeyCommand
-        {
-            get
-            {
-                return this.keyCommand ?? (this.keyCommand = new DelegateCommand<string>(para => this.KeyExcute(para)));
-            }
-        }
-
-        private void KeyExcute(string para)
-        {
-            _eventAggregator.GetEvent<KeyExcuteEvent>().Publish(new Tuple<string, string>(Identifier, para));
-        }
-
         public void Loaded()
         {
             _moduleManager.LoadModule("HomePageModule");
         }
+
         public void Dispose()
         {
             _wSocketClient.Dispose();

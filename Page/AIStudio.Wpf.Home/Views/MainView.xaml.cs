@@ -30,6 +30,13 @@ namespace AIStudio.Wpf.Home.Views
             //Keyboard.Focus(this);
         }
 
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            base.OnPreviewKeyDown(e);
+
+            MainViewModel.KeyExcute(e.KeyboardDevice.Modifiers == ModifierKeys.None ? e.Key.ToString() : e.KeyboardDevice.Modifiers.ToString() + "+" + e.Key.ToString());
+        }
+
         /// <summary>
         /// 左侧菜单点击事件
         /// </summary>

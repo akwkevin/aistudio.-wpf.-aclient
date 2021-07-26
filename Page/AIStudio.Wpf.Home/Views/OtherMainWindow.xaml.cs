@@ -79,19 +79,5 @@ namespace AIStudio.Wpf.Home
             get { return (string)GetValue(RegionNameProperty); }
             set { SetValue(RegionNameProperty, value); }
         }
-
-        private ICommand keyCommand;
-        public ICommand KeyCommand
-        {
-            get
-            {
-                return this.keyCommand ?? (this.keyCommand = new DelegateCommand<string>(para => this.KeyExcute(para)));
-            }
-        }
-
-        private void KeyExcute(string para)
-        {
-            _eventAggregator.GetEvent<KeyExcuteEvent>().Publish(new Tuple<string, string>(Identifier.ToString(), para));
-        }
     }
 }
