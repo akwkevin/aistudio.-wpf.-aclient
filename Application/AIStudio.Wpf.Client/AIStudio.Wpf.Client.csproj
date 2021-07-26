@@ -28,6 +28,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="ComeCapture">
+      <HintPath>..\..\packages\ComeCapture.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="A.ico" />
   </ItemGroup>
 

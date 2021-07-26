@@ -73,4 +73,10 @@
     <PackageReference Include="ShowMeTheXAML.AvalonEdit" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="ComeCapture">
+      <HintPath>..\..\packages\ComeCapture.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

@@ -548,7 +548,8 @@ namespace AIStudio.Wpf.Home.ViewModels
         {
             switch (key)
             {
-                case "F10":
+                //F10怎么是home
+                case "System":
                     {
                         ComeCapture.MainWindow window = new ComeCapture.MainWindow();
                         //直接显示截图
@@ -566,7 +567,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                         WindowBase.SetWindowStatus("ToggleFullScreen", Identifier);
                         break;
                     }
-                case "Esc":
+                case "Escape":
                     {
                         UserDrop("Logout");
                         break;
