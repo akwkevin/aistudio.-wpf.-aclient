@@ -31,7 +31,7 @@
                                 <Run>用户名</Run>
                                 </TextBlock>
                             </HeaderedContentControl.Header>
-                            <TextBox Text="{Binding UserName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource ToolTipErrorTextBox}" ></TextBox>
+                            <TextBox Text="{Binding UserName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource ToolTipErrorTextBox}" />
                         </HeaderedContentControl>
                         <HeaderedContentControl Style="{StaticResource LeftFormItemStyle}">
                             <HeaderedContentControl.Header>
