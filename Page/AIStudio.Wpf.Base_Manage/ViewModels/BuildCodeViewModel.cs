@@ -197,8 +197,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 savePath = Path.Combine(
                                directory,
                                "Application",
-                               "AIStudio.Wpf.Entity",
-                               "AIStudio.Wpf.Entity", //这里由于AIStudio.Wpf.Entity带sln文件,改为项目后本行可删除
+                               "AIStudio.Wpf.Entity",                        
                                "DTOModels",
                                $"{areaName}",
                                $"{entityName}DTO.cs");

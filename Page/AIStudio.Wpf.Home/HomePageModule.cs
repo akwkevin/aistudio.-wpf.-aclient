@@ -10,7 +10,6 @@ using System;
 using System.Windows;
 using ShowMeTheXAML;
 using AIStudio.Wpf.LayoutPage.Views;
-
 namespace AIStudio.Wpf.Home
 {
     public class HomePageModule : IModule
