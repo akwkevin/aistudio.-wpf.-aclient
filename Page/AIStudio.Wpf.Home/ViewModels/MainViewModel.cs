@@ -617,7 +617,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 if (item.Code == "Screenshot")
                 {
-                    KeyExcute("F10");
+                    KeyExcute("System");
                 }
                 else if (item.Code == "NewWindow")
                 {

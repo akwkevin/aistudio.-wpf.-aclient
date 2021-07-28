@@ -11,7 +11,7 @@
   
 
   <ItemGroup>
-    <EmbeddedResource Include="Brushs\brush.json" />
+    <Resource Include="Brushs\brush.json" />
     <Resource Include="Images\Brook.jpg" />
     <Resource Include="Images\Chopper.jpg" />
     <Resource Include="Images\Franky.jpg" />

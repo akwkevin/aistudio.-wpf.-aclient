@@ -465,22 +465,14 @@ namespace AIStudio.Wpf.Home.ViewModels
                 }
 
                 var theme = ThemeManager.Current.DetectTheme(Application.Current);
-                if (theme.BaseColorScheme == LocalSetting.Theme && theme.ColorScheme == LocalSetting.Accent)
+                if (theme.BaseColorScheme != LocalSetting.Theme || theme.ColorScheme != LocalSetting.Accent)
                 {
-                    return;
-                }
-
-                ThemeManager.Current.ChangeThemeBaseColor(Application.Current, LocalSetting.Theme);
-                ThemeManager.Current.ChangeThemeColorScheme(Application.Current, LocalSetting.Accent);
+                    ThemeManager.Current.ChangeThemeBaseColor(Application.Current, LocalSetting.Theme);
+                    ThemeManager.Current.ChangeThemeColorScheme(Application.Current, LocalSetting.Accent);
+                }               
 
                 //添加额外的信息
                 InitThemeAddition();
-
-                //在加载一些颜色
-                string requestedCulture = "/AIStudio.Resource;component/Brushs/Brushes.xaml";
-                ResourceDictionary resourceDictionary = Application.Current.Resources.MergedDictionaries.Where(d => d.Source != null && d.Source.OriginalString.Equals(requestedCulture)).FirstOrDefault();
-                Application.Current.Resources.MergedDictionaries.Remove(resourceDictionary);
-                Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
             }
             catch (Exception ex)
             {
