@@ -80,10 +80,7 @@ namespace AIStudio.Wpf.Client
         protected override Window CreateShell()
         {   
             var window = Container.Resolve<MainWindow>();
-            //if (window.Visibility == Visibility.Collapsed || window.Visibility == Visibility.Hidden)
-            //{
-            //    window = null;
-            //}
+            //加载主题
             Home.ViewModels.SystemSetViewModel.InitSetting();
             return window;
         }
@@ -91,8 +88,9 @@ namespace AIStudio.Wpf.Client
 
         protected override void InitializeShell(Window shell)
         {
+            //升级
             UpdateHelper.CheckUpdate();
-
+            //登录
             LoginWindow login = new LoginWindow();
             if (login.ShowDialog() == false)
             {
@@ -107,7 +105,7 @@ namespace AIStudio.Wpf.Client
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
-        {
+        {            
             containerRegistry.RegisterSingleton<IOperator, Operator>();
             containerRegistry.RegisterSingleton<IUserData, UserData>();
             containerRegistry.RegisterSingleton<IWSocketClient, WSocketClient>();
@@ -139,7 +137,6 @@ namespace AIStudio.Wpf.Client
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            //采用此种方式，是为了后续可以按照此规则自动加载模块
             var homePageModule = typeof(HomePageModule);
             moduleCatalog.AddModule(new ModuleInfo()
             {
