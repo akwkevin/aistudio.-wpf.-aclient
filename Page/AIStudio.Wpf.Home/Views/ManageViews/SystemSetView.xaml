@@ -100,7 +100,7 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ListBox>
-                    <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource VerticalSeparatorStyle}"/>
+                    <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" />
                     <ListBox x:Name="listAppThemes" 
                              ItemsSource="{Binding AppThemes, Mode=OneWay}" 
                              SelectedItem="{Binding SelectedAppTheme}"
@@ -190,7 +190,7 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ListBox>   
-                    <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource VerticalSeparatorStyle}"/>
+                    <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" />
                     <ListBox x:Name="listTitleAccent"
                          SelectedIndex="{Binding SelectedTitleAccent}"
                          ItemContainerStyle="{DynamicResource ListBoxItemStyle}">
@@ -225,7 +225,7 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ListBox>
-                    <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource VerticalSeparatorStyle}"/>
+                    <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" />
                     <ListBox x:Name="listToolBarLocation"        
                          SelectedIndex="{Binding SelectedToolBarLocation}"
                          ItemContainerStyle="{DynamicResource ListBoxItemStyle}">
@@ -257,7 +257,7 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ListBox>
-                    <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource VerticalSeparatorStyle}"/>
+                    <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" />
                     <ListBox x:Name="listStatusBarLocation"    
                          SelectedIndex="{Binding SelectedStatusBarLocation}"
                          ItemContainerStyle="{DynamicResource ListBoxItemStyle}">

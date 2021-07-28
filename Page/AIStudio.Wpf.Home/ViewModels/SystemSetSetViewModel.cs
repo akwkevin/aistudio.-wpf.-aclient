@@ -3,6 +3,7 @@ using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Home.Models;
 using ControlzEx.Theming;
 using MahApps.Metro;
+using MahApps.Metro.Theming;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Ioc;
@@ -11,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Markup;
@@ -22,7 +24,7 @@ namespace AIStudio.Wpf.Home.ViewModels
     public class SystemSetViewModel : BindableBase
     {
         private static ILogger _logger { get => ContainerLocator.Current.Resolve<ILogger>(); }
-     
+
         public SystemSetViewModel()
         {
             // create accent color menu items for the demo
@@ -288,7 +290,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 LocalSetting.SetAppSetting("Theme", data.Name);
                 InitThemeAddition();
 
-                if (ThemeChangedHelper.IsThemeChanged !=null)
+                if (ThemeChangedHelper.IsThemeChanged != null)
                     ThemeChangedHelper.IsThemeChanged();
             }
         }
@@ -443,7 +445,7 @@ namespace AIStudio.Wpf.Home.ViewModels
         {
             Application.Current.Resources.Remove("TitleBackgroundBrush");
             Application.Current.Resources.Remove("TitleForegroundBrush");
-            Application.Current.Resources.Add("TitleBackgroundBrush", LocalSetting.TitleAccent == "Accent" ? Application.Current.FindResource("MahApps.Brushes.AccentBase") :  Application.Current.FindResource("MahApps.Brushes.Accent"));
+            Application.Current.Resources.Add("TitleBackgroundBrush", LocalSetting.TitleAccent == "Accent" ? Application.Current.FindResource("MahApps.Brushes.AccentBase") : Application.Current.FindResource("MahApps.Brushes.Accent"));
             Application.Current.Resources.Add("TitleForegroundBrush", LocalSetting.TitleAccent == "Accent" ? Application.Current.FindResource("MahApps.Brushes.Accent") : Application.Current.FindResource("MahApps.Brushes.ThemeForeground"));
         }
 
@@ -453,6 +455,14 @@ namespace AIStudio.Wpf.Home.ViewModels
             try
             {
                 List<ResourceDictionary> dictionaryList = Application.Current.Resources.MergedDictionaries.ToList();
+
+                StreamReader reader = new StreamReader(Application.GetResourceStream(new Uri("pack://application:,,,/AIStudio.Resource;component/Brushs/brush.json", UriKind.RelativeOrAbsolute)).Stream);
+                string text = reader.ReadToEnd();
+                var dic = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(text);
+                foreach (var brush in dic.Values.SelectMany(p => p))
+                {
+                    ThemeManager.Current.AddLibraryTheme(new LibraryTheme(new Uri(brush), MahAppsLibraryThemeProvider.DefaultInstance));
+                }
 
                 var theme = ThemeManager.Current.DetectTheme(Application.Current);
                 if (theme.BaseColorScheme == LocalSetting.Theme && theme.ColorScheme == LocalSetting.Accent)

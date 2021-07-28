@@ -4,9 +4,14 @@
     <TargetFrameworks>net5-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Brushs\brush.json" />
+  </ItemGroup>
   
 
   <ItemGroup>
+    <EmbeddedResource Include="Brushs\brush.json" />
     <Resource Include="Images\Brook.jpg" />
     <Resource Include="Images\Chopper.jpg" />
     <Resource Include="Images\Franky.jpg" />
@@ -2212,6 +2217,9 @@
     <Content Include="svg\twotone\warning.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.0.0" />
   </ItemGroup>
 
 </Project>
