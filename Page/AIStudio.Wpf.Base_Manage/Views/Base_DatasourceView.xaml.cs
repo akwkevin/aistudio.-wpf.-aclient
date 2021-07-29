@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows.Controls;
 
-namespace AIStudio.Wpf.%areaName%.Views
+namespace AIStudio.Wpf.Base_Manage.Views
 {
     /// <summary>
-    /// %entityName%View.xaml 的交互逻辑
+    /// Base_DatasourceView.xaml 的交互逻辑
     /// </summary>
-    public partial class %entityName%View : UserControl
+    public partial class Base_DatasourceView : UserControl
     {
-        public %entityName%View()
+        public Base_DatasourceView()
         {
             InitializeComponent();
             this.table.LoadingRow += new EventHandler<DataGridRowEventArgs>(this.table_LoadingRow);

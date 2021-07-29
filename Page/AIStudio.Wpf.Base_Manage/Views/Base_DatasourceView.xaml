@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="AIStudio.Wpf.%areaName%.Views.%entityName%View"
+﻿<UserControl x:Class="AIStudio.Wpf.Base_Manage.Views.Base_DatasourceView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:util="https://astudio.github.io/utilcontrol" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:local="clr-namespace:AIStudio.Wpf.%areaName%.Views" 
+             xmlns:local="clr-namespace:AIStudio.Wpf.Base_Manage.Views" 
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
 			 xmlns:converter="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
              xmlns:command="clr-namespace:AIStudio.Core.ExCommand;assembly=AIStudio.Core"
@@ -16,25 +16,25 @@
       <UserControl.Resources>
         <ContextMenu x:Key="ShortcutMenu">
             <MenuItem
-                perm:PermissionHelper.HasPerm="%entityName%.Add"
+                perm:PermissionHelper.HasPerm="Base_Datasource.Add"
                 Command="{Binding AddCommand}"
                 Header="新建" />
             <MenuItem
-                perm:PermissionHelper.HasPerm="%entityName%.Edit"
+                perm:PermissionHelper.HasPerm="Base_Datasource.Edit"
                 Command="{Binding EditCommand}"
                 CommandParameter="{Binding SelectedItem}"
                 Header="编辑" />
             <MenuItem
-                perm:PermissionHelper.HasPerm="%entityName%.View"
+                perm:PermissionHelper.HasPerm="Base_Datasource.View"
                 Command="{Binding ViewCommand}"
                 CommandParameter="{Binding SelectedItem}"
                 Header="查看" />
             <MenuItem
-                perm:PermissionHelper.HasPerm="%entityName%.Delete"
+                perm:PermissionHelper.HasPerm="Base_Datasource.Delete"
                 Command="{Binding DeleteCommand}"
                 Header="删除" />
-            <Separator />
-            <MenuItem 
+            <MenuItem
+                perm:PermissionHelper.HasPerm="Base_Datasource.Refresh"
                 Command="{Binding RefreshCommand}"
                 Header="刷新" />
         </ContextMenu>
@@ -48,17 +48,21 @@
         </Grid.RowDefinitions>
         <DockPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                <util:FButton CornerRadius="2" FIcon="&#xe62c;" Margin="3" Content="新建" perm:PermissionHelper.HasPerm="%entityName%.Add" Command="{Binding AddCommand}" ></util:FButton>
-                <util:FButton CornerRadius="2" FIcon="&#xe62c;" Margin="3" Content="编辑" perm:PermissionHelper.HasPerm="%entityName%.Edit" Command="{Binding EditCommand}" ></util:FButton>
-                <util:FButton CornerRadius="2" FIcon="&#xe62c;" Margin="3" Content="查看" perm:PermissionHelper.HasPerm="%entityName%.View" Command="{Binding ViewCommand}" ></util:FButton>
-                <util:FButton CornerRadius="2" FIcon="&#xe62d;" Margin="3" Content="删除" perm:PermissionHelper.HasPerm="%entityName%.Delete" Command="{Binding DeleteCommand}"></util:FButton>
+                <util:FButton CornerRadius="2" FIcon="&#xe62c;" Margin="3" Content="新建" perm:PermissionHelper.HasPerm="Base_Datasource.Add" Command="{Binding AddCommand}" ></util:FButton>
+                <util:FButton CornerRadius="2" FIcon="&#xe62c;" Margin="3" Content="编辑" perm:PermissionHelper.HasPerm="Base_Datasource.Edit" Command="{Binding EditCommand}" ></util:FButton>
+                <util:FButton CornerRadius="2" FIcon="&#xe62c;" Margin="3" Content="查看" perm:PermissionHelper.HasPerm="Base_Datasource.View" Command="{Binding ViewCommand}" ></util:FButton>
+                <util:FButton CornerRadius="2" FIcon="&#xe62d;" Margin="3" Content="删除" perm:PermissionHelper.HasPerm="Base_Datasource.Delete" Command="{Binding DeleteCommand}"></util:FButton>
                 <util:FButton CornerRadius="2" FIcon="&#xf02f;" FIconFamily="FAwesome" Margin="3" Content="打印" Command="{Binding PrintCommand}"></util:FButton>
                 <util:FButton CornerRadius="2" FIcon="&#xe641;" Margin="3" Content="刷新" Command="{Binding RefreshCommand}"></util:FButton>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
 			    <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" util:ControlAttachProperty.CornerRadius="3"  Style="{StaticResource ClearButtonComboBox}"
                           Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
-    %selectOptions%
+    				<ComboBoxItem Tag="Code">编号</ComboBoxItem>
+				<ComboBoxItem Tag="Name">名称</ComboBoxItem>
+				<ComboBoxItem Tag="DbLinkId">数据源</ComboBoxItem>
+				<ComboBoxItem Tag="Sql">sql语句</ComboBoxItem>
+				<ComboBoxItem Tag="Description">备注</ComboBoxItem>
                 </ComboBox>
 			    <util:SearchBar Width="220" Margin="4,3" 
                          Text="{Binding KeyWord}"
@@ -100,11 +104,11 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" perm:PermissionHelper.HasPerm="%entityName%.Edit">
+                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" perm:PermissionHelper.HasPerm="Base_Datasource.Edit">
                                     <Hyperlink Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                         CommandParameter="{Binding .}" Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock Text="编辑" /> </Hyperlink>
                                 </TextBlock>
-                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" perm:PermissionHelper.HasPerm="%entityName%.Delete">
+                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" perm:PermissionHelper.HasPerm="Base_Datasource.Delete">
                                     <Hyperlink Command="{Binding DataContext.DeleteOneCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                         CommandParameter="{Binding Id}" Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock Text="删除" /> </Hyperlink>
                                 </TextBlock>
@@ -113,7 +117,11 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>-->
 
-                %listColumns%  
+                				<DataGridTextColumn Header="编号"  Binding="{Binding Code}" IsReadOnly="True"/>
+				<DataGridTextColumn Header="名称"  Binding="{Binding Name}" IsReadOnly="True"/>
+				<DataGridTextColumn Header="数据源"  Binding="{Binding DbLinkId}" IsReadOnly="True"/>
+				<DataGridTextColumn Header="sql语句"  Binding="{Binding Sql}" IsReadOnly="True"/>
+				<DataGridTextColumn Header="备注"  Binding="{Binding Description}" IsReadOnly="True"/>  
 
             </DataGrid.Columns>
          
