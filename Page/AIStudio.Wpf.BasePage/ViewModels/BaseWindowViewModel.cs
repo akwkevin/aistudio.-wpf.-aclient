@@ -22,7 +22,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
     public class BaseWindowViewModel<T> : NavigationDockWindowViewModel where T : class, IIsChecked
     {
         protected IDataProvider _dataProvider { get; }
-        public BaseWindowViewModel(string area, Type type, Type editType, string getDataList="GetDataList")
+        public BaseWindowViewModel(string area, Type type, Type editType, string getDataList = "GetDataList")
         {
             Area = area;
             GetDataList = getDataList;
@@ -81,6 +81,19 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         }
 
 
+        private T _selectedItem;
+        public T SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                SetProperty(ref _selectedItem, value);
+            }
+        }
+
+
+
+
         public Core.Models.Pagination Pagination { get; set; } = new Core.Models.Pagination() { PageRows = 100 };
 
         private ICommand _addCommand;
@@ -100,6 +113,16 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 return this._editCommand ?? (this._editCommand = new CanExecuteDelegateCommand<T>(para => this.Edit(para)));
             }
         }
+
+        private ICommand _viewCommand;
+        public ICommand ViewCommand
+        {
+            get
+            {
+                return this._viewCommand ?? (this._viewCommand = new CanExecuteDelegateCommand<T>(para => this.View(para), para => para != null));
+            }
+        }
+
 
         private ICommand _deleteCommand;
         public ICommand DeleteCommand
@@ -173,7 +196,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 if (iswaiting == false)
                 {
                     ShowWait();
-                }              
+                }
 
                 var data = new
                 {
@@ -188,7 +211,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                     }
                 };
 
-                var result = await _dataProvider.GetData<List<T>>($"/{Area}/{typeof(T).Name.Replace("DTO","")}/{GetDataList}", JsonConvert.SerializeObject(data));
+                var result = await _dataProvider.GetData<List<T>>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/{GetDataList}", JsonConvert.SerializeObject(data));
                 if (!result.IsOK)
                 {
                     throw new Exception(result.ErrorMessage);
@@ -197,6 +220,9 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 {
                     Pagination.Total = result.Total;
                     Data = new ObservableCollection<T>(result.ResponseItem);
+                    if (Data.Any()) {
+                        SelectedItem = Data.FirstOrDefault();
+                    }
                 }
             }
             catch (Exception ex)
@@ -210,7 +236,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                     HideWait();
                 }
             }
-        }       
+        }
 
         protected virtual async void Edit(T para = null)
         {
@@ -228,7 +254,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             {
                 try
                 {
-                    ShowWait();                 
+                    ShowWait();
                     var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                     if (!result.IsOK)
                     {
@@ -245,6 +271,18 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                     HideWait();
                 }
             }
+        }
+
+
+
+        protected virtual async void View(T para)
+        {
+            var viewmodel = Activator.CreateInstance(Type, new object[] { para, Area, Identifier, "查看表单" }) as BaseEditViewModel<T>;
+            var dialog = Activator.CreateInstance(EditType, new object[] { viewmodel }) as BaseDialog;
+            var fButton = (FButton)dialog.FindName("PART_AffirmativeButton");
+            fButton.Visibility = System.Windows.Visibility.Collapsed;
+            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync(dialog, Identifier);
+
         }
 
         protected virtual async void Delete(string id = null)
@@ -264,7 +302,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             {
                 try
                 {
-                    ShowWait();          
+                    ShowWait();
 
                     var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/DeleteData", JsonConvert.SerializeObject(ids));
                     if (!result.IsOK)
@@ -301,11 +339,11 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 PrintPreviewWindow previewWnd = new PrintPreviewWindow($"/AIStudio.Wpf.{Area};component/Views/{typeof(T).Name.Replace("DTO", "")}FlowDocument.xaml", data, Activator.CreateInstance(type) as IDocumentRenderer);
                 previewWnd.ShowDialog();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
-        }    
+        }
 
         protected virtual void Search(object para = null)
         {
@@ -339,7 +377,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             {
                 Identifier = identifier;
             }
-            
+
             Initialize();
         }
 
