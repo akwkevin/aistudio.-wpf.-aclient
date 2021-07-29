@@ -2,8 +2,7 @@
 using Dataforge.PrismAvalonExtensions.ViewModels;
 using AIStudio.Wpf.Base_Manage.Views;
 using AIStudio.Wpf.BasePage.ViewModels;
-using AIStudio.Wpf.EFCore.DTOModels;
-using AIStudio.Wpf.Service.AppClient;
+using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.Business;
 using Prism.Ioc;
 using Newtonsoft.Json;

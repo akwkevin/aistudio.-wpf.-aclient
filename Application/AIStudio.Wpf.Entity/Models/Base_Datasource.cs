@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AIStudio.Wpf.EFCore.Models
+namespace AIStudio.Wpf.Entity.Models
 { 
     /// <summary>
     /// 常用数据配置表
@@ -19,9 +19,9 @@ namespace AIStudio.Wpf.EFCore.Models
         public String Id { get; set; }
 
         /// <summary>
-        /// 编号
+        /// 编码
         /// </summary>
-        [Description("编号")]
+        [Description("编码")]
         public String Code { get; set; }
 
 

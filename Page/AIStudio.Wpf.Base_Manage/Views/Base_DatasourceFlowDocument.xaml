@@ -26,7 +26,7 @@
         <TableRowGroup Name="rowsDetails">
             <TableRow FontWeight="Bold" >
                 <TableCell Style="{ StaticResource BorderedCell}">
-                    <Paragraph>编号</Paragraph>
+                    <Paragraph>编码</Paragraph>
                </TableCell>
 
                 <TableCell Style="{ StaticResource BorderedCell}">

@@ -28,7 +28,7 @@
                             <HeaderedContentControl.Header>
                                 <TextBlock VerticalAlignment="Center">
                                     <Run Foreground="Red">*</Run>
-                                    <Run>编号</Run>
+                                    <Run>编码</Run>
                                 </TextBlock>
                             </HeaderedContentControl.Header>
                             <TextBox Text="{Binding Code,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource ToolTipErrorTextBox}" IsReadOnly="{ Binding Disabled}"></TextBox>

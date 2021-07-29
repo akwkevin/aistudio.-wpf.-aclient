@@ -19,6 +19,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Unity;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -78,7 +79,7 @@ namespace AIStudio.Wpf.Client
         #endregion
 
         protected override Window CreateShell()
-        {   
+        {
             var window = Container.Resolve<MainWindow>();
             //加载主题
             Home.ViewModels.SystemSetViewModel.InitSetting();
@@ -88,8 +89,14 @@ namespace AIStudio.Wpf.Client
 
         protected override void InitializeShell(Window shell)
         {
-            //升级
+
+#if DEBUG 
+#else
+                 //升级
             UpdateHelper.CheckUpdate();
+#endif
+
+
             //登录
             LoginWindow login = new LoginWindow();
             if (login.ShowDialog() == false)
@@ -105,7 +112,7 @@ namespace AIStudio.Wpf.Client
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
-        {            
+        {
             containerRegistry.RegisterSingleton<IOperator, Operator>();
             containerRegistry.RegisterSingleton<IUserData, UserData>();
             containerRegistry.RegisterSingleton<IWSocketClient, WSocketClient>();
@@ -143,7 +150,7 @@ namespace AIStudio.Wpf.Client
                 ModuleName = homePageModule.Name,
                 ModuleType = homePageModule.AssemblyQualifiedName,
                 InitializationMode = InitializationMode.OnDemand
-            });           
+            });
 
             var base_ManageModule = typeof(Base_ManageModule);
             moduleCatalog.AddModule(new ModuleInfo()
