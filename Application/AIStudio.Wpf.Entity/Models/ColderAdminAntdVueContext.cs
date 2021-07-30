@@ -17,6 +17,7 @@ namespace AIStudio.Wpf.Entity.Models
 
         public virtual DbSet<Base_Action> Base_Action { get; set; }
         public virtual DbSet<Base_AppSecret> Base_AppSecret { get; set; }
+        public virtual DbSet<Base_Datasource> Base_Datasource { get; set; }
         public virtual DbSet<Base_DbLink> Base_DbLink { get; set; }
         public virtual DbSet<Base_Department> Base_Department { get; set; }
         public virtual DbSet<Base_Role> Base_Role { get; set; }

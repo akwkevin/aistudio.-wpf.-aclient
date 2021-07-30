@@ -20,23 +20,40 @@
             <MenuItem
                 perm:PermissionHelper.HasPerm="Base_Datasource.Add"
                 Command="{Binding AddCommand}"
-                Header="新建" />
+                Icon="&#xe62c;"
+                Header="新建" 
+                Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                Style="{StaticResource TransparentHeaderMenuItem}"/>
             <MenuItem
                 perm:PermissionHelper.HasPerm="Base_Datasource.Edit"
                 Command="{Binding EditCommand}"
                 CommandParameter="{Binding SelectedItem}"
-                Header="编辑" />
+                Icon="&#xe63e;"
+                Header="编辑" 
+                Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                Style="{StaticResource TransparentHeaderMenuItem}"/>
             <MenuItem
                 perm:PermissionHelper.HasPerm="Base_Datasource.View"
                 Command="{Binding ViewCommand}"
                 CommandParameter="{Binding SelectedItem}"
-                Header="查看" />
+                Icon="&#xe62c;"
+                Header="查看" 
+                Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                Style="{StaticResource TransparentHeaderMenuItem}"/>
             <MenuItem
                 perm:PermissionHelper.HasPerm="Base_Datasource.Delete"
-                Command="{Binding DeleteCommand}"
-                Header="删除" />
+                Command="{Binding DeleteOneCommand}"
+                CommandParameter="{Binding SelectedItem.Id}"
+                Icon="&#xe62d;"
+                Header="删除" 
+                Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                Style="{StaticResource TransparentHeaderMenuItem}"/>
             <Separator />
-            <MenuItem Command="{Binding RefreshCommand}" Header="刷新" />
+            <MenuItem Command="{Binding RefreshCommand}"
+                Icon="&#xe641;"
+                Header="刷新"
+                Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                Style="{StaticResource TransparentHeaderMenuItem}"/>
         </ContextMenu>
     </UserControl.Resources>
 
@@ -62,7 +79,7 @@
                     CommandParameter="{Binding SelectedItem}"
                     Content="编辑"
                     CornerRadius="2"
-                    FIcon="&#xe62c;" />
+                    FIcon="&#xe63e;" />
                 <util:FButton
                     Margin="3"
                     perm:PermissionHelper.HasPerm="Base_Datasource.View"

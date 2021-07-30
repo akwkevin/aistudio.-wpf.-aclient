@@ -90,6 +90,38 @@ namespace AIStudio.Wpf.DataRepository.Migrations
                     b.ToTable("Base_AppSecret");
                 });
 
+            modelBuilder.Entity("AIStudio.Wpf.Entity.Models.Base_Datasource", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
+
+                    b.Property<DateTime?>("CreateTime");
+
+                    b.Property<string>("CreatorId");
+
+                    b.Property<string>("CreatorName");
+
+                    b.Property<string>("DbLinkId");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("ModifyId");
+
+                    b.Property<string>("ModifyName");
+
+                    b.Property<DateTime?>("ModifyTime");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Sql");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Base_Datasource");
+                });
+
             modelBuilder.Entity("AIStudio.Wpf.Entity.Models.Base_DbLink", b =>
                 {
                     b.Property<string>("Id")
@@ -298,6 +330,74 @@ namespace AIStudio.Wpf.DataRepository.Migrations
                     b.ToTable("Base_UserRole");
                 });
 
+            modelBuilder.Entity("AIStudio.Wpf.Entity.Models.D_Notice", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AnyId");
+
+                    b.Property<string>("Appendix");
+
+                    b.Property<DateTime>("CreateTime");
+
+                    b.Property<string>("CreatorId");
+
+                    b.Property<string>("CreatorName");
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<int>("Mode");
+
+                    b.Property<string>("ModifyId");
+
+                    b.Property<string>("ModifyName");
+
+                    b.Property<DateTime?>("ModifyTime");
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("TenantId");
+
+                    b.Property<string>("Text");
+
+                    b.Property<string>("Title");
+
+                    b.Property<int>("Type");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("D_Notice");
+                });
+
+            modelBuilder.Entity("AIStudio.Wpf.Entity.Models.D_NoticeReadingMarks", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreateTime");
+
+                    b.Property<string>("CreatorId");
+
+                    b.Property<string>("CreatorName");
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<string>("ModifyId");
+
+                    b.Property<string>("ModifyName");
+
+                    b.Property<DateTime?>("ModifyTime");
+
+                    b.Property<string>("NoticeId");
+
+                    b.Property<string>("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("D_NoticeReadingMarks");
+                });
+
             modelBuilder.Entity("AIStudio.Wpf.Entity.Models.D_UserGroup", b =>
                 {
                     b.Property<string>("Id")
@@ -363,8 +463,6 @@ namespace AIStudio.Wpf.DataRepository.Migrations
 
                     b.Property<bool>("Deleted");
 
-                    b.Property<bool>("IsDraft");
-
                     b.Property<string>("ModifyId");
 
                     b.Property<string>("ModifyName");
@@ -374,6 +472,8 @@ namespace AIStudio.Wpf.DataRepository.Migrations
                     b.Property<string>("ReadingMarks");
 
                     b.Property<bool>("StarMark");
+
+                    b.Property<int>("Status");
 
                     b.Property<string>("TenantId");
 
@@ -417,6 +517,8 @@ namespace AIStudio.Wpf.DataRepository.Migrations
 
                     b.Property<string>("ReadingMarks");
 
+                    b.Property<int>("Status");
+
                     b.Property<string>("TenantId");
 
                     b.Property<string>("Text");
@@ -430,6 +532,46 @@ namespace AIStudio.Wpf.DataRepository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("D_UserMessage");
+                });
+
+            modelBuilder.Entity("AIStudio.Wpf.Entity.Models.D_UserMessage_202102", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreateTime");
+
+                    b.Property<string>("CreatorId");
+
+                    b.Property<string>("CreatorName");
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<string>("GroupId");
+
+                    b.Property<string>("GroupName");
+
+                    b.Property<string>("ModifyId");
+
+                    b.Property<string>("ModifyName");
+
+                    b.Property<DateTime?>("ModifyTime");
+
+                    b.Property<string>("ReadingMarks");
+
+                    b.Property<string>("TenantId");
+
+                    b.Property<string>("Text");
+
+                    b.Property<int>("Type");
+
+                    b.Property<string>("UserIds");
+
+                    b.Property<string>("UserNames");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("D_UserMessage_202102");
                 });
 
             modelBuilder.Entity("AIStudio.Wpf.Entity.Models.D_UserMessage_202103", b =>

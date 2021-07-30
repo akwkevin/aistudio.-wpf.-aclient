@@ -57,6 +57,28 @@ namespace AIStudio.Wpf.DataRepository.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Base_Datasource",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Code = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    DbLinkId = table.Column<string>(nullable: true),
+                    Sql = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    CreatorId = table.Column<string>(nullable: true),
+                    CreatorName = table.Column<string>(nullable: true),
+                    CreateTime = table.Column<DateTime>(nullable: true),
+                    ModifyId = table.Column<string>(nullable: true),
+                    ModifyName = table.Column<string>(nullable: true),
+                    ModifyTime = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Base_Datasource", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Base_DbLink",
                 columns: table => new
                 {
@@ -203,6 +225,52 @@ namespace AIStudio.Wpf.DataRepository.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "D_Notice",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Title = table.Column<string>(nullable: true),
+                    Type = table.Column<int>(nullable: false),
+                    Appendix = table.Column<string>(nullable: true),
+                    Deleted = table.Column<bool>(nullable: false),
+                    CreateTime = table.Column<DateTime>(nullable: false),
+                    ModifyTime = table.Column<DateTime>(nullable: true),
+                    CreatorId = table.Column<string>(nullable: true),
+                    CreatorName = table.Column<string>(nullable: true),
+                    ModifyId = table.Column<string>(nullable: true),
+                    ModifyName = table.Column<string>(nullable: true),
+                    TenantId = table.Column<string>(nullable: true),
+                    Text = table.Column<string>(nullable: true),
+                    Status = table.Column<int>(nullable: false),
+                    Mode = table.Column<int>(nullable: false),
+                    AnyId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_D_Notice", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "D_NoticeReadingMarks",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    NoticeId = table.Column<string>(nullable: true),
+                    Deleted = table.Column<bool>(nullable: false),
+                    CreateTime = table.Column<DateTime>(nullable: false),
+                    ModifyTime = table.Column<DateTime>(nullable: true),
+                    CreatorId = table.Column<string>(nullable: true),
+                    CreatorName = table.Column<string>(nullable: true),
+                    ModifyId = table.Column<string>(nullable: true),
+                    ModifyName = table.Column<string>(nullable: true),
+                    TenantId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_D_NoticeReadingMarks", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "D_UserGroup",
                 columns: table => new
                 {
@@ -243,7 +311,6 @@ namespace AIStudio.Wpf.DataRepository.Migrations
                     ReadingMarks = table.Column<string>(nullable: true),
                     StarMark = table.Column<bool>(nullable: false),
                     Appendix = table.Column<string>(nullable: true),
-                    IsDraft = table.Column<bool>(nullable: false),
                     Deleted = table.Column<bool>(nullable: false),
                     CreateTime = table.Column<DateTime>(nullable: false),
                     ModifyTime = table.Column<DateTime>(nullable: true),
@@ -254,7 +321,8 @@ namespace AIStudio.Wpf.DataRepository.Migrations
                     TenantId = table.Column<string>(nullable: true),
                     UserIds = table.Column<string>(nullable: true),
                     UserNames = table.Column<string>(nullable: true),
-                    Text = table.Column<string>(nullable: true)
+                    Text = table.Column<string>(nullable: true),
+                    Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -280,11 +348,38 @@ namespace AIStudio.Wpf.DataRepository.Migrations
                     TenantId = table.Column<string>(nullable: true),
                     UserIds = table.Column<string>(nullable: true),
                     UserNames = table.Column<string>(nullable: true),
-                    Text = table.Column<string>(nullable: true)
+                    Text = table.Column<string>(nullable: true),
+                    Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_D_UserMessage", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "D_UserMessage_202102",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Type = table.Column<int>(nullable: false),
+                    ReadingMarks = table.Column<string>(nullable: true),
+                    GroupId = table.Column<string>(nullable: true),
+                    GroupName = table.Column<string>(nullable: true),
+                    Deleted = table.Column<bool>(nullable: false),
+                    CreateTime = table.Column<DateTime>(nullable: false),
+                    ModifyTime = table.Column<DateTime>(nullable: true),
+                    CreatorId = table.Column<string>(nullable: true),
+                    CreatorName = table.Column<string>(nullable: true),
+                    ModifyId = table.Column<string>(nullable: true),
+                    ModifyName = table.Column<string>(nullable: true),
+                    TenantId = table.Column<string>(nullable: true),
+                    UserIds = table.Column<string>(nullable: true),
+                    UserNames = table.Column<string>(nullable: true),
+                    Text = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_D_UserMessage_202102", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -502,6 +597,9 @@ namespace AIStudio.Wpf.DataRepository.Migrations
                 name: "Base_AppSecret");
 
             migrationBuilder.DropTable(
+                name: "Base_Datasource");
+
+            migrationBuilder.DropTable(
                 name: "Base_DbLink");
 
             migrationBuilder.DropTable(
@@ -523,6 +621,12 @@ namespace AIStudio.Wpf.DataRepository.Migrations
                 name: "Base_UserRole");
 
             migrationBuilder.DropTable(
+                name: "D_Notice");
+
+            migrationBuilder.DropTable(
+                name: "D_NoticeReadingMarks");
+
+            migrationBuilder.DropTable(
                 name: "D_UserGroup");
 
             migrationBuilder.DropTable(
@@ -530,6 +634,9 @@ namespace AIStudio.Wpf.DataRepository.Migrations
 
             migrationBuilder.DropTable(
                 name: "D_UserMessage");
+
+            migrationBuilder.DropTable(
+                name: "D_UserMessage_202102");
 
             migrationBuilder.DropTable(
                 name: "D_UserMessage_202103");
