@@ -36,7 +36,7 @@
                 perm:PermissionHelper.HasPerm="Base_Datasource.View"
                 Command="{Binding ViewCommand}"
                 CommandParameter="{Binding SelectedItem}"
-                Icon="&#xe62c;"
+                Icon="&#xe6a0;"
                 Header="查看" 
                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
                 Style="{StaticResource TransparentHeaderMenuItem}"/>
@@ -87,7 +87,7 @@
                     CommandParameter="{Binding SelectedItem}"
                     Content="查看"
                     CornerRadius="2"
-                    FIcon="&#xe62c;" />
+                    FIcon="&#xe6a0;" />
                 <util:FButton
                     Margin="3"
                     perm:PermissionHelper.HasPerm="Base_Datasource.Delete"
