@@ -88,7 +88,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         public OA_UserFormEditViewModel(OA_UserFormDTO data, string area, string identifier, string title = "编辑表单") : this(data, area, identifier, title, "", "", "", 0, "") { }
 
-        public OA_UserFormEditViewModel(OA_UserFormDTO data, string area, string identifier, string title, string type, string key, string jsonId, int jsonVersion, string json) : base(data, area, identifier, title, true)
+        public OA_UserFormEditViewModel(OA_UserFormDTO data, string area, string identifier, string title, string type, string key, string jsonId, int jsonVersion, string json) : base(data, area, identifier, title)
         {
             _operator = ContainerLocator.Current.Resolve<IOperator>();
             if (Data == null)

@@ -62,7 +62,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
         protected IOperator _operator { get; }
         protected IWSocketClient _wSocketClient { get; }
 
-        public D_UserMessageEditViewModel(D_OnlineUserDTO data, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title, true)
+        public D_UserMessageEditViewModel(D_OnlineUserDTO data, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title)
         {
             _operator = ContainerLocator.Current.Resolve<IOperator>();
             _wSocketClient = ContainerLocator.Current.Resolve<IWSocketClient>();

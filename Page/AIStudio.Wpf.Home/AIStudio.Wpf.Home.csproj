@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Application\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Xceed.Wpf.AvalonDock.Themes.MyMetro\Xceed.Wpf.AvalonDock.Themes.MyMetro.csproj" />
     <ProjectReference Include="..\..\Others\Xceed.Wpf\Xceed.Wpf.AvalonDock\Xceed.Wpf.AvalonDock.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />

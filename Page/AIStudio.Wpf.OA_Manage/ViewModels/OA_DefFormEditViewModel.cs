@@ -76,7 +76,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        public OA_DefFormEditViewModel(OA_DefFormDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title, true)
+        public OA_DefFormEditViewModel(OA_DefFormDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
         {
             if (Data == null)
             {
