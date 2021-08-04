@@ -1,4 +1,5 @@
-﻿using AIStudio.Core;
+﻿using Accelerider.Extensions.Mvvm;
+using AIStudio.Core;
 using AIStudio.Core.Models;
 using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.Events;
@@ -25,7 +26,7 @@ using Util.Controls;
 
 namespace AIStudio.Wpf.Home.ViewModels
 {
-    class MainViewModel : Prism.Mvvm.BindableBase, INavigationAware
+    class MainViewModel : Prism.Mvvm.BindableBase, INavigationAware, IViewLoadedAndUnloadedAware
     {
         protected IContainerExtension _container { get; }
         public IRegionManager _regionManager { get; set; }//这个很重要，与View进行绑定，不然RequestNavigate不好使
@@ -52,6 +53,16 @@ namespace AIStudio.Wpf.Home.ViewModels
             _aggregator.GetEvent<SelectedDocumentEvent>().Subscribe(SelectedDocumentEventReceived);
         }
 
+        public void OnLoaded()
+        {
+            InitData();
+        }
+
+        public void OnUnloaded()
+        {
+           
+        }
+
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             var identifier = navigationContext.Parameters["Identifier"] as string;
@@ -59,7 +70,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 Identifier = identifier;
             }
-            InitData();
+          
             RegionName = AIStudio.Core.RegionName.TabContentRegion + "_" + Identifier;
             NoticeIconViewModel = new NoticeIconViewModel(this, Identifier);
         }
@@ -431,7 +442,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-
+        //写个注释，Identifier这个是为多屏做的，用于识别不同的窗体
         private string _identifier = LocalSetting.RootWindow;
         public string Identifier
         {
@@ -698,7 +709,6 @@ namespace AIStudio.Wpf.Home.ViewModels
 
             }
         }
-
 
 
     }

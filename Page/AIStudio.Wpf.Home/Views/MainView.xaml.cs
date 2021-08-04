@@ -18,17 +18,10 @@ namespace AIStudio.Wpf.Home.Views
             InitializeComponent();
 
             MenuControl.AddHandler(MenuItem.MouseUpEvent, new RoutedEventHandler(OnMouseUp), true);
-
-            this.Loaded += MainView_Loaded;
         }
 
         private MainViewModel MainViewModel { get { return (DataContext as MainViewModel); } }
 
-        private void MainView_Loaded(object sender, RoutedEventArgs e)
-        {
-            //捕获得焦点，快捷键不好用，但是还有些问题，快捷键事件放到主窗体好了
-            //Keyboard.Focus(this);
-        }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {

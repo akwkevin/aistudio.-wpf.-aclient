@@ -1,4 +1,5 @@
-﻿using AIStudio.Core;
+﻿using Accelerider.Extensions.Mvvm;
+using AIStudio.Core;
 using AIStudio.LocalConfiguration;
 using AIStudio.Wpf.Base_Manage;
 using AIStudio.Wpf.Business;
@@ -149,7 +150,7 @@ namespace AIStudio.Wpf.Client
             {
                 ModuleName = homePageModule.Name,
                 ModuleType = homePageModule.AssemblyQualifiedName,
-                InitializationMode = InitializationMode.OnDemand
+                InitializationMode = InitializationMode.WhenAvailable
             });
 
             var base_ManageModule = typeof(Base_ManageModule);
@@ -186,7 +187,10 @@ namespace AIStudio.Wpf.Client
 
         protected override void ConfigureViewModelLocator()
         {
-            base.ConfigureViewModelLocator();
+            //base.ConfigureViewModelLocator();
+            ViewModelLocationProvider.SetDefaultViewModelFactory(new ViewModelResolver(() => Container)
+                 .UseDefaultConfigure()
+                 .ResolveViewModelForView);
 
             // type / type
             //ViewModelLocationProvider.Register(typeof(MainWindow).ToString(), typeof(MainWindowViewModel));

@@ -28,14 +28,7 @@ namespace AIStudio.Wpf.Client
             _moduleManager = ContainerLocator.Current.Resolve<IModuleManager>();
             _wSocketClient = ContainerLocator.Current.Resolve<IWSocketClient>();
 
-            this.Loaded += MainWindow_Loaded;
             this.Closing += MainWindow_Closing;
-        }
-
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            //显示主窗体后，开始加载信息
-            _moduleManager.LoadModule("HomePageModule");
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
