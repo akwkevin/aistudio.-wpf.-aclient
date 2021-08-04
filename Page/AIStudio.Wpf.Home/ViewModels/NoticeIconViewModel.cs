@@ -1,11 +1,14 @@
 ﻿using AIStudio.Core;
 using AIStudio.Core.ExCommand;
 using AIStudio.Core.Models;
+using AIStudio.Wpf.BasePage.Events;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.D_Manage.ViewModels;
+using AIStudio.Wpf.D_Manage.Views;
 using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.OA_Manage.ViewModels;
+using AIStudio.Wpf.OA_Manage.Views;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Events;
@@ -131,11 +134,8 @@ namespace AIStudio.Wpf.Home.ViewModels
         protected IUserData _userData { get => ContainerLocator.Current.Resolve<IUserData>(); }
         protected IEventAggregator _aggregator { get => ContainerLocator.Current.Resolve<IEventAggregator>(); }
 
-        protected MainViewModel _mainViewmodel { get; }
-
-        public NoticeIconViewModel(MainViewModel mainViewmodel, string identifier)
+        public NoticeIconViewModel(string identifier)
         {
-            _mainViewmodel = mainViewmodel;
             Identifier = identifier;
 
             _wSocketClient.MessageReceived -= _wSocketClient_MessageReceived;
@@ -165,7 +165,6 @@ namespace AIStudio.Wpf.Home.ViewModels
                 }
             }
         }
-
 
         private async void GetData()
         {
@@ -343,16 +342,15 @@ namespace AIStudio.Wpf.Home.ViewModels
 
         private Dictionary<string, string> Dictionary = new Dictionary<string, string>()
         {
-            { "D_NoticeDTO", "/D_Manage/D_Notice/List" },
-            { "D_UserMailDTO", "/D_Manage/D_UserMail/Index" },
-            { "D_UserMessageDTO", "/D_Manage/D_UserMessage/List" },
-            { "OA_UserFormDTO", "/D_Manage/OA_UserForm/List" },
+            { "D_NoticeDTO", typeof(D_NoticeView).FullName },
+            { "D_UserMailDTO", typeof(D_UserMailIndexView).FullName},
+            { "D_UserMessageDTO", typeof(D_UserMessageView).FullName},
+            { "OA_UserFormDTO", typeof(OA_UserFormView).FullName },
         };
-
 
         private void More(string para)
         {
-            _mainViewmodel.SelectedMenuItem = new AToolItem() { Code = Dictionary[para], Type = 1 };
+            _aggregator.GetEvent<MenuExcuteEvent>().Publish(new Tuple<string, string>(Identifier, Dictionary[para]));
         }
 
         private async void Edit(object para)

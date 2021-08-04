@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Util.3DWall" Version="1.3.0" />
-    <PackageReference Include="Util.Panels" Version="1.2.8" />
+    <PackageReference Include="Util.Panels" Version="1.2.9" />
   </ItemGroup>
 
   <ItemGroup>

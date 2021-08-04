@@ -51,6 +51,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             LocalSetting.SettingChanged += SettingChanged;
           
             _aggregator.GetEvent<SelectedDocumentEvent>().Subscribe(SelectedDocumentEventReceived);
+            _aggregator.GetEvent<MenuExcuteEvent>().Subscribe(MenuExcuteEventReceived, (ev) => { return ev.Item1 == Identifier; });
         }
 
         public void OnLoaded()
@@ -72,7 +73,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
           
             RegionName = AIStudio.Core.RegionName.TabContentRegion + "_" + Identifier;
-            NoticeIconViewModel = new NoticeIconViewModel(this, Identifier);
+            NoticeIconViewModel = new NoticeIconViewModel(Identifier);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -590,6 +591,11 @@ namespace AIStudio.Wpf.Home.ViewModels
                         break;
                     }
             }
+        }
+
+        private void MenuExcuteEventReceived(Tuple<string, string> tuple)
+        {
+            SelectedMenuItem = SearchMenus.FirstOrDefault(p => p.WpfCode == tuple.Item2);
         }
 
         void SelectedMenuItemChanged(AMenuItem item)
