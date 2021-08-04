@@ -67,7 +67,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
 
         protected IOperator _operator { get; }
 
-        public D_UserMailNewViewModel(string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title, true)
+        public D_UserMailNewViewModel(string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title)
         {
             _operator = ContainerLocator.Current.Resolve<IOperator>();
             if (Data == null)

@@ -54,7 +54,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
        
 
-        public Base_UserEditViewModel(Base_UserDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title, true)
+        public Base_UserEditViewModel(Base_UserDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
         {
             if (Data == null)
             {
