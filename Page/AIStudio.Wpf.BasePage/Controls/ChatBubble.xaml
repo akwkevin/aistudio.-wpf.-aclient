@@ -234,7 +234,7 @@
                                CornerRadius="5"
                                HorizontalAlignment="Right"
                                Margin="0,0,35,0">
-                    <controls:UploadFile Margin="{TemplateBinding Padding}" Disable="True" File= "{TemplateBinding Content}" />
+                    <controls:UploadFile Margin="{TemplateBinding Padding}" Disable="True" File= "{TemplateBinding Content}"/>
                 </util:AngleBorder>
             </Grid>
         </StackPanel>
@@ -377,7 +377,7 @@
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent}"/>
         <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Text}"/>
-        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Padding" Value="1"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="MinHeight" Value="22"/>
         <Setter Property="Template" Value="{StaticResource ChatBubbleUnknowBaseTemplate}"/>

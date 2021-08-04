@@ -177,6 +177,10 @@ namespace AIStudio.Wpf.BasePage.Controls
                 {
                     System.Diagnostics.Process.Start("explorer.exe", info.Text);
                 }
+                else if (info.Type == (int)ChatMessageType.Upload)
+                {
+                    System.Diagnostics.Process.Start("explorer.exe", info.Text);
+                }
                 else if (info.Type == (int)ChatMessageType.Audio)
                 {
                     MediaElementPlayerWindow.Show(info.Text);
