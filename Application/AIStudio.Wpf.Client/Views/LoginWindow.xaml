@@ -16,17 +16,21 @@
         MinboxEnable="False"
         util:WindowBase.TitleTag="true"
         x:Name="loginWin"
-        Title="{x:Static core:LocalSetting.Title}" Height="288" Width="450">
+        Title="{x:Static core:LocalSetting.Title}" Height="350" Width="500" BorderThickness="0">
+ 
     <Grid>
-        <Grid x:Name="LoginGrid" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='Input'}">           
+        <Grid x:Name="LoginGrid" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='Input'}">
+            <Grid.Background>
+                <ImageBrush ImageSource="/AIStudio.Resource;component/Images/background.jpg" />
+            </Grid.Background>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="70"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="1" Width="250" Margin="0,0,0,0" KeyboardNavigation.TabNavigation="Cycle">
+            <Grid Grid.Row="1" Width="250" Margin="0,0,0,0" KeyboardNavigation.TabNavigation="Cycle" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -78,35 +82,35 @@
             <TextBlock  Grid.Row="3" Text="{Binding Version}" HorizontalAlignment="Left"/>           
         </Grid>
         <Grid x:Name="VerifyGrid">
-            <util:SliderVerify x:Name="Slider" Height="288" Width="450" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='Slider'}" >
+            <util:SliderVerify x:Name="Slider" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='Slider'}" >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="ResultChanged">
                         <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result,ElementName=Slider}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </util:SliderVerify>
-            <util:TextClickVerify x:Name="TextClick" Height="288" Width="450" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='TextClick'}" >
+            <util:TextClickVerify x:Name="TextClick" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='TextClick'}" >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="ResultChanged">
                         <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result,ElementName=TextClick}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </util:TextClickVerify>
-            <util:TextClickVerify x:Name="EmojiClick" Height="288" Width="450" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='EmojiClick'}" >
+            <util:TextClickVerify x:Name="EmojiClick" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='EmojiClick'}" >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="ResultChanged">
                         <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result,ElementName=EmojiClick}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </util:TextClickVerify>
-            <util:TextClickVerify x:Name="IdiomsClick" Height="288" Width="450" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='IdiomsClick'}" >
+            <util:TextClickVerify x:Name="IdiomsClick" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='IdiomsClick'}" >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="ResultChanged">
                         <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result,ElementName=IdiomsClick}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </util:TextClickVerify>
-            <util:DragVerify x:Name="Drag" Height="288" Width="450" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='Drag'}">
+            <util:DragVerify x:Name="Drag" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='Drag'}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="ResultChanged">
                         <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result,ElementName=Drag}"/>

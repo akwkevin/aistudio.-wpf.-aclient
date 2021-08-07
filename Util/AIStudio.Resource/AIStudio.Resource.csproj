@@ -7,11 +7,13 @@
 
   <ItemGroup>
     <None Remove="Brushs\brush.json" />
+    <None Remove="Images\background.jpg" />
   </ItemGroup>
   
 
   <ItemGroup>
     <Resource Include="Brushs\brush.json" />
+    <Resource Include="Images\background.jpg" />
     <Resource Include="Images\Brook.jpg" />
     <Resource Include="Images\Chopper.jpg" />
     <Resource Include="Images\Franky.jpg" />
