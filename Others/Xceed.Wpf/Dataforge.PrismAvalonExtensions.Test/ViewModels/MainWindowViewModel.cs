@@ -20,6 +20,7 @@ namespace Dataforge.PrismAvalonExtensions.Test.ViewModels
         public DelegateCommand<string> NavigateCommand { get; private set; }
 
         public DelegateCommand<string> NavigateCommand2 { get; private set; }
+        public DelegateCommand<string> NavigateCommand3 { get; private set; }
 
         public MainWindowViewModel(IRegionManager regionManager)
         {
@@ -27,6 +28,7 @@ namespace Dataforge.PrismAvalonExtensions.Test.ViewModels
 
             NavigateCommand = new DelegateCommand<string>(Navigate);
             NavigateCommand2 = new DelegateCommand<string>(Navigate2);
+            NavigateCommand3 = new DelegateCommand<string>(Navigate3);
         }
 
         private void Navigate(string navigatePath)
@@ -39,6 +41,12 @@ namespace Dataforge.PrismAvalonExtensions.Test.ViewModels
         {
             if (navigatePath != null)
                 _regionManager.RequestNavigate("ContentRegion2", navigatePath);
+        }
+
+        private void Navigate3(string navigatePath)
+        {
+            if (navigatePath != null)
+                _regionManager.RequestNavigate("ContentRegion3", navigatePath);
         }
     }
 }

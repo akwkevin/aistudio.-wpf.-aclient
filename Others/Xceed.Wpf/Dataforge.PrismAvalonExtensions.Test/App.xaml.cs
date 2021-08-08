@@ -1,5 +1,7 @@
 ﻿using Dataforge.PrismAvalonExtensions.Regions;
+using Dataforge.PrismAvalonExtensions.Test.Regions;
 using Dataforge.PrismAvalonExtensions.Test.Views;
+using Dragablz;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -32,6 +34,7 @@ namespace Dataforge.PrismAvalonExtensions.Test
         {
             base.ConfigureRegionAdapterMappings(regionAdapterMappings);
             regionAdapterMappings.RegisterMapping(typeof(DockingManager), Container.Resolve<DockingManagerRegionAdapter>());
+            regionAdapterMappings.RegisterMapping(typeof(TabablzControl), Container.Resolve<TabablzControlRegionAdapter>());
         }
     }
 }
