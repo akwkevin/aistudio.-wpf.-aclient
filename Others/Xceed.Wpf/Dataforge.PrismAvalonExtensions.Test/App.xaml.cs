@@ -1,5 +1,5 @@
-﻿using Dataforge.PrismAvalonExtensions.Regions;
-using Dataforge.PrismAvalonExtensions.Test.Regions;
+﻿using AIStudio.Wpf.PrismDragablzExtensions.Regions;
+using Dataforge.PrismAvalonExtensions.Regions;
 using Dataforge.PrismAvalonExtensions.Test.Views;
 using Dragablz;
 using Prism.Ioc;

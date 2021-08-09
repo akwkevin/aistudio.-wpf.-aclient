@@ -1,4 +1,5 @@
 ﻿using Dataforge.PrismAvalonExtensions.Test.Views;
+using Dragablz;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -15,6 +16,20 @@ namespace Dataforge.PrismAvalonExtensions.Test.ViewModels
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }
+        }
+
+        public ItemActionCallback ClosingTabItemHandler
+        {
+            get { return ClosingTabItemHandlerImpl; }
+        }
+
+        /// <summary>
+        /// Callback to handle tab closing.
+        /// </summary>        
+        private void ClosingTabItemHandlerImpl(ItemActionCallbackArgs<TabablzControl> args)
+        {
+            //here's how you can cancel stuff:
+            //args.Cancel(); 
         }
 
         public DelegateCommand<string> NavigateCommand { get; private set; }

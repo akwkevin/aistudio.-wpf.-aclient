@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dataforge.PrismAvalonExtensions.Test.Regions
+namespace AIStudio.Wpf.PrismDragablzExtensions.Regions
 {
     public class TabablzControlRegionAdapter : RegionAdapterBase<TabablzControl>
     {

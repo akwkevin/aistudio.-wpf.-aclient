@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 
-namespace Dataforge.PrismAvalonExtensions.Test.Regions
+namespace AIStudio.Wpf.PrismDragablzExtensions.Helpers
 {
     public static class RegionUtility
     {

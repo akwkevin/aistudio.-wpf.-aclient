@@ -8,7 +8,7 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:v="clr-namespace:Dataforge.PrismAvalonExtensions.Test.Views"
         xmlns:vm="clr-namespace:Dataforge.PrismAvalonExtensions.Test.ViewModels"
-        xmlns:preview="clr-namespace:Dataforge.PrismAvalonExtensions.Test.Regions"
+        xmlns:preview="clr-namespace:AIStudio.Wpf.PrismDragablzExtensions;assembly=AIStudio.Wpf.PrismDragablzExtensions"
         xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
         xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
         mc:Ignorable="d"
@@ -60,27 +60,20 @@
                 </StackPanel>
                 <dragablz:TabablzControl prism:RegionManager.RegionName="ContentRegion3" Margin="5" 
                                 ShowDefaultCloseButton="True" 
+                                ClosingItemCallback="{Binding ClosingTabItemHandler}"
                                 ItemContainerStyle="{StaticResource TrapezoidDragableTabItemStyle}" >
-                    <dragablz:TabablzControl.InterTabController>
-                        <dragablz:InterTabController />
-                    </dragablz:TabablzControl.InterTabController>
-                    <dragablz:TabablzControl.ContentTemplate>
-                        <DataTemplate DataType="{x:Type preview:TabablzProxy}">
-                            <ContentPresenter Margin="4" Content="{Binding Content}" />
-                        </DataTemplate>
-                    </dragablz:TabablzControl.ContentTemplate>
-                    <dragablz:TabablzControl.CustomHeaderItemTemplate>
-                        <DataTemplate DataType="{x:Type preview:TabablzProxy}">
-                            <TextBlock Text="{Binding CommonData.Title}" MaxWidth="100" TextTrimming="CharacterEllipsis" ToolTip="{Binding CommonData.Title}" />
-                        </DataTemplate>
-                    </dragablz:TabablzControl.CustomHeaderItemTemplate>
                     <dragablz:TabablzControl.HeaderItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding CommonData.Title}"/>
+                                <TextBlock Text="{Binding DataContext.Title}"/>
                             </StackPanel>
                         </DataTemplate>
                     </dragablz:TabablzControl.HeaderItemTemplate>
+                    <dragablz:TabablzControl.ContentTemplate>
+                        <DataTemplate DataType="{x:Type preview:TabablzProxy}">
+                            <ContentPresenter Margin="4" Content="{Binding View}" />
+                        </DataTemplate>
+                    </dragablz:TabablzControl.ContentTemplate>                   
                 </dragablz:TabablzControl>
               
             </DockPanel>
