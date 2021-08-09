@@ -1,0 +1,48 @@
+﻿<dragablz:DragablzWindow x:Class="DragablzPrism.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DragablzPrism"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+        xmlns:preview="clr-namespace:DragablzPrism.Regions"
+        mc:Ignorable="d"
+        Closed="MainWindow_OnClosed"
+        Activated="MainWindow_OnActivated"
+        Title="MainWindow" Height="350" Width="525">
+    <dragablz:DragablzWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </dragablz:DragablzWindow.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Button Command="{Binding OpenView1}">View 1</Button>
+            <Button Command="{Binding OpenView2}">View 2</Button>
+            <Button Command="{Binding OpenView3}">View 3</Button>
+        </StackPanel>
+        <dragablz:TabablzControl Grid.Column="1" Name="TabablzControl" ShowDefaultCloseButton="True" 
+                             ItemContainerStyle="{StaticResource TrapezoidDragableTabItemStyle}"
+                             AdjacentHeaderItemOffset="-10" Margin="0,4,0,0">
+            <dragablz:TabablzControl.ContentTemplate>
+                <DataTemplate DataType="{x:Type preview:TabClientProxy}">
+                    <ContentPresenter Margin="4" Content="{Binding Content}" />
+                </DataTemplate>
+            </dragablz:TabablzControl.ContentTemplate>
+            <dragablz:TabablzControl.CustomHeaderItemTemplate>
+                <DataTemplate DataType="{x:Type preview:TabClientProxy}">
+                    <TextBlock Text="{Binding CommonData.Title}" MaxWidth="100" TextTrimming="CharacterEllipsis" ToolTip="{Binding CommonData.Title}" />
+                </DataTemplate>
+            </dragablz:TabablzControl.CustomHeaderItemTemplate>
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController InterTabClient="{Binding InterTabClient}" />
+            </dragablz:TabablzControl.InterTabController>
+        </dragablz:TabablzControl>
+    </Grid>
+</dragablz:DragablzWindow>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/">
     <Application.Resources>
-
+        <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/Generic.xaml" />
     </Application.Resources>
 </prism:PrismApplication>
 

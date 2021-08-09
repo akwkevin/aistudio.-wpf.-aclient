@@ -8,6 +8,8 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:v="clr-namespace:Dataforge.PrismAvalonExtensions.Test.Views"
         xmlns:vm="clr-namespace:Dataforge.PrismAvalonExtensions.Test.ViewModels"
+        xmlns:preview="clr-namespace:Dataforge.PrismAvalonExtensions.Test.Regions"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
         xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -15,9 +17,12 @@
         <Style TargetType="TabItem">
             <Setter Property="Header" Value="{Binding DataContext.Title}" />
         </Style>
+        <Style TargetType="{x:Type dragablz:DragablzItem}">
+            <Setter Property="Content" Value="{Binding DataContext.DataContext.Title}" />
+        </Style>
     </Window.Resources>
     <TabControl>
-        <TabItem Header="Table">
+        <TabItem Header="TabControl">
             <DockPanel LastChildFill="True">
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5" >
                     <Button Command="{Binding NavigateCommand}" CommandParameter="TestView" Margin="5">Navigate to Test</Button>
@@ -25,7 +30,7 @@
                 </StackPanel>
                 <TabControl prism:RegionManager.RegionName="ContentRegion" Margin="5"  />
             </DockPanel>
-        </TabItem>
+        </TabItem>     
         <TabItem Header="Avalon">
             <DockPanel LastChildFill="True">
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5" >
@@ -46,8 +51,39 @@
                     </avalonDock:LayoutRoot>
                 </avalonDock:DockingManager>
             </DockPanel>
-
-
+        </TabItem>
+        <TabItem Header="Dragablz">
+            <DockPanel LastChildFill="True">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5" >
+                    <Button Command="{Binding NavigateCommand3}" CommandParameter="TestView" Margin="5">Navigate to Test</Button>
+                    <Button Command="{Binding NavigateCommand3}" CommandParameter="Test2View" Margin="5">Navigate to Test2</Button>
+                </StackPanel>
+                <dragablz:TabablzControl prism:RegionManager.RegionName="ContentRegion3" Margin="5" 
+                                ShowDefaultCloseButton="True" 
+                                ItemContainerStyle="{StaticResource TrapezoidDragableTabItemStyle}" >
+                    <dragablz:TabablzControl.InterTabController>
+                        <dragablz:InterTabController />
+                    </dragablz:TabablzControl.InterTabController>
+                    <dragablz:TabablzControl.ContentTemplate>
+                        <DataTemplate DataType="{x:Type preview:TabablzProxy}">
+                            <ContentPresenter Margin="4" Content="{Binding Content}" />
+                        </DataTemplate>
+                    </dragablz:TabablzControl.ContentTemplate>
+                    <dragablz:TabablzControl.CustomHeaderItemTemplate>
+                        <DataTemplate DataType="{x:Type preview:TabablzProxy}">
+                            <TextBlock Text="{Binding CommonData.Title}" MaxWidth="100" TextTrimming="CharacterEllipsis" ToolTip="{Binding CommonData.Title}" />
+                        </DataTemplate>
+                    </dragablz:TabablzControl.CustomHeaderItemTemplate>
+                    <dragablz:TabablzControl.HeaderItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding CommonData.Title}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </dragablz:TabablzControl.HeaderItemTemplate>
+                </dragablz:TabablzControl>
+              
+            </DockPanel>
         </TabItem>
     </TabControl>
 </Window>

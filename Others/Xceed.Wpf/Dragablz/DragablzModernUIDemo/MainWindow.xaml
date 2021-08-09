@@ -1,0 +1,41 @@
+﻿<dragablz:DragablzWindow x:Class="DragablzModernUIDemo.MainWindow"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"                      
+                         Title="Dragablz and MahApps"                                               
+                         Height="350" Width="525">
+    <Window.Style>
+        <Style TargetType="{x:Type dragablz:DragablzWindow}" BasedOn="{StaticResource {x:Type dragablz:DragablzWindow}}">
+            <Setter Property="Background" Value="{DynamicResource GrayBrush8}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource WindowTitleColorBrush}" />
+        </Style>
+    </Window.Style>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/MahApps.xaml" />
+            </ResourceDictionary.MergedDictionaries>            
+        </ResourceDictionary>        
+    </Window.Resources>
+    <dragablz:TabablzControl Background="{DynamicResource WhiteColorBrush}"
+                             DefaultHeaderItemStyle="{StaticResource MahAppsTabHeaderItemStyle}">
+        <dragablz:TabablzControl.InterTabController>
+            <dragablz:InterTabController />
+        </dragablz:TabablzControl.InterTabController>
+        <TabItem Header="1 - one">
+            <TextBlock Margin="2" FontSize="24">This is the first</TextBlock>
+        </TabItem>
+        <TabItem Header="2 - two">
+            <TextBox Margin="2" FontSize="24">This is the second</TextBox>
+        </TabItem>
+        <TabItem Header="3 - three">
+            <TextBlock Margin="2" FontSize="24">This is the third</TextBlock>
+        </TabItem>
+        <TabItem Header="4 - four">
+            <TextBlock Margin="2" FontSize="24">This is the fourth</TextBlock>
+        </TabItem>
+        <TabItem Header="5 - five">
+            <TextBlock Margin="2" FontSize="24">This is the fifth</TextBlock>
+        </TabItem>
+    </dragablz:TabablzControl>        
+</dragablz:DragablzWindow>
