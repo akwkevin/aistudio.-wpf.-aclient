@@ -268,7 +268,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                                $"{entityName}View.xaml");
 
                 subBuildCode = new SubBuildCode();
-                subBuildCode.Name = $"列表";
+                subBuildCode.Name = $"列表Xaml";
                 subBuildCode.Path = savePath;
                 subBuildCode.TempPath = Path.Combine(
                                directory,
