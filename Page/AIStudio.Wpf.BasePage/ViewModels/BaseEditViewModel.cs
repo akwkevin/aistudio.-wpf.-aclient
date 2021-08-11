@@ -10,7 +10,6 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 {
     public class BaseEditViewModel<T> : BindableBase where T : class, IIsChecked
     {      
-
         private string _title;
         public string Title
         {

@@ -48,12 +48,31 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
+        private string _areaName = "Base_Manage";
+        public string AreaName
+        {
+            get { return _areaName; }
+            set
+            {
+                SetProperty(ref _areaName, value);
+            }
+        }
+
         private ICommand _addCommand;
         public new ICommand AddCommand
         {
             get
             {
                 return this._addCommand ?? (this._addCommand = new CanExecuteDelegateCommand(() => this.Edit(), () => Data != null && Data.Count(p => p.IsChecked) > 0));
+            }
+        }
+
+        private ICommand _generateCommand;
+        public ICommand GenerateCommand
+        {
+            get
+            {
+                return this._generateCommand ?? (this._generateCommand = new CanExecuteDelegateCommand(() => this.Generate(), () => Data != null && Data.Count(p => p.IsChecked) > 0));
             }
         }
 
@@ -184,10 +203,17 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         private static readonly List<string> ignoreProperties =
             new List<string> { "Id", "CreateTime", "CreatorId", "CreatorName", "Deleted", "ModifyTime", "ModifyId", "ModifyName", "TenantId" };
 
-        private void Generate(string areaName, List<string> entityNames, bool isCover)
+        private List<BuildCode> Generate(string areaName, List<string> entityNames, bool isCover, bool preView = false)
         {
+            List<BuildCode> buildCodes = new List<BuildCode>();
             foreach (var entityName in entityNames)
             {
+                var buildCode = new BuildCode();
+                buildCode.TableName = entityName;
+                buildCode.IsChecked = true;
+                buildCode.SubBuildCode = new List<SubBuildCode>();
+                buildCodes.Add(buildCode);
+
                 #region Model
                 tmpFileText = File.ReadAllText(Path.Combine(directory, "Page", "AIStudio.Wpf.Home", "BuildCodeTemplate", "DTO.txt"));
 
@@ -202,11 +228,92 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                                $"{areaName}",
                                $"{entityName}DTO.cs");
 
-                if (isCover || !File.Exists(savePath))
+                SubBuildCode subBuildCode = new SubBuildCode();
+                subBuildCode.Name = $"DTO类";
+                subBuildCode.Path = savePath;
+                subBuildCode.TempPath = Path.Combine(
+                               directory,
+                               "Application",
+                               "AIStudio.Wpf.Entity",
+                               "DTOModels",
+                               "areaName",
+                               $"{entityName}DTO.cs");
+                subBuildCode.Code = tmpFileText;
+                subBuildCode.FileName = $"{entityName}DTO";
+                subBuildCode.Suffix = "cs"; 
+                buildCode.SubBuildCode.Add(subBuildCode);
+
+                if ((isCover || !File.Exists(savePath)) && preView == false)
                     FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
                 #endregion
 
-                #region ViewModel
+                #region 列表界面
+                //
+                List<string> selectOptionsList = new List<string>();
+                List<string> listColumnsList = new List<string>();
+                List<string> formColumnsList = new List<string>();
+
+                tmpFileText = File.ReadAllText(Path.Combine(directory, "Page", "AIStudio.Wpf.Home", "BuildCodeTemplate", "List.txt"));
+
+                tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
+
+                tmpFileText = tmpFileText.Replace("%selectOptions%", string.Join("\r\n", selectOptionsList));
+                tmpFileText = tmpFileText.Replace("%listColumns%", string.Join("\r\n", listColumnsList));
+
+                savePath = Path.Combine(
+                               directory,
+                               "Page",
+                               $"AIStudio.Wpf.{areaName}",
+                               "Views",
+                               $"{entityName}View.xaml");
+
+                subBuildCode = new SubBuildCode();
+                subBuildCode.Name = $"列表";
+                subBuildCode.Path = savePath;
+                subBuildCode.TempPath = Path.Combine(
+                               directory,
+                               "Page",
+                               "AIStudio.Wpf.areaName",
+                               "Views",
+                               $"{entityName}View.xaml");
+                subBuildCode.Code = tmpFileText;
+                subBuildCode.FileName = $"{entityName}View";
+                subBuildCode.Suffix = "xaml";
+                buildCode.SubBuildCode.Add(subBuildCode);
+
+                if ((isCover || !File.Exists(savePath)) && preView == false)
+                    FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
+
+                //
+                tmpFileText = File.ReadAllText(Path.Combine(directory, "Page", "AIStudio.Wpf.Home", "BuildCodeTemplate", "Listcs.txt"));
+
+                tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
+
+                savePath = Path.Combine(
+                               directory,
+                               "Page",
+                               $"AIStudio.Wpf.{areaName}",
+                               "Views",
+                               $"{entityName}View.xaml.cs");
+
+                subBuildCode = new SubBuildCode();
+                subBuildCode.Name = $"列表cs";
+                subBuildCode.Path = savePath;
+                subBuildCode.TempPath = Path.Combine(
+                               directory,
+                               "Page",
+                               "AIStudio.Wpf.areaName",
+                               "Views",
+                               $"{entityName}View.xaml.cs");
+                subBuildCode.Code = tmpFileText;
+                subBuildCode.FileName = $"{entityName}View";
+                subBuildCode.Suffix = "xaml.cs";
+                buildCode.SubBuildCode.Add(subBuildCode);
+
+                if ((isCover || !File.Exists(savePath)) && preView == false)
+                    FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
+
+                //
                 tmpFileText = File.ReadAllText(Path.Combine(directory, "Page", "AIStudio.Wpf.Home", "BuildCodeTemplate", "Listviewmodel.txt"));
 
                 tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
@@ -218,32 +325,31 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                                "ViewModels",
                                $"{entityName}ViewModel.cs");
 
-                if (isCover || !File.Exists(savePath))
-                    FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
-
-                tmpFileText = File.ReadAllText(Path.Combine(directory, "Page", "AIStudio.Wpf.Home", "BuildCodeTemplate", "EditFormviewmodel.txt"));
-
-                tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
-
-                savePath = Path.Combine(
+                subBuildCode = new SubBuildCode();
+                subBuildCode.Name = $"列表VM";
+                subBuildCode.Path = savePath;
+                subBuildCode.TempPath = Path.Combine(
                                directory,
                                "Page",
-                               $"AIStudio.Wpf.{areaName}",
+                               $"AIStudio.Wpf.areaName",
                                "ViewModels",
-                               $"{entityName}EditViewModel.cs");
+                               $"{entityName}ViewModel.cs");
 
-                if (isCover || !File.Exists(savePath))
+                subBuildCode.Code = tmpFileText;
+                subBuildCode.FileName = $"{entityName}ViewModel";
+                subBuildCode.Suffix = "cs";
+                buildCode.SubBuildCode.Add(subBuildCode);
+
+                if ((isCover || !File.Exists(savePath)) && preView == false)
                     FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
                 #endregion
 
-                #region View
+                #region 编辑界面
+                //
                 string fullClassName = "AIStudio.Wpf.Entity.Models." + entityName;
 
                 //根据类名称创建类实例
                 var type = System.Reflection.Assembly.Load("AIStudio.Wpf.Entity").GetType(fullClassName);
-                List<string> selectOptionsList = new List<string>();
-                List<string> listColumnsList = new List<string>();
-                List<string> formColumnsList = new List<string>();
                 string fieldDesc = string.Empty;
                 foreach (System.Reflection.PropertyInfo info in type.GetProperties().Where(p => !ignoreProperties.Contains(p.Name)))
                 {
@@ -272,24 +378,7 @@ $"				<DataGridTextColumn Header=\"{fieldDesc}\"  Binding=\"{{Binding {info.Name
 "                        </HeaderedContentControl>");
 
 
-                }
-
-                tmpFileText = File.ReadAllText(Path.Combine(directory, "Page", "AIStudio.Wpf.Home", "BuildCodeTemplate", "List.txt"));
-
-                tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
-
-                tmpFileText = tmpFileText.Replace("%selectOptions%", string.Join("\r\n", selectOptionsList));
-                tmpFileText = tmpFileText.Replace("%listColumns%", string.Join("\r\n", listColumnsList));
-
-                savePath = Path.Combine(
-                               directory,
-                               "Page",
-                               $"AIStudio.Wpf.{areaName}",
-                               "Views",
-                               $"{entityName}View.xaml");
-
-                if (isCover || !File.Exists(savePath))
-                    FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
+                }           
 
                 tmpFileText = File.ReadAllText(Path.Combine(directory, "Page", "AIStudio.Wpf.Home", "BuildCodeTemplate", "EditForm.txt"));
 
@@ -304,25 +393,24 @@ $"				<DataGridTextColumn Header=\"{fieldDesc}\"  Binding=\"{{Binding {info.Name
                                "Views",
                                $"{entityName}Edit.xaml");
 
-                if (isCover || !File.Exists(savePath))
-                    FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
-                #endregion
-
-                #region View.cs
-                tmpFileText = File.ReadAllText(Path.Combine(directory, "Page", "AIStudio.Wpf.Home", "BuildCodeTemplate", "Listcs.txt"));
-
-                tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
-
-                savePath = Path.Combine(
+                subBuildCode = new SubBuildCode();
+                subBuildCode.Name = $"编辑Xaml";
+                subBuildCode.Path = savePath;
+                subBuildCode.TempPath = Path.Combine(
                                directory,
                                "Page",
-                               $"AIStudio.Wpf.{areaName}",
+                               $"AIStudio.Wpf.areaName",
                                "Views",
-                               $"{entityName}View.xaml.cs");
+                               $"{entityName}Edit.xaml");
+                subBuildCode.FileName = $"{entityName}Edit";
+                subBuildCode.Code = tmpFileText;
+                subBuildCode.Suffix = "xaml";
+                buildCode.SubBuildCode.Add(subBuildCode);
 
-                if (isCover || !File.Exists(savePath))
+                if ((isCover || !File.Exists(savePath)) && preView == false)
                     FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
 
+                //
                 tmpFileText = File.ReadAllText(Path.Combine(directory, "Page", "AIStudio.Wpf.Home", "BuildCodeTemplate", "EditFormcs.txt"));
 
                 tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
@@ -334,11 +422,54 @@ $"				<DataGridTextColumn Header=\"{fieldDesc}\"  Binding=\"{{Binding {info.Name
                                "Views",
                                $"{entityName}Edit.xaml.cs");
 
-                if (isCover || !File.Exists(savePath))
+                subBuildCode = new SubBuildCode();
+                subBuildCode.Name = $"编辑cs";
+                subBuildCode.Path = savePath;
+                subBuildCode.TempPath = Path.Combine(
+                               directory,
+                               "Page",
+                               $"AIStudio.Wpf.areaName",
+                               "Views",
+                               $"{entityName}Edit.xaml.cs");
+                subBuildCode.FileName = $"{entityName}Edit";
+                subBuildCode.Code = tmpFileText;
+                subBuildCode.Suffix = "xaml.cs";
+                buildCode.SubBuildCode.Add(subBuildCode);
+
+                if ((isCover || !File.Exists(savePath)) && preView == false)
+                    FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
+
+                tmpFileText = File.ReadAllText(Path.Combine(directory, "Page", "AIStudio.Wpf.Home", "BuildCodeTemplate", "EditFormviewmodel.txt"));
+
+                tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
+
+                savePath = Path.Combine(
+                               directory,
+                               "Page",
+                               $"AIStudio.Wpf.{areaName}",
+                               "ViewModels",
+                               $"{entityName}EditViewModel.cs");
+
+                subBuildCode = new SubBuildCode();
+                subBuildCode.Name = $"编辑VM";
+                subBuildCode.Path = savePath;
+                subBuildCode.TempPath = Path.Combine(
+                               directory,
+                               "Page",
+                               $"AIStudio.Wpf.areaName",
+                               "ViewModels",
+                               $"{entityName}EditViewModel.cs");
+                subBuildCode.FileName = $"{entityName}EditViewModel";
+                subBuildCode.Code = tmpFileText;
+                subBuildCode.Suffix = "cs";
+                buildCode.SubBuildCode.Add(subBuildCode);
+
+                if ((isCover || !File.Exists(savePath)) && preView == false)
                     FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
                 #endregion
 
-                #region FlowForm
+
+                #region 打印
                 tmpFileText = File.ReadAllText(Path.Combine(directory, "Page", "AIStudio.Wpf.Home", "BuildCodeTemplate", "FlowForm.txt"));
 
                 List<string> tableColumnsList = new List<string>();
@@ -346,7 +477,7 @@ $"				<DataGridTextColumn Header=\"{fieldDesc}\"  Binding=\"{{Binding {info.Name
 
                 foreach (System.Reflection.PropertyInfo info in type.GetProperties().Where(p => !ignoreProperties.Contains(p.Name)))
                 {
-                     fieldDesc = info.Name;
+                    fieldDesc = info.Name;
                     object[] objs = info.GetCustomAttributes(typeof(DescriptionAttribute), true);
                     if (objs.Length > 0)
                     {
@@ -372,19 +503,29 @@ $"                    <Paragraph>{fieldDesc}</Paragraph>\r\n" +
                                     "Views",
                                     $"{entityName}FlowDocument.xaml");
 
-                if (isCover || !File.Exists(savePath))
-                    FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
-                #endregion
+                subBuildCode = new SubBuildCode();
+                subBuildCode.Name = $"打印Xaml";
+                subBuildCode.Path = savePath;
+                subBuildCode.TempPath = Path.Combine(
+                                    directory,
+                                    "Page",
+                                    $"AIStudio.Wpf.areaName",
+                                    "Views",
+                                    $"{entityName}FlowDocument.xaml");
+                subBuildCode.FileName = $"{entityName}FlowDocument";
+                subBuildCode.Code = tmpFileText;
+                subBuildCode.Suffix = "xaml";
+                buildCode.SubBuildCode.Add(subBuildCode);
 
-                #region FlowRenderer
+                if ((isCover || !File.Exists(savePath)) && preView == false)
+                    FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
+
                 tmpFileText = File.ReadAllText(Path.Combine(directory, "Page", "AIStudio.Wpf.Home", "BuildCodeTemplate", "FlowRenderer.txt"));
 
                 List<string> tableRowsList = new List<string>();
 
                 foreach (System.Reflection.PropertyInfo info in type.GetProperties().Where(p => !ignoreProperties.Contains(p.Name)))
                 {
-
-
                     if (info.PropertyType.ToString() == "System.String")
                     {
                         tableRowsList.Add(
@@ -412,13 +553,36 @@ $"                    cell = new TableCell(new Paragraph(new Run(item.{info.Name
                               "ViewModels",
                               $"{entityName}DocumentRenderer.cs");
 
-                if (isCover || !File.Exists(savePath))
+                subBuildCode = new SubBuildCode();
+                subBuildCode.Name = $"打印cs";
+                subBuildCode.Path = savePath;
+                subBuildCode.TempPath = Path.Combine(
+                              directory,
+                              "Page",
+                              $"AIStudio.Wpf.areaName",
+                              "ViewModels",
+                              $"{entityName}DocumentRenderer.cs");
+                subBuildCode.FileName = $"{entityName}DocumentRenderer";
+                subBuildCode.Code = tmpFileText;
+                subBuildCode.Suffix = "cs";
+                buildCode.SubBuildCode.Add(subBuildCode);
+
+                if ((isCover || !File.Exists(savePath)) && preView == false)
                     FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
                 #endregion
             }
+
+            return buildCodes;
         }
 
 
+        private void Generate()
+        {
+            List<BuildCode> buildCode = Generate(AreaName, Data.Where(p => p.IsChecked).Select(p => p.TableName).ToList(), false, true);
+            BuildCodeEditWindow window = new BuildCodeEditWindow();
+            window.DataContext = new BuildCodeEditWindowViewModel(buildCode, AreaName, Identifier, "代码生成器");
+            window.Show();
+        }
 
     }
 }

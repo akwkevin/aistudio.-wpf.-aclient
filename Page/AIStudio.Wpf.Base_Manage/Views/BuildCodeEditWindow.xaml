@@ -1,0 +1,72 @@
+﻿<Window x:Class="AIStudio.Wpf.Base_Manage.Views.BuildCodeEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:helper="clr-namespace:AIStudio.Core.ControlHelpers;assembly=AIStudio.Core"
+        xmlns:local="clr-namespace:AIStudio.Wpf.Base_Manage.Views"
+        mc:Ignorable="d"
+        Title="{Binding Title}" Height="450" Width="900" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Padding="5" Margin="2" BorderThickness="1" CornerRadius="3" BorderBrush="{DynamicResource MahApps.Brushes.Text}">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Bottom">
+                        <CheckBox Margin="2" IsChecked="{Binding IsCover}" Content="覆盖保存"></CheckBox>
+                        <Button Margin="2" Content="保存到所选文件夹" Command="{Binding SaveTempCommand}"/>
+                        <Button Margin="2" Content="点击生成" Command="{Binding OKCommand}" Background="{DynamicResource MahApps.Brushes.Accent}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Model" FontSize="28" Margin="2" Foreground="{DynamicResource MahApps.Brushes.Accent}"/>
+                        <ListBox Margin="2" ItemsSource="{Binding Data}" SelectedItem="{Binding SelectedData}"  Width="130">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox IsChecked="{Binding IsChecked}"></CheckBox>
+                                        <TextBlock Text="{Binding TableName}" HorizontalAlignment="Center"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>                        
+                        </ListBox>
+                        <TextBlock Text="生成区域" FontSize="28" Margin="2" Foreground="{DynamicResource MahApps.Brushes.Accent}"/>
+                        <TextBox Width="150" Text="{Binding AreaName,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"></TextBox>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+            <Border Grid.Column="1" Margin="2" Padding="5" BorderThickness="1" CornerRadius="3" BorderBrush="{DynamicResource MahApps.Brushes.Text}">
+                <TabControl ItemsSource="{Binding SelectedData.SubBuildCode}" SelectedIndex="0">
+                    <TabControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </TabControl.ItemTemplate>
+                    <TabControl.ContentTemplate>
+                        <DataTemplate>
+                            <DockPanel>
+                                <DockPanel DockPanel.Dock="Bottom" LastChildFill="True">
+                                    <CheckBox IsChecked="{Binding IsChecked}"></CheckBox>
+                                    <TextBox Text="{Binding Path}" FontSize="12"/>
+                                </DockPanel>
+                                <avalonedit:TextEditor x:Name="editor" FontFamily="Consolas" SyntaxHighlighting="C#" Margin="4" helper:TextEditorHelper.Text="{Binding Code,Mode=TwoWay}"/>
+                            </DockPanel>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding SyntaxHighlighting}" Value="xaml">
+                                    <Setter TargetName="editor" Property="SyntaxHighlighting" Value="XML"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </TabControl.ContentTemplate>
+                </TabControl>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
