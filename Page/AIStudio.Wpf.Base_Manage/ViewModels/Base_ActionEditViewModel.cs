@@ -92,11 +92,11 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 control.WaitInfo = "正在获取数据";
 
                 var result = await _dataProvider.GetData<Base_ActionDTO>($"/Base_Manage/Base_Action/GetTheData", JsonConvert.SerializeObject(new { id = dataTree.Id}));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
-                Data = result.ResponseItem;
+                Data = result.Data;
 
                 await GetParentIdTreeData();
                 await GetPermissionList();
@@ -114,13 +114,13 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         private async Task GetParentIdTreeData()
         {
             var result = await _dataProvider.GetData<List<Base_ActionTree>>($"/Base_Manage/Base_Action/GetMenuTreeList");
-            if (!result.IsOK)
+            if (!result.Success)
             {
-                throw new Exception(result.ErrorMessage);
+                throw new Exception(result.Msg);
             }
             else
             {
-                ParentIdTreeData = new ObservableCollection<Base_ActionTree>(result.ResponseItem);
+                ParentIdTreeData = new ObservableCollection<Base_ActionTree>(result.Data);
                 SelectedParent = GetTreeItem(ParentIdTreeData, Data.ParentId);
             }
         }
@@ -128,13 +128,13 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         private async Task GetPermissionList()
         {
             var result = await _dataProvider.GetData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetPermissionList", JsonConvert.SerializeObject(new {parentId=Data.Id}));
-            if (!result.IsOK)
+            if (!result.Success)
             {
-                throw new Exception(result.ErrorMessage);
+                throw new Exception(result.Msg);
             }
             else
             {
-                PermissionList = new ObservableCollection<Base_ActionDTO>(result.ResponseItem);
+                PermissionList = new ObservableCollection<Base_ActionDTO>(result.Data);
             }
         }
 

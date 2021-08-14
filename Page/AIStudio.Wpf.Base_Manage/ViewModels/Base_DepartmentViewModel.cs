@@ -110,13 +110,13 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 }
 
                 var result = await _dataProvider.GetData<List<Base_DepartmentTree>>($"/Base_Manage/Base_Department/GetTreeDataList");
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
-                    Data = new ObservableCollection<IBaseTreeItemViewModel>(result.ResponseItem);
+                    Data = new ObservableCollection<IBaseTreeItemViewModel>(result.Data);
                     Data2 = null;
                 }
             }
@@ -157,9 +157,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
                     viewmodel.Data.ParentId = viewmodel.SelectedDepartment?.Id;
                     var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Department/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     GetData(true);
                 }
@@ -197,11 +197,11 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 control.WaitInfo = "正在获取数据";
 
                 var result = await _dataProvider.GetData<List<Base_UserDTO>>($"/Base_Manage/Base_User/GetDataListByDepartment", JsonConvert.SerializeObject(new { id = para.Id }));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
-                Data2 = new ObservableCollection<Base_UserDTO>(result.ResponseItem);
+                Data2 = new ObservableCollection<Base_UserDTO>(result.Data);
             }
             catch (Exception ex)
             {

@@ -197,14 +197,14 @@ namespace AIStudio.Wpf.Home.ViewModels
                 };
 
                 var result = await _dataProvider.GetData<List<D_NoticeDTO>>($"/D_Manage/D_Notice/GetPageHistoryDataList", JsonConvert.SerializeObject(data));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
                     Notice_Pagination.Total = result.Total;
-                    Notice = new ObservableCollection<D_NoticeDTO>(result.ResponseItem);
+                    Notice = new ObservableCollection<D_NoticeDTO>(result.Data);
                     TotalCount = Notice_Pagination.Total + UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
                 }
             }
@@ -238,14 +238,14 @@ namespace AIStudio.Wpf.Home.ViewModels
                 };
 
                 var result = await _dataProvider.GetData<List<D_UserMailDTO>>($"/D_Manage/D_UserMail/GetPageHistoryDataList", JsonConvert.SerializeObject(data));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
                     UserMail_Pagination.Total = result.Total;
-                    UserMail = new ObservableCollection<D_UserMailDTO>(result.ResponseItem);
+                    UserMail = new ObservableCollection<D_UserMailDTO>(result.Data);
                     TotalCount = Notice_Pagination.Total + UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
                 }
             }
@@ -279,14 +279,14 @@ namespace AIStudio.Wpf.Home.ViewModels
                 };
 
                 var result = await _dataProvider.GetData<List<GroupData>>($"/D_Manage/D_UserMessage/GetPageHistoryGroupDataList",JsonConvert.SerializeObject(data));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
-                    UserMessage_Pagination.Total = result.ResponseItem.Sum(p => p.Total);
-                    UserMessage = new ObservableCollection<GroupData>(result.ResponseItem);
+                    UserMessage_Pagination.Total = result.Data.Sum(p => p.Total);
+                    UserMessage = new ObservableCollection<GroupData>(result.Data);
                     TotalCount = Notice_Pagination.Total + UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
                 }
             }
@@ -319,14 +319,14 @@ namespace AIStudio.Wpf.Home.ViewModels
                 };
 
                 var result = await _dataProvider.GetData<List<OA_UserFormDTO>>($"/OA_Manage/OA_UserForm/GetPageHistoryDataList", JsonConvert.SerializeObject(data));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
                     UserForm_Pagination.Total = result.Total;
-                    UserForm = new ObservableCollection<OA_UserFormDTO>(result.ResponseItem);
+                    UserForm = new ObservableCollection<OA_UserFormDTO>(result.Data);
                     TotalCount = Notice_Pagination.Total + UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
                 }
             }

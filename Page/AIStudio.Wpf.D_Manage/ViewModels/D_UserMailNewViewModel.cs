@@ -111,9 +111,9 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                 this.Data.Status = isDraft ? 0 : 1;
 
                 var result = await _dataProvider.GetData<AjaxResult>("/D_Manage/D_UserMail/SaveData", JsonConvert.SerializeObject(this.Data));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 InitData();
                 WindowBase.ShowMessageQueue("发送成功", Identifier);

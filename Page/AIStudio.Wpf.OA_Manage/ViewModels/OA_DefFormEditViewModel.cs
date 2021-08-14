@@ -105,11 +105,11 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 ShowWait();
 
                 var result = await _dataProvider.GetData<OA_DefFormDTO>($"/OA_Manage/OA_DefForm/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
-                Data = result.ResponseItem;
+                Data = result.Data;
                 await GetTypes();
                 await GetRoles();
                 await GetUsers();
@@ -140,11 +140,11 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             };
 
             var result = await _dataProvider.GetData<List<OA_DefTypeDTO>>($"/OA_Manage/OA_DefType/GetDataList", JsonConvert.SerializeObject(data));
-            if (!result.IsOK)
+            if (!result.Success)
             {
-                throw new Exception(result.ErrorMessage);
+                throw new Exception(result.Msg);
             }
-            Types = result.ResponseItem;
+            Types = result.Data;
         }
 
         private async Task GetRoles()

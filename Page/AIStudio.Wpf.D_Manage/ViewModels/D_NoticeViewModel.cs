@@ -83,14 +83,14 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                 };
 
                 var result = await _dataProvider.GetData<List<D_NoticeDTO>>("/D_Manage/D_Notice/GetDataList", JsonConvert.SerializeObject(data));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
                     Pagination.Total = result.Total;
-                    Data = new ObservableCollection<D_NoticeDTO>(result.ResponseItem);
+                    Data = new ObservableCollection<D_NoticeDTO>(result.Data);
                 }
             }
             catch (Exception ex)
@@ -155,9 +155,9 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                     }
 
                     var result = await _dataProvider.GetData<AjaxResult>($"/D_Manage/D_Notice/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     GetData(true);
                 }

@@ -202,13 +202,13 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                         };
 
                         var result = await _dataProvider.GetData<List<D_UserMessageDTO>>($"/D_Manage/D_UserMessage/GetHistoryDataList", JsonConvert.SerializeObject(data));
-                        if (!result.IsOK)
+                        if (!result.Success)
                         {
-                            throw new Exception(result.ErrorMessage);
+                            throw new Exception(result.Msg);
                         }
                         else
                         {
-                            Data = new ObservableCollection<D_UserMessageDTO>(result.ResponseItem);
+                            Data = new ObservableCollection<D_UserMessageDTO>(result.Data);
                         }
                     }
                     catch (Exception ex)
@@ -243,13 +243,13 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                     };
 
                     var result = await _dataProvider.GetData<List<D_UserMessageDTO>>($"/D_Manage/D_UserMessage/GetPageHistoryDataList", JsonConvert.SerializeObject(data));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     else
                     {
-                        Data = new ObservableCollection<D_UserMessageDTO>(result.ResponseItem);
+                        Data = new ObservableCollection<D_UserMessageDTO>(result.Data);
 
                     }
                 }

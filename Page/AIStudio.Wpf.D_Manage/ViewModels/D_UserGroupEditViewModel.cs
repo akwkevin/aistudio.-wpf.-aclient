@@ -63,11 +63,11 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                 control.WaitInfo = "正在获取数据";
 
                 var result = await _dataProvider.GetData<D_UserGroupDTO>($"/{Area}/D_UserMessage/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
-                Data = result.ResponseItem;
+                Data = result.Data;
                 Disabled = Data.CreatorId != _operator?.Property?.Id;
                 await GetUsers();
             }

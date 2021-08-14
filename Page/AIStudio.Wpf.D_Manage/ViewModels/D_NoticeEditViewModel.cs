@@ -87,11 +87,11 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                 ShowWait();
 
                 var result = await _dataProvider.GetData<D_NoticeDTO>($"/D_Manage/D_Notice/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
-                Data = result.ResponseItem;
+                Data = result.Data;
                 await GetUsers();
                 await GetRoles();
             }

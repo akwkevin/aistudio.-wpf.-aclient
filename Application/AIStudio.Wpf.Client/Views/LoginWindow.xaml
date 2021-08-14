@@ -20,9 +20,6 @@
  
     <Grid>
         <Grid x:Name="LoginGrid" Visibility="{Binding LoginStatus,Converter={converter:StringToVisibilityConverter},ConverterParameter='Input'}">
-            <Grid.Background>
-                <ImageBrush ImageSource="/AIStudio.Resource;component/Images/background.jpg" />
-            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="*"/>

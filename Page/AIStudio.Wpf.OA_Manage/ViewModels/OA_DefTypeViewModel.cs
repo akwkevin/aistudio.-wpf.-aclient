@@ -86,14 +86,14 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 };
 
                 var result = await _dataProvider.GetData<List<OA_DefTypeTree>>($"/OA_Manage/OA_DefType/GetTreeDataList", JsonConvert.SerializeObject(data));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
                     Pagination.Total = result.Total;
-                    Data = new ObservableCollection<IBaseTreeItemViewModel>(result.ResponseItem);
+                    Data = new ObservableCollection<IBaseTreeItemViewModel>(result.Data);
                 }
             }
             catch (Exception ex)
@@ -137,9 +137,9 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     ShowWait();
                   
                     var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefType/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     GetData(true);
                 }

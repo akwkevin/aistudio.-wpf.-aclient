@@ -82,12 +82,12 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                 };
 
                 var result = await _dataProvider.GetData<List<Base_UserLogDTO>>($"/Base_Manage/Base_UserLog/GetLogList", JsonConvert.SerializeObject(data));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 Pagination.Total = result.Total;
-                Data = new ObservableCollection<Base_UserLogDTO>(result.ResponseItem);
+                Data = new ObservableCollection<Base_UserLogDTO>(result.Data);
 
             }
             catch (Exception ex)

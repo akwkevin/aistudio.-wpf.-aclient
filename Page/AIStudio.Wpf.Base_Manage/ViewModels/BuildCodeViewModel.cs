@@ -96,13 +96,13 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         private async Task GetDbTableInfo()
         {
             var result = await _dataProvider.GetData<List<Base_DbLinkDTO>>($"/{Area}/BuildCode/GetAllDbLink");
-            if (!result.IsOK)
+            if (!result.Success)
             {
-                throw new Exception(result.ErrorMessage);
+                throw new Exception(result.Msg);
             }
             else
             {
-                Base_DbLinkDTO = new ObservableCollection<Base_DbLinkDTO>(result.ResponseItem);
+                Base_DbLinkDTO = new ObservableCollection<Base_DbLinkDTO>(result.Data);
             }
         }
 
@@ -119,14 +119,14 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 LinkId = Base_DbLinkDTO.FirstOrDefault()?.Id;
 
                 var result = await _dataProvider.GetData<List<BuildCode>>($"/{Area}/{typeof(BuildCode).Name.Replace("DTO", "")}/GetDbTableList", JsonConvert.SerializeObject(new { linkId = LinkId }));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
                     Pagination.Total = result.Total;
-                    Data = new ObservableCollection<BuildCode>(result.ResponseItem);
+                    Data = new ObservableCollection<BuildCode>(result.Data);
                 }
             }
             catch (Exception ex)
@@ -178,9 +178,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                         };
 
                         var result = await _dataProvider.GetData<AjaxResult>("/Base_Manage/BuildCode/Build", JsonConvert.SerializeObject(data));
-                        if (!result.IsOK)
+                        if (!result.Success)
                         {
-                            throw new Exception(result.ErrorMessage);
+                            throw new Exception(result.Msg);
                         }
                     }
 

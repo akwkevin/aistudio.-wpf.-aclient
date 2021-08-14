@@ -52,9 +52,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     viewmodel.Data.RoleIdList = viewmodel.SelectedRoles.Select(p => p.value).ToList();
                     viewmodel.Data.DepartmentId = viewmodel.SelectedDepartment?.Id;
                     var result = await _dataProvider.GetData<AjaxResult>("/Base_Manage/Base_User/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     GetData(true);
                 }

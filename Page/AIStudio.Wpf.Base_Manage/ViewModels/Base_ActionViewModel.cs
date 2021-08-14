@@ -77,13 +77,13 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 }
 
                 var result = await _dataProvider.GetData<List<Base_ActionTree>>($"/Base_Manage/Base_Action/GetMenuTreeList");
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
-                    Data = new ObservableCollection<IBaseTreeItemViewModel>(result.ResponseItem);
+                    Data = new ObservableCollection<IBaseTreeItemViewModel>(result.Data);
                 }
             }
             catch (Exception ex)
@@ -120,9 +120,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     viewmodel.Data.ParentId = viewmodel.SelectedParent?.ParentId;
                     viewmodel.Data.permissionListJson = JsonConvert.SerializeObject(viewmodel.PermissionList);
                     var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Action/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     GetData(true);
                 }

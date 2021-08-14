@@ -174,22 +174,22 @@ namespace AIStudio.Wpf.Home.ViewModels
                     var control = WindowBase.ShowWaiting(WaitingType.Progress, Identifier);
                     control.WaitInfo = "正在获取用户信息";
                     var userinfo = await _dataProvider.GetData<UserInfoPermissions>("/Base_Manage/Home/GetOperatorInfo");
-                    if (!userinfo.IsOK)
+                    if (!userinfo.Success)
                     {
-                        throw new System.Exception(userinfo.ErrorMessage);
+                        throw new System.Exception(userinfo.Msg);
                     }
 
-                    _operator.Property = userinfo.ResponseItem.UserInfo;
-                    _operator.Permissions = userinfo.ResponseItem.Permissions;
-                    _operator.Avatar = userinfo.ResponseItem.UserInfo.Avatar;
+                    _operator.Property = userinfo.Data.UserInfo;
+                    _operator.Permissions = userinfo.Data.Permissions;
+                    _operator.Avatar = userinfo.Data.UserInfo.Avatar;
 
                     control.WaitInfo = "正在获取菜单信息";
                     var menuinfo = await _dataProvider.GetData<List<Base_ActionTree>>("/Base_Manage/Home/GetOperatorMenuList");
-                    if (!menuinfo.IsOK)
+                    if (!menuinfo.Success)
                     {
-                        throw new System.Exception(menuinfo.ErrorMessage);
+                        throw new System.Exception(menuinfo.Msg);
                     }
-                    BuildMenu(menuinfo.ResponseItem);
+                    BuildMenu(menuinfo.Data);
 
                     if (LocalSetting.ApiMode)
                     {

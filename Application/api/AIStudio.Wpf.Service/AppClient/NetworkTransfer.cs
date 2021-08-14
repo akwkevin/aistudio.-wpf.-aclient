@@ -58,7 +58,7 @@ namespace AIStudio.Wpf.Service.AppClient
             return null;
         }
 
-        public async Task<AjaxResult> GetData(string url, Dictionary<string, string> data)
+        public async Task<AjaxResult<T>> GetData<T>(string url, Dictionary<string, string> data)
         {
             if (!url.StartsWith("http"))
             {
@@ -75,131 +75,19 @@ namespace AIStudio.Wpf.Service.AppClient
                 }
             }
             var content = await HttpClientHelper.Instance.PostAsync(url, content: stringContent, TimeSpan, Header.SetHeader());
-            var result = JsonConvert.DeserializeObject<AjaxResult>(content);
+            var result = JsonConvert.DeserializeObject<AjaxResult<T>>(content);
             return result;
         }
 
-        public async Task<AjaxResult> GetData(string url, string json)
+        public async Task<AjaxResult<T>> GetData<T>(string url, string json)
         {
             if (!url.StartsWith("http"))
             {
                 url = Url + url;
             }
             var content = await HttpClientHelper.Instance.PostAsyncJson(url, json, TimeSpan, Header.SetHeader());
-            var result = JsonConvert.DeserializeObject<AjaxResult>(content);
+            var result = JsonConvert.DeserializeObject<AjaxResult<T>>(content);
             return result;
-        }
-
-        public async Task<AjaxResult> PostData(AppMessage apiMessage)
-        {
-            string json = JsonConvert.SerializeObject(apiMessage);
-            var content = await HttpClientHelper.Instance.PostAsyncJson(string.Format("{0}/api/AppServer/ProcessMessage", Url), json, TimeSpan, Header.SetHeader(), apiMessage.Zip);
-            var result = JsonConvert.DeserializeObject<AjaxResult>(content);
-            return result;
-        }
-
-        public async Task<AjaxResult> Query(string tableName, ICollection<string> columns, string condition, object[] args, CompressionType zip)
-        {
-            AppMessage apiMessage = new AppMessage();
-            apiMessage.Type = WebMessageType.QueryRequest;
-            apiMessage.Zip = zip;
-            apiMessage.Datas = new string[]
-            {
-                tableName,
-                StandardTimeFormatJsonConvertor.SerializeObject(columns),
-                condition,
-                StandardTimeFormatJsonConvertor.SerializeObject(args)
-            };
-
-            return await PostData(apiMessage);
-        }
-
-        public async Task<AjaxResult> Add(string tableName, string datajson, ICollection<string> columns, CompressionType zip)
-        {
-            AppMessage apiMessage = new AppMessage();
-            apiMessage.Type = WebMessageType.AddRequest;
-            apiMessage.Zip = zip;
-            apiMessage.Datas = new string[]
-            {
-                tableName,
-                datajson,
-                StandardTimeFormatJsonConvertor.SerializeObject(columns),
-            };
-
-            return await PostData(apiMessage);
-        }
-
-        public async Task<AjaxResult> Modify(string tableName, ICollection<string> columns, string datajson, CompressionType zip)
-        {
-            AppMessage apiMessage = new AppMessage();
-            apiMessage.Type = WebMessageType.ModifyRequest;
-            apiMessage.Zip = zip;
-            apiMessage.Datas = new string[]
-            {
-                tableName,
-                StandardTimeFormatJsonConvertor.SerializeObject(columns),
-                datajson,
-            };
-
-            return await PostData(apiMessage); ;
-        }
-
-        public async Task<AjaxResult> Delete(string tableName, string primaryKeyColumn, ICollection<object> ids, CompressionType zip)
-        {
-            AppMessage apiMessage = new AppMessage();
-            apiMessage.Type = WebMessageType.DeleteRequest;
-            apiMessage.Zip = zip;
-            apiMessage.Datas = new string[]
-            {
-                tableName,
-                primaryKeyColumn,
-                StandardTimeFormatJsonConvertor.SerializeObject(ids),
-            };
-
-            return await PostData(apiMessage);
-        }
-
-        public async Task<AjaxResult> ComplexOperation(string addJson, string modifyJson, string deleteJson, CompressionType zip)
-        {
-            AppMessage apiMessage = new AppMessage();
-            apiMessage.Type = WebMessageType.ComplexOperationRequest;
-            apiMessage.Zip = zip;
-            apiMessage.Datas = new string[]
-            {
-                addJson,
-                modifyJson,
-                deleteJson,
-            };
-
-            return await PostData(apiMessage);
-        }
-
-        public async Task<AjaxResult> ComplexQuery(ICollection<ComplexQuery> queries, CompressionType zip)
-        {
-            AppMessage apiMessage = new AppMessage();
-            apiMessage.Type = WebMessageType.ComplexQueryRequest;
-            apiMessage.Zip = zip;
-            apiMessage.Datas = new string[]
-            {
-                StandardTimeFormatJsonConvertor.SerializeObject(queries)
-            };
-
-            return await PostData(apiMessage);
-        }
-
-        public async Task<AjaxResult> QueryWithCustomSQL(string tableName, string sql, object[] args, CompressionType zip)
-        {
-            AppMessage apiMessage = new AppMessage();
-            apiMessage.Type = WebMessageType.QueryWithCustomSQLRequest;
-            apiMessage.Zip = zip;
-            apiMessage.Datas = new string[]
-            {
-                tableName,
-                sql,
-                StandardTimeFormatJsonConvertor.SerializeObject(args),
-            };
-
-            return await PostData(apiMessage);
         }
 
         public async Task<AjaxResult> UploadFile(string path, string fileName, string qq)

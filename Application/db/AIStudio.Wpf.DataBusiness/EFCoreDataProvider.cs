@@ -21,28 +21,28 @@ namespace AIStudio.Wpf.DataBusiness
 
         }
 
-        public async Task<WebResponse<string>> GetToken(string url, string userName, string password, int headMode, TimeSpan timeout)
+        public async Task<AjaxResult> GetToken(string url, string userName, string password, int headMode, TimeSpan timeout)
         {  
             var business = ContainerLocator.Current.Resolve<IHomeBusiness>();
             if (business == null)
-                return WebResponse<string>.Failed((int)ResponseCode.CLIENT_EXCEPTION, "暂不支持");
+                return new AjaxResult() { Msg = "暂不支持", Success = false };
 
             var result = await business.SubmitLoginAsync(new LoginInputDTO() { userName = userName, password = password });
 
             return await Task.Run(() =>
             {
-                return WebResponse<string>.Success(result, 0);
+                return new AjaxResult() { Msg = result, Success = true };
             });
         }
 
         
 
-        public Task<WebResponse<T>> GetData<T>(string url, Dictionary<string, string> data)
+        public Task<AjaxResult<T>> GetData<T>(string url, Dictionary<string, string> data)
         {
             throw new Exception("暂不支持");
         }
    
-        public async Task<WebResponse<T>> GetData<T>(string url, string json)
+        public async Task<AjaxResult<T>> GetData<T>(string url, string json)
         {
             try
             {
@@ -52,12 +52,12 @@ namespace AIStudio.Wpf.DataBusiness
                 //第二段对应不用的business
                 var type = EFCoreDataProviderExtension.AllTypes.FirstOrDefault(p => p.Name == $"I{paras[1]}Business");
                 if (type == null)
-                    return WebResponse<T>.Failed((int)ResponseCode.CLIENT_EXCEPTION, "暂不支持");
+                    return new AjaxResult<T>() { Msg = "暂不支持", Success = false };
 
                 //获取接口
                 var business = ContainerLocator.Current.Resolve(type);
                 if (business == null)
-                    return WebResponse<T>.Failed((int)ResponseCode.CLIENT_EXCEPTION, "暂不支持");
+                    return new AjaxResult<T>() { Msg = "暂不支持", Success = false };
 
                 //第三段为函数，根据名称获取方法
                 Task task;
@@ -75,25 +75,25 @@ namespace AIStudio.Wpf.DataBusiness
 
                 await task;
                 //获取执行结果
-                var response = task.GetType().GetProperty("Result").GetValue(task, null);     
+                var response = task.GetType().GetProperty("Result").GetValue(task, null);
                 if (response is AjaxResult) //解析分页数据
-                {                   
+                {
                     var pageResult = (response as AjaxResult).ChangeType<AjaxResult<T>>();
-                    return WebResponse<T>.Success(pageResult.Data, pageResult.Total);                       
+                    return new AjaxResult<T>() { Data = pageResult.Data, Total = pageResult.Total, Success = true };
                 }
                 else if (response is T result) //直接解析数据
                 {
-                    return WebResponse<T>.Success(result, 1);
+                    return new AjaxResult<T>() { Data = result, Success = true};
                 }
                 else//解析数据（强制转换）
                 {
-                    return WebResponse<T>.Success(response.ChangeType<T>(), 1);
+                    return new AjaxResult<T>() { Data = response.ChangeType<T>(), Success = true };
                 }
 
             }
             catch (Exception ex)
             {
-                return WebResponse<T>.Failed((int)ResponseCode.CLIENT_EXCEPTION, ex.ToString());
+                return new AjaxResult<T>() { Msg = ex.ToString(), Success = false };
             }
         }     
 
