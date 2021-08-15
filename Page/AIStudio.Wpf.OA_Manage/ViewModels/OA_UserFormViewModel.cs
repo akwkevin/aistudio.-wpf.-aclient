@@ -156,7 +156,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                         {
                             throw new Exception(result.Msg);
                         }
-                        WindowBase.ShowMessageQueue(result.Data?.Msg, Identifier);
+                        WindowBase.ShowMessageQueue(result.Msg, Identifier);
                     }
                     await Task.Delay(100);
                     GetData(true);

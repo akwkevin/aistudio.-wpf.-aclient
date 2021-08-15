@@ -69,7 +69,7 @@ namespace AIStudio.Wpf.Business
 
         public async Task<List<TreeModel>> GetAllDepartment()
         {
-            if (alldepartment == null)
+            //if (alldepartment == null)
             {
                 var result = await _dataProvider.GetData<List<TreeModel>>("/Base_Manage/Base_Department/GetTreeDataList");
                 if (!result.Success)

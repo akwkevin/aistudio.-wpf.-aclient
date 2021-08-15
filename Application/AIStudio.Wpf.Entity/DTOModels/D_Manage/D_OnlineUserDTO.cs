@@ -61,6 +61,10 @@ namespace AIStudio.Wpf.Entity.DTOModels
         }
         public int Favorite { get; set; }
 
+        public string IP { get; set; }
+
+        public DateTime ConnectedTime { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void RaisePropertyChanged(string propertyName)

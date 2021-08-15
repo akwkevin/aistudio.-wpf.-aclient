@@ -1,0 +1,67 @@
+﻿<Window x:Class="ServiceMonitor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ServiceMonitor"
+        mc:Ignorable="d"
+        Title="服务监控" Height="450" Width="800">
+    <Grid>
+        <TabControl>            
+            <TabItem Header="启动服务">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="数据库类型：" VerticalAlignment="Center" Margin="2"/>
+                        <ComboBox SelectedIndex="0" Width="100" Text="{Binding DatabaseType}" VerticalAlignment="Center" Margin="2">
+                            <ComboBoxItem Content="Sqlite"/>
+                            <ComboBoxItem Content="SqlServer"/>
+                        </ComboBox>
+                        <TextBlock Text="端口号：" VerticalAlignment="Center" Margin="2"/>
+                        <TextBox Text="{Binding Port}" Width="100"  Margin="2"/>
+                        <CheckBox IsChecked="{Binding CreateNoWindow}" Content="不在控制台显示" VerticalAlignment="Center" Margin="2"/>
+                        <Button Command="{Binding StartCommand}" Content="启动服务"  VerticalAlignment="Center" Margin="2"/>
+                        <Button Command="{Binding StopCommand}" Content="停止服务"  VerticalAlignment="Center" Margin="2"/>
+                        <Button Command="{Binding RefreshCommand}" Content="刷新" VerticalAlignment="Center" Margin="2"/>
+                        <Button Command="{Binding SwaggerCommand}" Content="查看接口" VerticalAlignment="Center" Margin="2"/>
+                    </StackPanel>
+                    <DataGrid Grid.Row="1" ItemsSource="{Binding UserDatas}"  
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="用户名" Binding="{Binding UserName}"/>
+                            <DataGridTextColumn Header="用户Id" Binding="{Binding UserId}"/>
+                            <DataGridTextColumn Header="最后登录的IP" Binding="{Binding IP}"/>
+                            <DataGridTextColumn Header="最后登录的时间" Binding="{Binding ConnectedTime, StringFormat=yyyy-MM-dd HH:mm:ss}"/>
+                            <DataGridTemplateColumn Header="操作" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
+                                    <Hyperlink Command="{Binding DataContext.SendCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                        CommandParameter="{Binding .}" > <TextBlock Text="发消息" /> </Hyperlink>
+                                </TextBlock>
+                                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
+                                    <Hyperlink Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                        CommandParameter="{Binding Id}" > <TextBlock Text="强制下线" /> </Hyperlink>
+                                </TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="系统信息">
+                
+            </TabItem>
+            <TabItem Header="数据监控">
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

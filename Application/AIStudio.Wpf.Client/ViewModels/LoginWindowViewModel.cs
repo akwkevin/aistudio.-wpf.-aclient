@@ -218,7 +218,7 @@ namespace AIStudio.Wpf.Client.ViewModels
                 }
                 else
                 {
-                    var token = await _dataProvider.GetToken(ServerIP, UserName, MD5Password, 1, TimeSpan.FromSeconds(8));
+                    var token = await _dataProvider.GetToken(ServerIP, UserName, MD5Password, 1, TimeSpan.FromSeconds(60));
                     if (!token.Success)
                     {
                         throw new Exception(token.Msg);
