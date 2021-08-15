@@ -1,0 +1,16 @@
+﻿using Coldairarrow.Entity.%areaName%;
+using Coldairarrow.Util;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace Coldairarrow.Business.%areaName%
+{
+    public interface I%entityName%Business
+    {
+        Task<PageResult<%entityName%>> GetDataListAsync(PageInput<ConditionDTO> input);
+        Task<%entityName%> GetTheDataAsync(string id);
+        Task AddDataAsync(%entityName% data);
+        Task UpdateDataAsync(%entityName% data);
+        Task DeleteDataAsync(List<string> ids);
+    }
+}

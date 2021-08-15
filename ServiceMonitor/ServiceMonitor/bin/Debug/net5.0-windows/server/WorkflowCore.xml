@@ -1,0 +1,580 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WorkflowCore</name>
+    </assembly>
+    <members>
+        <member name="M:WorkflowCore.Interface.IContainerStepBuilder`3.Do(System.Action{WorkflowCore.Interface.IWorkflowBuilder{`0}})">
+            <summary>
+            The block of steps to execute
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WorkflowCore.Interface.IDistributedLockProvider">
+            <remarks>
+            The implemention of this interface will be responsible for
+            providing a (distributed) locking mechanism to manage in flight workflows    
+            </remarks>
+        </member>
+        <member name="T:WorkflowCore.Interface.IQueueProvider">
+            <remarks>
+            The implemention of this interface will be responsible for
+            providing a (distributed) queueing mechanism to manage in flight workflows    
+            </remarks>
+        </member>
+        <member name="M:WorkflowCore.Interface.IQueueProvider.QueueWork(System.String,WorkflowCore.Interface.QueueType)">
+            <summary>
+            Enqueues work to be processed by a host in the cluster
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IQueueProvider.DequeueWork(WorkflowCore.Interface.QueueType,System.Threading.CancellationToken)">
+            <summary>
+            Fetches the next work item from the front of the process queue.
+            If the queue is empty, NULL is returned
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WorkflowCore.Interface.IScopeProvider">
+            <remarks>
+            The implemention of this interface will be responsible for
+            providing a new service scope for a DI container   
+            </remarks>
+        </member>
+        <member name="M:WorkflowCore.Interface.IScopeProvider.CreateScope(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Create a new service scope
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.Name(System.String)">
+            <summary>
+            Specifies a display name for the step
+            </summary>
+            <param name="name">A display name for the step for easy identification in logs, etc...</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.Id(System.String)">
+            <summary>
+            Specifies a custom Id to reference this step
+            </summary>
+            <param name="id">A custom Id to reference this step</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.Attach(System.String)">
+            <summary>
+            Specify the next step in the workflow by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.When(System.Object,System.String)">
+            <summary>
+            Configure an outcome for this step, then wire it to another step
+            </summary>
+            <param name="outcomeValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.Branch``1(System.Object,WorkflowCore.Interface.IStepBuilder{`0,``0})">
+            <summary>
+            Configure an outcome branch for this step, then wire it to another step
+            </summary>
+            <param name="outcomeValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.Branch``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object,System.Boolean}},WorkflowCore.Interface.IStepBuilder{`0,``0})">
+            <summary>
+            Configure an outcome branch for this step, then wire it to another step
+            </summary>
+            <param name="outcomeExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.Input``1(System.Linq.Expressions.Expression{System.Func{`1,``0}},System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Map properties on the step to properties on the workflow data object before the step executes
+            </summary>
+            <typeparam name="TInput"></typeparam>
+            <param name="stepProperty">Property on the step</param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.Input``1(System.Linq.Expressions.Expression{System.Func{`1,``0}},System.Linq.Expressions.Expression{System.Func{`0,WorkflowCore.Interface.IStepExecutionContext,``0}})">
+            <summary>
+            Map properties on the step to properties on the workflow data object before the step executes
+            </summary>
+            <typeparam name="TInput"></typeparam>
+            <param name="stepProperty">The property on the step</param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.Input(System.Action{`1,`0})">
+            <summary>
+            Manipulate properties on the step before its executed.
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.Output``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{`1,System.Object}})">
+            <summary>
+            Map properties on the workflow data object to properties on the step after the step executes
+            </summary>
+            <typeparam name="TOutput"></typeparam>
+            <param name="dataProperty">Property on the data object</param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.Output(System.Action{`1,`0})">
+            <summary>
+            Manipulate properties on the data object after the step executes
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.OnError(WorkflowCore.Models.WorkflowErrorHandling,System.Nullable{System.TimeSpan})">
+            <summary>
+            Configure the behavior when this step throws an unhandled exception
+            </summary>
+            <param name="behavior">What action to take when this step throws an unhandled exception</param>
+            <param name="retryInterval">If the behavior is retry, how often</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.EndWorkflow">
+            <summary>
+            Ends the workflow and marks it as complete
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.CompensateWith``1(System.Action{WorkflowCore.Interface.IStepBuilder{`0,``0}})">
+            <summary>
+            Undo step if unhandled exception is thrown by this step
+            </summary>
+            <typeparam name="TStep">The type of the step to execute</typeparam>
+            <param name="stepSetup">Configure additional parameters for this step</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.CompensateWith(System.Func{WorkflowCore.Interface.IStepExecutionContext,WorkflowCore.Models.ExecutionResult})">
+            <summary>
+            Undo step if unhandled exception is thrown by this step
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.CompensateWith(System.Action{WorkflowCore.Interface.IStepExecutionContext})">
+            <summary>
+            Undo step if unhandled exception is thrown by this step
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.CompensateWithSequence(System.Action{WorkflowCore.Interface.IWorkflowBuilder{`0}})">
+            <summary>
+            Undo step if unhandled exception is thrown by this step
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepBuilder`2.CancelCondition(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Boolean)">
+            <summary>
+            Prematurely cancel the execution of this step on a condition
+            </summary>
+            <param name="cancelCondition"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WorkflowCore.Interface.IStepExecutor">
+            <summary>
+            Executes a workflow step.
+            </summary>
+        </member>
+        <member name="M:WorkflowCore.Interface.IStepExecutor.ExecuteStep(WorkflowCore.Interface.IStepExecutionContext,WorkflowCore.Interface.IStepBody)">
+            <summary>
+            Runs the passed <see cref="T:WorkflowCore.Interface.IStepBody"/> in the given <see cref="T:WorkflowCore.Interface.IStepExecutionContext"/>.
+            </summary>
+            <param name="context">The <see cref="T:WorkflowCore.Interface.IStepExecutionContext"/> in which to execute the step.</param>
+            <param name="body">The <see cref="T:WorkflowCore.Interface.IStepBody"/> body.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> to wait for the result of running the step</returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowController.SuspendWorkflow(System.String)">
+            <summary>
+            Suspend the execution of a given workflow until .ResumeWorkflow is called
+            </summary>
+            <param name="workflowId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowController.ResumeWorkflow(System.String)">
+            <summary>
+            Resume a previously suspended workflow
+            </summary>
+            <param name="workflowId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowController.TerminateWorkflow(System.String)">
+            <summary>
+            Permanently terminate the exeuction of a given workflow
+            </summary>
+            <param name="workflowId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowHost.Start">
+            <summary>
+            Start the workflow host, this enable execution of workflows
+            </summary>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowHost.Stop">
+            <summary>
+            Stop the workflow host
+            </summary>
+        </member>
+        <member name="T:WorkflowCore.Interface.WorkflowMiddlewarePhase">
+            <summary>
+            Determines at which point to run the middleware.
+            </summary>
+        </member>
+        <member name="F:WorkflowCore.Interface.WorkflowMiddlewarePhase.PreWorkflow">
+            <summary>
+            The middleware should run before a workflow starts.
+            </summary>
+        </member>
+        <member name="F:WorkflowCore.Interface.WorkflowMiddlewarePhase.PostWorkflow">
+            <summary>
+            The middleware should run after a workflow completes.
+            </summary>
+        </member>
+        <member name="T:WorkflowCore.Interface.IWorkflowMiddleware">
+            <summary>
+            Middleware that can run before a workflow starts or after a workflow completes.
+            </summary>
+        </member>
+        <member name="P:WorkflowCore.Interface.IWorkflowMiddleware.Phase">
+            <summary>
+            The phase in the workflow execution to run this middleware in
+            </summary>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowMiddleware.HandleAsync(WorkflowCore.Models.WorkflowInstance,WorkflowCore.Models.WorkflowDelegate)">
+            <summary>
+            Runs the middleware on the given <see cref="T:WorkflowCore.Models.WorkflowInstance"/>.
+            </summary>
+            <param name="workflow">The <see cref="T:WorkflowCore.Models.WorkflowInstance"/>.</param>
+            <param name="next">The next middleware in the chain.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> that completes asynchronously once the
+            middleware chain finishes running.</returns>
+        </member>
+        <member name="T:WorkflowCore.Interface.IWorkflowMiddlewareErrorHandler">
+            <summary>
+            Handles exceptions within workflow middleware.
+            </summary>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowMiddlewareErrorHandler.HandleAsync(System.Exception)">
+            <summary>
+            Asynchronously handle the given exception.
+            </summary>
+            <param name="ex">The exception to handle</param>
+            <returns>A task that completes when handling is done.</returns>
+        </member>
+        <member name="T:WorkflowCore.Interface.IWorkflowMiddlewareRunner">
+            <summary>
+            Runs workflow pre/post middleware.
+            </summary>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowMiddlewareRunner.RunPreMiddleware(WorkflowCore.Models.WorkflowInstance,WorkflowCore.Models.WorkflowDefinition)">
+            <summary>
+            Runs workflow-level middleware that is set to run at the
+            <see cref="F:WorkflowCore.Interface.WorkflowMiddlewarePhase.PreWorkflow"/> phase. Middleware will be run in the
+            order in which they were registered with DI with middleware declared earlier starting earlier and
+            completing later.
+            </summary>
+            <param name="workflow">The <see cref="T:WorkflowCore.Models.WorkflowInstance"/> to run for.</param>
+            <param name="def">The <see cref="T:WorkflowCore.Models.WorkflowDefinition"/> definition.</param>
+            <returns>A task that will complete when all middleware has run.</returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowMiddlewareRunner.RunPostMiddleware(WorkflowCore.Models.WorkflowInstance,WorkflowCore.Models.WorkflowDefinition)">
+            <summary>
+            Runs workflow-level middleware that is set to run at the
+            <see cref="F:WorkflowCore.Interface.WorkflowMiddlewarePhase.PostWorkflow"/> phase. Middleware will be run in the
+            order in which they were registered with DI with middleware declared earlier starting earlier and
+            completing later.
+            </summary>
+            <param name="workflow">The <see cref="T:WorkflowCore.Models.WorkflowInstance"/> to run for.</param>
+            <param name="def">The <see cref="T:WorkflowCore.Models.WorkflowDefinition"/> definition.</param>
+            <returns>A task that will complete when all middleware has run.</returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.Then``1(System.Action{WorkflowCore.Interface.IStepBuilder{`0,``0}})">
+            <summary>
+            Specify the next step in the workflow
+            </summary>
+            <typeparam name="TStep">The type of the step to execute</typeparam>
+            <param name="stepSetup">Configure additional parameters for this step</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.Then``1(WorkflowCore.Interface.IStepBuilder{`0,``0})">
+            <summary>
+            Specify the next step in the workflow
+            </summary>
+            <typeparam name="TStep"></typeparam>
+            <param name="newStep"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.Then(System.Func{WorkflowCore.Interface.IStepExecutionContext,WorkflowCore.Models.ExecutionResult})">
+            <summary>
+            Specify an inline next step in the workflow
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.Then(System.Action{WorkflowCore.Interface.IStepExecutionContext})">
+            <summary>
+            Specify an inline next step in the workflow
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.WaitFor(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.String}},System.Linq.Expressions.Expression{System.Func{`0,System.DateTime}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Wait here until to specified event is published
+            </summary>
+            <param name="eventName">The name used to identify the kind of event to wait for</param>
+            <param name="eventKey">A specific key value within the context of the event to wait for</param>
+            <param name="effectiveDate">Listen for events as of this effective date</param>
+            <param name="cancelCondition">A conditon that when true will cancel this WaitFor</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.WaitFor(System.String,System.Linq.Expressions.Expression{System.Func{`0,WorkflowCore.Interface.IStepExecutionContext,System.String}},System.Linq.Expressions.Expression{System.Func{`0,System.DateTime}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Wait here until to specified event is published
+            </summary>
+            <param name="eventName">The name used to identify the kind of event to wait for</param>
+            <param name="eventKey">A specific key value within the context of the event to wait for</param>
+            <param name="effectiveDate">Listen for events as of this effective date</param>
+            <param name="cancelCondition">A conditon that when true will cancel this WaitFor</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.Delay(System.Linq.Expressions.Expression{System.Func{`0,System.TimeSpan}})">
+            <summary>
+            Wait for a specified period
+            </summary>
+            <param name="period"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.Decide(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Evaluate an expression and take a different path depending on the value
+            </summary>
+            <param name="expression">Expression to evaluate for decision</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.ForEach(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.IEnumerable}})">
+            <summary>
+            Execute a block of steps, once for each item in a collection in a parallel foreach
+            </summary>
+            <param name="collection">Resolves a collection for iterate over</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.ForEach(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.IEnumerable}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Execute a block of steps, once for each item in a collection in a RunParallel foreach
+            </summary>
+            <param name="collection">Resolves a collection for iterate over</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.While(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Repeat a block of steps until a condition becomes true
+            </summary>
+            <param name="condition">Resolves a condition to break out of the while loop</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.If(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Execute a block of steps if a condition is true
+            </summary>
+            <param name="condition">Resolves a condition to evaluate</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.When(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.String)">
+            <summary>
+            Configure an outcome for this step, then wire it to a sequence
+            </summary>
+            <param name="outcomeValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.Parallel">
+            <summary>
+            Execute multiple blocks of steps in parallel
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.Saga(System.Action{WorkflowCore.Interface.IWorkflowBuilder{`0}})">
+            <summary>
+            Execute a sequence of steps in a container
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.Schedule(System.Linq.Expressions.Expression{System.Func{`0,System.TimeSpan}})">
+            <summary>
+            Schedule a block of steps to execute in parallel sometime in the future
+            </summary>
+            <param name="time">The time span to wait before executing the block</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.Recur(System.Linq.Expressions.Expression{System.Func{`0,System.TimeSpan}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Schedule a block of steps to execute in parallel sometime in the future at a recurring interval
+            </summary>
+            <param name="interval">The time span to wait between recurring executions</param>
+            <param name="until">Resolves a condition to stop the recurring task</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowModifier`2.Activity(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.DateTime}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Wait here until an external activity is complete
+            </summary>
+            <param name="activityName">The name used to identify the activity to wait for</param>
+            <param name="parameters">The data to pass the external activity worker</param>
+            <param name="effectiveDate">Listen for events as of this effective date</param>
+            <param name="cancelCondition">A conditon that when true will cancel this WaitFor</param>
+            <returns></returns>
+        </member>
+        <member name="T:WorkflowCore.Interface.IWorkflowStepMiddleware">
+            <summary>
+            Middleware that runs around a workflow step and can enhance or alter
+            the steps behavior.
+            </summary>
+        </member>
+        <member name="M:WorkflowCore.Interface.IWorkflowStepMiddleware.HandleAsync(WorkflowCore.Interface.IStepExecutionContext,WorkflowCore.Interface.IStepBody,WorkflowCore.Models.WorkflowStepDelegate)">
+            <summary>
+            Handle the workflow step and return an <see cref="T:WorkflowCore.Models.ExecutionResult"/>
+            asynchronously. It is important to invoke <see cref="!:next"/> at some point
+            in the middleware. Not doing so will prevent the workflow step from ever
+            getting executed.
+            </summary>
+            <param name="context">The step's context.</param>
+            <param name="body">An instance of the step body that is going to be run.</param>
+            <param name="next">The next middleware in the chain.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> of the workflow result.</returns>
+        </member>
+        <member name="T:WorkflowCore.Models.WorkflowDelegate">
+            <summary>
+            Represents a function that executes before or after a workflow starts or completes.
+            </summary>
+        </member>
+        <member name="M:WorkflowCore.Models.WorkflowStep.AfterWorkflowIteration(WorkflowCore.Models.WorkflowExecutorResult,WorkflowCore.Models.WorkflowDefinition,WorkflowCore.Models.WorkflowInstance,WorkflowCore.Models.ExecutionPointer)">
+            <summary>
+            Called after every workflow execution round,
+            every exectuon pointer with no end time, even if this step was not executed in this round
+            </summary>
+            <param name="executorResult"></param>
+            <param name="defintion"></param>
+            <param name="workflow"></param>
+            <param name="executionPointer"></param>
+        </member>
+        <member name="T:WorkflowCore.Models.WorkflowStepDelegate">
+            <summary>
+            Represents a function that executes a workflow step and returns a result.
+            </summary>
+        </member>
+        <member name="M:WorkflowCore.Services.BackgroundTasks.RunnablePoller.PollRunnables(System.Object)">
+            <summary>
+            Poll the persistence store for workflows ready to run.
+            Poll the persistence store for stashed unpublished events
+            </summary>        
+        </member>
+        <member name="T:WorkflowCore.Services.MemoryPersistenceProvider">
+            <summary>
+            In-memory implementation of IPersistenceProvider for demo and testing purposes
+            </summary>
+        </member>
+        <member name="T:WorkflowCore.Services.SingleNodeLockProvider">
+            <summary>
+            Single node in-memory implementation of IDistributedLockProvider
+            </summary>
+        </member>
+        <member name="T:WorkflowCore.Services.SingleNodeQueueProvider">
+            <summary>
+            Single node in-memory implementation of IQueueProvider
+            </summary>
+        </member>
+        <member name="T:WorkflowCore.Services.DefaultWorkflowMiddlewareErrorHandler">
+            <summary>
+            Default implementation of <see cref="T:WorkflowCore.Interface.IWorkflowMiddlewareErrorHandler"/>. Just logs the
+            thrown exception and moves on.
+            </summary>
+        </member>
+        <member name="M:WorkflowCore.Services.DefaultWorkflowMiddlewareErrorHandler.HandleAsync(System.Exception)">
+            <summary>
+            Asynchronously handle the given exception.
+            </summary>
+            <param name="ex">The exception to handle</param>
+            <returns>A task that completes when handling is done.</returns>
+        </member>
+        <member name="T:WorkflowCore.Services.ScopeProvider">
+            <summary>
+            A concrete implementation for the IScopeProvider interface
+            Could be used for context-aware scope creation customization
+            </summary>
+        </member>
+        <member name="T:WorkflowCore.Services.StepExecutor">
+            <summary>
+            Executes the workflow step and applies any <see cref="T:WorkflowCore.Interface.IWorkflowStepMiddleware"/> to the step.
+            </summary>
+        </member>
+        <member name="M:WorkflowCore.Services.StepExecutor.ExecuteStep(WorkflowCore.Interface.IStepExecutionContext,WorkflowCore.Interface.IStepBody)">
+            <summary>
+            Runs the passed <see cref="T:WorkflowCore.Interface.IStepBody"/> in the given <see cref="T:WorkflowCore.Interface.IStepExecutionContext"/> while applying
+            any <see cref="T:WorkflowCore.Interface.IWorkflowStepMiddleware"/> registered in the system. Middleware will be run in the
+            order in which they were registered with DI with middleware declared earlier starting earlier and
+            completing later.
+            </summary>
+            <param name="context">The <see cref="T:WorkflowCore.Interface.IStepExecutionContext"/> in which to execute the step.</param>
+            <param name="body">The <see cref="T:WorkflowCore.Interface.IStepBody"/> body.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> to wait for the result of running the step</returns>
+        </member>
+        <member name="T:WorkflowCore.Services.WorkflowMiddlewareRunner">
+            <inheritdoc />
+        </member>
+        <member name="M:WorkflowCore.Services.WorkflowMiddlewareRunner.RunPreMiddleware(WorkflowCore.Models.WorkflowInstance,WorkflowCore.Models.WorkflowDefinition)">
+            <summary>
+            Runs workflow-level middleware that is set to run at the
+            <see cref="F:WorkflowCore.Interface.WorkflowMiddlewarePhase.PreWorkflow"/> phase. Middleware will be run in the
+            order in which they were registered with DI with middleware declared earlier starting earlier and
+            completing later.
+            </summary>
+            <param name="workflow">The <see cref="T:WorkflowCore.Models.WorkflowInstance"/> to run for.</param>
+            <param name="def">The <see cref="T:WorkflowCore.Models.WorkflowDefinition"/> definition.</param>
+            <returns>A task that will complete when all middleware has run.</returns>
+        </member>
+        <member name="M:WorkflowCore.Services.WorkflowMiddlewareRunner.RunPostMiddleware(WorkflowCore.Models.WorkflowInstance,WorkflowCore.Models.WorkflowDefinition)">
+            <summary>
+            Runs workflow-level middleware that is set to run at the
+            <see cref="F:WorkflowCore.Interface.WorkflowMiddlewarePhase.PostWorkflow"/> phase. Middleware will be run in the
+            order in which they were registered with DI with middleware declared earlier starting earlier and
+            completing later.
+            </summary>
+            <param name="workflow">The <see cref="T:WorkflowCore.Models.WorkflowInstance"/> to run for.</param>
+            <param name="def">The <see cref="T:WorkflowCore.Models.WorkflowDefinition"/> definition.</param>
+            <returns>A task that will complete when all middleware has run.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddWorkflowStepMiddleware``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,``0})">
+            <summary>
+            Adds a middleware that will run around the execution of a workflow step.
+            </summary>
+            <param name="services">The services collection.</param>
+            <param name="factory">Optionally configure using your own factory.</param>
+            <typeparam name="TMiddleware">The type of middleware.
+            It must implement <see cref="T:WorkflowCore.Interface.IWorkflowStepMiddleware"/>.</typeparam>
+            <returns>The services collection for chaining.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddWorkflowMiddleware``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,``0})">
+            <summary>
+            Adds a middleware that will run either before a workflow is kicked off or after
+            a workflow completes. Specify the phase of the workflow execution process that
+            you want to execute this middleware using <see cref="P:WorkflowCore.Interface.IWorkflowMiddleware.Phase"/>.
+            </summary>
+            <param name="services">The services collection.</param>
+            <param name="factory">Optionally configure using your own factory.</param>
+            <typeparam name="TMiddleware">The type of middleware.
+            It must implement <see cref="T:WorkflowCore.Interface.IWorkflowMiddleware"/>.</typeparam>
+            <returns>The services collection for chaining.</returns>
+        </member>
+    </members>
+</doc>
