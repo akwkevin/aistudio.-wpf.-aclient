@@ -57,7 +57,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="系统信息">
-                
+                <TextBlock Text="{Binding SystemInformation}" TextWrapping="Wrap"/>
             </TabItem>
             <TabItem Header="数据监控">
 

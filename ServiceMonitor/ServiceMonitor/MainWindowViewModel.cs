@@ -63,6 +63,16 @@ namespace ServiceMonitor
 
         protected ListCollectionView _view;
 
+        private string _systemInformation;
+        public string SystemInformation
+        {
+            get { return _systemInformation; }
+            set
+            {
+                SetProperty(ref _systemInformation, value);
+            }
+        }
+
         private ICommand _startCommand;
         public ICommand StartCommand
         {
@@ -103,6 +113,13 @@ namespace ServiceMonitor
         public MainWindowViewModel()
         {
             _dataProvider = new ApiDataProvider();
+
+            SystemInformation =
+$"OS: {SystemInfo.Caption} ({SystemInfo.Version}) {SystemInfo.OSArchitecture};{Environment.NewLine}" +
+$".NET: {SystemInfo.DotNetFrameworkVersion};{Environment.NewLine}" +
+$"CLR: {Environment.Version};{Environment.NewLine}" +
+$"Processor: {SystemInfo.CPUName};{Environment.NewLine}" +
+$"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
         }
         private void Start()
         {
@@ -188,6 +205,7 @@ namespace ServiceMonitor
         private void Swagger()
         {
             System.Diagnostics.Process.Start("explorer.exe", $"http://localhost:{Port}/swagger/index.html");
+
         }
     }
 }
