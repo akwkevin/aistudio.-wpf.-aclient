@@ -20,40 +20,41 @@
             <MenuItem
                 perm:PermissionHelper.HasPerm="Base_Datasource.Add"
                 Command="{Binding AddCommand}"
-                Icon="&#xe62c;"
-                Header="新建" 
                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                Style="{StaticResource TransparentHeaderMenuItem}"/>
+                Header="新建"
+                Icon="&#xe62c;"
+                Style="{StaticResource TransparentHeaderMenuItem}" />
             <MenuItem
                 perm:PermissionHelper.HasPerm="Base_Datasource.Edit"
                 Command="{Binding EditCommand}"
                 CommandParameter="{Binding SelectedItem}"
-                Icon="&#xe63e;"
-                Header="编辑" 
                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                Style="{StaticResource TransparentHeaderMenuItem}"/>
+                Header="编辑"
+                Icon="&#xe63e;"
+                Style="{StaticResource TransparentHeaderMenuItem}" />
             <MenuItem
                 perm:PermissionHelper.HasPerm="Base_Datasource.View"
                 Command="{Binding ViewCommand}"
                 CommandParameter="{Binding SelectedItem}"
-                Icon="&#xe6a0;"
-                Header="查看" 
                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                Style="{StaticResource TransparentHeaderMenuItem}"/>
+                Header="查看"
+                Icon="&#xe6a0;"
+                Style="{StaticResource TransparentHeaderMenuItem}" />
             <MenuItem
                 perm:PermissionHelper.HasPerm="Base_Datasource.Delete"
                 Command="{Binding DeleteOneCommand}"
                 CommandParameter="{Binding SelectedItem.Id}"
+                Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                Header="删除"
                 Icon="&#xe62d;"
-                Header="删除" 
-                Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                Style="{StaticResource TransparentHeaderMenuItem}"/>
+                Style="{StaticResource TransparentHeaderMenuItem}" />
             <Separator />
-            <MenuItem Command="{Binding RefreshCommand}"
-                Icon="&#xe641;"
-                Header="刷新"
+            <MenuItem
+                Command="{Binding RefreshCommand}"
                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                Style="{StaticResource TransparentHeaderMenuItem}"/>
+                Header="刷新"
+                Icon="&#xe641;"
+                Style="{StaticResource TransparentHeaderMenuItem}" />
         </ContextMenu>
     </UserControl.Resources>
 
