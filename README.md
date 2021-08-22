@@ -56,9 +56,35 @@ Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.ex
 ```
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0822/170817_84186e95_4799126.png "屏幕截图.png")
 
-框架截图
+ **框架截图** 
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0822/170248_4a489e89_4799126.png "屏幕截图.png")
+
+ **系统扩展** ：如果需要扩展自己的页面，只需要按照这个工程的目录进行扩展即可。
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0822/171241_88a20e42_4799126.png "屏幕截图.png")
+ ```
+protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+ {
+    var homePageModule = typeof(HomePageModule);
+    moduleCatalog.AddModule(new ModuleInfo()
+    {
+        ModuleName = homePageModule.Name,
+        ModuleType = homePageModule.AssemblyQualifiedName,
+        InitializationMode = InitializationMode.WhenAvailable
+    });
+
+    var base_ManageModule = typeof(Base_ManageModule);
+    moduleCatalog.AddModule(new ModuleInfo()
+    {
+        ModuleName = base_ManageModule.Name,
+        ModuleType = base_ManageModule.AssemblyQualifiedName,
+        InitializationMode = InitializationMode.WhenAvailable
+    });
+
+    //在这里添加你新增的
+}
+```
 
 个人QQ:80267720
 QQ技术交流群:51286643（进群提供服务端的开源代码地址）
