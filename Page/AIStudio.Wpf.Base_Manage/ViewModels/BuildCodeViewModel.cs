@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using AIStudio.Wpf.DataRepository;
 using Util.Controls;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
@@ -214,7 +215,37 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 buildCode.SubBuildCode = new List<SubBuildCode>();
                 buildCodes.Add(buildCode);
 
-                #region Model
+                //#region Model
+
+                //savePath = Path.Combine(
+                //    directory,
+                //    "Application",
+                //    "AIStudio.Wpf.Entity",
+                //    "Models",
+                //    $"{entityName}.cs");
+
+                //var theLink = Base_DbLinkDTO.FirstOrDefault(p => p.Id == LinkId);
+                //var dbHelper = DbHelperFactory.GetDbHelper(theLink.DbType.ToEnum<DatabaseType>(), theLink.ConnectionStr);
+
+                //SubBuildCode subBuildCode = new SubBuildCode();
+                //subBuildCode.Name = $"类";
+                //subBuildCode.Path = savePath;
+                //subBuildCode.TempPath = Path.Combine(
+                //    directory,
+                //    "Application",
+                //    "AIStudio.Wpf.Entity",
+                //    "Models",
+                //    $"{entityName}.cs");
+                //subBuildCode.Code = tmpFileText;
+                //subBuildCode.FileName = $"{entityName}";
+                //subBuildCode.Suffix = "cs";
+                //buildCode.SubBuildCode.Add(subBuildCode);
+
+                //if ((isCover || !File.Exists(savePath)) && preView == false)
+                //    FileHelper.WriteTxt(tmpFileText, savePath, Encoding.UTF8, FileMode.Create);
+                //#endregion
+
+                #region DTOModel
                 tmpFileText = File.ReadAllText(Path.Combine(directory, "Page", "AIStudio.Wpf.Home", "BuildCodeTemplate", "DTO.txt"));
 
                 tmpFileText = tmpFileText.Replace("%areaName%", areaName).Replace("%entityName%", entityName);
@@ -583,6 +614,6 @@ $"                    cell = new TableCell(new Paragraph(new Run(item.{info.Name
             window.DataContext = new BuildCodeEditWindowViewModel(buildCode, AreaName, Identifier, "代码生成器");
             window.Show();
         }
-
+       
     }
 }
