@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="服务监控" Height="450" Width="800">
     <Grid>
-        <TabControl>            
+        <TabControl>
             <TabItem Header="启动服务">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -15,6 +15,19 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="服务状态：" VerticalAlignment="Center" Margin="2"></TextBlock>
+                        <Ellipse Width="16" Height="16" Margin="2">
+                            <Ellipse.Style>
+                                <Style TargetType="Ellipse">
+                                    <Setter Property="Fill" Value="Green"></Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{ Binding IsRunning}" Value="false">
+                                            <Setter Property="Fill" Value="Red"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Ellipse.Style>
+                        </Ellipse>
                         <TextBlock Text="数据库类型：" VerticalAlignment="Center" Margin="2"/>
                         <ComboBox SelectedIndex="0" Width="100" Text="{Binding DatabaseType}" VerticalAlignment="Center" Margin="2">
                             <ComboBoxItem Content="Sqlite"/>
@@ -60,6 +73,9 @@
                 <TextBlock Text="{Binding SystemInformation}" TextWrapping="Wrap"/>
             </TabItem>
             <TabItem Header="数据监控">
+
+            </TabItem>
+            <TabItem Header="查看日志">
 
             </TabItem>
         </TabControl>

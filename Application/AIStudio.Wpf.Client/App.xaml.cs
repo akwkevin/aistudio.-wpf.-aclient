@@ -91,8 +91,7 @@ namespace AIStudio.Wpf.Client
         protected override void InitializeShell(Window shell)
         {
 
-#if DEBUG 
-#else
+#if !DEBUG
                  //升级
             UpdateHelper.CheckUpdate();
 #endif
@@ -223,7 +222,6 @@ namespace AIStudio.Wpf.Client
 
         protected override void OnStartup(StartupEventArgs e)
         {
-
             HttpClientHelper.Instance.HandleLog = log =>
             {
                 //接口日志 

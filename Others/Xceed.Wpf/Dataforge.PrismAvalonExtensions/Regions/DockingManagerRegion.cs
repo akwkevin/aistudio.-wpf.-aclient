@@ -67,7 +67,7 @@ namespace Dataforge.PrismAvalonExtensions.Regions
             if (e.NavigationContext.Parameters.ContainsKey("Title"))
             {
                 var view = this.Views.FirstOrDefault(x => x.GetType().Name == e.Uri.ToString() || x.GetType().FullName == e.Uri.ToString()) as FrameworkElement;
-                if (view != null)
+                if (view != null && view.DataContext != null)
                 {
                     var propertyInfo = view.DataContext.GetType().GetProperty("Title");
                     if (propertyInfo != null)

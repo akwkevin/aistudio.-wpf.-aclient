@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -34,6 +33,17 @@ namespace ServiceMonitor
             set
             {
                 SetProperty(ref _port, value);
+            }
+        }
+
+
+        private bool _isRunning = false;
+        public bool IsRunning
+        {
+            get { return _isRunning; }
+            set
+            {
+                SetProperty(ref _isRunning, value);
             }
         }
 
@@ -113,6 +123,7 @@ namespace ServiceMonitor
         public MainWindowViewModel()
         {
             _dataProvider = new ApiDataProvider();
+            Refresh();
 
             SystemInformation =
 $"OS: {SystemInfo.Caption} ({SystemInfo.Version}) {SystemInfo.OSArchitecture};{Environment.NewLine}" +
@@ -120,8 +131,9 @@ $".NET: {SystemInfo.DotNetFrameworkVersion};{Environment.NewLine}" +
 $"CLR: {Environment.Version};{Environment.NewLine}" +
 $"Processor: {SystemInfo.CPUName};{Environment.NewLine}" +
 $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
+
         }
-        private void Start()
+        private async void Start()
         {
             if (CmdHelper.GetPidByPort(Port).Count > 0)
             {
@@ -144,9 +156,15 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
 
             p.StandardInput.WriteLine("cd server");
             p.StandardInput.WriteLine($"dotnet Coldairarrow.Api.dll --urls http://*:{Port}");
+
+            await Task.Delay(5000);
+
+            Refresh();
         }
 
-        private void Stop()
+        
+
+        private async void Stop()
         {
             List<int> list_pid = CmdHelper.GetPidByPort(Port);
             if (list_pid.Count == 0)
@@ -167,10 +185,29 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
                 return;
             CmdHelper.PidKill(list_pid);
             MessageBox.Show("操作完成");
+
+            await Task.Delay(1000);
+
+            Refresh();
         }
 
         private async void Refresh()
         {
+            List<int> list_pid = CmdHelper.GetPidByPort(Port);
+            if (list_pid.Count == 0)
+            {
+                IsRunning = false;
+                return;
+            }
+
+            List<string> list_process = CmdHelper.GetProcessNameByPid(list_pid);
+            if (list_process.Count == 0)
+            {
+                IsRunning = false;
+                return;
+            }
+
+            IsRunning = true;
 
             await _dataProvider.GetToken("http://localhost:5000", "Admin", "Admin", 1, TimeSpan.FromSeconds(60));
 
@@ -182,8 +219,8 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
             else
             {
                 UserDatas = new ObservableCollection<D_OnlineUserDTO>(result.Data);
-               
-                _view = (ListCollectionView)CollectionViewSource.GetDefaultView(UserDatas);
+
+                _view = (ListCollectionView) CollectionViewSource.GetDefaultView(UserDatas);
                 _view.Filter = Filter;
             }
         }

@@ -199,7 +199,7 @@ namespace AIStudio.Wpf.Client.ViewModels
 
                 if (LoginStatus == "Input")
                 {
-                    if (!string.IsNullOrEmpty(LocalSetting.VerifyMode))
+                    if (!string.IsNullOrEmpty(LocalSetting.VerifyMode))//如果开启了日志验证
                     {
                         LoginStatus = LocalSetting.VerifyMode;
                         return;
@@ -258,7 +258,7 @@ namespace AIStudio.Wpf.Client.ViewModels
 
         private void ResultChanged(object result)
         {
-            if ((bool)result == true)
+            if ((bool)result == true)//验证成功
             {
                 Login(_window);
             }
