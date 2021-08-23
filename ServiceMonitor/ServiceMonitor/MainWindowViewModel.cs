@@ -157,7 +157,7 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
             p.StandardInput.WriteLine("cd server");
             p.StandardInput.WriteLine($"dotnet Coldairarrow.Api.dll --urls http://*:{Port}");
 
-            await Task.Delay(5000);
+            await Task.Delay(10000);
 
             Refresh();
         }
