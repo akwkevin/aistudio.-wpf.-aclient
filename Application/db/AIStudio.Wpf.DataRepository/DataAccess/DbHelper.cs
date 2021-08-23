@@ -251,16 +251,8 @@ namespace AIStudio.Wpf.DataRepository
             return type;
         }
 
-        /// <summary>
-        /// 生成实体文件
-        /// </summary>
-        /// <param name="infos">表字段信息</param>
-        /// <param name="tableName">表名</param>
-        /// <param name="tableDescription">表描述信息</param>
-        /// <param name="filePath">文件路径（包含文件名）</param>
-        /// <param name="nameSpace">实体命名空间</param>
-        /// <param name="schemaName">架构（模式）名</param>
-        public virtual void SaveEntityToFile(List<AIStudio.Core.TableInfo> infos, string tableName, string tableDescription, string filePath, string nameSpace, string schemaName = null)
+
+        public virtual string GetEntityString(List<AIStudio.Core.TableInfo> infos, string tableName, string tableDescription, string nameSpace, string schemaName = null)
         {
             string properties = "";
             string schema = "";
@@ -274,7 +266,7 @@ namespace AIStudio.Wpf.DataRepository
                 string isNullable = item.IsNullable && type.IsValueType ? "?" : "";
                 string description = item.Description.IsNullOrEmpty() ? item.Name : item.Description;
                 string newPropertyStr =
-$@"
+                    $@"
         /// <summary>
         /// {description}
         /// </summary>{isKey}
@@ -283,7 +275,7 @@ $@"
                 properties += newPropertyStr;
             });
             string fileStr =
-$@"using System;
+                $@"using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 {_extraUsingNamespace}
@@ -298,6 +290,20 @@ namespace {nameSpace}
 {properties}
     }}
 }}";
+            return fileStr;
+        }
+        /// <summary>
+        /// 生成实体文件
+        /// </summary>
+        /// <param name="infos">表字段信息</param>
+        /// <param name="tableName">表名</param>
+        /// <param name="tableDescription">表描述信息</param>
+        /// <param name="filePath">文件路径（包含文件名）</param>
+        /// <param name="nameSpace">实体命名空间</param>
+        /// <param name="schemaName">架构（模式）名</param>
+        public virtual void SaveEntityToFile(List<AIStudio.Core.TableInfo> infos, string tableName, string tableDescription, string filePath, string nameSpace, string schemaName = null)
+        {
+            string fileStr = GetEntityString(infos, tableName, tableDescription, nameSpace, schemaName);
             var dir = Path.GetDirectoryName(filePath);
             if (!Directory.Exists(dir))
             {

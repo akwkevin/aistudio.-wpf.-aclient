@@ -121,6 +121,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                         FileHelper.WriteTxt(subitem.Code, subitem.Path, Encoding.UTF8, FileMode.Create);
                 }
             }
+
+            MessageBox.Show("生成成功！！！");
         }
 
         private void SaveTemp()

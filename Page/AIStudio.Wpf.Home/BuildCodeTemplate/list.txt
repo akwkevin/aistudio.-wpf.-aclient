@@ -96,7 +96,8 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn> 
-                  <!-- <DataGridTemplateColumn Header="操作">
+%listColumns%  
+                <DataGridTemplateColumn Header="操作">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -111,9 +112,7 @@
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>-->
-
-                %listColumns%  
+                </DataGridTemplateColumn>               
 
             </DataGrid.Columns>
          
