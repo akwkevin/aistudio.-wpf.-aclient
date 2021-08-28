@@ -24,6 +24,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using ControlzEx.Theming;
 using Unity;
 using Unity.Interception;
 using Unity.Interception.ContainerIntegration;
@@ -44,6 +45,8 @@ namespace AIStudio.Wpf.Client
             System.Windows.FrameworkCompatibilityPreferences.KeepTextBoxDisplaySynchronizedWithTextProperty = false;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.Current.DispatcherUnhandledException += Application_DispatcherUnhandledException;
+   
+
         }
 
         #region ILogger
