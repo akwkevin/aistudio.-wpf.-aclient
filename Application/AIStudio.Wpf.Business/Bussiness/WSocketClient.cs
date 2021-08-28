@@ -45,6 +45,7 @@ namespace AIStudio.Wpf.Business
         {
             ServerIP = serverip;
             ServerPath = url;
+
             if (_webSocket != null)
             {
                 Dispose();
@@ -59,7 +60,6 @@ namespace AIStudio.Wpf.Business
             this._webSocket.MessageReceived -= WebSocket_MessageReceived;
             this._webSocket.MessageReceived += WebSocket_MessageReceived;
             IsInit = true;
-
 
         }
 
@@ -112,7 +112,7 @@ namespace AIStudio.Wpf.Business
             }
 
 
-            MessageReceived?.Invoke(result.MessageType, (result.Data??"").ToString());
+            MessageReceived?.Invoke(result.MessageType, (result.Data ?? "").ToString());
         }
         /// <summary>
         /// Socket关闭事件
@@ -165,9 +165,9 @@ namespace AIStudio.Wpf.Business
                     {
                         MessageResult send = new MessageResult();
                         send.MessageType = WSMessageType.PingType;
-                        send.Data = DateTime.Now;                        
+                        send.Data = DateTime.Now;
                         SendMessage(send.ToStandardTimeFormatJson());
-                    }                    
+                    }
                 }
                 catch (Exception ex)
                 {

@@ -1,6 +1,12 @@
-﻿using AIStudio.Wpf.Business;
+﻿using Accelerider.Extensions.Mvvm;
+using AIStudio.Core;
+using AIStudio.LocalConfiguration;
+using AIStudio.Wpf.Business;
+using AIStudio.Wpf.D_Manage.ViewModels;
 using AIStudio.Wpf.Entity.DTOModels;
+using Newtonsoft.Json;
 using Prism.Commands;
+using Prism.Ioc;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -14,7 +20,7 @@ using System.Windows.Input;
 
 namespace ServiceMonitor
 {
-    class MainWindowViewModel : BindableBase
+    class MainWindowViewModel : BindableBase, IViewLoadedAndUnloadedAware
     {
         private string _databaseType = "Sqlite";
         public string DatabaseType
@@ -82,6 +88,15 @@ namespace ServiceMonitor
                 SetProperty(ref _systemInformation, value);
             }
         }
+        private D_UserMessageViewModel _d_UserMessageViewModel;
+        public D_UserMessageViewModel D_UserMessageViewModel
+        {
+            get { return _d_UserMessageViewModel; }
+            set
+            {
+                SetProperty(ref _d_UserMessageViewModel, value);
+            }
+        }
 
         private ICommand _startCommand;
         public ICommand StartCommand
@@ -119,12 +134,16 @@ namespace ServiceMonitor
             }
         }
 
-        IDataProvider _dataProvider;
-        public MainWindowViewModel()
-        {
-            _dataProvider = new ApiDataProvider();
-            Refresh();
+        //懒得再IOC了，直接new吧。
+        IDataProvider _dataProvider { get => ContainerLocator.Current.Resolve<IDataProvider>(); } 
+        protected IOperator _operator { get => ContainerLocator.Current.Resolve<IOperator>(); }
+        protected IWSocketClient _wSocketClient { get => ContainerLocator.Current.Resolve<IWSocketClient>(); }
+        protected IUserConfig _userConfig { get => ContainerLocator.Current.Resolve<IUserConfig>(); }
 
+        protected ILogger _logger { get; }
+
+        public MainWindowViewModel()
+        {     
             SystemInformation =
 $"OS: {SystemInfo.Caption} ({SystemInfo.Version}) {SystemInfo.OSArchitecture};{Environment.NewLine}" +
 $".NET: {SystemInfo.DotNetFrameworkVersion};{Environment.NewLine}" +
@@ -132,7 +151,8 @@ $"CLR: {Environment.Version};{Environment.NewLine}" +
 $"Processor: {SystemInfo.CPUName};{Environment.NewLine}" +
 $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
 
-        }
+        }      
+
         private async void Start()
         {
             if (CmdHelper.GetPidByPort(Port).Count > 0)
@@ -211,38 +231,39 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
 
             await _dataProvider.GetToken("http://localhost:5000", "Admin", "Admin", 1, TimeSpan.FromSeconds(60));
 
-            var result = await _dataProvider.GetData<List<D_OnlineUserDTO>>($"/D_Manage/D_UserMessage/GetUserList");
-            if (!result.Success)
-            {
-                throw new Exception(result.Msg);
-            }
-            else
-            {
-                UserDatas = new ObservableCollection<D_OnlineUserDTO>(result.Data);
+            _operator.Property = new Base_UserDTO() { UserName = "人工助手", Id = "smallAssistant", Avatar = "pack://application:,,,/AIStudio.Resource;component/Images/Usopp.jpg" };
 
-                _view = (ListCollectionView) CollectionViewSource.GetDefaultView(UserDatas);
-                _view.Filter = Filter;
-            }
+            _wSocketClient.MessageReceived -= _wSocketClient_MessageReceived;
+            _wSocketClient.MessageReceived += _wSocketClient_MessageReceived;
+            _wSocketClient.InitAndStart($"http://localhost:{Port}", $"ws://localhost:{Port}/ws?userName={_operator.Property.UserName}&userId={_operator.Property.Id}&avatar={_operator.Property.Avatar}");
+
+
+            D_UserMessageViewModel = new D_UserMessageViewModel();
+            D_UserMessageViewModel.Initialize();
         }
 
-        private bool Filter(object obj)
+        private void _wSocketClient_MessageReceived(WSMessageType type, string message)
         {
-            D_OnlineUserDTO s = obj as D_OnlineUserDTO;
-            if (s == null) return false;
-
-            if (s.Online)
+            if (type == WSMessageType.OnlineUser)
             {
-                return true;
+                UserDatas = JsonConvert.DeserializeObject<ObservableCollection<D_OnlineUserDTO>>(message);
             }
-
-            return false;
-          
         }
 
         private void Swagger()
         {
             System.Diagnostics.Process.Start("explorer.exe", $"http://localhost:{Port}/swagger/index.html");
 
+        }
+
+        public void OnLoaded()
+        {
+            Refresh();
+        }
+
+        public void OnUnloaded()
+        {
+            _wSocketClient.Dispose();
         }
     }
 }

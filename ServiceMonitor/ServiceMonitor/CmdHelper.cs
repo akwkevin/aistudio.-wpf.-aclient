@@ -126,6 +126,9 @@ namespace ServiceMonitor
             List<string> list_process = new List<string>();
             foreach (var pid in list_pid)
             {
+                if (pid == 0)
+                    continue;
+
                 p.StandardInput.WriteLine(string.Format("tasklist |find \"{0}\"", pid));
                 p.StandardInput.WriteLine("exit");
                 StreamReader reader = p.StandardOutput;//截取输出流

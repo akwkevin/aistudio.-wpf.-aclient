@@ -15,19 +15,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Util.Controls;
 
 namespace ServiceMonitor
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow 
     {
         public MainWindow()
         {
             InitializeComponent();
 
-            this.DataContext = new MainWindowViewModel();
+            this.Closing += MainWindow_Closing;
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (this.IsVisible == false) return;
+
+            MessageBoxResult result = MessageBoxHelper.ShowSure("确定要退出系统?", this);
+            if (result != MessageBoxResult.OK)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                System.Windows.Application.Current.Shutdown();
+                //System.Diagnostics.Process.GetCurrentProcess().Kill();
+            }
         }
 
     }

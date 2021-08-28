@@ -145,9 +145,31 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                                 {
                                     _view.Refresh();
                                 }
-                            });                            
+                            });
                         }
                     }
+                }
+            }
+            else if (arg1 == WSMessageType.OnlineUser)
+            {
+                var datas = JsonConvert.DeserializeObject<List<D_OnlineUserDTO>>(arg2 as string);
+                if (UserDatas != null)
+                {
+                    UserDatas.ForEach((item) =>
+                    {
+                        if (!item.IsGroup)
+                        {
+                            var tempdata = datas.FirstOrDefault((d) => d.UserId == item.UserId);
+                            if (tempdata != null)
+                            {
+                                item.Online = true;
+                            }
+                            else
+                            {
+                                item.Online = false;
+                            }
+                        }
+                    });
                 }
             }
         }
@@ -183,8 +205,9 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
 
                     _view = (ListCollectionView)CollectionViewSource.GetDefaultView(UserDatas);
                     _view.CustomSort = new UserDataSorter();
+                    _view.Refresh();
 
-                    foreach(var item in _view)
+                    foreach (var item in _view)
                     {
                         SelectedUser = item as D_OnlineUserDTO;
                         break;

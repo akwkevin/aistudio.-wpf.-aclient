@@ -45,7 +45,16 @@
     <Content Include="bin\Debug\net5.0-windows\server\Coldairarrow.Entity.xml" />
     <Content Include="bin\Debug\net5.0-windows\server\Coldairarrow.IBusiness.xml" />
     <Content Include="bin\Debug\net5.0-windows\server\Coldairarrow.Util.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.SQLite.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.SqlServer.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.xml" />
     <Content Include="bin\Debug\net5.0-windows\server\libman.json" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20210814.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20210815.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20210816.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20210822.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20210823.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20210828.txt" />
     <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.DSL.xml" />
     <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.EntityFramework.xml" />
     <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.MySQL.xml" />
@@ -105,6 +114,7 @@
     <None Include="bin\Debug\net5.0-windows\server\Castle.Core.AsyncInterceptor.dll" />
     <None Include="bin\Debug\net5.0-windows\server\Castle.Core.dll" />
     <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.db" />
+    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.db-wal" />
     <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.dll" />
     <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.exe" />
     <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.pdb" />
@@ -133,8 +143,11 @@
     <None Include="bin\Debug\net5.0-windows\server\dotnet" />
     <None Include="bin\Debug\net5.0-windows\server\Dynamitey.dll" />
     <None Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.pdb" />
     <None Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.SQLite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.SQLite.pdb" />
     <None Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.SqlServer.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.SqlServer.pdb" />
     <None Include="bin\Debug\net5.0-windows\server\Elasticsearch.Net.dll" />
     <None Include="bin\Debug\net5.0-windows\server\ICSharpCode.SharpZipLib.dll" />
     <None Include="bin\Debug\net5.0-windows\server\IdHelper.dll" />
@@ -190,8 +203,10 @@
     <None Include="bin\Debug\net5.0-windows\server\runtimes\linux-mips64\native\libe_sqlite3.so" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\linux-musl-x64\native\libe_sqlite3.so" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\linux-x64\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\linux-x64\native\SQLite.Interop.dll" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\linux-x86\native\libe_sqlite3.so" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\osx-x64\native\libe_sqlite3.dylib" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\osx-x64\native\SQLite.Interop.dll" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win-arm64\native\e_sqlite3.dll" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll" />
@@ -213,6 +228,7 @@
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\mod_spatialite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\SQLite.Interop.dll" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\zlib1.dll" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\e_sqlite3.dll" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\libfreexl-1.dll" />
@@ -228,6 +244,7 @@
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\mod_spatialite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\SQLite.Interop.dll" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\zlib1.dll" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll" />
@@ -250,6 +267,8 @@
     <None Include="bin\Debug\net5.0-windows\server\SQLitePCLRaw.nativelibrary.dll" />
     <None Include="bin\Debug\net5.0-windows\server\SQLitePCLRaw.provider.dynamic_cdecl.dll" />
     <None Include="bin\Debug\net5.0-windows\server\System.Configuration.ConfigurationManager.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\System.Data.SQLite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\System.Diagnostics.DiagnosticSource.dll" />
     <None Include="bin\Debug\net5.0-windows\server\System.IdentityModel.Tokens.Jwt.dll" />
     <None Include="bin\Debug\net5.0-windows\server\System.Linq.Dynamic.Core.dll" />
     <None Include="bin\Debug\net5.0-windows\server\System.Private.ServiceModel.dll" />
@@ -286,6 +305,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Application\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
+    <ProjectReference Include="..\..\Page\AIStudio.Wpf.D_Manage\AIStudio.Wpf.D_Manage.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

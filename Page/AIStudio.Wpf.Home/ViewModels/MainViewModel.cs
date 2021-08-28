@@ -194,7 +194,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                     if (LocalSetting.ApiMode)
                     {
                         //连接socket
-                        _wSocketClient.InitAndStart(LocalSetting.ServerIP, $"{LocalSetting.ServerIP.Replace("http", "ws")}/ws?userName={_operator.Property.UserName}&userId={_operator.Property.Id}");
+                        _wSocketClient.InitAndStart(LocalSetting.ServerIP, $"{LocalSetting.ServerIP.Replace("http", "ws")}/ws?userName={_operator.Property.UserName}&userId={_operator.Property.Id}&avatar={_operator.Property.Avatar}");
                         _wSocketClient.MessageReceived -= _wSocketClient_MessageReceived;
                         _wSocketClient.MessageReceived += _wSocketClient_MessageReceived;
                     }

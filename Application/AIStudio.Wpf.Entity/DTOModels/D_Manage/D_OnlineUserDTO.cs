@@ -29,7 +29,20 @@ namespace AIStudio.Wpf.Entity.DTOModels
         public string UserNames { get; set; }    
         public string UserIds { get; set; }
         public string Avatar { get; set; }
-        public bool Online { get; set; }
+
+        private bool _online;
+        public bool Online
+        {
+            get { return _online; }
+            set
+            {
+                if (_online != value)
+                {
+                    _online = value;
+                    RaisePropertyChanged("Online");
+                }
+            }
+        }
         public bool IsGroup { get; set; }
 
         private string _lastMessage;
