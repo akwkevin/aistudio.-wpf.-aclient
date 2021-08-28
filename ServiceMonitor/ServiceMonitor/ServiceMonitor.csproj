@@ -114,7 +114,6 @@
     <None Include="bin\Debug\net5.0-windows\server\Castle.Core.AsyncInterceptor.dll" />
     <None Include="bin\Debug\net5.0-windows\server\Castle.Core.dll" />
     <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.db" />
-    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.db-wal" />
     <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.dll" />
     <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.exe" />
     <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.pdb" />
