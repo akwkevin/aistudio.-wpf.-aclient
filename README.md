@@ -92,6 +92,16 @@ protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
 }
 ```
 
+ **快速代码生成** ：
+
+1.在数据库添加新表。
+
+2.选择代码生成菜单，选中查询回来的新表，区域为你所加界面的工程，比如默认值Base_Manage，将把页面加到AIStudio.Wpf.Base_Manage工程下。
+
+3.点击生成即可，重新启动客户端即可快速预览（前提是服务端也用代码生成器生成(在web端的代码生成器)了相应的控制器与接口）
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0829/172904_ed6373e9_4799126.png "屏幕截图.png")
+
 个人QQ:80267720
 QQ技术交流群:51286643（进群提供服务端的开源代码地址）
 个人博客:https://www.cnblogs.com/akwkevin/
