@@ -10,6 +10,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:util="clr-namespace:Util.Controls;assembly=Util.Controls"
+    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
     x:Name="loginWin"
     Title="{x:Static core:LocalSetting.Title}"
     Width="700"
@@ -26,8 +27,9 @@
     </WindowChrome.WindowChrome>
     <Grid>
         <Border  Panel.ZIndex="1"
-            Background="White"
-            BorderThickness="0"
+            Background="{DynamicResource MahApps.Brushes.ThemeBackground}"
+            BorderThickness="1"
+            BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
             CornerRadius="15"
             Visibility="{Binding LoginStatus, Converter={converter:StringToVisibilityConverter}, ConverterParameter='Input'}">
             <Grid>
@@ -64,7 +66,7 @@
                             IsEnabled="True"
                             ItemsSource="{Binding Servers}"
                             Style="{StaticResource UnderlineComboBox}"
-                            TabIndex="1"
+                            TabIndex="0"
                             Text="{Binding ServerIP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
                             <util:ControlAttachProperty.LabelTemplate>
                                 <ControlTemplate>
@@ -73,7 +75,7 @@
                                             Cursor="Arrow"
                                             Foreground="{DynamicResource MahApps.Brushes.Accent}"
                                             Style="{StaticResource FIcon}"
-                                            Text="&#xe670;" />
+                                            Text="&#xe600;" />
                                     </StackPanel>
                                 </ControlTemplate>
                             </util:ControlAttachProperty.LabelTemplate>
@@ -126,9 +128,11 @@
                         </PasswordBox>
                         <CheckBox
                             Grid.Row="3"
+                            Margin="1,0,0,0"
                             VerticalAlignment="Center"
                             Content="记住密码"
                             IsChecked="{Binding IsRmembered}"
+                            Style="{StaticResource DefaultCheckBox}"                   
                             TabIndex="3" />
                         <Button
                             Grid.Row="4"
@@ -153,9 +157,17 @@
                     Grid.Column="1"
                     Background="{DynamicResource MahApps.Brushes.Accent}"
                     CornerRadius="0,15,15,0">
-                    <Image  Source="pack://application:,,,/AIStudio.Resource;component/Images/loginBackGround.png" />
+                    <Image  Source="pack://application:,,,/AIStudio.Resource;component/Images/loginBackGround.png" Margin="30"/>
                 </Border>
 
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Margin="6" HorizontalAlignment="Right" Height="30">
+                    <util:FButton x:Name="PART_CloseButton"  Width="26" VerticalAlignment="Center" Margin="1" CornerRadius="0" Padding="1 2 1 2"
+                                               MouseOverBackground="Red" MouseOverForeground="White" PressedBackground="#AA0D0D" PressedForeground="White"
+                                               AllowsAnimation="True" Style="{StaticResource FButton_Transparency}"  FIcon="&#xe60a;" FIconSize="14"
+                                               FIconMargin="0" Foreground="{DynamicResource MahApps.Brushes.SystemControlBackgroundChromeWhite}"  
+                                               Command="{Binding CloseComamnd}" CommandParameter="{Binding ElementName=loginWin}"/>
+                </StackPanel>
+                
                 <TextBlock
                         Grid.Column="1"
                         Margin="10"

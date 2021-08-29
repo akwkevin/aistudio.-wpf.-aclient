@@ -119,6 +119,14 @@ namespace AIStudio.Wpf.Client.ViewModels
             }
         }
 
+        public ICommand _closeComamnd;
+        public ICommand CloseComamnd
+        {
+            get
+            {
+                return this._closeComamnd ?? (this._closeComamnd = new DelegateCommand<Window>(para => this.Close(para)));
+            }
+        }
 
         private ICommand _loginCommand;
         public ICommand LoginCommand
@@ -213,7 +221,8 @@ namespace AIStudio.Wpf.Client.ViewModels
                             p.StartInfo.FileName = System.AppDomain.CurrentDomain.BaseDirectory + "AIStudio.Wpf.Client.exe";
                             p.StartInfo.UseShellExecute = false;
                             p.Start();
-                            Application.Current.Shutdown();
+                            
+                            window.Close();
                         }
                         return;
                     }
@@ -284,6 +293,11 @@ namespace AIStudio.Wpf.Client.ViewModels
             {
                 Login(_window);
             }
+        }
+
+        private void Close(Window window)
+        {
+            window.Close();
         }
     }
 
