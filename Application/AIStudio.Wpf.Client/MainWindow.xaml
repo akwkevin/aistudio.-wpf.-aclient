@@ -1,20 +1,24 @@
-﻿<util:WindowBase x:Class="AIStudio.Wpf.Client.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        xmlns:local="clr-namespace:AIStudio.Wpf.Client"
-        xmlns:util="clr-namespace:Util.Controls;assembly=Util.Controls" 
-        xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
-        Style="{StaticResource BaseWindowStyle}"
-        xmlns:prism="http://prismlibrary.com/"
-        prism:ViewModelLocator.AutoWireViewModel="True"
-        Identifier="{Binding Identifier}"
-        CaptionForeground ="{DynamicResource TitleForegroundBrush}"
-        CaptionHeight="28"
-        mc:Ignorable="d"
-        Title="{x:Static core:LocalSetting.Title}" Icon="A.ico" Height="450" Width="800">  
+﻿<util:WindowBase
+    x:Class="AIStudio.Wpf.Client.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AIStudio.Wpf.Client"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:util="clr-namespace:Util.Controls;assembly=Util.Controls"
+    Title="{x:Static core:LocalSetting.Title}"
+    Width="1080"
+    Height="793"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    CaptionForeground="{DynamicResource TitleForegroundBrush}"
+    CaptionHeight="28"
+    Icon="A.ico"
+    Identifier="{Binding Identifier}"
+    Style="{StaticResource BaseWindowStyle}"
+    mc:Ignorable="d">
     <Grid>
-        <ContentControl  prism:RegionManager.RegionName="{x:Static core:RegionName.MainContentRegion}" />
+        <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionName.MainContentRegion}" />
     </Grid>
 </util:WindowBase>

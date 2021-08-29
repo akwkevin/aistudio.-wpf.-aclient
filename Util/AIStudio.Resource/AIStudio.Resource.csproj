@@ -8,16 +8,20 @@
   <ItemGroup>
     <None Remove="Brushs\brush.json" />
     <None Remove="Images\background.jpg" />
+    <None Remove="Images\loginBackGround.png" />
   </ItemGroup>
   
 
   <ItemGroup>
     <Resource Include="Brushs\brush.json" />
-    <Resource Include="Images\background.jpg" />
+    <Resource Include="Images\background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Brook.jpg" />
     <Resource Include="Images\Chopper.jpg" />
     <Resource Include="Images\Franky.jpg" />
     <Resource Include="Images\Jinbe.jpg" />
+    <Resource Include="Images\loginBackGround.png" />
     <Resource Include="Images\Luffy.jpg" />
     <Resource Include="Images\Nami.jpg" />
     <Resource Include="Images\Robin.jpg" />
