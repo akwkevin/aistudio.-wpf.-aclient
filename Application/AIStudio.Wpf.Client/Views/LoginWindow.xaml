@@ -12,15 +12,12 @@
     xmlns:util="clr-namespace:Util.Controls;assembly=Util.Controls"
     x:Name="loginWin"
     Title="{x:Static core:LocalSetting.Title}"
-    Width="1012"
-    Height="560"
+    Width="700"
+    Height="400"
     prism:ViewModelLocator.AutoWireViewModel="True"
     util:WindowBase.TitleTag="true"
     Background="Transparent"
-    BorderThickness="0"
-    MaxboxEnable="False"
-    MinboxEnable="False"
-    OpacityMask="White"
+    OpacityMask="{DynamicResource MahApps.Brushes.ThemeBackground}"
     ResizeMode="CanMinimize"
     WindowStyle="None"
     mc:Ignorable="d">
@@ -60,14 +57,15 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
-                        <TextBox
+                        <ComboBox
                             Grid.Row="0"
                             Height="30"
-                            util:ControlAttachProperty.Watermark="服务器"
-                            Style="{StaticResource UnderlineTextBox}"
-                            TabIndex="0"
-                            Text="{Binding ServerIP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                            Visibility="{Binding ServerIPVisibility}">
+                            IsEditable="True"
+                            IsEnabled="True"
+                            ItemsSource="{Binding Servers}"
+                            Style="{StaticResource UnderlineComboBox}"
+                            TabIndex="1"
+                            Text="{Binding ServerIP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
                             <util:ControlAttachProperty.LabelTemplate>
                                 <ControlTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -79,7 +77,8 @@
                                     </StackPanel>
                                 </ControlTemplate>
                             </util:ControlAttachProperty.LabelTemplate>
-                        </TextBox>
+                        </ComboBox>
+
 
                         <ComboBox
                             Grid.Row="1"
@@ -138,6 +137,7 @@
                             CommandParameter="{Binding ElementName=loginWin}"
                             Content="登录"
                             IsDefault="True"
+                            Foreground="{DynamicResource MahApps.Brushes.SystemControlBackgroundChromeWhite}"
                             Style="{DynamicResource RaisedButton}"
                             TabIndex="4" Cursor="Hand" />
                     </Grid>
@@ -146,18 +146,23 @@
                         HorizontalAlignment="Center"
                         Foreground="Red"
                         Text="{Binding LoginError}" />
-                    <TextBlock
-                        Grid.Row="3"
-                        HorizontalAlignment="Left"
-                        Text="{Binding Version}" />
+           
                 </Grid>
 
                 <Border
                     Grid.Column="1"
-                    Background="#512a83"
+                    Background="{DynamicResource MahApps.Brushes.Accent}"
                     CornerRadius="0,15,15,0">
                     <Image  Source="pack://application:,,,/AIStudio.Resource;component/Images/loginBackGround.png" />
                 </Border>
+
+                <TextBlock
+                        Grid.Column="1"
+                        Margin="10"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Text="{Binding Version}"
+                        Foreground="{DynamicResource MahApps.Brushes.SystemControlBackgroundChromeWhite}"/>
             </Grid>
         </Border>
         <Grid x:Name="VerifyGrid"  >

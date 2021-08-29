@@ -134,8 +134,7 @@ namespace ServiceMonitor
             }
         }
 
-        //懒得再IOC了，直接new吧。
-        IDataProvider _dataProvider { get => ContainerLocator.Current.Resolve<IDataProvider>(); } 
+        protected IDataProvider _dataProvider { get => ContainerLocator.Current.Resolve<IDataProvider>(); } 
         protected IOperator _operator { get => ContainerLocator.Current.Resolve<IOperator>(); }
         protected IWSocketClient _wSocketClient { get => ContainerLocator.Current.Resolve<IWSocketClient>(); }
         protected IUserConfig _userConfig { get => ContainerLocator.Current.Resolve<IUserConfig>(); }
