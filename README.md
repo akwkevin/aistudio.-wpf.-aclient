@@ -57,11 +57,10 @@ Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.ex
 <add key="ServerIP" value="http://localhost:5000" />
 ```
 
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0822/170817_84186e95_4799126.png "屏幕截图.png")
+
 登录界面优化，快速预览方式可直接在登录界面进行切换。
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0829/155127_88a0408b_4799126.png "屏幕截图.png")
-
-
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0822/170817_84186e95_4799126.png "屏幕截图.png")
 
  **框架截图** 
 
