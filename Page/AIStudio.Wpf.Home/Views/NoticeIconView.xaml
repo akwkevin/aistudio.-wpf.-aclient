@@ -27,7 +27,7 @@
             </i:Interaction.Triggers>
             <util:DropDown.Content>
                 <util:Badged HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding TotalCount,Converter={converter2:CountTo99PlusConverter}}" >
-                    <TextBlock Text="&#xf0a2;" FontSize="15" Foreground="{DynamicResource TitleForegroundBrush}" Style="{StaticResource FAwesome}">
+                    <TextBlock Text="&#xf0a2;" FontSize="12" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource FAwesome}">
                     </TextBlock>
                 </util:Badged>
             </util:DropDown.Content>

@@ -64,7 +64,7 @@
             </Grid>
             <TextBlock Grid.Column="1"
                                        VerticalAlignment="Center"
-                                       Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"
+                                       Foreground="{DynamicResource TitleForegroundBrush}"
                                        Text="{Binding Label}" 
                                        FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType={x:Type TreeViewItem}}}"
                                        FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type TreeViewItem}}}"
@@ -104,7 +104,7 @@
 
             <TextBlock x:Name="Header" Grid.Column="1" 
                                          VerticalAlignment="Center"
-                                         Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"
+                                         Foreground="{DynamicResource TitleForegroundBrush}"
                                          Text="{Binding Label}" 
                                          FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
                                          FontStyle="{Binding FontStyle, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"

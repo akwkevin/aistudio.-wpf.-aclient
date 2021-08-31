@@ -149,7 +149,7 @@
                     </i:Interaction.Triggers>
                 </ListBox>
             </GroupBox>
-            <GroupBox Header="{DynamicResource 导航模式及标题风格}">
+            <GroupBox Header="{DynamicResource 导航模式与标题栏与状态栏}">
                 <WrapPanel>
                     <ListBox x:Name="listNavigationLocation"
                          SelectedIndex="{Binding SelectedNavigationLocation}"
@@ -190,41 +190,6 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ListBox>   
-                    <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" />
-                    <ListBox x:Name="listTitleAccent"
-                         SelectedIndex="{Binding SelectedTitleAccent}"
-                         ItemContainerStyle="{DynamicResource ListBoxItemStyle}">
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                        <ListBoxItem Tag="Normal">
-                            <Grid Width="24" Height="24" ToolTip="标题栏普通颜色">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                    <RowDefinition Height="2*"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Border Background="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,1,1,0"/>
-                                <Border Grid.Row="1" Background="{DynamicResource MahApps.Brushes.ThemeBackground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,0,1,1"/>
-                            </Grid>
-                        </ListBoxItem>
-                        <ListBoxItem Tag="Accent">
-                            <Grid Width="24" Height="24" ToolTip="标题栏主题颜色">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                    <RowDefinition Height="2*"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Border Background="{DynamicResource MahApps.Brushes.Accent}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,1,1,0"/>
-                                <Border Grid.Row="1" Background="{DynamicResource MahApps.Brushes.ThemeBackground}" BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1,0,1,1"/>
-                            </Grid>
-                        </ListBoxItem>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding TitleAccentCommand}" CommandParameter="{Binding Path=SelectedIndex, ElementName=listTitleAccent}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </ListBox>
                     <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" />
                     <ListBox x:Name="listToolBarLocation"        
                          SelectedIndex="{Binding SelectedToolBarLocation}"

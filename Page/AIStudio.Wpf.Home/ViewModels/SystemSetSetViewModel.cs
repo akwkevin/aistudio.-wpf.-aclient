@@ -53,8 +53,6 @@ namespace AIStudio.Wpf.Home.ViewModels
 
             this.SelectedNavigationLocation = (int)(NavigationLocation)System.Enum.Parse(typeof(NavigationLocation), LocalSetting.NavigationLocation);
 
-            this.SelectedTitleAccent = (int)(TitleAccent)System.Enum.Parse(typeof(TitleAccent), LocalSetting.TitleAccent);
-
             this.SelectedToolBarLocation = (int)(ToolBarLocation)System.Enum.Parse(typeof(ToolBarLocation), LocalSetting.ToolBarLocation);
 
             this.SelectedStatusBarLocation = (int)(StatusBarLocation)System.Enum.Parse(typeof(StatusBarLocation), LocalSetting.StatusBarLocation);
@@ -232,16 +230,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-
-        private ICommand _titleAccentCommand;
-        public ICommand TitleAccentCommand
-        {
-            get
-            {
-                return this._titleAccentCommand ?? (this._titleAccentCommand = new DelegateCommand<object>(para => this.TitleAccent(para)));
-            }
-        }
-
         public ICommand _toolBarLocationCommand;
         public ICommand ToolBarLocationCommand
         {
@@ -314,25 +302,13 @@ namespace AIStudio.Wpf.Home.ViewModels
             if (navigationAccent != null)
             {
                 LocalSetting.SetAppSetting("NavigationAccent", navigationAccent.NavigationAccent);
+                InitThemeAddition();
             }
         }
 
         private void NavigationLocation(object para)
         {
             LocalSetting.SetAppSetting("NavigationLocation", ((NavigationLocation)para).ToString());
-        }
-
-        private void TitleAccent(object para)
-        {
-            try
-            {
-                LocalSetting.SetAppSetting("TitleAccent", ((TitleAccent)para).ToString());
-                InitThemeAddition();
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(ex);
-            }
         }
 
         private void ToolBarLocation(object para)
@@ -445,8 +421,8 @@ namespace AIStudio.Wpf.Home.ViewModels
         {
             Application.Current.Resources.Remove("TitleBackgroundBrush");
             Application.Current.Resources.Remove("TitleForegroundBrush");
-            Application.Current.Resources.Add("TitleBackgroundBrush", LocalSetting.TitleAccent == "Accent" ? Application.Current.FindResource("MahApps.Brushes.AccentBase") : Application.Current.FindResource("MahApps.Brushes.Accent"));
-            Application.Current.Resources.Add("TitleForegroundBrush", LocalSetting.TitleAccent == "Accent" ? Application.Current.FindResource("MahApps.Brushes.Accent") : Application.Current.FindResource("MahApps.Brushes.ThemeForeground"));
+            Application.Current.Resources.Add("TitleBackgroundBrush", LocalSetting.NavigationAccent == "Dark" ? Application.Current.FindResource("MahApps.Brushes.Accent") : Application.Current.FindResource("MahApps.Brushes.ThemeBackground"));
+            Application.Current.Resources.Add("TitleForegroundBrush", LocalSetting.NavigationAccent == "Dark" ? Application.Current.FindResource("MahApps.Brushes.ThemeBackground") : Application.Current.FindResource("MahApps.Brushes.Text"));
         }
 
         public static void InitTheme()

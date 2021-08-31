@@ -30,15 +30,18 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ContentControl}">
-                            <Grid Height="Auto" HorizontalAlignment="Left">
+                            <Grid Height="Auto" Width="180" HorizontalAlignment="Left" Background="{DynamicResource MahApps.Brushes.Accent}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <svg:PackSvg x:Name="Icon" Height="24" Width="24" Margin="5"   
+                                <ToggleButton Style="{StaticResource DefaultToggleButton}" IsChecked="{Binding IsPaneOpen, ElementName=HamburgerMenuControl}">
+                                    <svg:PackSvg x:Name="Icon" Height="24" Width="24" Margin="5"   
                                          Kind="A" 
-                                         Fill="{DynamicResource TitleForegroundBrush}" 
-                                         Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Left'}"/>
+                                         Fill="{DynamicResource TitleForegroundBrush}" />
+                                </ToggleButton> 
+
+                                <TextBlock Text="{x:Static core:LocalSetting.Title}" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource TitleForegroundBrush}" HorizontalAlignment="Stretch"/>
 
                             </Grid>
                         </ControlTemplate>
@@ -70,9 +73,9 @@
                                 </Grid>
 
                                 <StackPanel Orientation="Horizontal" Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}">
-                                    <local:NoticeIconView Margin="8,0,8,3"   HorizontalAlignment="Center" VerticalAlignment="Bottom" DataContext="{Binding NoticeIconViewModel}"/>
+                                    <local:NoticeIconView Margin="15,0,15,3"  HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{Binding NoticeIconViewModel}"/>
 
-                                    <util:DropDown Margin="8,0,0,0">
+                                    <util:DropDown Margin="8,3,0,3">
                                         <util:DropDown.Content>
                                             <Image                                           
                                            Stretch="Fill"                
@@ -139,7 +142,7 @@
                                             </Grid>
                                         </util:DropDown.Child>
                                     </util:DropDown>
-                                    <util:FButton Margin="2,0" VerticalAlignment="Center" Command="{Binding OpenUserConsoleCommand}" Foreground="{DynamicResource TitleForegroundBrush}" Content="{Binding Operator.UserName}" Style="{StaticResource FButton_LinkButton}" FontSize="{DynamicResource MahApps.Font.Size.Content}" MouseOverForeground="{DynamicResource MahApps.Brushes.Gray8}"/>
+                                    <util:FButton Margin="1,0,15,0" VerticalAlignment="Center" Command="{Binding OpenUserConsoleCommand}" Foreground="{DynamicResource MahApps.Brushes.Text}" Content="{Binding Operator.UserName}" Style="{StaticResource FButton_LinkButton}" FontSize="{DynamicResource MahApps.Font.Size.Content}" MouseOverForeground="{DynamicResource MahApps.Brushes.Gray8}"/>
                                 </StackPanel>
                             </StackPanel>
                         </ControlTemplate>
@@ -318,7 +321,7 @@
     <UserControl.CommandBindings>
         <CommandBinding Command="Copy" Executed="OnCopy"></CommandBinding>
     </UserControl.CommandBindings>
-    <Grid>
+    <Grid WindowChrome.IsHitTestVisibleInChrome="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -326,21 +329,17 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="Titlebar" util:WindowBase.TitleTag="true"
+        <Grid x:Name="Titlebar" util:WindowBase.TitleTag="true" 
               Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"       
               Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=ShowTitleBar,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}">
-            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"
-                        FontSize="{DynamicResource MahApps.Font.Size.Window.Title}"
-                        Foreground="{DynamicResource TitleForegroundBrush}"                              
-                        Text="{Binding PageTitle}"
-                        TextTrimming="CharacterEllipsis">
-            </TextBlock>
 
-            <StackPanel Margin="0,0,85,0" Orientation="Horizontal" HorizontalAlignment="Right">
-                <ContentControl Style="{DynamicResource RightBarStyle}" />
+            <ContentControl Style="{DynamicResource MainSearchStyle}" />           
 
-                <Menu Background="Transparent" Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}">
-                    <MenuItem Height="25" Style="{StaticResource TransparentHeaderMenuItem}" Foreground="{DynamicResource TitleForegroundBrush}" Padding="0" Icon="&#xe665;" >
+            <StackPanel Margin="0,0,155,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <ContentControl Style="{DynamicResource RightBarStyle}"/>
+
+                <Menu Background="Transparent" Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}" VerticalAlignment="Center">
+                    <MenuItem Height="25" Style="{StaticResource TransparentHeaderMenuItem}" Foreground="{DynamicResource MahApps.Brushes.Text}" Padding="0" Icon="&#xe665;" util:ControlAttachProperty.FIconSize="12">
                         <MenuItem Icon="&#xE633;" Header="{DynamicResource 系统设置}" Command="{Binding SystemManageCommand}" CommandParameter="Setting" Style="{StaticResource TransparentHeaderMenuItem}"/>
                         <MenuItem Icon="&#xe61b;" Header="本地日志" Command="{Binding SystemManageCommand}" CommandParameter="Logs" Style="{StaticResource TransparentHeaderMenuItem}"/>
                         <MenuItem Icon="&#xe64a;" Header="修改密码" Command="{Binding SystemManageCommand}" CommandParameter="EditPwd" Style="{StaticResource TransparentHeaderMenuItem}"/>
@@ -353,7 +352,7 @@
                 </Menu>
             </StackPanel>
 
-            <Grid.Style>
+            <!--<Grid.Style>
                 <Style TargetType="{x:Type Grid}">
                     <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
                     <Style.Triggers>
@@ -362,7 +361,7 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </Grid.Style>
+            </Grid.Style>-->
         </Grid>
 
         <Grid Grid.Row="1" Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Top'}">
@@ -394,10 +393,11 @@
             Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
             BorderBrush="Transparent"
             HamburgerWidth="36"
-            HamburgerHeight ="36"
+            HamburgerHeight ="0"
             HamburgerMargin="0"
             CompactPaneLength ="36"
             OpenPaneLength="180"
+            IsPaneOpen="True"
             ItemsSource="{Binding MenuItems}"
             SelectedItem="{Binding SelectedMenuItem}"
             OptionsItemTemplate="{StaticResource HamburgerMenuItem}"
@@ -407,6 +407,7 @@
                     <Setter Property="ItemTemplate" Value="{StaticResource HamburgerMenuImageItem}"/>
                     <Setter Property="DisplayMode" Value="Overlay"/>
                     <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource TitleForegroundBrush}"/>
                     <Setter Property="HamburgerMenuTemplate">
                         <Setter.Value>
                             <DataTemplate>
