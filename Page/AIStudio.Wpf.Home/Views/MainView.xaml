@@ -26,23 +26,107 @@
             </ResourceDictionary.MergedDictionaries>
             <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
             <util:DoubleToThickness x:Key="DoubleToThickness"/>
-            <Style x:Key="MainSearchStyle" TargetType="{x:Type ContentControl}">
+
+            <!--  "Chromeless" style for buttons  -->
+            <ControlTemplate x:Key="ChromelessButtonTemplate" TargetType="{x:Type ButtonBase}">
+                <Grid Background="{TemplateBinding Background}">
+                    <ContentPresenter x:Name="PART_ContentPresenter"
+                              Margin="{TemplateBinding Padding}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              Opacity="0.75"
+                              RecognizesAccessKey="True"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="PART_ContentPresenter" Property="Opacity" Value="1" />
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="False">
+                        <Setter TargetName="PART_ContentPresenter" Property="Opacity" Value=".5" />
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Foreground" Value="#ADADAD" />
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
+            <Style x:Key="ChromelessButtonStyle" TargetType="{x:Type ButtonBase}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+                <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Transparent}" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Template" Value="{StaticResource ChromelessButtonTemplate}" />
+            </Style>
+
+            <Style x:Key="HamburgerButtonStyle"
+           BasedOn="{StaticResource ChromelessButtonStyle}"
+           TargetType="{x:Type ButtonBase}">
+                <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.ThemeForeground}" />
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Padding" Value="1" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ButtonBase}">
+                            <Grid Background="Transparent">
+                                <Grid x:Name="PART_Background" Background="{TemplateBinding Background}" Opacity="0" />
+                                <ContentPresenter x:Name="PART_ContentPresenter"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Opacity="0.75"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="PART_Background" Property="Opacity" Value="0.3" />
+                                    <Setter TargetName="PART_ContentPresenter" Property="Opacity" Value="1" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="False">
+                                    <Setter TargetName="PART_Background" Property="Opacity" Value="0" />
+                                    <Setter TargetName="PART_ContentPresenter" Property="Opacity" Value="0.75" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground" Value="#ADADAD" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+            </Style>
+            
+            <Style x:Key="MainIconStyle" TargetType="{x:Type ContentControl}">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ContentControl}">
-                            <Grid Height="Auto" Width="180" HorizontalAlignment="Left" Background="{DynamicResource MahApps.Brushes.Accent}">
+                            <Grid Height="Auto" HorizontalAlignment="Left" Background="{DynamicResource TitleBackgroundBrush}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <ToggleButton Style="{StaticResource DefaultToggleButton}" IsChecked="{Binding IsPaneOpen, ElementName=HamburgerMenuControl}">
+                                <ToggleButton Style="{StaticResource HamburgerButtonStyle}" IsChecked="{Binding IsPaneOpen, ElementName=HamburgerMenuControl}">
                                     <svg:PackSvg x:Name="Icon" Height="24" Width="24" Margin="5"   
                                          Kind="A" 
                                          Fill="{DynamicResource TitleForegroundBrush}" />
                                 </ToggleButton> 
 
-                                <TextBlock Text="{x:Static core:LocalSetting.Title}" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource TitleForegroundBrush}" HorizontalAlignment="Stretch"/>
+                                <TextBlock  Text="{x:Static core:LocalSetting.Title}" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource TitleForegroundBrush}" Margin="5,0,0,0"/>
 
+                                <Grid.Style>
+                                    <Style TargetType="{x:Type Grid}">
+                                        <Setter Property="Width" Value="180"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsPaneOpen, ElementName=HamburgerMenuControl}" Value="false">
+                                                <Setter Property="Width" Value="36"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -55,20 +139,31 @@
                         <ControlTemplate TargetType="{x:Type ContentControl}">
                             <StackPanel Orientation="Horizontal">
                                 <Grid>
-                                    <util:InputComboBox Width="156" x:Name="txtSearch"    
+                                    <util:InputComboBox Width="156" 
+                                        x:Name="txtSearch"    
+                                        VerticalAlignment="Center"
                                         util:ControlAttachProperty.Watermark="搜索(Ctrl+Q)"
                                         Text="{Binding SearchText,Mode=TwoWay}"
                                         ItemsSource="{Binding SearchMenus}"
                                         IsFocusText="{Binding IsFocusSearchText}"
                                         BorderBrush="{DynamicResource MahApps.Brushes.Gray8}"
-                                        BorderThickness="0"
                                         MaxDropDownHeight="230"
-                                        DisplayMemberPath="Label" SelectedValuePath="Code" Style="{StaticResource UnderlineInputComboBoxStyle}">
+                                        DisplayMemberPath="Label" SelectedValuePath="Code">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="ResultChanged">
                                                 <i:InvokeCommandAction Command="{Binding SearchCommand}" CommandParameter="{Binding Path=SelectedItem, ElementName=txtSearch}" />
                                             </i:EventTrigger>              
                                         </i:Interaction.Triggers>
+                                        <util:InputComboBox.Style>
+                                            <Style TargetType="{x:Type util:InputComboBox}" BasedOn="{StaticResource UnderlineInputComboBoxStyle}">
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                                        <Setter Property="BorderThickness" Value="1" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </util:InputComboBox.Style>
                                     </util:InputComboBox>
                                 </Grid>
 
@@ -321,7 +416,7 @@
     <UserControl.CommandBindings>
         <CommandBinding Command="Copy" Executed="OnCopy"></CommandBinding>
     </UserControl.CommandBindings>
-    <Grid WindowChrome.IsHitTestVisibleInChrome="True">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -329,12 +424,23 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="Titlebar" util:WindowBase.TitleTag="true" 
+        <Grid x:Name="Titlebar" util:WindowBase.TitleTag="true" WindowChrome.IsHitTestVisibleInChrome="True"
               Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"       
               Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=ShowTitleBar,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}">
 
-            <ContentControl Style="{DynamicResource MainSearchStyle}" />           
+            <ContentControl Style="{DynamicResource MainIconStyle}" Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Left'}"/>
 
+            <Menu x:Name="MenuControl"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                ItemContainerStyle="{StaticResource MenuItemStyle}" 
+                ItemsSource="{Binding MenuItems}"
+                ItemTemplate="{StaticResource MenuItemDataTemplate}"            
+                Style="{StaticResource MahApps.Styles.Menu}" 
+                Background="Transparent"  
+                Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Top'}"/>
+            
             <StackPanel Margin="0,0,155,0" Orientation="Horizontal" HorizontalAlignment="Right">
                 <ContentControl Style="{DynamicResource RightBarStyle}"/>
 
@@ -351,39 +457,6 @@
                     </MenuItem>
                 </Menu>
             </StackPanel>
-
-            <!--<Grid.Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding WindowSetting.NavigationAccent}" Value="Light">
-                            <Setter Property="Background" Value="Transparent"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>-->
-        </Grid>
-
-        <Grid Grid.Row="1" Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Top'}">
-            <Menu x:Name="MenuControl"
-                Grid.Column="0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                ItemContainerStyle="{StaticResource MenuItemStyle}" 
-                ItemsSource="{Binding MenuItems}"
-                ItemTemplate="{StaticResource MenuItemDataTemplate}"            
-                Style="{StaticResource MahApps.Styles.Menu}" 
-                Background="Transparent" />
-            <Grid.Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding WindowSetting.NavigationAccent}" Value="Light">
-                            <Setter Property="Background" Value="Transparent"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
         </Grid>
 
         <util:HamburgerTreeMenu Grid.Row="2"
@@ -411,20 +484,18 @@
                     <Setter Property="HamburgerMenuTemplate">
                         <Setter.Value>
                             <DataTemplate>
-                                <ContentControl Style="{DynamicResource MainSearchStyle}" />
+                                <ContentControl Style="{DynamicResource MainIconStyle}" />
                             </DataTemplate>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
+                        <DataTrigger Binding="{Binding WindowSetting.NavigationLocation}" Value="Left">
+                            <Setter Property="DisplayMode" Value= "CompactInline"></Setter>
+                            <Setter Property="IsPaneOpen" Value= "False"></Setter>
+                        </DataTrigger>
                         <Trigger Property="IsPaneOpen" Value="False">
                             <Setter Property="ItemTemplate" Value="{StaticResource LeftHamburgerMenuImageItem}"/>
                         </Trigger>
-                        <DataTrigger Binding="{Binding WindowSetting.NavigationLocation}" Value="Left">
-                            <Setter Property="DisplayMode" Value= "CompactInline"></Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding WindowSetting.NavigationAccent}" Value="Light">
-                            <Setter Property="Background" Value="Transparent"/>
-                        </DataTrigger>
                     </Style.Triggers>
 
                 </Style>

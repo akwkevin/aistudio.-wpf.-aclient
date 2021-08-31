@@ -125,6 +125,12 @@
                                 BorderBrush="{DynamicResource AvalonDock_ThemeMetro_BaseColor5}" VerticalAlignment="Bottom">
 
                         </Border>
+
+                        <Border Grid.Row="1"  Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type avalonDockControls:LayoutDocumentPaneControl}}, Path=Model.ShowHeader, Converter={StaticResource BoolToVisibilityConverter}}"
+                                BorderThickness="1,0,0,0"
+                                BorderBrush="{DynamicResource AvalonDock_ThemeMetro_BaseColor5}" HorizontalAlignment="Left">
+
+                        </Border>
                         <!--内容区域-->
                         <Border x:Name="ContentPanel" 
                                 VerticalAlignment="Stretch" 
@@ -180,7 +186,7 @@
                     <Setter Property="ToolTip" Value="{Binding ToolTip}"/>
                     <Setter Property="BorderThickness" Value="1,1,1,1"/>
                     <Setter Property="Padding" Value="0"/>
-                    <Setter Property="Margin" Value="1,1,1,0"/>
+                    <Setter Property="Margin" Value="0,1,1,1"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type TabItem}">

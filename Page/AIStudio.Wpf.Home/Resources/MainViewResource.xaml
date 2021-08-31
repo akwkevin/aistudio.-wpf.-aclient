@@ -26,6 +26,7 @@
                     Data="{StaticResource Checkmark}" />
             </Grid>
             <TextBlock Grid.Column="1"
+                                Margin="5,0,0,0"
                                 VerticalAlignment="Center"
                                 Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"
                                 Text="{Binding Label}" 
@@ -63,6 +64,7 @@
                     Data="{StaticResource Checkmark}" />
             </Grid>
             <TextBlock Grid.Column="1"
+                                       Margin="5,0,0,0"
                                        VerticalAlignment="Center"
                                        Foreground="{DynamicResource TitleForegroundBrush}"
                                        Text="{Binding Label}" 
@@ -103,6 +105,7 @@
 
 
             <TextBlock x:Name="Header" Grid.Column="1" 
+                                         Margin="5,0,0,0"
                                          VerticalAlignment="Center"
                                          Foreground="{DynamicResource TitleForegroundBrush}"
                                          Text="{Binding Label}" 
@@ -174,7 +177,8 @@
                     Data="{StaticResource Checkmark}" />
 
 
-            <TextBlock x:Name="Header" Grid.Column="1" Margin="5,0,0,0"
+            <TextBlock x:Name="Header" Grid.Column="1" 
+                                Margin="5,0,0,0"
                                 VerticalAlignment="Center"
                                 Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"
                                 Text="{Binding Label}" 
