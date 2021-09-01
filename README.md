@@ -17,7 +17,7 @@ Wpf客户端，AIStudio.Wpf.AClient
 
 网页客户端浏览地址http://121.36.12.76:5001/
 （账号密码：Admin，Admin）
-接口浏览地址http://121.36.12.76:5000/
+接口浏览地址http://121.36.12.76:5000/swagger/index.html
 
 #### 快速预览
 Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.exe.Config
