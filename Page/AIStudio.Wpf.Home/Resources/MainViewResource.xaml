@@ -131,7 +131,7 @@
     </HierarchicalDataTemplate>
 
     <!--顶部菜单-->
-    <Style x:Key="MenuItemStyle" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MahApps.Styles.MenuItem.Top}">
+    <Style x:Key="MenuItemStyle" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource TopMetroMenuItem}">
         <Setter Property="MenuItem.Icon" Value="{x:Null}"/>
         <!--<Setter Property="MenuItem.Header" Value="{Binding Header}"/>-->
         <Setter Property="MenuItem.Command" Value="{Binding Command}"/>

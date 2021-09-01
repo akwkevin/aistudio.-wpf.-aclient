@@ -64,7 +64,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIStudio.Wpf.DataRepository
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accelerider.Extensions", "Util\Accelerider.Extensions\Accelerider.Extensions.csproj", "{4341BD42-80DA-4D7E-B1D1-A7336D000569}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceMonitor", "ServiceMonitor\ServiceMonitor\ServiceMonitor.csproj", "{58574DD2-5B49-4EE4-9BB0-D6941D52EF57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceMonitor", "ServiceMonitor\ServiceMonitor\ServiceMonitor.csproj", "{58574DD2-5B49-4EE4-9BB0-D6941D52EF57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

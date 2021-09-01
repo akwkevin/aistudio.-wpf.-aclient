@@ -351,27 +351,15 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="Titlebar" util:WindowBase.TitleTag="true" WindowChrome.IsHitTestVisibleInChrome="True"
+        <DockPanel x:Name="Titlebar" util:WindowBase.TitleTag="true" WindowChrome.IsHitTestVisibleInChrome="True" LastChildFill="True"
               Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"       
               Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=ShowTitleBar,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}">
 
-            <ContentControl Style="{DynamicResource MainIconStyle}" Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Left'}"/>
-
-            <Grid Background="{DynamicResource TitleBackgroundBrush}" Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Top'}">
-                <Menu x:Name="MenuControl"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    ItemContainerStyle="{StaticResource MenuItemStyle}" 
-                    ItemsSource="{Binding MenuItems}"
-                    ItemTemplate="{StaticResource MenuItemDataTemplate}"            
-                    Style="{StaticResource MahApps.Styles.Menu}" 
-                    Background="Transparent"/>
-            </Grid>
-            <StackPanel Margin="0,0,155,0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Margin="0,0,155,0" Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
                 <ContentControl Style="{DynamicResource RightBarStyle}"/>
 
                 <Menu Background="Transparent" Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}" VerticalAlignment="Center">
-                    <MenuItem Height="25" Style="{StaticResource TransparentHeaderMenuItem}" Foreground="{DynamicResource MahApps.Brushes.Text}" Padding="0" Icon="&#xe665;" util:ControlAttachProperty.FIconSize="12">
+                    <MenuItem Height="25" Style="{StaticResource TransparentHeaderMenuItem}" Padding="0" Icon="&#xe665;" util:ControlAttachProperty.FIconSize="12">
                         <MenuItem Icon="&#xE633;" Header="{DynamicResource 系统设置}" Command="{Binding SystemManageCommand}" CommandParameter="Setting" Style="{StaticResource TransparentHeaderMenuItem}"/>
                         <MenuItem Icon="&#xe61b;" Header="本地日志" Command="{Binding SystemManageCommand}" CommandParameter="Logs" Style="{StaticResource TransparentHeaderMenuItem}"/>
                         <MenuItem Icon="&#xe64a;" Header="修改密码" Command="{Binding SystemManageCommand}" CommandParameter="EditPwd" Style="{StaticResource TransparentHeaderMenuItem}"/>
@@ -383,7 +371,33 @@
                     </MenuItem>
                 </Menu>
             </StackPanel>
-        </Grid>
+
+            <Grid DockPanel.Dock="Left">
+                <ContentControl Style="{DynamicResource MainIconStyle}" Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Left'}"/>
+
+                <Grid  Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Top'}">
+                    <Menu x:Name="MenuControl"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    ItemContainerStyle="{StaticResource MenuItemStyle}" 
+                    ItemsSource="{Binding MenuItems}"
+                    ItemTemplate="{StaticResource MenuItemDataTemplate}" 
+                    Background="{DynamicResource TitleBackgroundBrush}"
+                    Foreground="{DynamicResource TitleForegroundBrush}"
+                    Style="{StaticResource TopMetroMenu}" />
+                </Grid>
+            </Grid>
+            <DockPanel.Style>
+                <Style TargetType="{x:Type DockPanel}">
+                    <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding WindowSetting.NavigationLocation}" Value="Left">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DockPanel.Style>
+        </DockPanel>
 
         <util:HamburgerTreeMenu Grid.Row="2"
             VerticalAlignment="Stretch"
@@ -395,7 +409,6 @@
             HamburgerMargin="0"
             CompactPaneLength ="36"
             OpenPaneLength="180"
-            IsPaneOpen="True"
             ItemsSource="{Binding MenuItems}"
             SelectedItem="{Binding SelectedMenuItem}"
             OptionsItemTemplate="{StaticResource HamburgerMenuItem}"
@@ -416,7 +429,7 @@
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding WindowSetting.NavigationLocation}" Value="Left">
                             <Setter Property="DisplayMode" Value= "CompactInline"></Setter>
-                            <Setter Property="IsPaneOpen" Value= "False"></Setter>
+                            <Setter Property="IsPaneOpen" Value= "True"></Setter>
                         </DataTrigger>
                         <Trigger Property="IsPaneOpen" Value="False">
                             <Setter Property="ItemTemplate" Value="{StaticResource LeftHamburgerMenuImageItem}"/>
