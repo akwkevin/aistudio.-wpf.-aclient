@@ -137,7 +137,7 @@
         <Setter Property="MenuItem.Command" Value="{Binding Command}"/>
         <Setter Property="MenuItem.CommandParameter" Value="{Binding .}"/>
         <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Transparent}" />
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.ThemeBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TitleForegroundBrush}"/>
         <Setter Property="BorderThickness" Value="0" />
         <Style.Triggers>
             <!-- insert a null in ItemsSource if you want a separator -->
@@ -180,7 +180,7 @@
             <TextBlock x:Name="Header" Grid.Column="1" 
                                 Margin="5,0,0,0"
                                 VerticalAlignment="Center"
-                                Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"
+                                Foreground="{DynamicResource TitleForegroundBrush}"
                                 Text="{Binding Label}" 
                                 FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
                                 FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
@@ -200,5 +200,4 @@
         </HierarchicalDataTemplate.Triggers>
     </HierarchicalDataTemplate>
 
-    
 </ResourceDictionary>

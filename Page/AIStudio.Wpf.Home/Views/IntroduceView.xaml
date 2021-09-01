@@ -12,7 +12,8 @@
     <FlowDocumentScrollViewer>
         <FlowDocument Foreground="{DynamicResource MahApps.Brushes.Text}" 
                       FontFamily="{DynamicResource MahApps.Fonts.Family.Control}"
-                      FontSize="{DynamicResource MahApps.Font.Size.Content}">
+                      FontSize="{DynamicResource MahApps.Font.Size.Content}"
+                      LineHeight="15">
             <Paragraph>本框架为.NET Core5.0+Wpf（CS-重点）/Ant Design Vue版（此处不在介绍）/Vant(手机端-稍微介绍下) </Paragraph>
             <Paragraph>本框架旨在极大的提高开发效率</Paragraph>
             <Paragraph>

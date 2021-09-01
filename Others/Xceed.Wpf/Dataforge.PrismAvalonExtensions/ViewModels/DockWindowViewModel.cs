@@ -55,6 +55,22 @@ namespace Dataforge.PrismAvalonExtensions.ViewModels
         }
         #endregion
 
+        #region Glyph
+        private string _Glyph;
+        public string Glyph
+        {
+            get { return _Glyph; }
+            set
+            {
+                if (_Glyph != value)
+                {
+                    _Glyph = value;
+                    RaisePropertyChanged("Glyph");
+                }
+            }
+        }
+        #endregion
+
         #region IconSource
 
         private ImageSource _IconSource = null;

@@ -103,6 +103,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 NavigationParameters paras = new NavigationParameters();
                 paras.Add("Title", item.Label);
+                paras.Add("Glyph", item.Glyph);
                 paras.Add("Identifier", Identifier);
 
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)delegate
@@ -653,6 +654,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 NavigationParameters paras = new NavigationParameters();
                 paras.Add("Title", item.Label);
+                paras.Add("Glyph", item.Glyph);
                 paras.Add("Identifier", Identifier);
                 _regionManager.RequestNavigate(RegionName, item.WpfCode, NavigationComplete, paras);
             }

@@ -64,8 +64,8 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
             <util:FButton CornerRadius="2" FIcon="&#xf0c7;" FIconFamily="FAwesome" Margin="3" Content="存草稿" Command="{Binding EditCommand}" ></util:FButton>
-            <util:FButton CornerRadius="2" FIcon="&#xf1d8;" FIconFamily="FAwesome" Margin="3" Content="发送" IsDefault="True" Command="{Binding AddCommand}"></util:FButton>
-            <util:FButton CornerRadius="2" FIcon="&#xf14d;" FIconFamily="FAwesome" Margin="3" Content="重置" Command="{Binding ResetCommand}"></util:FButton>
+            <util:FButton CornerRadius="2" FIcon="&#xf1d8;" FIconFamily="FAwesome" Margin="3" Content="发送" IsDefault="True" Command="{Binding AddCommand}" Background="{DynamicResource PrimaryBrush}"></util:FButton>
+            <util:FButton CornerRadius="2" FIcon="&#xf14d;" FIconFamily="FAwesome" Margin="3" Content="重置" Command="{Binding ResetCommand}" Background="{DynamicResource DangerBrush}"></util:FButton>
         </StackPanel>
     </Grid>
 </UserControl>

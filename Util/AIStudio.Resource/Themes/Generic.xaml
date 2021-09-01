@@ -1,7 +1,9 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:util="https://astudio.github.io/utilcontrol">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/AIStudio.Resource;component/Themes/Brushes.xaml" />
         <ResourceDictionary Source="/AIStudio.Resource;component/Themes/Menu.xaml" />
         <ResourceDictionary>
             <Style x:Key="LeftFormItemStyle" TargetType="{x:Type HeaderedContentControl}">
@@ -30,7 +32,12 @@
             <Style TargetType="{x:Type TextBlock}">
                 <Setter Property="FontFamily" Value="{DynamicResource MahApps.Fonts.Family.Control}" />
             </Style>
-            
+
+            <Style TargetType="{x:Type util:FButton}">
+                <Style.Setters>
+                    <Setter Property="FIconSize" Value="{DynamicResource MahApps.Font.Size.Button}" />
+                </Style.Setters>
+            </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
