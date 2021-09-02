@@ -232,7 +232,7 @@
                                     </ItemsPanelTemplate>
                                 </StatusBar.ItemsPanel>
                                 <Grid Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}">
-                                    <util:DropDown Grid.Column="0" Margin="6,0,6,0"                                          
+                                    <util:DropDown Grid.Column="0" Margin="6"                                          
                                                ToolTip="{Binding WSocketClient.ServerIP}"
                                                Visibility="{Binding WSocketClient.IsInit,Converter={StaticResource bool2VisibilityConverter}}">
                                         <util:DropDown.Content>
@@ -401,8 +401,7 @@
             PaneBackground="Transparent">
             <util:HamburgerTreeMenu.Style>
                 <Style TargetType="{x:Type util:HamburgerTreeMenu}" BasedOn="{StaticResource HamburgerTreeMenuStyle}">
-                    <Setter Property="ItemTemplate" Value="{StaticResource HamburgerMenuImageItem}"/>
-                    <Setter Property="DisplayMode" Value="Overlay"/>
+                    <Setter Property="ItemTemplate" Value="{StaticResource HamburgerMenuImageItem}"/>                 
                     <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
                     <Setter Property="Foreground" Value="{DynamicResource TitleForegroundBrush}"/>
                     <Setter Property="HamburgerMenuTemplate">
@@ -416,6 +415,10 @@
                         <DataTrigger Binding="{Binding WindowSetting.NavigationLocation}" Value="Left">
                             <Setter Property="DisplayMode" Value= "CompactInline"></Setter>
                             <Setter Property="IsPaneOpen" Value= "True"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding WindowSetting.NavigationLocation}" Value="Top">
+                            <Setter Property="DisplayMode" Value="Overlay"/>
+                            <Setter Property="IsPaneOpen" Value= "False"></Setter>
                         </DataTrigger>
                         <Trigger Property="IsPaneOpen" Value="False">
                             <Setter Property="ItemTemplate" Value="{StaticResource LeftHamburgerMenuImageItem}"/>
@@ -442,9 +445,9 @@
                             <local:MainTabView />
                         </Grid>
 
-                        <Grid Grid.Row="2" Visibility="{Binding WindowSetting.StatusBarLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Bottom'}">
-                            <ContentControl Style="{DynamicResource StatusBarStyle}" />
-                        </Grid>
+                        <Border Grid.Row="2" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource MahApps.Brushes.Accent}"  Visibility="{Binding WindowSetting.StatusBarLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Bottom'}">
+                            <ContentControl  Style="{DynamicResource StatusBarStyle}" />
+                        </Border>
                     </Grid>
                 </DataTemplate>
             </util:HamburgerTreeMenu.ContentTemplate>

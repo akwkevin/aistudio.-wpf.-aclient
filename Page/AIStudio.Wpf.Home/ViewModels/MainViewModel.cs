@@ -224,9 +224,11 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
 #endif
             var tool = new AMenuItem() { Glyph = "tool", Label = "工具", Code = "Tool", Type = 0 };
-            var screenshot = new AMenuItem() { Label = (string)Application.Current.Resources["截屏"], Code = "Screenshot", Type = 1 };
-            var newWindow = new AMenuItem() { Label = (string)Application.Current.Resources["新增窗口"], Code = "NewWindow", Type = 1 };
+            var setting = new AMenuItem() { Glyph = "setting", Label = "系统设置", Code = "Setting", Type = 1 };
+            var screenshot = new AMenuItem() { Glyph = "border", Label = (string)Application.Current.Resources["截屏"], Code = "Screenshot", Type = 1 };
+            var newWindow = new AMenuItem() { Glyph = "windows", Label = (string)Application.Current.Resources["新增窗口"], Code = "NewWindow", Type = 1 };
 
+            tool.AddChildren(setting);
             tool.AddChildren(newWindow);
             tool.AddChildren(screenshot);
             MenuItems.Add(tool);
@@ -264,13 +266,11 @@ namespace AIStudio.Wpf.Home.ViewModels
             AMenuItem code = new AMenuItem() { Glyph = "menu", Label = "设置", Type = 0 };
             OptionItems.Add(code);
 
-            code.AddChildren(new AMenuItem() { Glyph = "setting", Label = "系统设置", Command = SystemManageCommand, CommandParameter = "Setting" });
-            code.AddChildren(new AMenuItem() { Glyph = "profile", Label = "本地日志", Command = SystemManageCommand, CommandParameter = "Logs" });
-            code.AddChildren(new AMenuItem() { Glyph = "edit", Label = "修改密码", Command = SystemManageCommand, CommandParameter = "EditPwd" });
-            code.AddChildren(new AMenuItem() { Glyph = "bug", Label = "问题反馈", Command = SystemManageCommand, CommandParameter = "" });
-            code.AddChildren(new AMenuItem() { Glyph = "mail", Label = "技术支持", Command = SystemManageCommand, CommandParameter = "" });
-            code.AddChildren(new AMenuItem() { Glyph = "coffee", Label = "帮助", Command = SystemManageCommand, CommandParameter = "Helper" });
-            code.AddChildren(new AMenuItem() { Glyph = "star", Label = "关于", Command = SystemManageCommand, CommandParameter = "About" });
+            code.AddChildren(new AMenuItem() { Glyph = "profile", Label = "本地日志", Command = SystemManageCommand, Code = "Logs" });
+            code.AddChildren(new AMenuItem() { Glyph = "bug", Label = "问题反馈", Command = SystemManageCommand, Code = "" });
+            code.AddChildren(new AMenuItem() { Glyph = "mail", Label = "技术支持", Command = SystemManageCommand, Code = "" });
+            code.AddChildren(new AMenuItem() { Glyph = "coffee", Label = "帮助", Command = SystemManageCommand, Code = "Helper" });
+            code.AddChildren(new AMenuItem() { Glyph = "star", Label = "关于", Command = SystemManageCommand, Code = "About" });
         }
 
         private void _wSocketClient_MessageReceived(WSMessageType type, string message)
@@ -537,7 +537,7 @@ namespace AIStudio.Wpf.Home.ViewModels
         }
         private void SystemManage(AMenuItem para)
         {
-            switch (para.CommandParameter)
+            switch (para.Code)
             {
                 case "Setting":
                     {
@@ -556,8 +556,25 @@ namespace AIStudio.Wpf.Home.ViewModels
                         System.Diagnostics.Process.Start("explorer.exe", Path.GetFullPath(dir));
                         break;
                     }
+                case "Screenshot":
+                    {
+                        KeyExcute("System");
+                        break;
+                    }
+                case "NewWindow":
+                    {
+                        var otherwindow = new OtherMainWindow();
+                        otherwindow.Show();
+                        //_regionManager.RegisterViewWithRegion(otherwindow.RegionName, typeof(MainView));
+
+                        NavigationParameters paras = new NavigationParameters();
+                        paras.Add("Identifier", otherwindow.Identifier);
+                        _regionManager.RequestNavigate(otherwindow.RegionName, "MainView", paras);
+                        break;
+                    }
             }
         }
+
 
         SystemSetView flyout;
         private void Flyout_ClosingFinished(object sender, RoutedEventArgs e)
@@ -657,20 +674,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
             else if (parentcode == "Tool")
             {
-                if (item.Code == "Screenshot")
-                {
-                    KeyExcute("System");
-                }
-                else if (item.Code == "NewWindow")
-                {
-                    var otherwindow = new OtherMainWindow();
-                    otherwindow.Show();
-                    //_regionManager.RegisterViewWithRegion(otherwindow.RegionName, typeof(MainView));
-
-                    NavigationParameters paras = new NavigationParameters();
-                    paras.Add("Identifier", otherwindow.Identifier);
-                    _regionManager.RequestNavigate(otherwindow.RegionName, "MainView", paras);
-                }
+                SystemManage(item);
                 return;
             }
 
