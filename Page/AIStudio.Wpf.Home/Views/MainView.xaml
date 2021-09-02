@@ -116,34 +116,34 @@
                                                     <Button 
                                                     Height="30"
                                                     Width="100"
-                                                    VerticalAlignment="Center"  
-                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
-                                                    Content="&#xf2c0; 个人中心" 
+                                                    VerticalAlignment="Center"                                                   
                                                     Command="{Binding UserDropCommand}"
                                                     CommandParameter="UserCenter"
-                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                                    Style="{StaticResource LinkButtonStyle}">
+                                                        <TextBlock Text="&#xf2c0; 个人中心" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
+                                                    </Button>
                                                 </Grid>
                                                 <Grid Grid.Row="1">
                                                     <Button 
                                                     Height="30"
                                                     Width="100"
-                                                    VerticalAlignment="Center"  
-                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
-                                                    Content="&#xf013; 个人设置" 
+                                                    VerticalAlignment="Center"                                                    
                                                     Command="{Binding UserDropCommand}"
-                                                    CommandParameter="UserSet"
-                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                                    CommandParameter="UserSet"                                                    
+                                                    Style="{StaticResource LinkButtonStyle}">
+                                                        <TextBlock Text="&#xf013; 个人设置" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
+                                                    </Button>
                                                 </Grid>
                                                 <Grid Grid.Row="2">
                                                     <Button 
                                                     Height="30"
                                                     Width="100"
-                                                    VerticalAlignment="Center"  
-                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
-                                                    Content="&#xf023; 修改密码" 
+                                                    VerticalAlignment="Center"                                                   
                                                     Command="{Binding UserDropCommand}"
                                                     CommandParameter="EditPwd"
-                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                                    Style="{StaticResource LinkButtonStyle}">
+                                                        <TextBlock Text="&#xf023; 修改密码" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
+                                                    </Button>
                                                 </Grid>
                                                 <Border Grid.Row="2"
                                                 VerticalAlignment="Bottom"
@@ -154,17 +154,17 @@
                                                     <Button 
                                                     Height="30"
                                                     Width="100"
-                                                    VerticalAlignment="Center"  
-                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
-                                                    Content="&#xf08b; 退出登录" 
+                                                    VerticalAlignment="Center"                                                  
                                                     Command="{Binding UserDropCommand}"
                                                     CommandParameter="Logout"
-                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                                    Style="{StaticResource LinkButtonStyle}">
+                                                        <TextBlock Text="&#xf08b; 退出登录" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
+                                                    </Button>
                                                 </Grid>
                                             </Grid>
                                         </util:DropDown.Child>
                                     </util:DropDown>
-                                    <util:FButton Margin="1,0,15,0" VerticalAlignment="Center" Command="{Binding OpenUserConsoleCommand}" Foreground="{DynamicResource MahApps.Brushes.Text}" Content="{Binding Operator.UserName}" Style="{StaticResource FButton_LinkButton}" FontSize="{DynamicResource MahApps.Font.Size.Content}" MouseOverForeground="{DynamicResource MahApps.Brushes.Gray8}"/>
+                                    <util:FButton Margin="1,0,0,0" VerticalAlignment="Center" Command="{Binding OpenUserConsoleCommand}" Foreground="{DynamicResource MahApps.Brushes.Text}" Content="{Binding Operator.UserName}" Style="{StaticResource FButton_LinkButton}" FontSize="{DynamicResource MahApps.Font.Size.Content}" MouseOverForeground="{DynamicResource MahApps.Brushes.Gray8}"/>
                                 </StackPanel>
                             </StackPanel>
                         </ControlTemplate>
@@ -346,30 +346,15 @@
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
         <DockPanel x:Name="Titlebar" util:WindowBase.TitleTag="true" WindowChrome.IsHitTestVisibleInChrome="True" LastChildFill="True"
               Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"       
               Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=ShowTitleBar,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}">
 
-            <StackPanel Margin="0,0,155,0" Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
+            <StackPanel Margin="0,0,150,0" Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
                 <ContentControl Style="{DynamicResource RightBarStyle}"/>
-
-                <Menu Background="Transparent" Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}" VerticalAlignment="Center">
-                    <MenuItem Height="25" Style="{StaticResource TransparentHeaderMenuItem}" Padding="0" Icon="&#xe665;" util:ControlAttachProperty.FIconSize="12">
-                        <MenuItem Icon="&#xE633;" Header="{DynamicResource 系统设置}" Command="{Binding SystemManageCommand}" CommandParameter="Setting" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                        <MenuItem Icon="&#xe61b;" Header="本地日志" Command="{Binding SystemManageCommand}" CommandParameter="Logs" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                        <MenuItem Icon="&#xe64a;" Header="修改密码" Command="{Binding SystemManageCommand}" CommandParameter="EditPwd" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                        <Separator Background="{DynamicResource DynamicResource MahApps.Brushes.TextBox.Border.Focus}"/>
-                        <MenuItem Icon="&#xe657;" Header="问题反馈" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                        <MenuItem Icon="&#xe61e;" Header="技术支持" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                        <MenuItem Icon="&#xe60e;" Header="帮助" Command="{Binding SystemManageCommand}" CommandParameter="Helper" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                        <MenuItem Icon="&#xe635;" Header="关于" Command="{Binding SystemManageCommand}" CommandParameter="About" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                    </MenuItem>
-                </Menu>
             </StackPanel>
 
             <Grid DockPanel.Dock="Left">
@@ -399,7 +384,7 @@
             </DockPanel.Style>
         </DockPanel>
 
-        <util:HamburgerTreeMenu Grid.Row="2"
+        <util:HamburgerTreeMenu Grid.Row="1"
             VerticalAlignment="Stretch"
             x:Name="HamburgerMenuControl"
             SelectedIndex="1"
@@ -411,7 +396,8 @@
             OpenPaneLength="180"
             ItemsSource="{Binding MenuItems}"
             SelectedItem="{Binding SelectedMenuItem}"
-            OptionsItemTemplate="{StaticResource HamburgerMenuItem}"
+            OptionsItemsSource="{Binding OptionItems}"                                
+            OptionsItemTemplate="{StaticResource LeftHamburgerMenuImageItem}"
             PaneBackground="Transparent">
             <util:HamburgerTreeMenu.Style>
                 <Style TargetType="{x:Type util:HamburgerTreeMenu}" BasedOn="{StaticResource HamburgerTreeMenuStyle}">
@@ -446,6 +432,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" Visibility="{Binding WindowSetting.ToolBarLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Top'}">
                             <ContentControl Style="{DynamicResource ToolBarStyle}" />
@@ -454,24 +441,13 @@
                         <Grid Grid.Row="1" prism:RegionManager.RegionManager="{Binding _regionManager}">
                             <local:MainTabView />
                         </Grid>
+
+                        <Grid Grid.Row="2" Visibility="{Binding WindowSetting.StatusBarLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Bottom'}">
+                            <ContentControl Style="{DynamicResource StatusBarStyle}" />
+                        </Grid>
                     </Grid>
                 </DataTemplate>
             </util:HamburgerTreeMenu.ContentTemplate>
         </util:HamburgerTreeMenu>
-
-        <Grid Grid.Row="3"  Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"    
-              Visibility="{Binding WindowSetting.StatusBarLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Bottom'}">
-            <ContentControl Style="{DynamicResource StatusBarStyle}" />
-            <Grid.Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding WindowSetting.NavigationAccent}" Value="Light">
-                            <Setter Property="Background" Value="Transparent"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-        </Grid>
     </Grid>
 </UserControl>

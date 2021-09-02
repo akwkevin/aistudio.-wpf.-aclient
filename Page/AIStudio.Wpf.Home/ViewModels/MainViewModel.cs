@@ -49,7 +49,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             _mapper = mapper;
 
             LocalSetting.SettingChanged += SettingChanged;
-          
+
             _aggregator.GetEvent<SelectedDocumentEvent>().Subscribe(SelectedDocumentEventReceived);
             _aggregator.GetEvent<MenuExcuteEvent>().Subscribe(MenuExcuteEventReceived, (ev) => { return ev.Item1 == Identifier; });
         }
@@ -57,11 +57,12 @@ namespace AIStudio.Wpf.Home.ViewModels
         public void OnLoaded()
         {
             InitData();
+            InitOption();
         }
 
         public void OnUnloaded()
         {
-           
+
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
@@ -71,7 +72,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 Identifier = identifier;
             }
-          
+
             RegionName = AIStudio.Core.RegionName.TabContentRegion + "_" + Identifier;
             NoticeIconViewModel = new NoticeIconViewModel(Identifier);
         }
@@ -214,7 +215,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             AMenuItem code = new AMenuItem() { Glyph = "code", Label = "开发", Code = "Demo", Type = 0 };
             MenuItems.Add(code);
 
-            AMenuItem subcode = null;
             if (_operator.UserName != "LocalUser")
             {
                 code.AddChildren(new AMenuItem() { Label = "数据库连接", Code = "/Base_Manage/Base_DbLinkView/", Type = 1 });
@@ -257,6 +257,20 @@ namespace AIStudio.Wpf.Home.ViewModels
                 OpenHomePage();
                 OpenFullScreenWindow();
             }
+        }
+
+        public void InitOption()
+        {
+            AMenuItem code = new AMenuItem() { Glyph = "menu", Label = "设置", Type = 0 };
+            OptionItems.Add(code);
+
+            code.AddChildren(new AMenuItem() { Glyph = "setting", Label = "系统设置", Command = SystemManageCommand, CommandParameter = "Setting" });
+            code.AddChildren(new AMenuItem() { Glyph = "profile", Label = "本地日志", Command = SystemManageCommand, CommandParameter = "Logs" });
+            code.AddChildren(new AMenuItem() { Glyph = "edit", Label = "修改密码", Command = SystemManageCommand, CommandParameter = "EditPwd" });
+            code.AddChildren(new AMenuItem() { Glyph = "bug", Label = "问题反馈", Command = SystemManageCommand, CommandParameter = "" });
+            code.AddChildren(new AMenuItem() { Glyph = "mail", Label = "技术支持", Command = SystemManageCommand, CommandParameter = "" });
+            code.AddChildren(new AMenuItem() { Glyph = "coffee", Label = "帮助", Command = SystemManageCommand, CommandParameter = "Helper" });
+            code.AddChildren(new AMenuItem() { Glyph = "star", Label = "关于", Command = SystemManageCommand, CommandParameter = "About" });
         }
 
         private void _wSocketClient_MessageReceived(WSMessageType type, string message)
@@ -393,6 +407,16 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
+        private ObservableCollection<AMenuItem> _optionItems = new ObservableCollection<AMenuItem>();
+        public ObservableCollection<AMenuItem> OptionItems
+        {
+            get { return _optionItems; }
+            set
+            {
+                SetProperty(ref _optionItems, value);
+            }
+        }
+
         private AMenuItem _selectedMenuItem;
         public AMenuItem SelectedMenuItem
         {
@@ -460,7 +484,7 @@ namespace AIStudio.Wpf.Home.ViewModels
         {
             get
             {
-                return this._systemManageCommand ?? (this._systemManageCommand = new DelegateCommand<string>(para => this.SystemManage(para)));
+                return this._systemManageCommand ?? (this._systemManageCommand = new DelegateCommand<AMenuItem>(para => this.SystemManage(para)));
             }
         }
 
@@ -511,9 +535,9 @@ namespace AIStudio.Wpf.Home.ViewModels
                 type.GetProperty(key).SetValue(WindowSetting, data);
             }
         }
-        private void SystemManage(string para)
+        private void SystemManage(AMenuItem para)
         {
-            switch (para)
+            switch (para.CommandParameter)
             {
                 case "Setting":
                     {
