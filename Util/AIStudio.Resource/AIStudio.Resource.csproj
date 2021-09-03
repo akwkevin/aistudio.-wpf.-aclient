@@ -2228,5 +2228,10 @@
     <PackageReference Include="MahApps.Metro" Version="2.0.0" />
     <PackageReference Include="Util.Controls" Version="1.4.5" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="svg\outline\full-screen.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>

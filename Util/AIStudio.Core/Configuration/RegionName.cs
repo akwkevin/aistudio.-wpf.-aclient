@@ -10,6 +10,7 @@ namespace AIStudio.Core
     {
         public static string MainContentRegion = "MainContentRegion";
         public static string TabContentRegion = "TabContentRegion";
+        public static string SingleContentRegion = "SingleContentRegion";
 
     }
 }

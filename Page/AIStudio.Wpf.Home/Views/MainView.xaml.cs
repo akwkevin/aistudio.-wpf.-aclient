@@ -16,60 +16,6 @@ namespace AIStudio.Wpf.Home.Views
         public MainView()
         {
             InitializeComponent();
-
-            MenuControl.AddHandler(MenuItem.MouseUpEvent, new RoutedEventHandler(OnMouseUp), true);
-        }
-
-        private MainViewModel MainViewModel { get { return (DataContext as MainViewModel); } }
-
-
-        protected override void OnPreviewKeyDown(KeyEventArgs e)
-        {
-            base.OnPreviewKeyDown(e);
-
-            MainViewModel.KeyExcute(e.KeyboardDevice.Modifiers == ModifierKeys.None ? e.Key.ToString() : e.KeyboardDevice.Modifiers.ToString() + "+" + e.Key.ToString());
-        }
-
-        /// <summary>
-        /// 左侧菜单点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnMouseUp(object sender, RoutedEventArgs e)
-        {
-            var menu = sender as Menu;
-            MenuItem menuItem = null;
-
-            if (e.Source is MenuItem)
-            {
-                menuItem = e.Source as MenuItem;
-            }
-            else
-            {
-                menuItem = GetItemFromChild(menu, e.OriginalSource as UIElement);
-            }
-
-            if (menuItem != null)
-            {
-                HamburgerMenuControl.SelectedItem = menuItem.DataContext;
-            }
-        }
-
-        private static MenuItem GetItemFromChild(Menu treeView, UIElement child)
-        {
-            try
-            {
-                UIElement target = child;
-
-                while ((target != null) && !(target is MenuItem))
-                    target = System.Windows.Media.VisualTreeHelper.GetParent(target) as UIElement;
-
-                return target as MenuItem;
-            }
-            catch
-            {
-                return null;
-            }
         }
 
 

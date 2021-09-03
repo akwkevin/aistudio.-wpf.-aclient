@@ -117,7 +117,7 @@
                                                     Height="30"
                                                     Width="100"
                                                     VerticalAlignment="Center"                                                   
-                                                    Command="{Binding UserDropCommand}"
+                                                    Command="{Binding KeyExcuteCommand}"
                                                     CommandParameter="UserCenter"
                                                     Style="{StaticResource LinkButtonStyle}">
                                                         <TextBlock Text="&#xf2c0; 个人中心" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
@@ -128,7 +128,7 @@
                                                     Height="30"
                                                     Width="100"
                                                     VerticalAlignment="Center"                                                    
-                                                    Command="{Binding UserDropCommand}"
+                                                    Command="{Binding KeyExcuteCommand}"
                                                     CommandParameter="UserSet"                                                    
                                                     Style="{StaticResource LinkButtonStyle}">
                                                         <TextBlock Text="&#xf013; 个人设置" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
@@ -139,7 +139,7 @@
                                                     Height="30"
                                                     Width="100"
                                                     VerticalAlignment="Center"                                                   
-                                                    Command="{Binding UserDropCommand}"
+                                                    Command="{Binding KeyExcuteCommand}"
                                                     CommandParameter="EditPwd"
                                                     Style="{StaticResource LinkButtonStyle}">
                                                         <TextBlock Text="&#xf023; 修改密码" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
@@ -155,8 +155,8 @@
                                                     Height="30"
                                                     Width="100"
                                                     VerticalAlignment="Center"                                                  
-                                                    Command="{Binding UserDropCommand}"
-                                                    CommandParameter="Logout"
+                                                    Command="{Binding KeyExcuteCommand}"
+                                                    CommandParameter="Escape"
                                                     Style="{StaticResource LinkButtonStyle}">
                                                         <TextBlock Text="&#xf08b; 退出登录" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
                                                     </Button>

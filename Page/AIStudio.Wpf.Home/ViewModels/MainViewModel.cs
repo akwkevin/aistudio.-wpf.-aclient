@@ -20,6 +20,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using Util.Controls;
@@ -58,14 +59,29 @@ namespace AIStudio.Wpf.Home.ViewModels
         {
             InitData();
             InitOption();
+
+            var win = WindowBase.GetWindowBase(Identifier);
+            win.PreviewKeyDown -= View_PreviewKeyDown;
+            win.PreviewKeyDown += View_PreviewKeyDown;
         }
 
         public void OnUnloaded()
         {
-
+            try
+            {
+                var win = WindowBase.GetWindowBase(Identifier);
+                win.PreviewKeyDown -= View_PreviewKeyDown;
+            }
+            catch { }
         }
 
-        public void OnNavigatedTo(NavigationContext navigationContext)
+        private void View_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            KeyExcute(e.KeyboardDevice.Modifiers == ModifierKeys.None ? e.Key.ToString() : e.KeyboardDevice.Modifiers.ToString() + "+" + e.Key.ToString());
+        }
+
+
+        public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
             var identifier = navigationContext.Parameters["Identifier"] as string;
             if (!string.IsNullOrEmpty(identifier))
@@ -75,6 +91,9 @@ namespace AIStudio.Wpf.Home.ViewModels
 
             RegionName = AIStudio.Core.RegionName.TabContentRegion + "_" + Identifier;
             NoticeIconViewModel = new NoticeIconViewModel(Identifier);
+
+
+            Title = navigationContext.Parameters["Title"] as string;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -169,6 +188,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             WSocketClient = _wSocketClient as WSocketClient;
 
             #region 菜单
+            MenuItems = new ObservableCollection<AMenuItem>();
             if (_operator.UserName != "LocalUser")
             {
                 try
@@ -217,18 +237,20 @@ namespace AIStudio.Wpf.Home.ViewModels
 
             if (_operator.UserName != "LocalUser")
             {
-                code.AddChildren(new AMenuItem() { Label = "数据库连接", Code = "/Base_Manage/Base_DbLinkView/", Type = 1 });
-                code.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1 });
-                code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1 });
-                code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1 });
+                code.AddChildren(new AMenuItem() { Label = "数据库连接", Code = "/Base_Manage/Base_DbLinkView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1, Command = MenuExcuteCommand });
             }
 #endif
             var tool = new AMenuItem() { Glyph = "tool", Label = "工具", Code = "Tool", Type = 0 };
             var setting = new AMenuItem() { Glyph = "setting", Label = "系统设置", Code = "Setting", Type = 1 };
-            var screenshot = new AMenuItem() { Glyph = "border", Label = (string)Application.Current.Resources["截屏"], Code = "Screenshot", Type = 1 };
+            var fullscreen = new AMenuItem() { Glyph = "full-screen", Label = "大屏模式", Code = "FullScreen", Type = 1 };
             var newWindow = new AMenuItem() { Glyph = "windows", Label = (string)Application.Current.Resources["新增窗口"], Code = "NewWindow", Type = 1 };
+            var screenshot = new AMenuItem() { Glyph = "border", Label = (string)Application.Current.Resources["截屏"], Code = "Screenshot", Type = 1 };
 
             tool.AddChildren(setting);
+            tool.AddChildren(fullscreen);
             tool.AddChildren(newWindow);
             tool.AddChildren(screenshot);
             MenuItems.Add(tool);
@@ -254,23 +276,33 @@ namespace AIStudio.Wpf.Home.ViewModels
             #endregion
 
             IsMain = Identifier == LocalSetting.RootWindow;
-            if (IsMain)
+            if (!string.IsNullOrEmpty(Title))
+            {
+                OpenPage(Title);
+            }
+            else
             {
                 OpenHomePage();
+            }
+
+            if (IsMain)
+            {          
                 OpenFullScreenWindow();
             }
+            
         }
 
         public void InitOption()
         {
-            AMenuItem code = new AMenuItem() { Glyph = "menu", Label = "设置", Type = 0 };
+            OptionItems = new ObservableCollection<AMenuItem>();
+            AMenuItem code = new AMenuItem() { Glyph = "menu", Label = "设置", Code = "Option", Type = 0 };
             OptionItems.Add(code);
 
-            code.AddChildren(new AMenuItem() { Glyph = "profile", Label = "本地日志", Command = SystemManageCommand, Code = "Logs" });
-            code.AddChildren(new AMenuItem() { Glyph = "bug", Label = "问题反馈", Command = SystemManageCommand, Code = "" });
-            code.AddChildren(new AMenuItem() { Glyph = "mail", Label = "技术支持", Command = SystemManageCommand, Code = "" });
-            code.AddChildren(new AMenuItem() { Glyph = "coffee", Label = "帮助", Command = SystemManageCommand, Code = "Helper" });
-            code.AddChildren(new AMenuItem() { Glyph = "star", Label = "关于", Command = SystemManageCommand, Code = "About" });
+            code.AddChildren(new AMenuItem() { Glyph = "profile", Label = "本地日志", Code = "Logs", Command = MenuExcuteCommand });
+            code.AddChildren(new AMenuItem() { Glyph = "bug", Label = "问题反馈", Code = "", Command = MenuExcuteCommand });
+            code.AddChildren(new AMenuItem() { Glyph = "mail", Label = "技术支持", Code = "", Command = MenuExcuteCommand });
+            code.AddChildren(new AMenuItem() { Glyph = "coffee", Label = "帮助", Code = "Helper", Command = MenuExcuteCommand });
+            code.AddChildren(new AMenuItem() { Glyph = "star", Label = "关于", Code = "About", Command = MenuExcuteCommand });
         }
 
         private void _wSocketClient_MessageReceived(WSMessageType type, string message)
@@ -287,6 +319,10 @@ namespace AIStudio.Wpf.Home.ViewModels
             foreach (var node in nodes)
             {
                 AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
+                if (aMenuItem.Type == 1)
+                {
+                    aMenuItem.Command = MenuExcuteCommand;
+                }
                 MenuItems.Add(aMenuItem);
                 SubBuildMenu(aMenuItem, node, aMenuItem.Id);
             }
@@ -299,6 +335,10 @@ namespace AIStudio.Wpf.Home.ViewModels
                 foreach (var node in parent.Children)
                 {
                     AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
+                    if (aMenuItem.Type == 1)
+                    {
+                        aMenuItem.Command = MenuExcuteCommand;
+                    }
                     menuItem.AddChildren(aMenuItem);
                     SubBuildMenu(aMenuItem, node, aMenuItem.Id);
                 }
@@ -448,13 +488,13 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-        private string _pageTitle = LocalSetting.Title;
-        public string PageTitle
+        private string _title;
+        public string Title
         {
-            get { return _pageTitle; }
+            get { return _title; }
             set
             {
-                SetProperty(ref _pageTitle, value);
+                SetProperty(ref _title, value);
             }
         }
 
@@ -479,21 +519,21 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-        private ICommand _systemManageCommand;
-        public ICommand SystemManageCommand
+        private ICommand _menuExcuteCommand;
+        public ICommand MenuExcuteCommand
         {
             get
             {
-                return this._systemManageCommand ?? (this._systemManageCommand = new DelegateCommand<AMenuItem>(para => this.SystemManage(para)));
+                return this._menuExcuteCommand ?? (this._menuExcuteCommand = new DelegateCommand<AMenuItem>(para => this.SelectedMenuItemChanged(para)));
             }
         }
 
-        private ICommand _userDropCommand;
-        public ICommand UserDropCommand
+        private ICommand _keyExcuteCommand;
+        public ICommand KeyExcuteCommand
         {
             get
             {
-                return this._userDropCommand ?? (this._userDropCommand = new DelegateCommand<string>(para => this.UserDrop(para)));
+                return this._keyExcuteCommand ?? (this._keyExcuteCommand = new DelegateCommand<string>(para => this.KeyExcute(para)));
             }
         }
 
@@ -535,10 +575,52 @@ namespace AIStudio.Wpf.Home.ViewModels
                 type.GetProperty(key).SetValue(WindowSetting, data);
             }
         }
-        private void SystemManage(AMenuItem para)
+
+        SystemSetView flyout;
+        private void Flyout_ClosingFinished(object sender, RoutedEventArgs e)
         {
-            switch (para.Code)
+            flyout = null;
+        }
+
+        public virtual void KeyExcute(string key)
+        {
+            switch (key)
             {
+                //F10怎么是home
+                case "System":
+                    {
+                        ComeCapture.MainWindow window = new ComeCapture.MainWindow();
+                        //直接显示截图
+                        //window.Closed += (sender, args) =>
+                        //{
+                        //    var image = Clipboard.GetImage();
+                        //    Util.Controls.Windows.ImageBrowser imageBrowser = new Util.Controls.Windows.ImageBrowser(image);
+                        //    imageBrowser.Show();
+                        //};
+                        window.Show();
+                        break;
+                    }
+                case "F11":
+                    {
+                        WindowBase.SetWindowStatus("ToggleFullScreen", Identifier);
+                        break;
+                    }
+                case "Escape":
+                    {
+                        var win = WindowBase.GetWindowBase(Identifier);
+                        if (win != null)
+                        {
+                            win.Close();
+                        }
+                        break;
+                    }
+                case "Control+Q":
+                    {
+                        IsFocusSearchText = false;
+                        IsFocusSearchText = true;
+                        break;
+                    }
+                #region 自定义Key
                 case "Setting":
                     {
                         if (flyout == null)
@@ -572,66 +654,29 @@ namespace AIStudio.Wpf.Home.ViewModels
                         _regionManager.RequestNavigate(otherwindow.RegionName, "MainView", paras);
                         break;
                     }
-            }
-        }
-
-
-        SystemSetView flyout;
-        private void Flyout_ClosingFinished(object sender, RoutedEventArgs e)
-        {
-            flyout = null;
-        }
-
-        private void UserDrop(string para)
-        {
-            switch (para)
-            {
-                case "Logout":
+                case "FullScreen":
+                case "EscapeFullScreen":
                     {
                         var win = WindowBase.GetWindowBase(Identifier);
-                        if (win != null)
+                        string mainContentRegion;
+                        if (Identifier == LocalSetting.RootWindow)
                         {
-                            win.Close();
+                            mainContentRegion = AIStudio.Core.RegionName.MainContentRegion;
                         }
-                        break;
-                    }
-            }
-        }
+                        else
+                        {
+                            mainContentRegion = win.GetPropertyValue(nameof(RegionName))?.ToString();
+                        }
 
-        public void KeyExcute(string key)
-        {
-            switch (key)
-            {
-                //F10怎么是home
-                case "System":
-                    {
-                        ComeCapture.MainWindow window = new ComeCapture.MainWindow();
-                        //直接显示截图
-                        //window.Closed += (sender, args) =>
-                        //{
-                        //    var image = Clipboard.GetImage();
-                        //    Util.Controls.Windows.ImageBrowser imageBrowser = new Util.Controls.Windows.ImageBrowser(image);
-                        //    imageBrowser.Show();
-                        //};
-                        window.Show();
+                        NavigationParameters paras = new NavigationParameters();
+                        paras.Add("Identifier", Identifier);
+                        paras.Add("Title", Title);
+
+                        _regionManager.RequestNavigate(mainContentRegion, key == "FullScreen" ? "FullScreenView" : "MainView", paras);
+                       
                         break;
                     }
-                case "F11":
-                    {
-                        WindowBase.SetWindowStatus("ToggleFullScreen", Identifier);
-                        break;
-                    }
-                case "Escape":
-                    {
-                        UserDrop("Logout");
-                        break;
-                    }
-                case "Control+Q":
-                    {
-                        IsFocusSearchText = false;
-                        IsFocusSearchText = true;
-                        break;
-                    }
+                    #endregion
             }
         }
 
@@ -672,9 +717,9 @@ namespace AIStudio.Wpf.Home.ViewModels
                 item.IsChecked = WindowBase.SetWindowStatus(item.Code, Identifier);
                 return;
             }
-            else if (parentcode == "Tool")
+            else if (parentcode == "Tool" || parentcode == "Option")
             {
-                SystemManage(item);
+                KeyExcute(item.Code);
                 return;
             }
 
@@ -698,14 +743,7 @@ namespace AIStudio.Wpf.Home.ViewModels
 
         private void SelectedDocumentEventReceived(string title)
         {
-            if (string.IsNullOrEmpty(title))
-            {
-                PageTitle = LocalSetting.Title;
-            }
-            else
-            {
-                PageTitle = title + " - " + LocalSetting.Title;
-            }
+            Title = title;
         }
 
         private void Search(AMenuItem item)
@@ -717,7 +755,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             SelectedMenuItemChanged(item);
             SearchText = null;
         }
-
 
         private async void ToolBarConfig()
         {
