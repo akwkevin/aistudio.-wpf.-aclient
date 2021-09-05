@@ -166,6 +166,20 @@
                                     </util:DropDown>
                                     <util:FButton Margin="1,0,0,0" VerticalAlignment="Center" Command="{Binding OpenUserConsoleCommand}" Foreground="{DynamicResource MahApps.Brushes.Text}" Content="{Binding Operator.UserName}" Style="{StaticResource FButton_LinkButton}" FontSize="{DynamicResource MahApps.Font.Size.Content}" MouseOverForeground="{DynamicResource MahApps.Brushes.Gray8}"/>
                                 </StackPanel>
+
+                                <Button Background="Transparent" 
+                                            ToolTip="全屏"
+                                            Foreground="{DynamicResource MahApps.Brushes.Text}" 
+                                            Command="{Binding KeyExcuteCommand}" 
+                                            CommandParameter="FullScreen"
+                                            IsTabStop="False" 
+                                            Style="{StaticResource PathButtonStyle}"
+                                            Width="46"
+                                            VerticalAlignment="Stretch"
+                                            util:ControlAttachProperty.Geometry="{StaticResource FullScreen}" 
+                                            BorderThickness="1,0,1,0" 
+                                            util:ControlAttachProperty.Width="10" 
+                                            util:ControlAttachProperty.Height="10"/>
                             </StackPanel>
                         </ControlTemplate>
                     </Setter.Value>
@@ -349,18 +363,47 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <DockPanel x:Name="Titlebar" util:WindowBase.TitleTag="true" WindowChrome.IsHitTestVisibleInChrome="True" LastChildFill="True"
+        <DockPanel x:Name="Titlebar" util:WindowBase.TitleTag="true" LastChildFill="True"
               Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"       
               Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=ShowTitleBar,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}">
 
-            <StackPanel Margin="0,0,150,0" Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
+            <StackPanel Margin="0,0,138,0" Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
                 <ContentControl Style="{DynamicResource RightBarStyle}"/>
             </StackPanel>
 
             <Grid DockPanel.Dock="Left">
                 <ContentControl Style="{DynamicResource MainIconStyle}" Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Left'}"/>
 
-                <Grid  Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Top'}">
+                <StackPanel Orientation="Horizontal" Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Top'}">
+
+                    <Border Margin="0 3 0 3" Cursor="SizeAll"
+                            SnapsToDevicePixels="True">
+                        <Rectangle Width="4.9">
+                            <Rectangle.Fill>
+                                <!--  Brush similar to visual studio, can be improved  -->
+                                <DrawingBrush TileMode="Tile"
+                                              Viewbox="0,0,5,4"
+                                              ViewboxUnits="Absolute"
+                                              Viewport="0,0,5,4"
+                                              ViewportUnits="Absolute">
+                                    <DrawingBrush.Drawing>
+                                        <GeometryDrawing Brush="{DynamicResource MahApps.Brushes.Gray3}">
+                                            <GeometryDrawing.Geometry>
+                                                <GeometryGroup>
+                                                    <GeometryGroup.Children>
+                                                        <RectangleGeometry Rect="0,0,1,1" />
+                                                        <RectangleGeometry Rect="4,0,1,1" />
+                                                        <RectangleGeometry Rect="2,2,1,1" />
+                                                    </GeometryGroup.Children>
+                                                </GeometryGroup>
+                                            </GeometryDrawing.Geometry>
+                                        </GeometryDrawing>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Border>
+
                     <Menu x:Name="MenuControl"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
@@ -370,7 +413,7 @@
                     Background="{DynamicResource TitleBackgroundBrush}"
                     Foreground="{DynamicResource TitleForegroundBrush}"
                     Style="{StaticResource TopMetroMenu}" />
-                </Grid>
+                </StackPanel>
             </Grid>
             <DockPanel.Style>
                 <Style TargetType="{x:Type DockPanel}">

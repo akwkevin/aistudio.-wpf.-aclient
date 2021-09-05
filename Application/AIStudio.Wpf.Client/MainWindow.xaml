@@ -9,7 +9,7 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:util="clr-namespace:Util.Controls;assembly=Util.Controls"
     Title="{x:Static core:LocalSetting.Title}"
-    Width="1080"
+    Width="1060"
     Height="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     CaptionForeground="{DynamicResource TitleForegroundBrush}"
@@ -18,7 +18,7 @@
     Identifier="{Binding Identifier}"
     Style="{StaticResource BaseWindowStyle}"
     mc:Ignorable="d">
-    <Grid>
+    <Grid WindowChrome.IsHitTestVisibleInChrome="True">
         <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionName.MainContentRegion}" />
     </Grid>
 </util:WindowBase>

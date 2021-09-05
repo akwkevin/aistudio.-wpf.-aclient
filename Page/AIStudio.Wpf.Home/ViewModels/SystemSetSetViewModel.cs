@@ -421,7 +421,7 @@ namespace AIStudio.Wpf.Home.ViewModels
         {
             Application.Current.Resources.Remove("TitleBackgroundBrush");
             Application.Current.Resources.Remove("TitleForegroundBrush");
-            Application.Current.Resources.Add("TitleBackgroundBrush", LocalSetting.NavigationAccent == "Dark" ? Application.Current.FindResource("MahApps.Brushes.Accent") : Application.Current.FindResource("MahApps.Brushes.ThemeBackground"));
+            Application.Current.Resources.Add("TitleBackgroundBrush", LocalSetting.NavigationAccent == "Dark" ? Application.Current.FindResource("MahApps.Brushes.AccentBase") : Application.Current.FindResource("MahApps.Brushes.ThemeBackground"));
             Application.Current.Resources.Add("TitleForegroundBrush", LocalSetting.NavigationAccent == "Dark" ? Application.Current.FindResource("MahApps.Brushes.ThemeBackground") : Application.Current.FindResource("MahApps.Brushes.Text"));
         }
 

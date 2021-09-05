@@ -37,330 +37,9 @@ namespace AIStudio.Wpf.Home.ViewModels
         protected IWSocketClient _wSocketClient { get; }
         protected IMapper _mapper { get; }
 
+        protected WindowBase _window { get; set; }
+
         public NoticeIconViewModel NoticeIconViewModel { get; set; }
-
-        public MainViewModel(IContainerExtension container, IRegionManager regionManager, IEventAggregator aggregator, IOperator ioperator, IDataProvider dataProvider, IWSocketClient wSocketClient, IMapper mapper)
-        {
-            _container = container;
-            _regionManager = regionManager;
-            _aggregator = aggregator;
-            _operator = ioperator;
-            _dataProvider = dataProvider;
-            _wSocketClient = wSocketClient;
-            _mapper = mapper;
-
-            LocalSetting.SettingChanged += SettingChanged;
-
-            _aggregator.GetEvent<SelectedDocumentEvent>().Subscribe(SelectedDocumentEventReceived);
-            _aggregator.GetEvent<MenuExcuteEvent>().Subscribe(MenuExcuteEventReceived, (ev) => { return ev.Item1 == Identifier; });
-        }
-
-        public void OnLoaded()
-        {
-            InitData();
-            InitOption();
-
-            var win = WindowBase.GetWindowBase(Identifier);
-            win.PreviewKeyDown -= View_PreviewKeyDown;
-            win.PreviewKeyDown += View_PreviewKeyDown;
-        }
-
-        public void OnUnloaded()
-        {
-            try
-            {
-                var win = WindowBase.GetWindowBase(Identifier);
-                win.PreviewKeyDown -= View_PreviewKeyDown;
-            }
-            catch { }
-        }
-
-        private void View_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            KeyExcute(e.KeyboardDevice.Modifiers == ModifierKeys.None ? e.Key.ToString() : e.KeyboardDevice.Modifiers.ToString() + "+" + e.Key.ToString());
-        }
-
-
-        public virtual void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            var identifier = navigationContext.Parameters["Identifier"] as string;
-            if (!string.IsNullOrEmpty(identifier))
-            {
-                Identifier = identifier;
-            }
-
-            RegionName = AIStudio.Core.RegionName.TabContentRegion + "_" + Identifier;
-            NoticeIconViewModel = new NoticeIconViewModel(Identifier);
-
-
-            Title = navigationContext.Parameters["Title"] as string;
-        }
-
-        public bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            return true;
-        }
-
-        public void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-
-        }
-
-        public void OpenHomePage()
-        {
-            OpenPage("框架介绍");
-        }
-
-        private void OpenUserConsole()
-        {
-            OpenPage("我的控制台");
-        }
-
-        private void OpenPage(string title)
-        {
-            var item = SearchMenus.FirstOrDefault(p => p.Label == title);
-            if (item != null)
-            {
-                NavigationParameters paras = new NavigationParameters();
-                paras.Add("Title", item.Label);
-                paras.Add("Glyph", item.Glyph);
-                paras.Add("Identifier", Identifier);
-
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)delegate
-                {
-                    _regionManager.RequestNavigate(RegionName, item.WpfCode, NavigationComplete, paras);
-                });
-            }
-        }
-
-        public void OpenFullScreenWindow()
-        {
-            if (LocalSetting.ScreenMode == "Full")
-            {
-                var mainwindow = Application.Current.MainWindow;
-                mainwindow.WindowState = WindowState.Maximized;
-                mainwindow.Topmost = true;
-                var localscreen = System.Windows.Forms.Screen.FromRectangle(new System.Drawing.Rectangle((int)mainwindow.Left, (int)mainwindow.Top, (int)mainwindow.Width, (int)mainwindow.Height));
-
-                foreach (var screen in System.Windows.Forms.Screen.AllScreens)
-                {
-                    if (screen.DeviceName != localscreen?.DeviceName)
-                    {
-                        var otherwindow = new OtherMainWindow();
-                        otherwindow.Show();
-                        otherwindow.Top = screen.WorkingArea.Top;
-                        otherwindow.Left = screen.WorkingArea.Left;
-                        otherwindow.Height = screen.WorkingArea.Height;
-                        otherwindow.Width = screen.WorkingArea.Width;
-                        otherwindow.Topmost = true;
-                        otherwindow.WindowState = WindowState.Maximized;
-                        _regionManager.RegisterViewWithRegion(otherwindow.RegionName, typeof(MainView));
-                    }
-                }
-            }
-
-        }
-
-
-        public async void InitData()
-        {
-            #region 工具栏
-            var section = LocalSetting.GetSection("usersetting") as UserSettingSection;
-            if (section?.WindowItems[Identifier] != null)
-            {
-                ToolItems = new ObservableCollection<AToolItem>(section.WindowItems[Identifier].ToolItems.ChangeType<List<AToolItem>>());
-            }
-            #endregion
-
-            #region 窗体布局
-            Type type = WindowSetting.GetType();//获得类型  
-            foreach (PropertyInfo sp in type.GetProperties())//获得类型的属性字段  
-            {
-                var key = sp.Name;
-
-                var data = typeof(LocalSetting).GetProperty(key)?.GetValue(typeof(LocalSetting));
-                sp.SetValue(WindowSetting, data);
-            }
-            #endregion
-
-
-            Operator = _operator as Operator;
-            WSocketClient = _wSocketClient as WSocketClient;
-
-            #region 菜单
-            MenuItems = new ObservableCollection<AMenuItem>();
-            if (_operator.UserName != "LocalUser")
-            {
-                try
-                {
-                    var control = WindowBase.ShowWaiting(WaitingType.Progress, Identifier);
-                    control.WaitInfo = "正在获取用户信息";
-                    var userinfo = await _dataProvider.GetData<UserInfoPermissions>("/Base_Manage/Home/GetOperatorInfo");
-                    if (!userinfo.Success)
-                    {
-                        throw new System.Exception(userinfo.Msg);
-                    }
-
-                    _operator.Property = userinfo.Data.UserInfo;
-                    _operator.Permissions = userinfo.Data.Permissions;
-                    _operator.Avatar = userinfo.Data.UserInfo.Avatar;
-
-                    control.WaitInfo = "正在获取菜单信息";
-                    var menuinfo = await _dataProvider.GetData<List<Base_ActionTree>>("/Base_Manage/Home/GetOperatorMenuList");
-                    if (!menuinfo.Success)
-                    {
-                        throw new System.Exception(menuinfo.Msg);
-                    }
-                    BuildMenu(menuinfo.Data);
-
-                    if (LocalSetting.ApiMode)
-                    {
-                        //连接socket
-                        _wSocketClient.InitAndStart(LocalSetting.ServerIP, $"{LocalSetting.ServerIP.Replace("http", "ws")}/ws?userName={_operator.Property.UserName}&userId={_operator.Property.Id}&avatar={_operator.Property.Avatar}");
-                        _wSocketClient.MessageReceived -= _wSocketClient_MessageReceived;
-                        _wSocketClient.MessageReceived += _wSocketClient_MessageReceived;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                finally
-                {
-                    WindowBase.HideWaiting(Identifier);
-                }
-            }
-
-#if DEBUG
-            AMenuItem code = new AMenuItem() { Glyph = "code", Label = "开发", Code = "Demo", Type = 0 };
-            MenuItems.Add(code);
-
-            if (_operator.UserName != "LocalUser")
-            {
-                code.AddChildren(new AMenuItem() { Label = "数据库连接", Code = "/Base_Manage/Base_DbLinkView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1, Command = MenuExcuteCommand });
-            }
-#endif
-            var tool = new AMenuItem() { Glyph = "tool", Label = "工具", Code = "Tool", Type = 0 };
-            var setting = new AMenuItem() { Glyph = "setting", Label = "系统设置", Code = "Setting", Type = 1 };
-            var fullscreen = new AMenuItem() { Glyph = "full-screen", Label = "大屏模式", Code = "FullScreen", Type = 1 };
-            var newWindow = new AMenuItem() { Glyph = "windows", Label = (string)Application.Current.Resources["新增窗口"], Code = "NewWindow", Type = 1 };
-            var screenshot = new AMenuItem() { Glyph = "border", Label = (string)Application.Current.Resources["截屏"], Code = "Screenshot", Type = 1 };
-
-            tool.AddChildren(setting);
-            tool.AddChildren(fullscreen);
-            tool.AddChildren(newWindow);
-            tool.AddChildren(screenshot);
-            MenuItems.Add(tool);
-
-            var winStatus = new AMenuItem() { Glyph = "windows", Label = (string)Application.Current.Resources["窗口"], Code = "WinStatus", Type = 0 };
-            var showTitleBar = new AMenuItem() { Label = (string)Application.Current.Resources["标题显示"], Code = "ShowTitleBar", Type = 1, IsChecked = WindowBase.GetWindowStatus("ShowTitleBar", Identifier) };
-            var showInTaskbar = new AMenuItem() { Label = (string)Application.Current.Resources["任务栏显示"], Code = "ShowInTaskbar", Type = 1, IsChecked = WindowBase.GetWindowStatus("ShowInTaskbar", Identifier) };
-            var topmost = new AMenuItem() { Label = (string)Application.Current.Resources["总在最前"], Code = "Topmost", Type = 1, IsChecked = WindowBase.GetWindowStatus("Topmost", Identifier) };
-            var toggleFullScreen = new AMenuItem() { Label = (string)Application.Current.Resources["最大化全屏"], Code = "ToggleFullScreen", Type = 1, IsChecked = WindowBase.GetWindowStatus("ToggleFullScreen", Identifier) };
-            var notifyIcon = new AMenuItem() { Label = (string)Application.Current.Resources["托盘显示"], Code = "ShowNotifyIcon", Type = 1 };
-
-            winStatus.AddChildren(showTitleBar);
-            winStatus.AddChildren(showInTaskbar);
-            winStatus.AddChildren(topmost);
-            winStatus.AddChildren(toggleFullScreen);
-            winStatus.AddChildren(notifyIcon);
-
-            MenuItems.Add(winStatus);
-            SearchMenus = new ObservableCollection<AMenuItem>(AddTotalMenu(MenuItems));
-
-            _operator.MenuItems = MenuItems;
-            _operator.SearchMenus = SearchMenus;
-            #endregion
-
-            IsMain = Identifier == LocalSetting.RootWindow;
-            if (!string.IsNullOrEmpty(Title))
-            {
-                OpenPage(Title);
-            }
-            else
-            {
-                OpenHomePage();
-            }
-
-            if (IsMain)
-            {          
-                OpenFullScreenWindow();
-            }
-            
-        }
-
-        public void InitOption()
-        {
-            OptionItems = new ObservableCollection<AMenuItem>();
-            AMenuItem code = new AMenuItem() { Glyph = "menu", Label = "设置", Code = "Option", Type = 0 };
-            OptionItems.Add(code);
-
-            code.AddChildren(new AMenuItem() { Glyph = "profile", Label = "本地日志", Code = "Logs", Command = MenuExcuteCommand });
-            code.AddChildren(new AMenuItem() { Glyph = "bug", Label = "问题反馈", Code = "", Command = MenuExcuteCommand });
-            code.AddChildren(new AMenuItem() { Glyph = "mail", Label = "技术支持", Code = "", Command = MenuExcuteCommand });
-            code.AddChildren(new AMenuItem() { Glyph = "coffee", Label = "帮助", Code = "Helper", Command = MenuExcuteCommand });
-            code.AddChildren(new AMenuItem() { Glyph = "star", Label = "关于", Code = "About", Command = MenuExcuteCommand });
-        }
-
-        private void _wSocketClient_MessageReceived(WSMessageType type, string message)
-        {
-            if (type == WSMessageType.PushType)
-            {
-
-            }
-        }
-
-        private void BuildMenu(List<Base_ActionTree> base_Actions)
-        {
-            var nodes = base_Actions.Where(p => string.IsNullOrEmpty(p.ParentId));
-            foreach (var node in nodes)
-            {
-                AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
-                if (aMenuItem.Type == 1)
-                {
-                    aMenuItem.Command = MenuExcuteCommand;
-                }
-                MenuItems.Add(aMenuItem);
-                SubBuildMenu(aMenuItem, node, aMenuItem.Id);
-            }
-        }
-
-        private void SubBuildMenu(AMenuItem menuItem, Base_ActionTree parent, string parentid)
-        {
-            if (parent.Children != null)
-            {
-                foreach (var node in parent.Children)
-                {
-                    AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
-                    if (aMenuItem.Type == 1)
-                    {
-                        aMenuItem.Command = MenuExcuteCommand;
-                    }
-                    menuItem.AddChildren(aMenuItem);
-                    SubBuildMenu(aMenuItem, node, aMenuItem.Id);
-                }
-            }
-        }
-
-        private List<AMenuItem> AddTotalMenu(IEnumerable<AMenuItem> items)
-        {
-            List<AMenuItem> list = new List<AMenuItem>();
-            foreach (var item in items)
-            {
-                if (item.Type == 1)
-                {
-                    list.Add(item);
-                }
-                if (item.Children != null)
-                {
-                    list.AddRange(AddTotalMenu(item.Children.OfType<AMenuItem>()));
-                }
-            }
-            return list;
-        }
 
         #region 属性与方法
         private bool _isMain;
@@ -566,6 +245,328 @@ namespace AIStudio.Wpf.Home.ViewModels
         }
         #endregion
 
+        public MainViewModel(IContainerExtension container, IRegionManager regionManager, IEventAggregator aggregator, IOperator ioperator, IDataProvider dataProvider, IWSocketClient wSocketClient, IMapper mapper)
+        {
+            _container = container;
+            _regionManager = regionManager;
+            _aggregator = aggregator;
+            _operator = ioperator;
+            _dataProvider = dataProvider;
+            _wSocketClient = wSocketClient;
+            _mapper = mapper;
+
+            LocalSetting.SettingChanged += SettingChanged;
+
+            _aggregator.GetEvent<SelectedDocumentEvent>().Subscribe(SelectedDocumentEventReceived);
+            _aggregator.GetEvent<MenuExcuteEvent>().Subscribe(MenuExcuteEventReceived, (ev) => { return ev.Item1 == Identifier; });
+        }
+
+        public void OnLoaded()
+        {
+            if (_window == null)
+            {
+                InitData();
+                InitOption();
+
+                _window = WindowBase.GetWindowBase(Identifier);  
+            }
+            _window.PreviewKeyDown -= View_PreviewKeyDown;
+            _window.PreviewKeyDown += View_PreviewKeyDown;
+        }
+
+        public void OnUnloaded()
+        {
+            if (_window != null)
+            {
+                _window.PreviewKeyDown -= View_PreviewKeyDown;
+            }
+        }
+
+        private void View_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            KeyExcute(e.KeyboardDevice.Modifiers == ModifierKeys.None ? e.Key.ToString() : e.KeyboardDevice.Modifiers.ToString() + "+" + e.Key.ToString());
+        }
+
+
+        public virtual void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            var identifier = navigationContext.Parameters["Identifier"] as string;
+            if (!string.IsNullOrEmpty(identifier))
+            {
+                Identifier = identifier;
+            }
+
+            RegionName = AIStudio.Core.RegionName.TabContentRegion + "_" + Identifier;
+            NoticeIconViewModel = new NoticeIconViewModel(Identifier);
+
+
+            Title = navigationContext.Parameters["Title"] as string;
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+
+        }
+
+        public void OpenHomePage()
+        {
+            OpenPage("框架介绍");
+        }
+
+        private void OpenUserConsole()
+        {
+            OpenPage("我的控制台");
+        }
+
+        private void OpenPage(string title)
+        {
+            var item = SearchMenus.FirstOrDefault(p => p.Label == title);
+            if (item != null)
+            {
+                NavigationParameters paras = new NavigationParameters();
+                paras.Add("Title", item.Label);
+                paras.Add("Glyph", item.Glyph);
+                paras.Add("Identifier", Identifier);
+
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)delegate
+                {
+                    _regionManager.RequestNavigate(RegionName, item.WpfCode, NavigationComplete, paras);
+                });
+            }
+        }
+
+        public void OpenFullScreenWindow()
+        {
+            if (LocalSetting.ScreenMode == "Full")
+            {
+                var mainwindow = Application.Current.MainWindow;
+                mainwindow.WindowState = WindowState.Maximized;
+                mainwindow.Topmost = true;
+                var localscreen = System.Windows.Forms.Screen.FromRectangle(new System.Drawing.Rectangle((int)mainwindow.Left, (int)mainwindow.Top, (int)mainwindow.Width, (int)mainwindow.Height));
+
+                foreach (var screen in System.Windows.Forms.Screen.AllScreens)
+                {
+                    if (screen.DeviceName != localscreen?.DeviceName)
+                    {
+                        var otherwindow = new OtherMainWindow();
+                        otherwindow.Show();
+                        otherwindow.Top = screen.WorkingArea.Top;
+                        otherwindow.Left = screen.WorkingArea.Left;
+                        otherwindow.Height = screen.WorkingArea.Height;
+                        otherwindow.Width = screen.WorkingArea.Width;
+                        otherwindow.Topmost = true;
+                        otherwindow.WindowState = WindowState.Maximized;
+                        _regionManager.RegisterViewWithRegion(otherwindow.RegionName, typeof(MainView));
+                    }
+                }
+            }
+
+        }
+
+
+        public async void InitData()
+        {
+            #region 工具栏
+            var section = LocalSetting.GetSection("usersetting") as UserSettingSection;
+            if (section?.WindowItems[Identifier] != null)
+            {
+                ToolItems = new ObservableCollection<AToolItem>(section.WindowItems[Identifier].ToolItems.ChangeType<List<AToolItem>>());
+            }
+            #endregion
+
+            #region 窗体布局
+            Type type = WindowSetting.GetType();//获得类型  
+            foreach (PropertyInfo sp in type.GetProperties())//获得类型的属性字段  
+            {
+                var key = sp.Name;
+
+                var data = typeof(LocalSetting).GetProperty(key)?.GetValue(typeof(LocalSetting));
+                sp.SetValue(WindowSetting, data);
+            }
+            #endregion
+
+
+            Operator = _operator as Operator;
+            WSocketClient = _wSocketClient as WSocketClient;
+
+            #region 菜单
+            MenuItems = new ObservableCollection<AMenuItem>();
+            if (_operator.UserName != "LocalUser")
+            {
+                try
+                {
+                    var control = WindowBase.ShowWaiting(WaitingType.Progress, Identifier);
+                    control.WaitInfo = "正在获取用户信息";
+                    var userinfo = await _dataProvider.GetData<UserInfoPermissions>("/Base_Manage/Home/GetOperatorInfo");
+                    if (!userinfo.Success)
+                    {
+                        throw new System.Exception(userinfo.Msg);
+                    }
+
+                    _operator.Property = userinfo.Data.UserInfo;
+                    _operator.Permissions = userinfo.Data.Permissions;
+                    _operator.Avatar = userinfo.Data.UserInfo.Avatar;
+
+                    control.WaitInfo = "正在获取菜单信息";
+                    var menuinfo = await _dataProvider.GetData<List<Base_ActionTree>>("/Base_Manage/Home/GetOperatorMenuList");
+                    if (!menuinfo.Success)
+                    {
+                        throw new System.Exception(menuinfo.Msg);
+                    }
+                    BuildMenu(menuinfo.Data);
+
+                    if (LocalSetting.ApiMode)
+                    {
+                        //连接socket
+                        _wSocketClient.InitAndStart(LocalSetting.ServerIP, $"{LocalSetting.ServerIP.Replace("http", "ws")}/ws?userName={_operator.Property.UserName}&userId={_operator.Property.Id}&avatar={_operator.Property.Avatar}");
+                        _wSocketClient.MessageReceived -= _wSocketClient_MessageReceived;
+                        _wSocketClient.MessageReceived += _wSocketClient_MessageReceived;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    WindowBase.HideWaiting(Identifier);
+                }
+            }
+
+#if DEBUG
+            AMenuItem code = new AMenuItem() { Glyph = "code", Label = "开发", Code = "Demo", Type = 0 };
+            MenuItems.Add(code);
+
+            if (_operator.UserName != "LocalUser")
+            {
+                code.AddChildren(new AMenuItem() { Label = "数据库连接", Code = "/Base_Manage/Base_DbLinkView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1, Command = MenuExcuteCommand });
+            }
+#endif
+            var tool = new AMenuItem() { Glyph = "tool", Label = "工具", Code = "Tool", Type = 0, Command = MenuExcuteCommand };
+            var setting = new AMenuItem() { Glyph = "setting", Label = "系统设置", Code = "Setting", Type = 1, Command = MenuExcuteCommand };
+            var newWindow = new AMenuItem() { Glyph = "windows", Label = (string)Application.Current.Resources["新增窗口"], Code = "NewWindow", Type = 1, Command = MenuExcuteCommand };
+            var screenshot = new AMenuItem() { Glyph = "screenshot", Label = (string)Application.Current.Resources["截屏"], Code = "Screenshot", Type = 1, Command = MenuExcuteCommand };
+
+            tool.AddChildren(setting);
+            tool.AddChildren(newWindow);
+            tool.AddChildren(screenshot);
+            MenuItems.Add(tool);
+
+            var winStatus = new AMenuItem() { Glyph = "windows", Label = (string)Application.Current.Resources["窗口"], Code = "WinStatus", Type = 0, Command = MenuExcuteCommand };
+            var showTitleBar = new AMenuItem() { Label = (string)Application.Current.Resources["标题显示"], Code = "ShowTitleBar", Type = 1, IsChecked = WindowBase.GetWindowStatus("ShowTitleBar", Identifier), Command = MenuExcuteCommand };
+            var showInTaskbar = new AMenuItem() { Label = (string)Application.Current.Resources["任务栏显示"], Code = "ShowInTaskbar", Type = 1, IsChecked = WindowBase.GetWindowStatus("ShowInTaskbar", Identifier), Command = MenuExcuteCommand };
+            var topmost = new AMenuItem() { Label = (string)Application.Current.Resources["总在最前"], Code = "Topmost", Type = 1, IsChecked = WindowBase.GetWindowStatus("Topmost", Identifier), Command = MenuExcuteCommand };
+            var toggleFullScreen = new AMenuItem() { Label = (string)Application.Current.Resources["最大化全屏"], Code = "ToggleFullScreen", Type = 1, IsChecked = WindowBase.GetWindowStatus("ToggleFullScreen", Identifier), Command = MenuExcuteCommand };
+            var notifyIcon = new AMenuItem() { Label = (string)Application.Current.Resources["托盘显示"], Code = "ShowNotifyIcon", Type = 1, Command = MenuExcuteCommand };
+
+            winStatus.AddChildren(showTitleBar);
+            winStatus.AddChildren(showInTaskbar);
+            winStatus.AddChildren(topmost);
+            winStatus.AddChildren(toggleFullScreen);
+            winStatus.AddChildren(notifyIcon);
+
+            MenuItems.Add(winStatus);
+            SearchMenus = new ObservableCollection<AMenuItem>(AddTotalMenu(MenuItems));
+
+            _operator.MenuItems = MenuItems;
+            _operator.SearchMenus = SearchMenus;
+            #endregion
+
+            IsMain = Identifier == LocalSetting.RootWindow;
+            if (!string.IsNullOrEmpty(Title))
+            {
+                OpenPage(Title);
+            }
+            else
+            {
+                OpenHomePage();
+            }
+
+            if (IsMain)
+            {          
+                OpenFullScreenWindow();
+            }
+            
+        }
+
+        public void InitOption()
+        {
+            OptionItems = new ObservableCollection<AMenuItem>();
+            AMenuItem code = new AMenuItem() { Glyph = "menu", Label = "设置", Code = "Option", Type = 0 };
+            OptionItems.Add(code);
+
+            code.AddChildren(new AMenuItem() { Glyph = "profile", Label = "本地日志", Code = "Logs", Command = MenuExcuteCommand });
+            code.AddChildren(new AMenuItem() { Glyph = "bug", Label = "问题反馈", Code = "", Command = MenuExcuteCommand });
+            code.AddChildren(new AMenuItem() { Glyph = "mail", Label = "技术支持", Code = "", Command = MenuExcuteCommand });
+            code.AddChildren(new AMenuItem() { Glyph = "coffee", Label = "帮助", Code = "Helper", Command = MenuExcuteCommand });
+            code.AddChildren(new AMenuItem() { Glyph = "star", Label = "关于", Code = "About", Command = MenuExcuteCommand });
+        }
+
+        private void _wSocketClient_MessageReceived(WSMessageType type, string message)
+        {
+            if (type == WSMessageType.PushType)
+            {
+
+            }
+        }
+
+        private void BuildMenu(List<Base_ActionTree> base_Actions)
+        {
+            var nodes = base_Actions.Where(p => string.IsNullOrEmpty(p.ParentId));
+            foreach (var node in nodes)
+            {
+                AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
+                if (aMenuItem.Type == 1)
+                {
+                    aMenuItem.Command = MenuExcuteCommand;
+                }
+                MenuItems.Add(aMenuItem);
+                SubBuildMenu(aMenuItem, node, aMenuItem.Id);
+            }
+        }
+
+        private void SubBuildMenu(AMenuItem menuItem, Base_ActionTree parent, string parentid)
+        {
+            if (parent.Children != null)
+            {
+                foreach (var node in parent.Children)
+                {
+                    AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
+                    if (aMenuItem.Type == 1)
+                    {
+                        aMenuItem.Command = MenuExcuteCommand;
+                    }
+                    menuItem.AddChildren(aMenuItem);
+                    SubBuildMenu(aMenuItem, node, aMenuItem.Id);
+                }
+            }
+        }
+
+        private List<AMenuItem> AddTotalMenu(IEnumerable<AMenuItem> items)
+        {
+            List<AMenuItem> list = new List<AMenuItem>();
+            foreach (var item in items)
+            {
+                if (item.Type == 1)
+                {
+                    list.Add(item);
+                }
+                if (item.Children != null)
+                {
+                    list.AddRange(AddTotalMenu(item.Children.OfType<AMenuItem>()));
+                }
+            }
+            return list;
+        }  
+
         private void SettingChanged(string key)
         {
             Type type = WindowSetting.GetType();//获得类型  
@@ -610,7 +611,14 @@ namespace AIStudio.Wpf.Home.ViewModels
                         var win = WindowBase.GetWindowBase(Identifier);
                         if (win != null)
                         {
-                            win.Close();
+                            if (win.IsOverlayVisible())
+                            {
+                                win.CloseDialog();
+                            }
+                            else
+                            {
+                                win.Close();
+                            }
                         }
                         break;
                     }

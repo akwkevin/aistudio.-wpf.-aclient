@@ -121,6 +121,7 @@
             </DataTrigger>
             <DataTrigger Binding="{Binding Role,RelativeSource={RelativeSource TemplatedParent}}" Value="TopLevelHeader">
                 <Setter TargetName="Icon" Property="ToolTip" Value="{Binding Label}"></Setter>
+                <Setter TargetName="Header" Property="Visibility" Value="Collapsed"></Setter>
             </DataTrigger>
             <DataTrigger Binding="{Binding IsMouseOver,RelativeSource={RelativeSource TemplatedParent}}" Value="True">
                 <Setter TargetName="Header" Property="Foreground" Value="{DynamicResource MahApps.Brushes.Highlight}"/>

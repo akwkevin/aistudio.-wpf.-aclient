@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AIStudio.Wpf.Home.Views"
+             xmlns:util="https://astudio.github.io/utilcontrol"
+             xmlns:converter="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
@@ -17,10 +19,32 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Menu x:Name="MenuControl"
+        <StackPanel Margin="0,0,138,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}">
+            <Button Background="Transparent" 
+                    ToolTip="退出全屏"
+                    Foreground="{DynamicResource MahApps.Brushes.Text}" 
+                    Command="{Binding KeyExcuteCommand}" 
+                    CommandParameter="EscapeFullScreen"
+                    IsTabStop="False" 
+                    Style="{StaticResource PathButtonStyle}"
+                    Width="46"
+                    VerticalAlignment="Stretch"
+                    util:ControlAttachProperty.Geometry="{StaticResource EscapeFullScreen}" 
+                    BorderThickness="1,0,1,0" 
+                    util:ControlAttachProperty.Width="10" 
+                    util:ControlAttachProperty.Height="10"/>
+        </StackPanel>
+        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{Binding RegionName}" Margin="1"/>
+        <util:FloatExpander x:Name="Expander" Grid.RowSpan="2" 
+                            Background="{DynamicResource TitleBackgroundBrush}" 
+                            util:ControlAttachProperty.ContentForeground="{DynamicResource TitleForegroundBrush}" 
+                            ExpandDirection="Up"
+                            BorderThickness="0">
+            <Grid >
+                <Menu x:Name="TopMenuControl"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     ItemContainerStyle="{StaticResource MenuItemStyle}" 
@@ -28,7 +52,21 @@
                     ItemTemplate="{StaticResource MenuItemDataTemplate}" 
                     Background="{DynamicResource TitleBackgroundBrush}"
                     Foreground="{DynamicResource TitleForegroundBrush}"
-                    Style="{StaticResource TopMetroMenu}" />
-        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{Binding RegionName}" />
+                    Style="{StaticResource TopMetroMenu}" 
+                    Visibility="{Binding ElementName=Expander,Path=ExpandDirection,Converter={converter:StringToVisibilityConverter},ConverterParameter='Up^Down'}"/>
+                <Menu x:Name="LeftMenuControl"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    ItemContainerStyle="{StaticResource LeftMenuItemStyle}" 
+                    ItemsSource="{Binding MenuItems}"
+                    ItemTemplate="{StaticResource LeftHamburgerMenuImageItem}" 
+                    Background="Transparent"
+                    util:ControlAttachProperty.PopupBackground="{DynamicResource TitleBackgroundBrush}"
+                    Foreground="{DynamicResource TitleForegroundBrush}"
+                    Style="{StaticResource LeftMetroMenu}" 
+                    Visibility="{Binding ElementName=Expander,Path=ExpandDirection,Converter={converter:StringToVisibilityConverter},ConverterParameter='Left^Right'}"/>
+            </Grid>
+        </util:FloatExpander>
+       
     </Grid>
 </UserControl>
