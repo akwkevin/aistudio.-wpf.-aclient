@@ -32,7 +32,8 @@ namespace AIStudio.Wpf.Home
             containerRegistry.RegisterForNavigation<FullScreenView>();
             containerRegistry.RegisterForNavigation(typeof(IntroduceView), typeof(IntroduceView).FullName);
             containerRegistry.RegisterForNavigation(typeof(UserConsoleView), typeof(UserConsoleView).FullName);
-            containerRegistry.RegisterForNavigation(typeof(_3DShowcaseView), typeof(_3DShowcaseView).FullName); 
+            containerRegistry.RegisterForNavigation(typeof(_3DShowcaseView), typeof(_3DShowcaseView).FullName);
+            containerRegistry.RegisterForNavigation(typeof(StatisView), typeof(StatisView).FullName);
         }
     }
 }
