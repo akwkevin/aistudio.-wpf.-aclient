@@ -12,7 +12,12 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
 {
     class StatisViewModel : DockWindowViewModel
     {
-        public StatisViewModel()
+        public StatisPart1ViewModel StatisPart1ViewModel { get; set; } = new StatisPart1ViewModel();
+    }
+
+    class StatisPart1ViewModel
+    {
+        public StatisPart1ViewModel()
         {
             SeriesCollection = new SeriesCollection
             {

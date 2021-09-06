@@ -270,8 +270,24 @@ namespace AIStudio.Wpf.Home.ViewModels
 
                 _window = WindowBase.GetWindowBase(Identifier);  
             }
+
             _window.PreviewKeyDown -= View_PreviewKeyDown;
             _window.PreviewKeyDown += View_PreviewKeyDown;
+
+            IsMain = Identifier == LocalSetting.RootWindow;
+            if (!string.IsNullOrEmpty(Title))
+            {
+                OpenPage(Title);
+            }
+            else
+            {
+                OpenHomePage();
+            }
+
+            if (IsMain)
+            {
+                OpenFullScreenWindow();
+            }
         }
 
         public void OnUnloaded()
@@ -479,22 +495,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             _operator.MenuItems = MenuItems;
             _operator.SearchMenus = SearchMenus;
             #endregion
-
-            IsMain = Identifier == LocalSetting.RootWindow;
-            if (!string.IsNullOrEmpty(Title))
-            {
-                OpenPage(Title);
-            }
-            else
-            {
-                OpenHomePage();
-            }
-
-            if (IsMain)
-            {          
-                OpenFullScreenWindow();
-            }
-            
         }
 
         public void InitOption()

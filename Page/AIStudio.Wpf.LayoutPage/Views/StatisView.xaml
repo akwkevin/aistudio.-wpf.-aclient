@@ -3,18 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-             xmlns:local="clr-namespace:AIStudio.Wpf.LayoutPage.Views"
+             xmlns:utilpanel="https://astudio.github.io/utilpanel"
+             xmlns:subview="clr-namespace:AIStudio.Wpf.LayoutPage.Views.SubViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Left">
-            <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Salesman" Labels="{Binding Labels}"></lvc:Axis>
-            </lvc:CartesianChart.AxisX>
-            <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Sold Apps" LabelFormatter="{Binding Formatter}"></lvc:Axis>
-            </lvc:CartesianChart.AxisY>
-        </lvc:CartesianChart>
+    <Grid x:Name="grid">
+        <utilpanel:TilePanel utilpanel:TilePanel.SizeParent="{Binding ElementName=grid}" Size="4,4">
+            <subview:StatisPart1 DataContext="{Binding StatisPart1ViewModel}" utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="1" />          
+        </utilpanel:TilePanel>
     </Grid>
 </UserControl>
