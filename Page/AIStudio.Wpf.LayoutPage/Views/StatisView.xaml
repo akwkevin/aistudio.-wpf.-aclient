@@ -9,7 +9,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="grid">
         <utilpanel:TilePanel utilpanel:TilePanel.SizeParent="{Binding ElementName=grid}" Size="4,4">
-            <subview:StatisPart1 DataContext="{Binding StatisPart1ViewModel}" utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="1" />          
+            <subview:StatisPart1 DataContext="{Binding StatisPart1ViewModel}" utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="1" />
+            <subview:StatisPart2 DataContext="{Binding StatisPart2ViewModel}" utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="1" />
         </utilpanel:TilePanel>
     </Grid>
 </UserControl>
