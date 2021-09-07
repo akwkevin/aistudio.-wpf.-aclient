@@ -19,6 +19,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -261,11 +262,11 @@ namespace AIStudio.Wpf.Home.ViewModels
             _aggregator.GetEvent<MenuExcuteEvent>().Subscribe(MenuExcuteEventReceived, (ev) => { return ev.Item1 == Identifier; });
         }
 
-        public void OnLoaded()
+        public async void OnLoaded()
         {
             if (_window == null)
             {
-                InitData();
+                await InitData();
                 InitOption();
 
                 _window = WindowBase.GetWindowBase(Identifier);  
@@ -385,7 +386,7 @@ namespace AIStudio.Wpf.Home.ViewModels
         }
 
 
-        public async void InitData()
+        public async Task InitData()
         {
             #region 工具栏
             var section = LocalSetting.GetSection("usersetting") as UserSettingSection;
