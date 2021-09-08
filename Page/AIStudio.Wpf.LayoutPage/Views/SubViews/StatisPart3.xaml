@@ -9,8 +9,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <lvc:PieChart LegendLocation="Right" Hoverable="True" DataTooltip="{x:Null}"
-                      Background="{DynamicResource MahApps.Brushes.ThemeBackground}"
-                      Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}">
+                      Background="{DynamicResource TileBackgroundBrush}"
+                      Foreground="{DynamicResource TileTitleBrush}">
             <lvc:PieChart.Series>
                 <lvc:PieSeries Title="Maria" Values="3" DataLabels="True"
                                LabelPoint="{Binding PointLabel}"/>

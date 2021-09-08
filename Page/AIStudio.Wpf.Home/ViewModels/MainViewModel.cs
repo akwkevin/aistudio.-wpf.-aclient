@@ -303,8 +303,6 @@ namespace AIStudio.Wpf.Home.ViewModels
         {
             KeyExcute(e.KeyboardDevice.Modifiers == ModifierKeys.None ? e.Key.ToString() : e.KeyboardDevice.Modifiers.ToString() + "+" + e.Key.ToString());
         }
-
-
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
             var identifier = navigationContext.Parameters["Identifier"] as string;
@@ -313,11 +311,15 @@ namespace AIStudio.Wpf.Home.ViewModels
                 Identifier = identifier;
             }
 
-            RegionName = AIStudio.Core.RegionName.TabContentRegion + "_" + Identifier;
+            SetRegionName();
             NoticeIconViewModel = new NoticeIconViewModel(Identifier);
 
-
             Title = navigationContext.Parameters["Title"] as string;
+        }
+
+        protected virtual void SetRegionName()
+        {
+            RegionName = AIStudio.Core.RegionName.TabContentRegion + "_" + Identifier;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -666,7 +668,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 case "FullScreen":
                 case "EscapeFullScreen":
                     {
-                        var win = WindowBase.GetWindowBase(Identifier);
+                        var window = WindowBase.GetWindowBase(Identifier);
                         string mainContentRegion;
                         if (Identifier == LocalSetting.RootWindow)
                         {
@@ -674,7 +676,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                         }
                         else
                         {
-                            mainContentRegion = win.GetPropertyValue(nameof(RegionName))?.ToString();
+                            mainContentRegion = window.GetPropertyValue(nameof(RegionName))?.ToString();
                         }
 
                         NavigationParameters paras = new NavigationParameters();
@@ -682,7 +684,17 @@ namespace AIStudio.Wpf.Home.ViewModels
                         paras.Add("Title", Title);
 
                         _regionManager.RequestNavigate(mainContentRegion, key == "FullScreen" ? "FullScreenView" : "MainView", paras);
-                       
+
+                        if (key == "FullScreen")
+                        {
+                            window.ShowTitleBar = false;
+                            window.ShowInTaskbar = false;
+                        }
+                        else
+                        {
+                            window.ShowTitleBar = true;
+                            window.ShowInTaskbar = true;
+                        }
                         break;
                     }
                     #endregion

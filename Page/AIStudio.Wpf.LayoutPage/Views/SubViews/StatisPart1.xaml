@@ -10,13 +10,13 @@
     <Grid>
         <lvc:CartesianChart Series="{Binding SeriesCollection}" 
                             LegendLocation="None"
-                            Background="{DynamicResource MahApps.Brushes.ThemeBackground}"
-                            Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}">
+                            Background="{DynamicResource TileBackgroundBrush}"
+                            Foreground="{DynamicResource TileTitleBrush}">
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Labels="{Binding Labels}"></lvc:Axis>
+                <lvc:Axis Labels="{Binding Labels}" Foreground="{DynamicResource TileTitleBrush}" ></lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis LabelFormatter="{Binding Formatter}"></lvc:Axis>
+                <lvc:Axis LabelFormatter="{Binding Formatter}" Foreground="{DynamicResource TileTitleBrush}"></lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
     </Grid>

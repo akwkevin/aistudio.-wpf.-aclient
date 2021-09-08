@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:AIStudio.Wpf.Home.Views"
              xmlns:util="https://astudio.github.io/utilcontrol"
              xmlns:converter="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
+             xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
@@ -15,6 +16,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/AIStudio.Wpf.Home;component/Resources/MainViewResource.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <Geometry o:Freeze="True" x:Key="Exit">M204.8 891.733c-37.703 0-68.267-30.564-68.267-68.267v-750.933c0-37.704 30.564-68.267 68.267-68.267h512c18.848 0 34.133 15.285 34.133 34.133s-15.285 34.133-34.133 34.133h-512v750.933h512c18.848 0 34.133 15.282 34.133 34.133s-15.285 34.133-34.133 34.133h-512zM860.406 625.736c-13.332 13.33-34.946 13.33-48.278 0-13.326-13.33-13.326-34.942 0-48.271l95.334-95.331h-463.729c-18.851 0-34.133-15.282-34.133-34.133s15.282-34.133 34.133-34.133h463.729l-95.334-95.331c-13.326-13.33-13.326-34.942 0-48.275 13.332-13.326 34.946-13.326 48.278 0l153.6 153.603c13.326 13.33 13.326 34.942 0 48.271l-153.6 153.6z</Geometry>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -22,8 +25,12 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Margin="0,0,138,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}">
-            <Button Background="Transparent" 
+        <DockPanel x:Name="Titlebar" util:WindowBase.TitleTag="true" LastChildFill="True"
+              Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"       
+              Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=ShowTitleBar,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}">
+
+            <StackPanel Margin="0,0,138,0" Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right" >
+                <Button Background="Transparent" 
                     ToolTip="退出全屏"
                     Foreground="{DynamicResource MahApps.Brushes.Text}" 
                     Command="{Binding KeyExcuteCommand}" 
@@ -36,14 +43,44 @@
                     BorderThickness="1,0,1,0" 
                     util:ControlAttachProperty.Width="10" 
                     util:ControlAttachProperty.Height="10"/>
-        </StackPanel>
+            </StackPanel>
+
+            <TextBlock x:Name="Text" Text="{Binding Title}" VerticalAlignment="Center"/>
+            
+        </DockPanel>
         <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{Binding RegionName}" Margin="1"/>
+        <Border Margin="0 3 0 3" Cursor="SizeAll" Grid.Row="1" SnapsToDevicePixels="True" util:WindowBase.TitleTag="true">
+            <Rectangle Width="4.9">
+                <Rectangle.Fill>
+                    <!--  Brush similar to visual studio, can be improved  -->
+                    <DrawingBrush TileMode="Tile"
+                                              Viewbox="0,0,5,4"
+                                              ViewboxUnits="Absolute"
+                                              Viewport="0,0,5,4"
+                                              ViewportUnits="Absolute">
+                        <DrawingBrush.Drawing>
+                            <GeometryDrawing Brush="{DynamicResource MahApps.Brushes.Gray3}">
+                                <GeometryDrawing.Geometry>
+                                    <GeometryGroup>
+                                        <GeometryGroup.Children>
+                                            <RectangleGeometry Rect="0,0,1,1" />
+                                            <RectangleGeometry Rect="4,0,1,1" />
+                                            <RectangleGeometry Rect="2,2,1,1" />
+                                        </GeometryGroup.Children>
+                                    </GeometryGroup>
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Border>
         <util:FloatExpander x:Name="Expander" Grid.RowSpan="2" 
                             Background="{DynamicResource TitleBackgroundBrush}" 
                             util:ControlAttachProperty.ContentForeground="{DynamicResource TitleForegroundBrush}" 
                             ExpandDirection="Up"
                             BorderThickness="0">
-            <Grid >
+            <StackPanel Orientation="Horizontal">
                 <Menu x:Name="TopMenuControl"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
@@ -65,7 +102,21 @@
                     Foreground="{DynamicResource TitleForegroundBrush}"
                     Style="{StaticResource LeftMetroMenu}" 
                     Visibility="{Binding ElementName=Expander,Path=ExpandDirection,Converter={converter:StringToVisibilityConverter},ConverterParameter='Left^Right'}"/>
-            </Grid>
+                <Button Background="Transparent" 
+                    ToolTip="退出全屏"
+                    Foreground="{DynamicResource TitleForegroundBrush}" 
+                    Command="{Binding KeyExcuteCommand}" 
+                    CommandParameter="EscapeFullScreen"
+                    IsTabStop="False" 
+                    Style="{StaticResource PathButtonStyle}"
+                    Width="24"
+                    Height="24"
+                    util:ControlAttachProperty.Geometry="{StaticResource Exit}" 
+                    util:ControlAttachProperty.CornerRadius="2"
+                    BorderThickness="1,0,1,0" 
+                    util:ControlAttachProperty.Width="20" 
+                    util:ControlAttachProperty.Height="10"/>
+            </StackPanel>
         </util:FloatExpander>
        
     </Grid>

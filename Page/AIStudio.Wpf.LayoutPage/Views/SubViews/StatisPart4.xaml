@@ -13,8 +13,8 @@
                           TicksForeground="{DynamicResource MahApps.Brushes.ThemeBackground}" 
                           FontWeight="Bold" FontSize="16"
                           SectionsInnerRadius=".65"
-                          Background="{DynamicResource MahApps.Brushes.ThemeBackground}"
-                          Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}">
+                          Background="{DynamicResource TileBackgroundBrush}"
+                          Foreground="{DynamicResource TileTitleBrush}">
             <lvc:AngularGauge.Sections>
                 <lvc:AngularSection FromValue="0" ToValue="60" Fill="#F8A725"/>
                 <lvc:AngularSection FromValue="60" ToValue="100" Fill="#FF3939"/>

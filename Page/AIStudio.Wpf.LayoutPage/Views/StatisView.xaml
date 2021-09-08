@@ -4,16 +4,37 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:utilpanel="https://astudio.github.io/utilpanel"
+             xmlns:util="https://astudio.github.io/utilcontrol"
              xmlns:subview="clr-namespace:AIStudio.Wpf.LayoutPage.Views.SubViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid x:Name="grid">
-        <utilpanel:TilePanel utilpanel:TilePanel.SizeParent="{Binding ElementName=grid}" Size="3,6">
-            <subview:StatisPart1 DataContext="{Binding StatisPart1ViewModel}" utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2" />
-            <subview:StatisPart2 DataContext="{Binding StatisPart2ViewModel}" utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2" />
-            <subview:StatisPart3 DataContext="{Binding StatisPart3ViewModel}" utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2" />
-            <subview:StatisPart4 DataContext="{Binding StatisPart4ViewModel}" utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2" />
-            <subview:StatisPart5 DataContext="{Binding StatisPart5ViewModel}" utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2" />
+    <UserControl.Resources>
+        <DataTemplate x:Key="head">
+            <TextBlock HorizontalAlignment="Center" Text="{Binding}" Foreground="{DynamicResource TileTitleBrush}" Margin="10"/>
+        </DataTemplate>
+        <Style TargetType="{x:Type util:Card}" BasedOn="{StaticResource DefaultCardStyle}">
+            <Setter Property="util:ShadowAssist.ShadowDepth" Value="Depth0"/>
+            <Setter Property="Background" Value="{DynamicResource TileBackgroundBrush}"/>
+            <Setter Property="HeaderTemplate" Value="{StaticResource head}"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid x:Name="grid" Background="{DynamicResource TileWindowBrush}">
+        <utilpanel:TilePanel utilpanel:TilePanel.SizeParent="{Binding ElementName=grid}" Size="3,6" Margin="6">
+            <util:Card Header="标题1" utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2">
+                <subview:StatisPart1 DataContext="{Binding StatisPart1ViewModel}"  />
+            </util:Card>
+            <util:Card utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2">
+                <subview:StatisPart2 DataContext="{Binding StatisPart2ViewModel}" />
+            </util:Card>
+            <util:Card utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2">
+                <subview:StatisPart3 DataContext="{Binding StatisPart3ViewModel}" />
+            </util:Card>
+            <util:Card utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2">
+                <subview:StatisPart4 DataContext="{Binding StatisPart4ViewModel}" />
+            </util:Card>
+            <util:Card utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2">
+                <subview:StatisPart5 DataContext="{Binding StatisPart5ViewModel}" />
+            </util:Card>
         </utilpanel:TilePanel>
     </Grid>
 </UserControl>

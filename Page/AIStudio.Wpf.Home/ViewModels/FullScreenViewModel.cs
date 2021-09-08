@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Util.Controls;
 
 namespace AIStudio.Wpf.Home.ViewModels
 {
@@ -19,14 +20,8 @@ namespace AIStudio.Wpf.Home.ViewModels
 
         }
 
-        public override void OnNavigatedTo(NavigationContext navigationContext)
+        protected override void SetRegionName()
         {
-            var identifier = navigationContext.Parameters["Identifier"] as string;
-            if (!string.IsNullOrEmpty(identifier))
-            {
-                Identifier = identifier;
-            }
-
             RegionName = AIStudio.Core.RegionName.SingleContentRegion + "_" + Identifier;
         }
 

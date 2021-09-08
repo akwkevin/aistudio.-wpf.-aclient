@@ -94,4 +94,20 @@
     <SolidColorBrush o:Freeze="True" x:Key="DarkMaskBrush" Color="{DynamicResource DarkMaskColor}"/>
     <SolidColorBrush o:Freeze="True" x:Key="DarkOpacityBrush" Color="{DynamicResource DarkOpacityColor}"/>
 
+    <Color x:Key="TileWindowColor">#0a023a</Color>
+    <Color x:Key="TileBackgroundColor">#140b4a</Color>  
+    <Color x:Key="TileForegroundColor">#317595</Color>
+    <Color x:Key="TileTitleColor">#bbd3e6</Color>
+    <Color x:Key="TileChartColor1">#2f89cf</Color>
+    <Color x:Key="TileChartColor2">#46d000</Color>
+    <Color x:Key="TileChartColor3">#ffab6f</Color>
+
+    <SolidColorBrush o:Freeze="True" x:Key="TileWindowBrush" Color="{DynamicResource TileWindowColor}"/>
+    <SolidColorBrush o:Freeze="True" x:Key="TileBackgroundBrush" Color="{DynamicResource TileBackgroundColor}"/>
+    <SolidColorBrush o:Freeze="True" x:Key="TileForegroundBrush" Color="{DynamicResource TileForegroundColor}"/>
+    <SolidColorBrush o:Freeze="True" x:Key="TileTitleBrush" Color="{DynamicResource TileTitleColor}"/>
+    <SolidColorBrush o:Freeze="True" x:Key="TileChartBrush1" Color="{DynamicResource TileChartColor1}"/>
+    <SolidColorBrush o:Freeze="True" x:Key="TileChartBrush2" Color="{DynamicResource TileChartColor2}"/>
+    <SolidColorBrush o:Freeze="True" x:Key="TileChartBrush3" Color="{DynamicResource TileChartColor3}"/>
+
 </ResourceDictionary>

@@ -9,8 +9,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <lvc:CartesianChart Series="{Binding SeriesCollection}" 
-                        Background="{DynamicResource MahApps.Brushes.ThemeBackground}"
-                        Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}">
+                        Background="{DynamicResource TileBackgroundBrush}"
+                        Foreground="{DynamicResource TileTitleBrush}">
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis LabelFormatter="{Binding YFormatter}"></lvc:Axis>
             </lvc:CartesianChart.AxisY>
