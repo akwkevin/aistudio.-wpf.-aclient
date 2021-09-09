@@ -12,27 +12,60 @@
         <DataTemplate x:Key="head">
             <TextBlock HorizontalAlignment="Center" Text="{Binding}" Foreground="{DynamicResource TileTitleBrush}" Margin="10"/>
         </DataTemplate>
-        <Style TargetType="{x:Type util:Card}" BasedOn="{StaticResource DefaultCardStyle}">
+        <Style TargetType="{x:Type util:Card}" BasedOn="{StaticResource DefaultFocusCardStyle}">
             <Setter Property="util:ShadowAssist.ShadowDepth" Value="Depth0"/>
             <Setter Property="Background" Value="{DynamicResource TileBackgroundBrush}"/>
             <Setter Property="HeaderTemplate" Value="{StaticResource head}"/>
         </Style>
+        <Style x:Key="title" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="{DynamicResource TileTitleBrush}"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="content" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="{DynamicResource TileForegroundBrush}"/>
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
     </UserControl.Resources>
     <Grid x:Name="grid" Background="{DynamicResource TileWindowBrush}">
-        <utilpanel:TilePanel utilpanel:TilePanel.SizeParent="{Binding ElementName=grid}" Size="3,6" Margin="6">
-            <util:Card Header="标题1" utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2">
+        <utilpanel:TilePanel utilpanel:TilePanel.SizeParent="{Binding ElementName=grid}" Size="9,9" Margin="6">
+            <util:Card Header="标题1" utilpanel:TilePanel.WidthPix="3" utilpanel:TilePanel.HeightPix="3">
                 <subview:StatisPart1 DataContext="{Binding StatisPart1ViewModel}"  />
             </util:Card>
-            <util:Card utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2">
+            <util:Card utilpanel:TilePanel.WidthPix="3" utilpanel:TilePanel.HeightPix="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="我的任务" Style="{StaticResource title}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="4000" Style="{StaticResource content}"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="我的任务" Style="{StaticResource title}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="4000" Style="{StaticResource content}"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="我的任务" Style="{StaticResource title}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="4000" Style="{StaticResource content}"/>
+                </Grid>
+            </util:Card>
+            <util:Card utilpanel:TilePanel.WidthPix="3" utilpanel:TilePanel.HeightPix="3">
                 <subview:StatisPart2 DataContext="{Binding StatisPart2ViewModel}" />
             </util:Card>
-            <util:Card utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2">
+            <util:Card utilpanel:TilePanel.WidthPix="4" utilpanel:TilePanel.HeightPix="3">
                 <subview:StatisPart3 DataContext="{Binding StatisPart3ViewModel}" />
             </util:Card>
-            <util:Card utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2">
+            <util:Card utilpanel:TilePanel.WidthPix="3" utilpanel:TilePanel.HeightPix="3">
                 <subview:StatisPart4 DataContext="{Binding StatisPart4ViewModel}" />
             </util:Card>
-            <util:Card utilpanel:TilePanel.WidthPix="1" utilpanel:TilePanel.HeightPix="2">
+            <util:Card utilpanel:TilePanel.WidthPix="3" utilpanel:TilePanel.HeightPix="3">
                 <subview:StatisPart5 DataContext="{Binding StatisPart5ViewModel}" />
             </util:Card>
         </utilpanel:TilePanel>

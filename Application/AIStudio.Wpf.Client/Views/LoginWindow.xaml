@@ -158,44 +158,45 @@
                     Text="{Binding Version}"
                     Foreground="{DynamicResource MahApps.Brushes.SystemControlBackgroundChromeWhite}"/>
         </Grid>
-        <Border CornerRadius="15">
-            <Grid x:Name="VerifyGrid"  >
-                <util:SliderVerify x:Name="Slider" Visibility="{Binding LoginStatus, Converter={converter:StringToVisibilityConverter}, ConverterParameter='Slider'}">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="ResultChanged">
-                            <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result, ElementName=Slider}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </util:SliderVerify>
-                <util:TextClickVerify x:Name="TextClick" Visibility="{Binding LoginStatus, Converter={converter:StringToVisibilityConverter}, ConverterParameter='TextClick'}">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="ResultChanged">
-                            <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result, ElementName=TextClick}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </util:TextClickVerify>
-                <util:TextClickVerify x:Name="EmojiClick" Visibility="{Binding LoginStatus, Converter={converter:StringToVisibilityConverter}, ConverterParameter='EmojiClick'}">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="ResultChanged">
-                            <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result, ElementName=EmojiClick}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </util:TextClickVerify>
-                <util:TextClickVerify x:Name="IdiomsClick" Visibility="{Binding LoginStatus, Converter={converter:StringToVisibilityConverter}, ConverterParameter='IdiomsClick'}">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="ResultChanged">
-                            <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result, ElementName=IdiomsClick}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </util:TextClickVerify>
-                <util:DragVerify x:Name="Drag" Visibility="{Binding LoginStatus, Converter={converter:StringToVisibilityConverter}, ConverterParameter='Drag'}">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="ResultChanged">
-                            <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result, ElementName=Drag}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </util:DragVerify>
-            </Grid>
-        </Border>
+        <Grid x:Name="VerifyGrid">
+            <Grid.Clip>
+                <RectangleGeometry RadiusX="15" RadiusY="15" Rect="0,0,700,400"/>
+            </Grid.Clip>
+            <util:SliderVerify x:Name="Slider" Visibility="{Binding LoginStatus, Converter={converter:StringToVisibilityConverter}, ConverterParameter='Slider'}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="ResultChanged">
+                        <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result, ElementName=Slider}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </util:SliderVerify>
+            <util:TextClickVerify x:Name="TextClick" Visibility="{Binding LoginStatus, Converter={converter:StringToVisibilityConverter}, ConverterParameter='TextClick'}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="ResultChanged">
+                        <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result, ElementName=TextClick}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </util:TextClickVerify>
+            <util:TextClickVerify x:Name="EmojiClick" Visibility="{Binding LoginStatus, Converter={converter:StringToVisibilityConverter}, ConverterParameter='EmojiClick'}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="ResultChanged">
+                        <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result, ElementName=EmojiClick}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </util:TextClickVerify>
+            <util:TextClickVerify x:Name="IdiomsClick" Visibility="{Binding LoginStatus, Converter={converter:StringToVisibilityConverter}, ConverterParameter='IdiomsClick'}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="ResultChanged">
+                        <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result, ElementName=IdiomsClick}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </util:TextClickVerify>
+            <util:DragVerify x:Name="Drag" Visibility="{Binding LoginStatus, Converter={converter:StringToVisibilityConverter}, ConverterParameter='Drag'}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="ResultChanged">
+                        <i:InvokeCommandAction Command="{Binding ResultChangedComamnd}" CommandParameter="{Binding Path=Result, ElementName=Drag}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </util:DragVerify>
+        </Grid>
     </Grid>
 </util:WindowBase>
