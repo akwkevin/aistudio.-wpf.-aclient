@@ -687,13 +687,13 @@ namespace AIStudio.Wpf.Home.ViewModels
 
                         if (key == "FullScreen")
                         {
-                            window.ShowTitleBar = false;
-                            window.ShowInTaskbar = false;
+                            WindowBase.SetWindowStatus("ShowTitleBar", Identifier, false);
+                            WindowBase.SetWindowStatus("ToggleFullScreen", Identifier, true);
                         }
                         else
                         {
-                            window.ShowTitleBar = true;
-                            window.ShowInTaskbar = true;
+                            WindowBase.SetWindowStatus("ShowTitleBar", Identifier, true);
+                            WindowBase.SetWindowStatus("ToggleFullScreen", Identifier, false); 
                         }
                         break;
                     }

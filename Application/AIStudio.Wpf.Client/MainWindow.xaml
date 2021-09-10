@@ -15,6 +15,7 @@
     CaptionForeground="{DynamicResource TitleForegroundBrush}"
     CaptionHeight="36"
     Icon="A.ico"
+    Topmost="True"
     Identifier="{Binding Identifier}"
     Style="{StaticResource BaseWindowStyle}"
     mc:Ignorable="d">

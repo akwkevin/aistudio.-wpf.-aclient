@@ -33,11 +33,6 @@
                 <Setter Property="FontFamily" Value="{DynamicResource MahApps.Fonts.Family.Control}" />
             </Style>
 
-            <Style TargetType="{x:Type util:FButton}">
-                <Style.Setters>
-                    <Setter Property="FIconSize" Value="{DynamicResource MahApps.Font.Size.Button}" />
-                </Style.Setters>
-            </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
