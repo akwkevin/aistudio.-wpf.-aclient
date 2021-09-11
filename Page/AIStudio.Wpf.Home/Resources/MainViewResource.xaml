@@ -157,6 +157,28 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="VerticalMenuItemStyle" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource LeftMetroMenuItem}">
+        <Setter Property="MenuItem.Icon" Value="{x:Null}"/>
+        <!--<Setter Property="MenuItem.Header" Value="{Binding Header}"/>-->
+        <Setter Property="MenuItem.Command" Value="{Binding Command}"/>
+        <Setter Property="MenuItem.CommandParameter" Value="{Binding .}"/>
+        <Setter Property="util:ControlAttachProperty.PopupBackground" Value="{Binding Path=(util:ControlAttachProperty.PopupBackground),RelativeSource={RelativeSource AncestorType={x:Type Menu},Mode=FindAncestor}}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="MinHeight" Value="25" />
+        <Style.Triggers>
+            <!-- insert a null in ItemsSource if you want a separator -->
+            <DataTrigger Binding="{Binding}" Value="{x:Null}">
+                <Setter Property="Template" >
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Separator Style="{StaticResource {x:Static MenuItem.SeparatorStyleKey}}"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
     <!--顶部菜单栏-->
     <HierarchicalDataTemplate x:Key="MenuItemDataTemplate" DataType="{x:Type util:HamburgerTreeMenuGlyphItem}" ItemsSource="{Binding Path=Children}">
         <Grid>

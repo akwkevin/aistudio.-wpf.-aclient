@@ -12,13 +12,13 @@
                       Background="{DynamicResource TileBackgroundBrush}"
                       Foreground="{DynamicResource TileTitleBrush}">
             <lvc:PieChart.Series>
-                <lvc:PieSeries Title="Maria" Values="3" DataLabels="True"
+                <lvc:PieSeries Title="正常" Values="3" DataLabels="True"
                                LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Charles" Values="4" DataLabels="True" 
+                <lvc:PieSeries Title="紧急" Values="4" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Frida" Values="6" DataLabels="True" 
+                <lvc:PieSeries Title="超时" Values="6" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Frederic" Values="2" DataLabels="True" 
+                <lvc:PieSeries Title="延期" Values="2" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
             </lvc:PieChart.Series>
         </lvc:PieChart>

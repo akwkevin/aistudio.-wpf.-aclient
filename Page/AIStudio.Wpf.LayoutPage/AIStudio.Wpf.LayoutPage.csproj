@@ -20,6 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\SubViews\StatisPart7.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SubViews\StatisPart6.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\SubViews\StatisPart5.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -35,6 +41,14 @@
     </Page>
     <Page Update="Views\3DShowcaseView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\SubViews\StatisPart7.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SubViews\StatisPart6.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SubViews\StatisPart5.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
