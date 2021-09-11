@@ -258,7 +258,6 @@ namespace AIStudio.Wpf.Home.ViewModels
 
             LocalSetting.SettingChanged += SettingChanged;
 
-            _aggregator.GetEvent<SelectedDocumentEvent>().Subscribe(SelectedDocumentEventReceived);
             _aggregator.GetEvent<MenuExcuteEvent>().Subscribe(MenuExcuteEventReceived, (ev) => { return ev.Item1 == Identifier; });
         }
 
@@ -760,11 +759,10 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 WindowBase.ShowMessageQueue($"{result.Context.Uri.ToString()}打开失败", Identifier);
             }
-        }
-
-        private void SelectedDocumentEventReceived(string title)
-        {
-            Title = title;
+            else
+            {
+                Title = result.Context.Parameters["Title"] as string;
+            }
         }
 
         private void Search(AMenuItem item)

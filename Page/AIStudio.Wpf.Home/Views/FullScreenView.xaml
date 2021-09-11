@@ -45,7 +45,7 @@
                     util:ControlAttachProperty.Height="10"/>
             </StackPanel>
 
-            <TextBlock x:Name="Text" Text="{Binding Title}" VerticalAlignment="Center"/>
+            <TextBlock x:Name="Text" Text="{Binding Title}" FontSize="{DynamicResource MahApps.Font.Size.Window.Title}" Margin="5" VerticalAlignment="Center"/>
             
         </DockPanel>
         <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{Binding RegionName}" Margin="1"/>
@@ -77,7 +77,9 @@
         </Border>
         <util:FloatExpander x:Name="Expander" Grid.RowSpan="2" 
                             Background="{DynamicResource TitleBackgroundBrush}" 
-                            util:ControlAttachProperty.ContentForeground="{DynamicResource TitleForegroundBrush}" 
+                            Foreground="{DynamicResource TitleForegroundBrush}" 
+                            EscCommand="{Binding KeyExcuteCommand}"
+                            EscCommandParameter="EscapeFullScreen"
                             ExpandDirection="Up"
                             BorderThickness="0">
             <StackPanel Orientation="Horizontal">
@@ -94,7 +96,7 @@
                 <Menu x:Name="LeftMenuControl"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
-                    ItemContainerStyle="{StaticResource LeftMenuItemStyle}" 
+                    ItemContainerStyle="{StaticResource VerticalMenuItemStyle}" 
                     ItemsSource="{Binding MenuItems}"
                     ItemTemplate="{StaticResource LeftHamburgerMenuImageItem}" 
                     Background="Transparent"
@@ -102,20 +104,6 @@
                     Foreground="{DynamicResource TitleForegroundBrush}"
                     Style="{StaticResource LeftMetroMenu}" 
                     Visibility="{Binding ElementName=Expander,Path=ExpandDirection,Converter={converter:StringToVisibilityConverter},ConverterParameter='Left^Right'}"/>
-                <Button Background="Transparent" 
-                    ToolTip="退出全屏"
-                    Foreground="{DynamicResource TitleForegroundBrush}" 
-                    Command="{Binding KeyExcuteCommand}" 
-                    CommandParameter="EscapeFullScreen"
-                    IsTabStop="False" 
-                    Style="{StaticResource PathButtonStyle}"
-                    Width="24"
-                    Height="24"
-                    util:ControlAttachProperty.Geometry="{StaticResource Exit}" 
-                    util:ControlAttachProperty.CornerRadius="2"
-                    BorderThickness="1,0,1,0" 
-                    util:ControlAttachProperty.Width="20" 
-                    util:ControlAttachProperty.Height="10"/>
             </StackPanel>
         </util:FloatExpander>
        
