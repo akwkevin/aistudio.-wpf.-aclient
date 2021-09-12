@@ -5,7 +5,7 @@
 #### 介绍
 Wpf客户端，AIStudio.Wpf.AClient
 
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0316/221638_6edc08d9_4799126.png "809298-20210314215728859-1650551509.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0912/103135_62e8a695_4799126.png "屏幕截图.png")
 
 
 #### 软件架构
@@ -65,7 +65,7 @@ Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.ex
 #### 登录界面
 
 快速预览方式可直接在登录界面进行切换。
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0829/155127_88a0408b_4799126.png "屏幕截图.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0912/103100_da651bd2_4799126.png "屏幕截图.png")
 
 ####  **框架截图** 
 
@@ -106,6 +106,9 @@ protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
 3.点击生成即可，重新启动客户端即可快速预览（前提是服务端也用代码生成器生成(在web端的代码生成器)了相应的控制器与接口）
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0829/172904_ed6373e9_4799126.png "屏幕截图.png")
+
+#### 最新开发的大屏界面
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0912/103244_4abe087a_4799126.png "屏幕截图.png")
 
 #### 技术交流
 个人QQ:80267720
