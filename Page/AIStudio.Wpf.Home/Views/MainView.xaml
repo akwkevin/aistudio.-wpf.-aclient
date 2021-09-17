@@ -169,14 +169,13 @@
 
                                 <Button Background="Transparent" 
                                             ToolTip="全屏"
-                                            Foreground="{DynamicResource MahApps.Brushes.Text}" 
                                             Command="{Binding KeyExcuteCommand}" 
                                             CommandParameter="FullScreen"
                                             IsTabStop="False" 
                                             Style="{StaticResource PathButtonStyle}"
                                             Width="46"
                                             VerticalAlignment="Stretch"
-                                            util:ControlAttachProperty.Geometry="{StaticResource FullScreen}" 
+                                            util:ControlAttachProperty.Geometry="{StaticResource FullScreenGeometry}" 
                                             BorderThickness="1,0,1,0" 
                                             util:ControlAttachProperty.Width="10" 
                                             util:ControlAttachProperty.Height="10"/>

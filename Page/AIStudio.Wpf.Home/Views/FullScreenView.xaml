@@ -32,14 +32,13 @@
             <StackPanel Margin="0,0,138,0" Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right" >
                 <Button Background="Transparent" 
                     ToolTip="退出全屏"
-                    Foreground="{DynamicResource MahApps.Brushes.Text}" 
                     Command="{Binding KeyExcuteCommand}" 
                     CommandParameter="EscapeFullScreen"
                     IsTabStop="False" 
                     Style="{StaticResource PathButtonStyle}"
                     Width="46"
                     VerticalAlignment="Stretch"
-                    util:ControlAttachProperty.Geometry="{StaticResource EscapeFullScreen}" 
+                    util:ControlAttachProperty.Geometry="{StaticResource EscapeFullScreenGeometry}" 
                     BorderThickness="1,0,1,0" 
                     util:ControlAttachProperty.Width="10" 
                     util:ControlAttachProperty.Height="10"/>
