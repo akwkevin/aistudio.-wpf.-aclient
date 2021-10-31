@@ -31,14 +31,14 @@ using Unity.Interception.ContainerIntegration;
 using Unity.Interception.Interceptors.InstanceInterceptors.InterfaceInterception;
 using Unity.Interception.PolicyInjection;
 using Xceed.Wpf.AvalonDock;
-
+using Dataforge.PrismAvalonExtensions;
 
 namespace AIStudio.Wpf.Client
 {
     /// <summary>
     /// App.xaml 的交互逻辑
     /// </summary>
-    public partial class App : PrismApplication
+    public partial class App : MyPrismApplication
     {
         public App()
         {

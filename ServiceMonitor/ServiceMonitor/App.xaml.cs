@@ -2,6 +2,7 @@
 using AIStudio.LocalConfiguration;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Service.AppClient.HttpClients;
+using Dataforge.PrismAvalonExtensions;
 using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Unity;
@@ -18,7 +19,7 @@ namespace ServiceMonitor
     /// <summary>
     /// App.xaml 的交互逻辑
     /// </summary>
-    public partial class App : PrismApplication
+    public partial class App : MyPrismApplication
     {
         public App()
         {

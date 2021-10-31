@@ -1,8 +1,8 @@
-﻿<prism:PrismApplication
+﻿<prism:MyPrismApplication
     x:Class="AIStudio.Wpf.Client.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:prism="http://prismlibrary.com/">
+    xmlns:prism="clr-namespace:Dataforge.PrismAvalonExtensions;assembly=Dataforge.PrismAvalonExtensions">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -24,4 +24,4 @@
 
         </ResourceDictionary>
     </Application.Resources>
-</prism:PrismApplication>
+</prism:MyPrismApplication>
