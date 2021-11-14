@@ -15,9 +15,9 @@ Wpf客户端，AIStudio.Wpf.AClient
 
 其它技术特点：AOP,MAP
 
-网页客户端浏览地址http://121.36.12.76:5001/
+网页客户端浏览地址http://121.36.12.76:5001/ **(抱歉，已过期，请使用本地启动)** 
 （账号密码：Admin，Admin）
-接口浏览地址http://121.36.12.76:5000/swagger/index.html
+接口浏览地址http://121.36.12.76:5000/swagger/index.html**(抱歉，已过期，请使用本地启动)** 
 
 #### 快速预览
 Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.exe.Config
@@ -41,7 +41,7 @@ Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.ex
 ```
 
 
- **快速预览方式1：** 其中ServerIP就是后台接口地址，http://121.36.12.76:5000可直接使用。
+ **快速预览方式1：** 其中ServerIP就是后台接口地址，http://121.36.12.76:5000可直接使用。**(抱歉，已过期，请使用本地启动)** 
 
 账号密码：Admin，Admin。
 
