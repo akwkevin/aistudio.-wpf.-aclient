@@ -11,7 +11,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
 
-                <ResourceDictionary Source="pack://application:,,,/Util.Controls;component/Style/Style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Util.Controls;component/Themes/Generic.xaml"/>
 
                 <ResourceDictionary Source="/AIStudio.Resource;component/Themes/Generic.xaml" />
 
