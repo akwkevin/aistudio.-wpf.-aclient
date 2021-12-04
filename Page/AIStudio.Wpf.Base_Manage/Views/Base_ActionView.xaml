@@ -35,7 +35,8 @@
                   ScrollViewer.CanContentScroll="True"
                   EnableRowVirtualization="True"
                   AutoGenerateColumns="False"
-                  CanUserAddRows="False">
+                  CanUserAddRows="False"
+                  Foreground="{DynamicResource MahApps.Brushes.Text}">
             <i:Interaction.Behaviors>
                 <core:SelectAllBahavior InitialState="False"/>
             </i:Interaction.Behaviors>

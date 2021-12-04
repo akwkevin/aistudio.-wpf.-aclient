@@ -38,7 +38,7 @@ namespace AIStudio.Wpf.Entity.DTOModels
             }
         }
 
-        public string permissionListJson { get; set; }
+        public List<Base_ActionDTO> permissionList { get; set; }
 
         private bool isReadOnly = true;
         public bool IsReadOnly

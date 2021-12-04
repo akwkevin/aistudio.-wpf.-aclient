@@ -118,7 +118,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 {
                     ShowWait();
                     viewmodel.Data.ParentId = viewmodel.SelectedParent?.ParentId;
-                    viewmodel.Data.permissionListJson = JsonConvert.SerializeObject(viewmodel.PermissionList);
+                    viewmodel.Data.permissionList = new List<Base_ActionDTO>(viewmodel.PermissionList);
                     var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Action/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                     if (!result.Success)
                     {
