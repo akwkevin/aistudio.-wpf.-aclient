@@ -30,5 +30,14 @@ namespace Dataforge.PrismAvalonExtensions.ViewModels
         {
 
         }
+
+        public override void Dispose()
+        {
+            if (TabItemNumber > 0)
+            {
+                TabItemNumber--;
+            }
+            base.Dispose();
+        }
     }
 }
