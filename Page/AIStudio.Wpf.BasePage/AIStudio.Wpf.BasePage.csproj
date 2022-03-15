@@ -26,7 +26,7 @@
     <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
     <PackageReference Include="Prism.Unity" Version="8.1.97" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
-    <PackageReference Include="Util.Controls" Version="1.6.5" />
+    <PackageReference Include="Util.Controls" Version="1.6.6" />
     <PackageReference Include="Util.Svg2XamlTestExtension" Version="1.2.7" />
     <PackageReference Include="AutoMapper">
       <Version>10.0.0</Version>
