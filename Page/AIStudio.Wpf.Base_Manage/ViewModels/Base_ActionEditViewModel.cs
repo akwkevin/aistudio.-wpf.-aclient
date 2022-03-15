@@ -76,12 +76,20 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             if (dataTree == null)
             {
-                Data = new Base_ActionDTO();
+                
+                InitData();
             }
             else
             {
                 GetData(dataTree);
             }
+        }
+
+        protected override async void InitData()
+        {
+            Data = new Base_ActionDTO();
+            await GetParentIdTreeData();
+            PermissionList = new ObservableCollection<Base_ActionDTO>();
         }
 
         protected async void GetData(Base_ActionTree dataTree)
