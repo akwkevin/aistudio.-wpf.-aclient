@@ -48,7 +48,7 @@
             
         </DockPanel>
         <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{Binding RegionName}" Margin="1"/>
-        <Border Margin="0 3 0 3" Cursor="SizeAll" Grid.Row="1" SnapsToDevicePixels="True" util:WindowBase.TitleTag="true">
+        <Border Margin="0 3 0 3" Cursor="SizeAll" Grid.Row="1" SnapsToDevicePixels="True" util:WindowBase.TitleTag="true" HorizontalAlignment="Left">
             <Rectangle Width="4.9">
                 <Rectangle.Fill>
                     <!--  Brush similar to visual studio, can be improved  -->
