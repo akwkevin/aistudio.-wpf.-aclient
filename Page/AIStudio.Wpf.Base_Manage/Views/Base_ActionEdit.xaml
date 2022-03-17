@@ -80,8 +80,8 @@
                                         </TextBlock>
                                     </HeaderedContentControl.Header>
                                     <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                                        <RadioButton IsChecked="{Binding NeedAction, Converter={converter:ConverterValueMapToBool}, ConverterParameter=False}">否</RadioButton>
-                                        <RadioButton IsChecked="{Binding NeedAction, Converter={converter:ConverterValueMapToBool}, ConverterParameter=True}" Margin="5,0,0,0">是</RadioButton>
+                                        <RadioButton IsChecked="True">否</RadioButton>
+                                        <RadioButton IsChecked="{Binding NeedAction}" Margin="5,0,0,0">是</RadioButton>
                                     </StackPanel>
                                 </HeaderedContentControl>
                                 <HeaderedContentControl Style="{StaticResource LeftFormItemStyle}">

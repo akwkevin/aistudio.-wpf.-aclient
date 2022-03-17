@@ -43,7 +43,7 @@ namespace AIStudio.Core.Converters
             if (object.Equals(value, parameter))
                 return true;
 
-            return string.Equals(value.ToString(), parameter.ToString());
+            return string.Equals(value.ToString().ToLower(), parameter.ToString().ToLower());
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
