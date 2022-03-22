@@ -119,30 +119,30 @@
                                   AutoGenerateColumns="False"
                                   CanUserAddRows="False">
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Header="权限名"  Binding="{Binding Name}">
-                                                <DataGridTextColumn.CellStyle>
-                                                    <Style BasedOn="{StaticResource MahApps.Styles.DataGridCell}" TargetType="{x:Type DataGridCell}">
-                                                        <Setter Property="IsEnabled" Value="False"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding IsReadOnly}" Value="False">
-                                                                <Setter Property="IsEnabled" Value="True"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </DataGridTextColumn.CellStyle>
-                                            </DataGridTextColumn>
-                                            <DataGridTextColumn Header="权限值(唯一)"  Binding="{Binding Value}" >
-                                                <DataGridTextColumn.CellStyle>
-                                                    <Style BasedOn="{StaticResource MahApps.Styles.DataGridCell}" TargetType="{x:Type DataGridCell}">
-                                                        <Setter Property="IsEnabled" Value="False"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding IsReadOnly}" Value="False">
-                                                                <Setter Property="IsEnabled" Value="True"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </DataGridTextColumn.CellStyle>
-                                            </DataGridTextColumn>
+                                            <DataGridTemplateColumn Header="权限名" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox Text="{Binding Name}" IsHitTestVisible="False" BorderThickness="0" FontSize="11" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                                <DataGridTemplateColumn.CellEditingTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox Text="{Binding Name}" IsReadOnly="{Binding IsReadOnly}" BorderThickness="0" FontSize="11"/>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellEditingTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="权限值(唯一)" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox Text="{Binding Value}" IsHitTestVisible="False" BorderThickness="0" FontSize="11" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                                <DataGridTemplateColumn.CellEditingTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox Text="{Binding Value}" IsReadOnly="{Binding IsReadOnly}" BorderThickness="0" FontSize="11"/>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellEditingTemplate>
+                                            </DataGridTemplateColumn>
                                             <DataGridTemplateColumn Header="操作" Width="*">
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>

@@ -76,7 +76,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             if (dataTree == null)
             {
-                
+
                 InitData();
             }
             else
@@ -99,7 +99,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
                 control.WaitInfo = "正在获取数据";
 
-                var result = await _dataProvider.GetData<Base_ActionDTO>($"/Base_Manage/Base_Action/GetTheData", JsonConvert.SerializeObject(new { id = dataTree.Id}));
+                var result = await _dataProvider.GetData<Base_ActionDTO>($"/Base_Manage/Base_Action/GetTheData", JsonConvert.SerializeObject(new { id = dataTree.Id }));
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);
@@ -135,7 +135,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetPermissionList()
         {
-            var result = await _dataProvider.GetData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetPermissionList", JsonConvert.SerializeObject(new {parentId=Data.Id}));
+            var result = await _dataProvider.GetData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetPermissionList", JsonConvert.SerializeObject(new { parentId = Data.Id }));
             if (!result.Success)
             {
                 throw new Exception(result.Msg);
@@ -168,7 +168,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private void Add()
         {
-            PermissionList.Add(new Base_ActionDTO() { Name = "权限名", Value = "权限值", ParentId = Data?.Id, Type = 2, IsReadOnly = false });
+            PermissionList.Add(new Base_ActionDTO() { Name = "权限名", Value = $"权限值{PermissionList.Count + 1}", ParentId = Data?.Id, Type = 2, IsReadOnly = false });
         }
 
         private void Edit(Base_ActionDTO para)

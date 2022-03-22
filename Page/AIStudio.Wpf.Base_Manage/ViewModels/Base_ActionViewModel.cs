@@ -108,6 +108,11 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             {
                 if (!string.IsNullOrEmpty(viewmodel.Data.Error))
                     return false;
+                else if (viewmodel.PermissionList.GroupBy(p => p.Value).Where(q => q.Count() > 1).Count() >= 1)
+                {
+                    MessageBox.Show("权限值不能有重复值");
+                    return false;
+                }
                 else
                     return true;
             });
