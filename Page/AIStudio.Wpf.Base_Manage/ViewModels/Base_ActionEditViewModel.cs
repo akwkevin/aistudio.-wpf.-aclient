@@ -158,7 +158,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 {
                     if (data.Children != null)
                     {
-                        return GetTreeItem(data.Children, id);
+                        var child = GetTreeItem(data.Children, id);
+                        if (child != null)
+                            return child;
                     }
                 }
             }
