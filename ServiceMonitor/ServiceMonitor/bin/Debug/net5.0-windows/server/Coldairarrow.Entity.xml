@@ -185,6 +185,96 @@
             权限Id
             </summary>
         </member>
+        <member name="T:Coldairarrow.Entity.Base_Manage.Base_Test">
+            <summary>
+            Base_Test
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.Id">
+            <summary>
+            自然主键
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.ParentId">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.Type">
+            <summary>
+            类型,菜单=0,页面=1,权限=2
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.Name">
+            <summary>
+            权限名/菜单名
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.Url">
+            <summary>
+            菜单地址
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.Value">
+            <summary>
+            权限值
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.NeedTest">
+            <summary>
+            是否需要权限(仅页面有效)
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.Deleted">
+            <summary>
+            否已删除
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.ModifyTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.CreatorId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.CreatorName">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.ModifyId">
+            <summary>
+            修改人Id
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.ModifyName">
+            <summary>
+            修改人
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Test.TenantId">
+            <summary>
+            租户Id
+            </summary>
+        </member>
         <member name="T:Coldairarrow.Entity.Base_Manage.Base_User">
             <summary>
             系统用户表
