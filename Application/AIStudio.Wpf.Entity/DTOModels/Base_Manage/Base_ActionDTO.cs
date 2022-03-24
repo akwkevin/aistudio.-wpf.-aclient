@@ -10,7 +10,47 @@ namespace AIStudio.Wpf.Entity.DTOModels
     public partial class Base_ActionDTO : Base_Action, INotifyPropertyChanged, IIsChecked
     {
         [Required(ErrorMessage = "请输入菜单名")]
-        public new string Name { get; set; }
+        private string _name;
+        public new string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (value != _name)
+                {
+                    _name = value;
+                    RaisePropertyChanged("Name");
+                }
+            }
+        }
+
+        private string _value;
+        public new string Value
+        {
+            get { return _value; }
+            set
+            {
+                if (value != _value)
+                {
+                    _value = value;
+                    RaisePropertyChanged("Value");
+                }
+            }
+        }
+
+        private int _type;
+        public new int Type
+        {
+            get { return _type; }
+            set
+            {
+                if (value != _type)
+                {
+                    _type = value;
+                    RaisePropertyChanged("Type");
+                }
+            }
+        }
 
         private bool isChecked;
         public bool IsChecked
@@ -24,7 +64,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
                     RaisePropertyChanged("IsChecked");
                 }
             }
-        }        
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

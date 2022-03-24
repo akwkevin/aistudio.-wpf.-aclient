@@ -107,7 +107,6 @@
                                     <DataGrid Grid.Row="1" x:Name="table" ItemsSource="{Binding PermissionList}"
                                   Margin="3"
                                   Height="108"
-                                  IsReadOnly="False"
                                   BorderThickness="1"
                                   BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
                                   GridLinesVisibility="All"
@@ -122,24 +121,24 @@
                                             <DataGridTemplateColumn Header="权限名" >
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <TextBox Text="{Binding Name}" IsHitTestVisible="False" BorderThickness="0" FontSize="11" />
+                                                        <TextBlock Text="{Binding Name}" FontSize="11" />
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellTemplate>
                                                 <DataGridTemplateColumn.CellEditingTemplate>
                                                     <DataTemplate>
-                                                        <TextBox Text="{Binding Name}" IsReadOnly="{Binding IsReadOnly}" BorderThickness="0" FontSize="11"/>
+                                                        <TextBox Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}" BorderThickness="0" FontSize="11"/>
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellEditingTemplate>
                                             </DataGridTemplateColumn>
                                             <DataGridTemplateColumn Header="权限值(唯一)" >
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <TextBox Text="{Binding Value}" IsHitTestVisible="False" BorderThickness="0" FontSize="11" />
+                                                        <TextBlock Text="{Binding Value}" FontSize="11" />
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellTemplate>
                                                 <DataGridTemplateColumn.CellEditingTemplate>
                                                     <DataTemplate>
-                                                        <TextBox Text="{Binding Value}" IsReadOnly="{Binding IsReadOnly}" BorderThickness="0" FontSize="11"/>
+                                                        <TextBox Text="{Binding Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}" BorderThickness="0" FontSize="11"/>
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellEditingTemplate>
                                             </DataGridTemplateColumn>

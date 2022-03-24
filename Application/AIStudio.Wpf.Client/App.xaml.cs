@@ -56,6 +56,10 @@ namespace AIStudio.Wpf.Client
         {
             //记录严重错误 
             _logger.Error(e.Exception);
+            Application.Current.Dispatcher.Invoke((Action)delegate ()
+            {
+                Util.Controls.MessageBoxHelper.ShowError(e.Exception.Message);
+            });
             e.Handled = true;//使用这一行代码告诉运行时，该异常被处理了，不再作为UnhandledException抛出了。            
         }
 
