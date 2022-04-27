@@ -32,6 +32,7 @@ namespace AIStudio.Core.Helpers
             //获取这个基于内存的xps document的fixed document
             docViewer.Document = xpsDocument.GetFixedDocumentSequence();
 
+            ms.Dispose();
             //关闭基于内存的xps document
             xpsDocument.Close();
         }
@@ -58,6 +59,7 @@ namespace AIStudio.Core.Helpers
                 DocumentReference newDocRef = AddPage(xpsDocument);//加入第一个文件
                 newFds.References.Add(newDocRef);
 
+                ms.Dispose();
                 //关闭基于内存的xps document
                 xpsDocument.Close();
             }
