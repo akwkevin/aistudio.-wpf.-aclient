@@ -65,13 +65,13 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 }
 
                 var result = await _dataProvider.GetData<List<OA_DefFormTree>>("/OA_Manage/OA_DefForm/GetTreeDataList");
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
-                    Data = new ObservableCollection<OA_DefFormTree>(result.ResponseItem);
+                    Data = new ObservableCollection<OA_DefFormTree>(result.Data);
                 }
             }
             catch (Exception ex)
@@ -107,9 +107,9 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     ShowWait();
 
                     var result = await _dataProvider.GetData<AjaxResult>("/OA_Manage/OA_UserForm/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     MessageBoxHelper.ShowInfo("操作成功");
                                     

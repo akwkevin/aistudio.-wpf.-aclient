@@ -44,7 +44,7 @@
                                 </DataTemplate>
                             </util:StepBar.ItemTemplate>
                             <util:StepBar.ItemContainerStyle>
-                                <Style TargetType="{x:Type util:StepBarItem}" BasedOn="{StaticResource StepBarItemHorizontalTop}">
+                                <Style TargetType="{x:Type util:StepBarItem}" BasedOn="{StaticResource DefaultStepBarItemHorizontalTop}">
                                     <Setter Property="Status" Value="{Binding Status,Converter={converter2:StepStatusConverter},Mode=OneWay}" />
                                 </Style>
                             </util:StepBar.ItemContainerStyle>

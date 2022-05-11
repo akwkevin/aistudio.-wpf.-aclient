@@ -16,60 +16,6 @@ namespace AIStudio.Wpf.Home.Views
         public MainView()
         {
             InitializeComponent();
-
-            MenuControl.AddHandler(MenuItem.MouseUpEvent, new RoutedEventHandler(OnMouseUp), true);
-
-            this.Loaded += MainView_Loaded;
-        }
-
-        private MainViewModel MainViewModel { get { return (DataContext as MainViewModel); } }
-
-        private void MainView_Loaded(object sender, RoutedEventArgs e)
-        {
-            //捕获得焦点，快捷键不好用，但是还有些问题，快捷键事件放到主窗体好了
-            //Keyboard.Focus(this);
-        }
-
-        /// <summary>
-        /// 左侧菜单点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnMouseUp(object sender, RoutedEventArgs e)
-        {
-            var menu = sender as Menu;
-            MenuItem menuItem = null;
-
-            if (e.Source is MenuItem)
-            {
-                menuItem = e.Source as MenuItem;
-            }
-            else
-            {
-                menuItem = GetItemFromChild(menu, e.OriginalSource as UIElement);
-            }
-
-            if (menuItem != null)
-            {
-                HamburgerMenuControl.SelectedItem = menuItem.DataContext;
-            }
-        }
-
-        private static MenuItem GetItemFromChild(Menu treeView, UIElement child)
-        {
-            try
-            {
-                UIElement target = child;
-
-                while ((target != null) && !(target is MenuItem))
-                    target = System.Windows.Media.VisualTreeHelper.GetParent(target) as UIElement;
-
-                return target as MenuItem;
-            }
-            catch
-            {
-                return null;
-            }
         }
 
 

@@ -10,7 +10,6 @@ using System;
 using System.Windows;
 using ShowMeTheXAML;
 using AIStudio.Wpf.LayoutPage.Views;
-
 namespace AIStudio.Wpf.Home
 {
     public class HomePageModule : IModule
@@ -22,14 +21,19 @@ namespace AIStudio.Wpf.Home
             NavigationParameters paras = new NavigationParameters();
             paras.Add("Identifier", LocalSetting.RootWindow);
             regionManager.RequestNavigate(RegionName.MainContentRegion, "MainView", paras);
+
+            //regionManager.RequestNavigate(RegionName.MainContentRegion, "FullScreenView", paras);
+        
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<MainView>();
+            containerRegistry.RegisterForNavigation<FullScreenView>();
             containerRegistry.RegisterForNavigation(typeof(IntroduceView), typeof(IntroduceView).FullName);
             containerRegistry.RegisterForNavigation(typeof(UserConsoleView), typeof(UserConsoleView).FullName);
-            containerRegistry.RegisterForNavigation(typeof(_3DShowcaseView), typeof(_3DShowcaseView).FullName); 
+            containerRegistry.RegisterForNavigation(typeof(_3DShowcaseView), typeof(_3DShowcaseView).FullName);
+            containerRegistry.RegisterForNavigation(typeof(StatisView), typeof(StatisView).FullName);
         }
     }
 }

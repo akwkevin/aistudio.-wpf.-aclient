@@ -62,7 +62,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
         protected IOperator _operator { get; }
         protected IWSocketClient _wSocketClient { get; }
 
-        public D_UserMessageEditViewModel(D_OnlineUserDTO data, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title, true)
+        public D_UserMessageEditViewModel(D_OnlineUserDTO data, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title)
         {
             _operator = ContainerLocator.Current.Resolve<IOperator>();
             _wSocketClient = ContainerLocator.Current.Resolve<IWSocketClient>();
@@ -202,13 +202,13 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                         };
 
                         var result = await _dataProvider.GetData<List<D_UserMessageDTO>>($"/D_Manage/D_UserMessage/GetHistoryDataList", JsonConvert.SerializeObject(data));
-                        if (!result.IsOK)
+                        if (!result.Success)
                         {
-                            throw new Exception(result.ErrorMessage);
+                            throw new Exception(result.Msg);
                         }
                         else
                         {
-                            Data = new ObservableCollection<D_UserMessageDTO>(result.ResponseItem);
+                            Data = new ObservableCollection<D_UserMessageDTO>(result.Data);
                         }
                     }
                     catch (Exception ex)
@@ -243,13 +243,13 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                     };
 
                     var result = await _dataProvider.GetData<List<D_UserMessageDTO>>($"/D_Manage/D_UserMessage/GetPageHistoryDataList", JsonConvert.SerializeObject(data));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     else
                     {
-                        Data = new ObservableCollection<D_UserMessageDTO>(result.ResponseItem);
+                        Data = new ObservableCollection<D_UserMessageDTO>(result.Data);
 
                     }
                 }

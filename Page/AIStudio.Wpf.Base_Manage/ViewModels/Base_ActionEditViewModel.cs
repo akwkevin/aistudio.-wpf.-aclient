@@ -76,12 +76,20 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             if (dataTree == null)
             {
-                Data = new Base_ActionDTO();
+
+                InitData();
             }
             else
             {
                 GetData(dataTree);
             }
+        }
+
+        protected override async void InitData()
+        {
+            Data = new Base_ActionDTO();
+            await GetParentIdTreeData();
+            PermissionList = new ObservableCollection<Base_ActionDTO>();
         }
 
         protected async void GetData(Base_ActionTree dataTree)
@@ -91,12 +99,12 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
                 control.WaitInfo = "正在获取数据";
 
-                var result = await _dataProvider.GetData<Base_ActionDTO>($"/Base_Manage/Base_Action/GetTheData", JsonConvert.SerializeObject(new { id = dataTree.Id}));
-                if (!result.IsOK)
+                var result = await _dataProvider.GetData<Base_ActionDTO>($"/Base_Manage/Base_Action/GetTheData", JsonConvert.SerializeObject(new { id = dataTree.Id }));
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
-                Data = result.ResponseItem;
+                Data = result.Data;
 
                 await GetParentIdTreeData();
                 await GetPermissionList();
@@ -114,27 +122,27 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         private async Task GetParentIdTreeData()
         {
             var result = await _dataProvider.GetData<List<Base_ActionTree>>($"/Base_Manage/Base_Action/GetMenuTreeList");
-            if (!result.IsOK)
+            if (!result.Success)
             {
-                throw new Exception(result.ErrorMessage);
+                throw new Exception(result.Msg);
             }
             else
             {
-                ParentIdTreeData = new ObservableCollection<Base_ActionTree>(result.ResponseItem);
+                ParentIdTreeData = new ObservableCollection<Base_ActionTree>(result.Data);
                 SelectedParent = GetTreeItem(ParentIdTreeData, Data.ParentId);
             }
         }
 
         private async Task GetPermissionList()
         {
-            var result = await _dataProvider.GetData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetPermissionList", JsonConvert.SerializeObject(new {parentId=Data.Id}));
-            if (!result.IsOK)
+            var result = await _dataProvider.GetData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetPermissionList", JsonConvert.SerializeObject(new { parentId = Data.Id }));
+            if (!result.Success)
             {
-                throw new Exception(result.ErrorMessage);
+                throw new Exception(result.Msg);
             }
             else
             {
-                PermissionList = new ObservableCollection<Base_ActionDTO>(result.ResponseItem);
+                PermissionList = new ObservableCollection<Base_ActionDTO>(result.Data);
             }
         }
 
@@ -150,7 +158,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 {
                     if (data.Children != null)
                     {
-                        return GetTreeItem(data.Children, id);
+                        var child = GetTreeItem(data.Children, id);
+                        if (child != null)
+                            return child;
                     }
                 }
             }
@@ -160,7 +170,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private void Add()
         {
-            PermissionList.Add(new Base_ActionDTO() { Name = "权限名", Value = "权限值", ParentId = Data?.Id, Type = 2, IsReadOnly = false });
+            PermissionList.Add(new Base_ActionDTO() { Name = "权限名", Value = $"权限值{PermissionList.Count + 1}", ParentId = Data?.Id, Type = 2, IsReadOnly = false });
         }
 
         private void Edit(Base_ActionDTO para)

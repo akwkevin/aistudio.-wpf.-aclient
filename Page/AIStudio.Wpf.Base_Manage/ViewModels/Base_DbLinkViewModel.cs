@@ -6,7 +6,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
     public class Base_DbLinkViewModel : BaseWindowViewModel<Base_DbLinkDTO>
     {
-        public Base_DbLinkViewModel():base("Base_Manage", typeof(Base_AppSecretEditViewModel), typeof(Base_DbLinkEdit))
+        public Base_DbLinkViewModel():base("Base_Manage", typeof(Base_DbLinkEditViewModel), typeof(Base_DbLinkEdit))
         {
 
         }

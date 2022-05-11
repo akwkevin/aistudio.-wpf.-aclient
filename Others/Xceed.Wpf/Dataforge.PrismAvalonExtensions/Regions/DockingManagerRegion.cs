@@ -67,7 +67,7 @@ namespace Dataforge.PrismAvalonExtensions.Regions
             if (e.NavigationContext.Parameters.ContainsKey("Title"))
             {
                 var view = this.Views.FirstOrDefault(x => x.GetType().Name == e.Uri.ToString() || x.GetType().FullName == e.Uri.ToString()) as FrameworkElement;
-                if (view != null)
+                if (view != null && view.DataContext != null)
                 {
                     var propertyInfo = view.DataContext.GetType().GetProperty("Title");
                     if (propertyInfo != null)
@@ -75,6 +75,18 @@ namespace Dataforge.PrismAvalonExtensions.Regions
                         propertyInfo.SetValue(view.DataContext, e.NavigationContext.Parameters["Title"]);
                     }
                     IsSelected(e.NavigationContext.Parameters["Title"] as string);
+                }
+            }
+            if (e.NavigationContext.Parameters.ContainsKey("Glyph"))
+            {
+                var view = this.Views.FirstOrDefault(x => x.GetType().Name == e.Uri.ToString() || x.GetType().FullName == e.Uri.ToString()) as FrameworkElement;
+                if (view != null && view.DataContext != null)
+                {
+                    var propertyInfo = view.DataContext.GetType().GetProperty("Glyph");
+                    if (propertyInfo != null)
+                    {
+                        propertyInfo.SetValue(view.DataContext, e.NavigationContext.Parameters["Glyph"]);
+                    }
                 }
             }
         }

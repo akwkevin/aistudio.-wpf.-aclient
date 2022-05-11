@@ -52,11 +52,11 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 control.WaitInfo = "正在获取数据";
 
                 var result = await _dataProvider.GetData<Base_RoleDTO>($"/Base_Manage/Base_Role/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
-                Data = result.ResponseItem;
+                Data = result.Data;
 
                 await GetActionsTreeData();
                 //await GetAllActionList();
@@ -82,26 +82,26 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         private async Task GetActionsTreeData()
         {
             var result = await _dataProvider.GetData<List<Base_ActionTree>>($"/Base_Manage/Base_Action/GetActionTreeList");
-            if (!result.IsOK)
+            if (!result.Success)
             {
-                throw new Exception(result.ErrorMessage);
+                throw new Exception(result.Msg);
             }
             else
             {
-                ActionsTreeData = new ObservableCollection<Base_ActionTree>(result.ResponseItem);
+                ActionsTreeData = new ObservableCollection<Base_ActionTree>(result.Data);
             }
         }
 
         private async Task GetAllActionList()
         {
             var result = await _dataProvider.GetData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetAllActionList");
-            if (!result.IsOK)
+            if (!result.Success)
             {
-                throw new Exception(result.ErrorMessage);
+                throw new Exception(result.Msg);
             }
             else
             {
-                AllActionList = new ObservableCollection<Base_ActionDTO>(result.ResponseItem);
+                AllActionList = new ObservableCollection<Base_ActionDTO>(result.Data);
             }
         }
 

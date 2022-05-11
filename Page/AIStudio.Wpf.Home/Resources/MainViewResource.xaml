@@ -1,8 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:util="https://astudio.github.io/utilcontrol"
-                    xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension" >   
-    
+                    xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension" >
     <Geometry x:Key="Checkmark">M 0,5.1 L 1.7,5.2 L 3.4,7.1 L 8,0.4 L 9.2,0 L 3.3,10.8 Z</Geometry>
 
     <!--选项-->
@@ -16,18 +15,19 @@
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
                                          Kind="{Binding Glyph}" 
-                                         Fill="{DynamicResource TitleForegroundBrush}"/>
+                                         Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"/>
             <Grid x:Name="GlyphPanel" Height="18" Width="18" Visibility="Collapsed">
-                <Path  
+                <Path Margin="2"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Stretch="Fill"
-                    Fill="{DynamicResource TitleForegroundBrush}"
+                    Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
                     Data="{StaticResource Checkmark}" />
             </Grid>
             <TextBlock Grid.Column="1"
+                                Margin="5,0,0,0"
                                 VerticalAlignment="Center"
-                                Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"
+                                Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
                                 Text="{Binding Label}" 
                                 FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
                                 FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
@@ -53,18 +53,19 @@
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
                                          Kind="{Binding Glyph}" 
-                                         Fill="{DynamicResource TitleForegroundBrush}"/>
+                                         Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TreeViewItem}}}"/>
             <Grid x:Name="GlyphPanel" Height="18" Width="18" Visibility="Collapsed">
-                <Path  
+                <Path Margin="2"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Stretch="Fill"
-                    Fill="{DynamicResource TitleForegroundBrush}"
+                    Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TreeViewItem}}}"
                     Data="{StaticResource Checkmark}" />
             </Grid>
             <TextBlock Grid.Column="1"
+                                       Margin="5,0,0,0"
                                        VerticalAlignment="Center"
-                                       Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"
+                                       Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TreeViewItem}}}"
                                        Text="{Binding Label}" 
                                        FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType={x:Type TreeViewItem}}}"
                                        FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type TreeViewItem}}}"
@@ -90,21 +91,23 @@
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
                                          Kind="{Binding Glyph}" 
-                                         Fill="{DynamicResource TitleForegroundBrush}"
+                                         Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
                                         Margin="9,0"/>
 
 
-            <Path  x:Name="GlyphPanel" Height="18" Width="18" Margin="9,0" Visibility="Collapsed"
+            <Grid  x:Name="GlyphPanel" Height="18" Width="18" Margin="9,0" Visibility="Collapsed">
+                <Path x:Name="Glyph" Margin="2" 
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Stretch="Fill"
-                    Fill="{DynamicResource TitleForegroundBrush}"
+                    Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
                     Data="{StaticResource Checkmark}" />
-
+            </Grid>
 
             <TextBlock x:Name="Header" Grid.Column="1" 
+                                         Margin="5,0,0,0"
                                          VerticalAlignment="Center"
-                                         Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"
+                                         Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
                                          Text="{Binding Label}" 
                                          FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
                                          FontStyle="{Binding FontStyle, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
@@ -118,23 +121,24 @@
             </DataTrigger>
             <DataTrigger Binding="{Binding Role,RelativeSource={RelativeSource TemplatedParent}}" Value="TopLevelHeader">
                 <Setter TargetName="Icon" Property="ToolTip" Value="{Binding Label}"></Setter>
+                <Setter TargetName="Header" Property="Visibility" Value="Collapsed"></Setter>
             </DataTrigger>
             <DataTrigger Binding="{Binding IsMouseOver,RelativeSource={RelativeSource TemplatedParent}}" Value="True">
                 <Setter TargetName="Header" Property="Foreground" Value="{DynamicResource MahApps.Brushes.Highlight}"/>
-                <Setter TargetName="GlyphPanel" Property="Fill" Value="{DynamicResource MahApps.Brushes.Highlight}"/>
+                <Setter TargetName="Glyph" Property="Fill" Value="{DynamicResource MahApps.Brushes.Highlight}"/>
                 <Setter TargetName="Icon" Property="Fill" Value="{DynamicResource MahApps.Brushes.Highlight}"/>
             </DataTrigger>
         </HierarchicalDataTemplate.Triggers>
     </HierarchicalDataTemplate>
 
     <!--顶部菜单-->
-    <Style x:Key="MenuItemStyle" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MahApps.Styles.MenuItem}">
+    <Style x:Key="MenuItemStyle" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource TopMetroMenuItem}">
         <Setter Property="MenuItem.Icon" Value="{x:Null}"/>
         <!--<Setter Property="MenuItem.Header" Value="{Binding Header}"/>-->
         <Setter Property="MenuItem.Command" Value="{Binding Command}"/>
         <Setter Property="MenuItem.CommandParameter" Value="{Binding .}"/>
         <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Transparent}" />
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.ThemeBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TitleForegroundBrush}"/>
         <Setter Property="BorderThickness" Value="0" />
         <Style.Triggers>
             <!-- insert a null in ItemsSource if you want a separator -->
@@ -147,9 +151,31 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
-            <!--<DataTrigger Binding="{Binding Icon}" Value="{x:Null}">
-                                <Setter Property="MenuItem.Icon" Value="{x:Null}" />
-                            </DataTrigger>-->
+            <DataTrigger Binding="{Binding Icon}" Value="{x:Null}">
+                <Setter Property="MenuItem.Icon" Value="{x:Null}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="VerticalMenuItemStyle" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource LeftMetroMenuItem}">
+        <Setter Property="MenuItem.Icon" Value="{x:Null}"/>
+        <!--<Setter Property="MenuItem.Header" Value="{Binding Header}"/>-->
+        <Setter Property="MenuItem.Command" Value="{Binding Command}"/>
+        <Setter Property="MenuItem.CommandParameter" Value="{Binding .}"/>
+        <Setter Property="util:ControlAttachProperty.PopupBackground" Value="{Binding Path=(util:ControlAttachProperty.PopupBackground),RelativeSource={RelativeSource AncestorType={x:Type Menu},Mode=FindAncestor}}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="MinHeight" Value="25" />
+        <Style.Triggers>
+            <!-- insert a null in ItemsSource if you want a separator -->
+            <DataTrigger Binding="{Binding}" Value="{x:Null}">
+                <Setter Property="Template" >
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Separator Style="{StaticResource {x:Static MenuItem.SeparatorStyleKey}}"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
         </Style.Triggers>
     </Style>
 
@@ -164,19 +190,20 @@
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
                                          Kind="{Binding Glyph}" 
-                                         Fill="{DynamicResource TitleForegroundBrush}"/>
-
-            <Path x:Name="GlyphPanel" Height="16" Width="16" Visibility="Collapsed"
+                                         Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"/>
+            <Grid  x:Name="GlyphPanel" Height="16" Width="16" Visibility="Collapsed">
+                <Path x:Name="Glyph" Margin="2"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Stretch="Fill"
-                    Fill="{DynamicResource TitleForegroundBrush}"
+                    Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
                     Data="{StaticResource Checkmark}" />
+            </Grid>
 
-
-            <TextBlock x:Name="Header" Grid.Column="1" Margin="5,0,0,0"
+            <TextBlock x:Name="Header" Grid.Column="1" 
+                                Margin="5,0,0,0"
                                 VerticalAlignment="Center"
-                                Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"
+                                Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
                                 Text="{Binding Label}" 
                                 FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
                                 FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
@@ -190,9 +217,10 @@
             </DataTrigger>
             <DataTrigger Binding="{Binding IsMouseOver,RelativeSource={RelativeSource TemplatedParent}}" Value="True">
                 <Setter TargetName="Header" Property="Foreground" Value="{DynamicResource MahApps.Brushes.Highlight}"/>
-                <Setter TargetName="GlyphPanel" Property="Fill" Value="{DynamicResource MahApps.Brushes.Highlight}"/>
+                <Setter TargetName="Glyph" Property="Fill" Value="{DynamicResource MahApps.Brushes.Highlight}"/>
                 <Setter TargetName="Icon" Property="Fill" Value="{DynamicResource MahApps.Brushes.Highlight}"/>
             </DataTrigger>
         </HierarchicalDataTemplate.Triggers>
     </HierarchicalDataTemplate>
+
 </ResourceDictionary>

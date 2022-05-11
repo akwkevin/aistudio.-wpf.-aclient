@@ -1,7 +1,10 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:util="https://astudio.github.io/utilcontrol">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/AIStudio.Resource;component/Themes/Brushes.xaml" />
+        <ResourceDictionary Source="/AIStudio.Resource;component/Themes/ScrollBar.xaml" />
         <ResourceDictionary>
             <Style x:Key="LeftFormItemStyle" TargetType="{x:Type HeaderedContentControl}">
                 <Setter Property="Margin" Value="0,5" />
@@ -25,11 +28,11 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            
+
             <Style TargetType="{x:Type TextBlock}">
                 <Setter Property="FontFamily" Value="{DynamicResource MahApps.Fonts.Family.Control}" />
             </Style>
-            
+
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

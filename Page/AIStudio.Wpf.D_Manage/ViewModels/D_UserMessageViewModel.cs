@@ -145,9 +145,31 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                                 {
                                     _view.Refresh();
                                 }
-                            });                            
+                            });
                         }
                     }
+                }
+            }
+            else if (arg1 == WSMessageType.OnlineUser)
+            {
+                var datas = JsonConvert.DeserializeObject<List<D_OnlineUserDTO>>(arg2 as string);
+                if (UserDatas != null)
+                {
+                    UserDatas.ForEach((item) =>
+                    {
+                        if (!item.IsGroup)
+                        {
+                            var tempdata = datas.FirstOrDefault((d) => d.UserId == item.UserId);
+                            if (tempdata != null)
+                            {
+                                item.Online = true;
+                            }
+                            else
+                            {
+                                item.Online = false;
+                            }
+                        }
+                    });
                 }
             }
         }
@@ -162,13 +184,13 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                 }
 
                 var result = await _dataProvider.GetData<List<D_OnlineUserDTO>>($"/D_Manage/D_UserMessage/GetUserList");
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
-                    UserDatas = new ObservableCollection<D_OnlineUserDTO>(result.ResponseItem);
+                    UserDatas = new ObservableCollection<D_OnlineUserDTO>(result.Data);
                     var localdatas = _userConfig.ReadConfig<List<D_OnlineUserDTO>>(this);
 
                     UserDatas.ForEach((item) =>
@@ -183,8 +205,9 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
 
                     _view = (ListCollectionView)CollectionViewSource.GetDefaultView(UserDatas);
                     _view.CustomSort = new UserDataSorter();
+                    _view.Refresh();
 
-                    foreach(var item in _view)
+                    foreach (var item in _view)
                     {
                         SelectedUser = item as D_OnlineUserDTO;
                         break;
@@ -240,9 +263,9 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                         viewmodel.Data.UserNames = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.text)) + "^";
                         viewmodel.Data.Avatar = viewmodel.Data.Avatar ?? "/Images/group.jpg";
                         var result = await _dataProvider.GetData<AjaxResult>($"/D_Manage/D_UserMessage/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                        if (!result.IsOK)
+                        if (!result.Success)
                         {
-                            throw new Exception(result.ErrorMessage);
+                            throw new Exception(result.Msg);
                         }
                     }
                     else if (res == BaseDialogResult.Other1)
@@ -250,9 +273,9 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                         if (viewmodel.Disabled == false)//解散
                         {
                             var result = await _dataProvider.GetData<AjaxResult>($"/D_Manage/D_UserMessage/DeleteData", JsonConvert.SerializeObject(new string[] { viewmodel.Data.Id }));
-                            if (!result.IsOK)
+                            if (!result.Success)
                             {
-                                throw new Exception(result.ErrorMessage);
+                                throw new Exception(result.Msg);
                             }
                         }
                         else//退出
@@ -262,9 +285,9 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                             viewmodel.Data.UserNames = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.text)) + "^";
 
                             var result = await _dataProvider.GetData<AjaxResult>($"/D_Manage/D_UserMessage/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                            if (!result.IsOK)
+                            if (!result.Success)
                             {
-                                throw new Exception(result.ErrorMessage);
+                                throw new Exception(result.Msg);
                             }
                         }
                     }

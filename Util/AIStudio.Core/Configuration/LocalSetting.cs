@@ -28,9 +28,12 @@ namespace AIStudio.Core
         public static string ScreenMode { get; set; } = ConfigurationManager.AppSettings["ScreenMode"];
         public static string Version { get; set; } = Convert.ToString(ConfigurationManager.AppSettings["Version"]);
 
-        public static string ServerIP { get; set; } = ConfigurationManager.AppSettings["ServerIP"];
+        public static string Servers { get; set; } = ConfigurationManager.AppSettings["Servers"];
 
-        public static bool ApiMode { get; set; } = !string.IsNullOrEmpty(ConfigurationManager.AppSettings["ServerIP"]);
+        public static string ServerIP { get; set; } = ConfigurationManager.AppSettings["ServerIP"];
+        public static string Standalone { get { return "客户端独立模式"; } }
+
+        public static bool ApiMode { get { return (!string.IsNullOrEmpty(ServerIP) && ServerIP != Standalone); } }
 
         public static string UpdateAddress { get; set; } = ConfigurationManager.AppSettings["UpdateAddress"];
 

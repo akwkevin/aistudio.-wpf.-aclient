@@ -20,8 +20,8 @@
         </Grid.RowDefinitions>
         <DockPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                <util:FButton CornerRadius="2" FIcon="&#xe62c;" Margin="3" Content="新建" perm:PermissionHelper.HasPerm="OA_DefForm.Add" Command="{Binding AddCommand}" ></util:FButton>
-                <util:FButton CornerRadius="2" FIcon="&#xe62d;" Margin="3" Content="删除" perm:PermissionHelper.HasPerm="OA_DefForm.Delete" Command="{Binding DeleteCommand}"></util:FButton>
+                <util:FButton CornerRadius="2" FIcon="&#xe62c;" Margin="3" Content="新建" perm:PermissionHelper.HasPerm="OA_DefForm.Add" Command="{Binding AddCommand}" Background="{DynamicResource PrimaryBrush}"></util:FButton>
+                <util:FButton CornerRadius="2" FIcon="&#xe62d;" Margin="3" Content="删除" perm:PermissionHelper.HasPerm="OA_DefForm.Delete" Command="{Binding DeleteCommand}" Background="{DynamicResource DangerBrush}"></util:FButton>
                 <util:FButton CornerRadius="2" FIcon="&#xe641;" Margin="3" Content="刷新" Command="{Binding RefreshCommand}"></util:FButton>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">

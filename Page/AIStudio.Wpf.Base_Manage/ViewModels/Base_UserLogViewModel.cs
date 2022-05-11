@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using AIStudio.Wpf.Base_Manage.Views;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Entity.DTOModels;
 using Newtonsoft.Json;
@@ -125,7 +126,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_UserLogViewModel():base("Base_Manage", typeof(BaseEditViewModel<Base_UserLogDTO>), typeof(BaseDialog))
+        public Base_UserLogViewModel():base("Base_Manage", typeof(BaseEditViewModel<Base_UserLogDTO>), typeof(Base_UserlogEdit))
         {
             
         }
@@ -145,13 +146,13 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         private async Task GetLogTypeList()
         {
             var result = await _dataProvider.GetData<List<SelectOption>>($"/Base_Manage/Base_UserLog/GetLogTypeList");
-            if (!result.IsOK)
+            if (!result.Success)
             {
-                throw new Exception(result.ErrorMessage);
+                throw new Exception(result.Msg);
             }
             else
             {
-                LogTypeList = result.ResponseItem;
+                LogTypeList = result.Data;
                 LogTypeList.Insert(0, new SelectOption() { value = "", text = "" });
                 LogType = "";
             }
@@ -183,14 +184,14 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 };
 
                 var result = await _dataProvider.GetData<List<Base_UserLogDTO>>($"/Base_Manage/Base_UserLog/GetLogList", JsonConvert.SerializeObject(data));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
                     Pagination.Total = result.Total;
-                    Data = new ObservableCollection<Base_UserLogDTO>(result.ResponseItem);
+                    Data = new ObservableCollection<Base_UserLogDTO>(result.Data);
                 }
             }
             catch (Exception ex)

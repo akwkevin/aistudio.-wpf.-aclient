@@ -27,10 +27,7 @@ namespace AIStudio.Wpf.Client.Views
                 AutoUpdater.Start(LocalSetting.UpdateAddress);
 
             }
-            catch (Exception ex)
-            {
-               
-            }
+            catch  {}
         }
 
         private static void AutoUpdater_ApplicationExitEvent()

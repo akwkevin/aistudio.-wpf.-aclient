@@ -7,7 +7,7 @@
     <s:String x:Key="系统设置">SystemSetting</s:String>
     <s:String x:Key="主题">Theme</s:String>
     <s:String x:Key="页面风格">Page</s:String>
-    <s:String x:Key="导航模式及标题风格">Navigation And Title</s:String>
+    <s:String x:Key="导航模式与标题栏与状态栏">Navigation And ToolBar And StatusBar</s:String>
     <s:String x:Key="字体大小">FontSize</s:String>
     <s:String x:Key="字体选择">FontFamily</s:String>
     <s:String x:Key="语言设置">Language</s:String>

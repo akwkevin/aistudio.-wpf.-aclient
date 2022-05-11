@@ -20,6 +20,8 @@ using System.Windows.Input;
 using Util.Controls;
 using Util.Panels;
 using Util.Panels.Controls;
+using Prism.Events;
+using AIStudio.Wpf.BasePage.Events;
 
 namespace AIStudio.Wpf.LayoutPage.ViewModels
 {
@@ -27,11 +29,13 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
     {   
         private IUserConfig _userConfig { get; }
         private IOperator _operator { get; }
+        private IEventAggregator _aggregator { get; }
 
-        public UserConsoleViewModel(IUserConfig userConfig, IOperator __operator)
+        public UserConsoleViewModel(IUserConfig userConfig, IOperator __operator, IEventAggregator aggregator)
         {
             _userConfig = userConfig;
             _operator = __operator;
+            _aggregator = aggregator;
 
             UserConsoleData = new UserConsoleData();
             PanelTypes = new List<PanelType>()
@@ -107,6 +111,15 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
             }
         }
 
+        private ICommand _openCommand;
+        public ICommand OpenCommand
+        {
+            get
+            {
+                return this._openCommand ?? (this._openCommand = new DelegateCommand<UserItemData>(para => this.OpenInMain(para)));
+            }
+        }
+
         private ICommand _rectangleGridCommand;
         public ICommand RectangleGridCommand
         {
@@ -136,6 +149,11 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
                     UserConsoleData.Data.Add(new UserItemData() { Title = viewmodel.SelectedMenuItem.Label, Content = control, CanClose = true, Type = viewmodel.SelectedMenuItem.WpfCode });
                 }
             }
+        }
+
+        private void OpenInMain(UserItemData para)
+        {
+            _aggregator.GetEvent<MenuExcuteEvent>().Publish(new Tuple<string, string>(Identifier, para.Type));
         }
 
         private Control InitControl(string fullname)

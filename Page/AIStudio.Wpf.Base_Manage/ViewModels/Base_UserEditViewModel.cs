@@ -54,7 +54,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
        
 
-        public Base_UserEditViewModel(Base_UserDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title, true)
+        public Base_UserEditViewModel(Base_UserDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
         {
             if (Data == null)
             {
@@ -81,11 +81,11 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 control.WaitInfo = "正在获取数据";
 
                 var result = await _dataProvider.GetData<Base_UserDTO>($"/{Area}/{typeof(Base_UserDTO).Name.Replace("DTO", "")}/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
-                Data = result.ResponseItem;
+                Data = result.Data;
 
                 await GetRoles();
                 await GetDepartment();

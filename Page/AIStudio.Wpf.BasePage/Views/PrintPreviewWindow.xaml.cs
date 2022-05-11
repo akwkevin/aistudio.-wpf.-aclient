@@ -64,5 +64,14 @@ namespace AIStudio.Wpf.BasePage.Views
             var m_doc = LoadDocumentAndRender(strTmplName, data, renderer);
             Dispatcher.BeginInvoke(new PrintHelper.LoadXpsMethod(PrintHelper.LoadXps), DispatcherPriority.ApplicationIdle, m_doc, docViewer);
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+        }
     }
 }

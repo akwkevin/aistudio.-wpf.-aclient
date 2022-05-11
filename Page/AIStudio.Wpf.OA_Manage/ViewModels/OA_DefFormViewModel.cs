@@ -107,14 +107,14 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 };
 
                 var result = await _dataProvider.GetData<List<OA_DefFormDTO>>($"/{Area}/{typeof(OA_DefFormDTO).Name.Replace("DTO", "")}/{GetDataList}", JsonConvert.SerializeObject(data));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
                     Pagination.Total = result.Total;
-                    Data = new ObservableCollection<OA_DefFormDTO>(result.ResponseItem);
+                    Data = new ObservableCollection<OA_DefFormDTO>(result.Data);
 
                     await GetRoles();
                     foreach (var item in Data)
@@ -169,9 +169,9 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     }
                     viewmodel.Data.Value = viewmodel.SelectedRoles.Count == 0 ? null: "^" + string.Join("^" , viewmodel.SelectedRoles.Select(p => p.value)) + "^";
                     var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     GetData(true);
                 }
@@ -211,9 +211,9 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     ShowWait();
  
                     var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/StartData", JsonConvert.SerializeObject(para));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     GetData(true);
                 }
@@ -238,9 +238,9 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     ShowWait();
 
                     var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/StopData", JsonConvert.SerializeObject(para));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     GetData(true);
                 }

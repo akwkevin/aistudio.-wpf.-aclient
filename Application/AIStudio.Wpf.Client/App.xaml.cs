@@ -1,11 +1,16 @@
-﻿using AIStudio.Core;
+﻿using Accelerider.Extensions.Mvvm;
+using AIStudio.Core;
 using AIStudio.LocalConfiguration;
+using AIStudio.Wpf.Base_Manage;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Client.ViewModels;
 using AIStudio.Wpf.Client.Views;
+using AIStudio.Wpf.D_Manage;
 using AIStudio.Wpf.DataBusiness;
 using AIStudio.Wpf.Home;
 using AIStudio.Wpf.Home.ViewModels;
+using AIStudio.Wpf.OA_Manage;
+using AIStudio.Wpf.Quartz_Manage;
 using AIStudio.Wpf.Service.AppClient.HttpClients;
 using AutoMapper;
 using Dataforge.PrismAvalonExtensions.Regions;
@@ -15,29 +20,33 @@ using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Unity;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using ControlzEx.Theming;
 using Unity;
 using Unity.Interception;
 using Unity.Interception.ContainerIntegration;
 using Unity.Interception.Interceptors.InstanceInterceptors.InterfaceInterception;
 using Unity.Interception.PolicyInjection;
 using Xceed.Wpf.AvalonDock;
-
+using Dataforge.PrismAvalonExtensions;
 
 namespace AIStudio.Wpf.Client
 {
     /// <summary>
     /// App.xaml 的交互逻辑
     /// </summary>
-    public partial class App : PrismApplication
+    public partial class App : MyPrismApplication
     {
         public App()
         {
             System.Windows.FrameworkCompatibilityPreferences.KeepTextBoxDisplaySynchronizedWithTextProperty = false;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.Current.DispatcherUnhandledException += Application_DispatcherUnhandledException;
+   
+
         }
 
         #region ILogger
@@ -47,6 +56,10 @@ namespace AIStudio.Wpf.Client
         {
             //记录严重错误 
             _logger.Error(e.Exception);
+            Application.Current.Dispatcher.Invoke((Action)delegate ()
+            {
+                Util.Controls.MessageBoxHelper.ShowError(e.Exception.Message);
+            });
             e.Handled = true;//使用这一行代码告诉运行时，该异常被处理了，不再作为UnhandledException抛出了。            
         }
 
@@ -74,12 +87,9 @@ namespace AIStudio.Wpf.Client
         #endregion
 
         protected override Window CreateShell()
-        {   
+        {
             var window = Container.Resolve<MainWindow>();
-            //if (window.Visibility == Visibility.Collapsed || window.Visibility == Visibility.Hidden)
-            //{
-            //    window = null;
-            //}
+            //加载主题
             Home.ViewModels.SystemSetViewModel.InitSetting();
             return window;
         }
@@ -87,8 +97,14 @@ namespace AIStudio.Wpf.Client
 
         protected override void InitializeShell(Window shell)
         {
-            UpdateHelper.CheckUpdate();
 
+#if !DEBUG
+                 //升级
+            UpdateHelper.CheckUpdate();
+#endif
+
+
+            //登录
             LoginWindow login = new LoginWindow();
             if (login.ShowDialog() == false)
             {
@@ -135,48 +151,52 @@ namespace AIStudio.Wpf.Client
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            //采用此种方式，是为了后续可以按照此规则自动加载模块
             var homePageModule = typeof(HomePageModule);
             moduleCatalog.AddModule(new ModuleInfo()
             {
                 ModuleName = homePageModule.Name,
                 ModuleType = homePageModule.AssemblyQualifiedName,
-                InitializationMode = InitializationMode.OnDemand
+                InitializationMode = InitializationMode.WhenAvailable
             });
 
-            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(p => p.FullName.StartsWith("AIStudio.Wpf")).ToList();
-
-            foreach (var assembly in assemblies)
+            var base_ManageModule = typeof(Base_ManageModule);
+            moduleCatalog.AddModule(new ModuleInfo()
             {
-                foreach (var type in assembly.GetTypes())
-                {
-                    if (typeof(IModule).IsAssignableFrom(type))
-                    {
-                        if (!moduleCatalog.Modules.Any(p => p.ModuleName == type.Name))
-                        {
-                            moduleCatalog.AddModule(new ModuleInfo()
-                            {
-                                ModuleName = type.Name,
-                                ModuleType = type.AssemblyQualifiedName,
-                                InitializationMode = InitializationMode.WhenAvailable
-                            });
-                        }
-                    }
-                }
-            }
+                ModuleName = base_ManageModule.Name,
+                ModuleType = base_ManageModule.AssemblyQualifiedName,
+                InitializationMode = InitializationMode.WhenAvailable
+            });
 
-            //var base_ManageModule = typeof(Base_ManageModule);
-            //moduleCatalog.AddModule(new ModuleInfo()
-            //{
-            //    ModuleName = base_ManageModule.Name,
-            //    ModuleType = base_ManageModule.AssemblyQualifiedName,
-            //    InitializationMode = InitializationMode.WhenAvailable
-            //});    
+            var d_ManageModule = typeof(D_ManageModule);
+            moduleCatalog.AddModule(new ModuleInfo()
+            {
+                ModuleName = d_ManageModule.Name,
+                ModuleType = d_ManageModule.AssemblyQualifiedName,
+                InitializationMode = InitializationMode.WhenAvailable
+            });
+
+            var oa_ManageModule = typeof(OA_ManageModule);
+            moduleCatalog.AddModule(new ModuleInfo()
+            {
+                ModuleName = oa_ManageModule.Name,
+                ModuleType = oa_ManageModule.AssemblyQualifiedName,
+                InitializationMode = InitializationMode.WhenAvailable
+            });
+            var quartz_ManageModule = typeof(Quartz_ManageModule);
+            moduleCatalog.AddModule(new ModuleInfo()
+            {
+                ModuleName = quartz_ManageModule.Name,
+                ModuleType = quartz_ManageModule.AssemblyQualifiedName,
+                InitializationMode = InitializationMode.WhenAvailable
+            });
         }
 
         protected override void ConfigureViewModelLocator()
         {
-            base.ConfigureViewModelLocator();
+            //base.ConfigureViewModelLocator();
+            ViewModelLocationProvider.SetDefaultViewModelFactory(new ViewModelResolver(() => Container)
+                 .UseDefaultConfigure()
+                 .ResolveViewModelForView);
 
             // type / type
             //ViewModelLocationProvider.Register(typeof(MainWindow).ToString(), typeof(MainWindowViewModel));
@@ -209,12 +229,6 @@ namespace AIStudio.Wpf.Client
 
         protected override void OnStartup(StartupEventArgs e)
         {
-
-            Assembly.Load("AIStudio.Wpf.Base_Manage");
-            Assembly.Load("AIStudio.Wpf.D_Manage");
-            Assembly.Load("AIStudio.Wpf.OA_Manage");
-            Assembly.Load("AIStudio.Wpf.Quartz_Manage");
-
             HttpClientHelper.Instance.HandleLog = log =>
             {
                 //接口日志 
@@ -245,13 +259,13 @@ namespace AIStudio.Wpf.Client
             {
                 var config = new MapperConfiguration(cfg =>
                 {
-                    cfg.AddMaps("AIStudio.Wpf.BasePage", "AIStudio.Core");
+                    cfg.AddMaps("AIStudio.Wpf.BasePage", "AIStudio.Core", "AIStudio.Wpf.LayoutPage");
                 });
                 return config.CreateMapper();
             }
             else
             {
-                IMapper mapper = EFCoreDataProviderExtension.AddAutoMapper(new string[] { "AIStudio.Wpf.BasePage", "AIStudio.Core" });
+                IMapper mapper = EFCoreDataProviderExtension.AddAutoMapper(new string[] { "AIStudio.Wpf.BasePage", "AIStudio.Core", "AIStudio.Wpf.LayoutPage" });
                 return mapper;
             }
         }

@@ -76,6 +76,18 @@ namespace AIStudio.Core.Models
             }
         }
 
+        private string commandParameter;
+        public string CommandParameter
+        {
+            get { return commandParameter; }
+            set
+            {
+                if (value == commandParameter) return;
+                commandParameter = value;
+                OnPropertyChanged("CommandParameter");
+            }
+        }
+
         private ObservableCollection<TreeMenuItem> children = new ObservableCollection<TreeMenuItem>();
 
         public ObservableCollection<TreeMenuItem> Children

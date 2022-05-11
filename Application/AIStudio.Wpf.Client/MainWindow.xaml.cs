@@ -19,17 +19,16 @@ namespace AIStudio.Wpf.Client
     /// </summary>
     public partial class MainWindow : WindowBase
     {
+        IModuleManager _moduleManager { get; }
+        IWSocketClient _wSocketClient { get; }
         public MainWindow()
         {
-            InitializeComponent();           
+            InitializeComponent();
 
-            this.Loaded += MainWindow_Loaded;
+            _moduleManager = ContainerLocator.Current.Resolve<IModuleManager>();
+            _wSocketClient = ContainerLocator.Current.Resolve<IWSocketClient>();
+
             this.Closing += MainWindow_Closing;
-        }
-
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            (DataContext as MainWindowViewModel).Loaded();
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -43,23 +42,10 @@ namespace AIStudio.Wpf.Client
             }
             else
             {
-                (DataContext as MainWindowViewModel).Dispose();
+                _wSocketClient.Dispose();
                 System.Windows.Application.Current.Shutdown();
                 //System.Diagnostics.Process.GetCurrentProcess().Kill();
             }
-        }
-
-        int index = 0;
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var flyout = this.Flyouts.Items[index] as Flyout;
-            if (flyout == null)
-            {
-                return;
-            }
-            index = 1;
-
-            flyout.IsOpen = !flyout.IsOpen;
         }
 
     }

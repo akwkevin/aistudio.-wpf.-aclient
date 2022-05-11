@@ -1,21 +1,17 @@
 ﻿using AIStudio.Core;
 using AIStudio.Core.Models;
-using AIStudio.Core.Validation;
-using AIStudio.Wpf.Business;
-using AIStudio.Wpf.Client.Views;
 using AIStudio.LocalConfiguration;
+using AIStudio.Wpf.Business;
 using Prism.Commands;
 using Prism.Events;
-using Prism.Mvvm;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
+using Util.Controls;
 
 namespace AIStudio.Wpf.Client.ViewModels
 {
@@ -41,6 +37,8 @@ namespace AIStudio.Wpf.Client.ViewModels
             }
         }
 
+        public bool ApiMode { get { return (!string.IsNullOrEmpty(ServerIP) && ServerIP != LocalSetting.Standalone); } }
+
         private string _serverIP;
         public string ServerIP
         {
@@ -51,13 +49,13 @@ namespace AIStudio.Wpf.Client.ViewModels
             }
         }
 
-        public Visibility _serverIPVisibility;
-        public Visibility ServerIPVisibility
+        private ObservableCollection<string> _servers;
+        public ObservableCollection<string> Servers
         {
-            get { return _serverIPVisibility; }
+            get { return _servers; }
             set
             {
-                SetProperty(ref _serverIPVisibility, value);
+                SetProperty(ref _servers, value);
             }
         }
 
@@ -121,6 +119,14 @@ namespace AIStudio.Wpf.Client.ViewModels
             }
         }
 
+        public ICommand _closeComamnd;
+        public ICommand CloseComamnd
+        {
+            get
+            {
+                return this._closeComamnd ?? (this._closeComamnd = new DelegateCommand<Window>(para => this.Close(para)));
+            }
+        }
 
         private ICommand _loginCommand;
         public ICommand LoginCommand
@@ -156,8 +162,8 @@ namespace AIStudio.Wpf.Client.ViewModels
             _localConfig = localConfig;
 
             LoginInfo = _localConfig.LoginInfo;
-            ServerIP = LocalSetting.ApiMode ? LocalSetting.ServerIP : LocalSetting.ConString;
-            ServerIPVisibility = LocalSetting.ApiMode ? Visibility.Visible : Visibility.Collapsed;
+            ServerIP = LocalSetting.ServerIP;
+            Servers = new ObservableCollection<string>(LocalSetting.Servers.Split(";", StringSplitOptions.RemoveEmptyEntries));
             Version = LocalSetting.Version;
 
             var info = LoginInfo.FirstOrDefault();
@@ -205,7 +211,23 @@ namespace AIStudio.Wpf.Client.ViewModels
 
                 if (LoginStatus == "Input")
                 {
-                    if (!string.IsNullOrEmpty(LocalSetting.VerifyMode))
+                    if (LocalSetting.ApiMode != ApiMode)
+                    {
+                        LocalSetting.SetAppSetting("ServerIP", ServerIP);
+
+                        if (MessageBoxHelper.ShowSure("服务器模式在[前后端分离方式]与[客户端独立模式]发生了切换,需要重启生效,立即重启？") == MessageBoxResult.OK)
+                        {
+                            Process p = new Process();
+                            p.StartInfo.FileName = System.AppDomain.CurrentDomain.BaseDirectory + "AIStudio.Wpf.Client.exe";
+                            p.StartInfo.UseShellExecute = false;
+                            p.Start();
+                            
+                            window.Close();
+                        }
+                        return;
+                    }
+
+                    if (!string.IsNullOrEmpty(LocalSetting.VerifyMode))//如果开启了日志验证
                     {
                         LoginStatus = LocalSetting.VerifyMode;
                         return;
@@ -224,10 +246,10 @@ namespace AIStudio.Wpf.Client.ViewModels
                 }
                 else
                 {
-                    var token = await _dataProvider.GetToken(ServerIP, UserName, MD5Password, 1, TimeSpan.FromSeconds(8));
-                    if (!token.IsOK)
+                    var token = await _dataProvider.GetToken(ServerIP, UserName, MD5Password, 1, TimeSpan.FromSeconds(60));
+                    if (!token.Success)
                     {
-                        throw new Exception(token.ErrorMessage);
+                        throw new Exception(token.Msg);
                     }
                     else
                     {
@@ -242,14 +264,17 @@ namespace AIStudio.Wpf.Client.ViewModels
                         _localConfig.AddLoginInfo(new LoginInfo() { UserName = UserName, Password = MD5Password, });
                     }
                     _operator.UserName = UserName;
-  
-                    if (LocalSetting.ApiMode)
+
+                    LocalSetting.SetAppSetting("ServerIP", ServerIP);           
+
+                    if (!Servers.Contains(ServerIP))
                     {
-                        LocalSetting.SetAppSetting("ServerIP", ServerIP);
+                        Servers.Add(ServerIP);
+                        LocalSetting.SetAppSetting("Servers", string.Join(";", Servers));//把新服务器保存起来
                     }
 
                     _window.DialogResult = success;
-                    _window.Close();          
+                    _window.Close();
                 }
             }
             catch (Exception ex)
@@ -264,12 +289,17 @@ namespace AIStudio.Wpf.Client.ViewModels
 
         private void ResultChanged(object result)
         {
-            if ((bool)result == true)
+            if ((bool)result == true)//验证成功
             {
                 Login(_window);
             }
         }
+
+        private void Close(Window window)
+        {
+            window.Close();
+        }
     }
 
-   
+
 }

@@ -10,7 +10,6 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 {
     public class BaseEditViewModel<T> : BindableBase where T : class, IIsChecked
     {      
-
         private string _title;
         public string Title
         {
@@ -34,33 +33,35 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         private T _data;
         public T Data
         {
+            //get { return _data; }
+            //set
+            //{
+            //    SetProperty(ref _data, value);
+            //}
+
             get { return _data; }
             set
             {
-                SetProperty(ref _data, value);
+                if (value != _data)
+                {
+                    _data = value;
+                    RaisePropertyChanged("Data");
+                }
             }
+
         }
 
         protected string Identifier { get; set; } = LocalSetting.RootWindow;
         protected string Area { get; set; }
 
-        protected bool NeedUserData { get; set; } = false;
+        protected IDataProvider _dataProvider { get { return ContainerLocator.Current.Resolve<IDataProvider>(); } }
+        protected IUserData _userData { get { return ContainerLocator.Current.Resolve<IUserData>(); } }
 
-        protected IDataProvider _dataProvider { get; }
-        protected IUserData _userData { get; }
-
-        public BaseEditViewModel(T data, string area, string identifier, string title = "编辑表单",  bool needUserData = false)
+        public BaseEditViewModel(T data, string area, string identifier, string title = "编辑表单")
         {
             Data = data;
             Title = title;
-            Area = area;
-            NeedUserData = needUserData;
-
-            _dataProvider = ContainerLocator.Current.Resolve<IDataProvider>();
-            if (NeedUserData)
-            {
-                _userData = ContainerLocator.Current.Resolve<IUserData>();
-            }          
+            Area = area;      
         }
 
         protected virtual void InitData()
@@ -75,11 +76,11 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 ShowWait();
 
                 var result = await _dataProvider.GetData<T>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
-                Data = result.ResponseItem;
+                Data = result.Data;
             }
             catch (Exception ex)
             {

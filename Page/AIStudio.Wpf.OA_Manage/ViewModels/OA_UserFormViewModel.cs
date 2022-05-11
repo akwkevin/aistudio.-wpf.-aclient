@@ -77,14 +77,14 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 };
 
                 var result = await _dataProvider.GetData<List<OA_UserFormDTO>>("/OA_Manage/OA_UserForm/GetDataList", JsonConvert.SerializeObject(data));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
                     Pagination.Total = result.Total;
-                    Data = new ObservableCollection<OA_UserFormDTO>(result.ResponseItem);
+                    Data = new ObservableCollection<OA_UserFormDTO>(result.Data);
                 }
             }
             catch (Exception ex)
@@ -135,9 +135,9 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     if (res == BaseDialogResult.Other1)
                     {
                         var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/DisCardData", JsonConvert.SerializeObject(new { id = viewmodel.Data.Id }));
-                        if (!result.IsOK)
+                        if (!result.Success)
                         {
-                            throw new Exception(result.ErrorMessage);
+                            throw new Exception(result.Msg);
                         }
                     }
                     else if (res == BaseDialogResult.Other2)
@@ -152,11 +152,11 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                             Remarks = viewmodel.Remark
                         };
                         var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/EventData", JsonConvert.SerializeObject(data));
-                        if (!result.IsOK)
+                        if (!result.Success)
                         {
-                            throw new Exception(result.ErrorMessage);
+                            throw new Exception(result.Msg);
                         }
-                        WindowBase.ShowMessageQueue(result.ResponseItem?.Msg, Identifier);
+                        WindowBase.ShowMessageQueue(result.Msg, Identifier);
                     }
                     await Task.Delay(100);
                     GetData(true);

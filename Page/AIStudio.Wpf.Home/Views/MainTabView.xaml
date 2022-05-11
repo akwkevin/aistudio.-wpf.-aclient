@@ -6,6 +6,7 @@
              xmlns:prism="http://prismlibrary.com/"
              xmlns:dock="http://schemas.xceed.com/wpf/xaml/avalondock"
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
+             xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -14,6 +15,21 @@
             <dock:DockingManager.Theme>
                 <dock:MyMetroTheme/>
             </dock:DockingManager.Theme>
+            <dock:DockingManager.DocumentHeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <svg:PackSvg x:Name="Icon" Height="18" Width="18" Margin="0,0,4,0" VerticalAlignment="Center"
+                                         Kind="{Binding Content.DataContext.Glyph}" 
+                                         Fill="{Binding Foreground, ElementName=Text}"/>
+                        <TextBlock x:Name="Text" Text="{Binding Title}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Content.DataContext.Glyph}" Value="{x:Null}">
+                            <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </dock:DockingManager.DocumentHeaderTemplate>
             <dock:LayoutRoot>
                 <dock:LayoutPanel Orientation="Horizontal">
                     <dock:LayoutDocumentPaneGroup DockWidth="100" Orientation="Vertical">

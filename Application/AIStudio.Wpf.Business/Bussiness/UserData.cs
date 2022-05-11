@@ -26,13 +26,13 @@ namespace AIStudio.Wpf.Business
             if (alluser == null)
             {
                 var result = await _dataProvider.GetData<List<SelectOption>>("/Base_Manage/Base_User/GetOptionList");
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
-                    alluser = result.ResponseItem;
+                    alluser = result.Data;
                 }
             }
 
@@ -49,13 +49,13 @@ namespace AIStudio.Wpf.Business
             if (allrole == null)
             {
                 var result = await _dataProvider.GetData<List<SelectOption>>("/Base_Manage/Base_Role/GetOptionList");
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
-                    allrole = result.ResponseItem;
+                    allrole = result.Data;
                 }
             }
 
@@ -69,16 +69,16 @@ namespace AIStudio.Wpf.Business
 
         public async Task<List<TreeModel>> GetAllDepartment()
         {
-            if (alldepartment == null)
+            //if (alldepartment == null)
             {
                 var result = await _dataProvider.GetData<List<TreeModel>>("/Base_Manage/Base_Department/GetTreeDataList");
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
                 else
                 {
-                    alldepartment = result.ResponseItem;                  
+                    alldepartment = result.Data;                  
                 }
             }
 

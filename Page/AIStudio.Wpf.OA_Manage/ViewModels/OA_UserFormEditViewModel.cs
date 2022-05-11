@@ -88,7 +88,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         public OA_UserFormEditViewModel(OA_UserFormDTO data, string area, string identifier, string title = "编辑表单") : this(data, area, identifier, title, "", "", "", 0, "") { }
 
-        public OA_UserFormEditViewModel(OA_UserFormDTO data, string area, string identifier, string title, string type, string key, string jsonId, int jsonVersion, string json) : base(data, area, identifier, title, true)
+        public OA_UserFormEditViewModel(OA_UserFormDTO data, string area, string identifier, string title, string type, string key, string jsonId, int jsonVersion, string json) : base(data, area, identifier, title)
         {
             _operator = ContainerLocator.Current.Resolve<IOperator>();
             if (Data == null)
@@ -116,11 +116,11 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 ShowWait();
 
                 var result = await _dataProvider.GetData<OA_UserFormDTO>($"/OA_Manage/OA_UserForm/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
-                Data = result.ResponseItem;
+                Data = result.Data;
                 await GetUsers();
                 await GetTypes();
             }
@@ -150,11 +150,11 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 }
             };
             var result = await _dataProvider.GetData<List<OA_DefTypeDTO>>($"/OA_Manage/OA_DefType/GetDataList", JsonConvert.SerializeObject(data));
-            if (!result.IsOK)
+            if (!result.Success)
             {
-                throw new Exception(result.ErrorMessage);
+                throw new Exception(result.Msg);
             }
-            Types = result.ResponseItem;
+            Types = result.Data;
             if (string.IsNullOrEmpty(this.Data.Unit) && Types.Count > 0)
             {
                 this.Data.Unit = this.Types[0].Unit;
@@ -167,11 +167,11 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             {
                 ShowWait();
                 var result = await _dataProvider.GetData<List<OAStep>>($"/OA_Manage/OA_UserForm/PreStep", JsonConvert.SerializeObject(para));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
-                Data.Steps = result.ResponseItem;
+                Data.Steps = result.Data;
             }
             catch (Exception ex)
             {

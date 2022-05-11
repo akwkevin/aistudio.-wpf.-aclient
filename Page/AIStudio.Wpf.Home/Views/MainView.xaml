@@ -26,20 +26,34 @@
             </ResourceDictionary.MergedDictionaries>
             <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
             <util:DoubleToThickness x:Key="DoubleToThickness"/>
-            <Style x:Key="MainSearchStyle" TargetType="{x:Type ContentControl}">
+
+            <Style x:Key="MainIconStyle" TargetType="{x:Type ContentControl}">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ContentControl}">
-                            <Grid Height="Auto" HorizontalAlignment="Left">
+                            <Grid Height="Auto" HorizontalAlignment="Left" Background="{DynamicResource TitleBackgroundBrush}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <svg:PackSvg x:Name="Icon" Height="24" Width="24" Margin="5"   
+                                <ToggleButton Style="{StaticResource HamburgerButtonStyle}" IsChecked="{Binding IsPaneOpen, ElementName=HamburgerMenuControl}">
+                                    <svg:PackSvg x:Name="Icon" Height="24" Width="24" Margin="5"   
                                          Kind="A" 
-                                         Fill="{DynamicResource TitleForegroundBrush}" 
-                                         Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Left'}"/>
+                                         Fill="{DynamicResource TitleForegroundBrush}" />
+                                </ToggleButton> 
 
+                                <TextBlock  Text="{x:Static core:LocalSetting.Title}" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource TitleForegroundBrush}" Margin="5,0,0,0"/>
+
+                                <Grid.Style>
+                                    <Style TargetType="{x:Type Grid}">
+                                        <Setter Property="Width" Value="180"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsPaneOpen, ElementName=HamburgerMenuControl}" Value="false">
+                                                <Setter Property="Width" Value="36"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -52,27 +66,38 @@
                         <ControlTemplate TargetType="{x:Type ContentControl}">
                             <StackPanel Orientation="Horizontal">
                                 <Grid>
-                                    <util:InputComboBox Width="156" x:Name="txtSearch"    
+                                    <util:InputComboBox Width="156" 
+                                        x:Name="txtSearch"    
+                                        VerticalAlignment="Center"
                                         util:ControlAttachProperty.Watermark="搜索(Ctrl+Q)"
                                         Text="{Binding SearchText,Mode=TwoWay}"
                                         ItemsSource="{Binding SearchMenus}"
                                         IsFocusText="{Binding IsFocusSearchText}"
                                         BorderBrush="{DynamicResource MahApps.Brushes.Gray8}"
-                                        BorderThickness="0"
                                         MaxDropDownHeight="230"
-                                        DisplayMemberPath="Label" SelectedValuePath="Code" Style="{StaticResource UnderlineInputComboBoxStyle}">
+                                        DisplayMemberPath="Label" SelectedValuePath="Code">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="ResultChanged">
                                                 <i:InvokeCommandAction Command="{Binding SearchCommand}" CommandParameter="{Binding Path=SelectedItem, ElementName=txtSearch}" />
                                             </i:EventTrigger>              
                                         </i:Interaction.Triggers>
+                                        <util:InputComboBox.Style>
+                                            <Style TargetType="{x:Type util:InputComboBox}" BasedOn="{StaticResource UnderlineInputComboBoxStyle}">
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                                        <Setter Property="BorderThickness" Value="1" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </util:InputComboBox.Style>
                                     </util:InputComboBox>
                                 </Grid>
 
                                 <StackPanel Orientation="Horizontal" Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}">
-                                    <local:NoticeIconView Margin="8,0,8,3"   HorizontalAlignment="Center" VerticalAlignment="Bottom" DataContext="{Binding NoticeIconViewModel}"/>
+                                    <local:NoticeIconView Margin="15,0,15,3"  HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{Binding NoticeIconViewModel}"/>
 
-                                    <util:DropDown Margin="8,0,0,0">
+                                    <util:DropDown Margin="8,3,0,3">
                                         <util:DropDown.Content>
                                             <Image                                           
                                            Stretch="Fill"                
@@ -91,34 +116,34 @@
                                                     <Button 
                                                     Height="30"
                                                     Width="100"
-                                                    VerticalAlignment="Center"  
-                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
-                                                    Content="&#xf2c0; 个人中心" 
-                                                    Command="{Binding UserDropCommand}"
+                                                    VerticalAlignment="Center"                                                   
+                                                    Command="{Binding KeyExcuteCommand}"
                                                     CommandParameter="UserCenter"
-                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                                    Style="{StaticResource LinkButtonStyle}">
+                                                        <TextBlock Text="&#xf2c0; 个人中心" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
+                                                    </Button>
                                                 </Grid>
                                                 <Grid Grid.Row="1">
                                                     <Button 
                                                     Height="30"
                                                     Width="100"
-                                                    VerticalAlignment="Center"  
-                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
-                                                    Content="&#xf013; 个人设置" 
-                                                    Command="{Binding UserDropCommand}"
-                                                    CommandParameter="UserSet"
-                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                                    VerticalAlignment="Center"                                                    
+                                                    Command="{Binding KeyExcuteCommand}"
+                                                    CommandParameter="UserSet"                                                    
+                                                    Style="{StaticResource LinkButtonStyle}">
+                                                        <TextBlock Text="&#xf013; 个人设置" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
+                                                    </Button>
                                                 </Grid>
                                                 <Grid Grid.Row="2">
                                                     <Button 
                                                     Height="30"
                                                     Width="100"
-                                                    VerticalAlignment="Center"  
-                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
-                                                    Content="&#xf023; 修改密码" 
-                                                    Command="{Binding UserDropCommand}"
+                                                    VerticalAlignment="Center"                                                   
+                                                    Command="{Binding KeyExcuteCommand}"
                                                     CommandParameter="EditPwd"
-                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                                    Style="{StaticResource LinkButtonStyle}">
+                                                        <TextBlock Text="&#xf023; 修改密码" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
+                                                    </Button>
                                                 </Grid>
                                                 <Border Grid.Row="2"
                                                 VerticalAlignment="Bottom"
@@ -129,18 +154,31 @@
                                                     <Button 
                                                     Height="30"
                                                     Width="100"
-                                                    VerticalAlignment="Center"  
-                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
-                                                    Content="&#xf08b; 退出登录" 
-                                                    Command="{Binding UserDropCommand}"
-                                                    CommandParameter="Logout"
-                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                                    VerticalAlignment="Center"                                                  
+                                                    Command="{Binding KeyExcuteCommand}"
+                                                    CommandParameter="Escape"
+                                                    Style="{StaticResource LinkButtonStyle}">
+                                                        <TextBlock Text="&#xf08b; 退出登录" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
+                                                    </Button>
                                                 </Grid>
                                             </Grid>
                                         </util:DropDown.Child>
                                     </util:DropDown>
-                                    <util:FButton Margin="2,0" VerticalAlignment="Center" Command="{Binding OpenUserConsoleCommand}" Foreground="{DynamicResource TitleForegroundBrush}" Content="{Binding Operator.UserName}" Style="{StaticResource FButton_LinkButton}" FontSize="{DynamicResource MahApps.Font.Size.Content}" MouseOverForeground="{DynamicResource MahApps.Brushes.Gray8}"/>
+                                    <util:FButton Margin="1,0,0,0" VerticalAlignment="Center" Command="{Binding OpenUserConsoleCommand}" Foreground="{DynamicResource MahApps.Brushes.Text}" Content="{Binding Operator.UserName}" Style="{StaticResource FButton_LinkButton}" FontSize="{DynamicResource MahApps.Font.Size.Content}" MouseOverForeground="{DynamicResource MahApps.Brushes.Gray8}"/>
                                 </StackPanel>
+
+                                <Button Background="Transparent" 
+                                            ToolTip="全屏"
+                                            Command="{Binding KeyExcuteCommand}" 
+                                            CommandParameter="FullScreen"
+                                            IsTabStop="False" 
+                                            Style="{StaticResource PathButtonStyle}"
+                                            Width="46"
+                                            VerticalAlignment="Stretch"
+                                            util:ControlAttachProperty.Geometry="{StaticResource FullScreenGeometry}" 
+                                            BorderThickness="1,0,1,0" 
+                                            util:ControlAttachProperty.Width="10" 
+                                            util:ControlAttachProperty.Height="10"/>
                             </StackPanel>
                         </ControlTemplate>
                     </Setter.Value>
@@ -207,7 +245,7 @@
                                     </ItemsPanelTemplate>
                                 </StatusBar.ItemsPanel>
                                 <Grid Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}">
-                                    <util:DropDown Grid.Column="0" Margin="6,0,6,0"                                          
+                                    <util:DropDown Grid.Column="0" Margin="6"                                          
                                                ToolTip="{Binding WSocketClient.ServerIP}"
                                                Visibility="{Binding WSocketClient.IsInit,Converter={StaticResource bool2VisibilityConverter}}">
                                         <util:DropDown.Content>
@@ -318,112 +356,115 @@
     <UserControl.CommandBindings>
         <CommandBinding Command="Copy" Executed="OnCopy"></CommandBinding>
     </UserControl.CommandBindings>
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="Titlebar" util:WindowBase.TitleTag="true"
+        <DockPanel x:Name="Titlebar" util:WindowBase.TitleTag="true" LastChildFill="True"
               Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"       
               Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=ShowTitleBar,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}">
-            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"
-                        FontSize="{DynamicResource MahApps.Font.Size.Window.Title}"
-                        Foreground="{DynamicResource TitleForegroundBrush}"                              
-                        Text="{Binding PageTitle}"
-                        TextTrimming="CharacterEllipsis">
-            </TextBlock>
 
-            <StackPanel Margin="0,0,85,0" Orientation="Horizontal" HorizontalAlignment="Right">
-                <ContentControl Style="{DynamicResource RightBarStyle}" />
-
-                <Menu Background="Transparent" Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}">
-                    <MenuItem Height="25" Style="{StaticResource TransparentHeaderMenuItem}" Foreground="{DynamicResource TitleForegroundBrush}" Padding="0" Icon="&#xe665;" >
-                        <MenuItem Icon="&#xE633;" Header="{DynamicResource 系统设置}" Command="{Binding SystemManageCommand}" CommandParameter="Setting" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                        <MenuItem Icon="&#xe61b;" Header="本地日志" Command="{Binding SystemManageCommand}" CommandParameter="Logs" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                        <MenuItem Icon="&#xe64a;" Header="修改密码" Command="{Binding SystemManageCommand}" CommandParameter="EditPwd" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                        <Separator Background="{DynamicResource DynamicResource MahApps.Brushes.TextBox.Border.Focus}"/>
-                        <MenuItem Icon="&#xe657;" Header="问题反馈" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                        <MenuItem Icon="&#xe61e;" Header="技术支持" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                        <MenuItem Icon="&#xe60e;" Header="帮助" Command="{Binding SystemManageCommand}" CommandParameter="Helper" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                        <MenuItem Icon="&#xe635;" Header="关于" Command="{Binding SystemManageCommand}" CommandParameter="About" Style="{StaticResource TransparentHeaderMenuItem}"/>
-                    </MenuItem>
-                </Menu>
+            <StackPanel Margin="0,0,138,0" Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
+                <ContentControl Style="{DynamicResource RightBarStyle}"/>
             </StackPanel>
 
-            <Grid.Style>
-                <Style TargetType="{x:Type Grid}">
+            <Grid DockPanel.Dock="Left">
+                <ContentControl Style="{DynamicResource MainIconStyle}" Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Left'}"/>
+
+                <StackPanel Orientation="Horizontal" Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Top'}">
+
+                    <Border Margin="0 3 0 3" Cursor="SizeAll"
+                            SnapsToDevicePixels="True">
+                        <Rectangle Width="4.9">
+                            <Rectangle.Fill>
+                                <!--  Brush similar to visual studio, can be improved  -->
+                                <DrawingBrush TileMode="Tile"
+                                              Viewbox="0,0,5,4"
+                                              ViewboxUnits="Absolute"
+                                              Viewport="0,0,5,4"
+                                              ViewportUnits="Absolute">
+                                    <DrawingBrush.Drawing>
+                                        <GeometryDrawing Brush="{DynamicResource MahApps.Brushes.Gray3}">
+                                            <GeometryDrawing.Geometry>
+                                                <GeometryGroup>
+                                                    <GeometryGroup.Children>
+                                                        <RectangleGeometry Rect="0,0,1,1" />
+                                                        <RectangleGeometry Rect="4,0,1,1" />
+                                                        <RectangleGeometry Rect="2,2,1,1" />
+                                                    </GeometryGroup.Children>
+                                                </GeometryGroup>
+                                            </GeometryDrawing.Geometry>
+                                        </GeometryDrawing>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Border>
+
+                    <Menu x:Name="MenuControl"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    ItemContainerStyle="{StaticResource MenuItemStyle}" 
+                    ItemsSource="{Binding MenuItems}"
+                    ItemTemplate="{StaticResource MenuItemDataTemplate}" 
+                    Background="{DynamicResource TitleBackgroundBrush}"
+                    Foreground="{DynamicResource TitleForegroundBrush}"
+                    Style="{StaticResource TopMetroMenu}" />
+                </StackPanel>
+            </Grid>
+            <DockPanel.Style>
+                <Style TargetType="{x:Type DockPanel}">
                     <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding WindowSetting.NavigationAccent}" Value="Light">
+                        <DataTrigger Binding="{Binding WindowSetting.NavigationLocation}" Value="Left">
                             <Setter Property="Background" Value="Transparent"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </Grid.Style>
-        </Grid>
+            </DockPanel.Style>
+        </DockPanel>
 
-        <Grid Grid.Row="1" Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Top'}">
-            <Menu x:Name="MenuControl"
-                Grid.Column="0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                ItemContainerStyle="{StaticResource MenuItemStyle}" 
-                ItemsSource="{Binding MenuItems}"
-                ItemTemplate="{StaticResource MenuItemDataTemplate}"            
-                Style="{StaticResource MahApps.Styles.Menu}" 
-                Background="Transparent" />
-            <Grid.Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding WindowSetting.NavigationAccent}" Value="Light">
-                            <Setter Property="Background" Value="Transparent"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-        </Grid>
-
-        <util:HamburgerTreeMenu Grid.Row="2"
+        <util:HamburgerTreeMenu Grid.Row="1"
             VerticalAlignment="Stretch"
             x:Name="HamburgerMenuControl"
             SelectedIndex="1"
-            Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
             BorderBrush="Transparent"
             HamburgerWidth="36"
-            HamburgerHeight ="36"
+            HamburgerHeight ="0"
             HamburgerMargin="0"
             CompactPaneLength ="36"
             OpenPaneLength="180"
             ItemsSource="{Binding MenuItems}"
             SelectedItem="{Binding SelectedMenuItem}"
-            OptionsItemTemplate="{StaticResource HamburgerMenuItem}"
+            OptionsItemsSource="{Binding OptionItems}"                                
+            OptionsItemTemplate="{StaticResource LeftHamburgerMenuImageItem}"
             PaneBackground="Transparent">
             <util:HamburgerTreeMenu.Style>
                 <Style TargetType="{x:Type util:HamburgerTreeMenu}" BasedOn="{StaticResource HamburgerTreeMenuStyle}">
-                    <Setter Property="ItemTemplate" Value="{StaticResource HamburgerMenuImageItem}"/>
-                    <Setter Property="DisplayMode" Value="Overlay"/>
+                    <Setter Property="ItemTemplate" Value="{StaticResource HamburgerMenuImageItem}"/>                 
                     <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource TitleForegroundBrush}"/>
                     <Setter Property="HamburgerMenuTemplate">
                         <Setter.Value>
                             <DataTemplate>
-                                <ContentControl Style="{DynamicResource MainSearchStyle}" />
+                                <ContentControl Style="{DynamicResource MainIconStyle}" />
                             </DataTemplate>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
+                        <DataTrigger Binding="{Binding WindowSetting.NavigationLocation}" Value="Left">
+                            <Setter Property="DisplayMode" Value= "CompactInline"></Setter>
+                            <Setter Property="IsPaneOpen" Value= "True"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding WindowSetting.NavigationLocation}" Value="Top">
+                            <Setter Property="DisplayMode" Value="Overlay"/>
+                            <Setter Property="IsPaneOpen" Value= "False"></Setter>
+                        </DataTrigger>
                         <Trigger Property="IsPaneOpen" Value="False">
                             <Setter Property="ItemTemplate" Value="{StaticResource LeftHamburgerMenuImageItem}"/>
                         </Trigger>
-                        <DataTrigger Binding="{Binding WindowSetting.NavigationLocation}" Value="Left">
-                            <Setter Property="DisplayMode" Value= "CompactInline"></Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding WindowSetting.NavigationAccent}" Value="Light">
-                            <Setter Property="Background" Value="Transparent"/>
-                        </DataTrigger>
                     </Style.Triggers>
 
                 </Style>
@@ -436,6 +477,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" Visibility="{Binding WindowSetting.ToolBarLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Top'}">
                             <ContentControl Style="{DynamicResource ToolBarStyle}" />
@@ -444,24 +486,13 @@
                         <Grid Grid.Row="1" prism:RegionManager.RegionManager="{Binding _regionManager}">
                             <local:MainTabView />
                         </Grid>
+
+                        <Border Grid.Row="2" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource MahApps.Brushes.Accent}"  Visibility="{Binding WindowSetting.StatusBarLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Bottom'}">
+                            <ContentControl  Style="{DynamicResource StatusBarStyle}" />
+                        </Border>
                     </Grid>
                 </DataTemplate>
             </util:HamburgerTreeMenu.ContentTemplate>
         </util:HamburgerTreeMenu>
-
-        <Grid Grid.Row="3"  Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"    
-              Visibility="{Binding WindowSetting.StatusBarLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Bottom'}">
-            <ContentControl Style="{DynamicResource StatusBarStyle}" />
-            <Grid.Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding WindowSetting.NavigationAccent}" Value="Light">
-                            <Setter Property="Background" Value="Transparent"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-        </Grid>
     </Grid>
 </UserControl>

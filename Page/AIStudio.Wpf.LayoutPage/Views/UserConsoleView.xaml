@@ -18,6 +18,11 @@
             <DataTemplate DataType="{x:Type model:UserItemData}">
                 <ContentControl Content="{Binding Content}"/>
             </DataTemplate>
+            <DataTemplate x:Key="TitleTemplate" x:Shared="False">
+                <StackPanel Orientation="Horizontal">
+                    <util:FButton Margin="2,0" VerticalAlignment="Center" Command="{util:ControlBinding OpenCommand}" CommandParameter="{Binding .}" Content="{Binding Title}" Style="{StaticResource FButton_LinkButton}" ToolTip="在主窗体中打开"/>
+                </StackPanel>
+            </DataTemplate>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -70,7 +75,7 @@
             RowNum="{Binding UserConsoleData.RowNum,Mode=OneWay}" 
             ColumnNum="{Binding UserConsoleData.ColumnNum,Mode=OneWay}" 
             ShowTitle="True" 
-            PanelType="{Binding UserConsoleData.PanelType,Mode=OneWay}" 
-            />
+            TitleTemplate="{StaticResource TitleTemplate}"
+            PanelType="{Binding UserConsoleData.PanelType,Mode=OneWay}" />
     </Grid>
 </UserControl>

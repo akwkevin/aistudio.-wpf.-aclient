@@ -13,6 +13,7 @@ namespace AIStudio.Core
         UserFormType,
         PushType,
         ReadMessageType,
-        PingType
+        PingType,
+        OnlineUser,
     }
 }

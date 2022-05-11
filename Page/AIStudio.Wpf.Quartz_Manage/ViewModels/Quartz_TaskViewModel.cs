@@ -107,9 +107,9 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                     ShowWait();
 
                     var result = await _dataProvider.GetData<AjaxResult>($"/Quartz_Manage/Quartz_Task/PauseData", JsonConvert.SerializeObject(ids));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     GetData(true);
                 }
@@ -136,9 +136,9 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                     ShowWait();
 
                     var result = await _dataProvider.GetData<AjaxResult>($"/Quartz_Manage/Quartz_Task/StartData", JsonConvert.SerializeObject(ids));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     GetData(true);
                 }
@@ -165,9 +165,9 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                     ShowWait();
 
                     var result = await _dataProvider.GetData<AjaxResult>($"/Quartz_Manage/Quartz_Task/ToDoData", JsonConvert.SerializeObject(ids));
-                    if (!result.IsOK)
+                    if (!result.Success)
                     {
-                        throw new Exception(result.ErrorMessage);
+                        throw new Exception(result.Msg);
                     }
                     GetData(true);
                 }

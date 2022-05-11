@@ -1,0 +1,316 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\Debug\net5.0-windows\sqlite\BuildCodeTemplate\**" />
+    <Compile Remove="bin\Debug\net5.0-windows\sqlite\runtimes\**" />
+    <Compile Remove="bin\Debug\net5.0-windows\sqlite\WorkflowCore\**" />
+    <Compile Remove="bin\Debug\net5.0-windows\sqlite\wwwroot\**" />
+    <Compile Remove="sqlite\**" />
+    <EmbeddedResource Remove="bin\Debug\net5.0-windows\sqlite\BuildCodeTemplate\**" />
+    <EmbeddedResource Remove="bin\Debug\net5.0-windows\sqlite\runtimes\**" />
+    <EmbeddedResource Remove="bin\Debug\net5.0-windows\sqlite\WorkflowCore\**" />
+    <EmbeddedResource Remove="bin\Debug\net5.0-windows\sqlite\wwwroot\**" />
+    <EmbeddedResource Remove="sqlite\**" />
+    <None Remove="bin\Debug\net5.0-windows\sqlite\BuildCodeTemplate\**" />
+    <None Remove="bin\Debug\net5.0-windows\sqlite\runtimes\**" />
+    <None Remove="bin\Debug\net5.0-windows\sqlite\WorkflowCore\**" />
+    <None Remove="bin\Debug\net5.0-windows\sqlite\wwwroot\**" />
+    <None Remove="sqlite\**" />
+    <Page Remove="bin\Debug\net5.0-windows\sqlite\BuildCodeTemplate\**" />
+    <Page Remove="bin\Debug\net5.0-windows\sqlite\runtimes\**" />
+    <Page Remove="bin\Debug\net5.0-windows\sqlite\WorkflowCore\**" />
+    <Page Remove="bin\Debug\net5.0-windows\sqlite\wwwroot\**" />
+    <Page Remove="sqlite\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\net5.0-windows\server\AIStudio.Service.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\appsettings.Development.json" />
+    <Content Include="bin\Debug\net5.0-windows\server\appsettings.json" />
+    <Content Include="bin\Debug\net5.0-windows\server\BuildCodeTemplate\Business.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\BuildCodeTemplate\Controller.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\BuildCodeTemplate\EditForm.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\BuildCodeTemplate\IBusiness.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\BuildCodeTemplate\List.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.deps.json" />
+    <Content Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.runtimeconfig.json" />
+    <Content Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\Coldairarrow.Business.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\Coldairarrow.Entity.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\Coldairarrow.IBusiness.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\Coldairarrow.Util.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.SQLite.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.SqlServer.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\libman.json" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20210814.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20210815.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20210816.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20210822.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20210823.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20210828.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.DSL.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.EntityFramework.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.MySQL.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.PostgreSQL.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.Sqlite.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.SqlServer.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore\OAStep\g6test1.json" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore\OAStep\g6test2.json" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore\OAStep\g6test3.json" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore\OAStep\g6test4.json" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore\OAStep\g6test5.json" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore\OAStep\g6test6.json" />
+    <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore\OAStep\g6test7.json" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Images\admin.jpg" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Images\Brook.jpg" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Images\Chopper.jpg" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Images\default-user-image.jpg" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Images\defaultAvatar.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Images\Franky.jpg" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Images\Jinbe.jpg" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Images\Luffy.jpg" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Images\Nami.jpg" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Images\Robin.jpg" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Images\Sanji.jpg" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Images\Usopp.jpg" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Images\Zoro.jpg" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Update\AutoUpdater.xml" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Update\changelog.html" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Update\changelog.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\196e0aa2f47e4c6a87a6cc0b693a8e62\图片4.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\41b041c263c04892a11f2056e3d0e048\cart.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\43edcc230b4f441384c34cee388eb9b7\banner_1.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\48fdd0d8063a416bb3263348ee724cfb\图片3.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\7b26d26f6bc1455ea10d8b9205c25507\bg_1.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\85574f55e9324a39abf6e918c6121e96\图片1.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\8a952bd38ece4a579dea7eed241b0af7\mi_electric_cooker_4L.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\c6601bf4644843f88f5b2fa8a23c63ec\图片3.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\cfa9b49c7d4747898fa87d47dc210ff5\图片2.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\eb9f13f9ada64ca3bf9ac67467c2e00b\bg_2.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\ec00d1ea71b04501b1bbee9ed17d9051\bg_2.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\f4302efce1554a03b29e23ad869c0c1d\图片3.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\f4df91a010fe4a06a7f797dc26580766\cart.png" />
+    <Content Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\_.txt" />
+    <Content Include="bin\Debug\net5.0-windows\sqlite\appsettings.json" />
+    <Content Include="bin\Debug\net5.0-windows\sqlserver\appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net5.0-windows\server\0_install.bat" />
+    <None Include="bin\Debug\net5.0-windows\server\0_uninstall.bat" />
+    <None Include="bin\Debug\net5.0-windows\server\AIStudio.Service.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\AIStudio.Service.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\Apex.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\AutoMapper.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Caching.CSRedis.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Castle.Core.AsyncInterceptor.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Castle.Core.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.db" />
+    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.exe" />
+    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Api.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Business.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Business.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Entity.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Entity.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.IBusiness.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.IBusiness.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Util.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Coldairarrow.Util.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\Colder.Logging.Abstractions.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Colder.Logging.Serilog.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\ConcurrentCollections.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\ConsoleControl.WPF.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\ConsoleControl.WPF.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\ConsoleControlAPI.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\ConsoleControlAPI.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\ConsoleControlSample.WPF.exe" />
+    <None Include="bin\Debug\net5.0-windows\server\ConsoleControlSample.WPF.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\ConsoleControlSample.WPF.vshost.exe" />
+    <None Include="bin\Debug\net5.0-windows\server\ConsoleControlSample.WPF.vshost.exe.manifest" />
+    <None Include="bin\Debug\net5.0-windows\server\CSRedisCore.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Dapper.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Dockerfile" />
+    <None Include="bin\Debug\net5.0-windows\server\dotnet" />
+    <None Include="bin\Debug\net5.0-windows\server\Dynamitey.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.SQLite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.SQLite.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.SqlServer.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\EFCore.Sharding.SqlServer.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\Elasticsearch.Net.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\ICSharpCode.SharpZipLib.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\IdHelper.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\IdHelper.Zookeeper.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\LinqKit.Microsoft.EntityFrameworkCore.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.AspNetCore.Authentication.JwtBearer.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.AspNetCore.JsonPatch.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.Data.SqlClient.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.Data.Sqlite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.DotNet.PlatformAbstractions.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.EntityFrameworkCore.Abstractions.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.EntityFrameworkCore.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.EntityFrameworkCore.Relational.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.EntityFrameworkCore.Sqlite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.EntityFrameworkCore.Sqlite.NetTopologySuite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.EntityFrameworkCore.SqlServer.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.Extensions.DependencyInjection.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.Extensions.DependencyModel.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.Extensions.PlatformAbstractions.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.Identity.Client.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.IdentityModel.JsonWebTokens.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.IdentityModel.Logging.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.IdentityModel.Protocols.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Microsoft.IdentityModel.Tokens.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\MySqlConnector.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Namotion.Reflection.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\NetTopologySuite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\NetTopologySuite.IO.SpatiaLite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\NetTopologySuite.IO.SqlServerBytes.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Newtonsoft.Json.Bson.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Newtonsoft.Json.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\NJsonSchema.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Npgsql.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Npgsql.EntityFrameworkCore.PostgreSQL.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\nssm.exe" />
+    <None Include="bin\Debug\net5.0-windows\server\NSwag.Annotations.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\NSwag.AspNetCore.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\NSwag.Core.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\NSwag.Generation.AspNetCore.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\NSwag.Generation.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Oracle.ManagedDataAccess.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Pomelo.EntityFrameworkCore.MySql.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Pomelo.JsonObject.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\QRCoder.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Quartz.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\alpine-x64\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\linux-arm64\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\linux-armel\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\linux-arm\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\linux-mips64\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\linux-musl-x64\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\linux-x64\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\linux-x64\native\SQLite.Interop.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\linux-x86\native\libe_sqlite3.so" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\osx-x64\native\libe_sqlite3.dylib" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\osx-x64\native\SQLite.Interop.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-arm64\native\e_sqlite3.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-arm\native\e_sqlite3.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\e_sqlite3.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\libfreexl-1.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\libgcc_s_seh-1.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\libgeos.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\libgeos_c.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\libiconv-2.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\liblzma-5.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\libproj-13.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\libstdc++-6.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\libwinpthread-1.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\libxml2-2.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\mod_spatialite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\SQLite.Interop.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x64\native\zlib1.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\e_sqlite3.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\libfreexl-1.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\libgcc_s_dw2-1.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\libgeos.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\libgeos_c.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\libiconv-2.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\liblzma-5.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\libproj-13.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\libstdc++-6.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\libwinpthread-1.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\libxml2-2.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\mod_spatialite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\SQLite.Interop.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win-x86\native\zlib1.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Serilog.AspNetCore.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Serilog.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Serilog.Extensions.Hosting.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Serilog.Extensions.Logging.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Serilog.Formatting.Compact.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Serilog.Formatting.Elasticsearch.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Serilog.Settings.Configuration.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Serilog.Sinks.Console.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Serilog.Sinks.Debug.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Serilog.Sinks.Elasticsearch.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Serilog.Sinks.File.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Serilog.Sinks.PeriodicBatching.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\SharpYaml.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\SQLitePCLRaw.batteries_v2.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\SQLitePCLRaw.core.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\SQLitePCLRaw.nativelibrary.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\SQLitePCLRaw.provider.dynamic_cdecl.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\System.Configuration.ConfigurationManager.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\System.Data.SQLite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\System.Diagnostics.DiagnosticSource.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\System.IdentityModel.Tokens.Jwt.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\System.Linq.Dynamic.Core.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\System.Private.ServiceModel.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\System.Runtime.Caching.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\System.Security.Cryptography.ProtectedData.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\System.ServiceModel.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\System.ServiceModel.Primitives.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\web.config" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.DSL.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.DSL.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.EntityFramework.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.EntityFramework.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.MySQL.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.MySQL.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.PostgreSQL.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.PostgreSQL.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.Sqlite.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.Sqlite.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.SqlServer.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.SqlServer.pdb" />
+    <None Include="bin\Debug\net5.0-windows\server\wwwroot\Setup\AIStudio.Wpf.Client.exe" />
+    <None Include="bin\Debug\net5.0-windows\server\wwwroot\Update\AIStudio.Wpf.Client.zip" />
+    <None Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\4c4ea03e0d034bf6ac33b87a78fd92c4\blob" />
+    <None Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\c6139ac297524f1ba1814a42221ad983\11.csv" />
+    <None Include="bin\Debug\net5.0-windows\server\ZooKeeperNetEx.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
+    <PackageReference Include="System.Management" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
+    <ProjectReference Include="..\..\Page\AIStudio.Wpf.D_Manage\AIStudio.Wpf.D_Manage.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

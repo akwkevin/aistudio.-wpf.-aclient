@@ -1,0 +1,7 @@
+Code Optimization
+
+Added way to change how Skip and Remind Later values are preserved.
+
+Added ability to execute update check synchronously.
+
+Added minimum version mandatory version check.

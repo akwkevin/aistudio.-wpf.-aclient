@@ -34,7 +34,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_DepartmentEditViewModel(Base_DepartmentTree dataTree, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title, true)
+        public Base_DepartmentEditViewModel(Base_DepartmentTree dataTree, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title)
         {
             if (dataTree == null)
             {
@@ -60,11 +60,11 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 control.WaitInfo = "正在获取数据";
 
                 var result = await _dataProvider.GetData<Base_DepartmentDTO>($"/Base_Manage/Base_Department/GetTheData", JsonConvert.SerializeObject(new { id = dataTree.Id }));
-                if (!result.IsOK)
+                if (!result.Success)
                 {
-                    throw new Exception(result.ErrorMessage);
+                    throw new Exception(result.Msg);
                 }
-                Data = result.ResponseItem;
+                Data = result.Data;
                 await GetDepartment();
             }
             catch (Exception ex)

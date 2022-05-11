@@ -9,29 +9,9 @@
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         CaptionForeground ="{DynamicResource MahApps.Brushes.ThemeBackground}"
+        CaptionHeight="36"
         mc:Ignorable="d"
         Title="{x:Static core:LocalSetting.Title}" Height="450" Width="800">
-    <Window.InputBindings>
-        <KeyBinding Gesture="F1" Key="F1" CommandParameter="F1" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="F2" Key="F2" CommandParameter="F2" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="F3" Key="F3" CommandParameter="F3" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="Shift+F3" Key="F3" CommandParameter="Shift+F3" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="F5" Key="F5" CommandParameter="F5" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="F10" Key="F10" CommandParameter="F10" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="F11" Key="F11" CommandParameter="F11" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="Del" Key="Del" CommandParameter="Del" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="Esc" Key="Esc" CommandParameter="Esc" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-
-        <KeyBinding Gesture="Control+A" Key="A" CommandParameter="Ctrl+A" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="Control+X" Key="X" CommandParameter="Ctrl+X" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="Control+C" Key="C" CommandParameter="Ctrl+C" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="Control+V" Key="V" CommandParameter="Ctrl+V" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="Control+F" Key="F" CommandParameter="Ctrl+F" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="Control+S" Key="S" CommandParameter="Ctrl+S" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="Control+O" Key="O" CommandParameter="Ctrl+O" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="Control+Q" Key="Q" CommandParameter="Ctrl+Q" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-        <KeyBinding Gesture="Control+N" Key="N" CommandParameter="Ctrl+N" Command="{Binding KeyCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
-    </Window.InputBindings>
     <Grid>
         <ContentControl prism:RegionManager.RegionName="{Binding RegionName,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
     </Grid>

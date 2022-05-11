@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>net6-windows</TargetFrameworks>
+    <TargetFrameworks>net5-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>A.ico</ApplicationIcon>
     <Version>1.0.0.0</Version>
@@ -25,7 +25,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Page\AIStudio.Wpf.Home\AIStudio.Wpf.Home.csproj" />
-    <ProjectReference Include="..\api\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ComeCapture">
+      <HintPath>..\..\packages\ComeCapture.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

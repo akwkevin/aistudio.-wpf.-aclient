@@ -1,0 +1,150 @@
+﻿{
+  "Id": "1274620801831669760",
+  "Version": 0,
+  "DataType": "Coldairarrow.Util.OAData, Coldairarrow.Util",
+  "FirstStart": true,
+  "Steps": [
+    {
+      "Id": "node4",
+      "Label": "开始",
+      "StepType": "AIStudio.Service.WorkflowCore.OAStartStep, AIStudio.Service",
+      "NextStepId": "node11",
+      "Status": 0,
+      "ActRules": {}
+    },
+    {
+      "Id": "node11",
+      "Label": "财务人力同时审批",
+      "StepType": "AIStudio.Service.WorkflowCore.OAMiddleStep, AIStudio.Service",
+      "NextStepId": "node18",
+      "Status": 0,
+      "ActRules": {
+        "UserIds": [ "Admin", "1267011854366937088", "1267011853830066176" ],
+        "ActType": "and"
+      }
+    },
+    {
+      "Id": "node18",
+      "Label": "结束",
+      "StepType": "AIStudio.Service.WorkflowCore.OAEndStep, AIStudio.Service",
+      "Status": 0,
+      "ActRules": {}
+    }
+  ],
+  "CurrentStepIds": [],
+  "Flag": 0.0,
+  "nodes": [
+    {
+      "id": "node4",
+      "name": "开始节点",
+      "color": "#1890ff",
+      "image": "/assets/Shape.486da24a.svg",
+      "label": "开始",
+      "offsetX": 106,
+      "offsetY": 24,
+      "shape": "customNode",
+      "size": [ 170, 34 ],
+      "stateImage": "/assets/start.e502ed95.svg",
+      "type": "node",
+      "x": 358.5500183105469,
+      "y": 112.0,
+      "inPoints": [ [ 0.0, 0.5 ] ],
+      "outPoints": [ [ 1.0, 0.5 ] ],
+      "isDoingStart": false,
+      "isDoingEnd": false
+    },
+    {
+      "id": "node11",
+      "name": "中间节点",
+      "color": "#1890ff",
+      "image": "/assets/Shape.486da24a.svg",
+      "label": "财务人力同时审批",
+      "offsetX": 95,
+      "offsetY": 12,
+      "shape": "customNode",
+      "size": [ 170, 34 ],
+      "stateImage": "/assets/jiahao.ecf71c51.svg",
+      "type": "node",
+      "x": 361.5500183105469,
+      "y": 212.0,
+      "inPoints": [ [ 0.0, 0.5 ] ],
+      "outPoints": [ [ 1.0, 0.5 ] ],
+      "isDoingStart": false,
+      "isDoingEnd": false,
+      "UserIds": [ "Admin", "1267011854366937088", "1267011853830066176" ],
+      "ActType": "and"
+    },
+    {
+      "id": "node18",
+      "name": "结束节点",
+      "color": "#1890ff",
+      "image": "/assets/Shape.486da24a.svg",
+      "label": "结束",
+      "offsetX": 115,
+      "offsetY": 22,
+      "shape": "customNode",
+      "size": [ 170, 34 ],
+      "stateImage": "/assets/end.dfe4a5ab.svg",
+      "type": "node",
+      "x": 363.5500183105469,
+      "y": 314.0,
+      "inPoints": [ [ 0.0, 0.5 ] ],
+      "outPoints": [ [ 1.0, 0.5 ] ],
+      "isDoingStart": false,
+      "isDoingEnd": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge68",
+      "end": {
+        "x": 0.0,
+        "y": -17.0
+      },
+      "endPoint": {
+        "x": 361.0250183105469,
+        "y": 194.5
+      },
+      "start": {
+        "x": 0.0,
+        "y": 17.0
+      },
+      "startPoint": {
+        "x": 359.07501831054685,
+        "y": 129.5
+      },
+      "shape": "customEdge",
+      "source": "node4",
+      "sourceId": "node4",
+      "target": "node11",
+      "targetId": "node11",
+      "type": "edge"
+    },
+    {
+      "id": "edge111",
+      "end": {
+        "x": 0.0,
+        "y": -17.0
+      },
+      "endPoint": {
+        "x": 363.2068810556449,
+        "y": 296.5
+      },
+      "start": {
+        "x": 0.0,
+        "y": 17.0
+      },
+      "startPoint": {
+        "x": 361.89315556544886,
+        "y": 229.5
+      },
+      "shape": "customEdge",
+      "source": "node11",
+      "sourceId": "node11",
+      "target": "node18",
+      "targetId": "node18",
+      "type": "edge"
+    }
+  ],
+  "groups": []
+}

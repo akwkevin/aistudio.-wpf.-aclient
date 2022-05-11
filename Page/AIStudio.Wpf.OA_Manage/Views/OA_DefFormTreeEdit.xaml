@@ -17,7 +17,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="40" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0"
+            <TextBlock Grid.Row="0" util:BaseDialog.TitleTag="True"
                    Margin="10,0"
                    Text="{Binding Title}"
                    HorizontalAlignment="Left"

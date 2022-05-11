@@ -29,6 +29,20 @@ namespace AIStudio.Core.Models
                 if (Code == null)
                     return null;
 
+                //三个特例，移动了位置菜单还没有改
+                if (Code == "/Home/UserConsole")
+                {
+                    return "AIStudio.Wpf.LayoutPage.Views.UserConsoleView";
+                }
+                else if (Code == "/Home/_3DShowcase")
+                {
+                    return "AIStudio.Wpf.LayoutPage.Views._3DShowcaseView";
+                }
+                else if (Code == "/Home/Statis")
+                {
+                    return "AIStudio.Wpf.LayoutPage.Views.StatisView";
+                }
+
                 if (Code.Contains("AIStudio.Wpf"))
                     return Code;
 

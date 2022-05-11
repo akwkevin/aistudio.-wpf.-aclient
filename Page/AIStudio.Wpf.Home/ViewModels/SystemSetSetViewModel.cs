@@ -3,6 +3,7 @@ using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Home.Models;
 using ControlzEx.Theming;
 using MahApps.Metro;
+using MahApps.Metro.Theming;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Ioc;
@@ -11,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Markup;
@@ -22,7 +24,7 @@ namespace AIStudio.Wpf.Home.ViewModels
     public class SystemSetViewModel : BindableBase
     {
         private static ILogger _logger { get => ContainerLocator.Current.Resolve<ILogger>(); }
-     
+
         public SystemSetViewModel()
         {
             // create accent color menu items for the demo
@@ -50,8 +52,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             this.SelectedAppNavigation = this.AppNavigations.FirstOrDefault(p => p.NavigationAccent == LocalSetting.NavigationAccent);
 
             this.SelectedNavigationLocation = (int)(NavigationLocation)System.Enum.Parse(typeof(NavigationLocation), LocalSetting.NavigationLocation);
-
-            this.SelectedTitleAccent = (int)(TitleAccent)System.Enum.Parse(typeof(TitleAccent), LocalSetting.TitleAccent);
 
             this.SelectedToolBarLocation = (int)(ToolBarLocation)System.Enum.Parse(typeof(ToolBarLocation), LocalSetting.ToolBarLocation);
 
@@ -230,16 +230,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-
-        private ICommand _titleAccentCommand;
-        public ICommand TitleAccentCommand
-        {
-            get
-            {
-                return this._titleAccentCommand ?? (this._titleAccentCommand = new DelegateCommand<object>(para => this.TitleAccent(para)));
-            }
-        }
-
         public ICommand _toolBarLocationCommand;
         public ICommand ToolBarLocationCommand
         {
@@ -288,7 +278,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 LocalSetting.SetAppSetting("Theme", data.Name);
                 InitThemeAddition();
 
-                if (ThemeChangedHelper.IsThemeChanged !=null)
+                if (ThemeChangedHelper.IsThemeChanged != null)
                     ThemeChangedHelper.IsThemeChanged();
             }
         }
@@ -312,25 +302,13 @@ namespace AIStudio.Wpf.Home.ViewModels
             if (navigationAccent != null)
             {
                 LocalSetting.SetAppSetting("NavigationAccent", navigationAccent.NavigationAccent);
+                InitThemeAddition();
             }
         }
 
         private void NavigationLocation(object para)
         {
             LocalSetting.SetAppSetting("NavigationLocation", ((NavigationLocation)para).ToString());
-        }
-
-        private void TitleAccent(object para)
-        {
-            try
-            {
-                LocalSetting.SetAppSetting("TitleAccent", ((TitleAccent)para).ToString());
-                InitThemeAddition();
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(ex);
-            }
         }
 
         private void ToolBarLocation(object para)
@@ -443,8 +421,8 @@ namespace AIStudio.Wpf.Home.ViewModels
         {
             Application.Current.Resources.Remove("TitleBackgroundBrush");
             Application.Current.Resources.Remove("TitleForegroundBrush");
-            Application.Current.Resources.Add("TitleBackgroundBrush", LocalSetting.TitleAccent == "Accent" ? Application.Current.FindResource("MahApps.Brushes.AccentBase") :  Application.Current.FindResource("MahApps.Brushes.Accent"));
-            Application.Current.Resources.Add("TitleForegroundBrush", LocalSetting.TitleAccent == "Accent" ? Application.Current.FindResource("MahApps.Brushes.Accent") : Application.Current.FindResource("MahApps.Brushes.ThemeForeground"));
+            Application.Current.Resources.Add("TitleBackgroundBrush", LocalSetting.NavigationAccent == "Dark" ? Application.Current.FindResource("MahApps.Brushes.AccentBase") : Application.Current.FindResource("MahApps.Brushes.ThemeBackground"));
+            Application.Current.Resources.Add("TitleForegroundBrush", LocalSetting.NavigationAccent == "Dark" ? Application.Current.FindResource("MahApps.Brushes.ThemeBackground") : Application.Current.FindResource("MahApps.Brushes.Text"));
         }
 
         public static void InitTheme()
@@ -454,23 +432,23 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 List<ResourceDictionary> dictionaryList = Application.Current.Resources.MergedDictionaries.ToList();
 
-                var theme = ThemeManager.Current.DetectTheme(Application.Current);
-                if (theme.BaseColorScheme == LocalSetting.Theme && theme.ColorScheme == LocalSetting.Accent)
+                StreamReader reader = new StreamReader(Application.GetResourceStream(new Uri("pack://application:,,,/AIStudio.Resource;component/Brushs/brush.json", UriKind.RelativeOrAbsolute)).Stream);
+                string text = reader.ReadToEnd();
+                var dic = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(text);
+                foreach (var brush in dic.Values.SelectMany(p => p))
                 {
-                    return;
+                    ThemeManager.Current.AddLibraryTheme(new LibraryTheme(new Uri(brush), MahAppsLibraryThemeProvider.DefaultInstance));
                 }
 
-                ThemeManager.Current.ChangeThemeBaseColor(Application.Current, LocalSetting.Theme);
-                ThemeManager.Current.ChangeThemeColorScheme(Application.Current, LocalSetting.Accent);
+                var theme = ThemeManager.Current.DetectTheme(Application.Current);
+                if (theme.BaseColorScheme != LocalSetting.Theme || theme.ColorScheme != LocalSetting.Accent)
+                {
+                    ThemeManager.Current.ChangeThemeBaseColor(Application.Current, LocalSetting.Theme);
+                    ThemeManager.Current.ChangeThemeColorScheme(Application.Current, LocalSetting.Accent);
+                }               
 
                 //添加额外的信息
                 InitThemeAddition();
-
-                //在加载一些颜色
-                string requestedCulture = "/AIStudio.Resource;component/Brushs/Brushes.xaml";
-                ResourceDictionary resourceDictionary = Application.Current.Resources.MergedDictionaries.Where(d => d.Source != null && d.Source.OriginalString.Equals(requestedCulture)).FirstOrDefault();
-                Application.Current.Resources.MergedDictionaries.Remove(resourceDictionary);
-                Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
             }
             catch (Exception ex)
             {
