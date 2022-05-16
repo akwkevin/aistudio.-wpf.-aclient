@@ -1,5 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
+using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
 using Newtonsoft.Json;
 using Prism.Commands;
@@ -65,8 +66,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             try
             {
-                var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
-                control.WaitInfo = "正在获取数据";
+                var control = WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
 
                 var data = new
                 {
@@ -96,7 +96,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             }
             finally
             {
-                Util.Controls.WindowBase.HideWaiting(Identifier);
+                AIStudio.Wpf.Controls.WindowBase.HideWaiting(Identifier);
             }
         }
 

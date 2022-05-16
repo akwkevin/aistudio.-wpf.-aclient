@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
@@ -111,8 +111,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     {
                         throw new Exception(result.Msg);
                     }
-                    MessageBoxHelper.ShowInfo("操作成功");
-                                    
+                    Controls.MessageBox.Info("操作成功", windowIdentifier: Identifier);
+
                     GetData(true);
                 }
                 catch (Exception ex)

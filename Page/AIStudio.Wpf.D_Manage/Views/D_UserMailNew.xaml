@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:util="https://astudio.github.io/utilcontrol" 
+             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls" 
              xmlns:ex="clr-namespace:Smith.WPF.HtmlEditor;assembly=Smith.WPF.HtmlEditor"
              xmlns:controls="clr-namespace:AIStudio.Wpf.BasePage.Controls;assembly=AIStudio.Wpf.BasePage" 
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
@@ -14,58 +14,55 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid DataContext="{Binding Data}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            <HeaderedContentControl Grid.Row="0" Style="{StaticResource LeftFormItemStyle}">
-                <HeaderedContentControl.Header>
-                    <TextBlock VerticalAlignment="Center">
-                    <Run Foreground="Red">*</Run>
-                    <Run>收件人</Run>
+        <ac:Form DataContext="{Binding Data}"
+                                     ac:Form.ItemMargin="3"  
+                                     ac:Form.HeaderWidth="80"
+                                     ac:Form.HeaderMargin="0,0,3,0">
+            <ac:FormItem>
+                <ac:FormItem.Header>
+                    <TextBlock>
+                        <Run Foreground="Red">*</Run>
+                        <Run>收件人</Run>
                     </TextBlock>
-                </HeaderedContentControl.Header>
-                <util:MultiComboBox 
+                </ac:FormItem.Header>
+                <ac:MultiComboBox 
                         ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
-                        core:CustomeSelectionItems.SelectedItems="{Binding DataContext.SelectedUsers, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                        DisplayMemberPath="text" SelectedValuePath="value"></util:MultiComboBox>               
-            </HeaderedContentControl>
-            <HeaderedContentControl Grid.Row="1" Style="{StaticResource LeftFormItemStyle}">
-                <HeaderedContentControl.Header>
-                    <TextBlock VerticalAlignment="Center">
-                    <Run Foreground="Red">*</Run>
-                    <Run>主题</Run>
+                        SelectedItems="{Binding DataContext.SelectedUsers, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        DisplayMemberPath="text" SelectedValuePath="value"></ac:MultiComboBox>               
+            </ac:FormItem>
+            <ac:FormItem>
+                <ac:FormItem.Header>
+                    <TextBlock>
+                        <Run Foreground="Red">*</Run>
+                        <Run>主题</Run>
                     </TextBlock>
-                </HeaderedContentControl.Header>
+                </ac:FormItem.Header>
                 <TextBox Text="{Binding Title,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" ></TextBox>
-            </HeaderedContentControl>
-            <HeaderedContentControl Grid.Row="2" VerticalAlignment="Stretch" Style="{StaticResource LeftFormItemStyle}" Height="Auto">
-                <HeaderedContentControl.Header>
+            </ac:FormItem>
+            <ac:FormItem>
+                <ac:FormItem.Header>
                     <TextBlock VerticalAlignment="Top" Margin="0,5,0,0">
-                    <Run Foreground="Red">*</Run>
-                    <Run>正文</Run>
+                        <Run Foreground="Red">*</Run>
+                        <Run>正文</Run>
                     </TextBlock>
-                </HeaderedContentControl.Header>
-                <ex:HtmlEditor x:Name="Editor" util:ThemeChangedHelper.AcceptThemeChanged="True" BindingContent="{Binding Text, Mode=TwoWay}"/>
-            </HeaderedContentControl>
-            <HeaderedContentControl Grid.Row="3" Style="{StaticResource LeftFormItemStyle}" Height="Auto">
-                <HeaderedContentControl.Header>
-                    <TextBlock VerticalAlignment="Center">
-                    <Run>附件</Run>
+                </ac:FormItem.Header>
+                <ex:HtmlEditor x:Name="Editor" ac:ThemeChangedHelper.AcceptThemeChanged="True" BindingContent="{Binding Text, Mode=TwoWay}"/>
+            </ac:FormItem>
+            <ac:FormItem>
+                <ac:FormItem.Header>
+                    <TextBlock>
+                        <Run>附件</Run>
                     </TextBlock>
-                </HeaderedContentControl.Header>
+                </ac:FormItem.Header>
                 <controls:UploadFile File="{Binding Appendix,Mode=TwoWay}"></controls:UploadFile>
-            </HeaderedContentControl>            
-        </Grid>
+            </ac:FormItem>            
+        </ac:Form>
         <StackPanel Grid.Row="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
-            <util:FButton CornerRadius="2" FIcon="&#xf0c7;" FIconFamily="FAwesome" Margin="3" Content="存草稿" Command="{Binding EditCommand}" ></util:FButton>
-            <util:FButton CornerRadius="2" FIcon="&#xf1d8;" FIconFamily="FAwesome" Margin="3" Content="发送" IsDefault="True" Command="{Binding AddCommand}" Background="{DynamicResource PrimaryBrush}"></util:FButton>
-            <util:FButton CornerRadius="2" FIcon="&#xf14d;" FIconFamily="FAwesome" Margin="3" Content="重置" Command="{Binding ResetCommand}" Background="{DynamicResource DangerBrush}"></util:FButton>
+            <Button Margin="3" Content="存草稿" Command="{Binding EditCommand}" ></Button>
+            <Button Margin="3" Content="发送" IsDefault="True" Command="{Binding AddCommand}" Background="{DynamicResource PrimaryBrush}"></Button>
+            <Button Margin="3" Content="重置" Command="{Binding ResetCommand}" Background="{DynamicResource DangerBrush}"></Button>
         </StackPanel>
     </Grid>
 </UserControl>

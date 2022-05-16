@@ -17,7 +17,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.LayoutPage.ViewModels
 {
@@ -189,7 +189,7 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
         }
 
         //如果想弹窗实现。
-        //Util.Controls.PopupWindow window;
+        //AIStudio.Wpf.Controls.PopupWindow window;
         //private void Open(object para)
         //{
         //    if (window != null)
@@ -202,7 +202,7 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
         //        var control = InitControl(item.WpfCode);
         //        control.Width = 500;
         //        control.Height = 300;
-        //        window = new Util.Controls.PopupWindow
+        //        window = new AIStudio.Wpf.Controls.PopupWindow
         //        {
         //            Owner = WindowBase.GetWindowBase(Identifier),
         //            PopupElement = control,
@@ -210,7 +210,7 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
         //            AllowsTransparency = true,
         //            WindowStyle = WindowStyle.None,
         //            Title = item.Label,
-        //            PopupAnimation = Util.Controls.CustomizePopupAnimation.Rotate
+        //            PopupAnimation = AIStudio.Wpf.Controls.CustomizePopupAnimation.Rotate
         //        };
         //        window.Show();
         //    }

@@ -9,12 +9,12 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel>
-            <basepage:UploadFile></basepage:UploadFile>
-            <basepage:UploadFile MaxCount="3"></basepage:UploadFile>
-            <basepage:UploadFile IsEnabled="False"></basepage:UploadFile>
-            <basepage:UploadFile Style="{StaticResource DefaultUploadImageStyle}" UploadFileType="Image"></basepage:UploadFile>
-            <basepage:UploadFile MaxCount="3" Style="{StaticResource DefaultUploadImageStyle}" UploadFileType="Image"></basepage:UploadFile>
-            <basepage:UploadFile Style="{StaticResource DefaultUploadImageStyle}" UploadFileType="Image" IsEnabled="False"></basepage:UploadFile>
+            <basepage:UploadFile Margin="3"></basepage:UploadFile>
+            <basepage:UploadFile Margin="3" MaxCount="3"></basepage:UploadFile>
+            <basepage:UploadFile Margin="3" IsEnabled="False"></basepage:UploadFile>
+            <basepage:UploadFile Margin="3" UploadFileType="Image"></basepage:UploadFile>
+            <basepage:UploadFile Margin="3" MaxCount="3" UploadFileType="Image"></basepage:UploadFile>
+            <basepage:UploadFile Margin="3" UploadFileType="Image" IsEnabled="False"></basepage:UploadFile>
         </StackPanel>
     </Grid>
 </UserControl>

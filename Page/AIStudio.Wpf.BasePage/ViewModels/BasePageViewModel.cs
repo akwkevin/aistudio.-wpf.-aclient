@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using AIStudio.Wpf.Controls;
 using Dataforge.PrismAvalonExtensions.ViewModels;
 using Prism.Regions;
 using System;
@@ -24,13 +25,12 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 
         protected void ShowWait()
         {
-            var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
-            control.WaitInfo = "正在获取数据";
+            WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
         }
 
         protected void HideWait()
         {
-            Util.Controls.WindowBase.HideWaiting(Identifier);
+            WindowBase.HideWaiting(Identifier);
         }
     }
 }

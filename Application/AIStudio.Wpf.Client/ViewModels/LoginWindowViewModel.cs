@@ -11,7 +11,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Client.ViewModels
 {
@@ -215,7 +215,7 @@ namespace AIStudio.Wpf.Client.ViewModels
                     {
                         LocalSetting.SetAppSetting("ServerIP", ServerIP);
 
-                        if (MessageBoxHelper.ShowSure("服务器模式在[前后端分离方式]与[客户端独立模式]发生了切换,需要重启生效,立即重启？") == MessageBoxResult.OK)
+                        if (Controls.MessageBox.Show("服务器模式在[前后端分离方式]与[客户端独立模式]发生了切换,需要重启生效,立即重启？") == MessageBoxResult.OK)
                         {
                             Process p = new Process();
                             p.StartInfo.FileName = System.AppDomain.CurrentDomain.BaseDirectory + "AIStudio.Wpf.Client.exe";

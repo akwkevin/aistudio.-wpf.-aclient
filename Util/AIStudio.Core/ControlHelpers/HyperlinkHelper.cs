@@ -41,7 +41,7 @@ namespace AIStudio.Core
         {
             Hyperlink link = sender as Hyperlink;
             // 激活的是当前默认的浏览器
-            Process.Start(new ProcessStartInfo(link.NavigateUri.AbsoluteUri));
+            System.Diagnostics.Process.Start("explorer.exe", link.NavigateUri.AbsoluteUri);
         }
     }
 }

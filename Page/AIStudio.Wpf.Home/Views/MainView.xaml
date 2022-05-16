@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AIStudio.Wpf.Home.Views"            
-             xmlns:util="https://astudio.github.io/utilcontrol"
+             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
@@ -25,36 +25,39 @@
                 <ResourceDictionary Source="/AIStudio.Wpf.Home;component/Resources/MainViewResource.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-            <util:DoubleToThickness x:Key="DoubleToThickness"/>
+            <ac:DoubleToThickness x:Key="DoubleToThickness"/>
 
             <Style x:Key="MainIconStyle" TargetType="{x:Type ContentControl}">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ContentControl}">
-                            <Grid Height="Auto" HorizontalAlignment="Left" Background="{DynamicResource TitleBackgroundBrush}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <ToggleButton Style="{StaticResource HamburgerButtonStyle}" IsChecked="{Binding IsPaneOpen, ElementName=HamburgerMenuControl}">
-                                    <svg:PackSvg x:Name="Icon" Height="24" Width="24" Margin="5"   
-                                         Kind="A" 
-                                         Fill="{DynamicResource TitleForegroundBrush}" />
-                                </ToggleButton> 
+                            <Border BorderThickness="0,0,1,0" BorderBrush="{DynamicResource MahApps.Brushes.ThemeBackground}" Background="{DynamicResource MahApps.Brushes.AccentBase}" HorizontalAlignment="Left">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ToggleButton Style="{StaticResource HamburgerButtonStyle}" IsChecked="{Binding IsPaneOpen, ElementName=HamburgerMenuControl}">
 
-                                <TextBlock  Text="{x:Static core:LocalSetting.Title}" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource TitleForegroundBrush}" Margin="5,0,0,0"/>
+                                        <svg:PackSvg x:Name="Icon" Height="24" Width="24" Margin="5" Fill="{DynamicResource MahApps.Brushes.ThemeBackground}"   
+                                         Kind="A"  />
 
-                                <Grid.Style>
-                                    <Style TargetType="{x:Type Grid}">
-                                        <Setter Property="Width" Value="180"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsPaneOpen, ElementName=HamburgerMenuControl}" Value="false">
-                                                <Setter Property="Width" Value="36"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Grid.Style>
-                            </Grid>
+                                    </ToggleButton>
+
+                                    <TextBlock  Text="{x:Static core:LocalSetting.Title}" Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0"/>
+
+                                    <Grid.Style>
+                                        <Style TargetType="{x:Type Grid}">
+                                            <Setter Property="Width" Value="180"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsPaneOpen, ElementName=HamburgerMenuControl}" Value="false">
+                                                    <Setter Property="Width" Value="36"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                </Grid>
+                            </Border>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -66,14 +69,14 @@
                         <ControlTemplate TargetType="{x:Type ContentControl}">
                             <StackPanel Orientation="Horizontal">
                                 <Grid>
-                                    <util:InputComboBox Width="156" 
+                                    <ac:InputComboBox Width="156" 
                                         x:Name="txtSearch"    
                                         VerticalAlignment="Center"
-                                        util:ControlAttachProperty.Watermark="搜索(Ctrl+Q)"
+                                        ac:ControlAttach.Watermark="搜索(Ctrl+Q)"
                                         Text="{Binding SearchText,Mode=TwoWay}"
                                         ItemsSource="{Binding SearchMenus}"
                                         IsFocusText="{Binding IsFocusSearchText}"
-                                        BorderBrush="{DynamicResource MahApps.Brushes.Gray8}"
+                                        Background="Transparent"
                                         MaxDropDownHeight="230"
                                         DisplayMemberPath="Label" SelectedValuePath="Code">
                                         <i:Interaction.Triggers>
@@ -81,8 +84,8 @@
                                                 <i:InvokeCommandAction Command="{Binding SearchCommand}" CommandParameter="{Binding Path=SelectedItem, ElementName=txtSearch}" />
                                             </i:EventTrigger>              
                                         </i:Interaction.Triggers>
-                                        <util:InputComboBox.Style>
-                                            <Style TargetType="{x:Type util:InputComboBox}" BasedOn="{StaticResource UnderlineInputComboBoxStyle}">
+                                        <ac:InputComboBox.Style>
+                                            <Style TargetType="{x:Type ac:InputComboBox}" BasedOn="{StaticResource AIStudio.Styles.InputComboBox.Underline}">
                                                 <Setter Property="BorderThickness" Value="0"/>
                                                 <Style.Triggers>
                                                     <Trigger Property="IsKeyboardFocusWithin" Value="True">
@@ -90,21 +93,21 @@
                                                     </Trigger>
                                                 </Style.Triggers>
                                             </Style>
-                                        </util:InputComboBox.Style>
-                                    </util:InputComboBox>
+                                        </ac:InputComboBox.Style>
+                                    </ac:InputComboBox>
                                 </Grid>
 
                                 <StackPanel Orientation="Horizontal" Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}">
-                                    <local:NoticeIconView Margin="15,0,15,3"  HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{Binding NoticeIconViewModel}"/>
+                                    <!--<local:NoticeIconView Margin="15,0,15,3"  HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{Binding NoticeIconViewModel}"/>-->
 
-                                    <util:DropDown Margin="8,3,0,3">
-                                        <util:DropDown.Content>
+                                    <ac:DropDown IsDropVisible="False" BorderThickness="0" ac:ControlAttach.CornerRadius="3" Margin="8,3,0,3">
+                                        <ac:DropDown.Content>
                                             <Image                                           
                                            Stretch="Fill"                
-                                           util:ImageProperty.CornerRadius="50"       
+                                           ac:ImageAttach.CornerRadius="50"       
                                            Source="{Binding Operator.Avatar,Converter={converter2:StringToAvatarSourceConverter}}"/>
-                                        </util:DropDown.Content>
-                                        <util:DropDown.Child>
+                                        </ac:DropDown.Content>
+                                        <ac:DropDown.Child>
                                             <Grid>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto"/>
@@ -113,36 +116,30 @@
                                                     <RowDefinition Height="Auto"/>
                                                 </Grid.RowDefinitions>
                                                 <Grid Grid.Row="0">
-                                                    <Button 
-                                                    Height="30"
-                                                    Width="100"
-                                                    VerticalAlignment="Center"                                                   
-                                                    Command="{Binding KeyExcuteCommand}"
-                                                    CommandParameter="UserCenter"
-                                                    Style="{StaticResource LinkButtonStyle}">
-                                                        <TextBlock Text="&#xf2c0; 个人中心" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
+                                                    <Button                
+                                                        Content="个人中心"
+                                                        ac:IconAttach.Icon="user-o"
+                                                        Command="{Binding KeyExcuteCommand}"
+                                                        CommandParameter="UserCenter"
+                                                        Style="{StaticResource AIStudio.Styles.Button.Flat}">                                                      
                                                     </Button>
                                                 </Grid>
                                                 <Grid Grid.Row="1">
-                                                    <Button 
-                                                    Height="30"
-                                                    Width="100"
-                                                    VerticalAlignment="Center"                                                    
-                                                    Command="{Binding KeyExcuteCommand}"
-                                                    CommandParameter="UserSet"                                                    
-                                                    Style="{StaticResource LinkButtonStyle}">
-                                                        <TextBlock Text="&#xf013; 个人设置" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
+                                                    <Button        
+                                                        Content="个人设置"
+                                                        ac:IconAttach.Icon="cog"
+                                                        Command="{Binding KeyExcuteCommand}"
+                                                        CommandParameter="UserSet"                                                    
+                                                        Style="{StaticResource AIStudio.Styles.Button.Flat}">                                                        
                                                     </Button>
                                                 </Grid>
                                                 <Grid Grid.Row="2">
-                                                    <Button 
-                                                    Height="30"
-                                                    Width="100"
-                                                    VerticalAlignment="Center"                                                   
-                                                    Command="{Binding KeyExcuteCommand}"
-                                                    CommandParameter="EditPwd"
-                                                    Style="{StaticResource LinkButtonStyle}">
-                                                        <TextBlock Text="&#xf023; 修改密码" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
+                                                    <Button     
+                                                        Content="修改密码"
+                                                        ac:IconAttach.Icon="lock"                                                                                         
+                                                        Command="{Binding KeyExcuteCommand}"
+                                                        CommandParameter="EditPwd"
+                                                        Style="{StaticResource AIStudio.Styles.Button.Flat}">                                                       
                                                     </Button>
                                                 </Grid>
                                                 <Border Grid.Row="2"
@@ -151,34 +148,31 @@
                                                 SnapsToDevicePixels="True"
                                                 BorderThickness="0,0,0,1" />
                                                 <Grid Grid.Row="3">
-                                                    <Button 
-                                                    Height="30"
-                                                    Width="100"
-                                                    VerticalAlignment="Center"                                                  
-                                                    Command="{Binding KeyExcuteCommand}"
-                                                    CommandParameter="Escape"
-                                                    Style="{StaticResource LinkButtonStyle}">
-                                                        <TextBlock Text="&#xf08b; 退出登录" FontSize="{DynamicResource MahApps.Font.Size.Content}" Style="{StaticResource FAwesome}"/>
+                                                    <Button         
+                                                        Content="退出登录"
+                                                        ac:IconAttach.Icon="sign-out"                                          
+                                                        Command="{Binding KeyExcuteCommand}"
+                                                        CommandParameter="Escape"
+                                                        Style="{StaticResource AIStudio.Styles.Button.Flat}">                                                      
                                                     </Button>
                                                 </Grid>
                                             </Grid>
-                                        </util:DropDown.Child>
-                                    </util:DropDown>
-                                    <util:FButton Margin="1,0,0,0" VerticalAlignment="Center" Command="{Binding OpenUserConsoleCommand}" Foreground="{DynamicResource MahApps.Brushes.Text}" Content="{Binding Operator.UserName}" Style="{StaticResource FButton_LinkButton}" FontSize="{DynamicResource MahApps.Font.Size.Content}" MouseOverForeground="{DynamicResource MahApps.Brushes.Gray8}"/>
+                                        </ac:DropDown.Child>
+                                    </ac:DropDown>
+                                    <Button Margin="1,0,0,0" Command="{Binding OpenUserConsoleCommand}" Content="{Binding Operator.UserName}" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}" Style="{StaticResource AIStudio.Styles.Button.Window}" />
                                 </StackPanel>
 
-                                <Button Background="Transparent" 
-                                            ToolTip="全屏"
+                                <Button ToolTip="全屏"
                                             Command="{Binding KeyExcuteCommand}" 
                                             CommandParameter="FullScreen"
                                             IsTabStop="False" 
-                                            Style="{StaticResource PathButtonStyle}"
+                                            Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"
+                                            Style="{StaticResource AIStudio.Styles.Button.Window}"
                                             Width="46"
-                                            VerticalAlignment="Stretch"
-                                            util:ControlAttachProperty.Geometry="{StaticResource FullScreenGeometry}" 
+                                            ac:IconAttach.Geometry="{StaticResource FullScreenGeometry}" 
                                             BorderThickness="1,0,1,0" 
-                                            util:ControlAttachProperty.Width="10" 
-                                            util:ControlAttachProperty.Height="10"/>
+                                            ac:IconAttach.Width="10" 
+                                            ac:IconAttach.Height="10"/>
                             </StackPanel>
                         </ControlTemplate>
                     </Setter.Value>
@@ -199,9 +193,9 @@
                                         </ItemsControl.ItemsPanel>
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <Button Width="{Binding Width}" Height="{Binding Height}" Margin="{Binding Margin,Converter={StaticResource DoubleToThickness}}" Style="{StaticResource LinkButtonStyle}" util:ButtonHelper.HoverBrush="{DynamicResource TitleBackgroundBrush}" Foreground="{DynamicResource TitleForegroundBrush}"
+                                                <Button Width="{Binding Width}" Height="{Binding Height}" Margin="{Binding Margin,Converter={StaticResource DoubleToThickness}}" Style="{StaticResource AIStudio.Styles.Button.Flat}" 
                                                         Command="{Binding DataContext.SearchCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding }">
-                                                    <util:Badged  VerticalAlignment="Center" BadgeForeground="{DynamicResource MahApps.Brushes.Text}" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding Badge}">
+                                                    <ac:Badged  VerticalAlignment="Center" BadgeForeground="{DynamicResource MahApps.Brushes.Text}" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding Badge}">
                                                         <Grid>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition/>
@@ -215,12 +209,12 @@
                                                                  Fill="{DynamicResource MahApps.Brushes.Accent}"/>
                                                             <TextBlock Grid.Row="2" Text="{Binding Label}" Foreground="{DynamicResource MahApps.Brushes.Text}"/>
                                                         </Grid>
-                                                    </util:Badged>
+                                                    </ac:Badged>
                                                 </Button>
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
-                                    <Button ToolBar.OverflowMode="Always"  Content="添加或移除按钮" Style="{StaticResource LinkButtonStyle}" Command="{Binding DataContext.ToolBarConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"></Button>
+                                    <Button ToolBar.OverflowMode="Always"  Content="添加或移除按钮" Style="{StaticResource AIStudio.Styles.Button.Flat}" Command="{Binding DataContext.ToolBarConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"></Button>
                                 </ToolBar>
                             </ToolBarTray>
                         </ControlTemplate>
@@ -245,16 +239,16 @@
                                     </ItemsPanelTemplate>
                                 </StatusBar.ItemsPanel>
                                 <Grid Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}">
-                                    <util:DropDown Grid.Column="0" Margin="6"                                          
+                                    <ac:DropDown IsDropVisible="False" BorderThickness="0" Margin="6"                                          
                                                ToolTip="{Binding WSocketClient.ServerIP}"
-                                               Visibility="{Binding WSocketClient.IsInit,Converter={StaticResource bool2VisibilityConverter}}">
-                                        <util:DropDown.Content>
-                                            <util:Badged HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                                                <util:Badged.Badge>
+                                               Visibility="{Binding WSocketClient.IsInit,Converter={StaticResource BoolToVisibilityConverter}}">
+                                        <ac:DropDown.Content>
+                                            <ac:Badged HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                                                <ac:Badged.Badge>
                                                     <TextBlock Text="{Binding WSocketClient.DelayMS}" ToolTip="{Binding WSocketClient.DelayMS,StringFormat={}{0}ms,TargetNullValue=''}"/>
-                                                </util:Badged.Badge>
-                                                <util:Badged.Style>
-                                                    <Style TargetType="{x:Type util:Badged}" BasedOn="{StaticResource DefaultBadgedStyle}">
+                                                </ac:Badged.Badge>
+                                                <ac:Badged.Style>
+                                                    <Style TargetType="{x:Type ac:Badged}" BasedOn="{StaticResource AIStudio.Styles.Badged}">
                                                         <Setter Property="BadgeBackground" Value="Transparent" />
                                                         <Style.Triggers>
                                                             <DataTrigger Binding="{Binding WSocketClient.AlarmGrade}" Value="DarkDanger">
@@ -286,7 +280,7 @@
                                                             </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>
-                                                </util:Badged.Style>
+                                                </ac:Badged.Style>
                                                 <Grid>
                                                     <Path Visibility="{Binding WSocketClient.IsConnected,Converter={converter:ConverterBoolToVisibility}}" 
                                                       Data="F1 M 25.3333,23.7501L 28.4999,23.7501L 28.5,33.25L 25.3333,33.2501L 25.3333,23.7501 Z M 30.0833,25.3335L 33.2499,25.3335L 33.25,39.5834L 30.0833,39.5834L 28.5,41.1667L 28.5,50.6667L 25.3333,50.6667L 25.3333,41.1667L 23.75,39.5834L 20.5833,39.5835L 20.5832,25.3335L 23.7499,25.3335L 23.7499,34.8334L 24.5416,34.8334L 29.2916,34.8334L 30.0833,34.8334L 30.0833,25.3335 Z M 30.0833,47.5L 30.0833,44.3334L 50.6667,44.3334L 50.6667,30.0833L 34.8333,30.0834L 34.8333,26.9167L 55.4166,26.9167L 55.4166,47.5L 41.1666,47.5L 41.1667,50.6667L 45.125,50.6667L 45.9166,53.8333L 33.25,53.8333L 34.0417,50.6667L 38,50.6667L 38,47.5L 30.0833,47.5 Z " 
@@ -305,9 +299,9 @@
                                                       HorizontalAlignment="Center"
                                                       VerticalAlignment="Center" />
                                                 </Grid>
-                                            </util:Badged>
-                                        </util:DropDown.Content>
-                                        <util:DropDown.Child>
+                                            </ac:Badged>
+                                        </ac:DropDown.Content>
+                                        <ac:DropDown.Child>
                                             <Grid>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto"/>
@@ -318,31 +312,31 @@
                                                     Height="30"
                                                     Width="100"
                                                     VerticalAlignment="Center"  
-                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
+                                                    FontFamily="/AIStudio.Wpf.Controls;component/Resources/#FontAwesome"
                                                     Content="&#xf144; 开始测速" 
                                                     Command="{Binding WSocketClient.StartPingCommand}"
                                                     CommandParameter="UserCenter"
                                                     IsEnabled="{Binding WSocketClient.IsPing,Converter={converter:InvertBoolConverter}}"
-                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                                    Style="{StaticResource AIStudio.Styles.Button.Flat}"/>
                                                 </Grid>
                                                 <Grid Grid.Row="1">
                                                     <Button 
                                                     Height="30"
                                                     Width="100"
                                                     VerticalAlignment="Center"  
-                                                    FontFamily="/Util.Controls;component/Resources/#FontAwesome"
+                                                    FontFamily="/AIStudio.Wpf.Controls;component/Resources/#FontAwesome"
                                                     Content="&#xf056; 停止测速" 
                                                     Command="{Binding WSocketClient.StopPingCommand}"
                                                     CommandParameter="UserSet"
                                                      IsEnabled="{Binding WSocketClient.IsPing}"
-                                                    Style="{StaticResource LinkButtonStyle}"/>
+                                                    Style="{StaticResource AIStudio.Styles.Button.Flat}"/>
                                                 </Grid>
                                             </Grid>
-                                        </util:DropDown.Child>
-                                    </util:DropDown>
+                                        </ac:DropDown.Child>
+                                    </ac:DropDown>
                                 </Grid>
                                 
-                                <!--<util:RunningBlock Margin="10,0" BorderThickness="0" Foreground="{DynamicResource MahApps.Brushes.Text}" Content="{Binding NoticeText}" Width="200"/>-->
+                                <!--<ac:RunningBlock Margin="10,0" BorderThickness="0" Foreground="{DynamicResource MahApps.Brushes.Text}" Content="{Binding NoticeText}" Width="200"/>-->
 
 
                             </StatusBar>
@@ -362,61 +356,58 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <DockPanel x:Name="Titlebar" util:WindowBase.TitleTag="true" LastChildFill="True"
-              Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"       
-              Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type util:WindowBase}}, Path=ShowTitleBar,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}">
+        <DockPanel x:Name="Titlebar" ac:WindowBase.TitleTag="true" LastChildFill="True"
+              Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ac:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"       
+              Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ac:WindowBase}}, Path=ShowTitleBar,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}">
 
             <StackPanel Margin="0,0,138,0" Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
                 <ContentControl Style="{DynamicResource RightBarStyle}"/>
             </StackPanel>
-
+            
             <Grid DockPanel.Dock="Left">
                 <ContentControl Style="{DynamicResource MainIconStyle}" Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Left'}"/>
-
                 <StackPanel Orientation="Horizontal" Visibility="{Binding WindowSetting.NavigationLocation,Converter={converter:StringToVisibilityConverter},ConverterParameter='Top'}">
 
-                    <Border Margin="0 3 0 3" Cursor="SizeAll"
+                        <Border Margin="0 3 0 3" Cursor="SizeAll"
                             SnapsToDevicePixels="True">
-                        <Rectangle Width="4.9">
-                            <Rectangle.Fill>
-                                <!--  Brush similar to visual studio, can be improved  -->
-                                <DrawingBrush TileMode="Tile"
+                            <Rectangle Width="4.9">
+                                <Rectangle.Fill>
+                                    <!--  Brush similar to visual studio, can be improved  -->
+                                    <DrawingBrush TileMode="Tile"
                                               Viewbox="0,0,5,4"
                                               ViewboxUnits="Absolute"
                                               Viewport="0,0,5,4"
                                               ViewportUnits="Absolute">
-                                    <DrawingBrush.Drawing>
-                                        <GeometryDrawing Brush="{DynamicResource MahApps.Brushes.Gray3}">
-                                            <GeometryDrawing.Geometry>
-                                                <GeometryGroup>
-                                                    <GeometryGroup.Children>
-                                                        <RectangleGeometry Rect="0,0,1,1" />
-                                                        <RectangleGeometry Rect="4,0,1,1" />
-                                                        <RectangleGeometry Rect="2,2,1,1" />
-                                                    </GeometryGroup.Children>
-                                                </GeometryGroup>
-                                            </GeometryDrawing.Geometry>
-                                        </GeometryDrawing>
-                                    </DrawingBrush.Drawing>
-                                </DrawingBrush>
-                            </Rectangle.Fill>
-                        </Rectangle>
-                    </Border>
+                                        <DrawingBrush.Drawing>
+                                            <GeometryDrawing Brush="{DynamicResource MahApps.Brushes.Gray3}">
+                                                <GeometryDrawing.Geometry>
+                                                    <GeometryGroup>
+                                                        <GeometryGroup.Children>
+                                                            <RectangleGeometry Rect="0,0,1,1" />
+                                                            <RectangleGeometry Rect="4,0,1,1" />
+                                                            <RectangleGeometry Rect="2,2,1,1" />
+                                                        </GeometryGroup.Children>
+                                                    </GeometryGroup>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Border>
 
-                    <Menu x:Name="MenuControl"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    ItemContainerStyle="{StaticResource MenuItemStyle}" 
-                    ItemsSource="{Binding MenuItems}"
-                    ItemTemplate="{StaticResource MenuItemDataTemplate}" 
-                    Background="{DynamicResource TitleBackgroundBrush}"
-                    Foreground="{DynamicResource TitleForegroundBrush}"
-                    Style="{StaticResource TopMetroMenu}" />
-                </StackPanel>
-            </Grid>
+                        <Menu x:Name="MenuControl"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            ItemsSource="{Binding MenuItems}"
+                            ItemContainerStyle="{StaticResource AIStudio.Styles.MenuItem.Custom}"
+                            ItemTemplate="{StaticResource MenuItemDataTemplate}" 
+                            Style="{StaticResource AIStudio.Styles.Menu}" />
+                    </StackPanel>
+                </Grid>
             <DockPanel.Style>
                 <Style TargetType="{x:Type DockPanel}">
-                    <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
+                    <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent}"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding WindowSetting.NavigationLocation}" Value="Left">
                             <Setter Property="Background" Value="Transparent"/>
@@ -426,11 +417,9 @@
             </DockPanel.Style>
         </DockPanel>
 
-        <util:HamburgerTreeMenu Grid.Row="1"
+        <ac:HamburgerTreeMenu Grid.Row="1"
             VerticalAlignment="Stretch"
             x:Name="HamburgerMenuControl"
-            SelectedIndex="1"
-            BorderBrush="Transparent"
             HamburgerWidth="36"
             HamburgerHeight ="0"
             HamburgerMargin="0"
@@ -439,13 +428,11 @@
             ItemsSource="{Binding MenuItems}"
             SelectedItem="{Binding SelectedMenuItem}"
             OptionsItemsSource="{Binding OptionItems}"                                
-            OptionsItemTemplate="{StaticResource LeftHamburgerMenuImageItem}"
-            PaneBackground="Transparent">
-            <util:HamburgerTreeMenu.Style>
-                <Style TargetType="{x:Type util:HamburgerTreeMenu}" BasedOn="{StaticResource HamburgerTreeMenuStyle}">
-                    <Setter Property="ItemTemplate" Value="{StaticResource HamburgerMenuImageItem}"/>                 
-                    <Setter Property="Background" Value="{DynamicResource TitleBackgroundBrush}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource TitleForegroundBrush}"/>
+            OptionsItemTemplate="{StaticResource LeftHamburgerMenuImageItem}">
+            <ac:HamburgerTreeMenu.Style>
+                <Style TargetType="{x:Type ac:HamburgerTreeMenu}" BasedOn="{StaticResource AIStudio.Styles.HamburgerTreeMenu}">
+                    <Setter Property="MenuItemTemplate" Value="{StaticResource LeftHamburgerMenuImageItem}"/>
+                    <Setter Property="ItemTemplate" Value="{StaticResource HamburgerMenuImageItem}"/>
                     <Setter Property="HamburgerMenuTemplate">
                         <Setter.Value>
                             <DataTemplate>
@@ -462,16 +449,12 @@
                             <Setter Property="DisplayMode" Value="Overlay"/>
                             <Setter Property="IsPaneOpen" Value= "False"></Setter>
                         </DataTrigger>
-                        <Trigger Property="IsPaneOpen" Value="False">
-                            <Setter Property="ItemTemplate" Value="{StaticResource LeftHamburgerMenuImageItem}"/>
-                        </Trigger>
                     </Style.Triggers>
-
                 </Style>
-            </util:HamburgerTreeMenu.Style>
+            </ac:HamburgerTreeMenu.Style>
 
             <!--  Content  -->
-            <util:HamburgerTreeMenu.ContentTemplate>
+            <ac:HamburgerTreeMenu.ContentTemplate>
                 <DataTemplate>
                     <Grid DataContext="{Binding ElementName=mainView,Path=DataContext}">
                         <Grid.RowDefinitions>
@@ -492,7 +475,7 @@
                         </Border>
                     </Grid>
                 </DataTemplate>
-            </util:HamburgerTreeMenu.ContentTemplate>
-        </util:HamburgerTreeMenu>
+            </ac:HamburgerTreeMenu.ContentTemplate>
+        </ac:HamburgerTreeMenu>
     </Grid>
 </UserControl>

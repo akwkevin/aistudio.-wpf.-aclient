@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
         xmlns:helper="clr-namespace:AIStudio.Core.ControlHelpers;assembly=AIStudio.Core"
+        xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls" 
         xmlns:local="clr-namespace:AIStudio.Wpf.Base_Manage.Views"
         mc:Ignorable="d"
         Title="{Binding Title}" Height="450" Width="900" WindowStartupLocation="CenterScreen">
@@ -23,22 +24,22 @@
                     <StackPanel DockPanel.Dock="Bottom">
                         <CheckBox Margin="2" IsChecked="{Binding IsCover}" Content="覆盖保存"></CheckBox>
                         <Button Margin="2" Content="保存到所选文件夹" Command="{Binding SaveTempCommand}"/>
-                        <Button Margin="2" Content="点击生成" Command="{Binding OKCommand}" Background="{DynamicResource MahApps.Brushes.Accent}"/>
+                        <Button Margin="2" Content="点击生成" Command="{Binding OKCommand}" ac:ControlAttach.Status="Success"/>
                     </StackPanel>
                     <StackPanel>
-                        <TextBlock Text="Model" FontSize="28" Margin="2" Foreground="{DynamicResource MahApps.Brushes.Accent}"/>
+                        <TextBlock Text="Model" FontSize="28" Margin="2"/>
                         <ListBox Margin="2" ItemsSource="{Binding Data}" SelectedItem="{Binding SelectedData}"  Width="130">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <CheckBox IsChecked="{Binding IsChecked}"></CheckBox>
-                                        <TextBlock Text="{Binding TableName}" HorizontalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="{Binding TableName}"></TextBlock>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>                        
                         </ListBox>
-                        <TextBlock Text="生成区域" FontSize="28" Margin="2" Foreground="{DynamicResource MahApps.Brushes.Accent}"/>
-                        <TextBox Width="150" Text="{Binding AreaName,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"></TextBox>
+                        <TextBlock Text="生成区域" FontSize="28" Margin="2"/>
+                        <TextBox Width="150" Text="{Binding AreaName,UpdateSourceTrigger=PropertyChanged}"></TextBox>
                     </StackPanel>
                 </DockPanel>
             </Border>

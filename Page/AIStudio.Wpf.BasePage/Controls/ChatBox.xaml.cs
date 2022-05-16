@@ -1,4 +1,7 @@
-﻿using AIStudio.Wpf.Entity.DTOModels;
+﻿using AIStudio.Wpf.Controls;
+using AIStudio.Wpf.Controls.Commands;
+using AIStudio.Wpf.Controls.Helper;
+using AIStudio.Wpf.Entity.DTOModels;
 using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
@@ -7,7 +10,6 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Util.Controls;
 
 namespace AIStudio.Wpf.BasePage.Controls
 {
@@ -39,7 +41,7 @@ namespace AIStudio.Wpf.BasePage.Controls
             EmjioItems = new ObservableCollection<EmjioItem>();
             foreach(var dataIndex in EmojiDataFactory.DataIndex.Value)
             {
-                EmjioItems.Add(new EmjioItem() { Emjio = dataIndex.Key, Uri = "pack://application:,,,/Util.Controls;component" + dataIndex.Value });
+                EmjioItems.Add(new EmjioItem() { Emjio = dataIndex.Key, Uri = "pack://application:,,,/AIStudio.Wpf.Controls;component" + dataIndex.Value });
             }
         }
 
@@ -49,7 +51,7 @@ namespace AIStudio.Wpf.BasePage.Controls
         {
             if (_scrollViewer == null)
             {
-                _scrollViewer = ControlExtession.FindChild<System.Windows.Controls.ScrollViewer>(ListBoxChat, string.Empty);
+                _scrollViewer = VisualHelper.FindChild<System.Windows.Controls.ScrollViewer>(ListBoxChat, string.Empty);
         
             }
 

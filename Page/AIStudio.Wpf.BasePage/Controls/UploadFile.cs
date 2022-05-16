@@ -5,7 +5,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
+using AIStudio.Wpf.Controls.Helper;
 
 namespace AIStudio.Wpf.BasePage.Controls
 {
@@ -13,7 +14,7 @@ namespace AIStudio.Wpf.BasePage.Controls
     public class UploadFile : Control
     {
         private const string PART_UploadFile = "PART_UploadFile";
-        internal Util.Controls.UploadFile _uploadFile;
+        internal AIStudio.Wpf.Controls.UploadFile _uploadFile;
         protected IDataProvider _dataProvider { get; }
 
         static UploadFile()
@@ -42,7 +43,7 @@ namespace AIStudio.Wpf.BasePage.Controls
         {
             base.OnApplyTemplate();
 
-            _uploadFile = GetTemplateChild(PART_UploadFile) as Util.Controls.UploadFile;
+            _uploadFile = GetTemplateChild(PART_UploadFile) as AIStudio.Wpf.Controls.UploadFile;
             if (_uploadFile != null)
             {
                 _uploadFile.Upload = async (path) =>
@@ -62,11 +63,11 @@ namespace AIStudio.Wpf.BasePage.Controls
         }
 
         public static readonly DependencyProperty UploadFileTypeProperty = DependencyProperty.Register(
-                "UploadFileType", typeof(Util.Controls.UploadFileType), typeof(UploadFile), new PropertyMetadata(Util.Controls.UploadFileType.File));
+                "UploadFileType", typeof(AIStudio.Wpf.Controls.UploadFileType), typeof(UploadFile), new PropertyMetadata(AIStudio.Wpf.Controls.UploadFileType.File));
 
-        public Util.Controls.UploadFileType UploadFileType
+        public AIStudio.Wpf.Controls.UploadFileType UploadFileType
         {
-            get { return (Util.Controls.UploadFileType)this.GetValue(UploadFileTypeProperty); }
+            get { return (AIStudio.Wpf.Controls.UploadFileType)this.GetValue(UploadFileTypeProperty); }
             set { this.SetValue(UploadFileTypeProperty, value); }
         }
 
@@ -107,11 +108,11 @@ namespace AIStudio.Wpf.BasePage.Controls
         }
 
         public static readonly DependencyProperty FilesDisplayProperty = DependencyProperty.Register(
-            "FilesDisplay", typeof(ObservableCollection<Util.Controls.UploadFileDisplay>), typeof(UploadFile), new PropertyMetadata(new ObservableCollection<Util.Controls.UploadFileDisplay>() { new Util.Controls.UploadFileDisplay() { IsUploadTemplate = true } }));
+            "FilesDisplay", typeof(ObservableCollection<AIStudio.Wpf.Controls.UploadFileDisplay>), typeof(UploadFile), new PropertyMetadata(new ObservableCollection<AIStudio.Wpf.Controls.UploadFileDisplay>() { new AIStudio.Wpf.Controls.UploadFileDisplay() { IsUploadTemplate = true } }));
 
-        public ObservableCollection<Util.Controls.UploadFileDisplay> FilesDisplay
+        public ObservableCollection<AIStudio.Wpf.Controls.UploadFileDisplay> FilesDisplay
         {
-            get { return (ObservableCollection<Util.Controls.UploadFileDisplay>)this.GetValue(FilesDisplayProperty); }
+            get { return (ObservableCollection<AIStudio.Wpf.Controls.UploadFileDisplay>)this.GetValue(FilesDisplayProperty); }
             set { this.SetValue(FilesDisplayProperty, value); }
         }
 

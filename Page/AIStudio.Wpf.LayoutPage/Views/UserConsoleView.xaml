@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:utilpanel="https://astudio.github.io/utilpanel"
-             xmlns:util="https://astudio.github.io/utilcontrol"
+             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:model="clr-namespace:AIStudio.Wpf.LayoutPage.Models"
              mc:Ignorable="d" 
@@ -20,7 +20,7 @@
             </DataTemplate>
             <DataTemplate x:Key="TitleTemplate" x:Shared="False">
                 <StackPanel Orientation="Horizontal">
-                    <util:FButton Margin="2,0" VerticalAlignment="Center" Command="{util:ControlBinding OpenCommand}" CommandParameter="{Binding .}" Content="{Binding Title}" Style="{StaticResource FButton_LinkButton}" ToolTip="在主窗体中打开"/>
+                    <Button Margin="2,0" VerticalAlignment="Center" Command="{ac:ControlBinding OpenCommand}" CommandParameter="{Binding .}" Content="{Binding Title}" ToolTip="在主窗体中打开"/>
                 </StackPanel>
             </DataTemplate>
         </ResourceDictionary>
@@ -31,13 +31,13 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <util:FButton Command="{Binding EditCommand}" FIcon="&#xe657;" Background="Transparent" Foreground="{DynamicResource MahApps.Brushes.Accent}" FontSize="12"  Content="添加卡片"  />
-            <util:FButton Command="{Binding SaveCommand}" FIcon="&#xe61A;" Background="Transparent" Foreground="{DynamicResource MahApps.Brushes.Accent}" FontSize="12"  Content="保存布局"  />
-            <util:DropDown DropDownPlacement="Bottom">
-                <util:DropDown.Content>
-                    <util:FButton FIcon="&#xe604;" Background="Transparent" Foreground="{DynamicResource MahApps.Brushes.Accent}" Content="设置卡片布局" />
-                </util:DropDown.Content>
-                <util:DropDown.Child>
+            <Button Command="{Binding EditCommand}" Style="{StaticResource AIStudio.Styles.Button.Flat}" Content="添加卡片"  />
+            <Button Command="{Binding SaveCommand}" Style="{StaticResource AIStudio.Styles.Button.Flat}" Content="保存布局"  />
+            <ac:DropDown IsDropVisible="False" BorderThickness="0" Placement="Bottom" Padding="0">
+                <ac:DropDown.Content>
+                    <Button Style="{StaticResource AIStudio.Styles.Button.Flat}" Content="设置卡片布局" />
+                </ac:DropDown.Content>
+                <ac:DropDown.Child>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -64,8 +64,8 @@
                             </i:Interaction.Triggers>
                         </utilpanel:RectangleGrid>
                     </Grid>
-                </util:DropDown.Child>
-            </util:DropDown>          
+                </ac:DropDown.Child>
+            </ac:DropDown>          
         </StackPanel>
         <utilpanel:ResizableItemsControl 
             Grid.Row="1"

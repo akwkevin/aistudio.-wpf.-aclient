@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.BasePage.DTOModels
 {

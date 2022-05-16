@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
@@ -112,7 +112,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             {
                 if (string.IsNullOrEmpty(viewmodel.Remark))
                 {
-                    MessageBoxHelper.ShowHit("请填写意见", identifier);
+                    Controls.MessageBox.Info("请填写意见", windowIdentifier: identifier);
                     return false;
                 }
                 else

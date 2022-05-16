@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:util="https://astudio.github.io/utilcontrol" 
+             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls" 
              xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:AIStudio.Wpf.D_Manage.Views" 
@@ -27,13 +27,13 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <DockPanel>
-                <Button DockPanel.Dock="Right" util:ControlAttachProperty.CornerRadius="2" Height="Auto" Width="Auto" Margin="3" Command="{Binding AddCommand}" Style="{StaticResource DefaultButtonStyle}" >
+                <Button DockPanel.Dock="Right" ac:ControlAttach.CornerRadius="2" Height="Auto" Width="Auto" Margin="3" Command="{Binding AddCommand}" >
                     <svg:PackSvg Height="16" Width="16" Margin="6"   
                                          Kind="usergroup-add" 
                                          Fill="{DynamicResource MahApps.Brushes.ThemeBackground}"/>
                 </Button>
-                <ComboBox x:Name="combox" IsEditable="True" ItemsSource="{Binding UserDatas}" Margin="3" util:ControlAttachProperty.CornerRadius="3"
-                          DisplayMemberPath="UserName" SelectedValuePath="UserName" Style="{StaticResource ClearButtonComboBox}" >
+                <ComboBox x:Name="combox" IsEditable="True" ItemsSource="{Binding UserDatas}" Margin="3" ac:ControlAttach.CornerRadius="3"
+                          DisplayMemberPath="UserName" SelectedValuePath="UserName" >
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding SearchCommand}" CommandParameter="{Binding Path=SelectedValue, ElementName=combox}" />
@@ -42,7 +42,7 @@
 
                 </ComboBox>
             </DockPanel>
-            <ListView x:Name="listView" Grid.Row="1" ItemsSource="{Binding UserDatas}" SelectedItem="{Binding SelectedUser,Mode=TwoWay}" Style="{StaticResource DefaultListView}" BorderThickness="0">
+            <ListView x:Name="listView" Grid.Row="1" ItemsSource="{Binding UserDatas}" SelectedItem="{Binding SelectedUser,Mode=TwoWay}" BorderThickness="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -55,7 +55,7 @@
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Image x:Name="img" Grid.RowSpan="2" Width="30" Height="30" Margin="3" Stretch="Fill" util:ImageProperty.CornerRadius="2" 
+                            <Image x:Name="img" Grid.RowSpan="2" Width="30" Height="30" Margin="3" Stretch="Fill" ac:ImageAttach.CornerRadius="2" 
                                     Source="{Binding Avatar,Converter={converter2:StringToAvatarSourceConverter}}" core:ImageAttached.Gray8="True">        
                             </Image>
                             <TextBlock Grid.Column="1" Text="{Binding UserName}" ></TextBlock>

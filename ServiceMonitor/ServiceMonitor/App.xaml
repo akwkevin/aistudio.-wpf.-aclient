@@ -10,7 +10,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
 
-                <ResourceDictionary Source="pack://application:,,,/Util.Controls;component/Style/Style.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/AIStudio.Wpf.Controls;component/Themes/MahApps.Defaults.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

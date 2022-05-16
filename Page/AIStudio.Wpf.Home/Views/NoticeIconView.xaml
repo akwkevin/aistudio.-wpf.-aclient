@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:util="https://astudio.github.io/utilcontrol"
+             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
              xmlns:converter2="clr-namespace:AIStudio.Wpf.BasePage.Converters;assembly=AIStudio.Wpf.BasePage"
              xmlns:command="clr-namespace:AIStudio.Core.ExCommand;assembly=AIStudio.Core"
              xmlns:prism="http://prismlibrary.com/"
@@ -19,27 +19,27 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <util:DropDown Grid.Column="1">
+        <ac:DropDown IsDropVisible="False" BorderThickness="0">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Opened">
                     <i:InvokeCommandAction Command="{Binding RefreshCommand}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-            <util:DropDown.Content>
-                <util:Badged HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding TotalCount,Converter={converter2:CountTo99PlusConverter}}" >
-                    <TextBlock Text="&#xf0a2;" FontSize="12" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource FAwesome}">
+            <ac:DropDown.Content>
+                <ac:Badged HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding TotalCount,Converter={converter2:CountTo99PlusConverter}}" >
+                    <TextBlock Text="&#xf0a2;" FontSize="12" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource AIStudio.Styles.TextBlock.FontAwesome}">
                     </TextBlock>
-                </util:Badged>
-            </util:DropDown.Content>
-            <util:DropDown.Child>
+                </ac:Badged>
+            </ac:DropDown.Content>
+            <ac:DropDown.Child>
                 <ContentControl Style="{DynamicResource BaseWaitingStyle}">
                     <TabControl controls:TabControlHelper.Underlined="TabItems" SelectedIndex="{Binding SelectedIndex}">
                         <TabItem>
                             <TabItem.Header>
-                                <util:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding Notice_Pagination.Total,Converter={converter2:CountTo99PlusConverter}}" >
-                                    <TextBlock  Text="&#xf003; 通告" FontSize="{DynamicResource MahApps.Font.Size.Menu}" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource FAwesome}">
+                                <ac:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding Notice_Pagination.Total,Converter={converter2:CountTo99PlusConverter}}" >
+                                    <TextBlock  Text="&#xf003; 通告" FontSize="{DynamicResource MahApps.Font.Size.Menu}" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource AIStudio.Styles.TextBlock.FontAwesome}">
                                     </TextBlock>
-                                </util:Badged>
+                                </ac:Badged>
                             </TabItem.Header>
                             <StackPanel>
                                 <ListBox x:Name="notice" ItemsSource="{Binding Notice}">
@@ -54,7 +54,7 @@
                                                     <ColumnDefinition Width="Auto"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Image x:Name="Avatar" Grid.RowSpan="2" Width="24" Height="24" Margin="3" util:ImageProperty.CornerRadius="50"  Stretch="Fill" VerticalAlignment="Center" 
+                                                <Image x:Name="Avatar" Grid.RowSpan="2" Width="24" Height="24" Margin="3" ac:ImageAttach.CornerRadius="50"  Stretch="Fill" VerticalAlignment="Center" 
                                                                            Source="{Binding Avatar,Converter={converter2:StringToAvatarSourceConverter}}"
                                                                            ToolTip="{Binding CreatorName}"/>
                                                 <StackPanel Grid.Column="1" Orientation="Horizontal">
@@ -70,15 +70,15 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </ListBox>
-                                <util:FButton Command="{Binding MoreCommand}" CommandParameter="D_NoticeDTO" HorizontalAlignment="Right" Style="{StaticResource FButton_LinkButton}" Content ="查看更多" />
+                                <Button Command="{Binding MoreCommand}" CommandParameter="D_NoticeDTO" HorizontalAlignment="Right" Style="{StaticResource AIStudio.Styles.Button.Flat}" Content ="查看更多" />
                             </StackPanel>
                         </TabItem>
                         <TabItem>
                             <TabItem.Header>
-                                <util:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding UserMail_Pagination.Total,Converter={converter2:CountTo99PlusConverter}}" >
-                                    <TextBlock  Text="&#xf003; 信件" FontSize="{DynamicResource MahApps.Font.Size.Menu}" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource FAwesome}">
+                                <ac:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding UserMail_Pagination.Total,Converter={converter2:CountTo99PlusConverter}}" >
+                                    <TextBlock  Text="&#xf003; 信件" FontSize="{DynamicResource MahApps.Font.Size.Menu}" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource AIStudio.Styles.TextBlock.FontAwesome}">
                                     </TextBlock>
-                                </util:Badged>
+                                </ac:Badged>
                             </TabItem.Header>
                             <StackPanel>
                                 <ListBox x:Name="usermail" ItemsSource="{Binding UserMail}">
@@ -93,7 +93,7 @@
                                                     <ColumnDefinition Width="Auto"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Image x:Name="Avatar" Grid.RowSpan="2" Width="24" Height="24" Margin="3" util:ImageProperty.CornerRadius="50"  Stretch="Fill" VerticalAlignment="Center" 
+                                                <Image x:Name="Avatar" Grid.RowSpan="2" Width="24" Height="24" Margin="3" ac:ImageAttach.CornerRadius="50"  Stretch="Fill" VerticalAlignment="Center" 
                                                                            Source="{Binding Avatar,Converter={converter2:StringToAvatarSourceConverter}}"
                                                                            ToolTip="{Binding CreatorName}"/>
                                                 <StackPanel Grid.Column="1" Orientation="Horizontal">
@@ -109,15 +109,15 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </ListBox>
-                                <util:FButton Command="{Binding MoreCommand}" CommandParameter="D_UserMailDTO" HorizontalAlignment="Right" Style="{StaticResource FButton_LinkButton}" Content ="查看更多" />
+                                <Button Command="{Binding MoreCommand}" CommandParameter="D_UserMailDTO" HorizontalAlignment="Right" Content ="查看更多" />
                             </StackPanel>
                         </TabItem>
                         <TabItem >
                             <TabItem.Header>
-                                <util:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding UserMessage_Pagination.Total,Converter={converter2:CountTo99PlusConverter}}" >
-                                    <TextBlock Text="&#xf27b; 消息" FontSize="{DynamicResource MahApps.Font.Size.Menu}" HorizontalAlignment="Right" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource FAwesome}">
+                                <ac:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding UserMessage_Pagination.Total,Converter={converter2:CountTo99PlusConverter}}" >
+                                    <TextBlock Text="&#xf27b; 消息" FontSize="{DynamicResource MahApps.Font.Size.Menu}" HorizontalAlignment="Right" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource AIStudio.Styles.TextBlock.FontAwesome}">
                                     </TextBlock>
-                                </util:Badged>
+                                </ac:Badged>
                             </TabItem.Header>
                             <StackPanel>
                                 <ListBox x:Name="usermessage" ItemsSource="{Binding UserMessage}">
@@ -132,7 +132,7 @@
                                                     <ColumnDefinition Width="Auto"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Image x:Name="Avatar" Grid.RowSpan="2" Width="24" Height="24" Margin="3" util:ImageProperty.CornerRadius="50"  Stretch="Fill" VerticalAlignment="Center" 
+                                                <Image x:Name="Avatar" Grid.RowSpan="2" Width="24" Height="24" Margin="3" ac:ImageAttach.CornerRadius="50"  Stretch="Fill" VerticalAlignment="Center" 
                                                                            Source="{Binding Avatar,Converter={converter2:StringToAvatarSourceConverter}}"
                                                                            ToolTip="{Binding CreatorName}"/>
                                                 <StackPanel Grid.Column="1" Orientation="Horizontal">
@@ -149,15 +149,15 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </ListBox>
-                                <util:FButton Command="{Binding MoreCommand}" CommandParameter="D_UserMessageDTO" HorizontalAlignment="Right" Style="{StaticResource FButton_LinkButton}" Content ="查看更多" />
+                                <Button Command="{Binding MoreCommand}" CommandParameter="D_UserMessageDTO" HorizontalAlignment="Right" Content ="查看更多" />
                             </StackPanel>
                         </TabItem>
                         <TabItem>
                             <TabItem.Header>
-                                <util:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding UserForm_Pagination.Total,Converter={converter2:CountTo99PlusConverter}}" >
-                                    <TextBlock Text="&#xf017; 待办" FontSize="{DynamicResource MahApps.Font.Size.Menu}" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource FAwesome}">
+                                <ac:Badged Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeBackground="{DynamicResource DangerBrush}"  Badge="{Binding UserForm_Pagination.Total,Converter={converter2:CountTo99PlusConverter}}" >
+                                    <TextBlock Text="&#xf017; 待办" FontSize="{DynamicResource MahApps.Font.Size.Menu}" Foreground="{DynamicResource MahApps.Brushes.Text}" Style="{StaticResource AIStudio.Styles.TextBlock.FontAwesome}">
                                     </TextBlock>
-                                </util:Badged>
+                                </ac:Badged>
                             </TabItem.Header>
                             <StackPanel>
                                 <ListBox x:Name="userform" ItemsSource="{Binding UserForm}">
@@ -172,7 +172,7 @@
                                                     <ColumnDefinition Width="Auto"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Image x:Name="Avatar" Grid.RowSpan="2" Width="24" Height="24" Margin="3" util:ImageProperty.CornerRadius="50"  Stretch="Fill" VerticalAlignment="Center" 
+                                                <Image x:Name="Avatar" Grid.RowSpan="2" Width="24" Height="24" Margin="3" ac:ImageAttach.CornerRadius="50"  Stretch="Fill" VerticalAlignment="Center" 
                                                                                Source="{Binding Avatar,Converter={converter2:StringToAvatarSourceConverter}}"
                                                                                ToolTip="{Binding CreatorName}"/>
                                                 <StackPanel Grid.Column="1" Orientation="Horizontal">
@@ -188,7 +188,7 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </ListBox>
-                                <util:FButton Command="{Binding MoreCommand}" CommandParameter="OA_UserFormDTO" HorizontalAlignment="Right" Style="{StaticResource FButton_LinkButton}" Content ="查看更多" />
+                                <Button Command="{Binding MoreCommand}" CommandParameter="OA_UserFormDTO" HorizontalAlignment="Right" Content ="查看更多" />
                             </StackPanel>
                         </TabItem>
                         <!--<i:Interaction.Triggers>
@@ -199,8 +199,8 @@
                     </i:Interaction.Triggers>-->
                     </TabControl>
                 </ContentControl>
-            </util:DropDown.Child>
-        </util:DropDown>       
+            </ac:DropDown.Child>
+        </ac:DropDown>       
        
     </Grid>
 </UserControl>

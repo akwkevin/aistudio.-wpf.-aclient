@@ -1,6 +1,7 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business;
+using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.OA_Manage.Models;
 using AIStudio.Wpf.OA_Manage.Views;
@@ -12,8 +13,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Util.Controls;
-using Util.Controls.DialogBox;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
@@ -203,7 +202,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         private async void Start(OA_DefFormDTO para)
         {            
-            var sure = await Msg.Warning("确认启用吗?", BoxType.Metro, Identifier);
+            var sure = await MessageBoxDialog.Warning("确认启用吗?", "提示", Identifier);
             if (sure == BaseDialogResult.OK)
             {
                 try
@@ -230,7 +229,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         private async void Stop(OA_DefFormDTO para)
         {
-            var sure = await Msg.Warning("确认停用吗?", BoxType.Metro, Identifier);
+            var sure = await MessageBoxDialog.Warning("确认停用吗?", "提示", Identifier);
             if (sure == BaseDialogResult.OK)
             {
                 try

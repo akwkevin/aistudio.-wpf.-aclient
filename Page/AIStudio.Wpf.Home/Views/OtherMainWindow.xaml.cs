@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Home
 {
@@ -58,8 +58,8 @@ namespace AIStudio.Wpf.Home
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MessageBoxResult result = MessageBoxHelper.ShowSure("确定要关闭此窗口?", this);
-            if (result != MessageBoxResult.OK)
+            MessageBoxResult result = Controls.MessageBox.YesNo("确定要关闭此窗口?", owner: this);
+            if (result != MessageBoxResult.Yes)
             {
                 e.Cancel = true;
                 return;

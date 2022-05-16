@@ -1,5 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.BasePage.ViewModels;
+using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.Quartz_Manage.Views;
 using Newtonsoft.Json;
@@ -7,8 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
-using Util.Controls;
-using Util.Controls.DialogBox;
 
 namespace AIStudio.Wpf.Quartz_Manage.ViewModels
 {
@@ -99,7 +98,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             List<string> ids = Data.Where(p => p.IsChecked).Select(p => p.Id).ToList();
 
-            var sure = await Msg.Warning("确认暂停吗?", BoxType.Metro, Identifier);
+            var sure = await MessageBoxDialog.Warning("确认暂停吗?", "提示", Identifier);
             if (sure == BaseDialogResult.OK)
             {
                 try
@@ -128,7 +127,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             List<string> ids = Data.Where(p => p.IsChecked).Select(p => p.Id).ToList();
 
-            var sure = await Msg.Warning("确认开始吗?", BoxType.Metro, Identifier);
+            var sure = await MessageBoxDialog.Warning("确认开始吗?", "提示", Identifier);
             if (sure == BaseDialogResult.OK)
             {
                 try
@@ -157,7 +156,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             List<string> ids = Data.Where(p => p.IsChecked).Select(p => p.Id).ToList();
 
-            var sure = await Msg.Warning("确认立即执行吗?", BoxType.Metro, Identifier);
+            var sure = await MessageBoxDialog.Warning("确认立即执行吗?", "提示", Identifier);
             if (sure == BaseDialogResult.OK)
             {
                 try

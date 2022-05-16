@@ -4,7 +4,7 @@ using Prism.Regions;
 using AIStudio.Wpf.Home.Views;
 using AIStudio.Core;
 using System.Reflection;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
 using System.Windows.Controls;
 using System;
 using System.Windows;

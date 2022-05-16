@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:util="https://astudio.github.io/utilcontrol">
+                    xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls">
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     <Style x:Key="BaseWaitingStyle" TargetType="{x:Type ContentControl}">
         <Setter Property="Template">
@@ -37,7 +37,7 @@
                                     <DropShadowEffect Color="Black"></DropShadowEffect>
                                 </Border.Effect>
                                 <StackPanel Orientation="Horizontal">
-                                    <util:BusyBox Width="28" Height="28" Foreground="{DynamicResource MahApps.Brushes.Text}" Margin="5,0" VerticalAlignment="Center" IsActive="true"></util:BusyBox>
+                                    <ac:BusyBox Width="28" Height="28" Foreground="{DynamicResource MahApps.Brushes.Text}" Margin="5,0" VerticalAlignment="Center" ></ac:BusyBox>
                                     <TextBlock Name="tbPrompt" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource MahApps.Brushes.Text}" Text="{Binding WaitInfo}"></TextBlock>
                                     <TextBlock Name="txtCancel" VerticalAlignment="Center"> <Hyperlink Command="{Binding CancelCommmad}"> <TextBlock FontSize="12" Text="取消"/> </Hyperlink>
                                         <TextBlock.Style>

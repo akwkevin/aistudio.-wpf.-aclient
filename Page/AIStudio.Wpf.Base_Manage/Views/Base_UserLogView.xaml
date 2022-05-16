@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:util="https://astudio.github.io/utilcontrol" 
+             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:AIStudio.Wpf.Base_Manage.Views" 
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
@@ -18,34 +18,37 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-            <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource MahApps.Brushes.Text}">类别</TextBlock>
-            <ComboBox Width="100" Margin="3" ItemsSource="{Binding LogTypeList}" DisplayMemberPath="text" SelectedValuePath="value" Text="{Binding LogType}" util:ControlAttachProperty.CornerRadius="3"  Style="{StaticResource DefaultComboBox}"/>
-            <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource MahApps.Brushes.Text}">操作人</TextBlock>
-            <TextBox Width="100" Margin="3" Style="{StaticResource DefaultTextBox}" util:ControlAttachProperty.CornerRadius="3"  Text="{Binding OpUserName}"/>
-            <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource MahApps.Brushes.Text}">时间</TextBlock>
-            <DatePicker Margin="3" SelectedDate="{Binding StartTime,Mode=TwoWay}"  util:ControlAttachProperty.CornerRadius="3" Style="{StaticResource DefaultDatePicker}"></DatePicker>
-            <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource MahApps.Brushes.Text}">-</TextBlock>
-            <DatePicker Margin="3" SelectedDate="{Binding EndTime,Mode=TwoWay}"  util:ControlAttachProperty.CornerRadius="3" Style="{StaticResource DefaultDatePicker}"></DatePicker>
-            <util:SearchBar Width="220" Margin="4,3" 
-                     util:ControlAttachProperty.Watermark="内容" 
+        <ac:Form ac:Form.HeaderWidth="Auto" ac:Form.ItemMargin="3">
+            <ac:Form.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ac:Form.ItemsPanel>
+            <ac:FormItem Header="类别">
+                <ComboBox MinWidth="100" ItemsSource="{Binding LogTypeList}" DisplayMemberPath="text" SelectedValuePath="value" Text="{Binding LogType}" />
+            </ac:FormItem>
+            <ac:FormItem Header="操作人">
+                <TextBox MinWidth="100" Text="{Binding OpUserName}"/>
+            </ac:FormItem>
+            <ac:FormItem Header="时间">
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker MinWidth="100" SelectedDate="{Binding StartTime,Mode=TwoWay}"></DatePicker>
+                    <TextBlock Foreground="{DynamicResource MahApps.Brushes.Text}">-</TextBlock>
+                    <DatePicker MinWidth="100"  SelectedDate="{Binding EndTime,Mode=TwoWay}"></DatePicker>
+                </StackPanel>
+            </ac:FormItem>           
+            <ac:SearchBar Width="220" 
+                     VerticalAlignment="Center"
+                     ac:ControlAttach.Watermark="内容" 
                      Text="{Binding LogContent}"
-                     Command="{Binding SearchCommand}"
-                     Style="{StaticResource DefalutSearchBar}">
-            </util:SearchBar>
-        </StackPanel>
-        <DataGrid Grid.Row="1" x:Name="table" ItemsSource="{Binding Data}"
-                  Margin="3"
-                  IsReadOnly="False"
-                  BorderThickness="1"
-                  GridLinesVisibility="All"
-                  VirtualizingStackPanel.IsVirtualizing="True"
-                  VirtualizingStackPanel.VirtualizationMode="Recycling"
-                  VirtualizingStackPanel.IsVirtualizingWhenGrouping="True" 
-                  ScrollViewer.CanContentScroll="True"
-                  EnableRowVirtualization="True"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="False">
+                     Command="{Binding SearchCommand}">
+            </ac:SearchBar>
+        </ac:Form>
+        <DataGrid Grid.Row="1" 
+                  x:Name="table" 
+                  ItemsSource="{Binding Data}"
+                  Margin="3"                  
+                  AutoGenerateColumns="False">
             <i:Interaction.Behaviors>
                 <core:SelectAllBahavior InitialState="False"/>
             </i:Interaction.Behaviors>
@@ -53,50 +56,27 @@
                 <DataGridTextColumn Header="内容"  Binding="{Binding LogContent}" Width="*" IsReadOnly="True"/>
                 <DataGridTextColumn Header="级别"  Binding="{Binding Level}" Width="Auto" IsReadOnly="True"/>
                 <DataGridTextColumn Header="类别"  Binding="{Binding LogType}" Width="Auto" IsReadOnly="True"/>
-                <DataGridTextColumn Header="操作人"  Binding="{Binding CreatorRealName}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="操作人"  Binding="{Binding CreatorName}" Width="Auto" IsReadOnly="True"/>
                 <DataGridTextColumn Header="时间"  Binding="{Binding CreateTime,StringFormat=yyyy-MM-dd HH:mm:ss}" Width="Auto" IsReadOnly="True"/>                
             </DataGrid.Columns>
-         
-            <DataGrid.ColumnHeaderStyle>
-                <Style BasedOn="{StaticResource MahApps.Styles.DataGridColumnHeader}" TargetType="DataGridColumnHeader" >
-                    <!--<Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent3}"/>-->
-                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                </Style>
-            </DataGrid.ColumnHeaderStyle>
-            <DataGrid.CellStyle>
-                <Style BasedOn="{StaticResource MahApps.Styles.DataGridCell}"
-                       TargetType="{x:Type DataGridCell}">
-                    <Setter Property="Padding" Value="1,0,1,0"/>
-                </Style>
-            </DataGrid.CellStyle>
-            <DataGrid.Style>
-                <Style BasedOn="{StaticResource MahApps.Styles.DataGrid}"
-                       TargetType="{x:Type DataGrid}">
-                    <Setter Property="AlternatingRowBackground"
-                            Value="{DynamicResource MahApps.Brushes.Gray10}" />
-                    <Setter Property="BorderBrush"
-                            Value="{DynamicResource MahApps.Brushes.Gray5}" />
-                </Style>
-            </DataGrid.Style>
-
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction Command="{Binding EditCommand}" CommandParameter="{Binding SelectedItem, ElementName=table}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </DataGrid>
-        <util:Pagination Grid.Row="2" 
+        <ac:Pagination Grid.Row="2" 
                          x:Name="pagination"
-                         PaginationStyle="Simple" 
+                         ControlStyle="Plain" 
                          CurrentIndex="{Binding Pagination.PageIndex,Mode=TwoWay}"  
                          Total="{Binding Pagination.Total}"
                          PageSize="{Binding Pagination.PageRows,Mode=TwoWay}"
-                         Height="Auto" HorizontalAlignment="Right" >
+                         HorizontalAlignment="Right" >
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="CurrentIndexChanged">
                     <command:ExInvokeCommandAction Command="{Binding CurrentIndexChangedComamnd}" CommandParameter="{Binding ElementName=pagination}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-        </util:Pagination>
+        </ac:Pagination>
     </Grid>
 </UserControl>

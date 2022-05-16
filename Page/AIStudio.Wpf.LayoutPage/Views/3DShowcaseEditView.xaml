@@ -1,14 +1,15 @@
-﻿<util:BaseDialog x:Class="AIStudio.Wpf.LayoutPage.Views._3DShowcaseEditView"
+﻿<ac:BaseDialog x:Class="AIStudio.Wpf.LayoutPage.Views._3DShowcaseEditView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:util="https://astudio.github.io/utilcontrol"             
+             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"             
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:dd="urn:gong-wpf-dragdrop"
              xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Style="{StaticResource AIStudio.Styles.BaseDialog}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,73 +17,70 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}"  CornerRadius="3">
-        <Grid Width="450" Margin="5,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="40" />
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0"
+    <Grid Width="450" Margin="5,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
                    Margin="10,0"
                    Text="3D展台配置"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"/>
-            <Grid Grid.Row="1" Height="280">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TreeView x:Name="treeview" ItemsSource="{Binding MenuItems}" Style="{StaticResource DefaultMetroTreeView}" ItemTemplate="{StaticResource HamburgerMenuImageItem}">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseDoubleClick">
-                            <i:InvokeCommandAction Command="{Binding DoubleClickAddDataCommand}" CommandParameter="{Binding SelectedItem, ElementName=treeview}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </TreeView>
-                <ListBox x:Name="listBox" 
+        <Grid Grid.Row="1" Height="280">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TreeView x:Name="treeview" ItemsSource="{Binding MenuItems}" ItemTemplate="{StaticResource HamburgerMenuImageItem}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding DoubleClickAddDataCommand}" CommandParameter="{Binding SelectedItem, ElementName=treeview}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TreeView>
+            <ListBox x:Name="listBox" 
                          Margin="5,0" 
                          Grid.Column="1" 
                          ItemsSource="{Binding _3DItems}"
                          SelectedIndex="0" 
-                         Style="{StaticResource ClearListBoxStyle}"
+                         ac:ControlAttach.ClearTextButton="True" 
+                         Style="{DynamicResource AIStudio.Styles.ListBox}"
                          dd:DragDrop.CanDragWithMouseRightButton="True"
                          dd:DragDrop.IsDragSource="True"
                          dd:DragDrop.IsDropTarget="True"
                          dd:DragDrop.DropTargetAdornerBrush="Coral"
                          dd:DragDrop.UseDefaultEffectDataTemplate="True">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Width="{Binding Path=ActualWidth, Mode=OneWay,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <svg:PackSvg Height="18" Width="18"    
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Width="{Binding Path=ActualWidth, Mode=OneWay,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <svg:PackSvg Height="18" Width="18"    
                                                                  VerticalAlignment="Center"
                                                                  Kind="{Binding Glyph}" 
                                                                  Fill="{DynamicResource MahApps.Brushes.Accent}"/>
-                                <TextBlock Text="{Binding Label}" VerticalAlignment="Center" Foreground="{DynamicResource MahApps.Brushes.Text}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Grid>
-            <StackPanel Grid.Row="2"
+                            <TextBlock Text="{Binding Label}" VerticalAlignment="Center" Foreground="{DynamicResource MahApps.Brushes.Text}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right" Margin="10,0">
-                <util:FButton CornerRadius="2" x:Name="PART_AffirmativeButton"
-                    Height="25"
-                    MinWidth="60"
+            <Button x:Name="PART_AffirmativeButton"
+                    VerticalAlignment="Center"
                     Content="确定"
                     Margin="0 0 5 0" />
-                <util:FButton CornerRadius="2" x:Name="PART_NegativeButton"
-                    Height="25"
-                    MinWidth="60"
+            <Button x:Name="PART_NegativeButton"
+                    VerticalAlignment="Center"
                     Content="取消"
                     Margin="5 0 5 0" />
-            </StackPanel>
-        </Grid>
-    </Border>
-</util:BaseDialog>
+        </StackPanel>
+    </Grid>
+</ac:BaseDialog>

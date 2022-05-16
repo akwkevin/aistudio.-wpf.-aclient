@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:model="clr-namespace:AIStudio.Wpf.LayoutPage.Models"
              xmlns:utilwall="https://astudio.github.io/utilwall"
-             xmlns:util="https://astudio.github.io/utilcontrol"
+             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -34,8 +34,8 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <util:FButton Command="{Binding EditCommand}" FIcon="&#xe657;" Background="Transparent" Foreground="{DynamicResource MahApps.Brushes.Accent}" FontSize="12"  Content="编辑卡片"  />
-            <util:FButton Command="{Binding SaveCommand}" FIcon="&#xe61A;" Background="Transparent" Foreground="{DynamicResource MahApps.Brushes.Accent}" FontSize="12"  Content="保存布局"  />
+            <Button Command="{Binding EditCommand}" Style="{StaticResource AIStudio.Styles.Button.Flat}" Content="编辑卡片"  />
+            <Button Command="{Binding SaveCommand}" Style="{StaticResource AIStudio.Styles.Button.Flat}" Content="保存布局"  />
         </StackPanel>
         <utilwall:WallControl x:Name="_mainwall" Grid.Row="1" FillAll="False" Orientation="Vertical"  ItemsSource="{Binding User3DData.Data}" >
             <!--<i:Interaction.Triggers>

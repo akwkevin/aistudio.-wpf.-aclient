@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:util="https://astudio.github.io/utilcontrol"           
+             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"           
              xmlns:controls="clr-namespace:AIStudio.Wpf.BasePage.Controls"
              xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
@@ -41,7 +41,7 @@
                         </Style>
                     </ToggleButton.Style>
                 </ToggleButton>
-                <util:NotTopMostPopup 
+                <ac:NotTopMostPopup 
                     Tag="{Binding ElementName=ToggleButton}"                                      
                     PlacementTarget="{Binding ElementName=ToggleButton}" 
                     IsOpen="{Binding IsOpenEmjio, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}" 
@@ -70,7 +70,7 @@
                             </ItemsControl>
                         </Border>
                     </Grid>
-                </util:NotTopMostPopup>
+                </ac:NotTopMostPopup>
             </Grid>
         </ControlTemplate>
         <ControlTemplate x:Key="picture">
@@ -172,7 +172,7 @@
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <ListBox Name="ListBoxChat"
-                 ItemContainerStyle="{StaticResource DefaultUnSelectedListBoxItem}"
+                 ItemContainerStyle="{StaticResource AIStudio.Styles.ListBoxItem.Plain}"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ScrollViewer.CanContentScroll="False" 
                  Background="Transparent" 
@@ -271,16 +271,16 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Border BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Gray8}">
-                <util:RichTextBox x:Name="sendText" Text="{Binding ChatString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}">
+                <ac:RichTextBox x:Name="sendText" Text="{Binding ChatString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="KeyUp">
                             <i:InvokeCommandAction Command="{Binding SendStringCmd,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}" PassEventArgsToCommand="True" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                </util:RichTextBox>
+                </ac:RichTextBox>
             </Border>
-            <util:FButton Grid.Row="1" HorizontalAlignment="Right" Margin="2" Content="发送" Command="{Binding SendStringCmd,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}">
-            </util:FButton>
+            <Button Grid.Row="1" HorizontalAlignment="Right" Margin="2" Content="发送" Command="{Binding SendStringCmd,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}">
+            </Button>
         </Grid>
 
 
@@ -290,18 +290,18 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Border BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Gray8}">
-                <StackPanel Height="30">
-                    <RadioButton Height="25" IsChecked="{Binding SelectMode,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}},Converter={converter:ConverterValueMapToBool Parameter=1},ConverterParameter=1}" Content="今天" Style="{StaticResource DefaultRadioGroupItemStyleFirst}"/>
-                    <RadioButton Height="25" IsChecked="{Binding SelectMode,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}},Converter={converter:ConverterValueMapToBool Parameter=2},ConverterParameter=2}" Content="最近一周" Style="{StaticResource DefaultRadioGroupItemStyle}"/>
-                    <RadioButton Height="25" IsChecked="{Binding SelectMode,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}},Converter={converter:ConverterValueMapToBool Parameter=3},ConverterParameter=3}" Content="最近一个月" Style="{StaticResource DefaultRadioGroupItemStyle}"/>
-                    <RadioButton Height="25" IsChecked="{Binding SelectMode,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}},Converter={converter:ConverterValueMapToBool Parameter=4},ConverterParameter=4}" Content="最近三个月" Style="{StaticResource DefaultRadioGroupItemStyleLast}"/>
-                </StackPanel>
+                <ac:ButtonGroup BorderThickness="1" Height="30">
+                    <RadioButton Height="25" IsChecked="{Binding SelectMode,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}},Converter={converter:ConverterValueMapToBool Parameter=1},ConverterParameter=1}" Content="今天" Style="{DynamicResource AIStudio.Styles.RadioButton.Check}"/>
+                    <RadioButton Height="25" IsChecked="{Binding SelectMode,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}},Converter={converter:ConverterValueMapToBool Parameter=2},ConverterParameter=2}" Content="最近一周" Style="{DynamicResource AIStudio.Styles.RadioButton.Check}"/>
+                    <RadioButton Height="25" IsChecked="{Binding SelectMode,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}},Converter={converter:ConverterValueMapToBool Parameter=3},ConverterParameter=3}" Content="最近一个月" Style="{DynamicResource AIStudio.Styles.RadioButton.Check}"/>
+                    <RadioButton Height="25" IsChecked="{Binding SelectMode,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}},Converter={converter:ConverterValueMapToBool Parameter=4},ConverterParameter=4}" Content="最近三个月" Style="{DynamicResource AIStudio.Styles.RadioButton.Check}"/>
+                </ac:ButtonGroup>
             </Border>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                <DatePicker Width="120" Margin="2" SelectedDate="{Binding StartValue,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}" Padding="2" Style="{StaticResource DefaultDatePicker}"></DatePicker>
-                <DatePicker Width="120" Margin="2" SelectedDate="{Binding EndValue,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}" Padding="2" Style="{StaticResource DefaultDatePicker}"></DatePicker>
-                <util:FButton Margin="2" Content="确定" Command="{Binding HistorySearchCmd,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}">
-                </util:FButton>
+                <DatePicker Width="120" Margin="2" SelectedDate="{Binding StartValue,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}" Padding="2"></DatePicker>
+                <DatePicker Width="120" Margin="2" SelectedDate="{Binding EndValue,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}" Padding="2"></DatePicker>
+                <Button Margin="2" Content="确定" Command="{Binding HistorySearchCmd,RelativeSource={RelativeSource AncestorType={x:Type controls:ChatBox}}}">
+                </Button>
             </StackPanel>
         </Grid>
 

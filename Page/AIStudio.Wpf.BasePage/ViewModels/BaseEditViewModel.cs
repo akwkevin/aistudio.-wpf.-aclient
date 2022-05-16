@@ -1,5 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
+using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
 using Newtonsoft.Json;
 using Prism.Ioc;
@@ -94,13 +95,12 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 
         protected void ShowWait()
         {
-            var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
-            control.WaitInfo = "正在获取数据";
+            WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
         }
 
         protected void HideWait()
         {
-            Util.Controls.WindowBase.HideWaiting(Identifier);
+            WindowBase.HideWaiting(Identifier);
         }
 
 

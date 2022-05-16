@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
@@ -193,8 +193,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             try
             {
-                var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
-                control.WaitInfo = "正在获取数据";
+                WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
 
                 var result = await _dataProvider.GetData<List<Base_UserDTO>>($"/Base_Manage/Base_User/GetDataListByDepartment", JsonConvert.SerializeObject(new { id = para.Id }));
                 if (!result.Success)
@@ -209,7 +208,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
             finally
             {
-                Util.Controls.WindowBase.HideWaiting(Identifier);
+                WindowBase.HideWaiting(Identifier);
             }
         }
     }

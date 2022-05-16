@@ -17,7 +17,8 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
+using AIStudio.Wpf.Controls.Helper;
 
 namespace AIStudio.Wpf.Home.ViewModels
 {
@@ -276,7 +277,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 ThemeManager.Current.ChangeThemeBaseColor(Application.Current, data.Name);
                 LocalSetting.SetAppSetting("Theme", data.Name);
-                InitThemeAddition();
 
                 if (ThemeChangedHelper.IsThemeChanged != null)
                     ThemeChangedHelper.IsThemeChanged();
@@ -289,7 +289,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 ThemeManager.Current.ChangeThemeColorScheme(Application.Current, data.Name);
                 LocalSetting.SetAppSetting("Accent", data.Name);
-                InitThemeAddition();
 
                 if (ThemeChangedHelper.IsThemeChanged != null)
                     ThemeChangedHelper.IsThemeChanged();
@@ -302,7 +301,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             if (navigationAccent != null)
             {
                 LocalSetting.SetAppSetting("NavigationAccent", navigationAccent.NavigationAccent);
-                InitThemeAddition();
             }
         }
 
@@ -417,14 +415,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             #endregion
         }
 
-        private static void InitThemeAddition()
-        {
-            Application.Current.Resources.Remove("TitleBackgroundBrush");
-            Application.Current.Resources.Remove("TitleForegroundBrush");
-            Application.Current.Resources.Add("TitleBackgroundBrush", LocalSetting.NavigationAccent == "Dark" ? Application.Current.FindResource("MahApps.Brushes.AccentBase") : Application.Current.FindResource("MahApps.Brushes.ThemeBackground"));
-            Application.Current.Resources.Add("TitleForegroundBrush", LocalSetting.NavigationAccent == "Dark" ? Application.Current.FindResource("MahApps.Brushes.ThemeBackground") : Application.Current.FindResource("MahApps.Brushes.Text"));
-        }
-
         public static void InitTheme()
         {
             #region 加载主题
@@ -446,9 +436,6 @@ namespace AIStudio.Wpf.Home.ViewModels
                     ThemeManager.Current.ChangeThemeBaseColor(Application.Current, LocalSetting.Theme);
                     ThemeManager.Current.ChangeThemeColorScheme(Application.Current, LocalSetting.Accent);
                 }               
-
-                //添加额外的信息
-                InitThemeAddition();
             }
             catch (Exception ex)
             {

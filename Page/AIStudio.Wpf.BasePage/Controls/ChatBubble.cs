@@ -3,11 +3,11 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.BasePage.Controls
 {
-    public class ChatBubble : Util.Controls.ChatBubble
+    public class ChatBubble : AIStudio.Wpf.Controls.ChatBubble
     {
         public ChatBubble()
         {

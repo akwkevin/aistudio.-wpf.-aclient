@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
 
 namespace ServiceMonitor
 {
@@ -35,7 +35,7 @@ namespace ServiceMonitor
         {
             if (this.IsVisible == false) return;
 
-            MessageBoxResult result = MessageBoxHelper.ShowSure("确定要退出系统?", this);
+            MessageBoxResult result = AIStudio.Wpf.Controls.MessageBox.Show(this, "确定要退出系统?");
             if (result != MessageBoxResult.OK)
             {
                 e.Cancel = true;

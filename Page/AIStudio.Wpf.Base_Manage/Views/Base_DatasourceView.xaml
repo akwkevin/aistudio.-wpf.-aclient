@@ -10,7 +10,7 @@
     xmlns:local="clr-namespace:AIStudio.Wpf.Base_Manage.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:perm="clr-namespace:AIStudio.Wpf.BasePage.Permission;assembly=AIStudio.Wpf.BasePage"
-    xmlns:util="https://astudio.github.io/utilcontrol"
+    xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -21,40 +21,30 @@
                 perm:PermissionHelper.HasPerm="Base_Datasource.Add"
                 Command="{Binding AddCommand}"
                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                Header="新建"
-                Icon="&#xe62c;"
-                Style="{StaticResource TransparentHeaderMenuItem}" />
+                Header="新建"/>
             <MenuItem
                 perm:PermissionHelper.HasPerm="Base_Datasource.Edit"
                 Command="{Binding EditCommand}"
                 CommandParameter="{Binding SelectedItem}"
                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                Header="编辑"
-                Icon="&#xe63e;"
-                Style="{StaticResource TransparentHeaderMenuItem}" />
+                Header="编辑"/>
             <MenuItem
                 perm:PermissionHelper.HasPerm="Base_Datasource.View"
                 Command="{Binding ViewCommand}"
                 CommandParameter="{Binding SelectedItem}"
                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                Header="查看"
-                Icon="&#xe6a0;"
-                Style="{StaticResource TransparentHeaderMenuItem}" />
+                Header="查看"/>
             <MenuItem
                 perm:PermissionHelper.HasPerm="Base_Datasource.Delete"
                 Command="{Binding DeleteOneCommand}"
                 CommandParameter="{Binding SelectedItem.Id}"
                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                Header="删除"
-                Icon="&#xe62d;"
-                Style="{StaticResource TransparentHeaderMenuItem}" />
+                Header="删除"/>
             <Separator />
             <MenuItem
                 Command="{Binding RefreshCommand}"
                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                Header="刷新"
-                Icon="&#xe641;"
-                Style="{StaticResource TransparentHeaderMenuItem}" />
+                Header="刷新"/>
         </ContextMenu>
     </UserControl.Resources>
 
@@ -66,60 +56,53 @@
         </Grid.RowDefinitions>
         <DockPanel>
             <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
-                <util:FButton
+                <Button
                     Margin="3"
+                    ac:IconAttach.Geometry="{StaticResource AddGeometry}"
                     perm:PermissionHelper.HasPerm="Base_Datasource.Add"
                     Command="{Binding AddCommand}"
-                    Content="新建"
-                    CornerRadius="2"
-                    FIcon="&#xe62c;" />
-                <util:FButton
-                    Margin="3"
+                    Content="新建"/>
+                <Button
+                    Margin="3" 
+                    ac:IconAttach.Geometry="{StaticResource EditGeometry}"                    
                     perm:PermissionHelper.HasPerm="Base_Datasource.Edit"
                     Command="{Binding EditCommand}"
                     CommandParameter="{Binding SelectedItem}"
-                    Content="编辑"
-                    CornerRadius="2"
-                    FIcon="&#xe63e;" />
-                <util:FButton
+                    Content="编辑" />
+                <Button
                     Margin="3"
+                    ac:IconAttach.Geometry="{StaticResource BrowserGeometry}"
                     perm:PermissionHelper.HasPerm="Base_Datasource.View"
                     Command="{Binding ViewCommand}"
                     CommandParameter="{Binding SelectedItem}"
-                    Content="查看"
-                    CornerRadius="2"
-                    FIcon="&#xe6a0;" />
-                <util:FButton
+                    Content="查看"/>
+                <Button
                     Margin="3"
+                    ac:IconAttach.Geometry="{StaticResource RemoveGeometry}"
                     perm:PermissionHelper.HasPerm="Base_Datasource.Delete"
+                    ac:ControlAttach.Status="Danger"
                     Command="{Binding DeleteCommand}"
-                    Content="删除"
-                    CornerRadius="2"
-                    FIcon="&#xe62d;" />
-                <util:FButton
+                    Content="删除" />
+                <Button
                     Margin="3"
+                    ac:IconAttach.Geometry="{StaticResource PrintGeometry}" 
+                    ac:ControlAttach.Status="Info"
                     Command="{Binding PrintCommand}"
-                    Content="打印"
-                    CornerRadius="2"
-                    FIcon="&#xf02f;"
-                    FIconFamily="FAwesome" />
-                <util:FButton
+                    Content="打印"/>
+                <Button
                     Margin="3"
+                    ac:IconAttach.Geometry="{StaticResource RefreshGeometry}" 
+                    ac:ControlAttach.Status="Success"
                     Command="{Binding RefreshCommand}"
-                    Content="刷新"
-                    CornerRadius="2"
-                    FIcon="&#xe641;" />
+                    Content="刷新" />
             </StackPanel>
             <StackPanel
-                HorizontalAlignment="Right"
                 DockPanel.Dock="Right"
                 Orientation="Horizontal">
                 <ComboBox
                     x:Name="combox"
                     Width="120"
                     Margin="3"
-                    util:ControlAttachProperty.CornerRadius="3"
-                    Style="{StaticResource ClearButtonComboBox}"
                     Text="{Binding Condition}"
                     Visibility="{Binding ElementName=combox, Path=Items.Count, Converter={converter:IntVisibilityConverter}}">
                     <ComboBoxItem IsSelected="True" Tag="Code">编码</ComboBoxItem>
@@ -128,11 +111,10 @@
                     <ComboBoxItem Tag="Sql">sql语句</ComboBoxItem>
                     <ComboBoxItem Tag="Description">备注</ComboBoxItem>
                 </ComboBox>
-                <util:SearchBar
+                <ac:SearchBar
                     Width="220"
                     Margin="4,3"
                     Command="{Binding SearchCommand}"
-                    Style="{StaticResource DefalutSearchBar}"
                     Text="{Binding KeyWord}" />
             </StackPanel>
         </DockPanel>
@@ -206,26 +188,7 @@
                     Header="备注"
                     IsReadOnly="True" />
 
-            </DataGrid.Columns>
-
-            <DataGrid.ColumnHeaderStyle>
-                <Style BasedOn="{StaticResource MahApps.Styles.DataGridColumnHeader}" TargetType="{x:Type DataGridColumnHeader}">
-                    <!--<Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent3}"/>-->
-                    <Setter Property="BorderThickness" Value="0,1,0,1" />
-                </Style>
-            </DataGrid.ColumnHeaderStyle>
-            <DataGrid.CellStyle>
-                <Style BasedOn="{StaticResource MahApps.Styles.DataGridCell}" TargetType="{x:Type DataGridCell}">
-                    <Setter Property="Padding" Value="1,0,1,0" />
-                </Style>
-            </DataGrid.CellStyle>
-            <DataGrid.Style>
-                <Style BasedOn="{StaticResource MahApps.Styles.DataGrid}" TargetType="{x:Type DataGrid}">
-                    <Setter Property="AlternatingRowBackground" Value="{DynamicResource MahApps.Brushes.Gray10}" />
-                    <Setter Property="BorderBrush" Value="{DynamicResource MahApps.Brushes.Gray5}" />
-                    <Setter Property="ContextMenu" Value="{StaticResource ShortcutMenu}" />
-                </Style>
-            </DataGrid.Style>
+            </DataGrid.Columns>         
 
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
@@ -233,20 +196,19 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </DataGrid>
-        <util:Pagination
+        <ac:Pagination
             x:Name="pagination"
             Grid.Row="2"
-            Height="Auto"
             HorizontalAlignment="Right"
             CurrentIndex="{Binding Pagination.PageIndex, Mode=TwoWay}"
             PageSize="{Binding Pagination.PageRows, Mode=TwoWay}"
-            PaginationStyle="Simple"
+            ControlStyle="Plain" 
             Total="{Binding Pagination.Total}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="CurrentIndexChanged">
                     <command:ExInvokeCommandAction Command="{Binding CurrentIndexChangedComamnd}" CommandParameter="{Binding ElementName=pagination}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-        </util:Pagination>
+        </ac:Pagination>
     </Grid>
 </UserControl>

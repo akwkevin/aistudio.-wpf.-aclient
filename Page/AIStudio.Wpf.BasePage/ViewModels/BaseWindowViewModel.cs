@@ -1,9 +1,9 @@
 ﻿using AIStudio.Core;
 using AIStudio.Core.Helpers;
 using AIStudio.Wpf.BasePage.Views;
-using AIStudio.Wpf.Entity.DTOModels;
-using AIStudio.Wpf.Service.AppClient;
 using AIStudio.Wpf.Business;
+using AIStudio.Wpf.Controls;
+using AIStudio.Wpf.Entity.DTOModels;
 using Dataforge.PrismAvalonExtensions.ViewModels;
 using Newtonsoft.Json;
 using Prism.Ioc;
@@ -14,8 +14,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Util.Controls;
-using Util.Controls.DialogBox;
 
 namespace AIStudio.Wpf.BasePage.ViewModels
 {
@@ -180,13 +178,12 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 
         protected void ShowWait()
         {
-            var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
-            control.WaitInfo = "正在获取数据";
+            WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
         }
 
         protected void HideWait()
         {
-            Util.Controls.WindowBase.HideWaiting(Identifier);
+           WindowBase.HideWaiting(Identifier);
         }
 
         protected virtual async void GetData(bool iswaiting = false)
@@ -279,7 +276,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         {
             var viewmodel = Activator.CreateInstance(Type, new object[] { para, Area, Identifier, "查看表单" }) as BaseEditViewModel<T>;
             var dialog = Activator.CreateInstance(EditType, new object[] { viewmodel }) as BaseDialog;
-            var fButton = (FButton)dialog.FindName("PART_AffirmativeButton");
+            var fButton = dialog.FindName("PART_AffirmativeButton") as Button;
             fButton.Visibility = System.Windows.Visibility.Collapsed;
             var res = (BaseDialogResult)await WindowBase.ShowDialogAsync(dialog, Identifier);
 
@@ -297,7 +294,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 ids.Add(id);
             }
 
-            var sure = await Msg.Warning("确认删除吗?", BoxType.Metro, Identifier);
+            var sure = await MessageBoxDialog.Warning("确认删除吗?","提示", Identifier);
             if (sure == BaseDialogResult.OK)
             {
                 try

@@ -24,7 +24,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Home.ViewModels
 {
@@ -143,6 +143,10 @@ namespace AIStudio.Wpf.Home.ViewModels
             get { return _selectedMenuItem; }
             set
             {
+                if (value.Code == "Option")
+                {
+                    return;
+                }
                 SetProperty(ref _selectedMenuItem, value);
                 SelectedMenuItemChanged(value);
             }
@@ -418,8 +422,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 try
                 {
-                    var control = WindowBase.ShowWaiting(WaitingType.Progress, Identifier);
-                    control.WaitInfo = "正在获取用户信息";
+                    var control = WindowBase.ShowWaiting(WaitingStyle.Progress, Identifier, "正在获取用户信息");
                     var userinfo = await _dataProvider.GetData<UserInfoPermissions>("/Base_Manage/Home/GetOperatorInfo");
                     if (!userinfo.Success)
                     {
@@ -505,11 +508,11 @@ namespace AIStudio.Wpf.Home.ViewModels
             AMenuItem code = new AMenuItem() { Glyph = "menu", Label = "设置", Code = "Option", Type = 0 };
             OptionItems.Add(code);
 
-            code.AddChildren(new AMenuItem() { Glyph = "profile", Label = "本地日志", Code = "Logs", Command = MenuExcuteCommand });
-            code.AddChildren(new AMenuItem() { Glyph = "bug", Label = "问题反馈", Code = "", Command = MenuExcuteCommand });
-            code.AddChildren(new AMenuItem() { Glyph = "mail", Label = "技术支持", Code = "", Command = MenuExcuteCommand });
-            code.AddChildren(new AMenuItem() { Glyph = "coffee", Label = "帮助", Code = "Helper", Command = MenuExcuteCommand });
-            code.AddChildren(new AMenuItem() { Glyph = "star", Label = "关于", Code = "About", Command = MenuExcuteCommand });
+            code.AddChildren(new AMenuItem() { Glyph = "profile", Label = "本地日志", Code = "Logs" });
+            code.AddChildren(new AMenuItem() { Glyph = "bug", Label = "问题反馈", Code = "FeetBack" });
+            code.AddChildren(new AMenuItem() { Glyph = "mail", Label = "技术支持", Code = "Support"});
+            code.AddChildren(new AMenuItem() { Glyph = "coffee", Label = "帮助", Code = "Helper"});
+            code.AddChildren(new AMenuItem() { Glyph = "star", Label = "关于", Code = "About"});
         }
 
         private void _wSocketClient_MessageReceived(WSMessageType type, string message)
@@ -525,7 +528,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             var nodes = base_Actions.Where(p => string.IsNullOrEmpty(p.ParentId));
             foreach (var node in nodes)
             {
-                AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
+                AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id, NeedAction = node.NeedAction };
                 if (aMenuItem.Type == 1)
                 {
                     aMenuItem.Command = MenuExcuteCommand;
@@ -597,7 +600,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                         //window.Closed += (sender, args) =>
                         //{
                         //    var image = Clipboard.GetImage();
-                        //    Util.Controls.Windows.ImageBrowser imageBrowser = new Util.Controls.Windows.ImageBrowser(image);
+                        //    AIStudio.Wpf.Controls.Windows.ImageBrowser imageBrowser = new AIStudio.Wpf.Controls.Windows.ImageBrowser(image);
                         //    imageBrowser.Show();
                         //};
                         window.Show();
@@ -696,6 +699,9 @@ namespace AIStudio.Wpf.Home.ViewModels
                         }
                         break;
                     }
+                default:
+                    Controls.MessageBox.Warning($"暂未实现该功能{key}", windowIdentifier: Identifier);
+                    break;
                     #endregion
             }
         }
@@ -711,6 +717,10 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 return;
             }
+            if (item.Code == "Option")
+            {
+                return;
+            }
 
             string parentcode = string.Empty;
             if (item.Parent != null)
@@ -722,7 +732,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 parentcode = (item as AToolItem).ParentCode;
                 if (!SearchMenus.Any(p => p.Code == item.Code))
                 {
-                    MessageBoxHelper.ShowHit("您没有该菜单的权限", Identifier);
+                    Controls.MessageBox.Warning("您没有该菜单的权限", windowIdentifier: Identifier);
                     return;
                 }
             }
@@ -734,7 +744,14 @@ namespace AIStudio.Wpf.Home.ViewModels
 
             if (parentcode == "WinStatus")
             {
-                item.IsChecked = WindowBase.SetWindowStatus(item.Code, Identifier);
+                if (item.Code == "ShowNotifyIcon")
+                {
+                    WindowBase.SetWindowStatus(item.Code, Identifier);
+                }
+                else
+                {
+                    item.IsChecked = WindowBase.SetWindowStatus(item.Code, Identifier);
+                }
                 return;
             }
             else if (parentcode == "Tool" || parentcode == "Option")

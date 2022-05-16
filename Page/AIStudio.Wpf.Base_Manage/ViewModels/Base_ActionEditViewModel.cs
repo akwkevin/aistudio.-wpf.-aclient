@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
@@ -96,8 +96,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             try
             {
-                var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
-                control.WaitInfo = "正在获取数据";
+                WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
 
                 var result = await _dataProvider.GetData<Base_ActionDTO>($"/Base_Manage/Base_Action/GetTheData", JsonConvert.SerializeObject(new { id = dataTree.Id }));
                 if (!result.Success)
@@ -115,7 +114,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
             finally
             {
-                Util.Controls.WindowBase.HideWaiting(Identifier);
+                WindowBase.HideWaiting(Identifier);
             }
         }
 

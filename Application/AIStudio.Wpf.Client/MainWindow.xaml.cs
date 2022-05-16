@@ -2,6 +2,7 @@
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Client.ViewModels;
 using AIStudio.Wpf.Client.Views;
+using AIStudio.Wpf.Controls;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Ioc;
@@ -10,7 +11,6 @@ using Prism.Regions;
 using System;
 using System.Windows;
 using System.Windows.Input;
-using Util.Controls;
 
 namespace AIStudio.Wpf.Client
 {
@@ -35,8 +35,8 @@ namespace AIStudio.Wpf.Client
         {
             if (this.IsVisible == false) return;
 
-            MessageBoxResult result = MessageBoxHelper.ShowSure("确定要退出系统?", this);
-            if (result != MessageBoxResult.OK)
+            MessageBoxResult result = Controls.MessageBox.YesNo("确定要退出系统?", owner:this);
+            if (result != MessageBoxResult.Yes)
             {
                 e.Cancel = true;
             }

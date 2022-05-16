@@ -11,8 +11,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using Util.Controls;
-using Util.Controls.DialogBox;
+using AIStudio.Wpf.Controls;
+using AIStudio.Wpf.Controls.DialogBox;
 
 namespace AIStudio.Wpf.%areaName%.ViewModels
 {

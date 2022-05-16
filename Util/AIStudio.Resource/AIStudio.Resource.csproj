@@ -9,6 +9,7 @@
     <None Remove="Brushs\brush.json" />
     <None Remove="Images\background.jpg" />
     <None Remove="Images\loginBackGround.png" />
+    <None Remove="Images\pic1.jpg" />
   </ItemGroup>
   
 
@@ -24,6 +25,7 @@
     <Resource Include="Images\loginBackGround.png" />
     <Resource Include="Images\Luffy.jpg" />
     <Resource Include="Images\Nami.jpg" />
+    <Resource Include="Images\pic1.jpg" />
     <Resource Include="Images\Robin.jpg" />
     <Resource Include="Images\Sanji.jpg" />
     <Resource Include="Images\Usopp.jpg" />
@@ -2226,7 +2228,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MahApps.Metro" Version="2.0.0" />
-    <PackageReference Include="Util.Controls" Version="1.4.5" />
   </ItemGroup>
   <ItemGroup>
     <None Update="svg\outline\full-screen.svg">

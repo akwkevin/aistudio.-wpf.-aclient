@@ -1,14 +1,14 @@
-﻿<util:WindowBase x:Class="ServiceMonitor.MainWindow"
+﻿<ac:WindowBase x:Class="ServiceMonitor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:util="clr-namespace:Util.Controls;assembly=Util.Controls" 
-        Style="{StaticResource DefaultWindowStyle}"
+        xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
         Identifier="RootWindow"
         xmlns:chat="clr-namespace:AIStudio.Wpf.D_Manage.Views;assembly=AIStudio.Wpf.D_Manage"
         mc:Ignorable="d"
-        Title="服务监控" Height="450" Width="800">
+        Title="服务监控" Height="450" Width="800"
+        Style="{StaticResource AIStudio.Styles.WindowBase}">
     <Grid>
         <TabControl>
             <TabItem Header="启动服务">
@@ -32,17 +32,17 @@
                             </Ellipse.Style>
                         </Ellipse>
                         <TextBlock Text="数据库类型：" VerticalAlignment="Center" Margin="2"/>
-                        <ComboBox SelectedIndex="0" Width="100" Text="{Binding DatabaseType}" VerticalAlignment="Center" Margin="2">
+                        <ComboBox SelectedIndex="0" Width="100" Text="{Binding DatabaseType}" Margin="2">
                             <ComboBoxItem Content="Sqlite"/>
                             <ComboBoxItem Content="SqlServer"/>
                         </ComboBox>
                         <TextBlock Text="端口号：" VerticalAlignment="Center" Margin="2"/>
-                        <TextBox Text="{Binding Port}" Width="100"  Margin="2"/>
-                        <CheckBox IsChecked="{Binding CreateNoWindow}" Content="不在控制台显示" VerticalAlignment="Center" Margin="2"/>
-                        <Button Command="{Binding StartCommand}" Content="启动服务"  VerticalAlignment="Center" Margin="2"/>
-                        <Button Command="{Binding StopCommand}" Content="停止服务"  VerticalAlignment="Center" Margin="2"/>
-                        <Button Command="{Binding RefreshCommand}" Content="刷新" VerticalAlignment="Center" Margin="2"/>
-                        <Button Command="{Binding SwaggerCommand}" Content="查看接口" VerticalAlignment="Center" Margin="2"/>
+                        <TextBox Text="{Binding Port}" Width="60" Margin="2"/>
+                        <CheckBox IsChecked="{Binding CreateNoWindow}" Content="不在控制台显示" Margin="2"/>
+                        <Button Command="{Binding StartCommand}" Content="启动服务" Margin="2"/>
+                        <Button Command="{Binding StopCommand}" Content="停止服务" Margin="2"/>
+                        <Button Command="{Binding RefreshCommand}" Content="刷新" Margin="2"/>
+                        <Button Command="{Binding SwaggerCommand}" Content="查看接口" Margin="2"/>
                     </StackPanel>
                     <DataGrid Grid.Row="1" ItemsSource="{Binding UserDatas}"  
                         AutoGenerateColumns="False"
@@ -85,4 +85,4 @@
             </TabItem>
         </TabControl>
     </Grid>
-</util:WindowBase>
+</ac:WindowBase>

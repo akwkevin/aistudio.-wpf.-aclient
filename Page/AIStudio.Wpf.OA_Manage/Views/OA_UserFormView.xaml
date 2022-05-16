@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:util="https://astudio.github.io/utilcontrol" 
+             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:AIStudio.Wpf.OA_Manage.Views" 
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
@@ -19,19 +19,9 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <DockPanel>
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                <StackPanel Orientation="Horizontal" Margin="3" HorizontalAlignment="Left">
-                    <RadioButton IsChecked="{Binding DataContext.Status,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter='processing'},ConverterParameter='processing'}" Content="进行中" Style="{StaticResource DefaultRadioGroupItemStyleFirst}"/>
-                    <RadioButton IsChecked="{Binding DataContext.Status,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter='waiting'},ConverterParameter='waiting'}" Content="等待中" Style="{StaticResource DefaultRadioGroupItemStyle}"/>
-                    <RadioButton IsChecked="{Binding DataContext.Status,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter='finish'},ConverterParameter='finish'}" Content="审批过" Style="{StaticResource DefaultRadioGroupItemStyle}"/>
-                    <RadioButton IsChecked="{Binding DataContext.Status,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter='created'},ConverterParameter='created'}" Content="创建的" Style="{StaticResource DefaultRadioGroupItemStyle}"/>
-                    <RadioButton IsChecked="{Binding DataContext.Status,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter='all'},ConverterParameter='all'}" Content="全部" Style="{StaticResource DefaultRadioGroupItemStyleLast}"/>
-                </StackPanel>
-                <util:FButton CornerRadius="2" FIcon="&#xe62d;" Margin="3" Content="删除" perm:PermissionHelper.HasPerm="OA_UserForm.Delete" Command="{Binding DeleteCommand}"></util:FButton>
-                <util:FButton CornerRadius="2" FIcon="&#xe641;" Margin="3" Content="刷新" Command="{Binding RefreshCommand}"></util:FButton>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
-                <ComboBox x:Name="combox" Width="80" Margin="3" Text="{Binding Condition}" util:ControlAttachProperty.CornerRadius="3"  Style="{StaticResource ClearButtonComboBox}"
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                <ComboBox x:Name="combox" Width="80" Margin="3" Text="{Binding Condition}"
+                      ac:ControlAttach.ClearTextButton="True"
                       Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
                     <ComboBoxItem Tag="Type">分类</ComboBoxItem>
                     <ComboBoxItem Tag="DefFormName">标题</ComboBoxItem>
@@ -39,25 +29,28 @@
                     <ComboBoxItem Tag="ApplicantUser">申请人</ComboBoxItem>
                     <ComboBoxItem Tag="UserNames">审批人</ComboBoxItem>
                 </ComboBox>
-                <util:SearchBar Width="200" Margin="4,3" 
+                <ac:SearchBar Width="200" Margin="4,3" 
                      Text="{Binding KeyWord}"
-                     Command="{Binding SearchCommand}"
-                     Style="{StaticResource DefalutSearchBar}">
-                </util:SearchBar>
+                     Command="{Binding SearchCommand}">
+                </ac:SearchBar>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                <ac:ButtonGroup BorderThickness="1" Margin="3" HorizontalAlignment="Left">
+                    <RadioButton IsChecked="{Binding DataContext.Status,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter='processing'},ConverterParameter='processing'}" Content="进行中" Style="{DynamicResource AIStudio.Styles.RadioButton.Check}"/>
+                    <RadioButton IsChecked="{Binding DataContext.Status,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter='waiting'},ConverterParameter='waiting'}" Content="等待中" Style="{DynamicResource AIStudio.Styles.RadioButton.Check}"/>
+                    <RadioButton IsChecked="{Binding DataContext.Status,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter='finish'},ConverterParameter='finish'}" Content="审批过" Style="{DynamicResource AIStudio.Styles.RadioButton.Check}"/>
+                    <RadioButton IsChecked="{Binding DataContext.Status,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter='created'},ConverterParameter='created'}" Content="创建的" Style="{DynamicResource AIStudio.Styles.RadioButton.Check}"/>
+                    <RadioButton IsChecked="{Binding DataContext.Status,RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter='all'},ConverterParameter='all'}" Content="全部" Style="{DynamicResource AIStudio.Styles.RadioButton.Check}"/>
+                </ac:ButtonGroup>
+                <Button Margin="3" Content="删除" ac:IconAttach.Geometry="{StaticResource RemoveGeometry}" perm:PermissionHelper.HasPerm="OA_UserForm.Delete" ac:ControlAttach.Status="Danger" Command="{Binding DeleteCommand}"></Button>
+                <Button ac:IconAttach.Geometry="{StaticResource RefreshGeometry}" ac:ControlAttach.Status="Success" Margin="3" Content="刷新" Command="{Binding RefreshCommand}"></Button>
+            </StackPanel>            
         </DockPanel>
-        <DataGrid Grid.Row="1" x:Name="table" ItemsSource="{Binding Data}"
-                  Margin="3"
-                  IsReadOnly="False"
-                  BorderThickness="1"
-                  GridLinesVisibility="All"
-                  VirtualizingStackPanel.IsVirtualizing="True"
-                  VirtualizingStackPanel.VirtualizationMode="Recycling"
-                  VirtualizingStackPanel.IsVirtualizingWhenGrouping="True" 
-                  ScrollViewer.CanContentScroll="True"
-                  EnableRowVirtualization="True"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="False">
+        <DataGrid Grid.Row="1" 
+                  x:Name="table" 
+                  ItemsSource="{Binding Data}"
+                  Margin="3"                  
+                  AutoGenerateColumns="False">
             <i:Interaction.Behaviors>
                 <core:SelectAllBahavior InitialState="False"/>
             </i:Interaction.Behaviors>
@@ -140,60 +133,43 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" perm:PermissionHelper.HasPerm="OA_UserForm.Edit">
+                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
                                     <Hyperlink Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                        CommandParameter="{Binding .}" Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock Text="查看" /> </Hyperlink>
+                                               CommandParameter="{Binding .}"
+                                               perm:PermissionHelper.HasPerm="OA_UserForm.Edit">
+                                        <TextBlock Text="编辑" /> 
+                                    </Hyperlink>
                                 </TextBlock>
-                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" perm:PermissionHelper.HasPerm="OA_UserForm.Delete">
+                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
                                     <Hyperlink Command="{Binding DataContext.DeleteOneCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                        CommandParameter="{Binding Id}" Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock Text="删除" /> </Hyperlink>
+                                               CommandParameter="{Binding Id}" 
+                                               perm:PermissionHelper.HasPerm="OA_UserForm.Delete"> 
+                                        <TextBlock Text="删除" /> 
+                                    </Hyperlink>
                                 </TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-            </DataGrid.Columns>
-         
-            <DataGrid.ColumnHeaderStyle>
-                <Style BasedOn="{StaticResource MahApps.Styles.DataGridColumnHeader}" TargetType="DataGridColumnHeader" >
-                    <!--<Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent3}"/>-->
-                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                </Style>
-            </DataGrid.ColumnHeaderStyle>
-            <DataGrid.CellStyle>
-                <Style BasedOn="{StaticResource MahApps.Styles.DataGridCell}"
-                       TargetType="{x:Type DataGridCell}">
-                    <Setter Property="Padding" Value="1,0,1,0"/>
-                </Style>
-            </DataGrid.CellStyle>
-            <DataGrid.Style>
-                <Style BasedOn="{StaticResource MahApps.Styles.DataGrid}"
-                       TargetType="{x:Type DataGrid}">
-                    <Setter Property="AlternatingRowBackground"
-                            Value="{DynamicResource MahApps.Brushes.Gray10}" />
-                    <Setter Property="BorderBrush"
-                            Value="{DynamicResource MahApps.Brushes.Gray5}" />
-                </Style>
-            </DataGrid.Style>
-
+            </DataGrid.Columns>        
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction Command="{Binding EditCommand}" CommandParameter="{Binding SelectedItem, ElementName=table}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </DataGrid>
-        <util:Pagination Grid.Row="2" 
+        <ac:Pagination Grid.Row="2" 
                          x:Name="pagination"
-                         PaginationStyle="Simple" 
+                         ControlStyle="Plain" 
                          CurrentIndex="{Binding Pagination.PageIndex,Mode=TwoWay}"  
                          Total="{Binding Pagination.Total}"
                          PageSize="{Binding Pagination.PageRows,Mode=TwoWay}"
-                         Height="Auto" HorizontalAlignment="Right" >
+                         HorizontalAlignment="Right" >
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="CurrentIndexChanged">
                     <command:ExInvokeCommandAction Command="{Binding CurrentIndexChangedComamnd}" CommandParameter="{Binding ElementName=pagination}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-        </util:Pagination>
+        </ac:Pagination>
     </Grid>
 </UserControl>

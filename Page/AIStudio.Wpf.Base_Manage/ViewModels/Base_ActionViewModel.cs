@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
@@ -110,7 +110,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     return false;
                 else if (viewmodel.PermissionList.GroupBy(p => p.Value).Where(q => q.Count() > 1).Count() >= 1)
                 {
-                    MessageBox.Show("权限值不能有重复值");
+                    MessageBox.Warning("权限值不能有重复值", windowIdentifier: Identifier);
                     return false;
                 }
                 else

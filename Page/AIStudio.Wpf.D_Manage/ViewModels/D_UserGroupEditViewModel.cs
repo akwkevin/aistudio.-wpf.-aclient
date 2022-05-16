@@ -1,6 +1,7 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business;
+using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
 using Newtonsoft.Json;
 using Prism.Ioc;
@@ -59,8 +60,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
         {
             try
             {
-                var control = Util.Controls.WindowBase.ShowWaiting(Util.Controls.WaitingType.Busy, Identifier);
-                control.WaitInfo = "正在获取数据";
+                WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
 
                 var result = await _dataProvider.GetData<D_UserGroupDTO>($"/{Area}/D_UserMessage/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
                 if (!result.Success)
@@ -77,7 +77,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             }
             finally
             {
-                Util.Controls.WindowBase.HideWaiting(Identifier);
+                WindowBase.HideWaiting(Identifier);
             }
         }
 

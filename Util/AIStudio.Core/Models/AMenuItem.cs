@@ -22,6 +22,17 @@ namespace AIStudio.Core.Models
 
         public string Code { get; set; }
 
+        public string WpfName
+        {
+            get
+            {
+                if (WpfCode == null)
+                    return null;
+
+                return WpfCode.Substring(WpfCode.LastIndexOf(".") + 1).Replace("View","");
+            }
+        }
+
         public string WpfCode
         {
             get
@@ -66,6 +77,8 @@ namespace AIStudio.Core.Models
         public AMenuItem Parent { get; set; }
         public string Id { get; set; }
         public string ParentId { get; set; }
+
+        public bool NeedAction { get; set; }
 
         private bool isChecked;
         public bool IsChecked

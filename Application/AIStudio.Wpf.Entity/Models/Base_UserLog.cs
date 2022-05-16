@@ -11,5 +11,6 @@ namespace AIStudio.Wpf.Entity.Models
         public string CreatorName { get; set; }
         public string LogType { get; set; }
         public string LogContent { get; set; }
+        public string Level { get; set; }
     }
 }

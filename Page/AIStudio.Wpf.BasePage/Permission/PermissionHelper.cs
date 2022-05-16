@@ -1,7 +1,9 @@
 ﻿using AIStudio.Wpf.Business;
 using Prism.Ioc;
 using System.Windows;
-using Util.Controls;
+using AIStudio.Wpf.Controls;
+using AIStudio.Wpf.Controls.Helper;
+using System.Linq;
 
 namespace AIStudio.Wpf.BasePage.Permission
 {
@@ -29,7 +31,19 @@ namespace AIStudio.Wpf.BasePage.Permission
             if (element != null)
             {
                 var _operator = ContainerLocator.Current.Resolve<IOperator>(); 
-                if (_operator == null || _operator.Permissions == null || ! _operator.Permissions.Contains(str))
+                if (_operator != null)
+                {
+                    var menu = _operator.SearchMenus.FirstOrDefault(p => p.WpfName != null && str.StartsWith(p.WpfName));
+                    if (menu != null && menu.NeedAction == false)
+                    {
+                        element.Visibility = Visibility.Visible;
+                    }
+                    else if (_operator.Permissions == null || !_operator.Permissions.Contains(str))
+                    {
+                        element.Visibility = Visibility.Collapsed;
+                    }
+                }
+                else
                 {
                     element.Visibility = Visibility.Collapsed;
                 }
