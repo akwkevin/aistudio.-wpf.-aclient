@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AIStudio.Wpf.Entity.DTOModels
+namespace AIStudio.Core.Models
 {
     public interface IIsChecked
     {

@@ -22,7 +22,7 @@ namespace ServiceMonitor
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow 
+    public partial class MainWindow
     {
         public MainWindow()
         {
@@ -35,8 +35,8 @@ namespace ServiceMonitor
         {
             if (this.IsVisible == false) return;
 
-            MessageBoxResult result = AIStudio.Wpf.Controls.MessageBox.Show(this, "确定要退出系统?");
-            if (result != MessageBoxResult.OK)
+            MessageBoxResult result = AIStudio.Wpf.Controls.MessageBox.YesNo("确定要退出系统?", owner: this);
+            if (result != MessageBoxResult.Yes)
             {
                 e.Cancel = true;
             }

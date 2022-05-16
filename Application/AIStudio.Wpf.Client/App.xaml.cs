@@ -182,11 +182,20 @@ namespace AIStudio.Wpf.Client
                 ModuleType = oa_ManageModule.AssemblyQualifiedName,
                 InitializationMode = InitializationMode.WhenAvailable
             });
+
             var quartz_ManageModule = typeof(Quartz_ManageModule);
             moduleCatalog.AddModule(new ModuleInfo()
             {
                 ModuleName = quartz_ManageModule.Name,
                 ModuleType = quartz_ManageModule.AssemblyQualifiedName,
+                InitializationMode = InitializationMode.WhenAvailable
+            });
+
+            var debug_ToolModule = typeof(Debug_ToolModule);
+            moduleCatalog.AddModule(new ModuleInfo()
+            {
+                ModuleName = debug_ToolModule.Name,
+                ModuleType = debug_ToolModule.AssemblyQualifiedName,
                 InitializationMode = InitializationMode.WhenAvailable
             });
         }

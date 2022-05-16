@@ -73,6 +73,11 @@ namespace AIStudio.Core
             }
         }
 
+        public override string ToString()
+        {
+            return $"{Value}-{Text}";
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void RaisePropertyChanged(string propertyName)

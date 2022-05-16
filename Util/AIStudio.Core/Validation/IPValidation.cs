@@ -9,7 +9,7 @@ namespace AIStudio.Core.Validation
         public override bool IsValid(object value)
         {
             var ip = value as string;
-            if (ip == null || IsIP(ip))
+            if (IsIP(ip))
             {
                 return true;
             }
@@ -28,7 +28,7 @@ namespace AIStudio.Core.Validation
         /// <returns></returns>
         public static bool IsIP(string ip)
         {
-            return Regex.IsMatch(ip, @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$");
+            return ip != null && Regex.IsMatch(ip, @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$");
         }
 
         public static bool IsIPSect(string ip)

@@ -1,4 +1,5 @@
-﻿using AIStudio.Wpf.BasePage.DTOModels;
+﻿using AIStudio.Core.Models;
+using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Entity.DTOModels;
 using Newtonsoft.Json;

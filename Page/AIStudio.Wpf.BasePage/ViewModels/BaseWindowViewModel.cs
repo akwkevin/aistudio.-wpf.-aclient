@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using AIStudio.Core.Models;
 using AIStudio.Core.Helpers;
 using AIStudio.Wpf.BasePage.Views;
 using AIStudio.Wpf.Business;

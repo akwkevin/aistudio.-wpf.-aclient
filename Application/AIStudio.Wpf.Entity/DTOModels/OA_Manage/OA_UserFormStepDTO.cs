@@ -1,4 +1,5 @@
-﻿using AIStudio.Wpf.Entity.Models;
+﻿using AIStudio.Core.Models;
+using AIStudio.Wpf.Entity.Models;
 
 namespace AIStudio.Wpf.Entity.DTOModels
 {

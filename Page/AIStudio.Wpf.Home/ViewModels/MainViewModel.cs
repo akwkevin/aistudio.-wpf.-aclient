@@ -469,6 +469,8 @@ namespace AIStudio.Wpf.Home.ViewModels
                 code.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "敏捷-表单布局", Code = "/Debug_Tool/FormView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "敏捷-通用查询", Code = "/Debug_Tool/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
             }
 #endif
             var tool = new AMenuItem() { Glyph = "tool", Label = "工具", Code = "Tool", Type = 0, Command = MenuExcuteCommand };
@@ -699,9 +701,6 @@ namespace AIStudio.Wpf.Home.ViewModels
                         }
                         break;
                     }
-                default:
-                    Controls.MessageBox.Warning($"暂未实现该功能{key}", windowIdentifier: Identifier);
-                    break;
                     #endregion
             }
         }

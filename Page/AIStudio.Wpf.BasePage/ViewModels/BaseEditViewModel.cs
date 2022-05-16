@@ -1,15 +1,14 @@
 ﻿using AIStudio.Core;
+using AIStudio.Core.Models;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
-using AIStudio.Wpf.Entity.DTOModels;
 using Newtonsoft.Json;
 using Prism.Ioc;
-using Prism.Mvvm;
 using System;
 
 namespace AIStudio.Wpf.BasePage.ViewModels
 {
-    public class BaseEditViewModel<T> : BindableBase where T : class, IIsChecked
+    public class BaseEditViewModel<T> : Prism.Mvvm.BindableBase where T : class, IIsChecked
     {      
         private string _title;
         public string Title

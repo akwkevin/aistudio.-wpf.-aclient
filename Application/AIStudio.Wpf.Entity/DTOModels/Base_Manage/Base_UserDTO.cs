@@ -1,4 +1,5 @@
-﻿using AIStudio.Core;
+﻿using AIStudio.Core.Models;
+using AIStudio.Core;
 using AIStudio.Core.Validation;
 using AIStudio.Wpf.Entity.Models;
 using System.Collections.Generic;

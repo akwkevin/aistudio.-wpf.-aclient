@@ -13,5 +13,10 @@ namespace AIStudio.Core
     {
         public string value { get; set; }
         public string text { get; set; }
+
+        public override string ToString()
+        {
+            return $"{value}-{text}";
+        }
     }
 }
