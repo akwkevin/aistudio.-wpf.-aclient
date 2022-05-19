@@ -60,8 +60,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
             }
         }
 
-        private List<SelectOption> _roles = new List<SelectOption>();
-        public List<SelectOption> Roles
+        private List<ISelectOption> _roles = new List<ISelectOption>();
+        public List<ISelectOption> Roles
         {
             get { return _roles; }
             set

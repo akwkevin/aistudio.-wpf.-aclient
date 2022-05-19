@@ -7,16 +7,16 @@ namespace AIStudio.Core.Models
     [AutoMap(typeof(AToolItem))]
     public class AMenuItem : TreeMenuItem
     {
-        private string glyph;
+        private string icon;
         [Browsable(true)]
-        public new string Glyph
+        public string Icon
         {
-            get { return glyph; }
+            get { return icon; }
             set
             {
-                if (value == glyph) return;
-                glyph = value;
-                OnPropertyChanged("Glyph");
+                if (value == icon) return;
+                icon = value;
+                OnPropertyChanged("Icon");
             }
         }
 

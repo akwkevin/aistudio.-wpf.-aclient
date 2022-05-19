@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Core
 {
-    public class TreeModel: INotifyPropertyChanged
+    public class TreeModel: ISelectOption, INotifyPropertyChanged
     {
         /// <summary>
         /// 唯一标识Id
@@ -113,6 +113,24 @@ namespace AIStudio.Core
                 }
             }
             return treemodel;
+        }
+
+        public static List<TreeModel> GetTreeToList(IEnumerable<TreeModel> trees)
+        {
+            List<TreeModel> treemodels = new List<TreeModel>();
+            if (trees != null)
+            {
+                foreach (var tree in trees)
+                {
+                    treemodels.Add(tree);
+
+                    if (tree.Children != null)
+                    {
+                        treemodels.AddRange(GetTreeToList(tree.Children));
+                    }
+                }
+            }
+            return treemodels;
         }
 
         #region 外部接口

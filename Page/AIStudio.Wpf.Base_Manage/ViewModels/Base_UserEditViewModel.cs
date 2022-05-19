@@ -13,8 +13,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
     public class Base_UserEditViewModel : BaseEditViewModel<Base_UserDTO>
     {
-        private List<SelectOption> _roles;
-        public List<SelectOption> Roles
+        private ObservableCollection<ISelectOption> _roles;
+        public ObservableCollection<ISelectOption> Roles
         {
             get { return _roles; }
             set
@@ -23,8 +23,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        private ObservableCollection<SelectOption> _selectedRoles = new ObservableCollection<SelectOption>();
-        public ObservableCollection<SelectOption> SelectedRoles
+        private ObservableCollection<ISelectOption> _selectedRoles = new ObservableCollection<ISelectOption>();
+        public ObservableCollection<ISelectOption> SelectedRoles
         {
             get { return _selectedRoles; }
             set
@@ -33,8 +33,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        private List<TreeModel> _departments;
-        public List<TreeModel> Departments
+        private ObservableCollection<ISelectOption> _departments;
+        public ObservableCollection<ISelectOption> Departments
         {
             get { return _departments; }
             set
@@ -105,16 +105,16 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             Roles = await _userData.GetAllRole();
             if (Data != null && Data.RoleIdList != null)
             {
-                SelectedRoles = new ObservableCollection<SelectOption>(Roles.Where(p => Data.RoleIdList.Contains(p.value)));
+                SelectedRoles = new ObservableCollection<ISelectOption>(Roles.Where(p => Data.RoleIdList.Contains(p.Value)));
             }
         }
 
         private async Task GetDepartment()
         {
-            Departments = (await _userData.GetAllDepartment()).DeepClone<List<TreeModel>>();
+            Departments = await _userData.GetAllTreeDepartment();
             if (Data != null && !string.IsNullOrEmpty(Data.DepartmentId))
             {
-                SelectedDepartment = TreeHelper.GetTreeModel(Departments, Data.DepartmentId);
+                SelectedDepartment = TreeHelper.GetTreeModel(Departments.Select(p => p as TreeModel), Data.DepartmentId);
             }
         }
     }

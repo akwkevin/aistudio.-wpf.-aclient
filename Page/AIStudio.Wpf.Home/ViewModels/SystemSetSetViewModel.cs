@@ -45,13 +45,6 @@ namespace AIStudio.Wpf.Home.ViewModels
                                 .ToList();
             this.SelectedAppTheme = this.AppThemes.FirstOrDefault(p => p.Name == LocalSetting.Theme);
 
-            this.AppNavigations = new List<AppNavigationMenuData>()
-            {
-                new AppNavigationMenuData() { Name = "导航栏暗色", NavigationAccent = "Dark" },
-                new AppNavigationMenuData() { Name = "导航栏淡色", NavigationAccent = "Light" }
-            };
-            this.SelectedAppNavigation = this.AppNavigations.FirstOrDefault(p => p.NavigationAccent == LocalSetting.NavigationAccent);
-
             this.SelectedNavigationLocation = (int)(NavigationLocation)System.Enum.Parse(typeof(NavigationLocation), LocalSetting.NavigationLocation);
 
             this.SelectedToolBarLocation = (int)(ToolBarLocation)System.Enum.Parse(typeof(ToolBarLocation), LocalSetting.ToolBarLocation);
@@ -108,7 +101,6 @@ namespace AIStudio.Wpf.Home.ViewModels
                 SetProperty(ref _selectedAppTheme, value);
             }
         }
-        public List<AppNavigationMenuData> AppNavigations { get; set; }
 
         private AppThemeMenuData _selectedAppNavigation;
         public AppThemeMenuData SelectedAppNavigation
@@ -263,13 +255,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             get { return this._changeAccentCommand ?? (_changeAccentCommand = new DelegateCommand<object>(x => this.DoChangeAccent(x))); }
         }
 
-        private ICommand _changeNavigationAccentCommand;
-
-        public ICommand ChangeNavigationAccentCommand
-        {
-            get { return this._changeNavigationAccentCommand ?? (_changeNavigationAccentCommand = new DelegateCommand<object>(x => this.DoChangeNavigationAccent(x))); }
-        }
-
         private void DoChangeTheme(object para)
         {
             AppThemeMenuData data = para as AppThemeMenuData;
@@ -292,15 +277,6 @@ namespace AIStudio.Wpf.Home.ViewModels
 
                 if (ThemeChangedHelper.IsThemeChanged != null)
                     ThemeChangedHelper.IsThemeChanged();
-            }
-        }
-
-        private void DoChangeNavigationAccent(object sender)
-        {
-            AppNavigationMenuData navigationAccent = sender as AppNavigationMenuData;
-            if (navigationAccent != null)
-            {
-                LocalSetting.SetAppSetting("NavigationAccent", navigationAccent.NavigationAccent);
             }
         }
 

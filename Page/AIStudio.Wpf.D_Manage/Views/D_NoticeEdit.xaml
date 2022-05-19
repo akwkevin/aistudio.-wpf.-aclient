@@ -13,14 +13,17 @@
              Style="{StaticResource AIStudio.Styles.BaseDialog}">
     <Grid Width="800">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*" />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0"
-             Margin="10,0"
-             Text="{Binding Title}"
-             HorizontalAlignment="Left"/>
+        <Border Background="{DynamicResource MahApps.Brushes.Accent}" CornerRadius="3,3,0,0">
+            <TextBlock Margin="10,0"
+                   Text="{Binding Title}" 
+                   Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"/>
+        </Border>
         <Border Grid.Row="1">
             <ScrollViewer>
                 <ac:Form DataContext="{Binding Data}"
@@ -45,7 +48,7 @@
                         <ac:MultiComboBox 
                                 ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
                                 SelectedItems="{Binding DataContext.SelectedUsers, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                DisplayMemberPath="text" SelectedValuePath="value"></ac:MultiComboBox>
+                                DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
                     </ac:FormItem>
                     <ac:FormItem Visibility="{Binding Mode,Converter={converter:ConverterValueMapToVisibility},ConverterParameter=2}">
                         <ac:FormItem.Header>
@@ -57,7 +60,7 @@
                         <ac:MultiComboBox 
                                 ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
                                 SelectedItems="{Binding DataContext.SelectedRoles, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                DisplayMemberPath="text" SelectedValuePath="value"></ac:MultiComboBox>
+                                DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
                     </ac:FormItem>
                     <ac:FormItem>
                         <ac:FormItem.Header>

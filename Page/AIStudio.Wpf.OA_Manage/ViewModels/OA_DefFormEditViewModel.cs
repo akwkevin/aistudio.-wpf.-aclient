@@ -46,8 +46,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private List<SelectOption> _roles;
-        public List<SelectOption> Roles
+        private ObservableCollection<ISelectOption> _roles;
+        public ObservableCollection<ISelectOption> Roles
         {
             get { return _roles; }
             set
@@ -56,8 +56,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private ObservableCollection<SelectOption> _selectedRoles = new ObservableCollection<SelectOption>();
-        public ObservableCollection<SelectOption> SelectedRoles
+        private ObservableCollection<ISelectOption> _selectedRoles = new ObservableCollection<ISelectOption>();
+        public ObservableCollection<ISelectOption> SelectedRoles
         {
             get { return _selectedRoles; }
             set
@@ -66,8 +66,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private List<SelectOption> _users;
-        public List<SelectOption> Users
+        private ObservableCollection<ISelectOption> _users;
+        public ObservableCollection<ISelectOption> Users
         {
             get { return _users; }
             set
@@ -152,7 +152,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             Roles = await _userData.GetAllRole();
             if (Data != null && Data.ValueRoles != null)
             {
-                SelectedRoles = new ObservableCollection<SelectOption>(Roles.Where(p => Data.ValueRoles.Contains(p.value)));
+                SelectedRoles = new ObservableCollection<ISelectOption>(Roles.Where(p => Data.ValueRoles.Contains(p.Value)));
             }
         }
 

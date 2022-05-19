@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace AIStudio.Wpf.Entity.DTOModels
 {
-    public partial class Base_DatasourceDTO : Base_Datasource, INotifyPropertyChanged, IIsChecked
+    public partial class Base_DatasourceDTO : Base_Datasource, IIsChecked
     {
         private bool _isChecked;
         public bool IsChecked
@@ -23,18 +23,6 @@ namespace AIStudio.Wpf.Entity.DTOModels
                 }
             }
         }      
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged(string propertyName)
-        {
-            //this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
 
     public partial class Base_DatasourceDTO : IDataErrorInfo

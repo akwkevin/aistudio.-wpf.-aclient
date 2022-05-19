@@ -9,14 +9,14 @@ namespace AIStudio.Core
     /// <summary>
     /// 前端SelectOption
     /// </summary>
-    public class SelectOption
+    public class SelectOption : ISelectOption
     {
-        public string value { get; set; }
-        public string text { get; set; }
+        public string Value { get; set; }
+        public string Text { get; set; }
 
         public override string ToString()
         {
-            return $"{value}-{text}";
+            return $"{Value}-{Text}";
         }
     }
 }

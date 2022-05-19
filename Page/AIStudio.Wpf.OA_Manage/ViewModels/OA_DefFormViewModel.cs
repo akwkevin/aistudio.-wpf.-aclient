@@ -18,8 +18,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
     public class OA_DefFormViewModel : BaseWindowViewModel<OA_DefFormDTO>
     {
-        private List<SelectOption> _roles;
-        public List<SelectOption> Roles
+        private ObservableCollection<ISelectOption> _roles;
+        public ObservableCollection<ISelectOption> Roles
         {
             get { return _roles; }
             set
@@ -119,7 +119,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     foreach (var item in Data)
                     {
                         if (item.ValueRoles != null)
-                            item.Roles = Roles.Where(p => item.ValueRoles.Contains(p.value)).ToList();
+                            item.Roles = Roles.Where(p => item.ValueRoles.Contains(p.Value)).ToList();
                     }                    
                 }
             }
@@ -166,7 +166,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                         FlowChartHelper.FlowChartToG6(viewmodel.FlowchartModel, viewmodel.OAData);
                         viewmodel.Data.WorkflowJSON = JsonConvert.SerializeObject(viewmodel.OAData); 
                     }
-                    viewmodel.Data.Value = viewmodel.SelectedRoles.Count == 0 ? null: "^" + string.Join("^" , viewmodel.SelectedRoles.Select(p => p.value)) + "^";
+                    viewmodel.Data.Value = viewmodel.SelectedRoles.Count == 0 ? null: "^" + string.Join("^" , viewmodel.SelectedRoles.Select(p => p.Value)) + "^";
                     var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                     if (!result.Success)
                     {

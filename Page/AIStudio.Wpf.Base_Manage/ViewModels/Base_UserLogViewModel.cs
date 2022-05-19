@@ -153,7 +153,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             else
             {
                 LogTypeList = result.Data;
-                LogTypeList.Insert(0, new SelectOption() { value = "", text = "" });
+                LogTypeList.Insert(0, new SelectOption() { Value = "", Text = "" });
                 LogType = "";
             }
         }

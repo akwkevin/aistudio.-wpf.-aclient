@@ -13,14 +13,17 @@
     <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}"  CornerRadius="3">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="40" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" ac:BaseDialog.TitleTag="True"
-                   Margin="10,0"
+            <Border Background="{DynamicResource MahApps.Brushes.Accent}" CornerRadius="3,3,0,0">
+                <TextBlock Margin="10,0"
                    Text="{Binding Title}"
+                   Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
+                   VerticalAlignment="Center"
                    HorizontalAlignment="Left"/>
+            </Border>
             <Border Grid.Row="1">
                  <ScrollViewer>
                     <Grid DataContext="{Binding Data}" VerticalAlignment="Center" Margin="10,0">
@@ -60,7 +63,7 @@
                                                     <ac:MultiComboBox BorderThickness="0" 
                                                             ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type ac:BaseDialog}}}" 
                                                             core:CustomeSelectionValues.SelectedValues="{Binding UserIds}"
-                                                            DisplayMemberPath="text" SelectedValuePath="value"></ac:MultiComboBox>
+                                                            DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
                                                 </Grid>
                                             </DataTemplate>
                                         </Setter.Value>
@@ -75,7 +78,7 @@
                                                             BorderThickness="0" 
                                                             ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type ac:BaseDialog}}}" 
                                                             core:CustomeSelectionValues.SelectedValues="{Binding RoleIds}"
-                                                            DisplayMemberPath="text" SelectedValuePath="value"></ac:MultiComboBox>
+                                                            DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
                                                 </Grid>
                                             </DataTemplate>
                                         </Setter.Value>

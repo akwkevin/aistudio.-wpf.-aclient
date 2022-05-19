@@ -138,7 +138,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             var viewmodel = new Base_DepartmentEditViewModel(isSubAdd ? null : paraTree, Area, Identifier);
             if (isSubAdd)
             {
-                viewmodel.SelectedDepartment = TreeHelper.GetTreeModel(viewmodel.Departments, paraTree.Id);
+                viewmodel.SelectedDepartment = TreeHelper.GetTreeModel(viewmodel.Departments.Select(p => p as TreeModel), paraTree.Id);
             }
             var dialog = new Base_DepartmentEdit(viewmodel);
             dialog.ValidationAction = (() =>

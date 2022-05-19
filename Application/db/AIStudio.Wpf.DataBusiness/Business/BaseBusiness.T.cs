@@ -632,8 +632,8 @@ namespace AIStudio.Wpf.DataBusiness
 
             var resList = selectedList.Concat(newQList).Select(x => new SelectOption
             {
-                value = x.GetPropertyValue(valueField)?.ToString(),
-                text = x.GetPropertyValue(textFiled)?.ToString()
+                Value = x.GetPropertyValue(valueField)?.ToString(),
+                Text = x.GetPropertyValue(textFiled)?.ToString()
             }).ToList();
 
             return resList;

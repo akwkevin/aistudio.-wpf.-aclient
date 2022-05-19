@@ -25,7 +25,7 @@
                 </ItemsPanelTemplate>
             </ac:Form.ItemsPanel>
             <ac:FormItem Header="类别">
-                <ComboBox MinWidth="100" ItemsSource="{Binding LogTypeList}" DisplayMemberPath="text" SelectedValuePath="value" Text="{Binding LogType}" />
+                <ComboBox MinWidth="100" ItemsSource="{Binding LogTypeList}" DisplayMemberPath="Text" SelectedValuePath="Value" Text="{Binding LogType}" />
             </ac:FormItem>
             <ac:FormItem Header="操作人">
                 <TextBox MinWidth="100" Text="{Binding OpUserName}"/>

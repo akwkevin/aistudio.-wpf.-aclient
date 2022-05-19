@@ -15,6 +15,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.BasePage.ViewModels
 {
@@ -236,38 +237,53 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             }
         }
 
+        protected virtual BaseEditViewModel<T> GetEditViewModel(T para = null)
+        {
+            return Activator.CreateInstance(Type, new object[] { para, Area, Identifier, "编辑表单" }) as BaseEditViewModel<T>;
+        }
+
+        protected virtual bool ValidationEdit(BaseEditViewModel<T> viewmodel)
+        {
+            if (!string.IsNullOrEmpty(viewmodel.Data.Error))
+                throw new Exception(viewmodel.Data.Error);
+            else
+                return true;
+        }
+
         protected virtual async void Edit(T para = null)
         {
-            var viewmodel = Activator.CreateInstance(Type, new object[] { para, Area, Identifier, "编辑表单" }) as BaseEditViewModel<T>;
+            var viewmodel = GetEditViewModel(para);
             var dialog = Activator.CreateInstance(EditType, new object[] { viewmodel }) as BaseDialog;
             dialog.ValidationAction = (() =>
             {
-                if (!string.IsNullOrEmpty(viewmodel.Data.Error))
-                    return false;
-                else
-                    return true;
+                return ValidationEdit(viewmodel);
             });
             var res = (BaseDialogResult)await WindowBase.ShowDialogAsync(dialog, Identifier);
             if (res == BaseDialogResult.OK)
             {
-                try
+                await SaveData(viewmodel.Data);
+            }
+        }
+
+        protected virtual async Task SaveData(T para)
+        {
+            try
+            {
+                ShowWait();
+                var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/SaveData", JsonConvert.SerializeObject(para));
+                if (!result.Success)
                 {
-                    ShowWait();
-                    var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.Success)
-                    {
-                        throw new Exception(result.Msg);
-                    }
-                    GetData(true);
+                    throw new Exception(result.Msg);
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                finally
-                {
-                    HideWait();
-                }
+                GetData(true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                HideWait();
             }
         }
 

@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using AIStudio.Wpf.Controls;
+using System.Collections.ObjectModel;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
@@ -64,8 +65,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private List<SelectOption> _users;
-        public List<SelectOption> Users
+        private ObservableCollection<ISelectOption> _users;
+        public ObservableCollection<ISelectOption> Users
         {
             get { return _users; }
             set

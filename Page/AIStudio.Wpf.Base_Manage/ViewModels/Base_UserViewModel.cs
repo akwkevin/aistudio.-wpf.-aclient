@@ -21,11 +21,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             base.Initialize();
             GetData();
-        }
-
-        public List<SelectOption> Roles { get; set; }
-
-        public List<TreeModel> Departments { get; set; }     
+        }  
 
         protected override void GetData(bool iswaiting = false)
         {
@@ -49,7 +45,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 try
                 {
                     ShowWait();
-                    viewmodel.Data.RoleIdList = viewmodel.SelectedRoles.Select(p => p.value).ToList();
+                    viewmodel.Data.RoleIdList = viewmodel.SelectedRoles.Select(p => p.Value).ToList();
                     viewmodel.Data.DepartmentId = viewmodel.SelectedDepartment?.Id;
                     var result = await _dataProvider.GetData<AjaxResult>("/Base_Manage/Base_User/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                     if (!result.Success)

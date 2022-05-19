@@ -9,13 +9,14 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using AIStudio.Wpf.Controls;
+using System.Linq;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
     public class Base_DepartmentEditViewModel : BaseEditViewModel<Base_DepartmentDTO>
     {
-        private List<TreeModel> _departments;
-        public List<TreeModel> Departments
+        private ObservableCollection<ISelectOption> _departments;
+        public ObservableCollection<ISelectOption> Departments
         {
             get { return _departments; }
             set
@@ -78,10 +79,10 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetDepartment()
         {
-            Departments = await _userData.GetAllDepartment();
+            Departments = await _userData.GetAllTreeDepartment();
             if (Data != null && !string.IsNullOrEmpty(Data.ParentId))
             {
-                SelectedDepartment = TreeHelper.GetTreeModel(Departments, Data.ParentId);
+                SelectedDepartment = TreeHelper.GetTreeModel(Departments.Select(p => p as TreeModel), Data.ParentId);
             }
         }
     }

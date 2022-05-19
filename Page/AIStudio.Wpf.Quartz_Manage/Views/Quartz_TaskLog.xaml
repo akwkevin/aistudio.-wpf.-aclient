@@ -15,15 +15,17 @@
     <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}"  CornerRadius="3">
         <Grid Width="800">
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="40" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0"
-                   Margin="10,0"
-                   Text="{Binding Title}"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"/>
+            <Border Background="{DynamicResource MahApps.Brushes.Accent}" CornerRadius="3,3,0,0">
+                <TextBlock Margin="10,0"
+                   Text="{Binding Title}" 
+                   Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"/>
+            </Border>
             <Border Grid.Row="1" VerticalAlignment="Bottom" BorderBrush="{DynamicResource GrayBrush4}" SnapsToDevicePixels="True" BorderThickness="0,1,0,1" >
                 <ScrollViewer>
                     <ListView x:Name="gridList" ItemsSource="{Binding Data}" Style="{StaticResource DefaultListView}"

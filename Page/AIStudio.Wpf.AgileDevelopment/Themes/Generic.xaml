@@ -1,0 +1,152 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
+                    xmlns:converter="clr-namespace:AIStudio.Wpf.AgileDevelopment.Converter"
+                    xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core">
+    
+    <ControlTemplate x:Key="ComboBoxTemplate">
+        <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
+            <ComboBox SelectedValue="{Binding Value,Mode=TwoWay}" 
+                            ItemsSource="{Binding ItemSource}" 
+                            DisplayMemberPath="Text" 
+                            SelectedValuePath="Value" 
+                            IsReadOnly="{Binding IsReadOnly}" 
+                            Padding="5,1" 
+                            MinWidth="100" 
+                            VerticalAlignment="Center"
+                            ac:ControlAttach.ClearTextButton="True"
+                            Style="{StaticResource AIStudio.Styles.ComboBox}"/>
+        </ac:FormItem>
+    </ControlTemplate>
+    <ControlTemplate x:Key="MultiComboBoxTemplate">
+        <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
+            <ac:MultiComboBox core:CustomeSelectionValues.SelectedValues="{Binding Value,Mode=TwoWay}" 
+                            ItemsSource="{Binding ItemSource}" 
+                            DisplayMemberPath="Text" 
+                            SelectedValuePath="Value" 
+                            Padding="5,1" 
+                            MinWidth="100" 
+                            VerticalAlignment="Center" 
+                            ac:ControlAttach.ClearTextButton="True"/>
+        </ac:FormItem>
+    </ControlTemplate>
+    <ControlTemplate x:Key="TreeSelectTemplate">
+        <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
+            <ac:TreeSelect SelectedValue="{Binding Value,Mode=TwoWay}"
+                            ItemsSource="{Binding ItemSource}" 
+                            DisplayMemberPath="Text" 
+                            SelectedValuePath="Value" 
+                            Padding="5,1"
+                            MinWidth="100" 
+                            VerticalAlignment="Center" 
+                            ac:ControlAttach.ClearTextButton="True">
+                <ac:TreeSelect.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid Margin="2,0,2,0">
+                                <TextBlock x:Name="txtName" Text="{Binding Text, Mode=TwoWay}" Width="Auto"/>
+                            </Grid>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </ac:TreeSelect.ItemTemplate>
+            </ac:TreeSelect>
+        </ac:FormItem>
+    </ControlTemplate>
+    <ControlTemplate x:Key="TextBoxTemplate">
+        <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
+            <TextBox Text="{Binding Value,Mode=TwoWay}" 
+                            IsReadOnly="{Binding IsReadOnly}" 
+                            Padding="5,1" 
+                            MinWidth="100" 
+                            VerticalAlignment="Center" 
+                            Style="{StaticResource AIStudio.Styles.TextBox}"
+                            ac:ControlAttach.ClearTextButton="True"/>
+        </ac:FormItem>
+    </ControlTemplate>
+    <ControlTemplate x:Key="DoubleUpDownTemplate">
+        <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
+            <ac:DoubleUpDown Value="{Binding Value,Mode=TwoWay}" 
+                            FormatString="{Binding StringFormat}" 
+                            IsReadOnly="{Binding IsReadOnly}" 
+                            Padding="5,1" 
+                            MinWidth="100" 
+                            VerticalAlignment="Center"
+                            VerticalContentAlignment="Center" 
+                            ButtonSpinnerLocation="UpDown" 
+                            ac:ControlAttach.ClearTextButton="True"/>
+        </ac:FormItem>
+    </ControlTemplate>
+    <ControlTemplate x:Key="DecimalUpDownTemplate">
+        <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
+            <ac:DecimalUpDown Value="{Binding Value,Mode=TwoWay}"
+                            FormatString="{Binding StringFormat}"
+                            IsReadOnly="{Binding IsReadOnly}" 
+                            Padding="5,1"
+                            MinWidth="100" 
+                            VerticalAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            ButtonSpinnerLocation="UpDown" 
+                            ac:ControlAttach.ClearTextButton="True"/>
+        </ac:FormItem>
+    </ControlTemplate>
+    <ControlTemplate x:Key="IntegerUpDownTemplate">
+        <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
+            <ac:IntegerUpDown Value="{Binding Value,Mode=TwoWay}" 
+                            FormatString="{Binding StringFormat}" 
+                            IsReadOnly="{Binding IsReadOnly}" 
+                            Padding="5,1"
+                            MinWidth="100" 
+                            VerticalAlignment="Center" 
+                            VerticalContentAlignment="Center" 
+                            ButtonSpinnerLocation="UpDown" 
+                            ac:ControlAttach.ClearTextButton="True"/>
+        </ac:FormItem>
+    </ControlTemplate>
+    <ControlTemplate x:Key="LongUpDownTemplate">
+        <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
+            <ac:LongUpDown Value="{Binding Value,Mode=TwoWay}" 
+                            FormatString="{Binding StringFormat}" 
+                            IsReadOnly="{Binding IsReadOnly}" 
+                            Padding="5,1" 
+                            MinWidth="100" 
+                            VerticalAlignment="Center" 
+                            VerticalContentAlignment="Center" 
+                            ButtonSpinnerLocation="UpDown" 
+                            ac:ControlAttach.ClearTextButton="True"/>
+        </ac:FormItem>
+    </ControlTemplate>
+    <ControlTemplate x:Key="DateTimeUpDownTemplate">
+        <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
+            <ac:DateTimeUpDown Value="{Binding Value,Mode=TwoWay}" 
+                            Format="Custom" 
+                            FormatString="{Binding StringFormat}" 
+                            IsReadOnly="{Binding IsReadOnly}" 
+                            Padding="5,1"
+                            MinWidth="100"
+                            VerticalAlignment="Center" 
+                            VerticalContentAlignment="Center" 
+                            ButtonSpinnerLocation="UpDown" 
+                            ac:ControlAttach.ClearTextButton="True"/>
+        </ac:FormItem>
+    </ControlTemplate>
+    <ControlTemplate x:Key="QueryTemplate">
+        <StackPanel Orientation="Horizontal" Margin="2" Visibility="{Binding Visibility}">
+            <Button Content="{Binding Header}" Command="{Binding DataContext.SearchCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button}"/>
+        </StackPanel>
+    </ControlTemplate>
+    <ControlTemplate x:Key="AddTemplate">
+        <StackPanel Orientation="Horizontal" Margin="2" Visibility="{Binding Visibility}">
+            <Button Content="{Binding Header}" Command="{Binding DataContext.AddCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button}"/>
+        </StackPanel>
+    </ControlTemplate>
+    <ControlTemplate x:Key="DeleteTemplate">
+        <StackPanel Orientation="Horizontal" Margin="2" Visibility="{Binding Visibility}">
+            <Button Content="{Binding Header}" Command="{Binding DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button}"/>
+        </StackPanel>
+    </ControlTemplate>
+    <ControlTemplate x:Key="SubmitTemplate">
+        <StackPanel Orientation="Horizontal" Margin="2" Visibility="{Binding Visibility}">
+            <Button Content="{Binding Header}" Command="{Binding DataContext.SubmitCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button}"/>
+        </StackPanel>
+    </ControlTemplate>
+</ResourceDictionary>

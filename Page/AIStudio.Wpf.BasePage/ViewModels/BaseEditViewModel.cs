@@ -33,22 +33,11 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         private T _data;
         public T Data
         {
-            //get { return _data; }
-            //set
-            //{
-            //    SetProperty(ref _data, value);
-            //}
-
             get { return _data; }
             set
             {
-                if (value != _data)
-                {
-                    _data = value;
-                    RaisePropertyChanged("Data");
-                }
+                SetProperty(ref _data, value);
             }
-
         }
 
         protected string Identifier { get; set; } = LocalSetting.RootWindow;

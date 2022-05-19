@@ -16,8 +16,8 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
 {
     public class D_NoticeEditViewModel : BaseEditViewModel<D_NoticeDTO>
     {
-        private List<SelectOption> _users;
-        public List<SelectOption> Users
+        private ObservableCollection<ISelectOption> _users;
+        public ObservableCollection<ISelectOption> Users
         {
             get { return _users; }
             set
@@ -27,8 +27,8 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
         }
 
 
-        private ObservableCollection<SelectOption> _selectedUsers = new ObservableCollection<SelectOption>();
-        public ObservableCollection<SelectOption> SelectedUsers
+        private ObservableCollection<ISelectOption> _selectedUsers = new ObservableCollection<ISelectOption>();
+        public ObservableCollection<ISelectOption> SelectedUsers
         {
             get { return _selectedUsers; }
             set
@@ -37,8 +37,8 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             }
         }
 
-        private List<SelectOption> _roles;
-        public List<SelectOption> Roles
+        private ObservableCollection<ISelectOption> _roles;
+        public ObservableCollection<ISelectOption> Roles
         {
             get { return _roles; }
             set
@@ -48,8 +48,8 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
         }
 
 
-        private ObservableCollection<SelectOption> _selectedRoles = new ObservableCollection<SelectOption>();
-        public ObservableCollection<SelectOption> SelectedRoles
+        private ObservableCollection<ISelectOption> _selectedRoles = new ObservableCollection<ISelectOption>();
+        public ObservableCollection<ISelectOption> SelectedRoles
         {
             get { return _selectedRoles; }
             set
@@ -110,7 +110,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             Users = await _userData.GetAllUser();
             if (Data != null && Data.Mode == 1 && Data.AnyId != null)
             {
-                SelectedUsers = new ObservableCollection<SelectOption>(Users.Where(p => Data.AnyId.Contains($"^{p.value}^")));
+                SelectedUsers = new ObservableCollection<ISelectOption>(Users.Where(p => Data.AnyId.Contains($"^{p.Value}^")));
             }
         }
 
@@ -119,7 +119,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             Roles = await _userData.GetAllRole();
             if (Data != null && Data.Mode == 2 && Data.AnyId != null)
             {
-                SelectedRoles = new ObservableCollection<SelectOption>(Roles.Where(p => Data.AnyId.Contains($"^{p.value}^")));
+                SelectedRoles = new ObservableCollection<ISelectOption>(Roles.Where(p => Data.AnyId.Contains($"^{p.Value}^")));
             }
         }
        

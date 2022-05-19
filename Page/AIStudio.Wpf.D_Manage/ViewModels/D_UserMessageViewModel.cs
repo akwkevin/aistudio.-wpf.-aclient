@@ -259,8 +259,8 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
 
                     if (res == BaseDialogResult.OK)//修改
                     {
-                        viewmodel.Data.UserIds = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.value)) + "^";
-                        viewmodel.Data.UserNames = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.text)) + "^";
+                        viewmodel.Data.UserIds = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.Value)) + "^";
+                        viewmodel.Data.UserNames = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.Text)) + "^";
                         viewmodel.Data.Avatar = viewmodel.Data.Avatar ?? "/Images/group.jpg";
                         var result = await _dataProvider.GetData<AjaxResult>($"/D_Manage/D_UserMessage/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                         if (!result.Success)
@@ -280,9 +280,9 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
                         }
                         else//退出
                         {
-                            viewmodel.SelectedUsers.Remove(viewmodel.SelectedUsers.Where(p => p.value == _operator?.Property?.Id).FirstOrDefault());
-                            viewmodel.Data.UserIds = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.value)) + "^";
-                            viewmodel.Data.UserNames = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.text)) + "^";
+                            viewmodel.SelectedUsers.Remove(viewmodel.SelectedUsers.Where(p => p.Value == _operator?.Property?.Id).FirstOrDefault());
+                            viewmodel.Data.UserIds = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.Value)) + "^";
+                            viewmodel.Data.UserNames = "^" + string.Join("^", viewmodel.SelectedUsers.Select(p => p.Text)) + "^";
 
                             var result = await _dataProvider.GetData<AjaxResult>($"/D_Manage/D_UserMessage/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                             if (!result.Success)

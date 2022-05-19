@@ -20,8 +20,8 @@ namespace AIStudio.Core
             {
                 list.Add(new SelectOption
                 {
-                    value = ((int)aValue).ToString(),
-                    text = aValue.ToString()
+                    Value = ((int)aValue).ToString(),
+                    Text = aValue.ToString()
                 });
             }
 

@@ -36,17 +36,6 @@ namespace AIStudio.Wpf.Home.Models
                 SetProperty(ref _statusBarLocation, value);
             }
         }
-
-        private string _navigationAccent;
-        public string NavigationAccent
-        {
-            get { return _navigationAccent; }
-            set
-            {
-                SetProperty(ref _navigationAccent, value);
-            }
-        }
-
     }
 
 }

@@ -24,8 +24,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private List<SelectOption> _roles;
-        public List<SelectOption> Roles
+        private ObservableCollection<ISelectOption> _roles;
+        public ObservableCollection<ISelectOption> Roles
         {
             get { return _roles; }
             set
@@ -35,8 +35,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         }
 
 
-        private List<SelectOption> _users;
-        public List<SelectOption> Users
+        private ObservableCollection<ISelectOption> _users;
+        public ObservableCollection<ISelectOption> Users
         {
             get { return _users; }
             set

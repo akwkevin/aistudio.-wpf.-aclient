@@ -2,7 +2,5 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/AIStudio.Resource;component/Themes/Brushes.xaml" />       
-    </ResourceDictionary.MergedDictionaries>
+
 </ResourceDictionary>

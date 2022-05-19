@@ -14,15 +14,17 @@
              Style="{StaticResource AIStudio.Styles.BaseDialog}">
     <Grid Width="720">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*" />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0"
-                   Margin="10,0"
-                   Text="{Binding Title}"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"/>
+        <Border Background="{DynamicResource MahApps.Brushes.Accent}" CornerRadius="3,3,0,0">
+            <TextBlock Margin="10,0"
+                   Text="{Binding Title}" 
+                   Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"/>
+        </Border>
         <Border Grid.Row="1">
             <ScrollViewer>
                 <ac:Form DataContext="{Binding Data}"
@@ -71,7 +73,7 @@
                                 <Run>申请人</Run>
                             </TextBlock>
                         </ac:FormItem.Header>
-                        <ComboBox ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" DisplayMemberPath="text" SelectedValuePath="value" SelectedValue="{Binding ApplicantUserId}" />
+                        <ComboBox ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding ApplicantUserId}" />
                     </ac:FormItem>
                     <ac:FormItem Header="紧急程度">
                         <ComboBox SelectedIndex="{Binding Grade}" >

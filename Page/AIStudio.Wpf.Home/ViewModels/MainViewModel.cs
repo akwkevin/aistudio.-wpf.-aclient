@@ -352,7 +352,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 NavigationParameters paras = new NavigationParameters();
                 paras.Add("Title", item.Label);
-                paras.Add("Glyph", item.Glyph);
+                paras.Add("Glyph", item.Icon);
                 paras.Add("Identifier", Identifier);
 
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)delegate
@@ -460,7 +460,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
 
 #if DEBUG
-            AMenuItem code = new AMenuItem() { Glyph = "code", Label = "开发", Code = "Demo", Type = 0 };
+            AMenuItem code = new AMenuItem() { Icon = "code", Label = "开发", Code = "Demo", Type = 0 };
             MenuItems.Add(code);
 
             if (_operator.UserName != "LocalUser")
@@ -469,21 +469,21 @@ namespace AIStudio.Wpf.Home.ViewModels
                 code.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "敏捷-表单布局", Code = "/Debug_Tool/FormView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "敏捷-通用查询", Code = "/Debug_Tool/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "敏捷-表单布局", Code = "/AgileDevelopment/FormView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "敏捷-通用查询", Code = "/AgileDevelopment/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
             }
 #endif
-            var tool = new AMenuItem() { Glyph = "tool", Label = "工具", Code = "Tool", Type = 0, Command = MenuExcuteCommand };
-            var setting = new AMenuItem() { Glyph = "setting", Label = "系统设置", Code = "Setting", Type = 1, Command = MenuExcuteCommand };
-            var newWindow = new AMenuItem() { Glyph = "windows", Label = (string)Application.Current.Resources["新增窗口"], Code = "NewWindow", Type = 1, Command = MenuExcuteCommand };
-            var screenshot = new AMenuItem() { Glyph = "screenshot", Label = (string)Application.Current.Resources["截屏"], Code = "Screenshot", Type = 1, Command = MenuExcuteCommand };
+            var tool = new AMenuItem() { Icon = "tool", Label = "工具", Code = "Tool", Type = 0, Command = MenuExcuteCommand };
+            var setting = new AMenuItem() { Icon = "setting", Label = "系统设置", Code = "Setting", Type = 1, Command = MenuExcuteCommand };
+            var newWindow = new AMenuItem() { Icon = "windows", Label = (string)Application.Current.Resources["新增窗口"], Code = "NewWindow", Type = 1, Command = MenuExcuteCommand };
+            var screenshot = new AMenuItem() { Icon = "screenshot", Label = (string)Application.Current.Resources["截屏"], Code = "Screenshot", Type = 1, Command = MenuExcuteCommand };
 
             tool.AddChildren(setting);
             tool.AddChildren(newWindow);
             tool.AddChildren(screenshot);
             MenuItems.Add(tool);
 
-            var winStatus = new AMenuItem() { Glyph = "windows", Label = (string)Application.Current.Resources["窗口"], Code = "WinStatus", Type = 0, Command = MenuExcuteCommand };
+            var winStatus = new AMenuItem() { Icon = "windows", Label = (string)Application.Current.Resources["窗口"], Code = "WinStatus", Type = 0, Command = MenuExcuteCommand };
             var showTitleBar = new AMenuItem() { Label = (string)Application.Current.Resources["标题显示"], Code = "ShowTitleBar", Type = 1, IsChecked = WindowBase.GetWindowStatus("ShowTitleBar", Identifier), Command = MenuExcuteCommand };
             var showInTaskbar = new AMenuItem() { Label = (string)Application.Current.Resources["任务栏显示"], Code = "ShowInTaskbar", Type = 1, IsChecked = WindowBase.GetWindowStatus("ShowInTaskbar", Identifier), Command = MenuExcuteCommand };
             var topmost = new AMenuItem() { Label = (string)Application.Current.Resources["总在最前"], Code = "Topmost", Type = 1, IsChecked = WindowBase.GetWindowStatus("Topmost", Identifier), Command = MenuExcuteCommand };
@@ -507,14 +507,14 @@ namespace AIStudio.Wpf.Home.ViewModels
         public void InitOption()
         {
             OptionItems = new ObservableCollection<AMenuItem>();
-            AMenuItem code = new AMenuItem() { Glyph = "menu", Label = "设置", Code = "Option", Type = 0 };
+            AMenuItem code = new AMenuItem() { Icon = "menu", Label = "设置", Code = "Option", Type = 0 };
             OptionItems.Add(code);
 
-            code.AddChildren(new AMenuItem() { Glyph = "profile", Label = "本地日志", Code = "Logs" });
-            code.AddChildren(new AMenuItem() { Glyph = "bug", Label = "问题反馈", Code = "FeetBack" });
-            code.AddChildren(new AMenuItem() { Glyph = "mail", Label = "技术支持", Code = "Support"});
-            code.AddChildren(new AMenuItem() { Glyph = "coffee", Label = "帮助", Code = "Helper"});
-            code.AddChildren(new AMenuItem() { Glyph = "star", Label = "关于", Code = "About"});
+            code.AddChildren(new AMenuItem() { Icon = "profile", Label = "本地日志", Code = "Logs" });
+            code.AddChildren(new AMenuItem() { Icon = "bug", Label = "问题反馈", Code = "FeetBack" });
+            code.AddChildren(new AMenuItem() { Icon = "mail", Label = "技术支持", Code = "Support"});
+            code.AddChildren(new AMenuItem() { Icon = "coffee", Label = "帮助", Code = "Helper"});
+            code.AddChildren(new AMenuItem() { Icon = "star", Label = "关于", Code = "About"});
         }
 
         private void _wSocketClient_MessageReceived(WSMessageType type, string message)
@@ -530,7 +530,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             var nodes = base_Actions.Where(p => string.IsNullOrEmpty(p.ParentId));
             foreach (var node in nodes)
             {
-                AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id, NeedAction = node.NeedAction };
+                AMenuItem aMenuItem = new AMenuItem() { Icon = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id, NeedAction = node.NeedAction };
                 if (aMenuItem.Type == 1)
                 {
                     aMenuItem.Command = MenuExcuteCommand;
@@ -546,7 +546,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 foreach (var node in parent.Children)
                 {
-                    AMenuItem aMenuItem = new AMenuItem() { Glyph = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
+                    AMenuItem aMenuItem = new AMenuItem() { Icon = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
                     if (aMenuItem.Type == 1)
                     {
                         aMenuItem.Command = MenuExcuteCommand;
@@ -763,7 +763,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 NavigationParameters paras = new NavigationParameters();
                 paras.Add("Title", item.Label);
-                paras.Add("Glyph", item.Glyph);
+                paras.Add("Glyph", item.Icon);
                 paras.Add("Identifier", Identifier);
                 _regionManager.RequestNavigate(RegionName, item.WpfCode, NavigationComplete, paras);
             }

@@ -24,9 +24,4 @@ namespace AIStudio.Wpf.Home.Models
 
     }
 
-    public class AppNavigationMenuData : AppThemeMenuData
-    {
-        public string NavigationAccent { get; set; }
-
-    }
 }

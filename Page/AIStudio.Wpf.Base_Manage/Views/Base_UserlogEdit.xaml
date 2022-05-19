@@ -10,14 +10,17 @@
              Style="{StaticResource AIStudio.Styles.BaseDialog}">
     <Grid Width="450">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*" />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0"
-                   Margin="10,0"
-                   Text="{Binding Title}"
+        <Border Background="{DynamicResource MahApps.Brushes.Accent}" CornerRadius="3,3,0,0">
+            <TextBlock Margin="10,0"
+                   Text="{Binding Title}" 
+                   Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
+                   VerticalAlignment="Center"
                    HorizontalAlignment="Left"/>
+        </Border>
         <Border Grid.Row="1" >
             <ScrollViewer>
                 <ac:Form DataContext="{Binding Data}"
