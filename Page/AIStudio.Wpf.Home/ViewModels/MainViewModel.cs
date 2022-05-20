@@ -37,6 +37,7 @@ namespace AIStudio.Wpf.Home.ViewModels
         protected IDataProvider _dataProvider { get; }
         protected IWSocketClient _wSocketClient { get; }
         protected IMapper _mapper { get; }
+        protected IUserData _userData { get; }
 
         protected WindowBase _window { get; set; }
 
@@ -250,7 +251,7 @@ namespace AIStudio.Wpf.Home.ViewModels
         }
         #endregion
 
-        public MainViewModel(IContainerExtension container, IRegionManager regionManager, IEventAggregator aggregator, IOperator ioperator, IDataProvider dataProvider, IWSocketClient wSocketClient, IMapper mapper)
+        public MainViewModel(IContainerExtension container, IRegionManager regionManager, IEventAggregator aggregator, IOperator ioperator, IDataProvider dataProvider, IWSocketClient wSocketClient, IMapper mapper, IUserData userData)
         {
             _container = container;
             _regionManager = regionManager;
@@ -259,6 +260,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             _dataProvider = dataProvider;
             _wSocketClient = wSocketClient;
             _mapper = mapper;
+            _userData = userData;
 
             LocalSetting.SettingChanged += SettingChanged;
 
@@ -440,6 +442,8 @@ namespace AIStudio.Wpf.Home.ViewModels
                         throw new System.Exception(menuinfo.Msg);
                     }
                     BuildMenu(menuinfo.Data);
+
+                    await _userData.Init();
 
                     if (LocalSetting.ApiMode)
                     {

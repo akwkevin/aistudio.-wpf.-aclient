@@ -118,7 +118,7 @@
         <agc:FilterDataGrid x:Name="table" 
                             Grid.Row="1"
                             ItemsSource="{Binding Data}"
-                            SelectedItem="{Binding SelectedData}"
+                            SelectedItem="{Binding SelectedItem}"
                             attribute:DataGridColumnsAttach.BindableColumns="{Binding DataGridColumns}"                            
                             AutoGenerateColumns="False">
             <i:Interaction.Behaviors>

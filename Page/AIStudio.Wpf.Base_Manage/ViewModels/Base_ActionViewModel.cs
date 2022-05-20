@@ -142,9 +142,19 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        protected override void Delete(string id = null)
+        protected override async void Delete(string id = null)
         {
-            base.Delete(id);
+            List<string> ids = new List<string>();
+            if (string.IsNullOrEmpty(id))
+            {
+                ids.AddRange(Data.Select(p => p as Base_ActionTree).Where(p => p.IsChecked).Select(p => p.Id));
+            }
+            else
+            {
+                ids.Add(id);
+            }
+
+            await base.Delete(ids);
         }
 
         protected override void Print()

@@ -1,4 +1,4 @@
-﻿namespace AIStudio.Wpf.AgileDevelopment.Commons
+﻿namespace AIStudio.Core
 {
     public enum ControlType
     {

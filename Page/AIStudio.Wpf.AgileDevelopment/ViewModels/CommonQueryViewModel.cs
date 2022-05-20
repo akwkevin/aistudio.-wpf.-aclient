@@ -16,22 +16,6 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
 {
     class CommonQueryViewModel<T, Q> : BaseWindowViewModel<T> where T : class, IIsChecked, new()
     {
-        private T _selectedData;
-        public T SelectedData
-        {
-            get
-            {
-                return _selectedData;
-            }
-            set
-            {
-                if (SetProperty(ref _selectedData, value))
-                {
-                    SelectedDataChanged(value);
-                }
-            }
-        }
-
         private bool _queryConditionConfigIsOpen;
         public bool QueryConditionConfigIsOpen
         {
@@ -132,7 +116,11 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
             EditFormItems.Add(new EditFormItem() { Header = "提交", ControlType = ControlType.Submit, Visibility = System.Windows.Visibility.Visible });
 
             //Query();
+
+            this.PropertyChanged += CommonQueryViewModel_PropertyChanged;              
         }
+
+
 
         public override void Initialize()
         {
@@ -151,7 +139,7 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
 
         public async void Submit()
         {
-            var obj = SelectedData;
+            var obj = SelectedItem;
             if (obj == null)
             {
                 obj = new T();
@@ -171,11 +159,13 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
             QueryConditionConfigIsOpen = true;
         }
 
-        private void SelectedDataChanged(T value)
+        private void CommonQueryViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            BaseControlItem.ObjectToList(value, EditFormItems);
+            if (e.PropertyName == "SelectedItem")
+            {
+                BaseControlItem.ObjectToList(SelectedItem, EditFormItems);
+            }
         }
-
 
         protected override BaseEditViewModel<T> GetEditViewModel(T para = null)
         {

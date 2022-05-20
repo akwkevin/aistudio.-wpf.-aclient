@@ -2,18 +2,19 @@
 using AIStudio.Wpf.Base_Manage.Views;
 using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.ViewModels;
+using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
+using AIStudio.Wpf.Entity.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_DepartmentViewModel : BaseWindowViewModel<Base_DepartmentDTO>
+    public class Base_DictionaryViewModel : BaseWindowViewModel<Base_DictionaryDTO>
     {
         private ObservableCollection<IBaseTreeItemViewModel> _data;
         public new ObservableCollection<IBaseTreeItemViewModel> Data
@@ -29,21 +30,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        private ObservableCollection<Base_UserDTO> _data2;
-        public ObservableCollection<Base_UserDTO> Data2
-        {
-            get { return _data2; }
-            set
-            {
-                if (_data2 != value)
-                {
-                    _data2 = value;
-                    RaisePropertyChanged("Data2");
-                }
-            }
-        }
-
-
         private ICommand _addCommand;
         public new ICommand AddCommand
         {
@@ -58,7 +44,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             get
             {
-                return this._editCommand ?? (this._editCommand = new CanExecuteDelegateCommand<Base_DepartmentTree>(para => this.Edit(para)));
+                return this._editCommand ?? (this._editCommand = new CanExecuteDelegateCommand<Base_DictionaryTree>(para => this.Edit(para)));
             }
         }
 
@@ -71,25 +57,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        private ICommand _subAddCommand;
-        public ICommand SubAddCommand
-        {
-            get
-            {
-                return this._subAddCommand ?? (this._subAddCommand = new CanExecuteDelegateCommand<Base_DepartmentTree>(para => this.Edit(para, true)));
-            }
-        }
-
-        private ICommand _selectedCommand;
-        public ICommand SelectedCommand
-        {
-            get
-            {
-                return this._selectedCommand ?? (this._selectedCommand = new CanExecuteDelegateCommand<Base_DepartmentTree>(para => this.Selected(para)));
-            }
-        }
-
-        public Base_DepartmentViewModel() : base("Base_Manage", typeof(Base_DepartmentEditViewModel), typeof(Base_DepartmentEdit))
+        public Base_DictionaryViewModel():base("Base_Manage", typeof(Base_DictionaryEditViewModel), typeof(Base_DictionaryEdit), "GetMenuTreeList")
         {
             Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue };
         }
@@ -109,7 +77,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     ShowWait();
                 }
 
-                var result = await _dataProvider.GetData<List<Base_DepartmentTree>>($"/Base_Manage/Base_Department/GetTreeDataList");
+                var result = await _dataProvider.GetData<List<Base_DictionaryTree>>($"/Base_Manage/Base_Dictionary/GetMenuTreeList");
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);
@@ -117,7 +85,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 else
                 {
                     Data = new ObservableCollection<IBaseTreeItemViewModel>(result.Data);
-                    Data2 = null;
                 }
             }
             catch (Exception ex)
@@ -133,14 +100,11 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        protected async void Edit(Base_DepartmentTree paraTree = null, bool isSubAdd = false)
+        protected async void Edit(Base_DictionaryTree paraTree = null)
         {
-            var viewmodel = new Base_DepartmentEditViewModel(isSubAdd ? null : paraTree, Area, Identifier);
-            if (isSubAdd)
-            {
-                viewmodel.SelectedDepartment = TreeHelper.GetTreeModel(viewmodel.Departments.Select(p => p as TreeModel), paraTree.Id);
-            }
-            var dialog = new Base_DepartmentEdit(viewmodel);
+            var viewmodel = new Base_DictionaryEditViewModel(paraTree, Area, Identifier);
+
+            var dialog = new Base_DictionaryEdit(viewmodel);
             dialog.ValidationAction = (() =>
             {
                 if (!string.IsNullOrEmpty(viewmodel.Data.Error))
@@ -154,9 +118,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 try
                 {
                     ShowWait();
-
-                    viewmodel.Data.ParentId = viewmodel.SelectedDepartment?.Id;
-                    var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Department/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
+                    viewmodel.Data.ParentId = viewmodel.SelectedParent?.Id;
+                    var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Dictionary/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);
@@ -179,7 +142,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             List<string> ids = new List<string>();
             if (string.IsNullOrEmpty(id))
             {
-                ids.AddRange(Data.Select(p => p as Base_DepartmentTree).Where(p => p.IsChecked).Select(p => p.Id));
+                ids.AddRange(Data.Select(p => p as Base_DictionaryTree).Where(p => p.IsChecked).Select(p => p.Id));
             }
             else
             {
@@ -189,37 +152,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             await base.Delete(ids);
         }
 
-        protected override void Print()
-        {
-            base.Print(Data);
-        }
-
-        protected override void Search(object para = null)
+        protected override void Search(object para=null)
         {
             base.Search(para);
-        }
-
-        private async void Selected(Base_DepartmentTree para)
-        {
-            try
-            {
-                WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
-
-                var result = await _dataProvider.GetData<List<Base_UserDTO>>($"/Base_Manage/Base_User/GetDataListByDepartment", JsonConvert.SerializeObject(new { id = para.Id }));
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
-                }
-                Data2 = new ObservableCollection<Base_UserDTO>(result.Data);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                WindowBase.HideWaiting(Identifier);
-            }
         }
     }
 }

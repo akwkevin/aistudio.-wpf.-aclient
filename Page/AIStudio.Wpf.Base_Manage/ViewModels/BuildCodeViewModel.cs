@@ -435,15 +435,15 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     var fieldDesc = info.Description;
 
                     formColumnsList.Add(
-"                        <HeaderedContentControl Style=\"{StaticResource LeftFormItemStyle}\">" + "\r\n" +
-"                            <HeaderedContentControl.Header>" + "\r\n" +
-"                                <TextBlock VerticalAlignment=\"Center\">" + "\r\n" +
-"                                    <Run Foreground=\"Red\">*</Run>" + "\r\n" +
+"                        <ac:FormItem>" + "\r\n" +
+"                            <ac:FormItem.Header>" + "\r\n" +
+"                                <TextBlock>" + "\r\n" +
+"                                    <Run Foreground = \"Red\" > *</Run>" + "\r\n" +
 "                                    <Run>" + fieldDesc + "</Run>" + "\r\n" +
 "                                </TextBlock>" + "\r\n" +
-"                            </HeaderedContentControl.Header>" + "\r\n" +
-"                            <TextBox Text=\"{Binding " + info.Name + ",Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}\" Style=\"{StaticResource ToolTipErrorTextBox}\" IsReadOnly=\"{ Binding Disabled}\"></TextBox>" + "\r\n" +
-"                        </HeaderedContentControl>");
+"                            </ac:FormItem.Header>" + "\r\n" +
+"                            <TextBox Text=\"{Binding " + info.Name + ",Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}\" IsReadOnly=\"{ Binding Disabled}\"></TextBox>" + "\r\n" +
+"                        </ac:FormItem>");
 
 
                 }           

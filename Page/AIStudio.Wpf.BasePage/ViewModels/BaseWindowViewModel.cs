@@ -180,12 +180,12 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 
         protected void ShowWait()
         {
-            WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
+            WindowBase.ShowWaiting(WaitingStyle.Progress, Identifier, "正在获取数据");
         }
 
         protected void HideWait()
         {
-           WindowBase.HideWaiting(Identifier);
+            WindowBase.HideWaiting(Identifier);
         }
 
         protected virtual async void GetData(bool iswaiting = false)
@@ -219,7 +219,8 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 {
                     Pagination.Total = result.Total;
                     Data = new ObservableCollection<T>(result.Data);
-                    if (Data.Any()) {
+                    if (Data.Any())
+                    {
                         SelectedItem = Data.FirstOrDefault();
                     }
                 }
@@ -311,7 +312,12 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 ids.Add(id);
             }
 
-            var sure = await MessageBoxDialog.Warning("确认删除吗?","提示", Identifier);
+            await Delete(ids);
+        }
+
+        protected virtual async Task Delete(List<string> ids)
+        {
+            var sure = await MessageBoxDialog.Warning("确认删除吗?", "提示", Identifier);
             if (sure == BaseDialogResult.OK)
             {
                 try
@@ -335,6 +341,8 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 }
             }
         }
+
+
 
         protected virtual void Print()
         {

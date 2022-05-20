@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AIStudio.Core;
+using AIStudio.Wpf.AgileDevelopment.Commons;
+using AIStudio.Wpf.AgileDevelopment.Converter;
+using AIStudio.Wpf.AgileDevelopment.ItemSources;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
-using System.Text;
 using System.Windows;
-using System.Windows.Data;
-using AIStudio.Wpf.AgileDevelopment.Commons;
 
 namespace AIStudio.Wpf.AgileDevelopment.Attributes
 {
@@ -127,6 +127,14 @@ namespace AIStudio.Wpf.AgileDevelopment.Attributes
                 dataGridColumnCustom.DisplayIndex = attribute.DisplayIndex;
                 dataGridColumnCustom.SortMemberPath = attribute.SortMemberPath ?? property.Name;
                 dataGridColumnCustom.CanUserSort = attribute.CanUserSort;
+            }
+            else if (ItemSourceDictionary.Dictionarys.ContainsKey(property.Name))
+            {
+                var dic = ItemSourceDictionary.Dictionarys[property.Name];
+                dataGridColumnCustom.Header = dic.Text;
+                dataGridColumnCustom.DisplayIndex = int.MaxValue;
+                dataGridColumnCustom.Converter = typeof(ObjectToStringConverter).FullName;
+                dataGridColumnCustom.ConverterParameter = property.Name;
             }
             else
             {

@@ -12,7 +12,7 @@ using System.Windows.Data;
 namespace AIStudio.Wpf.AgileDevelopment.Converter
 {
     public class ObjectToStringConverter : IValueConverter
-    {
+    { 
         public object Convert(object value, Type typeTarget, object param, System.Globalization.CultureInfo culture)
         {
             ObservableCollection<ISelectOption> itemSource = null;

@@ -1,20 +1,19 @@
 ﻿using AIStudio.Core;
-using AIStudio.Wpf.Controls.Bindings;
 using AIStudio.Wpf.AgileDevelopment.Attributes;
 using AIStudio.Wpf.AgileDevelopment.ItemSources;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Dynamic;
 using System.Reflection;
 using System.Windows;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+
 
 namespace AIStudio.Wpf.AgileDevelopment.Commons
 {
     public abstract class BaseControlItem : BindableBase
     {
+
         public int DisplayIndex
         {
             get; set;
@@ -97,6 +96,13 @@ namespace AIStudio.Wpf.AgileDevelopment.Commons
                 baseControlItem.StringFormat = attribute.StringFormat;
                 baseControlItem.DisplayIndex = attribute.DisplayIndex;
             }
+            else if (ItemSourceDictionary.Dictionarys.ContainsKey(property.Name))
+            {
+                var dic = ItemSourceDictionary.Dictionarys[property.Name];
+                baseControlItem.Header = dic.Text;
+                baseControlItem.ControlType = dic.ControlType;
+                baseControlItem.DisplayIndex = int.MaxValue;          
+            }
             else
             {
                 baseControlItem.Header = property.Name;
@@ -117,7 +123,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Commons
                 }
                 if (baseControlItem.ControlType == ControlType.None)
                 {
-                    baseControlItem.ControlType = Commons.ControlType.IntegerUpDown;
+                    baseControlItem.ControlType = ControlType.IntegerUpDown;
                 }
             }
             else if (property.PropertyType == typeof(long) || property.PropertyType == typeof(long?))
@@ -128,7 +134,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Commons
                 }
                 if (baseControlItem.ControlType == ControlType.None)
                 {
-                    baseControlItem.ControlType = Commons.ControlType.LongUpDown;
+                    baseControlItem.ControlType = ControlType.LongUpDown;
                 }
             }
             else if (property.PropertyType == typeof(double) || property.PropertyType == typeof(double?))
@@ -139,7 +145,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Commons
                 }
                 if (baseControlItem.ControlType == ControlType.None)
                 {
-                    baseControlItem.ControlType = Commons.ControlType.DoubleUpDown;
+                    baseControlItem.ControlType = ControlType.DoubleUpDown;
                 }
             }
             else if (property.PropertyType == typeof(decimal) || property.PropertyType == typeof(decimal?))
@@ -150,7 +156,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Commons
                 }
                 if (baseControlItem.ControlType == ControlType.None)
                 {
-                    baseControlItem.ControlType = Commons.ControlType.DecimalUpDown;
+                    baseControlItem.ControlType = ControlType.DecimalUpDown;
                 }
             }
             else if (property.PropertyType == typeof(DateTime) || property.PropertyType == typeof(DateTime?))
@@ -161,14 +167,14 @@ namespace AIStudio.Wpf.AgileDevelopment.Commons
                 }
                 if (baseControlItem.ControlType == ControlType.None)
                 {
-                    baseControlItem.ControlType = Commons.ControlType.DateTimeUpDown;
+                    baseControlItem.ControlType = ControlType.DateTimeUpDown;
                 }
             }
             else
             {
                 if (baseControlItem.ControlType == ControlType.None)
                 {
-                    baseControlItem.ControlType = Commons.ControlType.TextBox;
+                    baseControlItem.ControlType = ControlType.TextBox;
                 }
             }
 

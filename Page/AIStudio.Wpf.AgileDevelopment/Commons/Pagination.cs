@@ -1,4 +1,4 @@
-﻿using AIStudio.Wpf.Controls.Bindings;
+﻿using Prism.Mvvm;
 using System.Collections.Generic;
 
 namespace AIStudio.Wpf.AgileDevelopment.Commons

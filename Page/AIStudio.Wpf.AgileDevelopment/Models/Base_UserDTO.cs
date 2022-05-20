@@ -82,7 +82,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Models
 
         private int _sex;
         [Required(ErrorMessage = "请选择性别")]
-        [ColumnHeader("性别", Converter = typeof(ObjectToStringConverter), ControlType = Commons.ControlType.ComboBox)]
+        //[ColumnHeader("性别", Converter = typeof(ObjectToStringConverter), ControlType = ControlType.ComboBox)]
         public int Sex
         {
             get
@@ -112,7 +112,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Models
 
         private ObservableCollection<string> _roleIdList = new ObservableCollection<string>();
         [NullOrEmptyValidation(ErrorMessage = "请选择角色")]
-        [ColumnHeader("角色", ItemSource = "Role", ControlType = Commons.ControlType.MultiComboBox, Converter = typeof(ObjectToStringConverter))]
+        [ColumnHeader("角色", ItemSource = "Role", ControlType = ControlType.MultiComboBox, Converter = typeof(ObjectToStringConverter))]
         public ObservableCollection<string> RoleIdList
         {
             get
@@ -127,7 +127,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Models
 
         private string _departmentId;
         [NullOrEmptyValidation(ErrorMessage = "请选择部门")]
-        [ColumnHeader("部门", ItemSource = "TreeDepartment", ControlType = Commons.ControlType.TreeSelect, Converter = typeof(ObjectToStringConverter), ConverterParameter = "Department")]
+        [ColumnHeader("部门", ItemSource = "TreeDepartment", ControlType = ControlType.TreeSelect, Converter = typeof(ObjectToStringConverter), ConverterParameter = "Department")]
         public string DepartmentId
         {
             get

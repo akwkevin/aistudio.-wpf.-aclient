@@ -11,7 +11,7 @@ namespace AIStudio.Wpf.AgileDevelopment
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            AgileDevelopment.ItemSources.ItemSourceDictionary.Init();
+         
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

@@ -130,7 +130,7 @@ namespace AIStudio.Wpf.AgileDevelopment
             {
                 bind.StringFormat = columnCustom.StringFormat;
             }
-            if (columnCustom.Converter != null)
+            if (!string.IsNullOrEmpty(columnCustom.Converter))
             {
                 bind.Converter = Activator.CreateInstance(columnCustom.Converter.GetAssemblyType()) as IValueConverter;
                 bind.ConverterParameter = columnCustom.ConverterParameter;

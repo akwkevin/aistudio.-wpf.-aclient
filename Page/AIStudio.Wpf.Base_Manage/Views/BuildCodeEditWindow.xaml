@@ -47,16 +47,16 @@
                 <TabControl ItemsSource="{Binding SelectedData.SubBuildCode}" SelectedIndex="0">
                     <TabControl.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}" />
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding IsChecked}"></CheckBox>
+                                <TextBlock Margin="2,0,0,0" Text="{Binding Name}" />
+                            </StackPanel>
                         </DataTemplate>
                     </TabControl.ItemTemplate>
                     <TabControl.ContentTemplate>
                         <DataTemplate>
                             <DockPanel>
-                                <DockPanel DockPanel.Dock="Bottom" LastChildFill="True">
-                                    <CheckBox IsChecked="{Binding IsChecked}"></CheckBox>
-                                    <TextBox Text="{Binding Path}" FontSize="12"/>
-                                </DockPanel>
+                                <TextBox DockPanel.Dock="Bottom" Text="{Binding Path}" FontSize="12"/>
                                 <avalonedit:TextEditor x:Name="editor" FontFamily="Consolas" SyntaxHighlighting="C#" Margin="4" helper:TextEditorHelper.Text="{Binding Code,Mode=TwoWay}"/>
                             </DockPanel>
                             <DataTemplate.Triggers>

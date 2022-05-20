@@ -6,44 +6,43 @@
              xmlns:local="AIStudio.Wpf.%areaName%.Views"
              xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
-             VerticalAlignment ="Center"
-             HorizontalAlignment="Center"
-             mc:Ignorable="d" >
-    <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}"  CornerRadius="3">
-        <Grid Width="450">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="40" />
-            </Grid.RowDefinitions>
-            <Border Background="{DynamicResource MahApps.Brushes.Accent}" CornerRadius="3,3,0,0">
-                <TextBlock Margin="10,0"
-                   Text="{Binding Title}" 
-                   Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Left"/>
-            </Border>
-            <Border Grid.Row="1" VerticalAlignment="Bottom" BorderBrush="{DynamicResource GrayBrush4}" SnapsToDevicePixels="True" BorderThickness="0,1,0,1" >
-                 <ScrollViewer>
-					<StackPanel DataContext="{Binding Data}" VerticalAlignment="Center" Margin="50,0">
+             mc:Ignorable="d" 
+             Style="{StaticResource AIStudio.Styles.BaseDialog}">
+    <Grid Width="450">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Border Background="{DynamicResource MahApps.Brushes.Accent}" CornerRadius="3,3,0,0">
+            <TextBlock Margin="10,0"
+                Text="{Binding Title}" 
+                Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"/>
+        </Border>
+        <Border Grid.Row="1">
+                <ScrollViewer>
+				<ac:Form DataContext="{Binding Data}"
+                                     ac:Form.ItemMargin="3"  
+                                     ac:Form.HeaderWidth="80"
+                                     ac:Form.HeaderMargin="0,0,3,0">
 %formColumns%
-					</StackPanel>
-				</ScrollViewer>
-            </Border>
-            <StackPanel Grid.Row="2"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right" Margin="10,0">
-                <util:FButton CornerRadius="2" x:Name="PART_AffirmativeButton"
-                    Height="25"
-                    MinWidth="60"
+				</ac:Form>
+			</ScrollViewer>
+        </Border>
+        <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right" 
+                        Margin="10,0">
+            <Button x:Name="PART_AffirmativeButton"
+                    VerticalAlignment="Center"
                     Content="确定"
                     Margin="0 0 5 0" />
-                <util:FButton CornerRadius="2" x:Name="PART_NegativeButton"
-                    Height="25"
-                    MinWidth="60"
+            <Button x:Name="PART_NegativeButton"
+                    VerticalAlignment="Center"
                     Content="取消"
                     Margin="5 0 5 0" />
-            </StackPanel>
-        </Grid>
-    </Border>
+        </StackPanel>
+    </Grid>
 </ac:BaseDialog>

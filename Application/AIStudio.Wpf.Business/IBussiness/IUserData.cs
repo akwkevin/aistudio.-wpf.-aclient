@@ -14,5 +14,10 @@ namespace AIStudio.Wpf.Business
         Task<ObservableCollection<ISelectOption>> GetAllTreeDepartment();
         Task<ObservableCollection<ISelectOption>> GetAllDepartment();
         void ClearAllDepartment();
+        Task<ObservableCollection<DictionaryTreeModel>> GetAllDictionary();
+        void ClearAllDictionary();
+        Dictionary<string, ObservableCollection<ISelectOption>> Items { get; }
+        Dictionary<string, DictionaryTreeModel> Dictionarys { get;  }
+        Task Init();
     }
 }

@@ -41,15 +41,17 @@ namespace AIStudio.Core
             //先去掉快捷键处理
             //cellBox.SetValue(FrameworkElement.ToolTipProperty, "F3全选、F4全清,Shift+F4反选");
             cellBox.SetBinding(ToggleButton.IsCheckedProperty, new Binding(ISCHECKED) { Mode = BindingMode.TwoWay });
-            cellBox.SetValue(ToggleButton.MarginProperty, new Thickness(16, 0, 2, 0));
-                //cellBox.SetValue(ToggleButton.MarginProperty, new )
+            cellBox.SetValue(ToggleButton.HorizontalAlignmentProperty, HorizontalAlignment.Center);
+            //cellBox.SetValue(ToggleButton.MarginProperty, new Thickness(16, 0, 2, 0));
+            //cellBox.SetValue(ToggleButton.MarginProperty, new )
             cellBox.AddHandler(ToggleButton.CheckedEvent, new RoutedEventHandler(ItemChecked));
-            cellBox.AddHandler(ToggleButton.UncheckedEvent, new RoutedEventHandler(ItemUnchecked));
+            cellBox.AddHandler(ToggleButton.UncheckedEvent, new RoutedEventHandler(ItemUnchecked));           
             cellTemplate.VisualTree = cellBox;
             column.CellTemplate = cellTemplate;
 
             //_allcheck.Style = AssociatedObject.FindResource(CHECKBOXSTYLE) as Style;
-            _allcheck.Margin = new Thickness(8, 0, 2, 0);
+            //_allcheck.Margin = new Thickness(8, 0, 2, 0);
+            _allcheck.HorizontalAlignment = HorizontalAlignment.Center;
             _allcheck.IsChecked = InitialState;
             _allcheck.Checked += HeaderChecked;
             _allcheck.Unchecked += HeaderUnchecked;

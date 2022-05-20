@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace AIStudio.Wpf.Entity.DTOModels
 {
-    public partial class %entityName%DTO : %entityName%, INotifyPropertyChanged, IIsChecked
+    public partial class Base_DictionaryDTO : Base_Dictionary, INotifyPropertyChanged, IIsChecked
     {
         private bool _isChecked;
         public bool IsChecked
@@ -22,7 +22,63 @@ namespace AIStudio.Wpf.Entity.DTOModels
                     RaisePropertyChanged("IsChecked");
                 }
             }
-        }      
+        }
+
+        private string _code;
+        public new string Code
+        {
+            get { return _code; }
+            set
+            {
+                if (value != _code)
+                {
+                    _code = value;
+                    RaisePropertyChanged("Code");
+                }
+            }
+        }
+
+        private string _text;
+        public new string Text
+        {
+            get { return _text; }
+            set
+            {
+                if (value != _text)
+                {
+                    _text = value;
+                    RaisePropertyChanged("Text");
+                }
+            }
+        }
+
+        private string _value;
+        public new string Value
+        {
+            get { return _value; }
+            set
+            {
+                if (value != _value)
+                {
+                    _value = value;
+                    RaisePropertyChanged("Value");
+                }
+            }
+        }
+
+        private int _type;
+        public new int Type
+        {
+            get { return _type; }
+            set
+            {
+                if (value != _type)
+                {
+                    _type = value;
+                    RaisePropertyChanged("Type");
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -37,7 +93,7 @@ namespace AIStudio.Wpf.Entity.DTOModels
         }
     }
 
-    public partial class %entityName%DTO : IDataErrorInfo
+    public partial class Base_DictionaryDTO : IDataErrorInfo
     {
         public string this[string columnName]
         {
