@@ -12,10 +12,12 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using AIStudio.Wpf.Controls;
+using Accelerider.Extensions.Mvvm;
+using AIStudio.Wpf.Client.Views;
 
 namespace AIStudio.Wpf.Client.ViewModels
 {
-    public partial class LoginWindowViewModel : DataErrorInfoBindableBase
+    public partial class LoginWindowViewModel : DataErrorInfoBindableBase, IViewLoadedAndUnloadedAware<LoginWindow>
     {
         private ObservableCollection<LoginInfo> _loginInfo;
         public ObservableCollection<LoginInfo> LoginInfo
@@ -133,7 +135,7 @@ namespace AIStudio.Wpf.Client.ViewModels
         {
             get
             {
-                return this._loginCommand ?? (this._loginCommand = new DelegateCommand<Window>(para => this.Login(para)));
+                return this._loginCommand ?? (this._loginCommand = new DelegateCommand(() => this.Login()));
             }
         }
 
@@ -195,13 +197,12 @@ namespace AIStudio.Wpf.Client.ViewModels
         private bool Loginning = false;
         private Window _window;
 
-        private async void Login(Window window)
+        private async void Login()
         {
             if (Loginning) return;
 
             try
             {
-                _window = window;
                 Loginning = true;
                 if (!string.IsNullOrEmpty(Error))
                 {
@@ -222,7 +223,7 @@ namespace AIStudio.Wpf.Client.ViewModels
                             p.StartInfo.UseShellExecute = false;
                             p.Start();
                             
-                            window.Close();
+                            _window.Close();
                         }
                         return;
                     }
@@ -291,13 +292,23 @@ namespace AIStudio.Wpf.Client.ViewModels
         {
             if ((bool)result == true)//验证成功
             {
-                Login(_window);
+                Login();
             }
         }
 
         private void Close(Window window)
         {
             window.Close();
+        }
+
+        public void OnLoaded(LoginWindow view)
+        {
+            _window = view;
+        }
+
+        public void OnUnloaded(LoginWindow view)
+        {
+            
         }
     }
 

@@ -13,7 +13,6 @@ namespace AIStudio.Wpf.AgileDevelopment.Commons
 {
     public abstract class BaseControlItem : BindableBase
     {
-
         public int DisplayIndex
         {
             get; set;
@@ -82,6 +81,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Commons
 
         public static bool GetControlItem(PropertyInfo property, BaseControlItem baseControlItem)
         {
+            string itemSource = property.Name;
             var attribute = ColumnHeaderAttribute.GetPropertyAttribute(property);
             if (attribute != null)
             {
@@ -95,13 +95,23 @@ namespace AIStudio.Wpf.AgileDevelopment.Commons
                 baseControlItem.IsRequired = attribute.IsRequired;
                 baseControlItem.StringFormat = attribute.StringFormat;
                 baseControlItem.DisplayIndex = attribute.DisplayIndex;
+
+                if (!string.IsNullOrEmpty(attribute.ItemSource))
+                {
+                    itemSource = attribute.ItemSource;
+                }
             }
             else if (ItemSourceDictionary.Dictionarys.ContainsKey(property.Name))
             {
                 var dic = ItemSourceDictionary.Dictionarys[property.Name];
                 baseControlItem.Header = dic.Text;
                 baseControlItem.ControlType = dic.ControlType;
-                baseControlItem.DisplayIndex = int.MaxValue;          
+                baseControlItem.DisplayIndex = int.MaxValue;
+
+                if (!string.IsNullOrEmpty(dic.Code))
+                {
+                    itemSource = dic.Code;
+                }
             }
             else
             {
@@ -109,10 +119,17 @@ namespace AIStudio.Wpf.AgileDevelopment.Commons
                 baseControlItem.DisplayIndex = int.MaxValue;
             }
 
-            var itemSource = attribute?.ItemSource ?? property.Name;
             if (ItemSourceDictionary.Items.ContainsKey(itemSource))
             {
-                baseControlItem.ItemSource = ItemSourceDictionary.Items[itemSource];
+                //树形控件使用树形数据集
+                if (baseControlItem.ControlType == ControlType.TreeSelect)
+                {
+                    baseControlItem.ItemSource = ItemSourceDictionary.Items[$"Tree{itemSource}"];
+                }
+                else
+                {
+                    baseControlItem.ItemSource = ItemSourceDictionary.Items[itemSource];
+                }
             }
 
             if (property.PropertyType == typeof(int) || property.PropertyType == typeof(int?))

@@ -17,19 +17,19 @@ namespace AIStudio.Wpf.Business
 
         }
 
-        private ObservableCollection<ISelectOption> alluser { get; set; }
+        private ObservableCollection<ISelectOption> alluser { get; set; } = new ObservableCollection<ISelectOption>();
 
-        private ObservableCollection<ISelectOption> allrole { get; set; }
+        private ObservableCollection<ISelectOption> allrole { get; set; } = new ObservableCollection<ISelectOption>();
 
-        private ObservableCollection<ISelectOption> alldepartment { get; set; }
+        private ObservableCollection<ISelectOption> alldepartment { get; set; } = new ObservableCollection<ISelectOption>();
 
-        private ObservableCollection<ISelectOption> alltreedepartment { get; set; }
+        private ObservableCollection<ISelectOption> alltreedepartment { get; set; } = new ObservableCollection<ISelectOption>();
 
-        private ObservableCollection<DictionaryTreeModel> alldictionary { get; set; }
+        private ObservableCollection<DictionaryTreeModel> alldictionary { get; set; } = new ObservableCollection<DictionaryTreeModel>();
 
         public async Task<ObservableCollection<ISelectOption>> GetAllUser()
         {
-            if (alluser == null)
+            if (alluser.Count == 0)
             {
                 var result = await _dataProvider.GetData<ObservableCollection<SelectOption>>("/Base_Manage/Base_User/GetOptionList");
                 if (!result.Success)
@@ -38,7 +38,7 @@ namespace AIStudio.Wpf.Business
                 }
                 else
                 {
-                    alluser = new ObservableCollection<ISelectOption>(result.Data);
+                    alluser.AddRange(result.Data);
                 }
             }
 
@@ -47,12 +47,12 @@ namespace AIStudio.Wpf.Business
 
         public void ClearAllUser()
         {
-            alluser = null;
+            alluser.Clear();
         }
 
         public async Task<ObservableCollection<ISelectOption>> GetAllRole()
         {
-            if (allrole == null)
+            if (allrole.Count == 0)
             {
                 var result = await _dataProvider.GetData<ObservableCollection<SelectOption>>("/Base_Manage/Base_Role/GetOptionList");
                 if (!result.Success)
@@ -61,7 +61,7 @@ namespace AIStudio.Wpf.Business
                 }
                 else
                 {
-                    allrole = new ObservableCollection<ISelectOption>(result.Data);
+                    allrole.AddRange(result.Data);
                 }
             }
 
@@ -70,12 +70,12 @@ namespace AIStudio.Wpf.Business
 
         public void ClearAllRole()
         {
-            allrole = null;
+            allrole.Clear();
         }
 
         public async Task<ObservableCollection<ISelectOption>> GetAllTreeDepartment()
         {
-            if (alltreedepartment == null)
+            if (alltreedepartment.Count == 0)
             {
                 var result = await _dataProvider.GetData<ObservableCollection<TreeModel>>("/Base_Manage/Base_Department/GetTreeDataList");
                 if (!result.Success)
@@ -84,7 +84,7 @@ namespace AIStudio.Wpf.Business
                 }
                 else
                 {
-                    alltreedepartment = new ObservableCollection<ISelectOption>(result.Data);
+                    alltreedepartment.AddRange(result.Data);
                 }
             }
 
@@ -93,10 +93,10 @@ namespace AIStudio.Wpf.Business
 
         public async Task<ObservableCollection<ISelectOption>> GetAllDepartment()
         {
-            if (alldepartment == null)
+            if (alldepartment.Count == 0)
             {
                 var tree = await GetAllTreeDepartment();
-                alldepartment = new ObservableCollection<ISelectOption>(TreeHelper.GetTreeToList(tree.Select(p => p as TreeModel)));
+                alldepartment.AddRange(TreeHelper.GetTreeToList(tree.Select(p => p as TreeModel)));
             }
 
             return alldepartment;
@@ -104,13 +104,13 @@ namespace AIStudio.Wpf.Business
 
         public void ClearAllDepartment()
         {
-            alltreedepartment = null;
-            alldepartment = null;
+            alltreedepartment.Clear();
+            alldepartment.Clear();
         }
 
         public async Task<ObservableCollection<DictionaryTreeModel>> GetAllDictionary()
         {
-            if (alldictionary == null)
+            if (alldictionary.Count == 0)
             {
                 var result = await _dataProvider.GetData<ObservableCollection<DictionaryTreeModel>>("/Base_Manage/Base_Dictionary/GetMenuTreeList");
                 if (!result.Success)
@@ -119,7 +119,7 @@ namespace AIStudio.Wpf.Business
                 }
                 else
                 {
-                    alldictionary = new ObservableCollection<DictionaryTreeModel>(result.Data);
+                    alldictionary.AddRange(result.Data);
                 }
             }
 
@@ -128,7 +128,7 @@ namespace AIStudio.Wpf.Business
 
         public void ClearAllDictionary()
         {
-            alldictionary = null;
+            alldictionary.Clear();
         }
 
         public Dictionary<string, ObservableCollection<ISelectOption>> Items { get; private set; } = new Dictionary<string, ObservableCollection<ISelectOption>>();
@@ -136,6 +136,13 @@ namespace AIStudio.Wpf.Business
 
         public async Task Init()
         {
+            ClearAllUser(); 
+            ClearAllRole();
+            ClearAllDepartment();
+            ClearAllDictionary();
+
+            Items.Clear();
+            Dictionarys.Clear();
             Items.Add("User", await GetAllUser());
             Items.Add("Role", await GetAllRole());
             Items.Add("Department", await GetAllDepartment());
@@ -152,16 +159,19 @@ namespace AIStudio.Wpf.Business
                 {
                     dics.Add(tree.Value, tree);
 
-                    var datas = tree.Children.Where(p => p.Type == 1);
-                    if (datas.Count() > 0)
+                    if (tree.Children != null)
                     {
-                        items.Add(tree.Value, new ObservableCollection<ISelectOption>(datas.Select(p => new SelectOption() { Value = p.Value, Text = p.Text })));
-                    }
+                        var datas = tree.Children.Where(p => p.Type == 1);
+                        if (datas.Count() > 0)
+                        {
+                            items.Add(tree.Value, new ObservableCollection<ISelectOption>(datas.Select(p => new SelectOption() { Value = p.Value, Text = p.Text })));
+                        }
 
-                    var subtrees = tree.Children.Where(p => p.Type == 0);
-                    if (subtrees.Count() > 0)
-                    {
-                        BuildDictionary(items, dics, subtrees);
+                        var subtrees = tree.Children.Where(p => p.Type == 0);
+                        if (subtrees.Count() > 0)
+                        {
+                            BuildDictionary(items, dics, subtrees);
+                        }
                     }
                 }
             }

@@ -21,7 +21,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Models
     public partial class Base_UserDTO : Prism.Mvvm.BindableBase, IIsChecked
     {
         private bool _isChecked;
-        [ColumnHeader(Ignore = true)]
+        //[ColumnHeader(Ignore = true)]
         public bool IsChecked
         {
             get { return _isChecked; }
@@ -31,15 +31,15 @@ namespace AIStudio.Wpf.AgileDevelopment.Models
             }
         }
 
-        [ColumnHeader("Id", IsReadOnly = true)]
+        //[ColumnHeader("Id", IsReadOnly = true)]
         public string Id { get; set; }
 
-        [ColumnHeader(Ignore = true)]
+        //[ColumnHeader(Ignore = true)]
         public bool Deleted { get; set; }
 
         private string _userName;
         [Required(ErrorMessage = "用户名不能为空")]
-        [ColumnHeader("姓名")]
+        //[ColumnHeader("姓名")]
         public string UserName
         {
             get
@@ -53,7 +53,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Models
         }
 
         private string _realName;
-        [ColumnHeader("真实姓名")]
+        //[ColumnHeader("真实姓名")]
         public string RealName
         {
             get
@@ -97,7 +97,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Models
 
         private DateTime? _birthday;
         [Required(ErrorMessage = "请选择出生日期")]
-        [ColumnHeader("生日")]
+        //[ColumnHeader("生日")]
         public DateTime? Birthday
         {
             get
@@ -112,7 +112,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Models
 
         private ObservableCollection<string> _roleIdList = new ObservableCollection<string>();
         [NullOrEmptyValidation(ErrorMessage = "请选择角色")]
-        [ColumnHeader("角色", ItemSource = "Role", ControlType = ControlType.MultiComboBox, Converter = typeof(ObjectToStringConverter))]
+        //[ColumnHeader("角色", ItemSource = "Role", ControlType = ControlType.MultiComboBox, Converter = typeof(ObjectToStringConverter))]
         public ObservableCollection<string> RoleIdList
         {
             get
@@ -127,7 +127,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Models
 
         private string _departmentId;
         [NullOrEmptyValidation(ErrorMessage = "请选择部门")]
-        [ColumnHeader("部门", ItemSource = "TreeDepartment", ControlType = ControlType.TreeSelect, Converter = typeof(ObjectToStringConverter), ConverterParameter = "Department")]
+        //[ColumnHeader("部门", ItemSource = "Department", ControlType = ControlType.TreeSelect, Converter = typeof(ObjectToStringConverter))]
         public string DepartmentId
         {
             get
@@ -142,7 +142,7 @@ namespace AIStudio.Wpf.AgileDevelopment.Models
 
         private string _phoneNumber;
         [PhoneValidation]
-        [ColumnHeader("手机号码")]
+        //[ColumnHeader("手机号码")]
         public string PhoneNumber
         {
             get
@@ -155,22 +155,22 @@ namespace AIStudio.Wpf.AgileDevelopment.Models
             }
         }
 
-        [ColumnHeader("创建时间", IsReadOnly = true)]
+        //[ColumnHeader("创建时间", IsReadOnly = true)]
         public DateTime CreateTime { get; set; }
 
-        [ColumnHeader("修改时间", IsReadOnly = true)]
+        //[ColumnHeader("修改时间", IsReadOnly = true)]
         public DateTime? ModifyTime { get; set; }
 
-        [ColumnHeader(Ignore = true)]
+        //[ColumnHeader(Ignore = true)]
         public string CreatorId { get; set; }
 
-        [ColumnHeader("创建者", IsReadOnly = true)]
+        //[ColumnHeader("创建者", IsReadOnly = true)]
         public string CreatorName { get; set; }
 
-        [ColumnHeader(Ignore = true)]
+        //[ColumnHeader(Ignore = true)]
         public string ModifyId { get; set; }
 
-        [ColumnHeader("修改者", IsReadOnly = true)]
+        //[ColumnHeader("修改者", IsReadOnly = true)]
         public string ModifyName { get; set; }
 
         public Base_UserDTO()

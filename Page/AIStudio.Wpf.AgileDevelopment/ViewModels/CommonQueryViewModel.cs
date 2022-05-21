@@ -143,14 +143,14 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
             if (obj == null)
             {
                 obj = new T();
-            }
+            }      
 
+            BaseControlItem.ListToObject(obj, EditFormItems);
             if (!string.IsNullOrEmpty(obj.Error))
             {
                 throw new Exception(obj.Error);
             }
 
-            BaseControlItem.ListToObject(obj, EditFormItems);
             await SaveData(obj);
         }
 

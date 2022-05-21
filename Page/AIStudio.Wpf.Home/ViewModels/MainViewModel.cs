@@ -443,7 +443,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                     }
                     BuildMenu(menuinfo.Data);
 
-                    await _userData.Init();
+                    RefreshUserData();
 
                     if (LocalSetting.ApiMode)
                     {
@@ -473,8 +473,8 @@ namespace AIStudio.Wpf.Home.ViewModels
                 code.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "敏捷-表单布局", Code = "/AgileDevelopment/FormView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "敏捷-通用查询", Code = "/AgileDevelopment/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "敏捷布局-表单", Code = "/AgileDevelopment/FormView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "敏捷crud-用户管理", Code = "/AgileDevelopment/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
             }
 #endif
             var tool = new AMenuItem() { Icon = "tool", Label = "工具", Code = "Tool", Type = 0, Command = MenuExcuteCommand };
@@ -506,6 +506,22 @@ namespace AIStudio.Wpf.Home.ViewModels
             _operator.MenuItems = MenuItems;
             _operator.SearchMenus = SearchMenus;
             #endregion
+        }
+
+        private async void RefreshUserData(bool showWait = false)
+        {
+            try
+            {
+                if (showWait)
+                {
+                    WindowBase.ShowWaiting(WaitingStyle.Progress, Identifier, "正在刷新内存");
+                }
+                await _userData.Init();
+            }
+            finally
+            {
+                WindowBase.HideWaiting(Identifier);
+            }
         }
 
         public void InitOption()
@@ -703,6 +719,11 @@ namespace AIStudio.Wpf.Home.ViewModels
                             WindowBase.SetWindowStatus("ShowTitleBar", Identifier, true);
                             WindowBase.SetWindowStatus("ToggleFullScreen", Identifier, false); 
                         }
+                        break;
+                    }
+                case "Refresh":
+                    {
+                        RefreshUserData(true);
                         break;
                     }
                     #endregion

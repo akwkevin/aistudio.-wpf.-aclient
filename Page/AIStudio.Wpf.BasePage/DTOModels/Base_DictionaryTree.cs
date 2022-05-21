@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using AIStudio.Core;
 using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.BasePage.DTOModels
@@ -15,17 +16,16 @@ namespace AIStudio.Wpf.BasePage.DTOModels
 
         public int Type { get; set; }
 
-        public bool NeedAction { get; set; }
-
-        public string Icon { get; set; }
-
         public int Sort { get; set; }
 
         public string TypeText { get; set; }
 
-        public string NeedActionText { get; set; }
-        public List<string> PermissionValues { get; set; }
         public string Text { get; set; }
+        public string Value { get; set; }
+        public string Code { get; set; }
+        public ControlType ControlType { get; set; }
+        public string Remark { get; set; }
+
         public object children { get; set; }
 
         private ObservableCollection<Base_DictionaryTree> _children;

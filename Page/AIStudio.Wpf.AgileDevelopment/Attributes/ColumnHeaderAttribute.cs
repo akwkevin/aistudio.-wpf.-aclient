@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Windows;
+using System.Linq;
 
 namespace AIStudio.Wpf.AgileDevelopment.Attributes
 {
@@ -133,8 +134,17 @@ namespace AIStudio.Wpf.AgileDevelopment.Attributes
                 var dic = ItemSourceDictionary.Dictionarys[property.Name];
                 dataGridColumnCustom.Header = dic.Text;
                 dataGridColumnCustom.DisplayIndex = int.MaxValue;
+                dataGridColumnCustom.SortMemberPath = property.Name;
+                dataGridColumnCustom.CanUserSort = true;
                 dataGridColumnCustom.Converter = typeof(ObjectToStringConverter).FullName;
-                dataGridColumnCustom.ConverterParameter = property.Name;
+                if (!string.IsNullOrEmpty(dic.Code))
+                {
+                    dataGridColumnCustom.ConverterParameter = dic.Code;
+                }
+                else
+                {
+                    dataGridColumnCustom.ConverterParameter = dic.Value;
+                }
             }
             else
             {
@@ -171,6 +181,11 @@ namespace AIStudio.Wpf.AgileDevelopment.Attributes
 
         public static ColumnHeaderAttribute GetPropertyAttribute(PropertyInfo pi)
         {
+            if (ItemSourceDictionary.IgnoreSource.Contains(pi.Name))
+            {
+                return new ColumnHeaderAttribute() { Ignore = true };
+            }
+
             if (pi != null)
             {
                 Object[] attrs = pi.GetCustomAttributes(typeof(ColumnHeaderAttribute), true);

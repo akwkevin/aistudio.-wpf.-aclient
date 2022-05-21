@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AIStudio.Core;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -30,7 +31,7 @@ namespace AIStudio.Wpf.Entity.Models
         /// <summary>
         /// 数据类型
         /// </summary>
-        public Int32 ControlType { get; set; }
+        public ControlType ControlType { get; set; }
 
         /// <summary>
         /// 显示值

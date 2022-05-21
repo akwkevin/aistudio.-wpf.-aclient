@@ -6,11 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AIStudio.Wpf.GridControls" Version="1.0.1" />
     <PackageReference Include="MathParser.org-mXparser" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\AIStudio.Wpf.Controls\Controls\AIStudio.Wpf.Controls\AIStudio.Wpf.GridControls\AIStudio.Wpf.GridControls.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
   </ItemGroup>
 

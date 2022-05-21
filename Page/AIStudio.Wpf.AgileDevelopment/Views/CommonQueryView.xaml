@@ -119,6 +119,7 @@
                             Grid.Row="1"
                             ItemsSource="{Binding Data}"
                             SelectedItem="{Binding SelectedItem}"
+                            LayoutName="{Binding Title}"
                             attribute:DataGridColumnsAttach.BindableColumns="{Binding DataGridColumns}"                            
                             AutoGenerateColumns="False">
             <i:Interaction.Behaviors>

@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\AIStudio.Wpf.Controls\Controls\AIStudio.Wpf.Controls\AIStudio.Wpf.Controls\AIStudio.Wpf.Controls.csproj" />
     <ProjectReference Include="..\..\Application\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
     <ProjectReference Include="..\..\Application\api\AIStudio.Wpf.Service\AIStudio.Wpf.Service.csproj" />
     <ProjectReference Include="..\..\Application\db\AIStudio.Wpf.DataBusiness\AIStudio.Wpf.DataBusiness.csproj" />
@@ -21,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.5" />
     <PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
     <PackageReference Include="MahApps.Metro" Version="2.0.0" />
     <PackageReference Include="Prism.DryIoc" Version="8.1.97" />

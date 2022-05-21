@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 
@@ -75,6 +76,12 @@ namespace AIStudio.Core
         public static DataTable ToDataTable<T>(this IEnumerable<T> iEnumberable)
         {
             return iEnumberable.ToJson().ToDataTable();
+        }
+
+        public static void AddRange<T>(this ObservableCollection<T> oc, IEnumerable<T> collection)
+        {
+            if (collection == null) { throw new ArgumentNullException("collection"); }
+            foreach (var i in collection) { oc.Add(i); }
         }
     }
 }

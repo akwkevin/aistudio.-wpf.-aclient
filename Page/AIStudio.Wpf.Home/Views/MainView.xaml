@@ -114,6 +114,7 @@
                                                     <RowDefinition Height="Auto"/>
                                                     <RowDefinition Height="Auto"/>
                                                     <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
                                                 </Grid.RowDefinitions>
                                                 <Grid Grid.Row="0">
                                                     <Button                
@@ -134,6 +135,15 @@
                                                     </Button>
                                                 </Grid>
                                                 <Grid Grid.Row="2">
+                                                    <Button                
+                                                        Content="内存刷新"
+                                                        ac:IconAttach.Icon="user-o"
+                                                        Command="{Binding KeyExcuteCommand}"
+                                                        CommandParameter="Refresh"
+                                                        Style="{StaticResource AIStudio.Styles.Button.Flat}">
+                                                    </Button>
+                                                </Grid>
+                                                <Grid Grid.Row="3">
                                                     <Button     
                                                         Content="修改密码"
                                                         ac:IconAttach.Icon="lock"                                                                                         
@@ -142,12 +152,12 @@
                                                         Style="{StaticResource AIStudio.Styles.Button.Flat}">                                                       
                                                     </Button>
                                                 </Grid>
-                                                <Border Grid.Row="2"
+                                                <Border Grid.Row="3"
                                                 VerticalAlignment="Bottom"
                                                 BorderBrush="{DynamicResource GrayBrush4}"
                                                 SnapsToDevicePixels="True"
                                                 BorderThickness="0,0,0,1" />
-                                                <Grid Grid.Row="3">
+                                                <Grid Grid.Row="4">
                                                     <Button         
                                                         Content="退出登录"
                                                         ac:IconAttach.Icon="sign-out"                                          

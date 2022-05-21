@@ -160,6 +160,51 @@
             上级部门Id
             </summary>
         </member>
+        <member name="T:Coldairarrow.Entity.Base_Manage.Base_Dictionary">
+            <summary>
+            系统字典表
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Dictionary.ParentId">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Dictionary.Type">
+            <summary>
+            类型,字典项=0,数据集=1
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Dictionary.ControlType">
+            <summary>
+            数据类型
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Dictionary.Value">
+            <summary>
+            数据值
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Dictionary.Code">
+            <summary>
+            Value相同，使用Code区分，暂时没启用
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Dictionary.Text">
+            <summary>
+            显示值
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Dictionary.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_Dictionary.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
         <member name="T:Coldairarrow.Entity.Base_Manage.Base_Role">
             <summary>
             系统角色表
@@ -453,6 +498,11 @@
         <member name="T:Coldairarrow.Entity.ActionType">
             <summary>
             类型,菜单=0,页面=1,权限=2
+            </summary>
+        </member>
+        <member name="T:Coldairarrow.Entity.DictionaryType">
+            <summary>
+            类型,字典项=0,数据集=1
             </summary>
         </member>
         <member name="F:Coldairarrow.Entity.EmailStatus.Draft">

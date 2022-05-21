@@ -12,6 +12,9 @@ namespace AIStudio.Wpf.AgileDevelopment.ItemSources
 {
     public static class ItemSourceDictionary
     {
+        public static readonly string[] ReadOnlySource = new string[] { "Id", "CreateTime", "ModifyTime", "CreatorName", "ModifyName" };
+        public static readonly string[] IgnoreSource = new string[] { "IsChecked", "Deleted", "CreatorId", "ModifyId", };
+
         public static Dictionary<string, ObservableCollection<ISelectOption>> Items = new Dictionary<string, ObservableCollection<ISelectOption>>();
         public static Dictionary<string, DictionaryTreeModel> Dictionarys = new Dictionary<string, DictionaryTreeModel>();
         public static IUserData _userData { get { return ContainerLocator.Current.Resolve<IUserData>(); } }

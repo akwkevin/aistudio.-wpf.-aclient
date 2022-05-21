@@ -68,7 +68,7 @@
                         </StackPanel>
                     </ac:FormItem>
                     <ac:FormItem Header="数据类型">
-                        <ComboBox ac:EnumHelper.Enum="{x:Type core:ControlType}" Text="{Binding ControlType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></ComboBox>
+                        <ComboBox ac:EnumHelper.Enum="{x:Type core:ControlType}" SelectedItem="{Binding ControlType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></ComboBox>
                     </ac:FormItem>
                     <ac:FormItem Header="描述">
                         <TextBox Text="{Binding Remark,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>

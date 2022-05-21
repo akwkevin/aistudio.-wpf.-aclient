@@ -125,7 +125,6 @@
                         Grid.Row="4"
                         Height="30"
                         Command="{Binding LoginCommand}"
-                        CommandParameter="{Binding ElementName=loginWin}"
                         Content="登录"
                         IsDefault="True"
                         TabIndex="4" Cursor="Hand" />

@@ -10,6 +10,7 @@ namespace AIStudio.Core
     {
         public int Type { get; set; }
         public ControlType ControlType { get; set; }
+        public string Code { get; set; }
 
         /// <summary>
         /// 孩子节点

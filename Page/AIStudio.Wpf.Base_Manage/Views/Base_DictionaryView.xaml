@@ -12,34 +12,6 @@
              xmlns:perm="clr-namespace:AIStudio.Wpf.BasePage.Permission;assembly=AIStudio.Wpf.BasePage"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-
-      <UserControl.Resources>
-        <ContextMenu x:Key="ShortcutMenu">
-            <MenuItem
-                perm:PermissionHelper.HasPerm="Base_Dictionary.Add"
-                Command="{Binding AddCommand}"
-                Header="新建" />
-            <MenuItem
-                perm:PermissionHelper.HasPerm="Base_Dictionary.Edit"
-                Command="{Binding EditCommand}"
-                CommandParameter="{Binding SelectedItem}"
-                Header="编辑" />
-            <MenuItem
-                perm:PermissionHelper.HasPerm="Base_Dictionary.View"
-                Command="{Binding ViewCommand}"
-                CommandParameter="{Binding SelectedItem}"
-                Header="查看" />
-            <MenuItem
-                perm:PermissionHelper.HasPerm="Base_Dictionary.Delete"
-                Command="{Binding DeleteCommand}"
-                Header="删除" />
-            <Separator />
-            <MenuItem 
-                Command="{Binding RefreshCommand}"
-                Header="刷新" />
-        </ContextMenu>
-    </UserControl.Resources>
-  
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -70,23 +42,11 @@
                   x:Name="table" 
                   ItemsSource="{Binding Data}" 
                   Margin="3"
-                  SelectedItem="{Binding SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False">
             <i:Interaction.Behaviors>
                 <core:SelectAllBahavior InitialState="False"/>
-            </i:Interaction.Behaviors>          
+            </i:Interaction.Behaviors>
             <DataGrid.Columns>
-                <DataGridTemplateColumn Width="55" Header="序号">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock
-                                Margin="10,0,0,0"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridRow}}, Path=Header}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -99,6 +59,7 @@
                 <DataGridTextColumn Header="值"  Binding="{Binding Value}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Code"  Binding="{Binding Code}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="控件类型"  Binding="{Binding ControlType}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="备注"  Binding="{Binding Remark}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="排序"  Binding="{Binding Sort}" IsReadOnly="True"/>  
                 <DataGridTemplateColumn Header="操作">
                     <DataGridTemplateColumn.CellTemplate>
@@ -121,8 +82,7 @@
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>               
-
+                </DataGridTemplateColumn>    
             </DataGrid.Columns>    
 
             <i:Interaction.Triggers>
