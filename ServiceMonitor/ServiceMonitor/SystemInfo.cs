@@ -23,6 +23,7 @@ namespace ServiceMonitor
 
         static SystemInfo()
         {
+
             var extractionRegex = new Regex("(\\w+?) ?= ?\"(.+?)\";", RegexOptions.Compiled | RegexOptions.Multiline);
 
             var systemInfo = GetManagementInfo("SELECT * FROM Win32_OperatingSystem", extractionRegex);
