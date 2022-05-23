@@ -1,6 +1,8 @@
 # AClient
 
-写在前面，下载请选择net5的分支
+写在前面，下载请选择net5-new的分支
+
+使用的控件库地址https://gitee.com/akwkevin/AI-wpf-controls（麻烦大家点个星，谢谢大家）
 
 #### 介绍
 Wpf客户端，AIStudio.Wpf.AClient
