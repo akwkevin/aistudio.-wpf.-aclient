@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\AIStudio.Wpf.Controls\Controls\AIStudio.Wpf.Controls\AIStudio.Wpf.GridControls\AIStudio.Wpf.GridControls.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
   </ItemGroup>
 

@@ -474,6 +474,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "敏捷布局-表单", Code = "/AgileDevelopment/FormView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "敏捷布局-表单生成", Code = "/AgileDevelopment/FormCodeView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "敏捷crud-用户管理", Code = "/AgileDevelopment/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
             }
 #endif

@@ -29,7 +29,7 @@
                    HorizontalAlignment="Left"/>
         </Border>
         <ScrollViewer Grid.Row="1" Margin="10">
-            <ac:Form ac:Form.HeaderWidth="80" ac:Form.ItemMargin="3" ac:Form.HeaderMargin="0,0,3,0" ItemsSource="{Binding EditFormItems}">
+            <ac:Form HeaderWidth="80" ItemMargin="3" HeaderMargin="0,0,3,0" ItemsSource="{Binding EditFormItems}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Control x:Name="control">

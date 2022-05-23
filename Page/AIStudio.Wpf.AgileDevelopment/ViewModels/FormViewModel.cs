@@ -312,119 +312,22 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
             }
         }
 
+        private bool _allowDrop;
+        public bool AllowDrop
+        {
+            get
+            {
+                return _allowDrop;
+            }
+            set
+            {
+                SetProperty(ref _allowDrop, value);
+            }
+        }
+
         public FormSetting()
         {
             ItemMargin = new System.Windows.Thickness(HorizontalMargin, VerticalMargin, HorizontalMargin, VerticalMargin);
         }
     }
-
-    //public class SelectOption
-    //{
-    //    public SelectOption(string value, string text)
-    //    {
-    //        Value = value;
-    //        Text = text;
-    //    }
-    //    public string Value
-    //    {
-    //        get; set;
-    //    }
-    //    public string Text
-    //    {
-    //        get; set;
-    //    }
-
-    //    public override string ToString()
-    //    {
-    //        return $"{Value}-{Text}";
-    //    }
-    //}
-
-    //public class TreeModel : BindableBase
-    //{
-    //    /// <summary>
-    //    /// 唯一标识Id
-    //    /// </summary>
-    //    public string Id
-    //    {
-    //        get; set;
-    //    }
-
-    //    /// <summary>
-    //    /// 数据值
-    //    /// </summary>
-    //    public string Value
-    //    {
-    //        get; set;
-    //    }
-
-    //    /// <summary>
-    //    /// 父Id
-    //    /// </summary>
-    //    public string ParentId
-    //    {
-    //        get; set;
-    //    }
-
-    //    /// <summary>
-    //    /// 节点深度
-    //    /// </summary>
-    //    public int? Level { get; set; } = 1;
-
-    //    /// <summary>
-    //    /// 显示的内容
-    //    /// </summary>
-    //    public string Text
-    //    {
-    //        get; set;
-    //    }
-
-    //    /// <summary>
-    //    /// 孩子节点
-    //    /// </summary>
-    //    public List<TreeModel> Children
-    //    {
-    //        get; set;
-    //    }
-
-    //    /// <summary>
-    //    /// 孩子节点
-    //    /// </summary>
-    //    public object children
-    //    {
-    //        get; set;
-    //    }
-
-
-    //    private bool isExpanded = true;
-    //    public bool IsExpanded
-    //    {
-    //        get
-    //        {
-    //            return isExpanded;
-    //        }
-    //        set
-    //        {
-    //            SetProperty(ref isExpanded, value);
-    //        }
-    //    }
-
-    //    private bool isSelected;
-    //    public bool IsSelected
-    //    {
-    //        get
-    //        {
-    //            return isSelected;
-    //        }
-    //        set
-    //        {
-    //            SetProperty(ref isSelected, value);
-    //        }
-    //    }
-
-    //    public override string ToString()
-    //    {
-    //        return $"{Value}-{Text}";
-    //    }
-    //}
 }

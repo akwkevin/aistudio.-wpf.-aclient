@@ -18,7 +18,7 @@
             <StackPanel>
                 <GroupBox Header="表单" ac:ControlAttach.CornerRadius="0">
                     <StackPanel>
-                        <ac:Form ac:Form.HeaderWidth="Auto" ac:Form.ItemMargin="3" ac:Form.HeaderMargin="0,0,3,0" DataContext="{Binding FormSetting}">
+                        <ac:Form HeaderWidth="Auto" ItemMargin="3" HeaderMargin="0,0,3,0" DataContext="{Binding FormSetting}">
                             <ac:Form.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel/>
@@ -49,15 +49,19 @@
                             <ac:FormItem Header="标题位置">
                                 <ComboBox Margin="2" MinWidth="100" ac:EnumHelper.Enum="{x:Type Orientation}" SelectedItem="{Binding Orientation}" Style="{DynamicResource AIStudio.Styles.ComboBox}"/>
                             </ac:FormItem>
+                            <ac:FormItem Header="可拖拽">
+                                <CheckBox Margin="2" MinWidth="100" IsChecked="{Binding AllowDrop}" Style="{DynamicResource AIStudio.Styles.CheckBox}"/>
+                            </ac:FormItem>
                             <ac:FormItem >
                                 <Button Margin="2" MinWidth="60" Content="查看" Command="{ac:ControlBinding SubmitCommand}" CommandParameter="{Binding .}"
                                          Style="{DynamicResource AIStudio.Styles.Button}"/>
                             </ac:FormItem>
                         </ac:Form>
-                        <ac:Form ac:Form.Orientation="{ac:ControlBinding FormSetting.Orientation}" 
-                                 ac:Form.HeaderWidth="{ac:ControlBinding FormSetting.HeaderWidth, Converter={StaticResource GridLengthAutoConverter}}" 
-                                 ac:Form.BodyWidth="{ac:ControlBinding FormSetting.BodyWidth, Converter={StaticResource GridLengthAutoConverter}}" 
-                                 ac:Form.ItemMargin="{ac:ControlBinding FormSetting.ItemMargin}"
+                        <ac:Form Orientation="{ac:ControlBinding FormSetting.Orientation}" 
+                                 HeaderWidth="{ac:ControlBinding FormSetting.HeaderWidth, Converter={StaticResource GridLengthAutoConverter}}" 
+                                 BodyWidth="{ac:ControlBinding FormSetting.BodyWidth, Converter={StaticResource GridLengthAutoConverter}}" 
+                                 ItemMargin="{ac:ControlBinding FormSetting.ItemMargin}"
+                                 AllowDrop="{ac:ControlBinding FormSetting.AllowDrop}"
                                  DataContext="{Binding Base_User}"
                                  BorderThickness="1" BorderBrush="Gray" Margin="2">
                             <ac:Form.Style>
@@ -100,7 +104,7 @@
                             </ac:FormItem>
                             <ac:FormItem Header="{Binding .,Converter={StaticResource DisplayNameConverter},ConverterParameter='Password'}">
                                 <PasswordBox ac:PasswordBoxBindingBehavior.Password="{Binding Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" 
-                                        ac:ControlAttach.ClearTextButton="True"
+                                        ac:ControlAttach.ClearTextButton="True"                                            
                                         Style="{DynamicResource AIStudio.Styles.PasswordBox.Underline}"/>
                             </ac:FormItem>
                             <ac:FormItem Header="{Binding .,Converter={StaticResource DisplayNameConverter},ConverterParameter='Sex'}">

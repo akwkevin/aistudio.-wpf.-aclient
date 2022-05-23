@@ -34,7 +34,7 @@
                 </ContextMenu>
             </Grid.ContextMenu>
 
-            <ac:Form ac:Form.HeaderWidth="Auto" ac:Form.ItemMargin="3" ac:Form.HeaderMargin="0,0,3,0" ItemsSource="{Binding QueryConditionItems}">
+            <ac:Form HeaderWidth="Auto" ItemMargin="3" HeaderMargin="0,0,3,0" ItemsSource="{Binding QueryConditionItems}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel/>
@@ -146,7 +146,7 @@
             </i:Interaction.Triggers>
         </ac:Pagination>
 
-        <ac:Form Grid.Row="3" ac:Form.HeaderWidth="Auto" ac:Form.ItemMargin="3" ac:Form.HeaderMargin="0,0,3,0" ItemsSource="{Binding EditFormItems}">
+        <ac:Form Grid.Row="3" HeaderWidth="Auto" ItemMargin="3" HeaderMargin="0,0,3,0" ItemsSource="{Binding EditFormItems}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel/>
