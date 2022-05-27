@@ -10,41 +10,50 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
-        <ac:Form dd:DragDrop.CanDragWithMouseRightButton="True"
-                 dd:DragDrop.IsDragSource="True"
-                 ItemMargin="3"
-                 HeaderMargin="0,0,3,0"
-                 BorderThickness="1"
-                 BorderBrush="{DynamicResource MahApps.Brushes.Gray8}">
-            <ac:FormItem Header="文本框">
-                <TextBox Margin="2" MinWidth="100" 
-                         ac:ControlAttach.ClearTextButton="True"
-                         Style="{DynamicResource AIStudio.Styles.TextBox}"/>
-            </ac:FormItem>
-            <ac:FormItem Header="密码框">
-                <PasswordBox Margin="2" MinWidth="100"
-                    ac:ControlAttach.ClearTextButton="True"                                            
-                    Style="{DynamicResource AIStudio.Styles.PasswordBox}"/>
-            </ac:FormItem>
-        </ac:Form>
-        <ac:Form Grid.Column="1" 
-                 dd:DragDrop.CanDragWithMouseRightButton="True"
-                 dd:DragDrop.IsDragSource="True"
-                 dd:DragDrop.IsDropTarget="True"
-                 dd:DragDrop.DropTargetAdornerBrush="Coral"
-                 dd:DragDrop.UseDefaultEffectDataTemplate="True"
-                 ItemMargin="3"
-                 BorderThickness="1"
-                 BorderBrush="{DynamicResource MahApps.Brushes.Gray8}">
-            <ac:FormItem Header="密码框">
-                <PasswordBox Margin="2" MinWidth="100"
-                    ac:ControlAttach.ClearTextButton="True"                                            
-                    Style="{DynamicResource AIStudio.Styles.PasswordBox}"/>
-            </ac:FormItem>
-        </ac:Form>
+        <GroupBox Header="工具栏" ac:ControlAttach.CornerRadius="0" Margin="2">
+            <ac:Form 
+                 IsReadOnly="True"
+                 AllowDrop ="True"                
+                 ItemMargin="3"                 
+                 HeaderMargin="0,0,3,0">
+                <ac:FormCodeItem Header="文本框" ControlType="TextBox"/>
+                <ac:FormCodeItem Header="密码框" ControlType="PasswordBox"/>
+                <ac:FormCodeItem Header="下拉框" ControlType="ComboBox"/>
+                <ac:FormCodeItem Header="日期框" ControlType="DatePicker"/>
+                <ac:FormCodeItem Header="树选框" ControlType="TreeSelect"/>
+                <ac:FormCodeItem Header="多选框" ControlType="MultiComboBox"/>
+                <!--<ac:FormCodeItem Header="整数" ControlType="IntegerUpDown"/>
+                <ac:FormCodeItem Header="长整数" ControlType="LongUpDown"/>
+                <ac:FormCodeItem Header="浮点数" ControlType="DoubleUpDown"/>
+                <ac:FormCodeItem Header="精确浮点数" ControlType="DecimalUpDown"/>
+                <ac:FormCodeItem Header="时间日期" ControlType="DateTimeUpDown"/>-->
+                <ac:FormCodeItem Header="勾选框" ControlType="CheckBox"/>
+                <ac:FormCodeItem Header="开关按钮" ControlType="ToggleButton"/>
+                <ac:FormCodeItem Header="查询" ControlType="Query"/>
+                <ac:FormCodeItem Header="提交" ControlType="Submit"/>
+            </ac:Form>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Header="编辑栏" ac:ControlAttach.CornerRadius="0" Margin="2">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>                  
+                </Grid.RowDefinitions>
+                <ac:Form x:Name="items"  
+                         AllowDrop ="True"
+                         ItemMargin="3">
+                </ac:Form>
+                <Button Content="生成" Grid.Row="1" Command="{Binding BulidCommand}" CommandParameter="{Binding ElementName=items}"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Column="2" Header="属性栏" ac:ControlAttach.CornerRadius="0" Margin="2">
+            <ac:PropertiesView NeedBrowsable="True" PropertiesString="Header" SelectedObject="{Binding ElementName=items,Path=SelectedItem}"/>
+        </GroupBox>
     </Grid>
 </UserControl>

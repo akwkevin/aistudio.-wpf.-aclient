@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
+using System.Collections.ObjectModel;
+using AIStudio.Wpf.AgileDevelopment.ItemSources;
 
 namespace AIStudio.Wpf.AgileDevelopment.ViewModels
 {
@@ -27,6 +29,19 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
             }
         }
 
+        private Base_UserDTO_Test _base_User2 = new Base_UserDTO_Test();
+        public Base_UserDTO_Test Base_User2
+        {
+            get
+            {
+                return _base_User2;
+            }
+            set
+            {
+                SetProperty(ref _base_User2, value);
+            }
+        }
+
         private FormSetting _formSetting = new FormSetting();
         public FormSetting FormSetting
         {
@@ -37,6 +52,19 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
             set
             {
                 SetProperty(ref _formSetting, value);
+            }
+        }
+
+        private List<SelectOption> _sexList;
+        public List<SelectOption> SexList
+        {
+            get
+            {
+                return _sexList;
+            }
+            set
+            {
+                SetProperty(ref _sexList, value);
             }
         }
 
@@ -78,6 +106,8 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
                 SetProperty(ref _departments, value);
             }
         }
+
+        public Dictionary<string, ObservableCollection<ISelectOption>> Items { get; set; } = ItemSourceDictionary.Items;
 
         private ICommand _submitCommand;
         public ICommand SubmitCommand
@@ -140,6 +170,11 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
 
         public FormViewModel()
         {
+            SexList = new List<SelectOption>()
+            {
+                new SelectOption(){Value = "0",Text = "女" },
+                new SelectOption(){Value ="1",Text = "男" },
+            };
             RolesList = new List<SelectOption>()
             {
                 new SelectOption(){Value = "Manager",Text = "管理员" },

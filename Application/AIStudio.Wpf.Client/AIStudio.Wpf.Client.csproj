@@ -24,6 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Page\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
+    <ProjectReference Include="..\..\Page\AIStudio.Wpf.Base_Manage\AIStudio.Wpf.Base_Manage.csproj" />
     <ProjectReference Include="..\..\Page\AIStudio.Wpf.Home\AIStudio.Wpf.Home.csproj" />
   </ItemGroup>
 

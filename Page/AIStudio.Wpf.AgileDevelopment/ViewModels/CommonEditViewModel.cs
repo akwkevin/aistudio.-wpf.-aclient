@@ -32,19 +32,5 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
 
             BaseControlItem.ObjectToList(Data, EditFormItems);
         }
-
-
-        //protected override void InitData()
-        //{
-        //    base.InitData();
-        //    BaseControlItem.ObjectToList(Data, EditFormItems);
-        //}
-
-        //protected override void GetData(T para)
-        //{
-        //    base.GetData(para);
-        //    BaseControlItem.ObjectToList(Data, EditFormItems);
-        //}
-
     }
 }

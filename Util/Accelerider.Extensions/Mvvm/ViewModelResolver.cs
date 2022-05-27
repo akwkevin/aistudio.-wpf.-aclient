@@ -68,7 +68,8 @@ namespace Accelerider.Extensions.Mvvm
             .IfInheritsFrom<IViewLoadedAndUnloadedAware>((view, viewModel) =>
             {
                 view.Loaded += (sender, e) => viewModel.OnLoaded();
-                view.Unloaded += (sender, e) => viewModel.OnUnloaded();
+                view.Unloaded += (sender, e) => 
+                    viewModel.OnUnloaded();
             })
             .IfInheritsFrom(typeof(IViewLoadedAndUnloadedAware<>), (view, viewModel, interfaceInstance) =>
             {
@@ -82,7 +83,8 @@ namespace Accelerider.Extensions.Mvvm
                 var onUnloadedMethod = interfaceInstance.GetMethod<Action<object>>("OnUnloaded", viewType);
 
                 view.Loaded += (sender, args) => onLoadedMethod(sender);
-                view.Unloaded += (sender, args) => onUnloadedMethod(sender);
+                view.Unloaded += (sender, args) =>
+                    onUnloadedMethod(sender);
             });
 
 

@@ -121,15 +121,6 @@ namespace AIStudio.Wpf.Client.ViewModels
             }
         }
 
-        public ICommand _closeComamnd;
-        public ICommand CloseComamnd
-        {
-            get
-            {
-                return this._closeComamnd ?? (this._closeComamnd = new DelegateCommand<Window>(para => this.Close(para)));
-            }
-        }
-
         private ICommand _loginCommand;
         public ICommand LoginCommand
         {
@@ -294,11 +285,6 @@ namespace AIStudio.Wpf.Client.ViewModels
             {
                 Login();
             }
-        }
-
-        private void Close(Window window)
-        {
-            window.Close();
         }
 
         public void OnLoaded(LoginWindow view)

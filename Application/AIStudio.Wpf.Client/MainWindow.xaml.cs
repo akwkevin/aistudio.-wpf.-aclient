@@ -19,14 +19,9 @@ namespace AIStudio.Wpf.Client
     /// </summary>
     public partial class MainWindow : WindowBase
     {
-        IModuleManager _moduleManager { get; }
-        IWSocketClient _wSocketClient { get; }
         public MainWindow()
         {
             InitializeComponent();
-
-            _moduleManager = ContainerLocator.Current.Resolve<IModuleManager>();
-            _wSocketClient = ContainerLocator.Current.Resolve<IWSocketClient>();
 
             this.Closing += MainWindow_Closing;
         }
@@ -41,8 +36,7 @@ namespace AIStudio.Wpf.Client
                 e.Cancel = true;
             }
             else
-            {
-                _wSocketClient.Dispose();
+            { 
                 System.Windows.Application.Current.Shutdown();
                 //System.Diagnostics.Process.GetCurrentProcess().Kill();
             }

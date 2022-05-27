@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
-using AIStudio.Core;
 using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.BasePage.DTOModels
@@ -23,7 +19,7 @@ namespace AIStudio.Wpf.BasePage.DTOModels
         public string Text { get; set; }
         public string Value { get; set; }
         public string Code { get; set; }
-        public ControlType ControlType { get; set; }
+        public Core.ControlType ControlType { get; set; }
         public string Remark { get; set; }
 
         public object children { get; set; }

@@ -262,7 +262,7 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
 
         public void OnUnloaded()
         {
-            _wSocketClient.Dispose();
+          
         }
     }
 }

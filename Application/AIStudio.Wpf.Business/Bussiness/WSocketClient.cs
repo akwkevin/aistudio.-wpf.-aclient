@@ -31,14 +31,19 @@ namespace AIStudio.Wpf.Business
         /// </summary>
         public string ServerPath { get; set; }
 
-        public WSocketClient(string serverip, string url)
+        public WSocketClient(string serverip, string url) : this()
         {
             Init(serverip, url);
         }
 
         public WSocketClient()
         {
+            System.Windows.Application.Current.MainWindow.Closed += MainWindow_Closed;
+        }
 
+        private void MainWindow_Closed(object sender, System.EventArgs e)
+        {
+            Dispose();
         }
 
         private void Init(string serverip, string url)
@@ -60,7 +65,6 @@ namespace AIStudio.Wpf.Business
             this._webSocket.MessageReceived -= WebSocket_MessageReceived;
             this._webSocket.MessageReceived += WebSocket_MessageReceived;
             IsInit = true;
-
         }
 
         public void InitAndStart(string serverip, string url)
