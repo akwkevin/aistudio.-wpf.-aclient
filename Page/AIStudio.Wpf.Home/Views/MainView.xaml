@@ -90,7 +90,7 @@
                                 </Grid>
 
                                 <StackPanel Orientation="Horizontal" Visibility="{Binding IsMain,Converter={converter:ConverterBoolToVisibility}}">
-                                    <!--<local:NoticeIconView Margin="15,0,15,3"  HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{Binding NoticeIconViewModel}"/>-->
+                                    <local:NoticeIconView Margin="15,0,15,3"  HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{Binding NoticeIconViewModel}"/>
 
                                     <ac:DropDown Padding="0"  IsDropVisible="False" BorderThickness="0" ac:ControlAttach.CornerRadius="3" Margin="8,3,0,3">
                                         <ac:DropDown.Content>

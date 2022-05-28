@@ -144,10 +144,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             get { return _selectedMenuItem; }
             set
             {
-                if (value.Code == "Option")
-                {
-                    return;
-                }
                 SetProperty(ref _selectedMenuItem, value);
                 SelectedMenuItemChanged(value);
             }
@@ -623,7 +619,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                         //window.Closed += (sender, args) =>
                         //{
                         //    var image = Clipboard.GetImage();
-                        //    AIStudio.Wpf.Controls.Windows.ImageBrowser imageBrowser = new AIStudio.Wpf.Controls.Windows.ImageBrowser(image);
+                        //    AIStudio.Wpf.Controls.ImageBrowser imageBrowser = new AIStudio.Wpf.Controls.ImageBrowser(image);
                         //    imageBrowser.Show();
                         //};
                         window.Show();
@@ -739,10 +735,6 @@ namespace AIStudio.Wpf.Home.ViewModels
         void SelectedMenuItemChanged(AMenuItem item)
         {
             if (item == null || string.IsNullOrEmpty(item.Code))
-            {
-                return;
-            }
-            if (item.Code == "Option")
             {
                 return;
             }
