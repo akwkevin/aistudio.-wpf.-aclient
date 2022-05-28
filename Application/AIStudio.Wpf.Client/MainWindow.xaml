@@ -12,7 +12,6 @@
     Width="1060"
     Height="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    CaptionHeight="36"
     Icon="A.ico"
     Identifier="{Binding Identifier}"
     Style="{StaticResource AIStudio.Styles.WindowBase.Custom}"

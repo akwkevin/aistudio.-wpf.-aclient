@@ -62,7 +62,8 @@
                              ItemsSource="{Binding AppThemes, Mode=OneWay}" 
                              SelectedItem="{Binding SelectedAppTheme}"
                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                             ItemContainerStyle="{DynamicResource AIStudio.Style.ListBoxItem.Checked}" >
+                             ItemContainerStyle="{StaticResource AIStudio.Style.ListBoxItem.Checked}" 
+                             Style="{StaticResource AIStudio.Styles.ListBox}">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
@@ -87,8 +88,8 @@
                 <ListBox x:Name="listAccentColors"
                          ItemsSource="{Binding AccentColors, Mode=OneWay}" 
                          SelectedItem="{Binding SelectedAccentColor}"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         ItemContainerStyle="{DynamicResource AIStudio.Style.ListBoxItem.Checked}">
+                         ItemContainerStyle="{StaticResource AIStudio.Style.ListBoxItem.Checked}"
+                         Style="{StaticResource AIStudio.Styles.ListBox}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
@@ -97,7 +98,7 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid x:Name="tile" ToolTip="{Binding Name}">
-                                <Rectangle Width="24" Height="24" StrokeThickness="1" Fill="{Binding ColorBrush, Mode=OneWay}" />                                
+                                <Rectangle StrokeThickness="1" Fill="{Binding ColorBrush, Mode=OneWay}" />                                
                             </Grid>                          
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -112,8 +113,8 @@
                 <WrapPanel>
                     <ListBox x:Name="listNavigationLocation"
                          SelectedIndex="{Binding SelectedNavigationLocation}"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         ItemContainerStyle="{DynamicResource AIStudio.Style.ListBoxItem.Checked}">
+                         ItemContainerStyle="{StaticResource AIStudio.Style.ListBoxItem.Checked}"
+                         Style="{StaticResource AIStudio.Styles.ListBox}">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
@@ -153,8 +154,8 @@
                     <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" />
                     <ListBox x:Name="listToolBarLocation"        
                          SelectedIndex="{Binding SelectedToolBarLocation}"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         ItemContainerStyle="{DynamicResource AIStudio.Style.ListBoxItem.Checked}">
+                         ItemContainerStyle="{StaticResource AIStudio.Style.ListBoxItem.Checked}"
+                         Style="{StaticResource AIStudio.Styles.ListBox}">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
@@ -186,8 +187,8 @@
                     <Separator Margin="1,0" BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Text}" />
                     <ListBox x:Name="listStatusBarLocation"    
                          SelectedIndex="{Binding SelectedStatusBarLocation}"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         ItemContainerStyle="{DynamicResource AIStudio.Style.ListBoxItem.Checked}">
+                         ItemContainerStyle="{StaticResource AIStudio.Style.ListBoxItem.Checked}"
+                         Style="{StaticResource AIStudio.Styles.ListBox}">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Width="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>

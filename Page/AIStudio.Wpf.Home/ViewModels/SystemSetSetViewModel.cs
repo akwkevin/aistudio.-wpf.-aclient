@@ -311,31 +311,46 @@ namespace AIStudio.Wpf.Home.ViewModels
             string requestedCulture = @"/AIStudio.Wpf.Home;component/Themes/FontSizeDictionary.xaml";
             ResourceDictionary resourceDictionary = dictionaryList.Where(d => d.Source != null && d.Source.OriginalString.Equals(requestedCulture)).FirstOrDefault();
 
-            resourceDictionary.Clear();
-            resourceDictionary.Add("MahApps.Font.Size.Header", LocalSetting.FontSize + 2);
-            resourceDictionary.Add("MahApps.Font.Size.SubHeader", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.Window.Title", LocalSetting.FontSize + 2);
-            resourceDictionary.Add("MahApps.Font.Size.Default", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.Content", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.Button.Flat", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.TabItem", LocalSetting.FontSize + 2);
-            resourceDictionary.Add("MahApps.Font.Size.Button", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.FloatingWatermark", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.Button.ClearText", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.Tooltip", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.Menu", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.ContextMenu", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.StatusBar", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.Dialog.Title", LocalSetting.FontSize + 2);
-            resourceDictionary.Add("MahApps.Font.Size.Dialog.Message", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.Dialog.Button", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.Flyout.Header", LocalSetting.FontSize + 2);
-            resourceDictionary.Add("MahApps.Font.Size.ToggleSwitch", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.ToggleSwitch.Header", LocalSetting.FontSize);
-            resourceDictionary.Add("MahApps.Font.Size.ColorPicker.TabItemHeader", LocalSetting.FontSize);
+            resourceDictionary["MahApps.Font.Size.Header"] = LocalSetting.FontSize + 2;
+            resourceDictionary["MahApps.Font.Size.SubHeader"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.Window.Title"] = LocalSetting.FontSize + 2;
+            resourceDictionary["MahApps.Font.Size.Default"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.Content"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.Button.Flat"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.TabItem"] = LocalSetting.FontSize + 2;
+            resourceDictionary["MahApps.Font.Size.Button"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.FloatingWatermark"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.Button.ClearText"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.Tooltip"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.Menu"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.ContextMenu"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.StatusBar"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.Dialog.Title"] = LocalSetting.FontSize + 2;
+            resourceDictionary["MahApps.Font.Size.Dialog.Message"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.Dialog.Button"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.Flyout.Header"] = LocalSetting.FontSize + 2;
+            resourceDictionary["MahApps.Font.Size.ToggleSwitch"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.ToggleSwitch.Header"] = LocalSetting.FontSize;
+            resourceDictionary["MahApps.Font.Size.ColorPicker.TabItemHeader"] = LocalSetting.FontSize;
 
-            Application.Current.Resources.MergedDictionaries.Remove(resourceDictionary);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
+            resourceDictionary["AIStudio.Font.Size"] = LocalSetting.FontSize;
+            resourceDictionary["AIStudio.Icon.Size.Minimum"] = LocalSetting.FontSize - 4;
+            resourceDictionary["AIStudio.Icon.Size.Small"] = LocalSetting.FontSize - 2;
+            resourceDictionary["AIStudio.Icon.Size.Medium"] = LocalSetting.FontSize + 2;
+            resourceDictionary["AIStudio.Icon.Size.Large"] = LocalSetting.FontSize + 6;
+            resourceDictionary["AIStudio.Icon.Size.ExtraLarge"] = LocalSetting.FontSize + 18;
+            resourceDictionary["AIStudio.Avatar.Size.Small"] = LocalSetting.FontSize + 12;
+            resourceDictionary["AIStudio.Avatar.Size.Medium"] = LocalSetting.FontSize + 20;
+            resourceDictionary["AIStudio.Avatar.Size.Large"] = LocalSetting.FontSize + 28;
+            resourceDictionary["AIStudio.Avatar.Size.ExtraLarge"] = LocalSetting.FontSize + 48;
+            resourceDictionary["AIStudio.Badged.Size"] = LocalSetting.FontSize + 10;
+            resourceDictionary["AIStudio.Hamburger.Size"] = LocalSetting.FontSize + 20;
+            resourceDictionary["AIStudio.Hamburger.Size.OpenPanel"] = (LocalSetting.FontSize + 20) * 6;
+
+            resourceDictionary["AIStudio.Notice.Width"] = (LocalSetting.FontSize + 38) * 6;
+            resourceDictionary["AIStudio.Notice.Height"] = (LocalSetting.FontSize + 24) * 3;
+
+            resourceDictionary["AIStudio.Header.Size"] = LocalSetting.FontSize + 20;
             #endregion
         }
 
@@ -377,17 +392,15 @@ namespace AIStudio.Wpf.Home.ViewModels
             string requestedCulture = @"/AIStudio.Wpf.Home;component/Themes/FontFamilyDictionary.xaml";
             ResourceDictionary resourceDictionary = dictionaryList.Where(d => d.Source != null && d.Source.OriginalString.Equals(requestedCulture)).FirstOrDefault();
 
-            resourceDictionary.Clear();
-            resourceDictionary.Add("MahApps.Fonts.Family.SymbolTheme", fontFamily);
-            resourceDictionary.Add("MahApps.Fonts.Family.Button", fontFamily);
-            resourceDictionary.Add("MahApps.Fonts.Family.Header", fontFamily);
-            resourceDictionary.Add("MahApps.Fonts.Family.Window.Title", fontFamily);
-            resourceDictionary.Add("MahApps.Fonts.Family.Control", fontFamily);
-            resourceDictionary.Add("MahApps.Fonts.Family.ToggleSwitch", fontFamily);
-            resourceDictionary.Add("MahApps.Fonts.Family.ToggleSwitch.Header", fontFamily);
+            resourceDictionary["MahApps.Fonts.Family.SymbolTheme"] = fontFamily;
+            resourceDictionary["MahApps.Fonts.Family.Button"] = fontFamily;
+            resourceDictionary["MahApps.Fonts.Family.Header"] = fontFamily;
+            resourceDictionary["MahApps.Fonts.Family.Window.Title"] = fontFamily;
+            resourceDictionary["MahApps.Fonts.Family.Control"] = fontFamily;
+            resourceDictionary["MahApps.Fonts.Family.ToggleSwitch"] = fontFamily;
+            resourceDictionary["MahApps.Fonts.Family.ToggleSwitch.Header"] = fontFamily;
 
-            Application.Current.Resources.MergedDictionaries.Remove(resourceDictionary);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
+            resourceDictionary["AIStudio.Fonts.Family"] = fontFamily;
             #endregion
         }
 

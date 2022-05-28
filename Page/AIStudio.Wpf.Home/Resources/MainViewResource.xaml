@@ -4,66 +4,35 @@
                     xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension" >
     <Geometry x:Key="Checkmark">M 0,5.1 L 1.7,5.2 L 3.4,7.1 L 8,0.4 L 9.2,0 L 3.3,10.8 Z</Geometry>
 
-    <!--选项-->
-    <DataTemplate x:Key="HamburgerMenuItem" DataType="{x:Type ac:HamburgerTreeMenuItem}">
-        <Grid MinHeight="30">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="36" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <svg:PackSvg x:Name="Icon" Height="18" Width="18"    
-                                         HorizontalAlignment="Center"
-                                         VerticalAlignment="Center"
-                                         Kind="{Binding Icon}" 
-                                         Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"/>
-            <Grid x:Name="GlyphPanel" Height="18" Width="18" Visibility="Collapsed">
-                <Path Margin="2"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Stretch="Fill"
-                    Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
-                    Data="{StaticResource Checkmark}" />
-            </Grid>
-            <TextBlock Grid.Column="1"
-                                Margin="5,0,0,0"
-                                VerticalAlignment="Center"
-                                Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
-                                Text="{Binding Label}" 
-                                FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
-                                FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
-                                FontStyle="{Binding FontStyle, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
-                                FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"/>
-        </Grid>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IsChecked}" Value="True">
-                <Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
-                <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
-
     <!--树形-->
     <HierarchicalDataTemplate x:Key="HamburgerMenuImageItem" DataType="{x:Type ac:HamburgerTreeMenuGlyphItem}" ItemsSource="{Binding Path=Children}">
-        <Grid  MinHeight="30">
+        <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="36" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <svg:PackSvg x:Name="Icon" Height="18" Width="18"    
-                                         HorizontalAlignment="Center"
-                                         VerticalAlignment="Center"
-                                         Kind="{Binding Icon}" 
-                                         Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TreeViewItem}}}"/>
-            <Grid x:Name="GlyphPanel" Height="18" Width="18" Visibility="Collapsed">
-                <Path Margin="2"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
+            <Grid x:Name="IconPanel"
+                  Width="{Binding Path=HamburgerWidth, RelativeSource={RelativeSource AncestorType=ac:HamburgerTreeMenu}}"
+                  Height="{Binding Path=HamburgerWidth, RelativeSource={RelativeSource AncestorType=ac:HamburgerTreeMenu}}">
+                <svg:PackSvg  
+                    x:Name="Icon"
+                    Width="Auto"
+                    Height="Auto"
+                    Margin="{Binding Path=HamburgerMargin, RelativeSource={RelativeSource AncestorType=ac:HamburgerTreeMenu}}" 
+                    Kind="{Binding Icon}" 
+                    Fill="{Binding ElementName=Header,Path=Foreground}"/>
+            </Grid>
+            <Grid x:Name="GlyphPanel" 
+                  Width="{Binding Path=HamburgerWidth, RelativeSource={RelativeSource AncestorType=ac:HamburgerTreeMenu}}"
+                  Height="{Binding Path=HamburgerWidth, RelativeSource={RelativeSource AncestorType=ac:HamburgerTreeMenu}}" 
+                  Visibility="Collapsed">
+                <Path x:Name="Glyph"
+                    Margin="{Binding Path=HamburgerMargin, RelativeSource={RelativeSource AncestorType=ac:HamburgerTreeMenu}}" 
                     Stretch="Fill"
-                    Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TreeViewItem}}}"
+                    Fill="{Binding ElementName=Header,Path=Foreground}"
                     Data="{StaticResource Checkmark}" />
             </Grid>
-            <TextBlock Grid.Column="1"
-                                       Margin="5,0,0,0"
+            <TextBlock Grid.Column="1" x:Name="Header"
                                        VerticalAlignment="Center"
                                        Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TreeViewItem}}}"
                                        Text="{Binding Label}" 
@@ -75,45 +44,51 @@
         <HierarchicalDataTemplate.Triggers>
             <DataTrigger Binding="{Binding IsChecked}" Value="True">
                 <Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
-                <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="IconPanel" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </HierarchicalDataTemplate.Triggers>
     </HierarchicalDataTemplate>
 
     <!--左侧菜单栏-->
     <HierarchicalDataTemplate x:Key="LeftHamburgerMenuImageItem" DataType="{x:Type ac:HamburgerTreeMenuGlyphItem}" ItemsSource="{Binding Path=Children}">
-        <Grid  MinHeight="30">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <svg:PackSvg x:Name="Icon" Height="18" Width="18" IsHitTestVisible="False"   
-                                         HorizontalAlignment="Center"
-                                         VerticalAlignment="Center"
-                                         Kind="{Binding Icon}" 
-                                         Fill="{Binding Foreground, ElementName=Header}"
-                                         Margin="9,0"/>
+            <Grid x:Name="IconPanel"
+                  Width="{Binding Path=HamburgerWidth, RelativeSource={RelativeSource AncestorType=ac:HamburgerTreeMenu}}"
+                  Height="{Binding Path=HamburgerWidth, RelativeSource={RelativeSource AncestorType=ac:HamburgerTreeMenu}}">
+                <svg:PackSvg 
+                    x:Name="Icon"
+                    Width="Auto"
+                    Height="Auto"
+                    Margin="{Binding Path=HamburgerMargin, RelativeSource={RelativeSource AncestorType=ac:HamburgerTreeMenu}}"
+                    IsHitTestVisible="False"   
+                    Kind="{Binding Icon}" 
+                    Fill="{Binding Foreground, ElementName=Header}"/>
+            </Grid>
 
-
-            <Grid  x:Name="GlyphPanel" Height="18" Width="18" Margin="9,0" Visibility="Collapsed">
-                <Path x:Name="Glyph" Margin="2" 
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
+            <Grid  x:Name="GlyphPanel" 
+                   Width="{Binding Path=HamburgerWidth, RelativeSource={RelativeSource AncestorType=ac:HamburgerTreeMenu}}"
+                   Height="{Binding Path=HamburgerWidth, RelativeSource={RelativeSource AncestorType=ac:HamburgerTreeMenu}}"  
+                   Visibility="Collapsed">
+                <Path x:Name="Glyph" 
+                    Margin="{Binding Path=HamburgerMargin, RelativeSource={RelativeSource AncestorType=ac:HamburgerTreeMenu}}" 
                     Stretch="Fill"
                     Fill="{Binding Foreground, ElementName=Header}"
                     Data="{StaticResource Checkmark}" />
             </Grid>
 
             <TextBlock x:Name="Header" Grid.Column="1" 
-                                         Margin="5,0,0,0"
                                          VerticalAlignment="Center"
-                                          Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
+                                         Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"
                                          Text="{Binding Label}" />
         </Grid>
         <HierarchicalDataTemplate.Triggers>
             <DataTrigger Binding="{Binding IsChecked}" Value="True">
                 <Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
-                <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="IconPanel" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
             <DataTrigger Binding="{Binding Role,RelativeSource={RelativeSource TemplatedParent}}" Value="TopLevelHeader">
                 <Setter TargetName="Icon" Property="ToolTip" Value="{Binding Label}"></Setter>
@@ -134,12 +109,17 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <svg:PackSvg x:Name="Icon" Height="16" Width="16"  
-                                         HorizontalAlignment="Center"
-                                         VerticalAlignment="Center"
-                                         Kind="{Binding Icon}" 
-                                         Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"/>
-            <Grid  x:Name="GlyphPanel" Height="16" Width="16" Visibility="Collapsed">
+            <svg:PackSvg x:Name="Icon" 
+                        Width="{Binding ElementName=Header,Path=FontSize}"
+                        Height="{Binding ElementName=Header,Path=FontSize}"   
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Kind="{Binding Icon}" 
+                        Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}"/>
+            <Grid x:Name="GlyphPanel" 
+                  Width="{Binding ElementName=Header,Path=FontSize}"
+                  Height="{Binding ElementName=Header,Path=FontSize}"
+                  Visibility="Collapsed">
                 <Path x:Name="Glyph" Margin="2"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"

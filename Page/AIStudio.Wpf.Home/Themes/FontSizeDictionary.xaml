@@ -27,4 +27,30 @@
 
     <system:Double x:Key="MahApps.Font.Size.ColorPicker.TabItemHeader">16</system:Double>
 
+    <system:Double x:Key="DefaultControlHeight">22</system:Double>
+    <system:Double x:Key="DefaultHeaderHeight">28</system:Double>
+    <Thickness x:Key="DefaultControlPadding">12,6</Thickness>
+    <CornerRadius x:Key="DefaultCornerRadius">3</CornerRadius>
+
+    <system:Double x:Key="AIStudio.Icon.Size.Minimum">8</system:Double>
+    <system:Double x:Key="AIStudio.Icon.Size.Small">10</system:Double>
+    <system:Double x:Key="AIStudio.Icon.Size.Medium">14</system:Double>
+    <system:Double x:Key="AIStudio.Icon.Size.Large">18</system:Double>
+    <system:Double x:Key="AIStudio.Icon.Size.ExtraLarge">30</system:Double>
+
+    <system:Double x:Key="AIStudio.Avatar.Size.Small">24</system:Double>
+    <system:Double x:Key="AIStudio.Avatar.Size.Medium">32</system:Double>
+    <system:Double x:Key="AIStudio.Avatar.Size.Large">40</system:Double>
+    <system:Double x:Key="AIStudio.Avatar.Size.ExtraLarge">60</system:Double>
+
+    <system:Double x:Key="AIStudio.Badged.Size">22</system:Double>
+
+    <system:Double x:Key="AIStudio.Hamburger.Size">36</system:Double>
+    <system:Double x:Key="AIStudio.Hamburger.Size.OpenPanel">182</system:Double>
+
+    <system:Double x:Key="AIStudio.Notice.Width">300</system:Double>
+    <system:Double x:Key="AIStudio.Notice.Height">96</system:Double>
+
+    <system:Double x:Key="AIStudio.Font.Size">12</system:Double>
+
 </ResourceDictionary>

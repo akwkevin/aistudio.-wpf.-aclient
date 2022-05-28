@@ -27,25 +27,25 @@
         <DockPanel x:Name="Titlebar" ac:WindowBase.TitleTag="true" LastChildFill="True"
               Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ac:WindowBase}}, Path=CaptionHeight,Mode=OneWay}"       
               Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ac:WindowBase}}, Path=ShowTitleBar,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}">
+            <TextBlock x:Name="Text" Text="{Binding Title}" FontSize="{DynamicResource MahApps.Font.Size.Window.Title}" Margin="5" VerticalAlignment="Center"/>
+        </DockPanel>
 
-            <StackPanel Margin="0,0,138,0" Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right" >
+        <ac:WindowBaseTitleBar>
+            <ac:WindowBaseTitleBar.RightWindowCommands>
                 <Button ToolTip="退出全屏"
                     Command="{Binding KeyExcuteCommand}" 
                     CommandParameter="EscapeFullScreen"
                     IsTabStop="False" 
                     Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"
+                    ac:IconAttach.Width="{DynamicResource AIStudio.Icon.Size.Small}"
+                    ac:IconAttach.Height="{DynamicResource AIStudio.Icon.Size.Small}"
                     Style="{StaticResource AIStudio.Styles.Button.Window}"
-                    Width="46"
-                    VerticalAlignment="Stretch"
+                    MinWidth="45"
                     ac:IconAttach.Geometry="{StaticResource EscapeFullScreenGeometry}" 
-                    BorderThickness="1,0,1,0" 
-                    ac:IconAttach.Width="10" 
-                    ac:IconAttach.Height="10"/>
-            </StackPanel>
-
-            <TextBlock x:Name="Text" Text="{Binding Title}" FontSize="{DynamicResource MahApps.Font.Size.Window.Title}" Margin="5" VerticalAlignment="Center"/>
-            
-        </DockPanel>
+                    BorderThickness="1,0,1,0" />
+            </ac:WindowBaseTitleBar.RightWindowCommands>
+        </ac:WindowBaseTitleBar>
+        
         <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{Binding RegionName}" Margin="1"/>
         <Border Margin="0 3 0 3" Cursor="SizeAll" Grid.Row="1" SnapsToDevicePixels="True" ac:WindowBase.TitleTag="true" HorizontalAlignment="Left">
             <Rectangle Width="4.9">

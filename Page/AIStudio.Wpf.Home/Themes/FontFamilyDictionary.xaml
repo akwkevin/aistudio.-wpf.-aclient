@@ -7,4 +7,6 @@
     <FontFamily x:Key="MahApps.Fonts.Family.Control">宋体</FontFamily>
     <FontFamily x:Key="MahApps.Fonts.Family.ToggleSwitch">宋体</FontFamily>
     <FontFamily x:Key="MahApps.Fonts.Family.ToggleSwitch.Header">宋体</FontFamily>
+
+    <FontFamily x:Key="AIStudio.Fonts.Family">宋体</FontFamily>
 </ResourceDictionary>

@@ -18,7 +18,7 @@
             <dock:DockingManager.DocumentHeaderTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <svg:PackSvg x:Name="Icon" Height="18" Width="18" Margin="0,0,4,0" VerticalAlignment="Center"
+                        <svg:PackSvg x:Name="Icon" Height="{DynamicResource AIStudio.Icon.Size.Medium}" Width="{DynamicResource AIStudio.Icon.Size.Medium}" Margin="0,0,4,0" VerticalAlignment="Center"
                                          Kind="{Binding Content.DataContext.Glyph}" 
                                          Fill="{Binding Foreground, ElementName=Text}"/>
                         <TextBlock x:Name="Text" Text="{Binding Title}" VerticalAlignment="Center"/>
