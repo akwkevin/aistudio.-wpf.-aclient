@@ -9,7 +9,7 @@
     xmlns:local="clr-namespace:AIStudio.Wpf.Client"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
-    xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
+    xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
     x:Name="loginWin"
     Title="{x:Static core:LocalSetting.Title}"
     Width="700"

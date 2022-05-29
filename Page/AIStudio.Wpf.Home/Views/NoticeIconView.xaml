@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
+             xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
              xmlns:converter2="clr-namespace:AIStudio.Wpf.BasePage.Converters;assembly=AIStudio.Wpf.BasePage"
              xmlns:command="clr-namespace:AIStudio.Core.ExCommand;assembly=AIStudio.Core"
              xmlns:prism="http://prismlibrary.com/"

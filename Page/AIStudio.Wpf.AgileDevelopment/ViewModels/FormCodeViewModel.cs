@@ -136,7 +136,7 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
         }
 
         private readonly string template =
-"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" xmlns:ac=\"https://gitee.com/akwkevin/aistudio.-wpf.-controls\" DataContext=\"{Binding Data}\">" + "\r\n" +
+"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" xmlns:ac=\"https://gitee.com/akwkevin/AI-wpf-controls\" DataContext=\"{Binding Data}\">" + "\r\n" +
 "%formColumns%" + "\r\n" +
 "</ac:Form>";
         protected async void Bulid(object para)

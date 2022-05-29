@@ -13,6 +13,7 @@
 
                 <!--AIStudio-->
                 <ResourceDictionary Source="pack://application:,,,/AIStudio.Wpf.Controls;component/Themes/MahApps.Defaults.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/AIStudio.Wpf.GridControls;component/Themes/MahApps.xaml"/>
 
                 <ResourceDictionary Source="/AIStudio.Resource;component/Themes/Generic.xaml" />
 

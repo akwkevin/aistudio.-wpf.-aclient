@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
+                    xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
                     xmlns:converter="clr-namespace:AIStudio.Wpf.AgileDevelopment.Converter"
                     xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core">
     

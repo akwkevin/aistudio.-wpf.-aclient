@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:utilpanel="https://astudio.github.io/utilpanel"
-             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
+             xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
              xmlns:subview="clr-namespace:AIStudio.Wpf.LayoutPage.Views.SubViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">

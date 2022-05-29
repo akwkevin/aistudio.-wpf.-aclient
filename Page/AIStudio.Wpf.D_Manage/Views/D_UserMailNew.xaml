@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls" 
+             xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls" 
              xmlns:ex="clr-namespace:Smith.WPF.HtmlEditor;assembly=Smith.WPF.HtmlEditor"
              xmlns:controls="clr-namespace:AIStudio.Wpf.BasePage.Controls;assembly=AIStudio.Wpf.BasePage" 
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"

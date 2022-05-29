@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AIStudio.Wpf.Home.Views"
-             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
+             xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
              xmlns:converter="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
              xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
              xmlns:prism="http://prismlibrary.com/"

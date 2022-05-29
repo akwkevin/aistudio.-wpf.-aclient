@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="AIStudio.Wpf.%areaName%.Views"
-             xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
+             xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
              mc:Ignorable="d" 
              Style="{StaticResource AIStudio.Styles.BaseDialog}">

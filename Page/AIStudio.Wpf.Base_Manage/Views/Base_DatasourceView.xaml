@@ -10,8 +10,8 @@
     xmlns:local="clr-namespace:AIStudio.Wpf.Base_Manage.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:perm="clr-namespace:AIStudio.Wpf.BasePage.Permission;assembly=AIStudio.Wpf.BasePage"
-    xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
-    xmlns:agc="https://gitee.com/akwkevin/aistudio.-wpf.-controls/tree/master/AIStudio.Wpf.GridControls"
+    xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
+    xmlns:agc="https://gitee.com/akwkevin/AI-wpf-controls/tree/master/AIStudio.Wpf.GridControls"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
