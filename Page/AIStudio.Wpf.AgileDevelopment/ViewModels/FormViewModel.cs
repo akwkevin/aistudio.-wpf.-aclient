@@ -276,7 +276,7 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
             }
         }
 
-        private string _headerWidth = "50";
+        private string _headerWidth = "80";
         public string HeaderWidth
         {
             get

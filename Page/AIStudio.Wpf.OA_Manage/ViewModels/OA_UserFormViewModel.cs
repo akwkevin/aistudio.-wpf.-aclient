@@ -118,7 +118,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 else
                     return true;
             });
-            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync(dialog, identifier);
+            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, identifier);
             return res;
         }
 

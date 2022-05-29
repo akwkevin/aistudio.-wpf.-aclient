@@ -259,7 +259,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             {
                 return ValidationEdit(viewmodel);
             });
-            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync(dialog, Identifier);
+            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
             if (res == BaseDialogResult.OK)
             {
                 await SaveData(viewmodel.Data);
@@ -296,7 +296,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             var dialog = Activator.CreateInstance(EditType, new object[] { viewmodel }) as BaseDialog;
             var fButton = dialog.FindName("PART_AffirmativeButton") as Button;
             fButton.Visibility = System.Windows.Visibility.Collapsed;
-            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync(dialog, Identifier);
+            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
 
         }
 

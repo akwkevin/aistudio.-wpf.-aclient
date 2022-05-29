@@ -9,6 +9,7 @@ namespace AIStudio.Core.Models
 {
     public class DataErrorInfoBindableBase : BindableBase, IDataErrorInfo
     {
+        [Browsable(false)]
         public string this[string columnName]
         {
             get
@@ -30,6 +31,7 @@ namespace AIStudio.Core.Models
             }
         }
 
+        [Browsable(false)]
         public string Error
         {
             get

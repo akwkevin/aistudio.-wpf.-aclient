@@ -201,7 +201,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         {
             OA_DefFormTreeEditViewModel viewmodel = new OA_DefFormTreeEditViewModel(para.WorkflowJSON);
             OA_DefFormTreeEdit dialog = new OA_DefFormTreeEdit(viewmodel);
-            var res = await WindowBase.ShowDialogAsync(dialog, Identifier);
+            var res = await WindowBase.ShowDialogAsync2(dialog, Identifier);
         }
     }
 }

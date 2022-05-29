@@ -112,7 +112,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 else
                     return true;
             });
-            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync(dialog, Identifier);
+            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
             if (res == BaseDialogResult.OK)
             {
                 try

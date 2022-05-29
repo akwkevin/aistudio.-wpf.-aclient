@@ -99,7 +99,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 else
                     return true;
             });
-            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync(dialog, Identifier);
+            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
             if (res == BaseDialogResult.OK)
             {
                 try
@@ -130,7 +130,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         {
             OA_DefFormTreeEditViewModel viewmodel = new OA_DefFormTreeEditViewModel(para.json);
             OA_DefFormTreeEdit dialog = new OA_DefFormTreeEdit(viewmodel);
-            var res = await WindowBase.ShowDialogAsync(dialog, Identifier);
+            var res = await WindowBase.ShowDialogAsync2(dialog, Identifier);
         }
     }
 }

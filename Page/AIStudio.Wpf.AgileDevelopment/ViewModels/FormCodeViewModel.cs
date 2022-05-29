@@ -10,23 +10,48 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Input;
 
 namespace AIStudio.Wpf.AgileDevelopment.ViewModels
 {
     public class FormCodeViewModel : BasePageViewModel
-    { 
-
-        private Base_UserDTO_Test _base_User = new Base_UserDTO_Test();
-        public Base_UserDTO_Test Base_User
+    {
+        private object _data;
+        public object Data
         {
             get
             {
-                return _base_User;
+                return _data;
             }
             set
             {
-                SetProperty(ref _base_User, value);
+                SetProperty(ref _data, value);
+            }
+        }
+
+        public List<Type> Types { get; set; } = new List<Type>();
+
+        private Type _selectedType;
+        public Type SelectedType
+        {
+            get
+            {
+                return _selectedType;
+            }
+            set
+            {
+                if (SetProperty(ref _selectedType, value))
+                {
+                    if (value != null)
+                    {
+                        Data = Activator.CreateInstance(value);
+                    }
+                    else
+                    {
+                        Data = null;
+                    }
+                }
             }
         }
 
@@ -102,20 +127,41 @@ namespace AIStudio.Wpf.AgileDevelopment.ViewModels
 
         public FormCodeViewModel()
         {
-           
+            //添加一个测试类放在最前面，标记最全
+            Types.Add(typeof(Base_UserDTO_Test));
+            var assembly = Assembly.Load("AIStudio.Wpf.Entity");
+            Types.AddRange(assembly.GetTypes().Where(p => p.FullName.Contains("AIStudio.Wpf.Entity.DTOModels")));
 
-        }       
+            SelectedType = Types[0];
+        }
 
+        private readonly string template =
+"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" xmlns:ac=\"https://gitee.com/akwkevin/aistudio.-wpf.-controls\" DataContext=\"{Binding Data}\">" + "\r\n" +
+"%formColumns%" + "\r\n" +
+"</ac:Form>";
         protected async void Bulid(object para)
         {
             if (para is Form form)
             {
-                var items = form.Items.OfType<FormCodeItem>();
+                List<string> formColumnsList = new List<string>();
 
-                var viewmodel = new FormCodeEditViewModel("123");
+                var items = form.Items.OfType<FormCodeItem>();
+                foreach (var item in items)
+                {
+                    formColumnsList.Add(item.ToString());
+                }
+
+                var code = template.Replace("%formColumns%", string.Join("\r\n", formColumnsList));
+                var viewmodel = new FormCodeEditViewModel(code, SelectedType == null ? null : Activator.CreateInstance(SelectedType));
                 var dialog = new FormCodeEdit(viewmodel);
 
-                var res = (BaseDialogResult)await WindowBase.ShowDialogAsync(dialog, Identifier);
+                var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
+                 
+                if (res == BaseDialogResult.OK)
+                {
+                    System.Windows.Clipboard.SetDataObject(viewmodel.Code);
+                }
+                  
             }
         }
     }

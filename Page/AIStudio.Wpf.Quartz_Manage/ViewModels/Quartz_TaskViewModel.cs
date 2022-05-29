@@ -191,7 +191,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             Quartz_TaskLogViewModel viewModel = new Quartz_TaskLogViewModel(para.GroupName + "." + para.TaskName, Identifier);
             Quartz_TaskLog dialog = new Quartz_TaskLog(viewModel);
-            await WindowBase.ShowDialogAsync(dialog, Identifier);
+            await WindowBase.ShowDialogAsync2(dialog, Identifier);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using AIStudio.Wpf.Controls;
+﻿using AIStudio.Wpf.AgileDevelopment.ViewModels;
+using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.AgileDevelopment.Views
 {
@@ -7,11 +8,13 @@ namespace AIStudio.Wpf.AgileDevelopment.Views
     /// </summary>
     public partial class FormCodeEdit : BaseDialog
     {
-        public FormCodeEdit(object viewModel)
+        public FormCodeEdit(FormCodeEditViewModel viewModel)
         {
             InitializeComponent();
 
             this.DataContext = viewModel;
+
+            viewModel.RootGrid = RootGrid;
         }
     }
 }

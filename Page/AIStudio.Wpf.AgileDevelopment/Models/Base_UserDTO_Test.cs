@@ -9,7 +9,8 @@ namespace AIStudio.Wpf.AgileDevelopment.Models
 {
     public partial class Base_UserDTO_Test : DataErrorInfoBindableBase
     {
-        private bool _isChecked;        
+        private bool _isChecked;      
+        [Browsable(false)]
         public bool IsChecked
         {
             get { return _isChecked; }
@@ -19,8 +20,10 @@ namespace AIStudio.Wpf.AgileDevelopment.Models
             }
         }
 
+        [Browsable(false)]
         public string Id { get; set; }
-        
+
+        [Browsable(false)]
         public bool Deleted { get; set; }
 
         private string _userName;

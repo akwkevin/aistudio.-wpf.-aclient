@@ -62,7 +62,7 @@
             <TabItem Header="FormItem">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                     <Grid>
-                        <ac:Form Orientation="{ac:ControlBinding FormSetting.Orientation}" 
+                        <ac:Form x:Name="form" Orientation="{ac:ControlBinding FormSetting.Orientation}" 
                                      HeaderWidth="{ac:ControlBinding FormSetting.HeaderWidth, Converter={StaticResource GridLengthAutoConverter}}" 
                                      BodyWidth="{ac:ControlBinding FormSetting.BodyWidth, Converter={StaticResource GridLengthAutoConverter}}" 
                                      ItemMargin="{ac:ControlBinding FormSetting.ItemMargin}"
@@ -132,7 +132,7 @@
                                             Style="{DynamicResource AIStudio.Styles.TreeSelect.Underline}">
                                     <ac:TreeSelect.ItemTemplate>
                                         <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                                            <StackPanel Orientation="Horizontal" Background="Transparent" HorizontalAlignment="Left" >
+                                            <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="{Binding Text}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                             </StackPanel>
                                         </HierarchicalDataTemplate>
