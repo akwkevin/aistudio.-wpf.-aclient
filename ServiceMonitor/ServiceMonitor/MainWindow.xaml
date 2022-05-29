@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls"
+        xmlns:agc="https://gitee.com/akwkevin/aistudio.-wpf.-controls/tree/master/AIStudio.Wpf.GridControls"
         Identifier="RootWindow"
         xmlns:chat="clr-namespace:AIStudio.Wpf.D_Manage.Views;assembly=AIStudio.Wpf.D_Manage"
         mc:Ignorable="d"
@@ -44,7 +45,10 @@
                         <Button Command="{Binding RefreshCommand}" Content="刷新" Margin="2"/>
                         <Button Command="{Binding SwaggerCommand}" Content="查看接口" Margin="2"/>
                     </StackPanel>
-                    <DataGrid Grid.Row="1" ItemsSource="{Binding UserDatas}"  
+                    <agc:FilterDataGrid 
+                        Grid.Row="1" 
+                        ItemsSource="{Binding UserDatas}"  
+                        LayoutName="服务监控"
                         AutoGenerateColumns="False"
                         CanUserAddRows="False">
                         <DataGrid.Columns>
@@ -69,7 +73,7 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
-                    </DataGrid>
+                    </agc:FilterDataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="系统信息">

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls" 
+             xmlns:agc="https://gitee.com/akwkevin/aistudio.-wpf.-controls/tree/master/AIStudio.Wpf.GridControls"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:AIStudio.Wpf.D_Manage.Views" 
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
@@ -33,19 +34,12 @@
                      Command="{Binding SearchCommand}">
             </ac:SearchBar>
         </StackPanel>
-        <DataGrid Grid.Row="1" x:Name="table" ItemsSource="{Binding Data}"
-                  Margin="3"
-                  IsReadOnly="False"
-                  BorderThickness="1"
-                  HeadersVisibility="None"
-                  GridLinesVisibility="None"
-                  VirtualizingStackPanel.IsVirtualizing="True"
-                  VirtualizingStackPanel.VirtualizationMode="Recycling"
-                  VirtualizingStackPanel.IsVirtualizingWhenGrouping="True" 
-                  ScrollViewer.CanContentScroll="True"
-                  EnableRowVirtualization="True"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="False">
+        <agc:FilterDataGrid Grid.Row="1" 
+                x:Name="table"
+                ItemsSource="{Binding Data}"
+                LayoutName="{Binding Title}"
+                Margin="3"
+                AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -101,7 +95,7 @@
                     <i:InvokeCommandAction Command="{Binding EditCommand}" CommandParameter="{Binding SelectedItem, ElementName=table}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-        </DataGrid>
+        </agc:FilterDataGrid>
         <ac:Pagination Grid.Row="2" 
                          x:Name="pagination"
                          ControlStyle="Plain" 

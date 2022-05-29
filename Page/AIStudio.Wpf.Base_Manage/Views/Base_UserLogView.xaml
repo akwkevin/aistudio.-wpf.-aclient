@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ac="https://gitee.com/akwkevin/aistudio.-wpf.-controls" 
+             xmlns:agc="https://gitee.com/akwkevin/aistudio.-wpf.-controls/tree/master/AIStudio.Wpf.GridControls"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:AIStudio.Wpf.Base_Manage.Views" 
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
@@ -44,9 +45,10 @@
                      Command="{Binding SearchCommand}">
             </ac:SearchBar>
         </ac:Form>
-        <DataGrid Grid.Row="1" 
+        <agc:FilterDataGrid Grid.Row="1" 
                   x:Name="table" 
                   ItemsSource="{Binding Data}"
+                  LayoutName="{Binding Title}"
                   Margin="3"                  
                   AutoGenerateColumns="False">
             <i:Interaction.Behaviors>
@@ -64,7 +66,7 @@
                     <i:InvokeCommandAction Command="{Binding EditCommand}" CommandParameter="{Binding SelectedItem, ElementName=table}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-        </DataGrid>
+        </agc:FilterDataGrid>
         <ac:Pagination Grid.Row="2" 
                          x:Name="pagination"
                          ControlStyle="Plain" 
