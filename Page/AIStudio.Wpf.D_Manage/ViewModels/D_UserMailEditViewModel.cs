@@ -41,14 +41,6 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
         public D_UserMailEditViewModel(D_UserMailDTO data, string area, string identifier, string title = "编辑表单") : base(data, area,identifier, title)
         {
             _operator = ContainerLocator.Current.Resolve<IOperator>();
-            if (Data == null)
-            {
-                InitData();
-            }
-            else
-            {
-                GetData(Data);
-            }
         }
 
 
@@ -83,7 +75,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
 
         private async Task GetUsers()
         {
-            Users = await _userData.GetAllUser();
+            Users = await _userData.GetBase_User();
             if (Data != null && Data.UserIds != null)
             {
                 SelectedUsers = new ObservableCollection<ISelectOption>(Users.Where(p => Data.UserIds.Contains($"^{p.Value}^")));

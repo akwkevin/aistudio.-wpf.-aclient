@@ -19,6 +19,8 @@ namespace AIStudio.Wpf.BasePage.DTOModels
 
         public string Value { get; set; }
 
+        public string ValueInfo { get; set; }
+
         public bool NeedAction { get; set; }
 
         public string Icon { get; set; }

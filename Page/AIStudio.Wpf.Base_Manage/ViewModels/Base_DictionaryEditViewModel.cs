@@ -36,11 +36,10 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_DictionaryEditViewModel(Base_DictionaryTree dataTree, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title)
+        public Base_DictionaryEditViewModel(Base_DictionaryTree dataTree, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title, autoInit:false)
         {
             if (dataTree == null)
             {
-
                 InitData();
             }
             else
@@ -55,7 +54,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             await GetParentIdTreeData();
         }
 
-        protected async void GetData(Base_DictionaryTree dataTree)
+        protected async  void GetData(Base_DictionaryTree dataTree)
         {
             try
             {
@@ -82,7 +81,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetParentIdTreeData()
         {
-            var result = await _dataProvider.GetData<List<Base_DictionaryTree>>($"/Base_Manage/Base_Dictionary/GetMenuTreeList");
+            var result = await _dataProvider.GetData<List<Base_DictionaryTree>>($"/Base_Manage/Base_Dictionary/GetTreeDataList");
             if (!result.Success)
             {
                 throw new Exception(result.Msg);

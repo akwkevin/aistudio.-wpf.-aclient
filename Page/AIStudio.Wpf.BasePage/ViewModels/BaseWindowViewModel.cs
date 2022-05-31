@@ -70,6 +70,8 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             }
         }
 
+        public Dictionary<string, object> SearchKeyValues { get; set; } = new Dictionary<string, object>();
+
         private ObservableCollection<T> _data;
         public ObservableCollection<T> Data
         {
@@ -207,7 +209,8 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                     {
                         keyword = KeyWord,
                         condition = ConditionItem?.Tag,
-                    }
+                    },
+                    SearchKeyValues = SearchKeyValues,
                 };
 
                 var result = await _dataProvider.GetData<List<T>>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/{GetDataList}", JsonConvert.SerializeObject(data));
@@ -405,7 +408,12 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 
         public override void Initialize()
         {
+            if (IsInitialize)
+            {
+                return;
+            }
             base.Initialize();
+            GetData();
         }
 
     }

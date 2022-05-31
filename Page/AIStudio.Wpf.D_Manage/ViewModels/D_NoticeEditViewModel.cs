@@ -63,14 +63,6 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
         public D_NoticeEditViewModel(D_NoticeDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
         {
             _operator = ContainerLocator.Current.Resolve<IOperator>();
-            if (Data == null)
-            {
-                InitData();
-            }
-            else
-            {
-                GetData(Data);
-            }
         }
 
 		protected override async void InitData()
@@ -107,7 +99,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
 
         private async Task GetUsers()
         {
-            Users = await _userData.GetAllUser();
+            Users = await _userData.GetBase_User();
             if (Data != null && Data.Mode == 1 && Data.AnyId != null)
             {
                 SelectedUsers = new ObservableCollection<ISelectOption>(Users.Where(p => Data.AnyId.Contains($"^{p.Value}^")));
@@ -116,7 +108,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
 
         private async Task GetRoles()
         {
-            Roles = await _userData.GetAllRole();
+            Roles = await _userData.GetBase_Role();
             if (Data != null && Data.Mode == 2 && Data.AnyId != null)
             {
                 SelectedRoles = new ObservableCollection<ISelectOption>(Roles.Where(p => Data.AnyId.Contains($"^{p.Value}^")));

@@ -32,7 +32,7 @@ using Unity.Interception.Interceptors.InstanceInterceptors.InterfaceInterception
 using Unity.Interception.PolicyInjection;
 using Xceed.Wpf.AvalonDock;
 using Dataforge.PrismAvalonExtensions;
-using AIStudio.Wpf.AgileDevelopment;
+using AIStudio.Wpf.Agile_Development;
 
 namespace AIStudio.Wpf.Client
 {
@@ -192,7 +192,7 @@ namespace AIStudio.Wpf.Client
                 InitializationMode = InitializationMode.WhenAvailable
             });
 
-            var debug_ToolModule = typeof(AgileDevelopmentModule);
+            var debug_ToolModule = typeof(Agile_DevelopmentModule);
             moduleCatalog.AddModule(new ModuleInfo()
             {
                 ModuleName = debug_ToolModule.Name,

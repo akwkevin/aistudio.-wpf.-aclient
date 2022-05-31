@@ -8,7 +8,7 @@
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
              mc:Ignorable="d" 
              Style="{StaticResource AIStudio.Styles.BaseDialog}">
-    <Grid Width="450" MaxHeight="600">
+    <Grid Width="450" Height="600">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*" />
@@ -52,10 +52,10 @@
                                 </TreeView.ItemContainerStyle>
                                 <TreeView.ItemTemplate>
                                     <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                                        <StackPanel MinHeight="22" Orientation="Horizontal" Background="Transparent" HorizontalAlignment="Left" >
-                                            <TextBlock Text="&#xf023;" x:Name="FontAwesome" Style="{StaticResource AIStudio.Styles.TextBlock.FontAwesome}" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed"/>
-                                            <CheckBox IsChecked="{Binding IsChecked}" Margin="5,0,0,0"></CheckBox>
-                                            <TextBlock Text="{Binding Text}" Margin="5,0,0,0" />
+                                        <StackPanel MinHeight="22" Orientation="Horizontal" Background="Transparent">
+                                            <TextBlock Text="&#xf023;" x:Name="FontAwesome" Style="{StaticResource AIStudio.Styles.TextBlock.FontAwesome}" VerticalAlignment="Center" Visibility="Collapsed"/>
+                                            <CheckBox IsChecked="{Binding IsChecked}" VerticalAlignment="Center" Margin="5,0,0,0"></CheckBox>
+                                            <TextBlock Text="{Binding Text}" VerticalAlignment="Center" Margin="5,0,0,0" />
                                         </StackPanel>
                                         <HierarchicalDataTemplate.Triggers>
                                             <DataTrigger Binding="{Binding Type}" Value="2">

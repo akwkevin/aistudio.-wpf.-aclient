@@ -134,13 +134,16 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         public override void Initialize()
         {
             base.Initialize();
+            if (IsInitialize)
+            {
+                return;
+            }
             InitData();
         }
 
         private async void InitData()
         {
             await GetLogTypeList();
-            GetData();
         }
 
         private async Task GetLogTypeList()

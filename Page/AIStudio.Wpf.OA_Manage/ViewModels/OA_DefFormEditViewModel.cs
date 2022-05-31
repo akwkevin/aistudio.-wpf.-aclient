@@ -78,14 +78,6 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         public OA_DefFormEditViewModel(OA_DefFormDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
         {
-            if (Data == null)
-            {
-                InitData();
-            }
-            else
-            {
-                GetData(Data);
-            }
         }
 
 		protected override async void InitData()
@@ -149,7 +141,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         private async Task GetRoles()
         {
-            Roles = await _userData.GetAllRole();
+            Roles = await _userData.GetBase_Role();
             if (Data != null && Data.ValueRoles != null)
             {
                 SelectedRoles = new ObservableCollection<ISelectOption>(Roles.Where(p => Data.ValueRoles.Contains(p.Value)));
@@ -158,7 +150,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         private async Task GetUsers()
         {
-            Users = await _userData.GetAllUser();
+            Users = await _userData.GetBase_User();
         }
     }
 }

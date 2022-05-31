@@ -1,0 +1,148 @@
+﻿<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              ColumnWidth="400" FontSize="14" FontFamily="宋体"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+              TextOptions.TextFormattingMode="Display">
+    <FlowDocument.Resources>
+        <Style TargetType="Table" x:Key="BorderedTable">
+            <Setter Property="CellSpacing" Value="0"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderBrush" Value="#000"></Setter>
+        </Style>
+        <Style TargetType="TableCell" x:Key="BorderedCell">
+            <Setter Property="BorderThickness" Value="0.5"></Setter>
+            <Setter Property="BorderBrush" Value="#000"></Setter>
+            <Setter Property="Padding" Value="3"></Setter>
+        </Style>
+    </FlowDocument.Resources>   
+
+    <Table Style="{StaticResource BorderedTable}">
+        <Table.Columns>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+        </Table.Columns>
+        <TableRowGroup Name="rowsDetails">
+            <TableRow FontWeight="Bold" >
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>表名</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>列头</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>属性名</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>显示索引</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>配置类型</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>格式化</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>是否显示</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>控件类型</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>只读</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>必输项</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>字典名</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>默认值</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>排序名</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>转换器</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>转换参数</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>对齐方式</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>最大宽度</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>最小宽度</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>列表宽度</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>是否可以重排</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>是否可以调整大小</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>是否可以排序</Paragraph>
+                </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>背景颜色触发公式</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>前景颜色触发公式</Paragraph>
+               </TableCell>
+
+            </TableRow>
+        </TableRowGroup>
+    </Table>
+</FlowDocument>

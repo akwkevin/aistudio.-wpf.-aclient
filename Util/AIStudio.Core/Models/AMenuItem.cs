@@ -22,6 +22,8 @@ namespace AIStudio.Core.Models
 
         public string Code { get; set; }
 
+        public string Value { get; set; }
+
         public string WpfName
         {
             get

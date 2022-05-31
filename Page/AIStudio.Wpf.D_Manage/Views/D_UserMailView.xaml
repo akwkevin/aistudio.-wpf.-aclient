@@ -21,7 +21,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" SelectedItem="{Binding ConditionItem}" 
+            <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" SelectedItem="{Binding ConditionItem}"
                       ac:ControlAttach.ClearTextButton="True"
                       Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
                 <ComboBoxItem Tag="CreatorName" IsEnabled="{Binding IndexType,Converter={converter:ConverterValueMapSetToBool},ConverterParameter='1'}">发件人</ComboBoxItem>

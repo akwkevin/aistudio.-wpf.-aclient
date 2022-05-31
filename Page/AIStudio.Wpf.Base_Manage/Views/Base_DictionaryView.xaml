@@ -23,13 +23,12 @@
                  <StackPanel Orientation="Horizontal">
                     <Button ac:IconAttach.Geometry="{StaticResource AddGeometry}" perm:PermissionHelper.HasPerm="Base_Dictionary.Add" Margin="3" Content="新建" Command="{Binding AddCommand}"></Button>
                     <Button ac:IconAttach.Geometry="{StaticResource EditGeometry}" perm:PermissionHelper.HasPerm="Base_Dictionary.Edit" Margin="3" Content="编辑" Command="{Binding EditCommand}"></Button>
-                    <Button ac:IconAttach.Geometry="{StaticResource DisplayGeometry}" perm:PermissionHelper.HasPerm="Base_Dictionary.View" Margin="3" Content="查看" Command="{Binding ViewCommand}"></Button>
                     <Button ac:IconAttach.Geometry="{StaticResource RemoveGeometry}" perm:PermissionHelper.HasPerm="Base_Dictionary.Delete" ac:ControlAttach.Status="Danger" Margin="3" Content="删除" Command="{Binding DeleteCommand}"></Button>
                     <Button ac:IconAttach.Geometry="{StaticResource RefreshGeometry}" ac:ControlAttach.Status="Success" Margin="3" Content="刷新" Command="{Binding RefreshCommand}"></Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
-                <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" ac:ControlAttach.ClearTextButton="True">
+                <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" ac:ControlAttach.ClearTextButton="True" SelectedItem="{Binding ConditionItem}">
                     <ComboBoxItem Tag="Name">字典名</ComboBoxItem>
                 </ComboBox>
 			    <ac:SearchBar Width="220" Margin="4,3" 
@@ -44,7 +43,7 @@
                   Margin="3"
                   AutoGenerateColumns="False">
             <i:Interaction.Behaviors>
-                <core:SelectAllBahavior InitialState="False"/>
+                <ac:SelectAllBahavior InitialState="False"/>
             </i:Interaction.Behaviors>
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="">

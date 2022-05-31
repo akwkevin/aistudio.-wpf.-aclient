@@ -1,5 +1,7 @@
 ﻿using Prism.Mvvm;
+using Prism.Regions;
 using System;
+using System.Collections.Generic;
 using System.Windows.Media;
 
 namespace Dataforge.PrismAvalonExtensions.ViewModels
@@ -91,11 +93,6 @@ namespace Dataforge.PrismAvalonExtensions.ViewModels
 
         #endregion
 
-        #region MaxTabItemNumber
-        public int MaxTabItemNumber { get; set; } = 1;
-        public int TabItemNumber { get; set; } = 1;
-        #endregion
-
         public DockWindowViewModel()
         {
             this.CanClose = true;
@@ -103,9 +100,10 @@ namespace Dataforge.PrismAvalonExtensions.ViewModels
         }
 
 
+        protected bool IsInitialize;
         public virtual void Initialize()
         {
-
+            IsInitialize = true;
         }
         /// <summary>
         /// 释放标记

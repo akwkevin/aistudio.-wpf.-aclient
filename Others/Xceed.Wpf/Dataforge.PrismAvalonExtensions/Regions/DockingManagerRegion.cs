@@ -16,7 +16,7 @@ namespace Dataforge.PrismAvalonExtensions.Regions
         public DockingManagerRegion()
         {
             EventAggregator.GetEvent<CloseAllDocumentsEvent>().Subscribe(OnCloseAllDocuments);
-            this.NavigationService.Navigating += NavigationService_Navigating;
+            this.NavigationService.Navigated += NavigationService_Navigating;
         }
 
         private void OnCloseAllDocuments(CloseAllDocumentsEventArgs args)
@@ -66,7 +66,7 @@ namespace Dataforge.PrismAvalonExtensions.Regions
         {
             if (e.NavigationContext.Parameters.ContainsKey("Title"))
             {
-                var view = this.Views.FirstOrDefault(x => x.GetType().Name == e.Uri.ToString() || x.GetType().FullName == e.Uri.ToString()) as FrameworkElement;
+                var view = e.NavigationContext.NavigationService.Region.ActiveViews.LastOrDefault() as FrameworkElement;
                 if (view != null && view.DataContext != null)
                 {
                     var propertyInfo = view.DataContext.GetType().GetProperty("Title");
@@ -79,7 +79,7 @@ namespace Dataforge.PrismAvalonExtensions.Regions
             }
             if (e.NavigationContext.Parameters.ContainsKey("Glyph"))
             {
-                var view = this.Views.FirstOrDefault(x => x.GetType().Name == e.Uri.ToString() || x.GetType().FullName == e.Uri.ToString()) as FrameworkElement;
+                var view = e.NavigationContext.NavigationService.Region.ActiveViews.LastOrDefault() as FrameworkElement;
                 if (view != null && view.DataContext != null)
                 {
                     var propertyInfo = view.DataContext.GetType().GetProperty("Glyph");

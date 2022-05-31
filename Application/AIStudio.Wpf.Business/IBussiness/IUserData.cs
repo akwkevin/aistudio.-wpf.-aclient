@@ -7,17 +7,20 @@ namespace AIStudio.Wpf.Business
 {
     public interface IUserData
     {
-        Task<ObservableCollection<ISelectOption>> GetAllUser();
-        void ClearAllUser();
-        Task<ObservableCollection<ISelectOption>> GetAllRole();
-        void ClearAllRole();
-        Task<ObservableCollection<ISelectOption>> GetAllTreeDepartment();
-        Task<ObservableCollection<ISelectOption>> GetAllDepartment();
-        void ClearAllDepartment();
-        Task<ObservableCollection<DictionaryTreeModel>> GetAllDictionary();
-        void ClearAllDictionary();
-        Dictionary<string, ObservableCollection<ISelectOption>> Items { get; }
-        Dictionary<string, DictionaryTreeModel> Dictionarys { get;  }
+        Task<ObservableCollection<ISelectOption>> GetBase_User();
+        void ClearBase_User();
+        Task<ObservableCollection<ISelectOption>> GetBase_Role();
+        void ClearBase_Role();
+        Task<ObservableCollection<ISelectOption>> GetBase_DepartmentTree();
+        Task<ObservableCollection<ISelectOption>> GetBase_Department();
+        void ClearBase_Department();
+        Task<ObservableCollection<ISelectOption>> GetBase_ActionTree();
+        Task<ObservableCollection<ISelectOption>> GetBase_Action();
+        void ClearBase_Action();
+        Task<ObservableCollection<DictionaryTreeModel>> GetBase_Dictionary();
+        void ClearBase_Dictionary();
+        Dictionary<string, ObservableCollection<ISelectOption>> ItemSource { get; }
+        Dictionary<string, DictionaryTreeModel> Base_Dictionary { get;  }
         Task Init();
     }
 }

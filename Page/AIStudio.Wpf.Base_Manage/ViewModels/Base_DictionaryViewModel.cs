@@ -62,12 +62,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue };
         }
 
-        public override void Initialize()
-        {
-            base.Initialize();
-            GetData();
-        }
-
         protected override async void GetData(bool iswaiting = false)
         {
             try
@@ -77,7 +71,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     ShowWait();
                 }
 
-                var result = await _dataProvider.GetData<List<Base_DictionaryTree>>($"/Base_Manage/Base_Dictionary/GetMenuTreeList");
+                var result = await _dataProvider.GetData<List<Base_DictionaryTree>>($"/Base_Manage/Base_Dictionary/GetTreeDataList");
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);

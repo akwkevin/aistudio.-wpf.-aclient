@@ -1,0 +1,263 @@
+﻿<ac:BaseDialog x:Class="AIStudio.Wpf.Base_Manage.Views.Base_CommonFormConfigEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="AIStudio.Wpf.Base_Manage.Views"
+             xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
+             xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
+             mc:Ignorable="d" 
+             Style="{StaticResource AIStudio.Styles.BaseDialog}">
+    <Grid Width="450">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Border Background="{DynamicResource MahApps.Brushes.Accent}" CornerRadius="3,3,0,0">
+            <TextBlock Margin="10,0"
+                Text="{Binding Title}" 
+                Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"/>
+        </Border>
+        <Border Grid.Row="1">
+                <ScrollViewer>
+				<ac:Form DataContext="{Binding Data}"
+                                     ac:Form.ItemMargin="3"  
+                                     ac:Form.HeaderWidth="80"
+                                     ac:Form.HeaderMargin="0,0,3,0">
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>表名</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding Table,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>列头</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding Header,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>属性名</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding PropertyName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>显示索引</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding DisplayIndex,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>配置类型 查询=0，列表=1</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding Type,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>格式化</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding StringFormat,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>是否显示 Visible = 0,Hidden = 1,Collapsed = 2</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding Visibility,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>控件类型，仅控件框使用</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding ControlType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>只读</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding IsReadOnly,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>必输项</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding IsRequired,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>字典名</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding ItemSource,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>默认值</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>排序名</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding SortMemberPath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>转换器</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding Converter,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>转换参数</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding ConverterParameter,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>对齐方式 Left = 0,Center = 1,Right = 2,Stretch = 3</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding HorizontalAlignment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>最大宽度</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding MaxWidth,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>最小宽度</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding MinWidth,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>列表宽度</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding Width,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>是否可以重排</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding CanUserReorder,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>是否可以调整大小</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding CanUserResize,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                    <ac:FormItem>
+                        <ac:FormItem.Header>
+                            <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>是否可以排序</Run>
+                            </TextBlock>
+                        </ac:FormItem.Header>
+                        <TextBox Text="{Binding CanUserSort,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                    </ac:FormItem>
+                    <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>背景颜色触发公式</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding BackgroundExpression,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
+                                    <Run Foreground = "Red" > *</Run>
+                                    <Run>前景颜色触发公式</Run>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding ForegroundExpression,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+				</ac:Form>
+			</ScrollViewer>
+        </Border>
+        <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right" 
+                        Margin="10,0">
+            <Button x:Name="PART_AffirmativeButton"
+                    VerticalAlignment="Center"
+                    Content="确定"
+                    Margin="0 0 5 0" />
+            <Button x:Name="PART_NegativeButton"
+                    VerticalAlignment="Center"
+                    Content="取消"
+                    Margin="5 0 5 0" />
+        </StackPanel>
+    </Grid>
+</ac:BaseDialog>

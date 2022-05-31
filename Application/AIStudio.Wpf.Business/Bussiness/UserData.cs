@@ -17,19 +17,23 @@ namespace AIStudio.Wpf.Business
 
         }
 
-        private ObservableCollection<ISelectOption> alluser { get; set; } = new ObservableCollection<ISelectOption>();
+        private ObservableCollection<ISelectOption> base_user { get; set; } = new ObservableCollection<ISelectOption>();
 
-        private ObservableCollection<ISelectOption> allrole { get; set; } = new ObservableCollection<ISelectOption>();
+        private ObservableCollection<ISelectOption> base_role { get; set; } = new ObservableCollection<ISelectOption>();
 
-        private ObservableCollection<ISelectOption> alldepartment { get; set; } = new ObservableCollection<ISelectOption>();
+        private ObservableCollection<ISelectOption> base_department { get; set; } = new ObservableCollection<ISelectOption>();
 
-        private ObservableCollection<ISelectOption> alltreedepartment { get; set; } = new ObservableCollection<ISelectOption>();
+        private ObservableCollection<ISelectOption> base_departmenttree { get; set; } = new ObservableCollection<ISelectOption>();
 
-        private ObservableCollection<DictionaryTreeModel> alldictionary { get; set; } = new ObservableCollection<DictionaryTreeModel>();
+        private ObservableCollection<ISelectOption> base_action { get; set; } = new ObservableCollection<ISelectOption>();
 
-        public async Task<ObservableCollection<ISelectOption>> GetAllUser()
+        private ObservableCollection<ISelectOption> base_actiontree { get; set; } = new ObservableCollection<ISelectOption>();
+
+        private ObservableCollection<DictionaryTreeModel> base_dictionary { get; set; } = new ObservableCollection<DictionaryTreeModel>();
+
+        public async Task<ObservableCollection<ISelectOption>> GetBase_User()
         {
-            if (alluser.Count == 0)
+            if (base_user.Count == 0)
             {
                 var result = await _dataProvider.GetData<ObservableCollection<SelectOption>>("/Base_Manage/Base_User/GetOptionList");
                 if (!result.Success)
@@ -38,21 +42,21 @@ namespace AIStudio.Wpf.Business
                 }
                 else
                 {
-                    alluser.AddRange(result.Data);
+                    base_user.AddRange(result.Data);
                 }
             }
 
-            return alluser;
+            return base_user;
         }
 
-        public void ClearAllUser()
+        public void ClearBase_User()
         {
-            alluser.Clear();
+            base_user.Clear();
         }
 
-        public async Task<ObservableCollection<ISelectOption>> GetAllRole()
+        public async Task<ObservableCollection<ISelectOption>> GetBase_Role()
         {
-            if (allrole.Count == 0)
+            if (base_role.Count == 0)
             {
                 var result = await _dataProvider.GetData<ObservableCollection<SelectOption>>("/Base_Manage/Base_Role/GetOptionList");
                 if (!result.Success)
@@ -61,21 +65,21 @@ namespace AIStudio.Wpf.Business
                 }
                 else
                 {
-                    allrole.AddRange(result.Data);
+                    base_role.AddRange(result.Data);
                 }
             }
 
-            return allrole;
+            return base_role;
         }
 
-        public void ClearAllRole()
+        public void ClearBase_Role()
         {
-            allrole.Clear();
+            base_role.Clear();
         }
 
-        public async Task<ObservableCollection<ISelectOption>> GetAllTreeDepartment()
+        public async Task<ObservableCollection<ISelectOption>> GetBase_DepartmentTree()
         {
-            if (alltreedepartment.Count == 0)
+            if (base_departmenttree.Count == 0)
             {
                 var result = await _dataProvider.GetData<ObservableCollection<TreeModel>>("/Base_Manage/Base_Department/GetTreeDataList");
                 if (!result.Success)
@@ -84,71 +88,109 @@ namespace AIStudio.Wpf.Business
                 }
                 else
                 {
-                    alltreedepartment.AddRange(result.Data);
+                    base_departmenttree.AddRange(result.Data);
                 }
             }
 
-            return alltreedepartment;
+            return base_departmenttree;
         }
 
-        public async Task<ObservableCollection<ISelectOption>> GetAllDepartment()
+        public async Task<ObservableCollection<ISelectOption>> GetBase_Department()
         {
-            if (alldepartment.Count == 0)
+            if (base_department.Count == 0)
             {
-                var tree = await GetAllTreeDepartment();
-                alldepartment.AddRange(TreeHelper.GetTreeToList(tree.Select(p => p as TreeModel)));
+                var tree = await GetBase_DepartmentTree();
+                base_department.AddRange(TreeHelper.GetTreeToList(tree.Select(p => p as TreeModel)));
             }
 
-            return alldepartment;
+            return base_department;
         }
 
-        public void ClearAllDepartment()
+        public void ClearBase_Department()
         {
-            alltreedepartment.Clear();
-            alldepartment.Clear();
+            base_departmenttree.Clear();
+            base_department.Clear();
         }
 
-        public async Task<ObservableCollection<DictionaryTreeModel>> GetAllDictionary()
+        public async Task<ObservableCollection<ISelectOption>> GetBase_ActionTree()
         {
-            if (alldictionary.Count == 0)
+            if (base_actiontree.Count == 0)
             {
-                var result = await _dataProvider.GetData<ObservableCollection<DictionaryTreeModel>>("/Base_Manage/Base_Dictionary/GetMenuTreeList");
+                var result = await _dataProvider.GetData<ObservableCollection<TreeModel>>("/Base_Manage/Base_Action/GetActionTreeList");
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);
                 }
                 else
                 {
-                    alldictionary.AddRange(result.Data);
+                    base_actiontree.AddRange(result.Data);
                 }
             }
 
-            return alldictionary;
+            return base_actiontree;
         }
 
-        public void ClearAllDictionary()
+        public async Task<ObservableCollection<ISelectOption>> GetBase_Action()
         {
-            alldictionary.Clear();
+            if (base_action.Count == 0)
+            {
+                var tree = await GetBase_ActionTree();
+                base_action.AddRange(TreeHelper.GetTreeToList(tree.Select(p => p as TreeModel)));
+            }
+
+            return base_action;
         }
 
-        public Dictionary<string, ObservableCollection<ISelectOption>> Items { get; private set; } = new Dictionary<string, ObservableCollection<ISelectOption>>();
-        public Dictionary<string, DictionaryTreeModel> Dictionarys { get; private set; } = new Dictionary<string, DictionaryTreeModel>();
+        public void ClearBase_Action()
+        {
+            base_actiontree.Clear();
+            base_action.Clear();
+        }
+
+        public async Task<ObservableCollection<DictionaryTreeModel>> GetBase_Dictionary()
+        {
+            if (base_dictionary.Count == 0)
+            {
+                var result = await _dataProvider.GetData<ObservableCollection<DictionaryTreeModel>>("/Base_Manage/Base_Dictionary/GetTreeDataList");
+                if (!result.Success)
+                {
+                    throw new Exception(result.Msg);
+                }
+                else
+                {
+                    base_dictionary.AddRange(result.Data);
+                }
+            }
+
+            return base_dictionary;
+        }
+
+        public void ClearBase_Dictionary()
+        {
+            base_dictionary.Clear();
+        }
+
+        public Dictionary<string, ObservableCollection<ISelectOption>> ItemSource { get; private set; } = new Dictionary<string, ObservableCollection<ISelectOption>>();
+        public Dictionary<string, DictionaryTreeModel> Base_Dictionary { get; private set; } = new Dictionary<string, DictionaryTreeModel>();
 
         public async Task Init()
         {
-            ClearAllUser(); 
-            ClearAllRole();
-            ClearAllDepartment();
-            ClearAllDictionary();
+            ClearBase_User(); 
+            ClearBase_Role();
+            ClearBase_Department();
+            ClearBase_Dictionary();
+            ClearBase_Action();
 
-            Items.Clear();
-            Dictionarys.Clear();
-            Items.Add("User", await GetAllUser());
-            Items.Add("Role", await GetAllRole());
-            Items.Add("Department", await GetAllDepartment());
-            Items.Add("TreeDepartment", await GetAllTreeDepartment());
-            var datas = await GetAllDictionary();
-            BuildDictionary(Items, Dictionarys, datas);
+            ItemSource.Clear();
+            Base_Dictionary.Clear();
+            ItemSource.Add("Base_User", await GetBase_User());
+            ItemSource.Add("Base_Role", await GetBase_Role());
+            ItemSource.Add("Base_Department", await GetBase_Department());
+            ItemSource.Add("Base_DepartmentTree", await GetBase_DepartmentTree());
+            ItemSource.Add("Base_Action", await GetBase_Action());
+            ItemSource.Add("Base_ActionTree", await GetBase_ActionTree());
+            var datas = await GetBase_Dictionary();
+            BuildDictionary(ItemSource, Base_Dictionary, datas);
         }
 
         public static void BuildDictionary(Dictionary<string, ObservableCollection<ISelectOption>> items, Dictionary<string, DictionaryTreeModel> dics, IEnumerable<DictionaryTreeModel> trees)

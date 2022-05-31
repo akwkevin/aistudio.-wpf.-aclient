@@ -30,7 +30,7 @@
                     Margin="3"
                     AutoGenerateColumns="False">
             <i:Interaction.Behaviors>
-                <core:SelectAllBahavior InitialState="False"/>
+                <ac:SelectAllBahavior InitialState="False"/>
             </i:Interaction.Behaviors>
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="">

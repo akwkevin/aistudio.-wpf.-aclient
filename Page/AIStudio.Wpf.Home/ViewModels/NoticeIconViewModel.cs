@@ -156,12 +156,12 @@ namespace AIStudio.Wpf.Home.ViewModels
 
                 if (clearcache.Contains("Base_User"))
                 {
-                    _userData.ClearAllUser();
+                    _userData.ClearBase_User();
                 }
 
                 if (clearcache.Contains("Base_Role"))
                 {
-                    _userData.ClearAllRole();
+                    _userData.ClearBase_Role();
                 }
             }
         }

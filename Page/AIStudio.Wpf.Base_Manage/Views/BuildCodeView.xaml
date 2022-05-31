@@ -37,7 +37,7 @@
                   Margin="3"                 
                   AutoGenerateColumns="False">
             <i:Interaction.Behaviors>
-                <core:SelectAllBahavior InitialState="False"/>
+                <ac:SelectAllBahavior InitialState="False"/>
             </i:Interaction.Behaviors>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="表名"  Binding="{Binding TableName}" IsReadOnly="True"/>

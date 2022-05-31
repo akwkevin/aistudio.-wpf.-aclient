@@ -41,12 +41,6 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             Identifier = identifier;
         }
 
-        public new void Initialize()
-        {
-            base.Initialize();
-            GetData();
-        }
-
         public D_UserMailViewModel(string[] id)//无效参数，做个标记
         {
       

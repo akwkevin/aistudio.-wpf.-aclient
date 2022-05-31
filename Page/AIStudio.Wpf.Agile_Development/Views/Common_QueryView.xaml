@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="AIStudio.Wpf.Agile_Development.Views.Common_QueryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
+             xmlns:agc="https://gitee.com/akwkevin/AI-wpf-controls/tree/master/AIStudio.Wpf.GridControls"
+             xmlns:local="clr-namespace:AIStudio.Wpf.Agile_Development.Views"
+             xmlns:attribute="clr-namespace:AIStudio.Wpf.Agile_Development"
+             xmlns:converter="clr-namespace:AIStudio.Wpf.Agile_Development.Converter"
+             xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/AIStudio.Wpf.GridControls;component/Themes/MahApps.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/AIStudio.Wpf.Agile_Development;component/Themes/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>            
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid Background="Transparent">
+            <Grid.ContextMenu>
+                <ContextMenu Style="{DynamicResource AIStudio.Styles.ContextMenu}">
+                    <MenuItem Header="配置查询条件" Command="{Binding QueryConditionConfigCommand}" />
+                </ContextMenu>
+            </Grid.ContextMenu>
+
+            <ac:Form HeaderWidth="Auto" ItemMargin="3" HeaderMargin="0,0,3,0" ItemsSource="{Binding QueryConditionItems}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Control Style="{StaticResource QueryControlStyle}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ac:Form>
+            <Popup Placement="MousePoint" MaxWidth="500" IsOpen="{Binding QueryConditionConfigIsOpen}" StaysOpen="False">
+                <Border BorderThickness="1" BorderBrush="{DynamicResource MahApps.Brushes.Accent}" Background="{DynamicResource MahApps.Brushes.ThemeBackground}">
+                    <ItemsControl ItemsSource="{Binding QueryConditionItems}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel x:Name="panel" Orientation="Horizontal" Margin="2">
+                                    <CheckBox IsChecked="{Binding Visibility,Converter={converter:ConverterValueMapToBool Parameter='Collapsed'},ConverterParameter='Visible',Mode=TwoWay}"/>
+                                    <TextBlock Text="{Binding Header}" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}" Margin="0,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding ControlType}" Value="Query">
+                                        <Setter TargetName="panel" Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Border>
+            </Popup>
+        </Grid>
+
+        <agc:FilterDataGrid x:Name="table" 
+                            Grid.Row="1"
+                            ItemsSource="{Binding Data}"
+                            SelectedItem="{Binding SelectedItem}"
+                            LayoutName="{Binding Title}"
+                            attribute:DataGridColumnsAttach.BindableColumns="{Binding DataGridColumns}"                            
+                            AutoGenerateColumns="False">
+            <i:Interaction.Behaviors>
+                <ac:SelectAllBahavior InitialState="False"/>
+            </i:Interaction.Behaviors>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding EditCommand}" CommandParameter="{Binding SelectedItem, ElementName=table}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </agc:FilterDataGrid>
+
+        <ac:Pagination x:Name="pagination"
+                         Grid.Row="2"
+                         ControlStyle="Plain" 
+                         CurrentIndex="{Binding Pagination.PageIndex,Mode=TwoWay}"  
+                         Total="{Binding Pagination.Total}"
+                         PageSize="{Binding Pagination.PageRows,Mode=TwoWay}"
+                         Height="Auto" HorizontalAlignment="Right" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="CurrentIndexChanged">
+                    <i:InvokeCommandAction Command="{Binding CurrentIndexChangedComamnd}" CommandParameter="{Binding ElementName=pagination}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ac:Pagination>
+
+        <ac:Form Grid.Row="3" HeaderWidth="Auto" ItemMargin="3" HeaderMargin="0,0,3,0" ItemsSource="{Binding EditFormItems}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Control Style="{StaticResource EditControlStyle}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ac:Form>
+    </Grid>
+</UserControl>

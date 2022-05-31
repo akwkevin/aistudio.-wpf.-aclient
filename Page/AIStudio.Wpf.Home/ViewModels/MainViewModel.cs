@@ -469,9 +469,9 @@ namespace AIStudio.Wpf.Home.ViewModels
                 code.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "敏捷布局-表单", Code = "/AgileDevelopment/FormView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "敏捷布局-表单生成", Code = "/AgileDevelopment/FormCodeView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "敏捷crud-用户管理", Code = "/AgileDevelopment/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "表单Form", Code = "/Agile_Development/FormView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "表单-代码生成", Code = "/Agile_Development/FormCodeView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "crud-用户管理", Code = "/Agile_Development/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
             }
 #endif
             var tool = new AMenuItem() { Icon = "tool", Label = "工具", Code = "Tool", Type = 0, Command = MenuExcuteCommand };
@@ -547,7 +547,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             var nodes = base_Actions.Where(p => string.IsNullOrEmpty(p.ParentId));
             foreach (var node in nodes)
             {
-                AMenuItem aMenuItem = new AMenuItem() { Icon = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id, NeedAction = node.NeedAction };
+                AMenuItem aMenuItem = new AMenuItem() { Icon = node.Icon, Label = node.Text, Code = node.Url, Value = node.ValueInfo, Type = node.Type, ParentId = node.ParentId, Id = node.Id, NeedAction = node.NeedAction };
                 if (aMenuItem.Type == 1)
                 {
                     aMenuItem.Command = MenuExcuteCommand;
@@ -563,7 +563,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 foreach (var node in parent.Children)
                 {
-                    AMenuItem aMenuItem = new AMenuItem() { Icon = node.Icon, Label = node.Text, Code = node.Url, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
+                    AMenuItem aMenuItem = new AMenuItem() { Icon = node.Icon, Label = node.Text, Code = node.Url, Value = node.ValueInfo, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
                     if (aMenuItem.Type == 1)
                     {
                         aMenuItem.Command = MenuExcuteCommand;
@@ -783,6 +783,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 paras.Add("Title", item.Label);
                 paras.Add("Glyph", item.Icon);
                 paras.Add("Identifier", Identifier);
+                paras.Add("Value", item.Value);
                 _regionManager.RequestNavigate(RegionName, item.WpfCode, NavigationComplete, paras);
             }
         }

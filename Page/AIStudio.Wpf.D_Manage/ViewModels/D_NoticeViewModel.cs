@@ -36,12 +36,6 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             _operator = ContainerLocator.Current.Resolve<IOperator>();
         }
 
-        public override void Initialize()
-        {
-            base.Initialize();
-            GetData();
-        }
-
         protected override async void GetData(bool iswaiting = false)
         {
             try

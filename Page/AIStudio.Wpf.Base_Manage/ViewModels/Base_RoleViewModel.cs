@@ -17,12 +17,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
            
         }
 
-        public override void Initialize()
-        {
-            base.Initialize();
-            GetData();
-        }
-
         protected override void GetData(bool iswaiting = false)
         {
             base.GetData(iswaiting);

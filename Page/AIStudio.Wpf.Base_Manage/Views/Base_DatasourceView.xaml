@@ -128,7 +128,7 @@
             SelectedItem="{Binding SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             LayoutName="{Binding Title}">
             <i:Interaction.Behaviors>
-                <core:SelectAllBahavior InitialState="False" />
+                <ac:SelectAllBahavior InitialState="False" />
             </i:Interaction.Behaviors>
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="55" Header="序号">

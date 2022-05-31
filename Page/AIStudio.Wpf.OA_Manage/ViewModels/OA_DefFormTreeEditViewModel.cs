@@ -72,12 +72,12 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         private async void GetRoles()
         {
-            Roles = await _userData.GetAllRole();
+            Roles = await _userData.GetBase_Role();
         }
 
         private async void GetUsers()
         {
-            Users = await _userData.GetAllUser();
+            Users = await _userData.GetBase_User();
         }
     }
 

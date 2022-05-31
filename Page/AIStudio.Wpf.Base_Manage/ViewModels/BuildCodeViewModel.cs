@@ -88,12 +88,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             directory = basedir.Substring(0, basedir.IndexOf("Application"));
         }
 
-        public override void Initialize()
-        {
-            base.Initialize();
-            GetData();
-        }
-
         private async Task GetDbTableInfo()
         {
             var result = await _dataProvider.GetData<List<Base_DbLinkDTO>>($"/{Area}/BuildCode/GetAllDbLink");

@@ -71,15 +71,9 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                       
         }
 
-        public override void Initialize()
-        {
-            base.Initialize();
-            GetData();
-        }
-
         private async Task GetRoles()
         {
-            Roles = await _userData.GetAllRole();
+            Roles = await _userData.GetBase_Role();
         }
 
         protected override async void GetData(bool iswaiting = false)

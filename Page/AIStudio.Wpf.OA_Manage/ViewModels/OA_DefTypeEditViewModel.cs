@@ -7,14 +7,6 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
     {
         public OA_DefTypeEditViewModel(OA_DefTypeDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
         {
-            if (Data == null)
-            {
-                InitData();
-            }
-            else
-            {
-                GetData(Data);
-            }
         }
 
 		protected override void InitData()

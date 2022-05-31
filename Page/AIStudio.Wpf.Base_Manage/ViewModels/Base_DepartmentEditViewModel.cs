@@ -35,7 +35,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_DepartmentEditViewModel(Base_DepartmentTree dataTree, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title)
+        public Base_DepartmentEditViewModel(Base_DepartmentTree dataTree, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title, autoInit:false)
         {
             if (dataTree == null)
             {
@@ -79,7 +79,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetDepartment()
         {
-            Departments = await _userData.GetAllTreeDepartment();
+            Departments = await _userData.GetBase_DepartmentTree();
             if (Data != null && !string.IsNullOrEmpty(Data.ParentId))
             {
                 SelectedDepartment = TreeHelper.GetTreeModel(Departments.Select(p => p as TreeModel), Data.ParentId);

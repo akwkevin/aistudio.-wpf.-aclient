@@ -46,11 +46,23 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         protected IDataProvider _dataProvider { get { return ContainerLocator.Current.Resolve<IDataProvider>(); } }
         protected IUserData _userData { get { return ContainerLocator.Current.Resolve<IUserData>(); } }
 
-        public BaseEditViewModel(T data, string area, string identifier, string title = "编辑表单")
+        public BaseEditViewModel(T data, string area, string identifier, string title = "编辑表单", bool autoInit = true)
         {
             Data = data;
             Title = title;
-            Area = area;      
+            Area = area;
+
+            if (autoInit)
+            {
+                if (Data == null)
+                {
+                    InitData();
+                }
+                else
+                {
+                    GetData(Data);
+                }
+            }
         }
 
         protected virtual void InitData()

@@ -73,11 +73,10 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_ActionEditViewModel(Base_ActionTree dataTree, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title)
+        public Base_ActionEditViewModel(Base_ActionTree dataTree, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title, autoInit:false)
         {
             if (dataTree == null)
             {
-
                 InitData();
             }
             else

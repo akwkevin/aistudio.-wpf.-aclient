@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.13" />
-    <PackageReference Include="AIStudio.Wpf.GridControls" Version="1.0.3" />
+    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.15" />
+    <PackageReference Include="AIStudio.Wpf.GridControls" Version="1.0.4" />
     <PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
     <PackageReference Include="MahApps.Metro" Version="2.0.0" />
     <PackageReference Include="Prism.DryIoc" Version="8.1.97" />

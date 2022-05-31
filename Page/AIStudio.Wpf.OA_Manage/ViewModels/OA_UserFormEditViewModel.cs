@@ -89,7 +89,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         public OA_UserFormEditViewModel(OA_UserFormDTO data, string area, string identifier, string title = "编辑表单") : this(data, area, identifier, title, "", "", "", 0, "") { }
 
-        public OA_UserFormEditViewModel(OA_UserFormDTO data, string area, string identifier, string title, string type, string key, string jsonId, int jsonVersion, string json) : base(data, area, identifier, title)
+        public OA_UserFormEditViewModel(OA_UserFormDTO data, string area, string identifier, string title, string type, string key, string jsonId, int jsonVersion, string json) : base(data, area, identifier, title, autoInit:false)
         {
             _operator = ContainerLocator.Current.Resolve<IOperator>();
             if (Data == null)
@@ -137,7 +137,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         private async Task GetUsers()
         {
-            Users = await _userData.GetAllUser();
+            Users = await _userData.GetBase_User();
         }
 
         private async Task GetTypes()

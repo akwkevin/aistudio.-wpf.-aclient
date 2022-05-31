@@ -35,14 +35,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         public Base_RoleEditViewModel(Base_RoleDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
         {
-            if (Data == null)
-            {
-                InitData();
-            }
-            else
-            {
-                GetData(Data);
-            }
+
         }
 
         protected override async void GetData(Base_RoleDTO para)

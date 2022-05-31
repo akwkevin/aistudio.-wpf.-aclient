@@ -57,14 +57,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         public Base_UserEditViewModel(Base_UserDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
         {
-            if (Data == null)
-            {
-                InitData();
-            }
-            else
-            {
-                GetData(Data);
-            }
         }
 
         protected override async void InitData()
@@ -102,7 +94,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetRoles()
         {
-            Roles = await _userData.GetAllRole();
+            Roles = await _userData.GetBase_Role();
             if (Data != null && Data.RoleIdList != null)
             {
                 SelectedRoles = new ObservableCollection<ISelectOption>(Roles.Where(p => Data.RoleIdList.Contains(p.Value)));
@@ -111,7 +103,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetDepartment()
         {
-            Departments = await _userData.GetAllTreeDepartment();
+            Departments = await _userData.GetBase_DepartmentTree();
             if (Data != null && !string.IsNullOrEmpty(Data.DepartmentId))
             {
                 SelectedDepartment = TreeHelper.GetTreeModel(Departments.Select(p => p as TreeModel), Data.DepartmentId);
