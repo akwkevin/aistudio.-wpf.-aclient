@@ -12,7 +12,10 @@
              xmlns:command="clr-namespace:AIStudio.Core.ExCommand;assembly=AIStudio.Core"
              xmlns:perm="clr-namespace:AIStudio.Wpf.BasePage.Permission;assembly=AIStudio.Wpf.BasePage"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">    
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ac:EnumDescriptionConverter x:Key="EnumDescriptionConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -30,7 +33,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
-                <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" SelectedItem="{Binding ConditionItem}"
+                <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" SelectedItem="{Binding ConditionItem}" SelectedIndex="0"
                           ac:ControlAttach.ClearTextButton="True"
                           Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
                     <ComboBoxItem Tag="Table">表名</ComboBoxItem>
@@ -55,11 +58,12 @@
 				<DataGridTextColumn Header="表名"  Binding="{Binding Table}" IsReadOnly="True"/>
 				<DataGridTextColumn Header="列头"  Binding="{Binding Header}" IsReadOnly="True"/>
 				<DataGridTextColumn Header="属性名"  Binding="{Binding PropertyName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="属性类型"  Binding="{Binding PropertyType}" IsReadOnly="True"/>
 				<DataGridTextColumn Header="显示索引"  Binding="{Binding DisplayIndex}" IsReadOnly="True"/>
-				<DataGridTextColumn Header="配置类型"  Binding="{Binding Type}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="配置类型"  Binding="{Binding TypeName}" IsReadOnly="True"/>
 				<DataGridTextColumn Header="格式化"  Binding="{Binding StringFormat}" IsReadOnly="True"/>
-				<DataGridTextColumn Header="是否显示"  Binding="{Binding Visibility}" IsReadOnly="True"/>
-				<DataGridTextColumn Header="控件类型"  Binding="{Binding ControlType}" IsReadOnly="True"/>
+				<DataGridTextColumn Header="是否显示"  Binding="{Binding VisibilityName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="控件类型"  Binding="{Binding ControlType,Converter={StaticResource EnumDescriptionConverter}}" IsReadOnly="True"/>
 				<DataGridTextColumn Header="只读"  Binding="{Binding IsReadOnly}" IsReadOnly="True"/>
 				<DataGridTextColumn Header="必输项"  Binding="{Binding IsRequired}" IsReadOnly="True"/>
 				<DataGridTextColumn Header="字典名"  Binding="{Binding ItemSource}" IsReadOnly="True"/>
@@ -67,7 +71,7 @@
 				<DataGridTextColumn Header="排序名"  Binding="{Binding SortMemberPath}" IsReadOnly="True"/>
 				<DataGridTextColumn Header="转换器"  Binding="{Binding Converter}" IsReadOnly="True"/>
 				<DataGridTextColumn Header="转换参数"  Binding="{Binding ConverterParameter}" IsReadOnly="True"/>
-				<DataGridTextColumn Header="对齐方式"  Binding="{Binding HorizontalAlignment}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="对齐方式"  Binding="{Binding HorizontalAlignmentName}" IsReadOnly="True"/>
 				<DataGridTextColumn Header="最大宽度"  Binding="{Binding MaxWidth}" IsReadOnly="True"/>
 				<DataGridTextColumn Header="最小宽度"  Binding="{Binding MinWidth}" IsReadOnly="True"/>
 				<DataGridTextColumn Header="列表宽度"  Binding="{Binding Width}" IsReadOnly="True"/>

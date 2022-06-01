@@ -16,14 +16,23 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
         }
 
-		protected override void InitData()
-		{
-			Data = new Base_CommonFormConfigDTO();
-		}
+        public string[] PropertyTypes
+        {
+            get
+            {
+                return new string[] { "string", "bool", "int", "long", "double", "decimal", "datetime", "list" };
+            }
+        }
+
+
+        protected override void InitData()
+        {
+            Data = new Base_CommonFormConfigDTO();
+        }
 
         protected override void GetData(Base_CommonFormConfigDTO para)
         {
             base.GetData(para);
-        }       
+        }
     }
 }
