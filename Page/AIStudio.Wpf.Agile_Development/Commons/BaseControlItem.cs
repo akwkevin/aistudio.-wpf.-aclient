@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 
@@ -138,7 +139,7 @@ namespace AIStudio.Wpf.Agile_Development.Commons
             if (ItemSourceDictionary.Items.ContainsKey(itemSource))
             {
                 //树形控件使用树形数据集
-                if (baseControlItem.ControlType == ControlType.TreeSelect)
+                if (baseControlItem.ControlType == ControlType.TreeSelect || baseControlItem.ControlType == ControlType.MultiTreeSelect)
                 {
                     baseControlItem.ItemSource = ItemSourceDictionary.Items[$"{itemSource}Tree"];
                 }
@@ -218,6 +219,12 @@ namespace AIStudio.Wpf.Agile_Development.Commons
 
         public static void ObjectToList<T>(object value, IEnumerable<T> items) where T : BaseControlItem
         {
+            IDictionary<string, object> dictionary = null;
+            if (value is ExpandoObject keyValuePairs)
+            {
+                dictionary = (IDictionary<string, object>)keyValuePairs;
+            }
+
             foreach (var item in items)
             {
                 if (string.IsNullOrEmpty(item.PropertyName))
@@ -229,9 +236,8 @@ namespace AIStudio.Wpf.Agile_Development.Commons
                     continue;
                 }
 
-                if (value is ExpandoObject keyValuePairs)
+                if (dictionary != null)
                 {
-                    var dictionary = (IDictionary<string, object>)keyValuePairs;
                     if (dictionary.ContainsKey(item.PropertyName))
                     {
                         item.Value = dictionary[item.PropertyName];
@@ -254,19 +260,49 @@ namespace AIStudio.Wpf.Agile_Development.Commons
 
         public static void ListToObject<T>(object value, IEnumerable<T> items) where T : BaseControlItem
         {
+            string error = string.Empty;
+            IDictionary<string, object> dictionary = null;
+            if (value is ExpandoObject keyValuePairs)
+            {
+                dictionary = (IDictionary<string, object>)keyValuePairs;
+            }
+
             foreach (var item in items)
             {
                 if (string.IsNullOrEmpty(item.PropertyName))
                     continue;
 
-
-                if (value is ExpandoObject keyValuePairs)
+                if (dictionary != null)
                 {
-                    var dictionary = (IDictionary<string, object>)keyValuePairs;
                     if (dictionary.ContainsKey(item.PropertyName) || item.Value != null)
                     {
                         dictionary[item.PropertyName] = item.Value;
                     }
+
+                    if (string.IsNullOrEmpty(error))
+                    {
+                        if (item.IsRequired)
+                        {
+                            if (item.Value == null || item.Value?.ToString() == string.Empty)
+                            {
+                                error = item.ErrorMessage ?? "必输项";
+                                continue;
+                            }
+                        }
+
+                        if (!string.IsNullOrEmpty(item.Regex))
+                        {
+                            if (item.Value != null && item.Value?.ToString() != string.Empty)
+                            {
+                                Regex re = new Regex(item.Regex);
+                                if (!re.IsMatch(item.Value?.ToString()))
+                                {
+                                    error = item.ErrorMessage ?? "正则校验失败";
+                                    continue;
+                                }
+                            }
+                        }
+                    }                    
                 }
                 else
                 {
@@ -276,6 +312,11 @@ namespace AIStudio.Wpf.Agile_Development.Commons
                         propertyInfo.SetValue(value, item.Value);
                     }
                 }
+            }
+
+            if (dictionary != null)
+            {
+                dictionary["Error"] = error;
             }
         }
 

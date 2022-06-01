@@ -2,6 +2,7 @@
 using AIStudio.Core.Validation;
 using AIStudio.Wpf.Entity.Models;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -39,7 +40,19 @@ namespace AIStudio.Wpf.Entity.DTOModels
             }
         }
 
-        public List<string> Actions { get; set; }
+        private ObservableCollection<string> _actions = new ObservableCollection<string>();
+        public ObservableCollection<string> Actions
+        {
+            get { return _actions; }
+            set
+            {
+                if (value != _actions)
+                {
+                    _actions = value;
+                    RaisePropertyChanged("Actions");
+                }
+            }
+        }
         public string actionsJson { get; set; }
     }
 

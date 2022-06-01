@@ -82,6 +82,7 @@
     <Content Include="bin\Debug\net5.0-windows\server\logs\log20220527.txt" />
     <Content Include="bin\Debug\net5.0-windows\server\logs\log20220528.txt" />
     <Content Include="bin\Debug\net5.0-windows\server\logs\log20220529.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20220530.txt" />
     <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.DSL.xml" />
     <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.EntityFramework.xml" />
     <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.MySQL.xml" />

@@ -297,10 +297,10 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             dialog.ValidationAction = (() =>
             {
                 BaseControlItem.ListToObject(viewmodel.Data, viewmodel.EditFormItems);
-                //if (!string.IsNullOrEmpty(viewmodel.Data.Error))
-                //    throw new Exception(viewmodel.Data.Error);
-                //else
-                return true;
+                if (!string.IsNullOrEmpty(((dynamic)viewmodel.Data).Error))
+                    throw new Exception(((dynamic)viewmodel.Data).Error);
+                else
+                    return true;
             });
             var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
             if (res == BaseDialogResult.OK)
@@ -311,18 +311,21 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
 
         public async void Submit()
         {
-            var obj = SelectedItem;
-            if (obj == null)
+            ExpandoObject obj;
+            if (SelectedItem == null)
             {
                 obj = new ExpandoObject();
             }
+            else
+            {
+                obj = SelectedItem.DeepClone();
+            }
 
             BaseControlItem.ListToObject(obj, EditFormItems);
-            //校验还未完成
-            //if (!string.IsNullOrEmpty(obj.Error))
-            //{
-            //    throw new Exception(obj.Error);
-            //}
+            if (!string.IsNullOrEmpty(((dynamic)obj).Error))
+            {
+                throw new Exception(((dynamic)obj).Error);
+            }
 
             await SaveData(obj);
         }
@@ -432,7 +435,6 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             DataGridColumnCustom item = new DataGridColumnCustom();
             item.Header = config.Header;
             item.PropertyName = config.PropertyName;
-            //item.DisplayIndex = index;
             item.StringFormat = config.StringFormat;
             item.Visibility = config.Visibility;
             item.SortMemberPath = config.SortMemberPath;
@@ -481,7 +483,6 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
         {
             var itemsource = config.ItemSource ?? config.PropertyName;
 
-            //item.DisplayIndex = index;
             item.Header = config.Header;
             item.PropertyName = config.PropertyName;
             item.Value = config.Value;
@@ -498,7 +499,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                 if (ItemSourceDictionary.Items.ContainsKey(itemsource))
                 {
                     //树形控件使用树形数据集
-                    if (config.ControlType == Core.ControlType.TreeSelect)
+                    if (config.ControlType == Core.ControlType.TreeSelect || config.ControlType == Core.ControlType.MultiTreeSelect)
                     {
                         item.ItemSource = ItemSourceDictionary.Items[$"{itemsource}Tree"];
                     }

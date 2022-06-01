@@ -73,6 +73,50 @@ namespace AIStudio.Core
             }
         }
 
+        private bool _isChecked = false;
+        public bool IsChecked
+        {
+            get
+            {
+                return _isChecked;
+            }
+            set
+            {
+                if (_isChecked != value)
+                {
+                    _isChecked = value;
+                    RaisePropertyChanged("IsChecked");
+
+                    SetChildChecked(_isChecked);
+                }
+            }
+        }
+
+        public bool IsCheckedOnlySelf
+        {
+            get
+            {
+                return _isChecked;
+            }
+            set
+            {
+                _isChecked = value;
+                RaisePropertyChanged("IsChecked");
+            }
+        }
+
+        private void SetChildChecked(bool isChecked)
+        {
+            if (Children != null)
+            {
+                foreach (var child in Children)
+                {
+                    child.IsChecked = isChecked;
+                    child.SetChildChecked(isChecked);
+                }
+            }
+        }
+
         public override string ToString()
         {
             return $"{Value}-{Text}";

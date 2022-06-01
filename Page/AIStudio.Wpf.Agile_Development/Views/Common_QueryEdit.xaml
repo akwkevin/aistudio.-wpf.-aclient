@@ -32,44 +32,7 @@
             <ac:Form HeaderWidth="80" ItemMargin="3" HeaderMargin="0,0,3,0" ItemsSource="{Binding EditFormItems}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Control x:Name="control">
-                            <Control.Style>
-                                <Style TargetType="Control">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ControlType}" Value="TextBox">
-                                            <Setter Property="Template" Value="{StaticResource TextBoxTemplate}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ControlType}" Value="ComboBox">
-                                            <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ControlType}" Value="MultiComboBox">
-                                            <Setter Property="Template" Value="{StaticResource MultiComboBoxTemplate}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ControlType}" Value="TreeSelect">
-                                            <Setter Property="Template" Value="{StaticResource TreeSelectTemplate}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ControlType}" Value="DoubleUpDown">
-                                            <Setter Property="Template" Value="{StaticResource DoubleUpDownTemplate}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ControlType}" Value="DecimalUpDown">
-                                            <Setter Property="Template" Value="{StaticResource DecimalUpDownTemplate}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ControlType}" Value="IntegerUpDown">
-                                            <Setter Property="Template" Value="{StaticResource IntegerUpDownTemplate}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ControlType}" Value="LongUpDown">
-                                            <Setter Property="Template" Value="{StaticResource LongUpDownTemplate}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ControlType}" Value="DateTimeUpDown">
-                                            <Setter Property="Template" Value="{StaticResource DateTimeUpDownTemplate}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ControlType}" Value="Submit">
-                                            <Setter Property="Template" Value="{StaticResource SubmitTemplate}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Control.Style>
-                        </Control>
+                        <Control Style="{StaticResource EditControlStyle}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ac:Form>

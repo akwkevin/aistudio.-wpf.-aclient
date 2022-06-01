@@ -125,6 +125,156 @@
             应用名
             </summary>
         </member>
+        <member name="T:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig">
+            <summary>
+            通用表单查询配置表
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.Table">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.Header">
+            <summary>
+            列头
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.PropertyName">
+            <summary>
+            属性名
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.PropertyType">
+            <summary>
+            属性类型
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.DisplayIndex">
+            <summary>
+            显示索引
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.Type">
+            <summary>
+            配置类型 查询=0，列表=1
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.StringFormat">
+            <summary>
+            格式化
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.Visibility">
+            <summary>
+            是否显示 Visible = 0,Hidden = 1,Collapsed = 2
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.ControlType">
+            <summary>
+            控件类型，仅控件框使用
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.IsReadOnly">
+            <summary>
+            只读
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.IsRequired">
+            <summary>
+            必输项
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.ItemSource">
+            <summary>
+            字典名
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.Value">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.Regex">
+            <summary>
+            正则校验表达式
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.ErrorMessage">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.SortMemberPath">
+            <summary>
+            排序名
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.Converter">
+            <summary>
+            转换器
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.ConverterParameter">
+            <summary>
+            转换参数
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.HorizontalAlignment">
+            <summary>
+            对齐方式 Left = 0,Center = 1,Right = 2,Stretch = 3
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.MaxWidth">
+            <summary>
+            最大宽度
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.MinWidth">
+            <summary>
+            最小宽度
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.Width">
+            <summary>
+            列表宽度
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.CanUserReorder">
+            <summary>
+            是否可以重排
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.CanUserResize">
+            <summary>
+            是否可以调整大小
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.CanUserSort">
+            <summary>
+            是否可以排序
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.CellStyle">
+            <summary>
+            单元格样式，暂未实现
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.HeaderStyle">
+            <summary>
+            列头样式，赞未实现
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.BackgroundExpression">
+            <summary>
+            背景颜色触发公式
+            </summary>
+        </member>
+        <member name="P:Coldairarrow.Entity.Base_Manage.Base_CommonFormConfig.ForegroundExpression">
+            <summary>
+            前景颜色触发公式
+            </summary>
+        </member>
         <member name="T:Coldairarrow.Entity.Base_Manage.Base_DbLink">
             <summary>
             数据库连接表

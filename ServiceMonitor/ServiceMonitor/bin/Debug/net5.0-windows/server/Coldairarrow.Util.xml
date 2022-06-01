@@ -1444,6 +1444,14 @@
             <param name="str"></param>
             <returns></returns>
         </member>
+        <member name="M:Coldairarrow.Util.Extention.IsMd5(System.String,System.Int32)">
+            <summary>
+            验证指定长度的MD5
+            </summary>
+            <param name="str">字符串</param>
+            <param name="length">MD5长度（默认32）</param>
+            <returns></returns>
+        </member>
         <member name="M:Coldairarrow.Util.Extention.ToMD5String16(System.String)">
             <summary>
             转换为MD5加密后的字符串（16位）

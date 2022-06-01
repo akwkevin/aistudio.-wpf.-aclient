@@ -10,7 +10,7 @@
             <TextBox Text="{Binding Value,Mode=TwoWay}" 
                             IsReadOnly="{Binding IsReadOnly}" 
                             Padding="5,1" 
-                            MinWidth="100" 
+                            MinWidth="100"                             
                             VerticalAlignment="Center" 
                             Style="{StaticResource AIStudio.Styles.TextBox}"
                             ac:ControlAttach.ClearTextButton="True"/>
@@ -24,7 +24,7 @@
                             SelectedValuePath="Value" 
                             IsReadOnly="{Binding IsReadOnly}" 
                             Padding="5,1" 
-                            MinWidth="100" 
+                            MinWidth="100"                             
                             VerticalAlignment="Center"
                             ac:ControlAttach.ClearTextButton="True"
                             Style="{StaticResource AIStudio.Styles.ComboBox}"/>
@@ -32,10 +32,10 @@
     </ControlTemplate>
     <ControlTemplate x:Key="PasswordBoxTemplate">
         <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
-            <PasswordBox ac:PasswordBoxBindingBehavior.Password="{Binding Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" 
+            <PasswordBox ac:PasswordBoxBindingBehavior.Password="{Binding Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" 
                             IsEnabled="{Binding IsReadOnly,Converter={StaticResource BoolInverseConverter}}" 
                             Padding="5,1" 
-                            MinWidth="100" 
+                            MinWidth="100"                             
                             VerticalAlignment="Center" 
                             Style="{StaticResource AIStudio.Styles.PasswordBox}"
                             ac:ControlAttach.ClearTextButton="True"/>
@@ -46,7 +46,7 @@
             <DatePicker SelectedDate="{Binding Value,Mode=TwoWay}" 
                             IsEnabled="{Binding IsReadOnly,Converter={StaticResource BoolInverseConverter}}" 
                             Padding="5,1" 
-                            MinWidth="100" 
+                            MinWidth="100"                             
                             VerticalAlignment="Center" 
                             Style="{StaticResource AIStudio.Styles.DatePicker}"
                             ac:ControlAttach.ClearTextButton="True"/>
@@ -60,7 +60,7 @@
                             DisplayMemberPath="Text" 
                             SelectedValuePath="Value" 
                             Padding="5,1" 
-                            MinWidth="100" 
+                            MinWidth="100"                             
                             VerticalAlignment="Center" 
                             ac:ControlAttach.ClearTextButton="True"/>
         </ac:FormItem>
@@ -73,7 +73,7 @@
                             DisplayMemberPath="Text" 
                             SelectedValuePath="Value" 
                             Padding="5,1"
-                            MinWidth="100" 
+                            MinWidth="100"                             
                             VerticalAlignment="Center" 
                             ac:ControlAttach.ClearTextButton="True">
                 <ac:TreeSelect.ItemTemplate>
@@ -90,14 +90,14 @@
     </ControlTemplate>
     <ControlTemplate x:Key="MultiTreeSelectTemplate">
         <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
-            <ac:TreeSelect core:CustomeSelectionValues.SelectedValues="{Binding Value,Mode=TwoWay}" 
+            <ac:TreeSelect SelectedValues="{Binding Value,Mode=TwoWay}" 
                             IsReadOnly="{Binding IsReadOnly}" 
                             ItemsSource="{Binding ItemSource}" 
                             DisplayMemberPath="Text" 
                             SelectedValuePath="Value" 
                             IsMulti="True"
                             Padding="5,1"
-                            MinWidth="100" 
+                            MinWidth="100"                             
                             VerticalAlignment="Center" 
                             ac:ControlAttach.ClearTextButton="True">
                 <ac:TreeSelect.ItemTemplate>
@@ -135,7 +135,7 @@
                             FormatString="{Binding StringFormat}" 
                             IsReadOnly="{Binding IsReadOnly}" 
                             Padding="5,1" 
-                            MinWidth="100" 
+                            MinWidth="100"                             
                             VerticalAlignment="Center"
                             VerticalContentAlignment="Center" 
                             ButtonSpinnerLocation="UpDown" 
@@ -148,7 +148,7 @@
                             FormatString="{Binding StringFormat}"
                             IsReadOnly="{Binding IsReadOnly}" 
                             Padding="5,1"
-                            MinWidth="100" 
+                            MinWidth="100"                             
                             VerticalAlignment="Center"
                             VerticalContentAlignment="Center"
                             ButtonSpinnerLocation="UpDown" 
@@ -161,7 +161,7 @@
                             FormatString="{Binding StringFormat}" 
                             IsReadOnly="{Binding IsReadOnly}" 
                             Padding="5,1"
-                            MinWidth="100" 
+                            MinWidth="100"                             
                             VerticalAlignment="Center" 
                             VerticalContentAlignment="Center" 
                             ButtonSpinnerLocation="UpDown" 
@@ -174,7 +174,7 @@
                             FormatString="{Binding StringFormat}" 
                             IsReadOnly="{Binding IsReadOnly}" 
                             Padding="5,1" 
-                            MinWidth="100" 
+                            MinWidth="100"                             
                             VerticalAlignment="Center" 
                             VerticalContentAlignment="Center" 
                             ButtonSpinnerLocation="UpDown" 
@@ -188,7 +188,7 @@
                             FormatString="{Binding StringFormat}" 
                             IsReadOnly="{Binding IsReadOnly}" 
                             Padding="5,1"
-                            MinWidth="100"
+                            MinWidth="100"                            
                             VerticalAlignment="Center" 
                             VerticalContentAlignment="Center" 
                             ButtonSpinnerLocation="UpDown" 
@@ -197,22 +197,22 @@
     </ControlTemplate>
     <ControlTemplate x:Key="QueryTemplate">
         <StackPanel Orientation="Horizontal" Margin="2" Visibility="{Binding Visibility}">
-            <Button Content="{Binding Header}" Command="{Binding DataContext.SearchCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button}"/>
+            <Button Content="{Binding Header}" IsDefault="True" Command="{Binding DataContext.SearchCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button.Focus}"/>
         </StackPanel>
     </ControlTemplate>
     <ControlTemplate x:Key="AddTemplate">
         <StackPanel Orientation="Horizontal" Margin="2" Visibility="{Binding Visibility}">
-            <Button Content="{Binding Header}" Command="{Binding DataContext.AddCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button}"/>
+            <Button Content="{Binding Header}" Command="{Binding DataContext.AddCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button.Focus}"/>
         </StackPanel>
     </ControlTemplate>
     <ControlTemplate x:Key="DeleteTemplate">
         <StackPanel Orientation="Horizontal" Margin="2" Visibility="{Binding Visibility}">
-            <Button Content="{Binding Header}" Command="{Binding DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button}"/>
+            <Button Content="{Binding Header}" Command="{Binding DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button.Focus}"/>
         </StackPanel>
     </ControlTemplate>
     <ControlTemplate x:Key="SubmitTemplate">
         <StackPanel Orientation="Horizontal" Margin="2" Visibility="{Binding Visibility}">
-            <Button Content="{Binding Header}" Command="{Binding DataContext.SubmitCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button}"/>
+            <Button Content="{Binding Header}" Command="{Binding DataContext.SubmitCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button.Focus}"/>
         </StackPanel>
     </ControlTemplate>
 

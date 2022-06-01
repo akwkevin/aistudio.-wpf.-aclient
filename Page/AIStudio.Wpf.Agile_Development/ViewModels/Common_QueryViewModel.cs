@@ -115,11 +115,15 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
 
         public async void Submit()
         {
-            var obj = SelectedItem;
-            if (obj == null)
+            T obj;
+            if (SelectedItem == null)
             {
                 obj = new T();
-            }      
+            }
+            else
+            {
+                obj = SelectedItem.DeepClone();
+            }
 
             BaseControlItem.ListToObject(obj, EditFormItems);
             if (!string.IsNullOrEmpty(obj.Error))

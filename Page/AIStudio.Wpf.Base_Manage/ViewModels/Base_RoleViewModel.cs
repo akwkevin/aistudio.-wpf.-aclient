@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Linq;
 using AIStudio.Wpf.Controls;
+using System.Collections.ObjectModel;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
@@ -40,7 +41,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 try
                 {
                     ShowWait();
-                    viewmodel.Data.Actions = BaseTreeItemViewModelHelper.GetChecked(viewmodel.ActionsTreeData).OfType<Base_ActionTree>().Select(p => p.Id).ToList();
+                    viewmodel.Data.Actions = new ObservableCollection<string>(BaseTreeItemViewModelHelper.GetChecked(viewmodel.ActionsTreeData).OfType<Base_ActionTree>().Select(p => p.Id));
                     var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Role/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                     if (!result.Success)
                     {
