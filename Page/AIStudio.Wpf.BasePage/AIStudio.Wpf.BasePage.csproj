@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <!--<PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.15" />-->
-    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.16" />
+    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.17" />
     <PackageReference Include="AIStudio.Wpf.GridControls" Version="1.0.4" />
     <PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
     <PackageReference Include="MahApps.Metro" Version="2.0.0" />
