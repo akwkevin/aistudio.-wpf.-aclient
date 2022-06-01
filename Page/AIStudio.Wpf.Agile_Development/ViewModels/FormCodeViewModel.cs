@@ -1,10 +1,11 @@
 ﻿using AIStudio.Core;
-using AIStudio.Wpf.Agile_Development.ItemSources;
 using AIStudio.Wpf.Agile_Development.Models;
 using AIStudio.Wpf.Agile_Development.Views;
 using AIStudio.Wpf.BasePage.ViewModels;
+using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
 using Prism.Commands;
+using Prism.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,6 +18,21 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
 {
     public class FormCodeViewModel : BasePageViewModel
     {
+        protected IUserData _userData { get; }
+
+        public FormCodeViewModel()
+        {
+            //添加一个测试类放在最前面，标记最全
+            Types.Add(typeof(Base_UserDTO_Test));
+            var assembly = Assembly.Load("AIStudio.Wpf.Entity");
+            Types.AddRange(assembly.GetTypes().Where(p => p.FullName.Contains("AIStudio.Wpf.Entity.DTOModels")));
+
+            SelectedType = Types[0];
+
+            _userData = ContainerLocator.Current.Resolve<IUserData>();
+            Items = _userData.ItemSource;
+        }
+
         private object _data;
         public object Data
         {
@@ -55,7 +71,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             }
         }
 
-        public Dictionary<string, ObservableCollection<ISelectOption>> Items { get; set; } = ItemSourceDictionary.Items;
+        public Dictionary<string, ObservableCollection<ISelectOption>> Items { get; set; }
 
         private ICommand _submitCommand;
         public ICommand SubmitCommand
@@ -123,16 +139,6 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             }
 
             MessageBox.Show(System.Windows.Application.Current.MainWindow, message);
-        }
-
-        public FormCodeViewModel()
-        {
-            //添加一个测试类放在最前面，标记最全
-            Types.Add(typeof(Base_UserDTO_Test));
-            var assembly = Assembly.Load("AIStudio.Wpf.Entity");
-            Types.AddRange(assembly.GetTypes().Where(p => p.FullName.Contains("AIStudio.Wpf.Entity.DTOModels")));
-
-            SelectedType = Types[0];
         }
 
         private readonly string template =

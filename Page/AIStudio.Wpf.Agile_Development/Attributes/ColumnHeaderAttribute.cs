@@ -1,13 +1,14 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Agile_Development.Commons;
 using AIStudio.Wpf.Agile_Development.Converter;
-using AIStudio.Wpf.Agile_Development.ItemSources;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Windows;
 using System.Linq;
+using Prism.Ioc;
+using AIStudio.Wpf.Business;
 
 namespace AIStudio.Wpf.Agile_Development.Attributes
 {
@@ -19,6 +20,13 @@ namespace AIStudio.Wpf.Agile_Development.Attributes
         }
 
         public ColumnHeaderAttribute(string displayName) : base(displayName) { }
+
+        protected static IUserData _userData { get; }
+
+        static ColumnHeaderAttribute()
+        {
+            _userData = ContainerLocator.Current.Resolve<IUserData>();
+        }
 
 
         public Visibility Visibility
@@ -129,9 +137,9 @@ namespace AIStudio.Wpf.Agile_Development.Attributes
                 dataGridColumnCustom.SortMemberPath = attribute.SortMemberPath ?? property.Name;
                 dataGridColumnCustom.CanUserSort = attribute.CanUserSort;
             }
-            else if (ItemSourceDictionary.Dictionarys.ContainsKey(property.Name))
+            else if (_userData.Base_Dictionary.ContainsKey(property.Name))
             {
-                var dic = ItemSourceDictionary.Dictionarys[property.Name];
+                var dic = _userData.Base_Dictionary[property.Name];
                 dataGridColumnCustom.Header = dic.Text;
                 dataGridColumnCustom.DisplayIndex = int.MaxValue;
                 dataGridColumnCustom.SortMemberPath = property.Name;
@@ -181,7 +189,7 @@ namespace AIStudio.Wpf.Agile_Development.Attributes
 
         public static ColumnHeaderAttribute GetPropertyAttribute(PropertyInfo pi)
         {
-            if (ItemSourceDictionary.IgnoreSource.Contains(pi.Name))
+            if (_userData.IgnoreSource.Contains(pi.Name))
             {
                 return new ColumnHeaderAttribute() { Ignore = true };
             }

@@ -1,21 +1,105 @@
 ﻿using AIStudio.Core;
-using AIStudio.Wpf.BasePage.ViewModels;
-using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Agile_Development.Models;
+using AIStudio.Wpf.BasePage.ViewModels;
+using AIStudio.Wpf.Business;
+using AIStudio.Wpf.Controls;
 using Prism.Commands;
+using Prism.Ioc;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
-using System.Collections.ObjectModel;
-using AIStudio.Wpf.Agile_Development.ItemSources;
 
 namespace AIStudio.Wpf.Agile_Development.ViewModels
 {
     class FormViewModel : BasePageViewModel
     {
+        protected IUserData _userData { get; }
+
+        public FormViewModel()
+        {
+            SexList = new List<SelectOption>()
+            {
+                new SelectOption(){Value = "0",Text = "女" },
+                new SelectOption(){Value ="1",Text = "男" },
+            };
+            RolesList = new List<SelectOption>()
+            {
+                new SelectOption(){Value = "Manager",Text = "管理员" },
+                new SelectOption(){Value ="Operator",Text = "操作员" },
+                new SelectOption(){Value ="Engineer",Text = "工程师" },
+            };
+            Duties = new List<SelectOption>()
+            {
+                new SelectOption(){Value ="Develop",Text = "开发" },
+                new SelectOption(){Value ="Operator",Text = "经理" },
+                new SelectOption(){Value ="Engineer",Text = "总监" },
+            };
+            Departments = new List<TreeModel>()
+            {
+                new TreeModel()
+                {
+                    Value = "Depart1",
+                    Text = "部门1",
+                    Children = new List<TreeModel>()
+                    {
+                        new TreeModel()
+                        {
+                              Value = "Depart1_1",
+                              Text = "部门1_1",
+                        },
+                        new TreeModel()
+                        {
+                              Value = "Depart1_2",
+                              Text = "部门1_2",
+                        },
+                    },
+                },
+                new TreeModel()
+                {
+                    Value = "Depart2",
+                    Text = "部门2",
+                    Children = new List<TreeModel>()
+                    {
+                        new TreeModel()
+                        {
+                              Value = "Depart2_1",
+                              Text = "部门2_1",
+                        },
+                        new TreeModel()
+                        {
+                              Value = "Depart2_2",
+                              Text = "部门2_2",
+                        },
+                    },
+                },
+                new TreeModel()
+                {
+                    Value = "Depart3",
+                    Text = "部门3",
+                    Children = new List<TreeModel>()
+                    {
+                        new TreeModel()
+                        {
+                              Value = "Depart3_1",
+                              Text = "部门3_1",
+                        },
+                        new TreeModel()
+                        {
+                              Value = "Depart3_2",
+                              Text = "部门3_2",
+                        },
+                    },
+                },
+            };
+
+            _userData = ContainerLocator.Current.Resolve<IUserData>();
+            Items = _userData.ItemSource;
+        }
+
         private Base_UserDTO_Test _base_User = new Base_UserDTO_Test();
         public Base_UserDTO_Test Base_User
         {
@@ -107,7 +191,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             }
         }
 
-        public Dictionary<string, ObservableCollection<ISelectOption>> Items { get; set; } = ItemSourceDictionary.Items;
+        public Dictionary<string, ObservableCollection<ISelectOption>> Items { get; set; }
 
         private ICommand _submitCommand;
         public ICommand SubmitCommand
@@ -166,86 +250,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             }
 
             MessageBox.Show(System.Windows.Application.Current.MainWindow, message);
-        }
-
-        public FormViewModel()
-        {
-            SexList = new List<SelectOption>()
-            {
-                new SelectOption(){Value = "0",Text = "女" },
-                new SelectOption(){Value ="1",Text = "男" },
-            };
-            RolesList = new List<SelectOption>()
-            {
-                new SelectOption(){Value = "Manager",Text = "管理员" },
-                new SelectOption(){Value ="Operator",Text = "操作员" },
-                new SelectOption(){Value ="Engineer",Text = "工程师" },
-            };
-            Duties = new List<SelectOption>()
-            {
-                new SelectOption(){Value ="Develop",Text = "开发" },
-                new SelectOption(){Value ="Operator",Text = "经理" },
-                new SelectOption(){Value ="Engineer",Text = "总监" },
-            };
-
-            Departments = new List<TreeModel>()
-            {
-                new TreeModel()
-                {
-                    Value = "Depart1",
-                    Text = "部门1",
-                    Children = new List<TreeModel>()
-                    {
-                        new TreeModel()
-                        {
-                              Value = "Depart1_1",
-                              Text = "部门1_1",
-                        },
-                        new TreeModel()
-                        {
-                              Value = "Depart1_2",
-                              Text = "部门1_2",
-                        },
-                    },
-                },
-                new TreeModel()
-                {
-                    Value = "Depart2",
-                    Text = "部门2",
-                    Children = new List<TreeModel>()
-                    {
-                        new TreeModel()
-                        {
-                              Value = "Depart2_1",
-                              Text = "部门2_1",
-                        },
-                        new TreeModel()
-                        {
-                              Value = "Depart2_2",
-                              Text = "部门2_2",
-                        },
-                    },
-                },
-                new TreeModel()
-                {
-                    Value = "Depart3",
-                    Text = "部门3",
-                    Children = new List<TreeModel>()
-                    {
-                        new TreeModel()
-                        {
-                              Value = "Depart3_1",
-                              Text = "部门3_1",
-                        },
-                        new TreeModel()
-                        {
-                              Value = "Depart3_2",
-                              Text = "部门3_2",
-                        },
-                    },
-                },
-            };
-        }
+        }      
     }
 
     public class FormSetting : BindableBase

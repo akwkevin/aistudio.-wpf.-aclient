@@ -1,6 +1,7 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Agile_Development.Attributes;
-using AIStudio.Wpf.Agile_Development.ItemSources;
+using AIStudio.Wpf.Business;
+using Prism.Ioc;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,13 @@ namespace AIStudio.Wpf.Agile_Development.Commons
 {
     public abstract class BaseControlItem : BindableBase
     {
+        protected static IUserData _userData { get; }
+
+        static BaseControlItem()
+        {
+            _userData = ContainerLocator.Current.Resolve<IUserData>();
+        }
+
         public int DisplayIndex
         {
             get; set;
@@ -118,9 +126,9 @@ namespace AIStudio.Wpf.Agile_Development.Commons
                     itemSource = attribute.ItemSource;
                 }
             }
-            else if (ItemSourceDictionary.Dictionarys.ContainsKey(property.Name))
+            else if (_userData.Base_Dictionary.ContainsKey(property.Name))
             {
-                var dic = ItemSourceDictionary.Dictionarys[property.Name];
+                var dic = _userData.Base_Dictionary[property.Name];
                 baseControlItem.Header = dic.Text;
                 baseControlItem.ControlType = dic.ControlType;
                 baseControlItem.DisplayIndex = int.MaxValue;
@@ -136,16 +144,16 @@ namespace AIStudio.Wpf.Agile_Development.Commons
                 baseControlItem.DisplayIndex = int.MaxValue;
             }
 
-            if (ItemSourceDictionary.Items.ContainsKey(itemSource))
+            if (_userData.ItemSource.ContainsKey(itemSource))
             {
                 //树形控件使用树形数据集
                 if (baseControlItem.ControlType == ControlType.TreeSelect || baseControlItem.ControlType == ControlType.MultiTreeSelect)
                 {
-                    baseControlItem.ItemSource = ItemSourceDictionary.Items[$"{itemSource}Tree"];
+                    baseControlItem.ItemSource = _userData.ItemSource[$"{itemSource}Tree"];
                 }
                 else
                 {
-                    baseControlItem.ItemSource = ItemSourceDictionary.Items[itemSource];
+                    baseControlItem.ItemSource = _userData.ItemSource[itemSource];
                 }
             }
 

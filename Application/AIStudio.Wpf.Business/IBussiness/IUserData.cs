@@ -7,6 +7,8 @@ namespace AIStudio.Wpf.Business
 {
     public interface IUserData
     {
+        public string[] ReadOnlySource { get; }
+        public string[] IgnoreSource { get; }
         Task<ObservableCollection<ISelectOption>> GetBase_User();
         void ClearBase_User();
         Task<ObservableCollection<ISelectOption>> GetBase_Role();

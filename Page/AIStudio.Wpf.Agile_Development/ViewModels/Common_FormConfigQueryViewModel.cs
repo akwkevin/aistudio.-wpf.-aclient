@@ -1,9 +1,7 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Agile_Development.Commons;
 using AIStudio.Wpf.Agile_Development.Converter;
-using AIStudio.Wpf.Agile_Development.ItemSources;
 using AIStudio.Wpf.Agile_Development.Views;
-using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
@@ -17,7 +15,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Dynamic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -27,9 +24,12 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
     public class Common_FormConfigQueryViewModel : NavigationDockWindowViewModel
     {
         protected IDataProvider _dataProvider { get; }
+        protected IUserData _userData { get; }
+
         public Common_FormConfigQueryViewModel()
         {
             _dataProvider = ContainerLocator.Current.Resolve<IDataProvider>();
+            _userData = ContainerLocator.Current.Resolve<IUserData>();
 
             this.PropertyChanged += CommonQueryViewModel_PropertyChanged;
         }
@@ -453,9 +453,8 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             item.ForegroundExpression = config.ForegroundExpression;
             if (string.IsNullOrEmpty(config.Converter))
             {
-                if (ItemSourceDictionary.Items.ContainsKey(itemsource))
+                if (_userData.ItemSource.ContainsKey(itemsource))
                 {
-                    var dic = ItemSourceDictionary.Items[itemsource];
                     item.Converter = typeof(ObjectToStringConverter).FullName;
                     item.ConverterParameter = itemsource;                  
                 }
@@ -496,16 +495,16 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
 
             if (!string.IsNullOrEmpty(itemsource))
             {
-                if (ItemSourceDictionary.Items.ContainsKey(itemsource))
+                if (_userData.ItemSource.ContainsKey(itemsource))
                 {
                     //树形控件使用树形数据集
                     if (config.ControlType == Core.ControlType.TreeSelect || config.ControlType == Core.ControlType.MultiTreeSelect)
                     {
-                        item.ItemSource = ItemSourceDictionary.Items[$"{itemsource}Tree"];
+                        item.ItemSource = _userData.ItemSource[$"{itemsource}Tree"];
                     }
                     else
                     {
-                        item.ItemSource = ItemSourceDictionary.Items[itemsource];
+                        item.ItemSource = _userData.ItemSource[itemsource];
                     }
                 }
             }

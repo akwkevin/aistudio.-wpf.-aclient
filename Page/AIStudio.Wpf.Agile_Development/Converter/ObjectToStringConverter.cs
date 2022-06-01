@@ -1,5 +1,6 @@
 ﻿using AIStudio.Core;
-using AIStudio.Wpf.Agile_Development.ItemSources;
+using AIStudio.Wpf.Business;
+using Prism.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,13 +13,20 @@ using System.Windows.Data;
 namespace AIStudio.Wpf.Agile_Development.Converter
 {
     public class ObjectToStringConverter : IValueConverter
-    { 
+    {
+        protected static IUserData _userData { get; }
+
+        static ObjectToStringConverter()
+        {
+            _userData = ContainerLocator.Current.Resolve<IUserData>();
+        }
+
         public object Convert(object value, Type typeTarget, object param, System.Globalization.CultureInfo culture)
         {
             ObservableCollection<ISelectOption> itemSource = null;
-            if (param != null && ItemSourceDictionary.Items.ContainsKey(param?.ToString()))
+            if (param != null && _userData.ItemSource.ContainsKey(param?.ToString()))
             {
-                itemSource = ItemSourceDictionary.Items[param?.ToString()];
+                itemSource = _userData.ItemSource[param?.ToString()];
             }
 
             if (value is IEnumerable<object> list)

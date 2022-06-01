@@ -17,6 +17,9 @@ namespace AIStudio.Wpf.Business
 
         }
 
+        public string[] ReadOnlySource { get; } = new string[] { "Id", "CreateTime", "ModifyTime", "CreatorName", "ModifyName" };
+        public string[] IgnoreSource { get; } = new string[] { "IsChecked", "Deleted", "CreatorId", "ModifyId", };
+
         private ObservableCollection<ISelectOption> base_user { get; set; } = new ObservableCollection<ISelectOption>();
 
         private ObservableCollection<ISelectOption> base_role { get; set; } = new ObservableCollection<ISelectOption>();

@@ -1,5 +1,4 @@
 ﻿using AIStudio.Wpf.Agile_Development.Attributes;
-using AIStudio.Wpf.Agile_Development.ItemSources;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -25,7 +24,7 @@ namespace AIStudio.Wpf.Agile_Development.Commons
                 editFormItem.Visibility = Visibility.Visible;
             }
 
-            if (ItemSourceDictionary.ReadOnlySource.Contains(property.Name))
+            if (_userData.ReadOnlySource.Contains(property.Name))
             {
                 editFormItem.IsReadOnly = true;
             }
