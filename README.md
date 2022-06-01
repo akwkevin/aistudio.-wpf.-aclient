@@ -112,6 +112,26 @@ protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
 #### 大屏界面（可拖拽，可全屏）
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0912/103244_4abe087a_4799126.png "屏幕截图.png")
 
+#### 3.0新增功能如下，2022-06-01
+
+#### Form 表单
+![输入图片说明](%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220601160858.png)
+排列方式如下：
+水平排列：WrapPanel
+垂直排列：StackPanel
+固定行列：UniformGrid
+
+#### 表单-代码生成，是代码生成器的一种补充。
+![输入图片说明](%E6%8B%96%E6%8B%BD%E5%BC%8F%E7%BC%96%E7%A8%8B.gif)
+
+#### 通用crud方法1：
+![输入图片说明](image.png)
+根据类直接生成DataGrid
+
+#### 通用crud方法2：
+![输入图片说明](image.png)
+读取数据库配置，生成DataGrid,完全不需要类，后台完成相关接口，wpd前台不需要更改任何代码，只需要在数据库插入脚本即可。
+
 #### 技术交流
 个人QQ:80267720
 QQ技术交流群:51286643（进群提供服务端的开源代码地址）
