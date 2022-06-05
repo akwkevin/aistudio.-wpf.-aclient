@@ -35,7 +35,10 @@ namespace AIStudio.Wpf.DataBusiness
             });
         }
 
-        
+        public Dictionary<string, string> GetHeader()
+        {
+            return new Dictionary<string, string>();
+        }
 
         public Task<AjaxResult<T>> GetData<T>(string url, Dictionary<string, string> data)
         {

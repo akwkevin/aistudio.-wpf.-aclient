@@ -4,10 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
-             xmlns:dd="urn:gong-wpf-dragdrop"
+             xmlns:converter="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
              xmlns:local="clr-namespace:AIStudio.Wpf.Agile_Development.Views"
+             xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ac:GridLengthAutoConverter x:Key="GridLengthAutoConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -20,27 +24,29 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <GroupBox Header="工具栏" ac:ControlAttach.CornerRadius="0" Margin="2">
-                <ac:Form 
-                 IsReadOnly="True"
-                 AllowDrop ="True"                
-                 ItemMargin="1"                 
-                 HeaderMargin="0,0,3,0">
-                    <ac:FormCodeItem Header="文本框" Height="22" ControlType="TextBox"/>
-                    <ac:FormCodeItem Header="密码框" Height="22" ControlType="PasswordBox"/>
-                    <ac:FormCodeItem Header="下拉框" Height="22" ControlType="ComboBox"/>
-                    <ac:FormCodeItem Header="日期框" Height="22" ControlType="DatePicker"/>
-                    <ac:FormCodeItem Header="树选框" Height="22" ControlType="TreeSelect"/>
-                    <ac:FormCodeItem Header="多选框" Height="22" ControlType="MultiComboBox"/>
-                    <!--<ac:FormCodeItem Header="整数" Height="22" ControlType="IntegerUpDown"/>
-                    <ac:FormCodeItem Header="长整数" Height="22" ControlType="LongUpDown"/>
-                    <ac:FormCodeItem Header="浮点数" Height="22" ControlType="DoubleUpDown"/>
-                    <ac:FormCodeItem Header="精确浮点数" Height="22" ControlType="DecimalUpDown"/>
-                    <ac:FormCodeItem Header="时间日期" Height="22" ControlType="DateTimeUpDown"/>-->
-                    <ac:FormCodeItem Header="勾选框" Height="22" ControlType="CheckBox"/>
-                    <ac:FormCodeItem Header="开关按钮" Height="22" ControlType="ToggleButton"/>
-                    <ac:FormCodeItem Header="查询" ControlType="Query"/>
-                    <ac:FormCodeItem Header="提交" ControlType="Submit"/>
-                </ac:Form>
+                <StackPanel>
+                    <ac:Form AllowDrop ="True" FormMode="ToolBar" PanelType="UniformGrid" PanelColumns="2">
+                        <ac:FormCodeItem Header="文本框" ControlType="TextBox" ac:IconAttach.Geometry="{StaticResource TextGeometry}"/>
+                        <ac:FormCodeItem Header="密码框" ControlType="PasswordBox" ac:IconAttach.Geometry="{StaticResource PasswordGeometry}"/>
+                        <ac:FormCodeItem Header="下拉框" ControlType="ComboBox" ac:IconAttach.Geometry="{StaticResource DownGeometry}"/>
+                        <ac:FormCodeItem Header="多选框" ControlType="MultiComboBox" ac:IconAttach.Geometry="{StaticResource DownGeometry}"/>
+                        <ac:FormCodeItem Header="日期框" ControlType="DatePicker" ac:IconAttach.Geometry="{StaticResource CalendarGeometry}"/>
+                        <ac:FormCodeItem Header="勾选框" ControlType="CheckBox" ac:IconAttach.Geometry="{StaticResource CheckBoxGeometry}"/>
+                        <ac:FormCodeItem Header="树选框" ControlType="TreeSelect" ac:IconAttach.Geometry="{StaticResource TreeGeometry}"/>
+                        <ac:FormCodeItem Header="多选树" ControlType="MultiTreeSelect" ac:IconAttach.Geometry="{StaticResource TreeGeometry}"/>                     
+                        <ac:FormCodeItem Header="Switch" ControlType="ToggleButton" ac:IconAttach.Geometry="{StaticResource ToggleSwitchGeometry}"/>
+                        <ac:FormCodeItem Header="富文本" ControlType="RichTextBox" ac:IconAttach.Geometry="{StaticResource TextGeometry}"/>
+                        <ac:FormCodeItem Header="图片上传" ControlType="UploadImage" ExtField1="{x:Static core:LocalSetting.UploadFileUrl}" ExtField2="{x:Static core:LocalSetting.TokenJson}" ac:IconAttach.Geometry="{StaticResource UploadGeometry}"/>
+                        <ac:FormCodeItem Header="文件上传" ControlType="UploadFile" ExtField1="{x:Static core:LocalSetting.UploadFileUrl}" ExtField2="{x:Static core:LocalSetting.TokenJson}" ac:IconAttach.Geometry="{StaticResource UploadGeometry}"/>
+                        <ac:FormCodeItem Header="表格" ControlType="DataGrid" ac:IconAttach.Geometry="{StaticResource GridGeometry}"/>
+                        <ac:FormCodeItem Header="提交" ControlType="Submit" Path="SubmitCommand" ac:IconAttach.Geometry="{StaticResource SuccessGeometry}"/>           
+                        
+                    </ac:Form>
+                    <ac:Divider Margin="0,5,0,0"/>
+                    <Button Content="快速示例1" Style="{StaticResource AIStudio.Styles.Button.Flat}" Command="{Binding QuickExample1Command}" CommandParameter="{Binding ElementName=items}" ac:UniformGridEx.Span="2"/>
+                    <Button Content="快速示例2" Style="{StaticResource AIStudio.Styles.Button.Flat}" Command="{Binding QuickExample2Command}" CommandParameter="{Binding ElementName=items}" ac:UniformGridEx.Span="2"/>
+                    <Button Content="快速示例3" Style="{StaticResource AIStudio.Styles.Button.Flat}" Command="{Binding QuickExample3Command}" CommandParameter="{Binding ElementName=items}" ac:UniformGridEx.Span="2"/>
+                </StackPanel>
             </GroupBox>
             <GroupBox Grid.Row="1" Header="表单对象" ac:ControlAttach.CornerRadius="0" Margin="2">
                 <DockPanel>
@@ -49,24 +55,111 @@
                 </DockPanel>
             </GroupBox>
         </Grid>
-        <GroupBox Grid.Column="1" Header="编辑栏" ac:ControlAttach.CornerRadius="0" Margin="2">
-
+        <GroupBox Grid.Column="1" Header="编辑栏" ac:ControlAttach.CornerRadius="0" Margin="2">           
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
-                    <RowDefinition Height="Auto"/>                  
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <ac:Form x:Name="items"  
-                         AllowDrop ="True"
-                         ItemMargin="3"
-                         DataContext="{Binding Data}">
+                <TextBlock Text="请将左侧组件拖入此容器中" Style="{StaticResource AIStudio.Styles.TextBlock.Headline5}" HorizontalAlignment="Center" Visibility="{Binding ElementName=items,Path=Items.Count,Converter={converter:ConverterValueMapToVisibility},ConverterParameter='0'}"/>
+            <ScrollViewer>
+                <ac:Form x:Name="items" 
+                        IsReadOnly="False"
+                        PanelType="{ac:ControlBinding FormSetting.PanelType}" 
+                        PanelColumns="{ac:ControlBinding FormSetting.PanelColumns}" 
+                        Orientation="{ac:ControlBinding FormSetting.Orientation}" 
+                        HeaderWidth="{ac:ControlBinding FormSetting.HeaderWidth, Converter={StaticResource GridLengthAutoConverter}}" 
+                        BodyWidth="{ac:ControlBinding FormSetting.BodyWidth, Converter={StaticResource GridLengthAutoConverter}}" 
+                        ItemMargin="{ac:ControlBinding FormSetting.ItemMargin}"
+                        AllowDrop ="True"                         
+                        DataContext="{Binding Data}"
+                        SelectedItem="{ac:ControlBinding SelectedItem}">
+                    <ac:Form.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="删除选中" Command="{ac:ControlBinding DeleteCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget}"/>
+                            <MenuItem Header="复制选中" Command="{ac:ControlBinding CopyCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget}"/>
+                        </ContextMenu>
+                    </ac:Form.ContextMenu>
                 </ac:Form>
-                <Button Content="生成" Grid.Row="1" Command="{Binding BulidCommand}" CommandParameter="{Binding ElementName=items}"/>
-            </Grid>
+            </ScrollViewer>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="清除" Margin="2" Command="{Binding ClearCommand}" CommandParameter="{Binding ElementName=items}"/>
+                    <Button Content="生成" Margin="2" Command="{Binding BulidCommand}" CommandParameter="{Binding ElementName=items}"/>
+                </StackPanel>
+            </Grid>           
         </GroupBox>
-
-        <GroupBox Grid.Column="2" Header="属性栏" ac:ControlAttach.CornerRadius="0" Margin="2">
-            <ac:PropertiesView NeedBrowsable="True" PropertiesString="Header" SelectedObject="{Binding ElementName=items,Path=SelectedItem}"/>
-        </GroupBox>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <GroupBox Header="属性栏" ac:ControlAttach.CornerRadius="0" Margin="2">
+                <ac:PropertiesView NeedBrowsable="True" SelectedObject="{Binding ElementName=items,Path=SelectedItem}">
+                    <ac:PropertiesView.Resources>
+                        <Style x:Key="PathStyle" TargetType="{x:Type ContentControl}">
+                            <Setter Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                                            <ComboBox BorderThickness="0" Padding="0" ItemsSource="{Binding DataContext.Paths, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectedValue="{Binding Path}" IsEditable="True"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                        <Style x:Key="ItemsSourceStyle" TargetType="{x:Type ContentControl}">
+                            <Setter Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                                            <ComboBox BorderThickness="0" Padding="0" ItemsSource="{Binding DataContext.ItemsSources, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectedValue="{Binding ItemsSource}" IsEditable="True"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                        <Style x:Key="SettingFieldStyle" TargetType="{x:Type ContentControl}">
+                            <Setter Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                                            <Button Content="设置" Padding="0" Command="{Binding DataContext.SettingCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding DataContext.SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ac:PropertiesView.Resources>
+                </ac:PropertiesView>
+            </GroupBox>
+            <GroupBox Header="布局" Grid.Row="1" ac:ControlAttach.CornerRadius="0" Margin="2">
+                <ac:Form DataContext="{Binding FormSetting}">
+                    <ac:FormItem Header="布局">
+                        <ComboBox Margin="2" MinWidth="100" ac:EnumHelper.Enum="{x:Type ac:FormPanelType}" SelectedItem="{Binding PanelType}" Style="{DynamicResource AIStudio.Styles.ComboBox}"/>
+                    </ac:FormItem>
+                    <ac:FormItem Header="列数" Visibility="{Binding PanelType,Converter={ac:ConverterValueMapSetToVisibility}, ConverterParameter='UniformGrid^UniformWrapPanel'}">
+                        <TextBox Margin="2" MinWidth="100" Text="{Binding PanelColumns}" ac:TextBoxAttach.EnterUpdateSource="True" Style="{DynamicResource AIStudio.Styles.TextBox}"/>
+                    </ac:FormItem>
+                    <ac:FormItem Header="标题长度">
+                        <TextBox Margin="2" MinWidth="100" Text="{Binding HeaderWidth}" ac:TextBoxAttach.EnterUpdateSource="True" Style="{DynamicResource AIStudio.Styles.TextBox}"/>
+                    </ac:FormItem>
+                    <ac:FormItem Header="内容长度">
+                        <TextBox Margin="2" MinWidth="100" Text="{Binding BodyWidth}" ac:TextBoxAttach.EnterUpdateSource="True" Style="{DynamicResource AIStudio.Styles.TextBox}"/>
+                    </ac:FormItem>
+                    <ac:FormItem Header="横向间距">
+                        <ac:NumericUpDown Margin="2" MinWidth="100" Value="{Binding HorizontalMargin}" ButtonSpinnerLocation="UpDown" />
+                    </ac:FormItem>
+                    <ac:FormItem Header="竖向间距">
+                        <ac:NumericUpDown Margin="2" MinWidth="100" Value="{Binding VerticalMargin}" ButtonSpinnerLocation="UpDown"/>
+                    </ac:FormItem>
+                    <ac:FormItem Header="间距">
+                        <TextBox Margin="2" MinWidth="100" Text="{Binding ItemMargin}" IsReadOnly="True" Style="{DynamicResource AIStudio.Styles.TextBox}"/>
+                    </ac:FormItem>
+                    <ac:FormItem Header="标题位置">
+                        <ComboBox Margin="2" MinWidth="100" ac:EnumHelper.Enum="{x:Type Orientation}" SelectedItem="{Binding Orientation}" Style="{DynamicResource AIStudio.Styles.ComboBox}"/>
+                    </ac:FormItem>
+                </ac:Form>
+            </GroupBox>
+        </Grid>
     </Grid>
 </UserControl>

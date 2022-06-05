@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AIStudio.Core.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -36,7 +37,10 @@ namespace AIStudio.Core.Models
         {
             get
             {
-                return null;
+                ICollection<ValidationResult> results;
+                this.Validate(out results);
+
+                return results.FirstOrDefault()?.ErrorMessage;
             }
         }
     }

@@ -46,6 +46,7 @@ namespace AIStudio.Wpf.Entity.DTOModels
 
     public partial class Base_AppSecretDTO : IDataErrorInfo
     {
+        [Browsable(false)]
         public string this[string columnName]
         {
             get
@@ -67,6 +68,7 @@ namespace AIStudio.Wpf.Entity.DTOModels
             }
         }
 
+        [Browsable(false)]
         public string Error
         {
             get

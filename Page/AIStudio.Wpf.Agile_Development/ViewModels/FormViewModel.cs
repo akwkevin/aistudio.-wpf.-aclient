@@ -268,8 +268,8 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             }
         }
 
-        private int _panelType;
-        public int PanelType
+        private FormPanelType _panelType;
+        public FormPanelType PanelType
         {
             get
             {
@@ -278,6 +278,19 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             set
             {
                 SetProperty(ref _panelType, value);
+            }
+        }
+
+        private int _panelColumns = 3;
+        public int PanelColumns
+        {
+            get
+            {
+                return _panelColumns;
+            }
+            set
+            {
+                SetProperty(ref _panelColumns, value);
             }
         }
 

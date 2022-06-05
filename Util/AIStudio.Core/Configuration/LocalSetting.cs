@@ -37,6 +37,10 @@ namespace AIStudio.Core
 
         public static string UpdateAddress { get; set; } = ConfigurationManager.AppSettings["UpdateAddress"];
 
+        public static string UploadFileUrl { get { return $"{ServerIP}/Base_Manage/Upload/UploadFileByForm"; } }
+
+        public static string TokenJson { get; set; }
+
         public static string ConString { get; } = ConfigurationManager.AppSettings["ConString"];
 
         public static string DatabaseType { get; } = ConfigurationManager.AppSettings["DatabaseType"] ?? "SqlServer";

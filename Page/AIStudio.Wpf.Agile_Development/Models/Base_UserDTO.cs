@@ -187,6 +187,7 @@ namespace AIStudio.Wpf.Agile_Development.Models
     public partial class Base_UserDTO : IDataErrorInfo
     {
         [ColumnHeader(Ignore = true)]
+        [Browsable(false)]
         public string this[string columnName]
         {
             get
@@ -209,6 +210,7 @@ namespace AIStudio.Wpf.Agile_Development.Models
         }
 
         [ColumnHeader(Ignore = true)]
+        [Browsable(false)]
         public string Error
         {
             get

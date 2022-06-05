@@ -46,6 +46,11 @@ namespace AIStudio.Wpf.Business
          
         }
 
+        public Dictionary<string, string> GetHeader()
+        {
+            return NetworkTransfer.Instance.Header.SetHeader();
+        }
+
         public async Task<AjaxResult<T>> GetData<T>(string url, Dictionary<string, string> data)
         {
             try

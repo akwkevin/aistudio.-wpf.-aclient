@@ -27,16 +27,14 @@
         </Border>
         <Border Grid.Row="1">
             <ScrollViewer>
-                <ac:Form DataContext="{Binding Data}"
-                        ac:Form.ItemMargin="3"  
-                        ac:Form.HeaderWidth="80"
-                        ac:Form.HeaderMargin="0,0,3,0">
-                    <ac:Form.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <ac:UniformGridEx Columns="4" />
-                        </ItemsPanelTemplate>
-                    </ac:Form.ItemsPanel>
-                    <ac:StepBar ac:UniformGridEx.Span="4" UseItemStatus="True" IsDot="True" ItemsSource="{Binding Steps}" Visibility="{Binding Steps.Count, Converter={converter:IntVisibilityConverter}}">
+                <Grid  DataContext="{Binding Data}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ac:StepBar UseItemStatus="True" IsDot="True" ItemsSource="{Binding Steps}" Visibility="{Binding Steps.Count, Converter={converter:IntVisibilityConverter}}">
                         <ac:StepBar.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
@@ -57,46 +55,58 @@
                             </Style>
                         </ac:StepBar.ItemContainerStyle>
                     </ac:StepBar>
-                    <ac:FormItem ac:UniformGridEx.Span="2">
-                        <ac:FormItem.Header>
-                            <TextBlock>
+                    
+                    <ac:Form Grid.Row="1"                        
+                        ac:Form.ItemMargin="3"  
+                        ac:Form.HeaderWidth="80"
+                        ac:Form.HeaderMargin="0,0,3,0">
+                        <ac:Form.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ac:UniformGridEx Columns="4" />
+                            </ItemsPanelTemplate>
+                        </ac:Form.ItemsPanel>
+                     
+                        <ac:FormItem ac:UniformGridEx.Span="2">
+                            <ac:FormItem.Header>
+                                <TextBlock>
                                 <Run Foreground="Red">*</Run>
                                 <Run>摘要</Run>
-                            </TextBlock>
-                        </ac:FormItem.Header>
-                        <TextBox Text="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
-                    </ac:FormItem>
-                    <ac:FormItem>
-                        <ac:FormItem.Header>
-                            <TextBlock>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <TextBox Text="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <TextBlock>
                                 <Run Foreground="Red">*</Run>
                                 <Run>申请人</Run>
-                            </TextBlock>
-                        </ac:FormItem.Header>
-                        <ComboBox ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding ApplicantUserId}" />
-                    </ac:FormItem>
-                    <ac:FormItem Header="紧急程度">
-                        <ComboBox SelectedIndex="{Binding Grade}" >
-                            <ComboBoxItem Content="正常"/>
-                            <ComboBoxItem Content="紧急"/>
-                            <ComboBoxItem Content="特急"/>
-                        </ComboBox>
-                    </ac:FormItem>
-                    <ac:FormItem ac:UniformGridEx.Span="2" Header="备注">
-                        <TextBox Text="{Binding Remarks,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
-                    </ac:FormItem>
+                                </TextBlock>
+                            </ac:FormItem.Header>
+                            <ComboBox ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding ApplicantUserId}" />
+                        </ac:FormItem>
+                        <ac:FormItem Header="紧急程度">
+                            <ComboBox SelectedIndex="{Binding Grade}" >
+                                <ComboBoxItem Content="正常"/>
+                                <ComboBoxItem Content="紧急"/>
+                                <ComboBoxItem Content="特急"/>
+                            </ComboBox>
+                        </ac:FormItem>
+                        <ac:FormItem ac:UniformGridEx.Span="2" Header="备注">
+                            <TextBox Text="{Binding Remarks,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
 
-                    <ac:FormItem Header="{Binding Unit,TargetNullValue='数值'}" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
-                        <TextBox Text="{Binding Flag,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
-                    </ac:FormItem>
-                    <ac:FormItem Header="期望完成日期" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
-                        <DatePicker SelectedDate="{Binding ExpectedDate,Mode=TwoWay}"></DatePicker>
-                    </ac:FormItem>
-                    <ac:FormItem Header="附件" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
-                        <controls:UploadFile File="{Binding Appendix,Mode=TwoWay}"></controls:UploadFile>
-                    </ac:FormItem>
+                        <ac:FormItem Header="{Binding Unit,TargetNullValue='数值'}" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
+                            <TextBox Text="{Binding Flag,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem>
+                        <ac:FormItem Header="期望完成日期" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
+                            <DatePicker SelectedDate="{Binding ExpectedDate,Mode=TwoWay}"></DatePicker>
+                        </ac:FormItem>
+                        <ac:FormItem Header="附件" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
+                            <controls:UploadFile File="{Binding Appendix,Mode=TwoWay}"></controls:UploadFile>
+                        </ac:FormItem>  
+                    </ac:Form>
 
-                    <ItemsControl ac:UniformGridEx.Span="4" ItemsSource="{Binding Comments}" Visibility="{Binding Comments.Count, Converter={converter:IntVisibilityConverter}}">
+                    <ItemsControl Grid.Row="2" ItemsSource="{Binding Comments}" Margin="50,5,0,5" Visibility="{Binding Comments.Count, Converter={converter:IntVisibilityConverter}}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -159,7 +169,7 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
-                    <StackPanel ac:UniformGridEx.Span="4" Visibility="{Binding Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=1}">
+                    <StackPanel Grid.Row="3" Visibility="{Binding Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=1}">
                         <StackPanel Margin="50,5,0,5" Orientation="Horizontal" >
                             <RadioButton Margin="3" IsChecked="{Binding DataContext.Status, RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter=100}, ConverterParameter=100}" Content="通过"/>
                             <RadioButton Margin="3" IsChecked="{Binding DataContext.Status, RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter=2}, ConverterParameter=2}" Content="驳回上一级"/>
@@ -168,7 +178,8 @@
                         </StackPanel>
                         <TextBox Height="28" Margin="52,5,0,5" ac:ControlAttach.Watermark="意见" Text="{Binding DataContext.Remark, RelativeSource={RelativeSource AncestorType={x:Type UserControl}} ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" ></TextBox>
                     </StackPanel>
-                </ac:Form>
+                    
+                </Grid>
             </ScrollViewer>
         </Border>
         <StackPanel Grid.Row="2"

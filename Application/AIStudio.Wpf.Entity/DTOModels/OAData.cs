@@ -32,6 +32,11 @@ namespace AIStudio.Wpf.Entity.DTOModels
 
         public ActRule ActRules { get; set; }
         public Dictionary<string, string> SelectNextStep { get; set; }
+
+        public override string ToString()
+        {
+            return Id + "-" + Label;
+        }
     }
 
     public class CurrentStepId

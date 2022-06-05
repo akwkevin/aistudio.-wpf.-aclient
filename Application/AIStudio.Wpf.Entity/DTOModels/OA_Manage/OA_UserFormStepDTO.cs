@@ -6,5 +6,10 @@ namespace AIStudio.Wpf.Entity.DTOModels
     public class OA_UserFormStepDTO : OA_UserFormStep
     {
         public string Avatar { get; set; }
+
+        public override string ToString()
+        {
+            return Id + "-" + CreatorName;
+        }
     }
 }

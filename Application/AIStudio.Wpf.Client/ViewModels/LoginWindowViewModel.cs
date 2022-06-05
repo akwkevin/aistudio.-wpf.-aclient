@@ -247,6 +247,7 @@ namespace AIStudio.Wpf.Client.ViewModels
                     {
                         success = true;
                     }
+                    LocalSetting.TokenJson = _dataProvider.GetHeader().ToJson();
                 }
 
                 if (success)

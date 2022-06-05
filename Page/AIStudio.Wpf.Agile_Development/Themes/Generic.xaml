@@ -79,9 +79,7 @@
                 <ac:TreeSelect.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                         <StackPanel Orientation="Horizontal">
-                            <Grid Margin="2,0,2,0">
-                                <TextBlock x:Name="txtName" Text="{Binding Text, Mode=TwoWay}" Width="Auto"/>
-                            </Grid>
+                            <TextBlock Text="{Binding Text}"/>
                         </StackPanel>
                     </HierarchicalDataTemplate>
                 </ac:TreeSelect.ItemTemplate>
@@ -103,10 +101,8 @@
                 <ac:TreeSelect.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                         <StackPanel Orientation="Horizontal">
-                            <CheckBox Margin="2,0,0,0" IsChecked="{Binding IsChecked,Mode=TwoWay}" />
-                            <Grid Margin="2,0,2,0">                              
-                                <TextBlock x:Name="txtName" Text="{Binding Text, Mode=TwoWay}" Width="Auto"/>
-                            </Grid>
+                            <CheckBox IsChecked="{Binding IsChecked,Mode=TwoWay}" />
+                            <TextBlock Margin="2,0,0,0" Text="{Binding Text}"/>
                         </StackPanel>
                     </HierarchicalDataTemplate>
                 </ac:TreeSelect.ItemTemplate>
@@ -127,6 +123,42 @@
                             IsEnabled="{Binding IsReadOnly,Converter={StaticResource BoolInverseConverter}}" 
                             VerticalAlignment="Center" 
                             Style="{StaticResource AIStudio.Styles.ToggleButton.Switch}"/>
+        </ac:FormItem>
+    </ControlTemplate>
+    <ControlTemplate x:Key="RichTextBoxTemplate">
+        <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
+            <ac:RichTextBox Text="{Binding Value,Mode=TwoWay}" 
+                            IsEnabled="{Binding IsReadOnly,Converter={StaticResource BoolInverseConverter}}" 
+                            VerticalAlignment="Center" 
+                            Style="{StaticResource AIStudio.Styles.RichTextBox}"/>
+        </ac:FormItem>
+    </ControlTemplate>
+    <ControlTemplate x:Key="UploadFileTemplate">
+        <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
+            <ac:UploadFile File="{Binding Value,Mode=TwoWay}"
+                            UploadUrl="{x:Static core:LocalSetting.UploadFileUrl}"
+                            UploadToken="{x:Static core:LocalSetting.TokenJson}"
+                            IsEnabled="{Binding IsReadOnly,Converter={StaticResource BoolInverseConverter}}" 
+                            VerticalAlignment="Center" />
+        </ac:FormItem>
+    </ControlTemplate>
+    <ControlTemplate x:Key="UploadImageTemplate">
+        <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
+            <ac:UploadFile File="{Binding Value,Mode=TwoWay}"
+                            UploadUrl="{x:Static core:LocalSetting.UploadFileUrl}"
+                            UploadToken="{x:Static core:LocalSetting.TokenJson}"
+                            UploadFileType="Image"
+                            IsEnabled="{Binding IsReadOnly,Converter={StaticResource BoolInverseConverter}}" 
+                            VerticalAlignment="Center" />
+        </ac:FormItem>
+    </ControlTemplate>
+    <!--DataGridTemplate未完善-->
+    <ControlTemplate x:Key="DataGridTemplate">
+        <ac:FormItem Header="{Binding Header}" Margin="2" Visibility="{Binding Visibility}">
+            <DataGrid ItemsSource="{Binding Value,Mode=TwoWay}"
+                            IsEnabled="{Binding IsReadOnly,Converter={StaticResource BoolInverseConverter}}" 
+                            VerticalAlignment="Center" 
+                            Style="{StaticResource AIStudio.Styles.DataGrid}"/>
         </ac:FormItem>
     </ControlTemplate>
     <ControlTemplate x:Key="DoubleUpDownTemplate">
@@ -246,6 +278,18 @@
             <DataTrigger Binding="{Binding ControlType}" Value="ToggleButton">
                 <Setter Property="Template" Value="{StaticResource ToggleButtonTemplate}"/>
             </DataTrigger>
+            <DataTrigger Binding="{Binding ControlType}" Value="RichTextBox">
+                <Setter Property="Template" Value="{StaticResource RichTextBoxTemplate}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ControlType}" Value="UploadFile">
+                <Setter Property="Template" Value="{StaticResource UploadFileTemplate}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ControlType}" Value="UploadImage">
+                <Setter Property="Template" Value="{StaticResource UploadImageTemplate}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ControlType}" Value="DataGrid">
+                <Setter Property="Template" Value="{StaticResource DataGridTemplate}"/>
+            </DataTrigger>
             <DataTrigger Binding="{Binding ControlType}" Value="DoubleUpDown">
                 <Setter Property="Template" Value="{StaticResource DoubleUpDownTemplate}"/>
             </DataTrigger>
@@ -302,6 +346,18 @@
             </DataTrigger>
             <DataTrigger Binding="{Binding ControlType}" Value="ToggleButton">
                 <Setter Property="Template" Value="{StaticResource ToggleButtonTemplate}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ControlType}" Value="RichTextBox">
+                <Setter Property="Template" Value="{StaticResource RichTextBoxTemplate}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ControlType}" Value="UploadFile">
+                <Setter Property="Template" Value="{StaticResource UploadFileTemplate}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ControlType}" Value="UploadImage">
+                <Setter Property="Template" Value="{StaticResource UploadImageTemplate}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ControlType}" Value="DataGrid">
+                <Setter Property="Template" Value="{StaticResource DataGridTemplate}"/>
             </DataTrigger>
             <DataTrigger Binding="{Binding ControlType}" Value="DoubleUpDown">
                 <Setter Property="Template" Value="{StaticResource DoubleUpDownTemplate}"/>

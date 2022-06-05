@@ -31,12 +31,11 @@ namespace AIStudio.Wpf.Agile_Development
             return (ObservableCollection<DataGridColumnCustom>)element.GetValue(BindableColumnsProperty);
         }
 
-        private static void OnBindableColumnsChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
+        private static void OnBindableColumnsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DataGrid dataGrid = source as DataGrid;
-            ObservableCollection<DataGridColumnCustom> columns = e.NewValue as ObservableCollection<DataGridColumnCustom>;
-            if (dataGrid != null)
-            {              
+            if (d is DataGrid dataGrid)
+            {
+                ObservableCollection<DataGridColumnCustom> columns = e.NewValue as ObservableCollection<DataGridColumnCustom>;
                 BehaviorCollection Behaviors = Interaction.GetBehaviors(dataGrid);
                 Behaviors.Clear();
                 dataGrid.Columns.Clear();

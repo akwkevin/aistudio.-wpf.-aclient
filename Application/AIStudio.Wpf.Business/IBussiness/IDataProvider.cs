@@ -10,9 +10,10 @@ namespace AIStudio.Wpf.Business
 {
 
     public interface IDataProvider
-    {
+    {    
         Task<AjaxResult> GetToken(string url, string userName, string password, int headMode, TimeSpan timeout);
 
+        Dictionary<string, string> GetHeader();
         //[LogHandler]
         Task<AjaxResult<T>> GetData<T>(string url, Dictionary<string, string> data);
 
