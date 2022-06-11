@@ -306,14 +306,15 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             }
         }
 
-        private readonly string template =
-"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" xmlns:ac=\"https://gitee.com/akwkevin/AI-wpf-controls\" DataContext=\"{Binding Data}\">" + "\r\n" +
-"%formColumns%" + "\r\n" +
-"</ac:Form>";
         protected async void Bulid(object para)
         {
             if (para is Form form)
             {
+                string template =
+$"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" xmlns:ac=\"https://gitee.com/akwkevin/AI-wpf-controls\" PanelType=\"{form.PanelType}\" PanelColumns=\"{form.PanelColumns}\" HeaderWidth=\"{Form.GetHeaderWidth(form)}\" BodyWidth=\"{Form.GetBodyWidth(form)}\" ItemMargin=\"{Form.GetItemMargin(form)}\" DataContext=\"{{Binding Data}}\">" + "\r\n" +
+"%formColumns%" + "\r\n" +
+"</ac:Form>";
+
                 List<string> formColumnsList = new List<string>();
 
                 var items = form.Items.OfType<FormCodeItem>();
@@ -323,7 +324,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                 }
 
                 var code = template.Replace("%formColumns%", string.Join("\r\n", formColumnsList));
-                var viewmodel = new FormCodeEditViewModel(code, SelectedType == null ? null : Activator.CreateInstance(SelectedType));
+                var viewmodel = new FormCodeEditViewModel(code, Data, Items);
                 var dialog = new FormCodeEdit(viewmodel);
 
                 var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
@@ -391,32 +392,32 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                             ControlType = FormControlType.DataGrid,
                             Span = 4,
                             ExtField1 = new List<DataGridColumn>
-                    {
-                        new DataGridTextColumn()
-                        {
-                            Binding = new Binding("Label"),
-                            Header = "审批节点",
-                            Width = new DataGridLength(1, DataGridLengthUnitType.Star),
-                        },
-                        new DataGridTextColumn()
-                        {
-                            Binding = new Binding("ActRules.RoleNames"){ Converter = new CollectionToStringConverter() },
-                            Header = "审批角色",
-                            Width = new DataGridLength(1, DataGridLengthUnitType.Star),
-                        },
-                        new DataGridTextColumn()
-                        {
-                            Binding = new Binding("ActRules.UserNames"){ Converter = new CollectionToStringConverter() },
-                            Header = "审批人",
-                            Width = new DataGridLength(1, DataGridLengthUnitType.Star),
-                        },
-                        new DataGridTextColumn()
-                        {
-                            Binding = new Binding("Status"){ Converter = new StepStatusConverter()},
-                            Header = "状态",
-                            Width = new DataGridLength(1, DataGridLengthUnitType.Star),
-                        }
-                    }
+                            {
+                                new DataGridTextColumn()
+                                {
+                                    Binding = new Binding("Label"),
+                                    Header = "审批节点",
+                                    Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                                },
+                                new DataGridTextColumn()
+                                {
+                                    Binding = new Binding("ActRules.RoleNames"){ Converter = new CollectionToStringConverter() },
+                                    Header = "审批角色",
+                                    Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                                },
+                                new DataGridTextColumn()
+                                {
+                                    Binding = new Binding("ActRules.UserNames"){ Converter = new CollectionToStringConverter() },
+                                    Header = "审批人",
+                                    Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                                },
+                                new DataGridTextColumn()
+                                {
+                                    Binding = new Binding("Status"){ Converter = new StepStatusConverter()},
+                                    Header = "状态",
+                                    Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                                }
+                            }
                         };
                         var item2 = new FormCodeItem() { Header = "摘要", Path = "Text", ControlType = FormControlType.TextBox, Span = 2 };
                         var item3 = new FormCodeItem() { Header = "申请人", Path = "ApplicantUserId", ItemsSource = "Items[Base_User]", ControlType = FormControlType.ComboBox };
@@ -432,38 +433,38 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                             ControlType = FormControlType.DataGrid,
                             Span = 4,
                             ExtField1 = new List<DataGridColumn>
-                    {
-                        new DataGridTextColumn()
-                        {
-                            Binding = new Binding("CreatorName"),
-                            Header = "审批人",
-                            Width = new DataGridLength(1, DataGridLengthUnitType.Star),
-                        },
-                        new DataGridTextColumn()
-                        {
-                            Binding = new Binding("RoleNames"),
-                            Header = "审批角色",
-                            Width = new DataGridLength(1, DataGridLengthUnitType.Star),
-                        },
-                        new DataGridTextColumn()
-                        {
-                            Binding = new Binding("CreateTime"),
-                            Header = "审批时间",
-                            Width = new DataGridLength(1, DataGridLengthUnitType.Star),
-                        },
-                        new DataGridTextColumn()
-                        {
-                            Binding = new Binding("Remarks"),
-                            Header = "备注",
-                            Width = new DataGridLength(1, DataGridLengthUnitType.Star),
-                        },
-                        new DataGridTextColumn()
-                        {
-                            Binding = new Binding("Status"){ Converter = new StepStatusConverter()},
-                            Header = "状态",
-                            Width = new DataGridLength(1, DataGridLengthUnitType.Star),
-                        }
-                    }
+                            {
+                                new DataGridTextColumn()
+                                {
+                                    Binding = new Binding("CreatorName"),
+                                    Header = "审批人",
+                                    Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                                },
+                                new DataGridTextColumn()
+                                {
+                                    Binding = new Binding("RoleNames"),
+                                    Header = "审批角色",
+                                    Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                                },
+                                new DataGridTextColumn()
+                                {
+                                    Binding = new Binding("CreateTime"),
+                                    Header = "审批时间",
+                                    Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                                },
+                                new DataGridTextColumn()
+                                {
+                                    Binding = new Binding("Remarks"),
+                                    Header = "备注",
+                                    Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                                },
+                                new DataGridTextColumn()
+                                {
+                                    Binding = new Binding("Status"){ Converter = new StepStatusConverter()},
+                                    Header = "状态",
+                                    Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                                }
+                            }
                         };
                         var item10 = new FormCodeItem() { Header = "提交", Path = "SubmitCommand", ControlType = FormControlType.Submit, Span = 4, };
 
@@ -486,86 +487,86 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                         if (Data is OA_UserFormDTO oA_UserForm)
                         {
                             oA_UserForm.Steps = new List<OAStep>()
-                    {
-                        new OAStep()
-                        {
-                            Id = "Id1",
-                            Label = "开始",
-                            ActRules = new ActRule()
                             {
-                                RoleNames = new List<string>{ "超级管理员"},
-                                UserNames = new List<string>{ "Admin" },
-                            },
-                            Status = 100,
-                        },
-                        new OAStep()
-                        {
-                            Id = "Id2",
-                            Label = "主管审批",
-                            ActRules = new ActRule()
-                            {
-                                RoleNames = new List<string>{ "超级管理员"},
-                                UserNames = new List<string>{ "Admin" },
-                            },
-                            Status = 10,
-                        },
-                        new OAStep()
-                        {
-                            Id = "Id3",
-                            Label = "人力审批",
-                            ActRules = new ActRule()
-                            {
-                                RoleNames = new List<string>{ "超级管理员"},
-                                UserNames = new List<string>{ "Admin" },
-                            },
-                            Status = 0,
-                        },
-                        new OAStep()
-                        {
-                            Id = "Id4",
-                            Label = "条件",
-                        },
-                        new OAStep()
-                        {
-                            Id = "Id5",
-                            Label = "分管领导",
-                            ActRules = new ActRule()
-                            {
-                                RoleNames = new List<string>{ "超级管理员"},
-                                UserNames = new List<string>{ "Admin" },
-                            },
-                            Status = 0,
-                        },
-                        new OAStep()
-                        {
-                            Id = "Id6",
-                            Label = "人力归档",
-                            ActRules = new ActRule()
-                            {
-                                RoleNames = new List<string>{ "超级管理员"},
-                                UserNames = new List<string>{ "Admin" },
-                            },
-                            Status = 0,
-                        },
-                        new OAStep()
-                        {
-                            Id = "Id7",
-                            Label = "结束",
-                        },
-                    };
+                                new OAStep()
+                                {
+                                    Id = "Id1",
+                                    Label = "开始",
+                                    ActRules = new ActRule()
+                                    {
+                                        RoleNames = new List<string>{ "超级管理员"},
+                                        UserNames = new List<string>{ "Admin" },
+                                    },
+                                    Status = 100,
+                                },
+                                new OAStep()
+                                {
+                                    Id = "Id2",
+                                    Label = "主管审批",
+                                    ActRules = new ActRule()
+                                    {
+                                        RoleNames = new List<string>{ "超级管理员"},
+                                        UserNames = new List<string>{ "Admin" },
+                                    },
+                                    Status = 10,
+                                },
+                                new OAStep()
+                                {
+                                    Id = "Id3",
+                                    Label = "人力审批",
+                                    ActRules = new ActRule()
+                                    {
+                                        RoleNames = new List<string>{ "超级管理员"},
+                                        UserNames = new List<string>{ "Admin" },
+                                    },
+                                    Status = 0,
+                                },
+                                new OAStep()
+                                {
+                                    Id = "Id4",
+                                    Label = "条件",
+                                },
+                                new OAStep()
+                                {
+                                    Id = "Id5",
+                                    Label = "分管领导",
+                                    ActRules = new ActRule()
+                                    {
+                                        RoleNames = new List<string>{ "超级管理员"},
+                                        UserNames = new List<string>{ "Admin" },
+                                    },
+                                    Status = 0,
+                                },
+                                new OAStep()
+                                {
+                                    Id = "Id6",
+                                    Label = "人力归档",
+                                    ActRules = new ActRule()
+                                    {
+                                        RoleNames = new List<string>{ "超级管理员"},
+                                        UserNames = new List<string>{ "Admin" },
+                                    },
+                                    Status = 0,
+                                },
+                                new OAStep()
+                                {
+                                    Id = "Id7",
+                                    Label = "结束",
+                                },
+                            };
 
                             oA_UserForm.Comments = new List<OA_UserFormStepDTO>()
-                    {
-                        new OA_UserFormStepDTO()
-                        {
-                            Id = "Id1",
-                            CreatorName = "Admin",
-                            RoleNames = "发起人",
-                            CreateTime = DateTime.Now,
-                            Status = 100,
-                            Remarks = "发起了流程",
-                        },
-                    };
+                            {
+                                new OA_UserFormStepDTO()
+                                {
+                                    Id = "Id1",
+                                    CreatorName = "Admin",
+                                    RoleNames = "发起人",
+                                    CreateTime = DateTime.Now,
+                                    Status = 100,
+                                    Remarks = "发起了流程",
+                                },
+                            };
                         }
                     }));
                 }

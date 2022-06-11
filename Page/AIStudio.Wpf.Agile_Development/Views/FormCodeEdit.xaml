@@ -10,7 +10,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Style="{StaticResource AIStudio.Styles.BaseDialog}">
-    <Grid Width="450" Height="500">
+    <Grid Width="550" Height="550">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*" />

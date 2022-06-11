@@ -38,7 +38,7 @@
                         <ac:FormCodeItem Header="富文本" ControlType="RichTextBox" ac:IconAttach.Geometry="{StaticResource TextGeometry}"/>
                         <ac:FormCodeItem Header="图片上传" ControlType="UploadImage" ExtField1="{x:Static core:LocalSetting.UploadFileUrl}" ExtField2="{x:Static core:LocalSetting.TokenJson}" ac:IconAttach.Geometry="{StaticResource UploadGeometry}"/>
                         <ac:FormCodeItem Header="文件上传" ControlType="UploadFile" ExtField1="{x:Static core:LocalSetting.UploadFileUrl}" ExtField2="{x:Static core:LocalSetting.TokenJson}" ac:IconAttach.Geometry="{StaticResource UploadGeometry}"/>
-                        <ac:FormCodeItem Header="表格" ControlType="DataGrid" ac:IconAttach.Geometry="{StaticResource GridGeometry}"/>
+                        <ac:FormCodeItem Header="表格" ControlType="DataGrid" ac:IconAttach.Geometry="{StaticResource GridGeometry}" InitHeight="120" VerticalContentAlignment="Stretch"/>
                         <ac:FormCodeItem Header="提交" ControlType="Submit" Path="SubmitCommand" ac:IconAttach.Geometry="{StaticResource SuccessGeometry}"/>           
                         
                     </ac:Form>
@@ -101,7 +101,7 @@
                                 <Setter.Value>
                                     <DataTemplate>
                                         <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
-                                            <ComboBox BorderThickness="0" Padding="0" ItemsSource="{Binding DataContext.Paths, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectedValue="{Binding Path}" IsEditable="True"/>
+                                            <ComboBox BorderThickness="0" Padding="0" ItemsSource="{Binding DataContext.Paths, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectedValue="{Binding Path}" IsEditable="True" />
                                         </Grid>
                                     </DataTemplate>
                                 </Setter.Value>
