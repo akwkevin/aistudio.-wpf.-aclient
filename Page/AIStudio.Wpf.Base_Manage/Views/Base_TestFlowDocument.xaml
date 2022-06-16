@@ -1,0 +1,66 @@
+﻿<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              ColumnWidth="400" FontSize="14" FontFamily="宋体"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+              TextOptions.TextFormattingMode="Display">
+    <FlowDocument.Resources>
+        <Style TargetType="Table" x:Key="BorderedTable">
+            <Setter Property="CellSpacing" Value="0"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderBrush" Value="#000"></Setter>
+        </Style>
+        <Style TargetType="TableCell" x:Key="BorderedCell">
+            <Setter Property="BorderThickness" Value="0.5"></Setter>
+            <Setter Property="BorderBrush" Value="#000"></Setter>
+            <Setter Property="Padding" Value="3"></Setter>
+        </Style>
+    </FlowDocument.Resources>   
+
+    <Table Style="{StaticResource BorderedTable}">
+        <Table.Columns>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+            <TableColumn Width="*"></TableColumn>
+        </Table.Columns>
+        <TableRowGroup Name="rowsDetails">
+            <TableRow FontWeight="Bold" >
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>父级Id</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>类型,菜单=0,页面=1,权限=2</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>权限名/菜单名</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>菜单地址</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>权限值</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>是否需要权限(仅页面有效)</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>图标</Paragraph>
+               </TableCell>
+
+                <TableCell Style="{ StaticResource BorderedCell}">
+                    <Paragraph>排序</Paragraph>
+               </TableCell>
+
+            </TableRow>
+        </TableRowGroup>
+    </Table>
+</FlowDocument>

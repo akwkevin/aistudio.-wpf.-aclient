@@ -8,21 +8,21 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace AIStudio.Wpf.%areaName%.ViewModels
+namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class %entityName%EditViewModel : BaseEditViewModel<%entityName%DTO>
+    public class Base_TestEditViewModel : BaseEditViewModel<Base_TestDTO>
     {
-        public %entityName%EditViewModel(%entityName%DTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
+        public Base_TestEditViewModel(Base_TestDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
         {
 
         }
 
 		protected override void InitData()
 		{
-			Data = new %entityName%DTO();
+			Data = new Base_TestDTO();
 		}
 
-        protected override void GetData(%entityName%DTO para)
+        protected override void GetData(Base_TestDTO para)
         {
             base.GetData(para);
         }       
