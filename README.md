@@ -143,40 +143,24 @@ QQ技术交流群:51286643（进群提供服务端的开源代码地址）
 
 相关介绍文章如下：
 
-[1.Wpf客户端生成安装包与自动升级包 - 竹天笑 - 博客园 (cnblogs.com)](https://www.cnblogs.com/akwkevin/p/14538305.html)
-
-1.1搭建Wpf框架(2.1) —— Wpf客户端生成安装包与自动升级包2
-
-2.Wpf实现打印报表 - 竹天笑 - 博客园 (cnblogs.com)
-
-3.Wpf使用EFCore操作数据库 - 竹天笑 - 博客园 (cnblogs.com)
-
-4. 搭建Wpf框架(5) —— Wpf使用unity实现AOP - 竹天笑 - 博客园 (cnblogs.com)
-
-5.搭建Wpf框架(6) —— Tile布局控件（可切换布局） - 竹天笑 - 博客园 (cnblogs.com)
-
-6.搭建Wpf框架(7) —— 我的控制台（续6） - 竹天笑 - 博客园 (cnblogs.com)
-
-7搭建Wpf框架(8) —— 3D展示墙 - 竹天笑 - 博客园 (cnblogs.com)
-
-8搭建Wpf框架(9) —— 登录验证控件 - 竹天笑 - 博客园 (cnblogs.com)
-
-9搭建Wpf框架(10) —— 弹出窗口动画 - 竹天笑 - 博客园 (cnblogs.com)
-
-10.搭建Wpf框架(11) —— 多屏窗口
-
-11.搭建Wpf框架(12) —— MahApps2.0.0.0自定义主题
-
-12.一个Wpf控件库（Wpf客户端框架使用） - 竹天笑 - 博客园 (cnblogs.com)
-
-13.为Wpf敏捷开发做准备-Wpf实现Form表单1 - 竹天笑 - 博客园 (cnblogs.com)
-
-14.为Wpf敏捷开发做准备-Wpf实现Form表单2 - 竹天笑 - 博客园 (cnblogs.com)
-
-15.搭建Wpf框架(13) ——代码生成器的使用 - 竹天笑 - 博客园 (cnblogs.com)
-
-16.搭建Wpf框架(14) ——代码生成器的补充（Form表单的拖拽及生成） - 竹天笑 - 博客园 (cnblogs.com)
-
-17.搭建Wpf框架(15) ——敏捷开发crud界面的设计 - 竹天笑 - 博客园 (cnblogs.com)
-
-18.搭建Wpf框架(16) ——敏捷开发crud界面终极版（通过数据库脚本配置，前台无需修改） - 竹天笑 - 博客园 (cnblogs.com)
+<section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="font-size: 16px; color: black; padding: 0 10px; line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; word-break: break-word; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/16297628.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">管理系统-Wpf客户端框架（OA，聊天，定时任务）3.0发布</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/14538305.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">1.Wpf客户端生成安装包与自动升级包 - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/14946496.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">1.1搭建Wpf框架(2.1) —— Wpf客户端生成安装包与自动升级包2</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/14560284.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">2.Wpf实现打印报表 - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/14586097.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">3.Wpf使用EFCore操作数据库 - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/14587737.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">  4. 搭建Wpf框架(5) —— Wpf使用unity实现AOP - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/14730269.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">5.搭建Wpf框架(6) —— Tile布局控件（可切换布局） - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/14730309.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">6.搭建Wpf框架(7) —— 我的控制台（续6） - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/14757287.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">7搭建Wpf框架(8) —— 3D展示墙 - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/14757322.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">8搭建Wpf框架(9) —— 登录验证控件 - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/14757355.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">9搭建Wpf框架(10) —— 弹出窗口动画 - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/15069437.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">10.搭建Wpf框架(11) —— 多屏窗口</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/15070640.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">11.搭建Wpf框架(12) —— MahApps2.0.0.0自定义主题</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/16297568.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">12.一个Wpf控件库（Wpf客户端框架使用） - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/16387680.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">13.为Wpf敏捷开发做准备-Wpf实现Form表单1 - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/16387731.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">14.为Wpf敏捷开发做准备-Wpf实现Form表单2 - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/16387851.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">15.搭建Wpf框架(13) ——代码生成器的使用 - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/16387912.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">16.搭建Wpf框架(14) ——代码生成器的补充（Form表单的拖拽及生成） - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/16388086.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">17.搭建Wpf框架(15) ——敏捷开发crud界面的设计 - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/16388122.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">18.搭建Wpf框架(16) ——敏捷开发crud界面终极版（通过数据库脚本配置，前台无需修改） - 竹天笑 - 博客园 (cnblogs.com)</a></p>
+</section>
