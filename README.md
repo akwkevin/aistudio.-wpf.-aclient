@@ -141,3 +141,42 @@ QQ技术交流群:51286643（进群提供服务端的开源代码地址）
 #### 更多
 界面截图请到博客介绍：https://www.cnblogs.com/akwkevin/p/14534441.html
 
+相关介绍文章如下：
+
+1.Wpf客户端生成安装包与自动升级包 - 竹天笑 - 博客园 (cnblogs.com)
+
+1.1搭建Wpf框架(2.1) —— Wpf客户端生成安装包与自动升级包2
+
+2.Wpf实现打印报表 - 竹天笑 - 博客园 (cnblogs.com)
+
+3.Wpf使用EFCore操作数据库 - 竹天笑 - 博客园 (cnblogs.com)
+
+4. 搭建Wpf框架(5) —— Wpf使用unity实现AOP - 竹天笑 - 博客园 (cnblogs.com)
+
+5.搭建Wpf框架(6) —— Tile布局控件（可切换布局） - 竹天笑 - 博客园 (cnblogs.com)
+
+6.搭建Wpf框架(7) —— 我的控制台（续6） - 竹天笑 - 博客园 (cnblogs.com)
+
+7搭建Wpf框架(8) —— 3D展示墙 - 竹天笑 - 博客园 (cnblogs.com)
+
+8搭建Wpf框架(9) —— 登录验证控件 - 竹天笑 - 博客园 (cnblogs.com)
+
+9搭建Wpf框架(10) —— 弹出窗口动画 - 竹天笑 - 博客园 (cnblogs.com)
+
+10.搭建Wpf框架(11) —— 多屏窗口
+
+11.搭建Wpf框架(12) —— MahApps2.0.0.0自定义主题
+
+12.一个Wpf控件库（Wpf客户端框架使用） - 竹天笑 - 博客园 (cnblogs.com)
+
+13.为Wpf敏捷开发做准备-Wpf实现Form表单1 - 竹天笑 - 博客园 (cnblogs.com)
+
+14.为Wpf敏捷开发做准备-Wpf实现Form表单2 - 竹天笑 - 博客园 (cnblogs.com)
+
+15.搭建Wpf框架(13) ——代码生成器的使用 - 竹天笑 - 博客园 (cnblogs.com)
+
+16.搭建Wpf框架(14) ——代码生成器的补充（Form表单的拖拽及生成） - 竹天笑 - 博客园 (cnblogs.com)
+
+17.搭建Wpf框架(15) ——敏捷开发crud界面的设计 - 竹天笑 - 博客园 (cnblogs.com)
+
+18.搭建Wpf框架(16) ——敏捷开发crud界面终极版（通过数据库脚本配置，前台无需修改） - 竹天笑 - 博客园 (cnblogs.com)
