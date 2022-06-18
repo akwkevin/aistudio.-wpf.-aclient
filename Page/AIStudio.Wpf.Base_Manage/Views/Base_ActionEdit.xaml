@@ -61,6 +61,9 @@
                         <ac:FormItem Header="路径(页面)">
                             <TextBox Text="{Binding Url,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
                         </ac:FormItem>
+                        <ac:FormItem Header="参数">
+                            <TextBox Text="{Binding Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
+                        </ac:FormItem>
                         <ac:FormItem Header="需要权限">
                             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                                 <RadioButton IsChecked="True">否</RadioButton>

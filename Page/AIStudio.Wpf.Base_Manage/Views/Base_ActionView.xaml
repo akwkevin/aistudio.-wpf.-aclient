@@ -44,6 +44,7 @@
                 <DataGridTextColumn Header="类型"  Binding="{Binding TypeText}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="路径"  Binding="{Binding Url}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="需要权限"  Binding="{Binding NeedActionText}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="参数"  Binding="{Binding ValueInfo}" IsReadOnly="True"/>
                 <DataGridTemplateColumn Header="页面权限" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
