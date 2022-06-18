@@ -122,7 +122,7 @@ protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
 固定行列：UniformGrid
 
 #### 表单-代码生成，是代码生成器的一种补充。
-![输入图片说明](%E6%8B%96%E6%8B%BD%E5%BC%8F%E7%BC%96%E7%A8%8B.gif)
+![输入图片说明](3.gif)
 
 #### 通用crud方法1：
 ![输入图片说明](image.png)
