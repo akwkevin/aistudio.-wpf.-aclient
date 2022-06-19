@@ -130,7 +130,7 @@ protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
 
 #### 通用crud方法2：
 ![输入图片说明](image.png)
-读取数据库配置，生成DataGrid,完全不需要类，后台完成相关接口，wpd前台不需要更改任何代码，只需要在数据库插入脚本即可。
+读取数据库配置，生成DataGrid,完全不需要类，后台完成相关接口，前台不需要更改任何代码，只需要在数据库插入脚本即可。
 
 #### 技术交流
 个人QQ:80267720
