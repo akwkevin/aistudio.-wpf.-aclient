@@ -134,7 +134,7 @@ protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
 
 #### 技术交流
 个人QQ:80267720
-QQ技术交流群:51286643（进群提供服务端的开源代码地址）
+QQ技术交流群:51286643（进群提供服务端的开源代码地址）（如果您还喜欢，帮忙点个星，谢谢）
 个人博客:https://www.cnblogs.com/akwkevin/
 
 
