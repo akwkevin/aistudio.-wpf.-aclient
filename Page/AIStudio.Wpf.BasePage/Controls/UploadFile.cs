@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Controls.Helper;
+using System.Windows.Data;
 
 namespace AIStudio.Wpf.BasePage.Controls
 {
@@ -58,7 +59,13 @@ namespace AIStudio.Wpf.BasePage.Controls
                         return new Tuple<string, string>("", "");
                     }
                 };
+                //Binding bindingFile = new Binding("File");
+                //bindingFile.Source = _uploadFile;
+                //this.SetBinding(FileProperty, bindingFile);
 
+                //Binding bindingFiles = new Binding("Files");
+                //bindingFiles.Source = _uploadFile;
+                //this.SetBinding(FilesProperty, bindingFiles);
             }
         }
 
@@ -72,7 +79,7 @@ namespace AIStudio.Wpf.BasePage.Controls
         }
 
         public static readonly DependencyProperty FilesProperty = DependencyProperty.Register(
-            "Files", typeof(ObservableCollection<string>), typeof(UploadFile), new PropertyMetadata(null));
+            "Files", typeof(ObservableCollection<string>), typeof(UploadFile));
 
         public ObservableCollection<string> Files
         {
@@ -96,24 +103,6 @@ namespace AIStudio.Wpf.BasePage.Controls
         {
             get { return (string)this.GetValue(FileProperty); }
             set { this.SetValue(FileProperty, value); }
-        }
-
-        public static readonly DependencyProperty UploadVisibleProperty = DependencyProperty.Register(
-            "UploadVisible", typeof(Visibility), typeof(UploadFile), new PropertyMetadata(Visibility.Visible));
-
-        public Visibility UploadVisible
-        {
-            get { return (Visibility)this.GetValue(UploadVisibleProperty); }
-            set { this.SetValue(UploadVisibleProperty, value); }
-        }
-
-        public static readonly DependencyProperty FilesDisplayProperty = DependencyProperty.Register(
-            "FilesDisplay", typeof(ObservableCollection<AIStudio.Wpf.Controls.UploadFileDisplay>), typeof(UploadFile), new PropertyMetadata(new ObservableCollection<AIStudio.Wpf.Controls.UploadFileDisplay>() { new AIStudio.Wpf.Controls.UploadFileDisplay() { IsUploadTemplate = true } }));
-
-        public ObservableCollection<AIStudio.Wpf.Controls.UploadFileDisplay> FilesDisplay
-        {
-            get { return (ObservableCollection<AIStudio.Wpf.Controls.UploadFileDisplay>)this.GetValue(FilesDisplayProperty); }
-            set { this.SetValue(FilesDisplayProperty, value); }
         }
 
         public static readonly DependencyProperty DisableProperty = DependencyProperty.Register(

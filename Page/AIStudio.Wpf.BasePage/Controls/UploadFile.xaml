@@ -23,11 +23,9 @@
                         Padding="{TemplateBinding Padding}"
                         Margin="{TemplateBinding Margin}"
                         UploadFileType="{TemplateBinding UploadFileType}"
-                        Files="{TemplateBinding Files}"
+                        Files="{Binding Files,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}"
                         MaxCount="{TemplateBinding MaxCount}"
-                        File="{TemplateBinding File}"
-                        UploadVisible="{TemplateBinding UploadVisible}"
-                        FilesDisplay="{TemplateBinding FilesDisplay}"
+                        File="{Binding File,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}"
                         Disable="{TemplateBinding Disable}"></ac:UploadFile>
                 </ControlTemplate>
             </Setter.Value>
