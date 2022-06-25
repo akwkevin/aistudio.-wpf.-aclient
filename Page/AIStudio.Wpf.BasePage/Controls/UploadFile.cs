@@ -59,13 +59,6 @@ namespace AIStudio.Wpf.BasePage.Controls
                         return new Tuple<string, string>("", "");
                     }
                 };
-                //Binding bindingFile = new Binding("File");
-                //bindingFile.Source = _uploadFile;
-                //this.SetBinding(FileProperty, bindingFile);
-
-                //Binding bindingFiles = new Binding("Files");
-                //bindingFiles.Source = _uploadFile;
-                //this.SetBinding(FilesProperty, bindingFiles);
             }
         }
 
