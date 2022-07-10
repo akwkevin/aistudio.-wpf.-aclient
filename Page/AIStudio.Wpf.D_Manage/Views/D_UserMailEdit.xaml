@@ -80,7 +80,7 @@
                 VerticalAlignment="Center"
                 Content="发送"
                 Margin="5 0 5 0" IsEnabled="{Binding Data.Status,Converter={converter:ConverterValueMapSetToBool},ConverterParameter=0,Mode=OneWay}"/>
-            <Button x:Name="PART_NegativeButton"
+            <Button x:Name="PART_NegativeButton" ac:ControlAttach.Status="Info"
                 VerticalAlignment="Center"
                 Content="取消"
                 Margin="5 0 5 0" />

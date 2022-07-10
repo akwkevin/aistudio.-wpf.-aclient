@@ -61,8 +61,8 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
             <Button Margin="3" Content="存草稿" Command="{Binding EditCommand}" ></Button>
-            <Button Margin="3" Content="发送" IsDefault="True" Command="{Binding AddCommand}" Background="{DynamicResource PrimaryBrush}"></Button>
-            <Button Margin="3" Content="重置" Command="{Binding ResetCommand}" Background="{DynamicResource DangerBrush}"></Button>
+            <Button Margin="3" Content="发送" IsDefault="True" Command="{Binding AddCommand}"></Button>
+            <Button Margin="3" Content="重置" ac:ControlAttach.Status="Info" Command="{Binding ResetCommand}"></Button>
         </StackPanel>
     </Grid>
 </UserControl>
