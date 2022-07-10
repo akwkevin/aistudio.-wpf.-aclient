@@ -88,6 +88,12 @@
     <Content Include="bin\Debug\net5.0-windows\server\logs\log20220603.txt" />
     <Content Include="bin\Debug\net5.0-windows\server\logs\log20220604.txt" />
     <Content Include="bin\Debug\net5.0-windows\server\logs\log20220605.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20220611.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20220616.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20220617.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20220618.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20220619.txt" />
+    <Content Include="bin\Debug\net5.0-windows\server\logs\log20220710.txt" />
     <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.DSL.xml" />
     <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.EntityFramework.xml" />
     <Content Include="bin\Debug\net5.0-windows\server\WorkflowCore.Persistence.MySQL.xml" />
@@ -244,6 +250,8 @@
     <None Include="bin\Debug\net5.0-windows\server\Oracle.ManagedDataAccess.dll" />
     <None Include="bin\Debug\net5.0-windows\server\Pomelo.EntityFrameworkCore.MySql.dll" />
     <None Include="bin\Debug\net5.0-windows\server\Pomelo.JsonObject.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\protobuf-net.Core.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\protobuf-net.dll" />
     <None Include="bin\Debug\net5.0-windows\server\QRCoder.dll" />
     <None Include="bin\Debug\net5.0-windows\server\Quartz.dll" />
     <None Include="bin\Debug\net5.0-windows\server\runtimes\alpine-x64\native\libe_sqlite3.so" />
@@ -345,6 +353,9 @@
     <None Include="bin\Debug\net5.0-windows\server\wwwroot\Update\AIStudio.Wpf.Client.zip" />
     <None Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\4c4ea03e0d034bf6ac33b87a78fd92c4\blob" />
     <None Include="bin\Debug\net5.0-windows\server\wwwroot\Upload\c6139ac297524f1ba1814a42221ad983\11.csv" />
+    <None Include="bin\Debug\net5.0-windows\server\Zaabee.Extensions.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Zaabee.Protobuf.dll" />
+    <None Include="bin\Debug\net5.0-windows\server\Zaabee.Serializer.Abstractions.dll" />
     <None Include="bin\Debug\net5.0-windows\server\ZooKeeperNetEx.dll" />
   </ItemGroup>
 

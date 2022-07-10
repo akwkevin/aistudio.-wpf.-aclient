@@ -93,14 +93,14 @@ namespace AIStudio.Wpf.Agile_Development.Commons
         /// </summary>
         public string Regex
         {
-            get; set; 
+            get; set;
         }
 
         /// <summary>
         /// 错误信息
         /// </summary>
-        public string ErrorMessage 
-        { 
+        public string ErrorMessage
+        {
             get; set;
         }
 
@@ -310,14 +310,27 @@ namespace AIStudio.Wpf.Agile_Development.Commons
                                 }
                             }
                         }
-                    }                    
+                    }
                 }
                 else
                 {
                     var propertyInfo = value.GetType().GetProperty(item.PropertyName);
                     if (propertyInfo.CanWrite)
                     {
-                        propertyInfo.SetValue(value, item.Value);
+                        object data;
+                        if (propertyInfo.PropertyType.IsGenericType && propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                        {
+                            if (String.IsNullOrEmpty(item.Value?.ToString()))
+                                data = null;
+                            else
+                                data = Convert.ChangeType(item.Value, propertyInfo.PropertyType.GetGenericArguments()[0]);
+                        }
+                        else
+                        {
+                            data = Convert.ChangeType(item.Value, propertyInfo.PropertyType);
+                        }
+
+                        propertyInfo.SetValue(value, data);
                     }
                 }
             }

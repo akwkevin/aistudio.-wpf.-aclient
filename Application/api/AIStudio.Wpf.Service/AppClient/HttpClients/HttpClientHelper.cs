@@ -1,18 +1,14 @@
 ﻿using AIStudio.Core;
-using AIStudio.Wpf.Service.AppClient.Models;
-using ICSharpCode.SharpZipLib.GZip;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Service.AppClient.HttpClients
 {
-    public class HttpClientHelper
+    public partial class HttpClientHelper
     {
         private static HttpClientHelper instance = null;
         private static object obj = new object();
@@ -50,7 +46,7 @@ namespace AIStudio.Wpf.Service.AppClient.HttpClients
         /// <param name="url">目标链接</param>
         /// <param name="json">发送的参数字符串，只能用json</param>
         /// <returns>返回的字符串</returns>
-        public async Task<string> PostAsyncJson(string url, string json, TimeSpan timeSpan, Dictionary<string, string> header = null, CompressionType zip = CompressionType.None)
+        public async Task<string> PostAsyncJson(string url, string json, TimeSpan timeSpan, Dictionary<string, string> header = null)
         {
             HttpClient client = httpClientFactory.CreateClient();
             client.Timeout = timeSpan;
@@ -74,13 +70,6 @@ namespace AIStudio.Wpf.Service.AppClient.HttpClients
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 response.EnsureSuccessStatusCode();
                 responseBody = await response.Content.ReadAsStringAsync();
-                switch (zip)
-                {
-                    case CompressionType.None: break;
-                    case CompressionType.GZip: responseBody = CompressionHelper.DeCompress(responseBody, zip); break;
-                    case CompressionType.BZip2: responseBody = CompressionHelper.DeCompress(responseBody, zip); break;
-                    case CompressionType.Zip: responseBody = CompressionHelper.DeCompress(responseBody, zip); break;
-                }
                 resData = responseBody;
             }
             catch (Exception ex)
@@ -112,14 +101,13 @@ method:{"Post"}
             return responseBody;
         }
 
-
         /// <summary>
         /// 使用post方法异步请求
         /// </summary>
         /// <param name="url">目标链接</param>
         /// <param name="data">发送的参数字符串</param>
         /// <returns>返回的字符串</returns>
-        public async Task<string> PostAsync(string url, HttpContent content, TimeSpan timeSpan, Dictionary<string, string> header = null, bool Gzip = false)
+        public async Task<string> PostAsync(string url, HttpContent content, TimeSpan timeSpan, Dictionary<string, string> header = null)
         {
             //HttpClient client = new HttpClient(new HttpClientHandler() { UseCookies = false });
             HttpClient client = httpClientFactory.CreateClient();
@@ -141,17 +129,7 @@ method:{"Post"}
             {
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 response.EnsureSuccessStatusCode();
-
-                if (Gzip)
-                {
-                    GZipInputStream inputStream = new GZipInputStream(await response.Content.ReadAsStreamAsync());
-                    responseBody = new StreamReader(inputStream).ReadToEnd();
-                }
-                else
-                {
-                    responseBody = await response.Content.ReadAsStringAsync();
-
-                }
+                responseBody = await response.Content.ReadAsStringAsync();
                 resData = responseBody;
             }
             catch (Exception ex)
@@ -189,7 +167,7 @@ method:{"Post"}
         /// <param name="url">目标链接</param>
         /// <param name="data">发送的参数字符串</param>
         /// <returns>返回的字符串</returns>
-        public async Task<string> PostAsync(string url, string data, TimeSpan timeSpan, Dictionary<string, string> header = null, bool Gzip = false)
+        public async Task<string> PostAsync(string url, string data, TimeSpan timeSpan, Dictionary<string, string> header = null)
         {
             //HttpClient client = new HttpClient(new HttpClientHandler() { UseCookies = false });
             HttpClient client = httpClientFactory.CreateClient();
@@ -212,16 +190,7 @@ method:{"Post"}
             {
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 response.EnsureSuccessStatusCode();
-                if (Gzip)
-                {
-                    GZipInputStream inputStream = new GZipInputStream(await response.Content.ReadAsStreamAsync());
-                    responseBody = new StreamReader(inputStream).ReadToEnd();
-                }
-                else
-                {
-                    responseBody = await response.Content.ReadAsStringAsync();
-
-                }
+                responseBody = await response.Content.ReadAsStringAsync();
             }
             catch (Exception ex)
             {
@@ -274,7 +243,7 @@ method:{"Post"}
         /// </summary>
         /// <param name="url">目标链接</param>
         /// <returns>返回的字符串</returns>
-        public async Task<string> GetAsync(string url, TimeSpan timeSpan, Dictionary<string, string> header = null, bool Gzip = false)
+        public async Task<string> GetAsync(string url, TimeSpan timeSpan, Dictionary<string, string> header = null)
         {
 
             HttpClient client = new HttpClient(new HttpClientHandler() { UseCookies = false });
@@ -296,16 +265,7 @@ method:{"Post"}
             {
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();//用来抛异常的
-                if (Gzip)
-                {
-                    GZipInputStream inputStream = new GZipInputStream(await response.Content.ReadAsStreamAsync());
-                    responseBody = new StreamReader(inputStream).ReadToEnd();
-                }
-                else
-                {
-                    responseBody = await response.Content.ReadAsStringAsync();
-
-                }
+                responseBody = await response.Content.ReadAsStringAsync();
             }
             catch (Exception ex)
             {

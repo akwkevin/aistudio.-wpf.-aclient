@@ -1,6 +1,5 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Service.AppClient.HttpClients;
-using AIStudio.Wpf.Service.AppClient.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Service.AppClient
 {
-    public class NetworkTransfer
+    public partial class NetworkTransfer
     {
         private static NetworkTransfer instance = null;
         private static object obj = new object();

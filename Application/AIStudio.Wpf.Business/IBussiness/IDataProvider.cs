@@ -1,7 +1,4 @@
-﻿using AIStudio.AOP;
-using AIStudio.Core;
-using AIStudio.Core.Models;
-using AIStudio.Wpf.Service.AppClient.Models;
+﻿using AIStudio.Core;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -19,6 +16,9 @@ namespace AIStudio.Wpf.Business
 
         //[LogHandler]
         Task<AjaxResult<T>> GetData<T>(string url, string json = "{}");
+
         Task<UploadResult> UploadFileByForm(string path);
+
+        Task<AjaxResult<T>> GetData_Protobuf<T>(string url, object obj);
     }
 }

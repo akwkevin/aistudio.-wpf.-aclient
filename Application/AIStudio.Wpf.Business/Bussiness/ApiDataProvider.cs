@@ -1,16 +1,13 @@
 ﻿using AIStudio.Core;
-using AIStudio.Core.Models;
 using AIStudio.Wpf.Service.AppClient;
 using AIStudio.Wpf.Service.AppClient.HttpClients;
-using AIStudio.Wpf.Service.AppClient.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Business
 {
-    public class ApiDataProvider : IDataProvider
+    public partial class ApiDataProvider : IDataProvider
     {
         public ApiDataProvider()
         {

@@ -472,6 +472,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 code.AddChildren(new AMenuItem() { Label = "表单Form", Code = "/Agile_Development/FormView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "表单-代码生成", Code = "/Agile_Development/FormCodeView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "crud-用户管理", Code = "/Agile_Development/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "protobuf-用户管理", Code = "/Agile_Development/Protobuf_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
             }
 #endif
             var tool = new AMenuItem() { Icon = "tool", Label = "工具", Code = "Tool", Type = 0, Command = MenuExcuteCommand };

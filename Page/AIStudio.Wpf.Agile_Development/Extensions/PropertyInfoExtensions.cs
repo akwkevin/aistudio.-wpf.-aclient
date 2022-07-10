@@ -74,23 +74,38 @@ namespace AIStudio.Wpf.Agile_Development.Extensions
 
         public static void CopyTo<T>(this Dictionary<string, object> s, T t)
         {
-            PropertyInfo[] pps = GetPropertyInfos(t.GetType());
+            PropertyInfo[] propertyInfos = GetPropertyInfos(t.GetType());
 
-            foreach (var pp in pps)
+            foreach (var propertyInfo in propertyInfos)
             {
-                if (s.ContainsKey(pp.Name))
+                if (s.ContainsKey(propertyInfo.Name))
                 {
-                    object value = s[pp.Name];
+                    object value = s[propertyInfo.Name];
                     if (value != null)
                     {
-                        if (pp.PropertyType == typeof(int))
+                        //if (pp.PropertyType == typeof(int))
+                        //{
+                        //    pp.SetValue(t, Convert.ToInt32(value), null);
+                        //}
+                        //else
+                        //{
+                        //    pp.SetValue(t, value, null);
+                        //}
+
+                        object data;
+                        if (propertyInfo.PropertyType.IsGenericType && propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
                         {
-                            pp.SetValue(t, Convert.ToInt32(value), null);
+                            if (String.IsNullOrEmpty(value?.ToString()))
+                                data = null;
+                            else
+                                data = Convert.ChangeType(value, propertyInfo.PropertyType.GetGenericArguments()[0]);
                         }
                         else
                         {
-                            pp.SetValue(t, value, null);
+                            data = Convert.ChangeType(value, propertyInfo.PropertyType);
                         }
+
+                        propertyInfo.SetValue(t, data, null);
                     }
                 }
             }

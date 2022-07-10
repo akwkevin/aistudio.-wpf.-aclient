@@ -1,9 +1,6 @@
-﻿using AIStudio.AOP;
-using AIStudio.Core;
-using AIStudio.Core.Models;
+﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.DataBusiness.Base_Manage;
-using AIStudio.Wpf.Service.AppClient.Models;
 using Newtonsoft.Json;
 using Prism.Ioc;
 using System;
@@ -44,7 +41,12 @@ namespace AIStudio.Wpf.DataBusiness
         {
             throw new Exception("暂不支持");
         }
-   
+
+        public Task<AjaxResult<T>> GetData_Protobuf<T>(string url, object obj)
+        {
+            throw new Exception("暂不支持");
+        }
+
         public async Task<AjaxResult<T>> GetData<T>(string url, string json)
         {
             try
