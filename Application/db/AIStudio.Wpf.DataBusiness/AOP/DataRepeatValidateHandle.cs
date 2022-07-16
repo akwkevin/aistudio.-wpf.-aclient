@@ -1,24 +1,17 @@
 ﻿using AIStudio.AOP;
 using AIStudio.Core;
-using AIStudio.Wpf.Business;
-using AIStudio.Wpf.DataBusiness.Base_Manage;
 using AIStudio.Wpf.DataRepository;
-using Prism.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
-using System.Text;
 using System.Threading.Tasks;
-using Unity;
-using Unity.Interception.PolicyInjection.Pipeline;
-using Unity.Interception.PolicyInjection.Policies;
 
 namespace AIStudio.Wpf.DataBusiness.AOP
 {
-    public class DataRepeatValidateHandle : BaseAOPHandler
+    public class DataRepeatValidateAttribute : BaseAOPAttribute
     {
-        public DataRepeatValidateHandle(string[] validateFields, string[] validateFieldNames, bool allData = false, bool matchOr = true)
+        public DataRepeatValidateAttribute(string[] validateFields, string[] validateFieldNames, bool allData = false, bool matchOr = true)
         {
             if (validateFields.Length != validateFieldNames.Length)
                 throw new Exception("校验列与列描述信息不对应!");
@@ -30,15 +23,14 @@ namespace AIStudio.Wpf.DataBusiness.AOP
                 _validateFields.Add(validateFields[i], validateFieldNames[i]);
             }
         }
-
         private bool _allData { get; }
         private bool _matchOr { get; }
         private Dictionary<string, string> _validateFields { get; } = new Dictionary<string, string>();
 
-        public override void Befor(IMethodInvocation input)
+        public override async Task Befor(IAOPContext context)
         {
-            Type entityType = input.Arguments[0].GetType();
-            var data = input.Arguments[0];
+            Type entityType = context.Arguments[0].GetType();
+            var data = context.Arguments[0];
             List<string> whereList = new List<string>();
             var properties = _validateFields
                 .Where(x => !data.GetPropertyValue(x.Key).IsNullOrEmpty())
@@ -50,12 +42,12 @@ namespace AIStudio.Wpf.DataBusiness.AOP
             IQueryable q = null;
             if (_allData)
             {
-                var repository = input.Target.GetPropertyValue("Service") as IDbAccessor;
+                var repository = context.Proxy.GetPropertyValue("Service") as IDbAccessor;
                 var method = repository.GetType().GetMethod("GetIQueryable");
-                q = method.MakeGenericMethod(entityType).Invoke(repository, new object[] { false }) as IQueryable;
+                q = method.MakeGenericMethod(entityType).Invoke(repository, new object[] { }) as IQueryable;
             }
             else
-                q = input.Target.GetType().GetMethod("GetIQueryable").Invoke(input.Target, new object[] { false }) as IQueryable;
+                q = context.InvocationTarget.GetType().GetMethod("GetIQueryable").Invoke(context.InvocationTarget, new object[] { }) as IQueryable;
             q = q.Where("Id != @0", data.GetPropertyValue("Id"));
             q = q.Where(
                 string.Join(_matchOr ? " || " : " && ", whereList),
@@ -70,27 +62,8 @@ namespace AIStudio.Wpf.DataBusiness.AOP
 
                 throw new BusException($"{string.Join(_matchOr ? "或" : "与", repeatList)}已存在!");
             }
-        }
-    }
 
-    public class DataRepeatValidateAttribute : HandlerAttribute
-    {
-        protected string[] _validateFields { get; }
-        protected string[] _validateFieldNames { get; }
-        protected bool _allData { get; }
-        protected bool _matchOr { get; }
-
-        public DataRepeatValidateAttribute(string[] validateFields, string[] validateFieldNames, bool allData = false, bool matchOr = true)
-        {
-            _validateFields = validateFields;
-            _validateFieldNames = validateFieldNames;
-            _allData = allData;
-            _matchOr = matchOr;
-        }
-
-        public override ICallHandler CreateHandler(IUnityContainer container)
-        {
-            return new DataRepeatValidateHandle(_validateFields, _validateFieldNames, _allData, _matchOr) { Order = this.Order };
+            await Task.CompletedTask;
         }
     }
 }

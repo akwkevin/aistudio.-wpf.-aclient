@@ -69,8 +69,8 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
 
         #endregion
 
-        [DataRepeatValidate(new string[] { "AppId" }, new string[] { "应用Id" },Order =1)]
-        [DataSaveLog(UserLogType.接口密钥管理, "AppId", "应用Id", Order =2)]
+        [DataRepeatValidate(new string[] { "AppId" }, new string[] { "应用Id" })]
+        [DataSaveLog(UserLogType.接口密钥管理, "AppId", "应用Id")]
         public async Task SaveDataAsync(Base_AppSecret theData)
         {
             if (theData.Id.IsNullOrEmpty())

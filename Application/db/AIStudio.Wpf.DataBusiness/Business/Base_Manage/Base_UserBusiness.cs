@@ -134,8 +134,8 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             await SetUserRoleAsync(input.Id, input.RoleIdList);
         }
 
-        [DataDeleteLog(UserLogType.系统用户管理, "UserName", "用户", Order =1)]
-        [Transactional(Order = 2)]
+        [DataDeleteLog(UserLogType.系统用户管理, "UserName", "用户")]
+        [Transactional]
         public async Task DeleteDataAsync(List<string> ids)
         {
             if (ids.Contains(GlobalData.ADMINID))
@@ -174,9 +174,9 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             return user?.Avatar;
         }
 
-        [DataSaveLog(UserLogType.系统用户管理, "UserName", "用户", Order = 1)]
-        [DataRepeatValidate( new string[] { "UserName" }, new string[] { "用户名" }, Order = 2)]
-        [Transactional(Order = 3)]
+        [DataSaveLog(UserLogType.系统用户管理, "UserName", "用户")]
+        [DataRepeatValidate( new string[] { "UserName" }, new string[] { "用户名" })]
+        [Transactional]
         public async Task SaveDataAsync(UserEditInputDTO input)
         {
             if (!input.newPwd.IsNullOrEmpty())

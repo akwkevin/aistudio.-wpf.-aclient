@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>net5-windows</TargetFrameworks>
   </PropertyGroup>
-  
+
   <ItemGroup>
-    <PackageReference Include="Unity.Interception" Version="5.11.1" />
+    <PackageReference Include="Castle.Core.AsyncInterceptor" Version="1.7.0" />
   </ItemGroup>
 </Project>

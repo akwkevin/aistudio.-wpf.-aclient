@@ -83,8 +83,8 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
 
         #endregion
 
-        [DataRepeatValidate(new string[] { "Name" }, new string[] { "部门名" }, Order = 1)]
-        [DataSaveLog(UserLogType.部门管理, "Name", "部门名", Order = 2)]
+        [DataRepeatValidate(new string[] { "Name" }, new string[] { "部门名" })]
+        [DataSaveLog(UserLogType.部门管理, "Name", "部门名")]
 
         public async Task SaveDataAsync(Base_Department theData)
         {

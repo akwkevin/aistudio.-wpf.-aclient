@@ -80,8 +80,8 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
             await SetRoleActionAsync(input.Id, input.Actions);
         }
 
-        [DataDeleteLog(UserLogType.系统角色管理, "RoleName", "角色", Order = 1)]
-        [Transactional(Order = 2)]
+        [DataDeleteLog(UserLogType.系统角色管理, "RoleName", "角色")]
+        [Transactional]
         public async Task DeleteDataAsync(List<string> ids)
         {
             await DeleteAsync(ids);
@@ -112,9 +112,9 @@ namespace AIStudio.Wpf.DataBusiness.Base_Manage
 
         #endregion
 
-        [DataSaveLog(UserLogType.系统角色管理, "RoleName", "角色", Order = 1)]
-        [DataRepeatValidate(new string[] { "RoleName" }, new string[] { "角色名" }, Order = 2)]
-        [Transactional(Order = 3)]
+        [DataSaveLog(UserLogType.系统角色管理, "RoleName", "角色")]
+        [DataRepeatValidate(new string[] { "RoleName" }, new string[] { "角色名" })]
+        [Transactional]
         public async Task SaveDataAsync(Base_RoleInfoDTO input)
         {
             if (input.Id.IsNullOrEmpty())

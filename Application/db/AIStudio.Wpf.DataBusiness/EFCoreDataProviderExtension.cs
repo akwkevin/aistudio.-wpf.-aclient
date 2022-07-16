@@ -3,23 +3,19 @@ using AIStudio.Wpf.DataRepository;
 using AutoMapper;
 using Coldairarrow.Util;
 using Microsoft.Extensions.DependencyInjection;
-using Prism.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Unity;
-using Unity.Interception;
-using Unity.Interception.ContainerIntegration;
-using Unity.Interception.Interceptors.InstanceInterceptors.InterfaceInterception;
-using Unity.Interception.PolicyInjection;
+using AIStudio.AOP;
+using Castle.DynamicProxy;
 
 namespace AIStudio.Wpf.DataBusiness
 {
     public static class EFCoreDataProviderExtension
     {
         public static readonly List<Type> AllTypes = new List<Type>();
-
+        private static readonly ProxyGenerator _generator = new ProxyGenerator();
 
         static EFCoreDataProviderExtension()
         {
@@ -27,36 +23,44 @@ namespace AIStudio.Wpf.DataBusiness
             AllTypes = assembly.GetTypes().ToList();
         }
 
-        public static void AddEFCoreServices(this IUnityContainer container)
+        public static void AddEFCoreServices(this IServiceCollection services)
         {
-            List<Type> lifeTimeMap = new List<Type>
+            Dictionary<Type, ServiceLifetime> lifeTimeMap = new Dictionary<Type, ServiceLifetime>
             {
-                typeof(ITransientDependency),
-                typeof(IScopedDependency),
-                typeof(ISingletonDependency)
+                { typeof(ITransientDependency), ServiceLifetime.Transient},
+                { typeof(IScopedDependency),ServiceLifetime.Scoped},
+                { typeof(ISingletonDependency),ServiceLifetime.Singleton}
             };
 
             AllTypes.ForEach(aType =>
             {
-                lifeTimeMap.ForEach(theDependency =>
+                lifeTimeMap.ToList().ForEach(aMap =>
                 {
+                    var theDependency = aMap.Key;
                     if (theDependency.IsAssignableFrom(aType) && theDependency != aType && !aType.IsAbstract && aType.IsClass)
                     {
+                        //注入实现
+                        services.Add(new ServiceDescriptor(aType, aType, aMap.Value));
+
                         var interfaces = AllTypes.Where(x => x.IsAssignableFrom(aType) && x.IsInterface && x != theDependency).ToList();
                         //有接口则注入接口
                         if (interfaces.Count > 0)
                         {
                             interfaces.ForEach(aInterface =>
                             {
-                                container.AddNewExtension<Interception>()//add Extension Aop
-                                .RegisterType(aInterface, aType, new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
+                                //注入AOP
+                                services.Add(new ServiceDescriptor(aInterface, serviceProvider =>
+                                {
+                                    CastleInterceptor castleInterceptor = new CastleInterceptor(serviceProvider);
+
+                                    return _generator.CreateInterfaceProxyWithTarget(aInterface, serviceProvider.GetService(aType), castleInterceptor);
+                                }, aMap.Value));
                             });
                         }
                         //无接口则注入自己
                         else
                         {
-                            container.AddNewExtension<Interception>()//add Extension Aop
-                               .RegisterType(aType, new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
+                            services.Add(new ServiceDescriptor(aType, aType, aMap.Value));
                         }
                     }
                 });

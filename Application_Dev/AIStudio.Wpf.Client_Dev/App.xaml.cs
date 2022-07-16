@@ -149,12 +149,11 @@ namespace AIStudio.Wpf.Client_Dev
             }
             else//直接访问数据库模式，目前只实现了SqlServer，SQLite
             {
-                //container.AddNewExtension<Interception>()//add Extension Aop
-                //    .RegisterType(typeof(IDataProvider), typeof(EFCoreDataProvider), new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
-
-                //container.AddEFCoreServices();
-
-                containerRegistry.Register<IDataProvider, ApiDataProvider>();
+                containerRegistry.RegisterSingleton<IDataProvider, EFCoreDataProvider>();
+                containerRegistry.GetContainer().RegisterServices(services =>
+                {
+                    services.AddEFCoreServices();
+                });
 
                 //初始化数据
                 SeedData.EnsureSeedData();
