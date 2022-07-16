@@ -515,6 +515,10 @@ namespace AIStudio.Wpf.Home.ViewModels
                 }
                 await _userData.Init();
             }
+            catch(Exception ex)
+            {
+
+            }
             finally
             {
                 WindowBase.HideWaiting(Identifier);

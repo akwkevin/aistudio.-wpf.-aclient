@@ -1,5 +1,7 @@
-﻿using AIStudio.Core;
+﻿using AIStudio.AOP;
+using AIStudio.Core;
 using AIStudio.Wpf.Business;
+using AIStudio.Wpf.DataBusiness.AOP;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -75,6 +77,7 @@ namespace AIStudio.Wpf.ApiBusiness
          
         }
 
+        [LoggerAttribute]
         public async Task<AjaxResult<T>> GetData<T>(string url, Dictionary<string, string> data)
         {
             try
@@ -103,6 +106,7 @@ namespace AIStudio.Wpf.ApiBusiness
             }           
         }
 
+        [LoggerAttribute]
         public async Task<AjaxResult<T>> GetData<T>(string url, string json)
         {
             try
@@ -121,6 +125,7 @@ namespace AIStudio.Wpf.ApiBusiness
             }                      
         }
 
+        [LoggerAttribute]
         public async Task<AjaxResult<T>> GetData<T>(string url, object data)
         {
             return await GetData<T>(url, JsonConvert.SerializeObject(data));
@@ -220,11 +225,6 @@ namespace AIStudio.Wpf.ApiBusiness
 
         #region HttpClient
         /// <summary>
-        /// 记录日志
-        /// </summary>
-        public Action<string> HandleLog { get; set; }
-
-        /// <summary>
         /// 使用post方法异步请求
         /// </summary>
         /// <param name="url">目标链接</param>
@@ -246,40 +246,15 @@ namespace AIStudio.Wpf.ApiBusiness
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
             string responseBody = string.Empty;
-            string resData = string.Empty;
-            DateTime startTime = DateTime.Now;
-
             try
             {
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 response.EnsureSuccessStatusCode();
                 responseBody = await response.Content.ReadAsStringAsync();
-                resData = responseBody;
             }
             catch (Exception ex)
             {
-                resData = $"异常:{ExceptionHelper.GetExceptionAllMsg(ex)}";
-
                 throw ex;
-            }
-            finally
-            {
-                var time = DateTime.Now - startTime;
-                if (resData?.Length > 1000)
-                {
-                    resData = new string(resData.Copy(0, 1000).ToArray());
-                    resData += "......";
-                }
-
-                string log =
-$@"方向:请求外部接口
-url:{url}
-method:{"Post"}
-耗时:{(int)time.TotalMilliseconds}ms
-
-返回:{resData}
-";
-                HandleLog?.Invoke(log);
             }
 
             return responseBody;
@@ -306,40 +281,15 @@ method:{"Post"}
             }
 
             string responseBody = string.Empty;
-            string resData = string.Empty;
-            DateTime startTime = DateTime.Now;
-
             try
             {
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 response.EnsureSuccessStatusCode();
                 responseBody = await response.Content.ReadAsStringAsync();
-                resData = responseBody;
             }
             catch (Exception ex)
-            {
-                resData = $"异常:{ExceptionHelper.GetExceptionAllMsg(ex)}";
-
+            {               
                 throw ex;
-            }
-            finally
-            {
-                var time = DateTime.Now - startTime;
-                if (resData?.Length > 1000)
-                {
-                    resData = new string(resData.Copy(0, 1000).ToArray());
-                    resData += "......";
-                }
-
-                string log =
-$@"方向:请求外部接口
-url:{url}
-method:{"Post"}
-耗时:{(int)time.TotalMilliseconds}ms
-
-返回:{resData}
-";
-                HandleLog?.Invoke(log);
             }
 
             return responseBody;
@@ -367,9 +317,6 @@ method:{"Post"}
             }
 
             string responseBody = string.Empty;
-            string resData = string.Empty;
-            DateTime startTime = DateTime.Now;
-
             try
             {
                 HttpResponseMessage response = await client.PostAsync(url, content);
@@ -378,28 +325,7 @@ method:{"Post"}
             }
             catch (Exception ex)
             {
-                resData = $"异常:{ExceptionHelper.GetExceptionAllMsg(ex)}";
-
                 throw ex;
-            }
-            finally
-            {
-                var time = DateTime.Now - startTime;
-                if (resData?.Length > 1000)
-                {
-                    resData = new string(resData.Copy(0, 1000).ToArray());
-                    resData += "......";
-                }
-
-                string log =
-$@"方向:请求外部接口
-url:{url}
-method:{"Post"}
-耗时:{(int)time.TotalMilliseconds}ms
-
-返回:{resData}
-";
-                HandleLog?.Invoke(log);
             }
 
             return responseBody;
@@ -441,8 +367,6 @@ method:{"Post"}
             }
 
             string responseBody = string.Empty;
-            string resData = string.Empty;
-            DateTime startTime = DateTime.Now;
 
             try
             {
@@ -452,28 +376,7 @@ method:{"Post"}
             }
             catch (Exception ex)
             {
-                resData = $"异常:{ExceptionHelper.GetExceptionAllMsg(ex)}";
-
                 throw ex;
-            }
-            finally
-            {
-                var time = DateTime.Now - startTime;
-                if (resData?.Length > 1000)
-                {
-                    resData = new string(resData.Copy(0, 1000).ToArray());
-                    resData += "......";
-                }
-
-                string log =
-$@"方向:请求外部接口
-url:{url}
-method:{"Get"}
-耗时:{(int)time.TotalMilliseconds}ms
-
-返回:{resData}
-";
-                HandleLog?.Invoke(log);
             }
 
             return responseBody;

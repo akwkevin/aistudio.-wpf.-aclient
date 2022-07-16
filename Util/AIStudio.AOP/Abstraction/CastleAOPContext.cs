@@ -29,5 +29,7 @@ namespace AIStudio.AOP
         public Type TargetType => _invocation.TargetType;
 
         public object InvocationTarget => _invocation.InvocationTarget;
+
+        public object Result { get; set; }
     }
 }

@@ -14,5 +14,6 @@ namespace AIStudio.AOP
         object ReturnValue { get; set; }
         Type TargetType { get; }
         object InvocationTarget { get; }
+        object Result { get; set; }
     }
 }

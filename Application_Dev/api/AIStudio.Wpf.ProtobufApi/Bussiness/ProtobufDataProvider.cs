@@ -1,5 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
+using AIStudio.Wpf.DataBusiness.AOP;
 using AIStudio.Wpf.ProtobufApi.Models;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,7 @@ namespace AIStudio.Wpf.ProtobufApi
             throw new NotImplementedException();
         }
 
+        [LoggerAttribute]
         public async Task<AjaxResult<T>> GetData<T>(string url, object obj)
         {
             try
@@ -72,11 +74,6 @@ namespace AIStudio.Wpf.ProtobufApi
 
         #region HttpClient
         /// <summary>
-        /// 记录日志
-        /// </summary>
-        public Action<string> HandleLog { get; set; }
-
-        /// <summary>
         /// 使用post方法异步请求
         /// </summary>
         /// <param name="url">目标链接</param>
@@ -103,42 +100,18 @@ namespace AIStudio.Wpf.ProtobufApi
             }
 
             T responseBody;
-            string resData = string.Empty;
-            DateTime startTime = DateTime.Now;
-
             try
             {
                 HttpResponseMessage response = await client.SendAsync(httpRequestMessage);
                 response.EnsureSuccessStatusCode();
                 var responseStream = await response.Content.ReadAsStreamAsync();
                 responseBody = responseStream.FromStream<T>();
-                resData = responseBody.ToString();
             }
             catch (Exception ex)
             {
-                resData = $"异常:{ExceptionHelper.GetExceptionAllMsg(ex)}";
-
                 throw ex;
             }
-            finally
-            {
-                var time = DateTime.Now - startTime;
-                if (resData?.Length > 1000)
-                {
-                    resData = new string(resData.Copy(0, 1000).ToArray());
-                    resData += "......";
-                }
 
-                string log =
-$@"方向:请求外部接口
-url:{url}
-method:{"Post"}
-耗时:{(int)time.TotalMilliseconds}ms
-
-返回:{resData}
-";
-                HandleLog?.Invoke(log);
-            }
 
             return responseBody;
         }

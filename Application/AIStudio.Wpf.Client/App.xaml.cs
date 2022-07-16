@@ -1,4 +1,5 @@
 ﻿using Accelerider.Extensions.Mvvm;
+using AIStudio.AOP;
 using AIStudio.Core;
 using AIStudio.LocalConfiguration;
 using AIStudio.Wpf.Agile_Development;
@@ -14,6 +15,7 @@ using AIStudio.Wpf.Home.ViewModels;
 using AIStudio.Wpf.OA_Manage;
 using AIStudio.Wpf.Quartz_Manage;
 using AutoMapper;
+using Castle.DynamicProxy;
 using Dataforge.PrismAvalonExtensions;
 using Dataforge.PrismAvalonExtensions.Regions;
 using DryIoc.Microsoft.DependencyInjection.Extension;
@@ -25,7 +27,6 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Windows;
-using Unity;
 using Xceed.Wpf.AvalonDock;
 
 namespace AIStudio.Wpf.Client
@@ -113,8 +114,8 @@ namespace AIStudio.Wpf.Client
             base.InitializeShell(shell);
         }
 
-       
 
+        protected static readonly ProxyGenerator _generator = new ProxyGenerator();
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
            
@@ -127,16 +128,20 @@ namespace AIStudio.Wpf.Client
             //AutoMapper            
             containerRegistry.RegisterInstance<IMapper>(new MapperProvider(containerRegistry).GetMapper());//containerRegistry.RegisterInstance(typeof(IMapper), new MapperProvider(containerRegistry).GetMapper());
 
-            var container = PrismIocExtensions.GetContainer(containerRegistry);
             //api接口模式
             if (LocalSetting.ApiMode)
-            {
-                //container.AddNewExtension<Interception>()//add Extension Aop
-                //    .RegisterSingleton<IDataProvider, ApiDataProvider>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
-
-                containerRegistry.RegisterSingleton<IDataProvider, ApiDataProvider>();
+            {                
+                //containerRegistry.RegisterSingleton<IDataProvider, ApiDataProvider>();
                 containerRegistry.GetContainer().RegisterServices(services =>
                 {
+                    //注入AOP
+                    services.Add(new ServiceDescriptor(typeof(IDataProvider), serviceProvider =>
+                    {
+                        CastleInterceptor castleInterceptor = new CastleInterceptor(serviceProvider);
+
+                        return _generator.CreateInterfaceProxyWithTarget(typeof(IDataProvider), serviceProvider.GetService(typeof(ApiDataProvider)), castleInterceptor);
+                    }, ServiceLifetime.Singleton));
+
                     services.AddHttpClient();
                 });
             }
@@ -240,21 +245,6 @@ namespace AIStudio.Wpf.Client
             base.ConfigureRegionAdapterMappings(regionAdapterMappings);
             regionAdapterMappings.RegisterMapping(typeof(DockingManager), Container.Resolve<DockingManagerRegionAdapter>());
         }
-
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            //HttpClientHelper.Instance.HandleLog = log =>
-            //{
-            //    //接口日志 
-            //    _logger.Info(LogType.系统跟踪, log);
-            //};
-
-
-
-            base.OnStartup(e);
-        }
-
-
     }
     public interface IMapperProvider
     {

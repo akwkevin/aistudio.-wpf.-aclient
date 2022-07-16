@@ -8,15 +8,13 @@ namespace AIStudio.AOP
         public override async Task Befor(IAOPContext context)
         {
             Debug.WriteLine("-------------Method Excute Befored-------------");
-            //Debug.WriteLine($"Method Name:{context.Arguments[0]}");
-            //if (context.Arguments.Length > 0)
-            //{
-            //    Debug.WriteLine("Arguments:");
-            //    for (int i = 0; i < context.Arguments.Length; i++)
-            //    {
-            //        Debug.WriteLine($"parameterName:{context.Arguments[i]},parameterValue:{context.Arguments[i]}");
-            //    }
-            //}
+            if (context.Arguments.Length > 0)
+            {
+                for (int i = 0; i < context.Arguments.Length; i++)
+                {
+                    Debug.WriteLine($"Arguments:{context.Arguments[i]}");
+                }
+            }
 
             await Task.CompletedTask;
         }
@@ -24,14 +22,10 @@ namespace AIStudio.AOP
         public override async Task After(IAOPContext context)
         {
             Debug.WriteLine("-------------Method Excute After-------------");
-            //if (context. != null)
-            //{
-            //    Debug.WriteLine($"Exception:{result.Exception.Message} \n");
-            //}
-            //else
-            //{
-            //    Debug.WriteLine($"Excuted Successed \n");
-            //}
+            if (context.Result != null)
+            {
+                Debug.WriteLine($"ReturnValue:{context.Result}");
+            }
 
             await Task.CompletedTask;
         }

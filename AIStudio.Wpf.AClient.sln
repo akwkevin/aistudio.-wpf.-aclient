@@ -66,7 +66,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceMonitor", "ServiceMo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIStudio.Wpf.Agile_Development", "Page\AIStudio.Wpf.Agile_Development\AIStudio.Wpf.Agile_Development.csproj", "{8F1F3401-641C-44A4-8F61-EC6E55A8077D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11.AIStudio.Application_Dev", "11.AIStudio.Application_Dev", "{C00D4B7C-AF98-41DF-B798-0EC19C24396D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11.AIStudio.Application_Dev(Protobuf支持，感兴趣的可以运行，服务使用11，打开后台源码可以找到)", "11.AIStudio.Application_Dev(Protobuf支持，感兴趣的可以运行，服务使用11，打开后台源码可以找到)", "{C00D4B7C-AF98-41DF-B798-0EC19C24396D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10.Util_Dev", "10.Util_Dev", "{0C6286A1-95FE-4A57-8042-639A76818A0C}"
 EndProject

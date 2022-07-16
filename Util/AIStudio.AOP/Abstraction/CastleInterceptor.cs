@@ -55,8 +55,9 @@ namespace AIStudio.AOP
 
             TResult result;
 
-            await Befor();
+            await Befor();           
             result = await proceed(invocation);
+            _aopContext.Result = result;
             await After();
 
             return result;

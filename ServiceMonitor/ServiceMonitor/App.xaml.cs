@@ -1,14 +1,17 @@
 ﻿using Accelerider.Extensions.Mvvm;
+using AIStudio.AOP;
 using AIStudio.LocalConfiguration;
 using AIStudio.Wpf.ApiBusiness;
 using AIStudio.Wpf.Business;
+using Castle.DynamicProxy;
 using Dataforge.PrismAvalonExtensions;
+using DryIoc.Microsoft.DependencyInjection.Extension;
+using Microsoft.Extensions.DependencyInjection;
+using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Mvvm;
-using Prism.Unity;
 using System;
 using System.Windows;
-using Unity;
 
 namespace ServiceMonitor
 {
@@ -63,7 +66,7 @@ namespace ServiceMonitor
             return window;
         }
 
-
+        private static readonly ProxyGenerator _generator = new ProxyGenerator();
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IOperator, Operator>();
@@ -71,15 +74,20 @@ namespace ServiceMonitor
             containerRegistry.RegisterSingleton<IWSocketClient, WSocketClient>();
             containerRegistry.RegisterSingleton<IUserConfig, UserConfig>();
             containerRegistry.Register<ILogger, Logger>();
-
- 
-            var container = PrismIocExtensions.GetContainer(containerRegistry);
             //api接口模式
 
-            //container.AddNewExtension<Interception>()//add Extension Aop
-            //    .RegisterSingleton<IDataProvider, ApiDataProvider>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
+            containerRegistry.GetContainer().RegisterServices(services =>
+            {
+                //注入AOP
+                services.Add(new ServiceDescriptor(typeof(IDataProvider), serviceProvider =>
+                {
+                    CastleInterceptor castleInterceptor = new CastleInterceptor(serviceProvider);
 
-            containerRegistry.RegisterSingleton<IDataProvider, ApiDataProvider>();
+                    return _generator.CreateInterfaceProxyWithTarget(typeof(IDataProvider), serviceProvider.GetService(typeof(ApiDataProvider)), castleInterceptor);
+                }, ServiceLifetime.Singleton));
+
+                services.AddHttpClient();
+            });
         }
 
 
@@ -94,19 +102,6 @@ namespace ServiceMonitor
             ViewModelLocationProvider.Register<MainWindow, MainWindowViewModel>();
 
         }
-
-
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            //HttpClientHelper.Instance.HandleLog = log =>
-            //{
-            //    //接口日志 
-            //    _logger.Info(LogType.系统跟踪, log);
-            //};
-
-            base.OnStartup(e);
-        }
-
 
     }
 }

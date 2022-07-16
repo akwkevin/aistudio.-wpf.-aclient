@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace AIStudio.Wpf.Client.ViewModels
 {
-    class MainWindowViewModel : BindableBase
+    public class MainWindowViewModel : BindableBase
     {
 
         public MainWindowViewModel()
