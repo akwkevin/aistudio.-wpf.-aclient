@@ -13,6 +13,10 @@ namespace AIStudio.Wpf.DataBusiness
 {
     public class EFCoreDataProvider : IDataProvider
     {
+        public IAppHeader Header { get ; set ; }
+        public string Url { get; set; }
+        public TimeSpan TimeOut { get; set; }
+
         public EFCoreDataProvider()
         {
 
@@ -38,11 +42,6 @@ namespace AIStudio.Wpf.DataBusiness
         }
 
         public Task<AjaxResult<T>> GetData<T>(string url, Dictionary<string, string> data)
-        {
-            throw new Exception("暂不支持");
-        }
-
-        public Task<AjaxResult<T>> GetData_Protobuf<T>(string url, object obj)
         {
             throw new Exception("暂不支持");
         }
@@ -100,7 +99,12 @@ namespace AIStudio.Wpf.DataBusiness
             {
                 return new AjaxResult<T>() { Msg = ex.ToString(), Success = false };
             }
-        }     
+        }
+
+        public async Task<AjaxResult<T>> GetData<T>(string url, object data)
+        {
+            return await GetData<T>(url, JsonConvert.SerializeObject(data));
+        }
 
         /// <summary>
         /// 上传文件
@@ -113,5 +117,7 @@ namespace AIStudio.Wpf.DataBusiness
         {
             throw new Exception("暂不支持");
         }
+
+  
     }
 }

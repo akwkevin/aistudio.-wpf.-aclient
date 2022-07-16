@@ -14,7 +14,6 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:dd="urn:gong-wpf-dragdrop"
              xmlns:prism="http://prismlibrary.com/"
-             prism:ViewModelLocator.AutoWireViewModel="True" 
              x:Name="mainView"
              Focusable="True"
              mc:Ignorable="d" 

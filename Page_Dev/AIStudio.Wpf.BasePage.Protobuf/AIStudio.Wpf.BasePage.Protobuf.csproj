@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application_Dev\api\AIStudio.Wpf.ProtobufApi\AIStudio.Wpf.ProtobufApi.csproj" />
+    <ProjectReference Include="..\..\Page\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
+  </ItemGroup>
+
+
+</Project>

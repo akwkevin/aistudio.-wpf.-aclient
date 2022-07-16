@@ -1,0 +1,6 @@
+﻿cd F:\Users\Kevin\source\repos\AIStudio.Wpf.Client_Dev\AIStudio.Wpf.Client_Dev
+cd E:\文档\AClient\AIStudio.Wpf.Client_Dev
+nuget pack SquirrelSetup.nuspec 
+
+cd AIStudio.Wpf.Client_Dev
+Squirrel --releasify AIStudio.Wpf.Client_Dev.1.0.20210301-rc3.nupkg --releaseDir "D:\ClientReleases"

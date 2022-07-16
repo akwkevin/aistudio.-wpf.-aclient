@@ -1,5 +1,4 @@
 ﻿using AIStudio.Core;
-using AIStudio.Wpf.Service.AppClient;
 using System;
 
 namespace AIStudio.Wpf.Business

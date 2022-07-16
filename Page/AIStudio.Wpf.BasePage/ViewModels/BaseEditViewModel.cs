@@ -43,7 +43,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         protected string Identifier { get; set; } = LocalSetting.RootWindow;
         protected string Area { get; set; }
 
-        protected IDataProvider _dataProvider { get { return ContainerLocator.Current.Resolve<IDataProvider>(); } }
+        protected IDataProvider _dataProvider;
         protected IUserData _userData { get { return ContainerLocator.Current.Resolve<IUserData>(); } }
 
         public BaseEditViewModel(T data, string area, string identifier, string title = "编辑表单", bool autoInit = true)
@@ -51,6 +51,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             Data = data;
             Title = title;
             Area = area;
+            InitDataProvider();
 
             if (autoInit)
             {
@@ -63,6 +64,11 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                     GetData(Data);
                 }
             }
+        }
+
+        protected virtual void InitDataProvider()
+        {
+            _dataProvider = ContainerLocator.Current.Resolve<IDataProvider>();
         }
 
         protected virtual void InitData()

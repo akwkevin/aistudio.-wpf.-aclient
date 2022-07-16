@@ -1,6 +1,8 @@
 ﻿using Accelerider.Extensions.Mvvm;
 using AIStudio.Core;
 using AIStudio.LocalConfiguration;
+using AIStudio.Wpf.Agile_Development;
+using AIStudio.Wpf.ApiBusiness;
 using AIStudio.Wpf.Base_Manage;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Client.ViewModels;
@@ -11,28 +13,20 @@ using AIStudio.Wpf.Home;
 using AIStudio.Wpf.Home.ViewModels;
 using AIStudio.Wpf.OA_Manage;
 using AIStudio.Wpf.Quartz_Manage;
-using AIStudio.Wpf.Service.AppClient.HttpClients;
 using AutoMapper;
+using Dataforge.PrismAvalonExtensions;
 using Dataforge.PrismAvalonExtensions.Regions;
+using DryIoc.Microsoft.DependencyInjection.Extension;
+using Microsoft.Extensions.DependencyInjection;
+using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
-using Prism.Unity;
 using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
 using System.Windows;
-using ControlzEx.Theming;
 using Unity;
-using Unity.Interception;
-using Unity.Interception.ContainerIntegration;
-using Unity.Interception.Interceptors.InstanceInterceptors.InterfaceInterception;
-using Unity.Interception.PolicyInjection;
 using Xceed.Wpf.AvalonDock;
-using Dataforge.PrismAvalonExtensions;
-using AIStudio.Wpf.Agile_Development;
 
 namespace AIStudio.Wpf.Client
 {
@@ -119,8 +113,11 @@ namespace AIStudio.Wpf.Client
             base.InitializeShell(shell);
         }
 
+       
+
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+           
             containerRegistry.RegisterSingleton<IOperator, Operator>();
             containerRegistry.RegisterSingleton<IUserData, UserData>();
             containerRegistry.RegisterSingleton<IWSocketClient, WSocketClient>();
@@ -134,25 +131,33 @@ namespace AIStudio.Wpf.Client
             //api接口模式
             if (LocalSetting.ApiMode)
             {
-                container.AddNewExtension<Interception>()//add Extension Aop
-                    .RegisterSingleton<IDataProvider, ApiDataProvider>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
+                //container.AddNewExtension<Interception>()//add Extension Aop
+                //    .RegisterSingleton<IDataProvider, ApiDataProvider>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
 
+                containerRegistry.RegisterSingleton<IDataProvider, ApiDataProvider>();
+                containerRegistry.GetContainer().RegisterServices(services =>
+                {
+                    services.AddHttpClient();
+                });
             }
             else//直接访问数据库模式，目前只实现了SqlServer，SQLite
             {
-                container.AddNewExtension<Interception>()//add Extension Aop
-                    .RegisterType(typeof(IDataProvider), typeof(EFCoreDataProvider), new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
+                //container.AddNewExtension<Interception>()//add Extension Aop
+                //    .RegisterType(typeof(IDataProvider), typeof(EFCoreDataProvider), new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
 
-                container.AddEFCoreServices();
+                //container.AddEFCoreServices();
+
+                containerRegistry.Register<IDataProvider, ApiDataProvider>();
 
                 //初始化数据
                 SeedData.EnsureSeedData();
             }
         }
 
+
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            var homePageModule = typeof(HomePageModule);
+            var homePageModule = typeof(HomeModule);
             moduleCatalog.AddModule(new ModuleInfo()
             {
                 ModuleName = homePageModule.Name,
@@ -239,11 +244,13 @@ namespace AIStudio.Wpf.Client
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            HttpClientHelper.Instance.HandleLog = log =>
-            {
-                //接口日志 
-                _logger.Info(LogType.系统跟踪, log);
-            };
+            //HttpClientHelper.Instance.HandleLog = log =>
+            //{
+            //    //接口日志 
+            //    _logger.Info(LogType.系统跟踪, log);
+            //};
+
+
 
             base.OnStartup(e);
         }

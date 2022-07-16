@@ -1,0 +1,22 @@
+﻿<ac:WindowBase
+    x:Class="AIStudio.Wpf.Client_Dev.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AIStudio.Wpf.Client_Dev"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
+    xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
+    Title="{x:Static core:LocalSetting.Title}"
+    Width="1060"
+    Height="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    Icon="A.ico"
+    Identifier="{Binding Identifier}"
+    Style="{StaticResource AIStudio.Styles.WindowBase.Custom}"
+    mc:Ignorable="d">
+    <Grid WindowChrome.IsHitTestVisibleInChrome="True">
+        <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionName.MainContentRegion}" />
+    </Grid>
+</ac:WindowBase>

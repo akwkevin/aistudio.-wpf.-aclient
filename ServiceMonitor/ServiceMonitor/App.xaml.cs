@@ -1,7 +1,7 @@
 ﻿using Accelerider.Extensions.Mvvm;
 using AIStudio.LocalConfiguration;
+using AIStudio.Wpf.ApiBusiness;
 using AIStudio.Wpf.Business;
-using AIStudio.Wpf.Service.AppClient.HttpClients;
 using Dataforge.PrismAvalonExtensions;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -9,10 +9,6 @@ using Prism.Unity;
 using System;
 using System.Windows;
 using Unity;
-using Unity.Interception;
-using Unity.Interception.ContainerIntegration;
-using Unity.Interception.Interceptors.InstanceInterceptors.InterfaceInterception;
-using Unity.Interception.PolicyInjection;
 
 namespace ServiceMonitor
 {
@@ -80,10 +76,10 @@ namespace ServiceMonitor
             var container = PrismIocExtensions.GetContainer(containerRegistry);
             //api接口模式
 
-                container.AddNewExtension<Interception>()//add Extension Aop
-                    .RegisterSingleton<IDataProvider, ApiDataProvider>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
+            //container.AddNewExtension<Interception>()//add Extension Aop
+            //    .RegisterSingleton<IDataProvider, ApiDataProvider>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
 
-    
+            containerRegistry.RegisterSingleton<IDataProvider, ApiDataProvider>();
         }
 
 
@@ -102,11 +98,11 @@ namespace ServiceMonitor
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            HttpClientHelper.Instance.HandleLog = log =>
-            {
-                //接口日志 
-                _logger.Info(LogType.系统跟踪, log);
-            };
+            //HttpClientHelper.Instance.HandleLog = log =>
+            //{
+            //    //接口日志 
+            //    _logger.Info(LogType.系统跟踪, log);
+            //};
 
             base.OnStartup(e);
         }

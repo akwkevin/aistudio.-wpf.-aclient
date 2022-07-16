@@ -7,6 +7,7 @@ using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
+using System.Net.Http;
 using System.Windows.Input;
 
 namespace AIStudio.Wpf.Client.ViewModels
@@ -16,7 +17,7 @@ namespace AIStudio.Wpf.Client.ViewModels
 
         public MainWindowViewModel()
         {
-
+           
         }
 
         private string _identifier = LocalSetting.RootWindow;

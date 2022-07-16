@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5-windows</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
+  </ItemGroup>
+
+</Project>

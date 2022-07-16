@@ -14,6 +14,8 @@ using System.Windows.Input;
 using AIStudio.Wpf.Controls;
 using Accelerider.Extensions.Mvvm;
 using AIStudio.Wpf.Client.Views;
+using Prism.Ioc;
+using System.Net.Http;
 
 namespace AIStudio.Wpf.Client.ViewModels
 {

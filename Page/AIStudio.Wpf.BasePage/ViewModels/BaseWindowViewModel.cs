@@ -21,7 +21,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 {
     public class BaseWindowViewModel<T> : NavigationDockWindowViewModel where T : class, IIsChecked
     {
-        protected IDataProvider _dataProvider { get; }
+        protected IDataProvider _dataProvider;
         public BaseWindowViewModel(string area, Type type, Type editType, string getDataList = "GetDataList")
         {
             Area = area;
@@ -29,6 +29,11 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             Type = type;
             EditType = editType;
 
+            InitDataProvider();
+        }
+
+        protected virtual void InitDataProvider()
+        {
             _dataProvider = ContainerLocator.Current.Resolve<IDataProvider>();
         }
 

@@ -1,21 +1,18 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Base_Manage.Views;
 using AIStudio.Wpf.BasePage.ViewModels;
+using AIStudio.Wpf.Controls;
+using AIStudio.Wpf.DataRepository;
 using AIStudio.Wpf.Entity.DTOModels;
-using AIStudio.Wpf.Service.AppClient;
 using Newtonsoft.Json;
-using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using AIStudio.Wpf.DataRepository;
-using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {

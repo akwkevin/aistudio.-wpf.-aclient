@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5-windows</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Page\AIStudio.Wpf.Home\AIStudio.Wpf.Home.csproj" />
+    <ProjectReference Include="..\AIStudio.Wpf.Protobuf_Test\AIStudio.Wpf.Protobuf_Test.csproj" />
+  </ItemGroup>
+
+</Project>

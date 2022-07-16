@@ -28,7 +28,7 @@ using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Home.ViewModels
 {
-    class MainViewModel : Prism.Mvvm.BindableBase, INavigationAware, IViewLoadedAndUnloadedAware
+    public class MainViewModel : Prism.Mvvm.BindableBase, INavigationAware, IViewLoadedAndUnloadedAware
     {
         protected IContainerExtension _container { get; }
         public IRegionManager _regionManager { get; set; }//这个很重要，与View进行绑定，不然RequestNavigate不好使
@@ -389,7 +389,7 @@ namespace AIStudio.Wpf.Home.ViewModels
         }
 
 
-        public async Task InitData()
+        public async virtual Task InitData()
         {
             #region 工具栏
             var section = LocalSetting.GetSection("usersetting") as UserSettingSection;
@@ -471,8 +471,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "表单Form", Code = "/Agile_Development/FormView/", Type = 1, Command = MenuExcuteCommand });
                 code.AddChildren(new AMenuItem() { Label = "表单-代码生成", Code = "/Agile_Development/FormCodeView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "crud-用户管理", Code = "/Agile_Development/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "protobuf-用户管理", Code = "/Agile_Development/Protobuf_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "crud-用户管理", Code = "/Agile_Development/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });                
             }
 #endif
             var tool = new AMenuItem() { Icon = "tool", Label = "工具", Code = "Tool", Type = 0, Command = MenuExcuteCommand };

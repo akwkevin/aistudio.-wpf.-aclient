@@ -23,7 +23,7 @@ using System.Windows.Input;
 
 namespace AIStudio.Wpf.Home.ViewModels
 {
-    class NoticeIconViewModel : BaseWaitingViewModel
+    public class NoticeIconViewModel : BaseWaitingViewModel
     {
         private int _selectedIndex;
         public int SelectedIndex

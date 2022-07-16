@@ -13,10 +13,4 @@
     <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\Protobuf_UserQueryView.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-  </ItemGroup>
-
 </Project>

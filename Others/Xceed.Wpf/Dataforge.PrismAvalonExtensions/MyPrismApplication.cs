@@ -1,15 +1,11 @@
-﻿using Prism.Ioc;
-using Prism.Unity;
+﻿using Prism.DryIoc;
+using Prism.Ioc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Dataforge.PrismAvalonExtensions
 {
-    public class MyPrismApplication : PrismApplication
+    public abstract class MyPrismApplication : PrismApplication
     {
         protected override Window CreateShell()
         {
