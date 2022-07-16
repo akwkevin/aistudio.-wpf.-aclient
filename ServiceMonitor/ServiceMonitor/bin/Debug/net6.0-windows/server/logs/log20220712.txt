@@ -1,0 +1,130 @@
+2022-07-12 21:23:03.309 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting starting
+2022-07-12 21:23:07.069 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202207" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202207" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-07-12 21:23:07.154 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202208" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202208" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-07-12 21:23:08.359 +08:00 [VRB Coldairarrow.Api.SeedData] BaseDb Data Source=Coldairarrow.Api.db-SQLite already exists
+2022-07-12 21:23:09.879 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:ResetDataJob,分组:SystemJob,启动成功
+2022-07-12 21:23:09.892 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:SaveMessageJob,分组:SystemJob,启动成功
+2022-07-12 21:23:09.898 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:PushMessageJob,分组:SystemJob,启动成功
+2022-07-12 21:23:10.866 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:操作对象：{"TaskName":"GetLog","GroupName":"Test","Interval":"0/10 * * * * ?","ApiUrl":"http://localhost:5000/Test/GetLogList","AuthKey":"Authorization","AuthValue":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTYxMzQ1NTI0MX0.XbnD6R0Ozgp1xoI6BUrRjYaHwRYYAJ7OgU6gRO1sdbA","Describe":null,"RequestType":"System","LastRunTime":null,"Status":1,"ForbidOperate":false,"ForbidEdit":false,"Id":"1533367202730741760","Deleted":false,"CreateTime":"2022-06-05 16:36:44.373","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null}
+2022-07-12 21:23:10.872 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:
+2022-07-12 21:23:10.874 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 作业:GetLog,分组:Test,新建时未启动原因,状态为:1
+2022-07-12 21:23:10.875 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 任务启动-成功:4个,失败0个,异常信息：无
+2022-07-12 21:23:11.753 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623664695808000-0加载成功
+2022-07-12 21:23:11.756 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623039325081600-0加载成功
+2022-07-12 21:23:11.760 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274622508779180032-0加载成功
+2022-07-12 21:23:11.762 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621654579810304-0加载成功
+2022-07-12 21:23:11.763 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621154383892480-0加载成功
+2022-07-12 21:23:11.766 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274620801831669760-0加载成功
+2022-07-12 21:23:11.767 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274618511506804736-0加载成功
+2022-07-12 21:23:12.152 +08:00 [INF WorkflowCore.Services.WorkflowHost] Starting background tasks
+2022-07-12 21:23:12.185 +08:00 [INF Microsoft.Hosting.Lifetime] Now listening on: http://[::]:5000
+2022-07-12 21:23:12.187 +08:00 [INF Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+2022-07-12 21:23:12.188 +08:00 [INF Microsoft.Hosting.Lifetime] Hosting environment: Production
+2022-07-12 21:23:12.190 +08:00 [INF Microsoft.Hosting.Lifetime] Content root path: F:\AClient\ServiceMonitor\ServiceMonitor\bin\Debug\net5.0-windows\server
+2022-07-12 21:23:12.192 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting started
+2022-07-12 21:23:12.670 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Test/GetLogList
+Time:350ms
+Method:POST
+ContentType:null
+Body:
+StatusCode:405
+
+Response:
+
+2022-07-12 21:23:12.682 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] The remote server returned an error: (405) Method Not Allowed.
+2022-07-12 23:01:07.162 +08:00 [INF Microsoft.Hosting.Lifetime] Application is shutting down...
+2022-07-12 23:01:07.163 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopping
+2022-07-12 23:01:07.278 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopped
+2022-07-12 23:01:07.282 +08:00 [INF WorkflowCore.Services.WorkflowHost] Stopping background tasks
+2022-07-12 23:01:07.404 +08:00 [INF WorkflowCore.Services.WorkflowHost] Worker tasks stopped

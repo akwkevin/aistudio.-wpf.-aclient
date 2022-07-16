@@ -1,0 +1,146 @@
+﻿{
+  "Id": "1274623039325081600",
+  "Version": 0,
+  "DataType": "Coldairarrow.Util.OAData, Coldairarrow.Util",
+  "FirstStart": true,
+  "Steps": [
+    {
+      "Id": "node1036",
+      "Label": "开始",
+      "StepType": "AIStudio.Service.WorkflowCore.OAStartStep, AIStudio.Service",
+      "NextStepId": "node1043",
+      "Status": 0,
+      "ActRules": {}
+    },
+    {
+      "Id": "node1043",
+      "Label": "节点",
+      "StepType": "AIStudio.Service.WorkflowCore.OAMiddleStep, AIStudio.Service",
+      "NextStepId": "node1050",
+      "Status": 0,
+      "ActRules": { "UserIds": [ "Admin" ] }
+    },
+    {
+      "Id": "node1050",
+      "Label": "结束",
+      "StepType": "AIStudio.Service.WorkflowCore.OAEndStep, AIStudio.Service",
+      "Status": 0,
+      "ActRules": {}
+    }
+  ],
+  "CurrentStepIds": [],
+  "Flag": 0.0,
+  "nodes": [
+    {
+      "id": "node1036",
+      "name": "开始节点",
+      "color": "#1890ff",
+      "image": "/assets/Shape.486da24a.svg",
+      "label": "开始",
+      "offsetX": 93,
+      "offsetY": 20,
+      "shape": "customNode",
+      "size": [ 170, 34 ],
+      "stateImage": "/assets/start.e502ed95.svg",
+      "type": "node",
+      "x": 422.5500183105469,
+      "y": 68.0,
+      "inPoints": [ [ 0.0, 0.5 ] ],
+      "outPoints": [ [ 1.0, 0.5 ] ],
+      "isDoingStart": false,
+      "isDoingEnd": false
+    },
+    {
+      "id": "node1043",
+      "name": "中间节点",
+      "color": "#1890ff",
+      "image": "/assets/Shape.486da24a.svg",
+      "label": "节点",
+      "offsetX": 83,
+      "offsetY": 12,
+      "shape": "customNode",
+      "size": [ 170, 34 ],
+      "stateImage": "/assets/jiahao.ecf71c51.svg",
+      "type": "node",
+      "x": 420.5500183105469,
+      "y": 157.0,
+      "inPoints": [ [ 0.0, 0.5 ] ],
+      "outPoints": [ [ 1.0, 0.5 ] ],
+      "isDoingStart": false,
+      "isDoingEnd": false,
+      "UserIds": [ "Admin" ]
+    },
+    {
+      "id": "node1050",
+      "name": "结束节点",
+      "color": "#1890ff",
+      "image": "/assets/Shape.486da24a.svg",
+      "label": "结束",
+      "offsetX": 106,
+      "offsetY": 18,
+      "shape": "customNode",
+      "size": [ 170, 34 ],
+      "stateImage": "/assets/end.dfe4a5ab.svg",
+      "type": "node",
+      "x": 423.5500183105469,
+      "y": 244.0,
+      "inPoints": [ [ 0.0, 0.5 ] ],
+      "outPoints": [ [ 1.0, 0.5 ] ],
+      "isDoingStart": false,
+      "isDoingEnd": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge1091",
+      "end": {
+        "x": 0.0,
+        "y": -17.0
+      },
+      "endPoint": {
+        "x": 420.94327673751314,
+        "y": 139.5
+      },
+      "start": {
+        "x": 0.0,
+        "y": 17.0
+      },
+      "startPoint": {
+        "x": 422.1567598835806,
+        "y": 85.5
+      },
+      "shape": "customEdge",
+      "source": "node1036",
+      "sourceId": "node1036",
+      "target": "node1043",
+      "targetId": "node1043",
+      "type": "edge"
+    },
+    {
+      "id": "edge1128",
+      "end": {
+        "x": 0.0,
+        "y": -17.0
+      },
+      "endPoint": {
+        "x": 422.9465700346848,
+        "y": 226.5
+      },
+      "start": {
+        "x": 0.0,
+        "y": 17.0
+      },
+      "startPoint": {
+        "x": 421.15346658640897,
+        "y": 174.5
+      },
+      "shape": "customEdge",
+      "source": "node1043",
+      "sourceId": "node1043",
+      "target": "node1050",
+      "targetId": "node1050",
+      "type": "edge"
+    }
+  ],
+  "groups": []
+}

@@ -1,0 +1,21 @@
+2022-05-24 14:53:19.1076 | 方向:请求外部接口
+url:http://localhost:5000/Base_Manage/Home/SubmitLogin
+method:Post
+耗时:811ms
+
+返回:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzQ2MTU5OH0.PmgUon1lc67oCNw7jxlchm4JpHwaTaV6JLBJVzd_sT4","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+ 
+2022-05-24 14:53:20.0581 | 方向:请求外部接口
+url:http://localhost:5000/D_Manage/D_UserMessage/GetUserList
+method:Post
+耗时:696ms
+
+返回:{"Data":[{"UserName":"Admin","UserId":"Admin","UserNames":null,"UserIds":null,"Avatar":null,"Online":false,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00.000"},{"UserName":"alice","UserId":"1527933393868689408","UserNames":null,"UserIds":null,"Avatar":null,"Online":false,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00.000"},{"UserName":"bob","UserId":"1527933395043094528","UserNames":null,"UserIds":null,"Avatar":null,"Online":false,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00.000"},{"UserName":"智能助手","UserId":"smallAssistant","UserNames":null,"UserIds":null,"Avatar":"/Images/Usopp.jpg","Online":true,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00.000"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+ 
+2022-05-24 14:53:20.7875 | 方向:请求外部接口
+url:http://localhost:5000/D_Manage/D_UserMessage/GetPageHistoryDataList
+method:Post
+耗时:649ms
+
+返回:{"Total":0,"Data":[],"Success":true,"ErrorCode":0,"Msg":null}
+ 

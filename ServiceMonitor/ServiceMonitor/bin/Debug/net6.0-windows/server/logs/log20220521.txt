@@ -1,0 +1,741 @@
+2022-05-21 16:49:54.489 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting starting
+2022-05-21 16:49:58.048 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202205" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202205" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-21 16:49:58.203 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202206" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202206" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-21 16:49:59.628 +08:00 [VRB Coldairarrow.Api.SeedData] BaseDb Data Source=Coldairarrow.Api.db-SQLite already exists
+2022-05-21 16:50:00.244 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:ResetDataJob,分组:SystemJob,启动成功
+2022-05-21 16:50:00.246 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:SaveMessageJob,分组:SystemJob,启动成功
+2022-05-21 16:50:00.247 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:PushMessageJob,分组:SystemJob,启动成功
+2022-05-21 16:50:00.302 +08:00 [VRB AIStudio.Service.Quartz.FileQuartz] 插入D_UserMessage数据0条;更新D_UserMessage数据0条 
+2022-05-21 16:50:00.557 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:操作对象：{"TaskName":"GetLog","GroupName":"Test","Interval":"0/10 * * * * ?","ApiUrl":"http://localhost:5000/Test/GetLogList","AuthKey":"Authorization","AuthValue":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTYxMzQ1NTI0MX0.XbnD6R0Ozgp1xoI6BUrRjYaHwRYYAJ7OgU6gRO1sdbA","Describe":null,"RequestType":"System","LastRunTime":null,"Status":1,"ForbidOperate":false,"ForbidEdit":false,"Id":"1426553934985564160","Deleted":false,"CreateTime":"2021-08-14 22:38:56.848","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null}
+2022-05-21 16:50:00.560 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:
+2022-05-21 16:50:00.560 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 作业:GetLog,分组:Test,新建时未启动原因,状态为:1
+2022-05-21 16:50:00.560 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 任务启动-成功:4个,失败0个,异常信息：无
+2022-05-21 16:50:01.074 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623664695808000-0加载成功
+2022-05-21 16:50:01.075 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623039325081600-0加载成功
+2022-05-21 16:50:01.077 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274622508779180032-0加载成功
+2022-05-21 16:50:01.077 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621654579810304-0加载成功
+2022-05-21 16:50:01.077 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621154383892480-0加载成功
+2022-05-21 16:50:01.078 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274620801831669760-0加载成功
+2022-05-21 16:50:01.078 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274618511506804736-0加载成功
+2022-05-21 16:50:01.126 +08:00 [INF WorkflowCore.Services.WorkflowHost] Starting background tasks
+2022-05-21 16:50:01.145 +08:00 [INF Microsoft.Hosting.Lifetime] Now listening on: http://[::]:5000
+2022-05-21 16:50:01.145 +08:00 [INF Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+2022-05-21 16:50:01.146 +08:00 [INF Microsoft.Hosting.Lifetime] Hosting environment: Production
+2022-05-21 16:50:01.146 +08:00 [INF Microsoft.Hosting.Lifetime] Content root path: F:\AClient\ServiceMonitor\ServiceMonitor\bin\Debug\net5.0-windows\server
+2022-05-21 16:50:01.146 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting started
+2022-05-21 16:50:01.887 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Test/GetLogList
+Time:462ms
+Method:POST
+ContentType:null
+Body:
+StatusCode:405
+
+Response:
+
+2022-05-21 16:50:01.893 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] The remote server returned an error: (405) Method Not Allowed.
+2022-05-21 16:50:10.005 +08:00 [VRB AIStudio.Service.Quartz.FileQuartz] 插入D_UserMessage数据0条;更新D_UserMessage数据0条 
+2022-05-21 16:50:20.007 +08:00 [VRB AIStudio.Service.Quartz.FileQuartz] 插入D_UserMessage数据0条;更新D_UserMessage数据0条 
+2022-05-21 16:50:30.010 +08:00 [VRB AIStudio.Service.Quartz.FileQuartz] 插入D_UserMessage数据0条;更新D_UserMessage数据0条 
+2022-05-21 16:50:40.009 +08:00 [VRB AIStudio.Service.Quartz.FileQuartz] 插入D_UserMessage数据0条;更新D_UserMessage数据0条 
+2022-05-21 16:50:43.614 +08:00 [INF Microsoft.Hosting.Lifetime] Application is shutting down...
+2022-05-21 16:50:43.614 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopping
+2022-05-21 16:50:43.637 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopped
+2022-05-21 16:50:43.640 +08:00 [INF WorkflowCore.Services.WorkflowHost] Stopping background tasks
+2022-05-21 16:50:43.672 +08:00 [INF WorkflowCore.Services.WorkflowHost] Worker tasks stopped
+2022-05-21 16:54:25.949 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting starting
+2022-05-21 16:54:29.999 +08:00 [VRB Coldairarrow.Api.SeedData] BaseDb Data Source=Coldairarrow.Api.db-SQLite already exists
+2022-05-21 16:54:30.451 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Base_Dictionary" AS "b"
+2022-05-21 16:54:30.817 +08:00 [ERR Microsoft.EntityFrameworkCore.Query] An exception occurred while iterating over the results of a query for context type 'EFCore.Sharding.GenericDbContext'.
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such table: Base_Dictionary'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such table: Base_Dictionary'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2022-05-21 16:54:31.016 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:ResetDataJob,分组:SystemJob,启动成功
+2022-05-21 16:54:31.020 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:SaveMessageJob,分组:SystemJob,启动成功
+2022-05-21 16:54:31.025 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:PushMessageJob,分组:SystemJob,启动成功
+2022-05-21 16:54:31.500 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:操作对象：{"TaskName":"GetLog","GroupName":"Test","Interval":"0/10 * * * * ?","ApiUrl":"http://localhost:5000/Test/GetLogList","AuthKey":"Authorization","AuthValue":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTYxMzQ1NTI0MX0.XbnD6R0Ozgp1xoI6BUrRjYaHwRYYAJ7OgU6gRO1sdbA","Describe":null,"RequestType":"System","LastRunTime":null,"Status":1,"ForbidOperate":false,"ForbidEdit":false,"Id":"1426553934985564160","Deleted":false,"CreateTime":"2021-08-14 22:38:56.848","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null}
+2022-05-21 16:54:31.521 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:
+2022-05-21 16:54:31.526 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 作业:GetLog,分组:Test,新建时未启动原因,状态为:1
+2022-05-21 16:54:31.531 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 任务启动-成功:4个,失败0个,异常信息：无
+2022-05-21 16:54:32.156 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623664695808000-0加载成功
+2022-05-21 16:54:32.157 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623039325081600-0加载成功
+2022-05-21 16:54:32.162 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274622508779180032-0加载成功
+2022-05-21 16:54:32.163 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621654579810304-0加载成功
+2022-05-21 16:54:32.164 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621154383892480-0加载成功
+2022-05-21 16:54:32.164 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274620801831669760-0加载成功
+2022-05-21 16:54:32.165 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274618511506804736-0加载成功
+2022-05-21 16:54:32.257 +08:00 [INF WorkflowCore.Services.WorkflowHost] Starting background tasks
+2022-05-21 16:54:32.330 +08:00 [INF Microsoft.Hosting.Lifetime] Now listening on: http://[::]:5000
+2022-05-21 16:54:32.330 +08:00 [INF Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+2022-05-21 16:54:32.336 +08:00 [INF Microsoft.Hosting.Lifetime] Hosting environment: Production
+2022-05-21 16:54:32.339 +08:00 [INF Microsoft.Hosting.Lifetime] Content root path: F:\AClient\ServiceMonitor\ServiceMonitor\bin\Debug\net5.0-windows\server
+2022-05-21 16:54:32.342 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting started
+2022-05-21 16:55:45.045 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting starting
+2022-05-21 16:55:46.016 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202205" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202205" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-21 16:55:46.054 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202206" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202206" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-21 16:55:47.024 +08:00 [VRB Coldairarrow.Api.SeedData] BaseDb Data Source=Coldairarrow.Api.db-SQLite already exists
+2022-05-21 16:55:47.409 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Base_Dictionary" AS "b"
+2022-05-21 16:55:47.451 +08:00 [ERR Microsoft.EntityFrameworkCore.Query] An exception occurred while iterating over the results of a query for context type 'EFCore.Sharding.GenericDbContext'.
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such table: Base_Dictionary'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such table: Base_Dictionary'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2022-05-21 16:55:47.662 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:ResetDataJob,分组:SystemJob,启动成功
+2022-05-21 16:55:47.665 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:SaveMessageJob,分组:SystemJob,启动成功
+2022-05-21 16:55:47.668 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:PushMessageJob,分组:SystemJob,启动成功
+2022-05-21 17:00:51.637 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting starting
+2022-05-21 17:00:52.524 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202205" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202205" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-21 17:00:52.557 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202206" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202206" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-21 17:00:53.614 +08:00 [VRB Coldairarrow.Api.SeedData] BaseDb Data Source=Coldairarrow.Api.db-SQLite already exists
+2022-05-21 17:00:53.955 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Base_Dictionary" AS "b"
+2022-05-21 17:00:53.978 +08:00 [ERR Microsoft.EntityFrameworkCore.Query] An exception occurred while iterating over the results of a query for context type 'EFCore.Sharding.GenericDbContext'.
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such table: Base_Dictionary'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such table: Base_Dictionary'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2022-05-21 17:00:54.118 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:ResetDataJob,分组:SystemJob,启动成功
+2022-05-21 17:00:54.121 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:SaveMessageJob,分组:SystemJob,启动成功
+2022-05-21 17:00:54.123 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:PushMessageJob,分组:SystemJob,启动成功
+2022-05-21 17:37:45.000 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting starting
+2022-05-21 17:37:45.969 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202205" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202205" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-21 17:37:46.003 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202206" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202206" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-21 17:37:47.200 +08:00 [VRB Coldairarrow.Api.SeedData] BaseDb Data Source=Coldairarrow.Api.db-SQLite already exists
+2022-05-21 17:37:48.266 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:ResetDataJob,分组:SystemJob,启动成功
+2022-05-21 17:37:48.268 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:SaveMessageJob,分组:SystemJob,启动成功
+2022-05-21 17:37:48.277 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:PushMessageJob,分组:SystemJob,启动成功
+2022-05-21 17:37:48.750 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:操作对象：{"TaskName":"GetLog","GroupName":"Test","Interval":"0/10 * * * * ?","ApiUrl":"http://localhost:5000/Test/GetLogList","AuthKey":"Authorization","AuthValue":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTYxMzQ1NTI0MX0.XbnD6R0Ozgp1xoI6BUrRjYaHwRYYAJ7OgU6gRO1sdbA","Describe":null,"RequestType":"System","LastRunTime":null,"Status":1,"ForbidOperate":false,"ForbidEdit":false,"Id":"1527933402936774656","Deleted":false,"CreateTime":"2022-05-21 16:44:45.547","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null}
+2022-05-21 17:37:48.766 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:
+2022-05-21 17:37:48.771 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 作业:GetLog,分组:Test,新建时未启动原因,状态为:1
+2022-05-21 17:37:48.780 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 任务启动-成功:4个,失败0个,异常信息：无
+2022-05-21 17:37:49.238 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623664695808000-0加载成功
+2022-05-21 17:37:49.240 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623039325081600-0加载成功
+2022-05-21 17:37:49.251 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274622508779180032-0加载成功
+2022-05-21 17:37:49.260 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621654579810304-0加载成功
+2022-05-21 17:37:49.269 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621154383892480-0加载成功
+2022-05-21 17:37:49.279 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274620801831669760-0加载成功
+2022-05-21 17:37:49.287 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274618511506804736-0加载成功
+2022-05-21 17:37:49.383 +08:00 [INF WorkflowCore.Services.WorkflowHost] Starting background tasks
+2022-05-21 17:37:49.471 +08:00 [INF Microsoft.Hosting.Lifetime] Now listening on: http://[::]:5000
+2022-05-21 17:37:49.472 +08:00 [INF Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+2022-05-21 17:37:49.485 +08:00 [INF Microsoft.Hosting.Lifetime] Hosting environment: Production
+2022-05-21 17:37:49.502 +08:00 [INF Microsoft.Hosting.Lifetime] Content root path: F:\AClient\ServiceMonitor\ServiceMonitor\bin\Debug\net5.0-windows\server
+2022-05-21 17:37:49.504 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting started
+2022-05-21 17:37:56.206 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:338ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"Admin"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzIxMjI3Nn0.6cyTJHExsYrCOiNDMSANnwBPCJkVCtY7-3llUcNILHU","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-21 17:37:57.181 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] 人工助手-0.0.0.1连接成功
+2022-05-21 17:37:57.736 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/D_Manage/D_UserMessage/GetUserList
+Time:475ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"UserName":"Admin","UserId":"Admin","UserNames":null,"UserIds":null,"Avatar":null,"Online":false,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00.000"},{"UserName":"alice","UserId":"1527933393868689408","UserNames":null,"UserIds":null,"Avatar":null,"Online":false,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00.000"},{"UserName":"bob","UserId":"1527933395043094528","UserNames":null,"UserIds":null,"Avatar":null,"Online":false,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00.000"},{"UserName":"智能助手","UserId":"smallAssistant","UserNames":null,"UserIds":null,"Avatar":"/Images/Usopp.jpg","Online":true,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00.000"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-21 17:37:58.621 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/D_Manage/D_UserMessage/GetPageHistoryDataList
+Time:504ms
+Method:POST
+ContentType:application/json
+Body:{"Search":{"userId":"smallAssistant","creatorId":"smallAssistant","markflag":true,"isGroup":false}}
+StatusCode:200
+
+Response:{"Total":0,"Data":[],"Success":true,"ErrorCode":0,"Msg":null}
+
+2022-05-21 17:38:48.999 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:30ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzIxMjMyOH0.X7lPkD5jYw3i3673rmev_-fgT-sCIuxHIQkrhn6LFQs","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-21 17:38:52.373 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:322ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-21 17:38:52.858 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:166ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-21 17:38:53.176 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:64ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-21 17:38:53.305 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-21 17:38:53.785 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:168ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-21 17:38:56.099 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:26ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-21 17:38:56.345 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:28ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-21 17:38:56.536 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:61ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-21 17:39:00.815 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetDataList
+Time:136ms
+Method:POST
+ContentType:application/json
+Body:{"PageIndex":1,"PageRows":100,"SortField":"Id","SortType":"desc","Search":{"keyword":null,"condition":null}}
+StatusCode:200
+
+Response:{"Total":3,"Data":[{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"bob","Password":"e10adc3949ba59abbe56e057f20f883e","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"1527933395043094528","Deleted":false,"CreateTime":"2022-05-21 16:44:43.665","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"","RoleIdList":[],"RoleNameList":[],"RoleType":0,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"alice","Password":"e1......内容太长已忽略
+
+2022-05-21 17:39:11.852 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-21 17:39:11.855 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:18551ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-21 18:21:36.567 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:650ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"Admin"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzIxNDg5Nn0.xSP-ZUktyKADUGwQ2ZuJrNPoLQ1ULezwM8FWZSlohHA","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-21 18:21:36.684 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] 人工助手-0.0.0.1连接关闭
+2022-05-21 18:21:36.702 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] 人工助手-0.0.0.1连接成功
+2022-05-21 18:21:36.706 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:2619589ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-21 18:21:36.936 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/D_Manage/D_UserMessage/GetUserList
+Time:58ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"UserName":"Admin","UserId":"Admin","UserNames":null,"UserIds":null,"Avatar":null,"Online":false,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00.000"},{"UserName":"alice","UserId":"1527933393868689408","UserNames":null,"UserIds":null,"Avatar":null,"Online":false,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00.000"},{"UserName":"bob","UserId":"1527933395043094528","UserNames":null,"UserIds":null,"Avatar":null,"Online":false,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00.000"},{"UserName":"智能助手","UserId":"smallAssistant","UserNames":null,"UserIds":null,"Avatar":"/Images/Usopp.jpg","Online":true,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00.000"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-21 18:21:37.167 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/D_Manage/D_UserMessage/GetPageHistoryDataList
+Time:66ms
+Method:POST
+ContentType:application/json
+Body:{"Search":{"userId":"smallAssistant","creatorId":"smallAssistant","markflag":true,"isGroup":false}}
+StatusCode:200
+
+Response:{"Total":0,"Data":[],"Success":true,"ErrorCode":0,"Msg":null}
+
+2022-05-21 18:22:02.720 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] 人工助手-0.0.0.1The remote party closed the WebSocket connection without completing the close handshake.
+2022-05-21 18:22:02.720 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] 人工助手-0.0.0.1连接关闭
+2022-05-21 18:22:02.722 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:26020ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-21 22:32:05.907 +08:00 [INF Microsoft.Hosting.Lifetime] Application is shutting down...
+2022-05-21 22:32:05.908 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopping
+2022-05-21 22:32:05.955 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopped
+2022-05-21 22:32:05.958 +08:00 [INF WorkflowCore.Services.WorkflowHost] Stopping background tasks
+2022-05-21 22:32:06.069 +08:00 [INF WorkflowCore.Services.WorkflowHost] Worker tasks stopped

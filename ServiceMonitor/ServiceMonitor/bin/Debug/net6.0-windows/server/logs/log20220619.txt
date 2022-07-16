@@ -1,0 +1,428 @@
+2022-06-19 21:53:01.459 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting starting
+2022-06-19 21:53:56.212 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (17,576ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [D_UserMessage_202206] (
+    [Id] nvarchar(50) NOT NULL,
+    [Type] int NOT NULL,
+    [ReadingMarks] nvarchar(max) NULL,
+    [GroupId] nvarchar(max) NULL,
+    [GroupName] nvarchar(max) NULL,
+    [Status] int NOT NULL,
+    [Deleted] bit NOT NULL,
+    [CreateTime] datetime2 NOT NULL,
+    [ModifyTime] datetime2 NULL,
+    [CreatorId] nvarchar(50) NULL,
+    [CreatorName] nvarchar(255) NULL,
+    [ModifyId] nvarchar(50) NULL,
+    [ModifyName] nvarchar(255) NULL,
+    [TenantId] nvarchar(50) NULL,
+    [UserIds] nvarchar(max) NULL,
+    [UserNames] nvarchar(max) NULL,
+    [Text] nvarchar(max) NULL,
+    CONSTRAINT [PK_D_UserMessage_202206] PRIMARY KEY ([Id])
+);
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+SET @description = N'自然主键';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'Id';
+SET @description = N'状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'Status';
+SET @description = N'否已删除';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'Deleted';
+SET @description = N'创建时间';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'CreateTime';
+SET @description = N'修改时间';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'ModifyTime';
+SET @description = N'创建人Id';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'CreatorId';
+SET @description = N'创建人';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'CreatorName';
+SET @description = N'修改人Id';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'ModifyId';
+SET @description = N'修改人';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'ModifyName';
+SET @description = N'租户Id';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'TenantId';
+2022-06-19 21:53:56.307 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [D_UserMessage_202207] (
+    [Id] nvarchar(50) NOT NULL,
+    [Type] int NOT NULL,
+    [ReadingMarks] nvarchar(max) NULL,
+    [GroupId] nvarchar(max) NULL,
+    [GroupName] nvarchar(max) NULL,
+    [Status] int NOT NULL,
+    [Deleted] bit NOT NULL,
+    [CreateTime] datetime2 NOT NULL,
+    [ModifyTime] datetime2 NULL,
+    [CreatorId] nvarchar(50) NULL,
+    [CreatorName] nvarchar(255) NULL,
+    [ModifyId] nvarchar(50) NULL,
+    [ModifyName] nvarchar(255) NULL,
+    [TenantId] nvarchar(50) NULL,
+    [UserIds] nvarchar(max) NULL,
+    [UserNames] nvarchar(max) NULL,
+    [Text] nvarchar(max) NULL,
+    CONSTRAINT [PK_D_UserMessage_202207] PRIMARY KEY ([Id])
+);
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+SET @description = N'自然主键';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'Id';
+SET @description = N'状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'Status';
+SET @description = N'否已删除';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'Deleted';
+SET @description = N'创建时间';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'CreateTime';
+SET @description = N'修改时间';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'ModifyTime';
+SET @description = N'创建人Id';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'CreatorId';
+SET @description = N'创建人';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'CreatorName';
+SET @description = N'修改人Id';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'ModifyId';
+SET @description = N'修改人';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'ModifyName';
+SET @description = N'租户Id';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'TenantId';
+2022-06-19 21:53:58.467 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:ResetDataJob,分组:SystemJob,启动成功
+2022-06-19 21:53:58.469 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:SaveMessageJob,分组:SystemJob,启动成功
+2022-06-19 21:53:58.471 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:PushMessageJob,分组:SystemJob,启动成功
+2022-06-19 21:53:58.564 +08:00 [VRB Coldairarrow.Api.SeedData] BaseDb Data Source=.;Initial Catalog=Colder.Admin.AntdVue;Integrated Security=True;Pooling=true;-SqlServer already exists
+2022-06-19 21:53:58.726 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:
+2022-06-19 21:53:58.728 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 作业:GetLog,分组:Test,新建时未启动原因,状态为:1
+2022-06-19 21:53:58.729 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 任务启动-成功:4个,失败0个,异常信息：无
+2022-06-19 21:53:58.937 +08:00 [ERR Microsoft.EntityFrameworkCore.Query] An exception occurred while iterating over the results of a query for context type 'EFCore.Sharding.GenericDbContext'.
+System.InvalidOperationException: A second operation was started on this context before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: A second operation was started on this context before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2022-06-19 21:53:58.988 +08:00 [INF Microsoft.Hosting.Lifetime] Now listening on: http://[::]:5000
+2022-06-19 21:53:58.990 +08:00 [INF Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+2022-06-19 21:53:58.991 +08:00 [INF Microsoft.Hosting.Lifetime] Hosting environment: Production
+2022-06-19 21:53:58.992 +08:00 [INF Microsoft.Hosting.Lifetime] Content root path: F:\AClient\ServiceMonitor\ServiceMonitor\bin\Debug\net5.0-windows\server
+2022-06-19 21:53:58.993 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting started
+2022-06-19 22:00:28.267 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting starting
+2022-06-19 22:00:29.457 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [D_UserMessage_202206] (
+    [Id] nvarchar(50) NOT NULL,
+    [Type] int NOT NULL,
+    [ReadingMarks] nvarchar(max) NULL,
+    [GroupId] nvarchar(max) NULL,
+    [GroupName] nvarchar(max) NULL,
+    [Status] int NOT NULL,
+    [Deleted] bit NOT NULL,
+    [CreateTime] datetime2 NOT NULL,
+    [ModifyTime] datetime2 NULL,
+    [CreatorId] nvarchar(50) NULL,
+    [CreatorName] nvarchar(255) NULL,
+    [ModifyId] nvarchar(50) NULL,
+    [ModifyName] nvarchar(255) NULL,
+    [TenantId] nvarchar(50) NULL,
+    [UserIds] nvarchar(max) NULL,
+    [UserNames] nvarchar(max) NULL,
+    [Text] nvarchar(max) NULL,
+    CONSTRAINT [PK_D_UserMessage_202206] PRIMARY KEY ([Id])
+);
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+SET @description = N'自然主键';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'Id';
+SET @description = N'状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'Status';
+SET @description = N'否已删除';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'Deleted';
+SET @description = N'创建时间';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'CreateTime';
+SET @description = N'修改时间';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'ModifyTime';
+SET @description = N'创建人Id';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'CreatorId';
+SET @description = N'创建人';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'CreatorName';
+SET @description = N'修改人Id';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'ModifyId';
+SET @description = N'修改人';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'ModifyName';
+SET @description = N'租户Id';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202206', 'COLUMN', N'TenantId';
+2022-06-19 22:00:29.484 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [D_UserMessage_202207] (
+    [Id] nvarchar(50) NOT NULL,
+    [Type] int NOT NULL,
+    [ReadingMarks] nvarchar(max) NULL,
+    [GroupId] nvarchar(max) NULL,
+    [GroupName] nvarchar(max) NULL,
+    [Status] int NOT NULL,
+    [Deleted] bit NOT NULL,
+    [CreateTime] datetime2 NOT NULL,
+    [ModifyTime] datetime2 NULL,
+    [CreatorId] nvarchar(50) NULL,
+    [CreatorName] nvarchar(255) NULL,
+    [ModifyId] nvarchar(50) NULL,
+    [ModifyName] nvarchar(255) NULL,
+    [TenantId] nvarchar(50) NULL,
+    [UserIds] nvarchar(max) NULL,
+    [UserNames] nvarchar(max) NULL,
+    [Text] nvarchar(max) NULL,
+    CONSTRAINT [PK_D_UserMessage_202207] PRIMARY KEY ([Id])
+);
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+SET @description = N'自然主键';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'Id';
+SET @description = N'状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'Status';
+SET @description = N'否已删除';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'Deleted';
+SET @description = N'创建时间';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'CreateTime';
+SET @description = N'修改时间';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'ModifyTime';
+SET @description = N'创建人Id';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'CreatorId';
+SET @description = N'创建人';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'CreatorName';
+SET @description = N'修改人Id';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'ModifyId';
+SET @description = N'修改人';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'ModifyName';
+SET @description = N'租户Id';
+EXEC sp_addextendedproperty 'MS_Description', @description, 'SCHEMA', @defaultSchema, 'TABLE', N'D_UserMessage_202207', 'COLUMN', N'TenantId';
+2022-06-19 22:00:30.370 +08:00 [VRB Coldairarrow.Api.SeedData] BaseDb Data Source=.;Initial Catalog=Colder.Admin.AntdVue;Integrated Security=True;Pooling=true;-SqlServer already exists
+2022-06-19 22:00:30.428 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:ResetDataJob,分组:SystemJob,启动成功
+2022-06-19 22:00:30.431 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:SaveMessageJob,分组:SystemJob,启动成功
+2022-06-19 22:00:30.433 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:PushMessageJob,分组:SystemJob,启动成功
+2022-06-19 22:00:30.667 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:
+2022-06-19 22:00:30.668 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 作业:GetLog,分组:Test,新建时未启动原因,状态为:1
+2022-06-19 22:00:30.669 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 任务启动-成功:4个,失败0个,异常信息：无
+2022-06-19 22:00:30.738 +08:00 [INF Microsoft.Hosting.Lifetime] Now listening on: http://[::]:5000
+2022-06-19 22:00:30.739 +08:00 [INF Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+2022-06-19 22:00:30.740 +08:00 [INF Microsoft.Hosting.Lifetime] Hosting environment: Production
+2022-06-19 22:00:30.742 +08:00 [INF Microsoft.Hosting.Lifetime] Content root path: F:\AClient\ServiceMonitor\ServiceMonitor\bin\Debug\net5.0-windows\server
+2022-06-19 22:00:30.743 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting started
+2022-06-19 22:00:30.897 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:操作对象：{"TaskName":"GetLog","GroupName":"Test","Interval":"0/10 * * * * ?","ApiUrl":"http://localhost:5000/Test/GetLogList","AuthKey":"Authorization","AuthValue":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTYxMzQ1NTI0MX0.XbnD6R0Ozgp1xoI6BUrRjYaHwRYYAJ7OgU6gRO1sdbA","Describe":null,"RequestType":"System","LastRunTime":null,"Status":1,"ForbidOperate":false,"ForbidEdit":false,"Id":"1421455379325259776","Deleted":false,"CreateTime":"2021-07-31 20:59:06.452","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null}
+2022-06-19 22:00:31.092 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274618511506804736-0加载成功
+2022-06-19 22:00:31.094 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274620801831669760-0加载成功
+2022-06-19 22:00:31.095 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621154383892480-0加载成功
+2022-06-19 22:00:31.096 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621654579810304-0加载成功
+2022-06-19 22:00:31.413 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274622508779180032-0加载成功
+2022-06-19 22:00:31.416 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623039325081600-0加载成功
+2022-06-19 22:00:31.428 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623664695808000-0加载成功
+2022-06-19 22:00:31.451 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Test/GetLogList
+Time:253ms
+Method:POST
+ContentType:null
+Body:
+StatusCode:405
+
+Response:
+
+2022-06-19 22:00:31.465 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] The remote server returned an error: (405) Method Not Allowed.
+2022-06-19 22:00:31.694 +08:00 [INF WorkflowCore.Services.WorkflowHost] Starting background tasks
+2022-06-19 22:01:12.322 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:132ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1NTczMzY3Mn0.9JT3RJZZd5nrZaRMTgXC4SG_7OwlMI8GtPCyLsLNFIw","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-06-19 22:01:14.041 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:384ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":"Id1","PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-06-01 11:42:15.723","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1531843540269666304"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":"Wpf控件公司","SexText":"女人","BirthdayText":null},"Permissions":["Base_Action.Add","Base_Action.Edit","Base_Action.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Succe......内容太长已忽略
+
+2022-06-19 22:01:14.542 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:40ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"ValueInfo":null,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Home/Introduce","path":"/Home/Introduce","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"框架介绍","value":"Id0_1","key":"Id0_1","selectable":false,"icon":null,"Sort":1,"PermissionValues":[],"Id":"Id0_1","Value":"Id0_1","ParentId":"Id0","Level":2,"Text":"框架介绍","Children":null,"IsExpand":false},{"Type":1,"Url":"/Home/Statis","path":"/Home/Statis","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"运营统计","value":"Id0_2","key":"Id0_2","selectable":false,"icon":null,"Sort":2,"PermissionValues":[],"Id":"Id0_2","Value":"Id0_2","ParentId":"Id0","Level":2,"Text":"运营统计","Children":null,"IsExpand":false},{"Type":1,"Url":"/Home/UserConsole","path":"/Home/UserConsole","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"我......内容太长已忽略
+
+2022-06-19 22:01:14.815 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:19ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1531843544593993728","text":"alice"},{"value":"1531843545260888064","text":"bob"},{"value":"1531892930329972736","text":"test"},{"value":"1531895920516403200","text":"test2"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-06-19 22:01:14.957 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-06-19 22:01:15.124 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:9ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1531843539074289664","text":"部门管理员"},{"value":"1531843540269666304","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-06-19 22:01:17.117 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:22ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"children":[{"children":[{"children":null,"title":"UI子部门1","value":"Id2_1","key":"Id2_1","ParentIds":null,"Id":"Id2_1","Value":"Id2_1","ParentId":"Id2","Level":3,"Text":"UI子部门1","Children":null,"IsExpand":false},{"children":null,"title":"UI子部门2","value":"Id2_2","key":"Id2_2","ParentIds":null,"Id":"Id2_2","Value":"Id2_2","ParentId":"Id2","Level":3,"Text":"UI子部门2","Children":null,"IsExpand":false}],"title":"UI部门","value":"Id2","key":"Id2","ParentIds":null,"Id":"Id2","Value":"Id2","ParentId":"Id1","Level":2,"Text":"UI部门","Children":[{"children":null,"title":"UI子部门1","value":"Id2_1","key":"Id2_1","ParentIds":null,"Id":"Id2_1","Value":"Id2_1","ParentId":"Id2","Level":3,"Text":"UI子部门1","Children":null,"IsExpand":false},{"children":null,"title":"UI子部门2","value":"Id2_2","key":"Id2_2","ParentIds":null,"Id":"Id2_2","Value":"Id2_2","ParentId":"Id2","Level":3,"Text":"UI子部门2","Children":null,"IsExpand":false}],"IsExpand":false},{"children":[{"children":null,"title":"C#子部门1","value":"Id3_1......内容太长已忽略
+
+2022-06-19 22:01:17.386 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Action/GetActionTreeList
+Time:16ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"ValueInfo":null,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Home/Introduce","path":"/Home/Introduce","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"框架介绍","value":"Id0_1","key":"Id0_1","selectable":false,"icon":null,"Sort":1,"PermissionValues":[],"Id":"Id0_1","Value":"Id0_1","ParentId":"Id0","Level":2,"Text":"框架介绍","Children":null,"IsExpand":false},{"Type":1,"Url":"/Home/Statis","path":"/Home/Statis","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"运营统计","value":"Id0_2","key":"Id0_2","selectable":false,"icon":null,"Sort":2,"PermissionValues":[],"Id":"Id0_2","Value":"Id0_2","ParentId":"Id0","Level":2,"Text":"运营统计","Children":null,"IsExpand":false},{"Type":1,"Url":"/Home/UserConsole","path":"/Home/UserConsole","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"我......内容太长已忽略
+
+2022-06-19 22:01:17.482 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetTreeDataList
+Time:20ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"Id13_1","Value":"0","ParentId":"Id13","Level":2,"Text":"正常","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"Id13_2","Value":"1","ParentId":"Id13","Level":2,"Text":"紧急","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"Id13_3","Value":"2","ParentId":"Id13","Level":2,"Text":"特级","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"Id13","Value":"Grade","ParentId":null,"Level":1,"Text":"紧急程度","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"Id13_1","Value":"0","ParentId":"Id13","Level":2,"Text":"正常......内容太长已忽略
+
+2022-06-19 22:01:46.036 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-06-19 22:01:46.039 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:31104ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-06-19 22:05:20.047 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:3ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1NTczMzkyMH0.oTzkx2iFO4Z54-j58-JvROm3GZDzjpLe3Mio8ZhXjz8","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-06-19 22:05:21.082 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:27ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":"Id1","PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-06-01 11:42:15.723","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1531843540269666304"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":"Wpf控件公司","SexText":"女人","BirthdayText":null},"Permissions":["Base_Action.Add","Base_Action.Edit","Base_Action.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Succe......内容太长已忽略
+
+2022-06-19 22:05:21.622 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:10ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"ValueInfo":null,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Home/Introduce","path":"/Home/Introduce","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"框架介绍","value":"Id0_1","key":"Id0_1","selectable":false,"icon":null,"Sort":1,"PermissionValues":[],"Id":"Id0_1","Value":"Id0_1","ParentId":"Id0","Level":2,"Text":"框架介绍","Children":null,"IsExpand":false},{"Type":1,"Url":"/Home/Statis","path":"/Home/Statis","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"运营统计","value":"Id0_2","key":"Id0_2","selectable":false,"icon":null,"Sort":2,"PermissionValues":[],"Id":"Id0_2","Value":"Id0_2","ParentId":"Id0","Level":2,"Text":"运营统计","Children":null,"IsExpand":false},{"Type":1,"Url":"/Home/UserConsole","path":"/Home/UserConsole","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"我......内容太长已忽略
+
+2022-06-19 22:05:21.806 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:6ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1531843544593993728","text":"alice"},{"value":"1531843545260888064","text":"bob"},{"value":"1531892930329972736","text":"test"},{"value":"1531895920516403200","text":"test2"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-06-19 22:05:21.883 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-06-19 22:05:22.029 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:3ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1531843539074289664","text":"部门管理员"},{"value":"1531843540269666304","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-06-19 22:05:23.496 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:4ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"children":[{"children":[{"children":null,"title":"UI子部门1","value":"Id2_1","key":"Id2_1","ParentIds":null,"Id":"Id2_1","Value":"Id2_1","ParentId":"Id2","Level":3,"Text":"UI子部门1","Children":null,"IsExpand":false},{"children":null,"title":"UI子部门2","value":"Id2_2","key":"Id2_2","ParentIds":null,"Id":"Id2_2","Value":"Id2_2","ParentId":"Id2","Level":3,"Text":"UI子部门2","Children":null,"IsExpand":false}],"title":"UI部门","value":"Id2","key":"Id2","ParentIds":null,"Id":"Id2","Value":"Id2","ParentId":"Id1","Level":2,"Text":"UI部门","Children":[{"children":null,"title":"UI子部门1","value":"Id2_1","key":"Id2_1","ParentIds":null,"Id":"Id2_1","Value":"Id2_1","ParentId":"Id2","Level":3,"Text":"UI子部门1","Children":null,"IsExpand":false},{"children":null,"title":"UI子部门2","value":"Id2_2","key":"Id2_2","ParentIds":null,"Id":"Id2_2","Value":"Id2_2","ParentId":"Id2","Level":3,"Text":"UI子部门2","Children":null,"IsExpand":false}],"IsExpand":false},{"children":[{"children":null,"title":"C#子部门1","value":"Id3_1......内容太长已忽略
+
+2022-06-19 22:05:23.743 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Action/GetActionTreeList
+Time:6ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"ValueInfo":null,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Home/Introduce","path":"/Home/Introduce","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"框架介绍","value":"Id0_1","key":"Id0_1","selectable":false,"icon":null,"Sort":1,"PermissionValues":[],"Id":"Id0_1","Value":"Id0_1","ParentId":"Id0","Level":2,"Text":"框架介绍","Children":null,"IsExpand":false},{"Type":1,"Url":"/Home/Statis","path":"/Home/Statis","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"运营统计","value":"Id0_2","key":"Id0_2","selectable":false,"icon":null,"Sort":2,"PermissionValues":[],"Id":"Id0_2","Value":"Id0_2","ParentId":"Id0","Level":2,"Text":"运营统计","Children":null,"IsExpand":false},{"Type":1,"Url":"/Home/UserConsole","path":"/Home/UserConsole","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"我......内容太长已忽略
+
+2022-06-19 22:05:23.835 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetTreeDataList
+Time:5ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"Id13_1","Value":"0","ParentId":"Id13","Level":2,"Text":"正常","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"Id13_2","Value":"1","ParentId":"Id13","Level":2,"Text":"紧急","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"Id13_3","Value":"2","ParentId":"Id13","Level":2,"Text":"特级","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"Id13","Value":"Grade","ParentId":null,"Level":1,"Text":"紧急程度","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"Id13_1","Value":"0","ParentId":"Id13","Level":2,"Text":"正常......内容太长已忽略
+
+2022-06-19 22:08:18.042 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Action/GetMenuTreeList
+Time:11ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"ValueInfo":null,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Home/Introduce","path":"/Home/Introduce","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"框架介绍","value":"Id0_1","key":"Id0_1","selectable":true,"icon":null,"Sort":1,"PermissionValues":[],"Id":"Id0_1","Value":"Id0_1","ParentId":"Id0","Level":2,"Text":"框架介绍","Children":null,"IsExpand":false},{"Type":1,"Url":"/Home/Statis","path":"/Home/Statis","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"运营统计","value":"Id0_2","key":"Id0_2","selectable":true,"icon":null,"Sort":2,"PermissionValues":[],"Id":"Id0_2","Value":"Id0_2","ParentId":"Id0","Level":2,"Text":"运营统计","Children":null,"IsExpand":false},{"Type":1,"Url":"/Home/UserConsole","path":"/Home/UserConsole","NeedAction":false,"ValueInfo":null,"TypeText":"页面","NeedActionText":"否","children":null,"title":"我的控......内容太长已忽略
+
+2022-06-19 22:10:03.385 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-06-19 22:10:03.386 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:281504ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-06-19 22:20:13.521 +08:00 [INF Microsoft.Hosting.Lifetime] Application is shutting down...
+2022-06-19 22:20:13.521 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopping
+2022-06-19 22:20:13.535 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopped
+2022-06-19 22:20:13.538 +08:00 [INF WorkflowCore.Services.WorkflowHost] Stopping background tasks
+2022-06-19 22:20:13.542 +08:00 [INF WorkflowCore.Services.WorkflowHost] Worker tasks stopped

@@ -1,0 +1,2065 @@
+2022-05-26 10:04:30.299 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting starting
+2022-05-26 10:04:35.806 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202205" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202205" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-26 10:04:35.884 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202206" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202206" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-26 10:04:39.890 +08:00 [VRB Coldairarrow.Api.SeedData] BaseDb Data Source=Coldairarrow.Api.db-SQLite already exists
+2022-05-26 10:04:40.869 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:ResetDataJob,分组:SystemJob,启动成功
+2022-05-26 10:04:40.872 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:SaveMessageJob,分组:SystemJob,启动成功
+2022-05-26 10:04:40.873 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:PushMessageJob,分组:SystemJob,启动成功
+2022-05-26 10:04:41.266 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:操作对象：{"TaskName":"GetLog","GroupName":"Test","Interval":"0/10 * * * * ?","ApiUrl":"http://localhost:5000/Test/GetLogList","AuthKey":"Authorization","AuthValue":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTYxMzQ1NTI0MX0.XbnD6R0Ozgp1xoI6BUrRjYaHwRYYAJ7OgU6gRO1sdbA","Describe":null,"RequestType":"System","LastRunTime":null,"Status":1,"ForbidOperate":false,"ForbidEdit":false,"Id":"1527933402936774656","Deleted":false,"CreateTime":"2022-05-21 16:44:45.547","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null}
+2022-05-26 10:04:41.270 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:
+2022-05-26 10:04:41.274 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 作业:GetLog,分组:Test,新建时未启动原因,状态为:1
+2022-05-26 10:04:41.279 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 任务启动-成功:4个,失败0个,异常信息：无
+2022-05-26 10:04:41.876 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623664695808000-0加载成功
+2022-05-26 10:04:41.879 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623039325081600-0加载成功
+2022-05-26 10:04:41.882 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274622508779180032-0加载成功
+2022-05-26 10:04:41.883 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621654579810304-0加载成功
+2022-05-26 10:04:41.885 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621154383892480-0加载成功
+2022-05-26 10:04:41.888 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274620801831669760-0加载成功
+2022-05-26 10:04:41.890 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274618511506804736-0加载成功
+2022-05-26 10:04:42.004 +08:00 [INF WorkflowCore.Services.WorkflowHost] Starting background tasks
+2022-05-26 10:04:42.034 +08:00 [INF Microsoft.Hosting.Lifetime] Now listening on: http://[::]:5000
+2022-05-26 10:04:42.036 +08:00 [INF Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+2022-05-26 10:04:42.038 +08:00 [INF Microsoft.Hosting.Lifetime] Hosting environment: Production
+2022-05-26 10:04:42.040 +08:00 [INF Microsoft.Hosting.Lifetime] Content root path: F:\AClient\ServiceMonitor\ServiceMonitor\bin\Debug\net5.0-windows\server
+2022-05-26 10:04:42.043 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting started
+2022-05-26 10:04:42.689 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Test/GetLogList
+Time:567ms
+Method:POST
+ContentType:null
+Body:
+StatusCode:405
+
+Response:
+
+2022-05-26 10:04:42.707 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] The remote server returned an error: (405) Method Not Allowed.
+2022-05-26 10:05:15.088 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:295ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzYxNzExNH0.DExHjpAqmHqEwUUegz4j5JuTb1E9Zw0bvTLJA02Nk3Y","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:05:17.747 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:438ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 10:05:18.110 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:191ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 10:05:18.381 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:39ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:05:18.557 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 10:05:18.967 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:51ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:05:19.229 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:30ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:05:19.328 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:28ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:05:19.470 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:41ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 10:06:52.743 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1The remote party closed the WebSocket connection without completing the close handshake.
+2022-05-26 10:06:52.747 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 10:06:52.752 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:94223ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 10:19:36.033 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:23ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzYxNzk3Nn0.gHiF3mguLBwxsCAOyEoqb561d_BYBydwqYnOQxU5M5g","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:19:37.625 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:197ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 10:19:37.999 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:134ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 10:19:38.287 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:29ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:19:38.346 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 10:19:38.598 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:27ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:19:39.002 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:40ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:19:39.256 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:39ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:19:39.515 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:51ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 10:20:43.176 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1The remote party closed the WebSocket connection without completing the close handshake.
+2022-05-26 10:20:43.178 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 10:20:43.183 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:64838ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 10:23:09.889 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:36ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzYxODE4OX0.GOhhoq9QRZQTTFl8PPNFVpi0xvVXJcbSMP5mKqJj0Xs","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:23:12.029 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:263ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 10:23:12.547 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:199ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 10:23:12.845 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:23ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:23:12.963 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 10:23:13.236 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:23ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:23:13.559 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:25ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:23:13.667 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:27ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:23:13.815 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:27ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 10:24:01.009 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 10:24:01.011 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:48048ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 10:34:14.885 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:24ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzYxODg1NH0.Uf9L9iBTXRT8lMiDdeRtDD4D2uKTNciPOoslOx73UpM","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:34:16.190 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:164ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 10:34:16.510 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:136ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 10:34:16.683 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:20ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:34:16.742 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 10:34:16.912 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:23ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:34:18.250 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:22ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:34:18.496 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:22ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:34:18.586 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:26ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 10:35:28.587 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 10:35:28.589 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:71847ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 10:37:38.409 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:24ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzYxOTA1OH0.TJ3eEdtk2V-3qFL3bHSRyYqFkMRPN5irGU_H3Gw3Y7Q","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:37:39.892 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:188ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 10:37:40.246 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:153ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 10:37:40.513 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:25ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:37:40.570 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 10:37:40.739 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:20ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:37:42.285 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:20ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:37:42.559 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:27ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 10:37:42.662 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:28ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 10:39:31.803 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 10:39:31.806 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:111236ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 11:03:35.345 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:759ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzYyMDYxNX0.JI4_QyPZ8U35KF9VjCSZo7vK_SLEp9ZJhazeUCrOiQA","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:03:37.385 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:251ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 11:03:37.759 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:134ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 11:03:37.979 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:18ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:03:38.076 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 11:03:38.279 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:19ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:03:39.818 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:20ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:03:40.118 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:20ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:03:40.327 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:138ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 11:04:36.283 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 11:04:36.286 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:58223ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 11:10:03.949 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:425ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzYyMTAwM30.fpq7WLITIRxi10LTPQYIcL3NnBpNhmZwC3UiUT85gdc","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:10:06.148 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:177ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 11:10:06.470 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:136ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 11:10:06.659 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:19ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:10:06.826 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 11:10:07.031 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:21ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:10:08.623 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:21ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:10:08.856 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:19ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:10:08.938 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:22ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 11:20:54.123 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1The remote party closed the WebSocket connection without completing the close handshake.
+2022-05-26 11:20:54.125 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 11:20:54.128 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:647302ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 11:21:59.179 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:457ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzYyMTcxOX0.gnSzIulpV21Y1rSmuc9Be3oK7WIcvaz6Hb5ueBwUghE","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:22:00.879 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:162ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 11:22:01.197 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:133ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 11:22:01.364 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:17ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:22:01.459 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 11:22:01.622 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:19ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:22:03.167 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:22ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:22:03.548 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:19ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:22:03.632 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:22ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 11:23:06.624 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1The remote party closed the WebSocket connection without completing the close handshake.
+2022-05-26 11:23:06.627 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 11:23:06.634 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:65174ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 11:54:57.016 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:1090ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzYyMzY5N30.5eFMm_MO9z6xdoXIFwVF0e7S5erarwlmw3BmhONNSMI","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:55:00.072 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:251ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 11:55:00.581 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:210ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 11:55:00.835 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:35ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:55:01.071 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 11:55:01.464 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:33ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:55:03.369 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:55ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:55:03.704 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:31ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 11:55:03.848 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:47ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 11:57:50.409 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1The remote party closed the WebSocket connection without completing the close handshake.
+2022-05-26 11:57:50.411 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 11:57:50.416 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:169346ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 14:05:02.403 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:25ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzYzMTUwMn0.iCsp3O5_ex0But0RgBGUBKLoltP5OFuDuWlCDtrLOGA","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:05:03.674 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:149ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 14:05:03.983 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:129ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 14:05:04.150 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:19ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:05:04.205 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 14:05:04.359 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:18ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:05:05.532 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:20ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:05:05.731 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:18ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:05:05.809 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:19ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 14:07:16.643 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1The remote party closed the WebSocket connection without completing the close handshake.
+2022-05-26 14:07:16.645 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 14:07:16.649 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:132443ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 14:09:44.576 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:25ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzYzMTc4NH0.hnwOTyLSA3MMaz-mC4iKLpMntUGE6RuzJuEvMhEiQzA","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:09:45.923 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:175ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 14:09:46.245 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:146ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 14:09:46.446 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:21ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:09:46.510 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 14:09:46.673 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:21ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:09:48.272 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:22ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:09:48.516 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:23ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:09:48.620 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:29ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 14:10:16.635 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetDataList
+Time:112ms
+Method:POST
+ContentType:application/json
+Body:{"PageIndex":1,"PageRows":100,"SortField":"Id","SortType":"desc","Search":{"keyword":null,"condition":null}}
+StatusCode:200
+
+Response:{"Total":3,"Data":[{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"bob","Password":"e10adc3949ba59abbe56e057f20f883e","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"1527933395043094528","Deleted":false,"CreateTime":"2022-05-21 16:44:43.665","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"","RoleIdList":[],"RoleNameList":[],"RoleType":0,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"alice","Password":"e1......内容太长已忽略
+
+2022-05-26 14:10:19.177 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetDataList
+Time:67ms
+Method:POST
+ContentType:application/json
+Body:{"PageIndex":1,"PageRows":100,"SortField":"Id","SortType":"desc","Search":{"keyword":null,"condition":null}}
+StatusCode:200
+
+Response:{"Total":3,"Data":[{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"bob","Password":"e10adc3949ba59abbe56e057f20f883e","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"1527933395043094528","Deleted":false,"CreateTime":"2022-05-21 16:44:43.665","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"","RoleIdList":[],"RoleNameList":[],"RoleType":0,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"alice","Password":"e1......内容太长已忽略
+
+2022-05-26 14:10:21.737 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetTheData
+Time:68ms
+Method:POST
+ContentType:application/json
+Body:{"id":"Admin"}
+StatusCode:200
+
+Response:{"Data":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:11:22.830 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetDataList
+Time:292ms
+Method:POST
+ContentType:application/json
+Body:{"PageIndex":1,"PageRows":100,"SortField":"Id","SortType":"desc","Search":{"keyword":null,"condition":null}}
+StatusCode:200
+
+Response:{"Total":2,"Data":[{"RoleName":"超级管理员","Id":"1527933389653413888","Deleted":false,"CreateTime":"2022-05-21 16:44:42.380","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleType":1,"Actions":["1178957405992521728","1178957553778823168","1179018395304071168","1182652266117599232","1182652367447789568","1182652433302556672","1182652599069839360","1182652599069839361","1182652599069839362","1188800845714558976","1188800845714558977","1188800845714558978","1188801057778569216","1188801057778569217","1188801057778569218","1188801109783744512","1188801109783744513","1188801109783744514","1188801273885888512","1188801273885888513","1188801273885888514","1188801341661646848","1188801341661646849","1188801341661646850","1193158266167758848","1193158266167758849","1193158266167758850","1193158266167758851","1193158266167758852","1193158266167758853","1193158266167758854","1193158266167758855","1193158266167758856","1193158266167758860","11......内容太长已忽略
+
+2022-05-26 14:12:06.671 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1The remote party closed the WebSocket connection without completing the close handshake.
+2022-05-26 14:12:06.673 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 14:12:06.677 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:140167ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 14:13:30.072 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:21ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzYzMjAxMH0.r1pMK8jQ27vwWyZad1BLUpVP3X3fEwmfXTg9jMEhRyg","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:13:31.304 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:155ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 14:13:31.592 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:128ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 14:13:31.770 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:22ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:13:31.834 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 14:13:32.005 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:22ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:13:33.200 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:15ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:13:33.434 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:18ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:13:33.514 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:20ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 14:13:42.942 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetDataList
+Time:65ms
+Method:POST
+ContentType:application/json
+Body:{"PageIndex":1,"PageRows":100,"SortField":"Id","SortType":"desc","Search":{"keyword":null,"condition":null}}
+StatusCode:200
+
+Response:{"Total":3,"Data":[{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"bob","Password":"e10adc3949ba59abbe56e057f20f883e","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"1527933395043094528","Deleted":false,"CreateTime":"2022-05-21 16:44:43.665","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"","RoleIdList":[],"RoleNameList":[],"RoleType":0,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"alice","Password":"e1......内容太长已忽略
+
+2022-05-26 14:25:56.493 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:1650ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 14:26:02.038 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 14:26:02.040 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:750205ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 14:38:15.720 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/swagger
+Time:0ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:302
+
+Response:
+
+2022-05-26 14:38:15.853 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/swagger/index.html
+Time:123ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:200
+
+Response:<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="./swagger-ui.css" >
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+    <style>
+      html
+      {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+      }
+
+      *,
+      *:before,
+      *:after
+      {
+        box-sizing: inherit;
+      }
+
+      body
+      {
+        margin:0;
+        background: #fafafa;
+      }
+    </style>
+    
+    
+  </head>
+
+  <body>
+    <div id="swagger-ui"></div>
+
+    <script src="./swagger-ui-bundle.js" charset="UTF-8"> </script>
+    <script src="./swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+    <script>
+window.onload = function() {
+  var url = window.location.search.match(/url=([^......内容太长已忽略
+
+2022-05-26 14:38:18.161 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/swagger/v1/swagger.json
+Time:2048ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:200
+
+Response:{
+  "x-generator": "NSwag v13.9.4.0 (NJsonSchema v10.3.1.0 (Newtonsoft.Json v12.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "My Title",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000"
+    }
+  ],
+  "paths": {
+    "/Test/PressTest": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "operationId": "Test_PressTest",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/Test/GetLogList": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "operationId": "Test_GetLogList",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResultOfBase_UserLog"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Qua......内容太长已忽略
+
+2022-05-26 14:38:37.707 +08:00 [INF Microsoft.Hosting.Lifetime] Application is shutting down...
+2022-05-26 14:38:37.708 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopping
+2022-05-26 14:38:37.733 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopped
+2022-05-26 14:38:37.887 +08:00 [INF WorkflowCore.Services.WorkflowHost] Stopping background tasks
+2022-05-26 14:38:37.991 +08:00 [INF WorkflowCore.Services.WorkflowHost] Worker tasks stopped
+2022-05-26 21:36:24.788 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting starting
+2022-05-26 21:36:31.532 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202205" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202205" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-26 21:36:31.777 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202206" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202206" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-26 21:36:35.382 +08:00 [VRB Coldairarrow.Api.SeedData] BaseDb Data Source=Coldairarrow.Api.db-SQLite already exists
+2022-05-26 21:36:37.451 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:ResetDataJob,分组:SystemJob,启动成功
+2022-05-26 21:36:37.462 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:SaveMessageJob,分组:SystemJob,启动成功
+2022-05-26 21:36:37.471 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:PushMessageJob,分组:SystemJob,启动成功
+2022-05-26 21:36:39.080 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:操作对象：{"TaskName":"GetLog","GroupName":"Test","Interval":"0/10 * * * * ?","ApiUrl":"http://localhost:5000/Test/GetLogList","AuthKey":"Authorization","AuthValue":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTYxMzQ1NTI0MX0.XbnD6R0Ozgp1xoI6BUrRjYaHwRYYAJ7OgU6gRO1sdbA","Describe":null,"RequestType":"System","LastRunTime":null,"Status":1,"ForbidOperate":false,"ForbidEdit":false,"Id":"1527933402936774656","Deleted":false,"CreateTime":"2022-05-21 16:44:45.547","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null}
+2022-05-26 21:36:39.102 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:
+2022-05-26 21:36:39.110 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 作业:GetLog,分组:Test,新建时未启动原因,状态为:1
+2022-05-26 21:36:39.113 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 任务启动-成功:4个,失败0个,异常信息：无
+2022-05-26 21:36:40.082 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623664695808000-0加载成功
+2022-05-26 21:36:40.087 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623039325081600-0加载成功
+2022-05-26 21:36:40.096 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274622508779180032-0加载成功
+2022-05-26 21:36:40.103 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621654579810304-0加载成功
+2022-05-26 21:36:40.109 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621154383892480-0加载成功
+2022-05-26 21:36:40.114 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274620801831669760-0加载成功
+2022-05-26 21:36:40.118 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274618511506804736-0加载成功
+2022-05-26 21:36:40.324 +08:00 [INF WorkflowCore.Services.WorkflowHost] Starting background tasks
+2022-05-26 21:36:40.489 +08:00 [INF Microsoft.Hosting.Lifetime] Now listening on: http://[::]:5000
+2022-05-26 21:36:40.494 +08:00 [INF Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+2022-05-26 21:36:40.497 +08:00 [INF Microsoft.Hosting.Lifetime] Hosting environment: Production
+2022-05-26 21:36:40.510 +08:00 [INF Microsoft.Hosting.Lifetime] Content root path: F:\AClient\ServiceMonitor\ServiceMonitor\bin\Debug\net5.0-windows\server
+2022-05-26 21:36:40.517 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting started
+2022-05-26 21:36:45.933 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:817ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzY1ODYwNX0.HkHwOkz-_ze06Qy9CtUGxGE9ie2ib4LRLbNAwUrCj4Y","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 21:36:48.867 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:1059ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 21:36:49.409 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:342ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 21:36:49.914 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:102ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 21:36:50.088 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 21:36:50.469 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:80ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 21:36:50.912 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:68ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 21:36:51.127 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:40ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 21:36:53.209 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:67ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 21:36:56.080 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetDataList
+Time:112ms
+Method:POST
+ContentType:application/json
+Body:{"PageIndex":1,"PageRows":100,"SortField":"Id","SortType":"desc","Search":{"keyword":null,"condition":null}}
+StatusCode:200
+
+Response:{"Total":3,"Data":[{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"bob","Password":"e10adc3949ba59abbe56e057f20f883e","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"1527933395043094528","Deleted":false,"CreateTime":"2022-05-21 16:44:43.665","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"","RoleIdList":[],"RoleNameList":[],"RoleType":0,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"alice","Password":"e1......内容太长已忽略
+
+2022-05-26 21:37:07.431 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetDataList
+Time:101ms
+Method:POST
+ContentType:application/json
+Body:{"PageIndex":1,"PageRows":100,"SortField":"Id","SortType":"desc","Search":{"keyword":null,"condition":null}}
+StatusCode:200
+
+Response:{"Total":3,"Data":[{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"bob","Password":"e10adc3949ba59abbe56e057f20f883e","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"1527933395043094528","Deleted":false,"CreateTime":"2022-05-21 16:44:43.665","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"","RoleIdList":[],"RoleNameList":[],"RoleType":0,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"alice","Password":"e1......内容太长已忽略
+
+2022-05-26 21:37:15.524 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetDataList
+Time:115ms
+Method:POST
+ContentType:application/json
+Body:{"PageIndex":1,"PageRows":100,"SortField":"Id","SortType":"desc","Search":{"keyword":null,"condition":null}}
+StatusCode:200
+
+Response:{"Total":3,"Data":[{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"bob","Password":"e10adc3949ba59abbe56e057f20f883e","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"1527933395043094528","Deleted":false,"CreateTime":"2022-05-21 16:44:43.665","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"","RoleIdList":[],"RoleNameList":[],"RoleType":0,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"alice","Password":"e1......内容太长已忽略
+
+2022-05-26 21:37:20.841 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 21:37:20.850 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:30797ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 21:49:46.887 +08:00 [INF Microsoft.Hosting.Lifetime] Application is shutting down...
+2022-05-26 21:49:46.888 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopping
+2022-05-26 21:49:47.243 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopped
+2022-05-26 21:49:47.258 +08:00 [INF WorkflowCore.Services.WorkflowHost] Stopping background tasks
+2022-05-26 21:49:47.630 +08:00 [INF WorkflowCore.Services.WorkflowHost] Worker tasks stopped
+2022-05-26 23:08:11.533 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting starting
+2022-05-26 23:08:17.936 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (52ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202205" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202205" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-26 23:08:18.932 +08:00 [ERR Microsoft.EntityFrameworkCore.Database.Command] Failed executing DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "D_UserMessage_202206" (
+    -- 自然主键
+    "Id" TEXT NOT NULL CONSTRAINT "PK_D_UserMessage_202206" PRIMARY KEY,
+
+    "Type" INTEGER NOT NULL,
+
+    "ReadingMarks" TEXT NULL,
+
+    "GroupId" TEXT NULL,
+
+    "GroupName" TEXT NULL,
+
+    -- 状态 =0草稿中，=1已发送，=2废弃撤回，=3发送失败
+    "Status" INTEGER NOT NULL,
+
+    -- 否已删除
+    "Deleted" INTEGER NOT NULL,
+
+    -- 创建时间
+    "CreateTime" TEXT NOT NULL,
+
+    -- 修改时间
+    "ModifyTime" TEXT NULL,
+
+    -- 创建人Id
+    "CreatorId" TEXT NULL,
+
+    -- 创建人
+    "CreatorName" TEXT NULL,
+
+    -- 修改人Id
+    "ModifyId" TEXT NULL,
+
+    -- 修改人
+    "ModifyName" TEXT NULL,
+
+    -- 租户Id
+    "TenantId" TEXT NULL,
+
+    "UserIds" TEXT NULL,
+
+    "UserNames" TEXT NULL,
+
+    "Text" TEXT NULL
+);
+2022-05-26 23:08:23.122 +08:00 [VRB Coldairarrow.Api.SeedData] BaseDb Data Source=Coldairarrow.Api.db-SQLite already exists
+2022-05-26 23:08:23.716 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:ResetDataJob,分组:SystemJob,启动成功
+2022-05-26 23:08:23.719 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:SaveMessageJob,分组:SystemJob,启动成功
+2022-05-26 23:08:23.720 +08:00 [DBG AIStudio.Service.Quartz.FileQuartz] 作业:PushMessageJob,分组:SystemJob,启动成功
+2022-05-26 23:08:24.826 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:操作对象：{"TaskName":"GetLog","GroupName":"Test","Interval":"0/10 * * * * ?","ApiUrl":"http://localhost:5000/Test/GetLogList","AuthKey":"Authorization","AuthValue":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTYxMzQ1NTI0MX0.XbnD6R0Ozgp1xoI6BUrRjYaHwRYYAJ7OgU6gRO1sdbA","Describe":null,"RequestType":"System","LastRunTime":null,"Status":1,"ForbidOperate":false,"ForbidEdit":false,"Id":"1527933402936774656","Deleted":false,"CreateTime":"2022-05-21 16:44:45.547","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null}
+2022-05-26 23:08:24.831 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 暂停 --分组：Test,作业：GetLog,消息:
+2022-05-26 23:08:24.832 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 作业:GetLog,分组:Test,新建时未启动原因,状态为:1
+2022-05-26 23:08:24.833 +08:00 [INF AIStudio.Service.Quartz.FileQuartz] 任务启动-成功:4个,失败0个,异常信息：无
+2022-05-26 23:08:26.523 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623664695808000-0加载成功
+2022-05-26 23:08:26.525 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274623039325081600-0加载成功
+2022-05-26 23:08:26.528 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274622508779180032-0加载成功
+2022-05-26 23:08:26.530 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621654579810304-0加载成功
+2022-05-26 23:08:26.531 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274621154383892480-0加载成功
+2022-05-26 23:08:26.532 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274620801831669760-0加载成功
+2022-05-26 23:08:26.533 +08:00 [DBG AIStudio.Service.WorkflowCore.OAExtension] 工作流1274618511506804736-0加载成功
+2022-05-26 23:08:26.592 +08:00 [INF WorkflowCore.Services.WorkflowHost] Starting background tasks
+2022-05-26 23:08:27.019 +08:00 [INF Microsoft.Hosting.Lifetime] Now listening on: http://[::]:5000
+2022-05-26 23:08:27.022 +08:00 [INF Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+2022-05-26 23:08:27.025 +08:00 [INF Microsoft.Hosting.Lifetime] Hosting environment: Production
+2022-05-26 23:08:27.026 +08:00 [INF Microsoft.Hosting.Lifetime] Content root path: F:\AClient\ServiceMonitor\ServiceMonitor\bin\Debug\net5.0-windows\server
+2022-05-26 23:08:27.027 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting started
+2022-05-26 23:10:27.315 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:629ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzY2NDIyN30.zIl1j2S13ZU5KVtIjyuZ9WEMnIuZYP7TN1CXGv-34-A","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:10:30.322 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:485ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 23:10:30.574 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:152ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 23:10:30.783 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:39ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:10:30.891 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 23:10:31.108 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:43ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:10:32.438 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:33ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:10:32.667 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:20ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:10:32.877 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:157ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 23:11:08.157 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetDataList
+Time:81ms
+Method:POST
+ContentType:application/json
+Body:{"PageIndex":1,"PageRows":100,"SortField":"Id","SortType":"desc","Search":{"keyword":null,"condition":null}}
+StatusCode:200
+
+Response:{"Total":3,"Data":[{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"bob","Password":"e10adc3949ba59abbe56e057f20f883e","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"1527933395043094528","Deleted":false,"CreateTime":"2022-05-21 16:44:43.665","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"","RoleIdList":[],"RoleNameList":[],"RoleType":0,"DepartmentName":null,"SexText":"女人","BirthdayText":null},{"UserName":"alice","Password":"e1......内容太长已忽略
+
+2022-05-26 23:11:15.636 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 23:11:15.639 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:44768ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 23:13:18.789 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:22ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzY2NDM5OH0.lhzN-URFgxawYS5BoSayUpJzQTcKjRzRg1rOsWZhSDA","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:13:20.105 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:169ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 23:13:20.408 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:141ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 23:13:20.579 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:18ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:13:20.636 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 23:13:20.792 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:21ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:13:21.819 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:21ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:13:22.010 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:20ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:13:22.089 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:23ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 23:19:07.829 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1The remote party closed the WebSocket connection without completing the close handshake.
+2022-05-26 23:19:07.830 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 23:19:07.834 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:347198ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 23:20:48.215 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/SubmitLogin
+Time:36ms
+Method:POST
+ContentType:application/json
+Body:{"userName":"Admin","password":"e3afed0047b08059d0fada10f400c1e5"}
+StatusCode:200
+
+Response:{"Data":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBZG1pbiIsImV4cCI6MTY1MzY2NDg0OH0.VKmr2D9hhDViNJWFuK22Qc1-4SyvmBaVqqfy1lNIhVM","Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:20:49.550 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorInfo
+Time:177ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":{"UserInfo":{"UserName":"Admin","Password":"e3afed0047b08059d0fada10f400c1e5","RealName":null,"Sex":0,"Birthday":null,"DepartmentId":null,"PhoneNumber":null,"Avatar":null,"Id":"Admin","Deleted":false,"CreateTime":"2022-05-21 16:44:42.914","ModifyTime":null,"CreatorId":null,"CreatorName":null,"ModifyId":null,"ModifyName":null,"TenantId":null,"RoleNames":"超级管理员","RoleIdList":["1527933389653413888"],"RoleNameList":["超级管理员"],"RoleType":1,"DepartmentName":null,"SexText":"女人","BirthdayText":null},"Permissions":["Base_User.Add","Base_User.Edit","Base_User.Delete","Base_Role.Add","Base_Role.Edit","Base_Role.Delete","Base_Department.Add","Base_Department.Edit","Base_Department.Delete","Base_AppSecret.Add","Base_AppSecret.Edit","Base_AppSecret.Delete","Base_Action.Add","Base_Action.Edit","Base_Action.Delete","OA_DefForm.Add","OA_DefForm.Edit","OA_DefForm.Delete","OA_UserForm.Add","OA_UserForm.Edit","OA_UserForm.Delete","OA_DefType.Add","OA_DefType.Edit","OA_DefType.Delete"]},"Success":tr......内容太长已忽略
+
+2022-05-26 23:20:49.899 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Home/GetOperatorMenuList
+Time:131ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"Url":null,"path":null,"NeedAction":true,"TypeText":"菜单","NeedActionText":"是","children":[{"Type":1,"Url":"/Base_Manage/Base_Action/List","path":"/Base_Manage/Base_Action/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"权限管理","value":"1178957553778823168","key":"1178957553778823168","selectable":false,"icon":"lock","Sort":1,"PermissionValues":["删(Base_Action.Delete)","增(Base_Action.Add)","改(Base_Action.Edit)"],"Id":"1178957553778823168","Value":"1178957553778823168","ParentId":"1178957405992521728","Level":2,"Text":"权限管理","Children":null,"IsExpand":false},{"Type":1,"Url":"/Base_Manage/Base_AppSecret/List","path":"/Base_Manage/Base_AppSecret/List","NeedAction":true,"TypeText":"页面","NeedActionText":"是","children":null,"title":"密钥管理","value":"1179018395304071168","key":"1179018395304071168","selectable":false,"icon":"key","Sort":1,"PermissionValues":["增(Base_AppSecret.Add)","改(Base_AppSecret.Edit)","删(Base_AppSecret.Delete)"],"Id":"1......内容太长已忽略
+
+2022-05-26 23:20:50.073 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_User/GetOptionList
+Time:19ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933393868689408","text":"alice"},{"value":"1527933395043094528","text":"bob"},{"value":"Admin","text":"Admin"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:20:50.129 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接成功
+2022-05-26 23:20:50.280 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Role/GetOptionList
+Time:22ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"value":"1527933388856496128","text":"部门管理员"},{"value":"1527933389653413888","text":"超级管理员"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:20:51.295 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:20ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:20:51.480 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Department/GetTreeDataList
+Time:19ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[],"Success":true,"ErrorCode":0,"Msg":"请求成功！"}
+
+2022-05-26 23:20:51.561 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/Base_Manage/Base_Dictionary/GetMenuTreeList
+Time:22ms
+Method:POST
+ContentType:application/json
+Body:{}
+StatusCode:200
+
+Response:{"Data":[{"Type":0,"ControlType":2,"TypeText":"字典项","children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}],"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1","Value":"Sex","ParentId":null,"Level":1,"Text":"性别","Children":[{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":1,"Id":"1_1","Value":"0","ParentId":"1","Level":2,"Text":"女","Children":null,"IsExpand":false},{"Type":1,"ControlType":0,"TypeText":"数据集","children":null,"Code":"","Remark":null,"selectable":true,"Sort":2,"Id":"1_2","Value":"1","ParentId":"1","Level":2,"Text":"男","Children":null,"IsExpand":false}......内容太长已忽略
+
+2022-05-26 23:24:32.741 +08:00 [DBG AIStudio.Service.WebSocketEx.CustomWebSocketManager] Admin-0.0.0.1连接关闭
+2022-05-26 23:24:32.743 +08:00 [INF Coldairarrow.Api.RequestLogMiddleware] 方向:请求本系统
+Url:/ws
+Time:222614ms
+Method:GET
+ContentType:null
+Body:
+StatusCode:101
+
+Response:
+
+2022-05-26 23:25:30.057 +08:00 [INF Microsoft.Hosting.Lifetime] Application is shutting down...
+2022-05-26 23:25:30.057 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopping
+2022-05-26 23:25:30.079 +08:00 [DBG Microsoft.Extensions.Hosting.Internal.Host] Hosting stopped
+2022-05-26 23:25:30.083 +08:00 [INF WorkflowCore.Services.WorkflowHost] Stopping background tasks
+2022-05-26 23:25:30.087 +08:00 [INF WorkflowCore.Services.WorkflowHost] Worker tasks stopped

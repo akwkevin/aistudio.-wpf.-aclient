@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-16"?>
+<DataGridInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <RefreshInterval>0</RefreshInterval>
+  <ColumnInfos>
+    <ColumnInformation>
+      <Header>用户名</Header>
+      <PropertyPath>UserName</PropertyPath>
+      <SortDirection xsi:nil="true" />
+      <DisplayIndex>0</DisplayIndex>
+      <WidthValue>57.6</WidthValue>
+      <WidthType>Auto</WidthType>
+      <IsVisible>true</IsVisible>
+    </ColumnInformation>
+    <ColumnInformation>
+      <Header>用户Id</Header>
+      <PropertyPath>UserId</PropertyPath>
+      <SortDirection xsi:nil="true" />
+      <DisplayIndex>1</DisplayIndex>
+      <WidthValue>88.8</WidthValue>
+      <WidthType>Auto</WidthType>
+      <IsVisible>true</IsVisible>
+    </ColumnInformation>
+    <ColumnInformation>
+      <Header>最后登录的IP</Header>
+      <PropertyPath>IP</PropertyPath>
+      <SortDirection xsi:nil="true" />
+      <DisplayIndex>2</DisplayIndex>
+      <WidthValue>93.6</WidthValue>
+      <WidthType>Auto</WidthType>
+      <IsVisible>true</IsVisible>
+    </ColumnInformation>
+    <ColumnInformation>
+      <Header>最后登录的时间</Header>
+      <PropertyPath>ConnectedTime</PropertyPath>
+      <SortDirection xsi:nil="true" />
+      <DisplayIndex>3</DisplayIndex>
+      <WidthValue>126.4</WidthValue>
+      <WidthType>Auto</WidthType>
+      <IsVisible>true</IsVisible>
+    </ColumnInformation>
+    <ColumnInformation>
+      <Header>操作</Header>
+      <PropertyPath />
+      <SortDirection xsi:nil="true" />
+      <DisplayIndex>4</DisplayIndex>
+      <WidthValue>428.80000000000007</WidthValue>
+      <WidthType>Star</WidthType>
+      <IsVisible>true</IsVisible>
+    </ColumnInformation>
+  </ColumnInfos>
+</DataGridInformation>

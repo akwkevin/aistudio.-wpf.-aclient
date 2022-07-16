@@ -1,0 +1,920 @@
+2022-05-24 19:21:16.8449 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:21:16.8449 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:21:16.8449 | websocket_Closed 
+2022-05-24 19:21:20.9243 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:21:20.9243 | websocket_Closed 
+2022-05-24 19:21:21.8898 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:21:21.8898 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:21:21.8898 | websocket_Closed 
+2022-05-24 19:21:25.9865 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:21:25.9865 | websocket_Closed 
+2022-05-24 19:21:26.9359 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:21:26.9359 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:21:26.9359 | websocket_Closed 
+2022-05-24 19:21:31.0312 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:21:31.0312 | websocket_Closed 
+2022-05-24 19:21:31.9892 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:21:31.9892 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:21:31.9892 | websocket_Closed 
+2022-05-24 19:21:36.0739 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:21:36.0739 | websocket_Closed 
+2022-05-24 19:21:37.0543 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:21:37.0543 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:21:37.0543 | websocket_Closed 
+2022-05-24 19:21:41.1189 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:21:41.1189 | websocket_Closed 
+2022-05-24 19:21:42.0996 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:21:42.0996 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:21:42.0996 | websocket_Closed 
+2022-05-24 19:21:46.1532 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:21:46.1532 | websocket_Closed 
+2022-05-24 19:21:47.1269 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:21:47.1269 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:21:47.1269 | websocket_Closed 
+2022-05-24 19:21:51.2270 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:21:51.2270 | websocket_Closed 
+2022-05-24 19:21:52.1701 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:21:52.1701 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:21:52.1701 | websocket_Closed 
+2022-05-24 19:21:56.2529 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:21:56.2529 | websocket_Closed 
+2022-05-24 19:21:57.1947 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:21:57.1947 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:21:57.1947 | websocket_Closed 
+2022-05-24 19:22:01.2548 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:22:01.2548 | websocket_Closed 
+2022-05-24 19:22:02.2274 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:22:02.2274 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:22:02.2274 | websocket_Closed 
+2022-05-24 19:22:06.3146 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:22:06.3146 | websocket_Closed 
+2022-05-24 19:22:07.2581 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:22:07.2581 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:22:07.2581 | websocket_Closed 
+2022-05-24 19:22:11.3405 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:22:11.3405 | websocket_Closed 
+2022-05-24 19:22:12.3036 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:22:12.3036 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:22:12.3036 | websocket_Closed 
+2022-05-24 19:22:16.3942 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:22:16.3942 | websocket_Closed 
+2022-05-24 19:22:17.3593 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:22:17.3593 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:22:17.3593 | websocket_Closed 
+2022-05-24 19:22:21.4394 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:22:21.4394 | websocket_Closed 
+2022-05-24 19:22:22.4012 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:22:22.4012 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:22:22.4012 | websocket_Closed 
+2022-05-24 19:22:26.4777 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:22:26.4777 | websocket_Closed 
+2022-05-24 19:22:27.4331 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:22:27.4331 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:22:27.4331 | websocket_Closed 
+2022-05-24 19:22:31.5204 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:22:31.5204 | websocket_Closed 
+2022-05-24 19:22:32.4894 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:22:32.4894 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:22:32.4894 | websocket_Closed 
+2022-05-24 19:22:36.5695 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:22:36.5695 | websocket_Closed 
+2022-05-24 19:22:37.5263 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:22:37.5263 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:22:37.5263 | websocket_Closed 
+2022-05-24 19:22:41.5613 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:22:41.5613 | websocket_Closed 
+2022-05-24 19:22:42.5655 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:22:42.5655 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:22:42.5655 | websocket_Closed 
+2022-05-24 19:22:46.6255 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:22:46.6255 | websocket_Closed 
+2022-05-24 19:22:47.5972 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:22:47.5972 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:22:47.5972 | websocket_Closed 
+2022-05-24 19:22:51.6921 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:22:51.6921 | websocket_Closed 
+2022-05-24 19:22:52.6360 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:22:52.6360 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:22:52.6360 | websocket_Closed 
+2022-05-24 19:22:56.6865 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:22:56.6865 | websocket_Closed 
+2022-05-24 19:22:57.6756 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:22:57.6756 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:22:57.6756 | websocket_Closed 
+2022-05-24 19:23:01.7451 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:23:01.7451 | websocket_Closed 
+2022-05-24 19:23:02.7126 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:23:02.7126 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:23:02.7126 | websocket_Closed 
+2022-05-24 19:23:06.7801 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:23:06.7801 | websocket_Closed 
+2022-05-24 19:23:07.7465 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:23:07.7465 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:23:07.7465 | websocket_Closed 
+2022-05-24 19:23:11.8131 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:23:11.8131 | websocket_Closed 
+2022-05-24 19:23:12.7748 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:23:12.7748 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:23:12.7748 | websocket_Closed 
+2022-05-24 19:23:16.8336 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:23:16.8336 | websocket_Closed 
+2022-05-24 19:23:17.8167 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:23:17.8167 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:23:17.8167 | websocket_Closed 
+2022-05-24 19:23:21.8944 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:23:21.8944 | websocket_Closed 
+2022-05-24 19:23:22.8377 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:23:22.8377 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:23:22.8377 | websocket_Closed 
+2022-05-24 19:23:26.8878 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:23:26.8878 | websocket_Closed 
+2022-05-24 19:23:27.8757 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:23:27.8757 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:23:27.8757 | websocket_Closed 
+2022-05-24 19:23:31.9184 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:23:31.9184 | websocket_Closed 
+2022-05-24 19:23:32.9089 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:23:32.9089 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:23:32.9089 | websocket_Closed 
+2022-05-24 19:23:36.9712 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:23:36.9712 | websocket_Closed 
+2022-05-24 19:23:37.9561 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:23:37.9561 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:23:37.9561 | websocket_Closed 
+2022-05-24 19:23:42.0372 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:23:42.0372 | websocket_Closed 
+2022-05-24 19:23:42.9978 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:23:42.9978 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:23:42.9978 | websocket_Closed 
+2022-05-24 19:23:47.0643 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:23:47.0643 | websocket_Closed 
+2022-05-24 19:23:48.0436 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:23:48.0436 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:23:48.0436 | websocket_Closed 
+2022-05-24 19:23:52.1108 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:23:52.1108 | websocket_Closed 
+2022-05-24 19:23:53.0796 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:23:53.0796 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:23:53.0796 | websocket_Closed 
+2022-05-24 19:23:57.1569 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:23:57.1569 | websocket_Closed 
+2022-05-24 19:23:58.1126 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:23:58.1126 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:23:58.1126 | websocket_Closed 
+2022-05-24 19:24:02.2004 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:24:02.2004 | websocket_Closed 
+2022-05-24 19:24:03.1673 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:24:03.1673 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:24:03.1673 | websocket_Closed 
+2022-05-24 19:24:07.2529 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:24:07.2529 | websocket_Closed 
+2022-05-24 19:24:08.1932 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:24:08.1932 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:24:08.1932 | websocket_Closed 
+2022-05-24 19:24:12.2750 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:24:12.2750 | websocket_Closed 
+2022-05-24 19:24:13.2372 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:24:13.2372 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:24:13.2372 | websocket_Closed 
+2022-05-24 19:24:17.3005 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:24:17.3005 | websocket_Closed 
+2022-05-24 19:24:18.2707 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:24:18.2707 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:24:18.2707 | websocket_Closed 
+2022-05-24 19:24:22.3598 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:24:22.3601 | websocket_Closed 
+2022-05-24 19:24:23.3158 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:24:23.3158 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:24:23.3158 | websocket_Closed 
+2022-05-24 19:24:27.3632 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:24:27.3632 | websocket_Closed 
+2022-05-24 19:24:28.3579 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:24:28.3579 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:24:28.3579 | websocket_Closed 
+2022-05-24 19:24:32.4137 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:24:32.4137 | websocket_Closed 
+2022-05-24 19:24:33.3978 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:24:33.3978 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:24:33.3978 | websocket_Closed 
+2022-05-24 19:24:37.4630 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:24:37.4630 | websocket_Closed 
+2022-05-24 19:24:38.4426 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:24:38.4426 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:24:38.4426 | websocket_Closed 
+2022-05-24 19:24:42.4839 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:24:42.4839 | websocket_Closed 
+2022-05-24 19:24:43.4794 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:24:43.4794 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:24:43.4794 | websocket_Closed 
+2022-05-24 19:24:47.5699 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:24:47.5699 | websocket_Closed 
+2022-05-24 19:24:48.5287 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:24:48.5287 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:24:48.5287 | websocket_Closed 
+2022-05-24 19:24:52.5768 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:24:52.5768 | websocket_Closed 
+2022-05-24 19:24:53.5722 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:24:53.5722 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:24:53.5722 | websocket_Closed 
+2022-05-24 19:24:57.6580 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:24:57.6580 | websocket_Closed 
+2022-05-24 19:24:58.6173 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:24:58.6173 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:24:58.6173 | websocket_Closed 
+2022-05-24 19:25:02.6806 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:25:02.6806 | websocket_Closed 
+2022-05-24 19:25:03.6534 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:25:03.6534 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:25:03.6534 | websocket_Closed 
+2022-05-24 19:25:07.7245 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:25:07.7245 | websocket_Closed 
+2022-05-24 19:25:08.7056 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:25:08.7056 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:25:08.7056 | websocket_Closed 
+2022-05-24 19:25:12.7669 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:25:12.7669 | websocket_Closed 
+2022-05-24 19:25:13.7376 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:25:13.7376 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:25:13.7376 | websocket_Closed 
+2022-05-24 19:25:17.8171 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:25:17.8171 | websocket_Closed 
+2022-05-24 19:25:18.7601 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:25:18.7601 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:25:18.7601 | websocket_Closed 
+2022-05-24 19:25:22.8306 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:25:22.8306 | websocket_Closed 
+2022-05-24 19:25:23.8011 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:25:23.8011 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:25:23.8011 | websocket_Closed 
+2022-05-24 19:25:27.8764 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:25:27.8764 | websocket_Closed 
+2022-05-24 19:25:28.8448 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:25:28.8448 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:25:28.8448 | websocket_Closed 
+2022-05-24 19:25:32.9262 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:25:32.9262 | websocket_Closed 
+2022-05-24 19:25:33.8917 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:25:33.8917 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:25:33.8917 | websocket_Closed 
+2022-05-24 19:25:37.9417 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:25:37.9417 | websocket_Closed 
+2022-05-24 19:25:38.9265 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:25:38.9265 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:25:38.9265 | websocket_Closed 
+2022-05-24 19:25:43.0148 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:25:43.0148 | websocket_Closed 
+2022-05-24 19:25:43.9608 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:25:43.9608 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:25:43.9608 | websocket_Closed 
+2022-05-24 19:25:48.0533 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:25:48.0533 | websocket_Closed 
+2022-05-24 19:25:49.0019 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:25:49.0019 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:25:49.0019 | websocket_Closed 
+2022-05-24 19:25:53.0797 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:25:53.0797 | websocket_Closed 
+2022-05-24 19:25:54.0433 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:25:54.0433 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:25:54.0433 | websocket_Closed 
+2022-05-24 19:25:58.1264 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:25:58.1264 | websocket_Closed 
+2022-05-24 19:25:59.0958 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:25:59.0958 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:25:59.0958 | websocket_Closed 
+2022-05-24 19:26:03.1695 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:26:03.1695 | websocket_Closed 
+2022-05-24 19:26:04.1667 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:26:04.1667 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:26:04.1667 | websocket_Closed 
+2022-05-24 19:26:08.2820 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:26:08.2820 | websocket_Closed 
+2022-05-24 19:26:09.2342 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:26:09.2342 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:26:09.2348 | websocket_Closed 
+2022-05-24 19:26:13.3259 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:26:13.3259 | websocket_Closed 
+2022-05-24 19:26:14.2668 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:26:14.2668 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:26:14.2668 | websocket_Closed 
+2022-05-24 19:26:18.3865 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:26:18.3865 | websocket_Closed 
+2022-05-24 19:26:19.3238 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:26:19.3238 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:26:19.3238 | websocket_Closed 
+2022-05-24 19:26:23.4143 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:26:23.4143 | websocket_Closed 
+2022-05-24 19:26:24.3846 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:26:24.3846 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:26:24.3846 | websocket_Closed 
+2022-05-24 19:26:28.4682 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:26:28.4682 | websocket_Closed 
+2022-05-24 19:26:29.4451 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:26:29.4451 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:26:29.4451 | websocket_Closed 
+2022-05-24 19:26:33.5249 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:26:33.5249 | websocket_Closed 
+2022-05-24 19:26:34.5001 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:26:34.5008 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:26:34.5008 | websocket_Closed 
+2022-05-24 19:26:38.5813 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:26:38.5813 | websocket_Closed 
+2022-05-24 19:26:39.5607 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:26:39.5607 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:26:39.5607 | websocket_Closed 
+2022-05-24 19:26:43.6283 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:26:43.6283 | websocket_Closed 
+2022-05-24 19:26:44.6001 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:26:44.6001 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:26:44.6001 | websocket_Closed 
+2022-05-24 19:26:48.6913 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:26:48.6913 | websocket_Closed 
+2022-05-24 19:26:49.6566 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:26:49.6566 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:26:49.6566 | websocket_Closed 
+2022-05-24 19:26:53.7578 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:26:53.7578 | websocket_Closed 
+2022-05-24 19:26:54.7081 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:26:54.7081 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:26:54.7081 | websocket_Closed 
+2022-05-24 19:26:58.8273 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:26:58.8273 | websocket_Closed 
+2022-05-24 19:26:59.7636 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:26:59.7636 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:26:59.7636 | websocket_Closed 
+2022-05-24 19:27:03.8430 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:27:03.8430 | websocket_Closed 
+2022-05-24 19:27:04.8233 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:27:04.8233 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:27:04.8233 | websocket_Closed 
+2022-05-24 19:27:08.9143 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:27:08.9143 | websocket_Closed 
+2022-05-24 19:27:09.8661 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:27:09.8661 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:27:09.8661 | websocket_Closed 
+2022-05-24 19:27:13.9234 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:27:13.9234 | websocket_Closed 
+2022-05-24 19:27:14.9092 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:27:14.9092 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:27:14.9092 | websocket_Closed 
+2022-05-24 19:27:18.9609 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:27:18.9609 | websocket_Closed 
+2022-05-24 19:27:19.9309 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:27:19.9309 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:27:19.9309 | websocket_Closed 
+2022-05-24 19:27:24.0021 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:27:24.0021 | websocket_Closed 
+2022-05-24 19:27:24.9865 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:27:24.9865 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:27:24.9865 | websocket_Closed 
+2022-05-24 19:27:29.0386 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:27:29.0386 | websocket_Closed 
+2022-05-24 19:27:30.0340 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:27:30.0340 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:27:30.0340 | websocket_Closed 
+2022-05-24 19:27:34.1255 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:27:34.1255 | websocket_Closed 
+2022-05-24 19:27:35.0623 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:27:35.0623 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:27:35.0623 | websocket_Closed 
+2022-05-24 19:27:39.1570 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:27:39.1570 | websocket_Closed 
+2022-05-24 19:27:40.0980 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:27:40.0980 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:27:40.0980 | websocket_Closed 
+2022-05-24 19:27:44.1804 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:27:44.1804 | websocket_Closed 
+2022-05-24 19:27:45.1355 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:27:45.1355 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:27:45.1355 | websocket_Closed 
+2022-05-24 19:27:49.2152 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:27:49.2152 | websocket_Closed 
+2022-05-24 19:27:50.1725 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:27:50.1725 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:27:50.1725 | websocket_Closed 
+2022-05-24 19:27:54.2602 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:27:54.2602 | websocket_Closed 
+2022-05-24 19:27:55.2134 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:27:55.2134 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:27:55.2134 | websocket_Closed 
+2022-05-24 19:27:59.2717 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:27:59.2717 | websocket_Closed 
+2022-05-24 19:28:00.2414 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:28:00.2414 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:28:00.2414 | websocket_Closed 
+2022-05-24 19:28:04.3006 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:28:04.3006 | websocket_Closed 
+2022-05-24 19:28:05.2877 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:28:05.2877 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:28:05.2877 | websocket_Closed 
+2022-05-24 19:28:09.3617 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:28:09.3617 | websocket_Closed 
+2022-05-24 19:28:10.3297 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:28:10.3297 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:28:10.3297 | websocket_Closed 
+2022-05-24 19:28:14.4024 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:28:14.4024 | websocket_Closed 
+2022-05-24 19:28:15.3904 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:28:15.3904 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:28:15.3904 | websocket_Closed 
+2022-05-24 19:28:19.4378 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:28:19.4378 | websocket_Closed 
+2022-05-24 19:28:20.4335 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:28:20.4335 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:28:20.4335 | websocket_Closed 
+2022-05-24 19:28:24.5213 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:28:24.5213 | websocket_Closed 
+2022-05-24 19:28:25.4837 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:28:25.4837 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:28:25.4837 | websocket_Closed 
+2022-05-24 19:28:29.5639 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:28:29.5639 | websocket_Closed 
+2022-05-24 19:28:30.5294 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:28:30.5294 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:28:30.5294 | websocket_Closed 
+2022-05-24 19:28:34.6384 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:28:34.6384 | websocket_Closed 
+2022-05-24 19:28:35.5930 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:28:35.5930 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:28:35.5930 | websocket_Closed 
+2022-05-24 19:28:39.6614 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:28:39.6614 | websocket_Closed 
+2022-05-24 19:28:40.6431 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:28:40.6431 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:28:40.6431 | websocket_Closed 
+2022-05-24 19:28:44.7478 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:28:44.7478 | websocket_Closed 
+2022-05-24 19:28:45.6935 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:28:45.6935 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:28:45.6935 | websocket_Closed 
+2022-05-24 19:28:49.7614 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:28:49.7614 | websocket_Closed 
+2022-05-24 19:28:50.7311 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:28:50.7311 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:28:50.7311 | websocket_Closed 
+2022-05-24 19:28:54.7875 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:28:54.7875 | websocket_Closed 
+2022-05-24 19:28:55.7763 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:28:55.7763 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:28:55.7763 | websocket_Closed 
+2022-05-24 19:28:59.8735 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:28:59.8735 | websocket_Closed 
+2022-05-24 19:29:00.8254 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:29:00.8254 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:29:00.8254 | websocket_Closed 
+2022-05-24 19:29:04.8665 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:29:04.8665 | websocket_Closed 
+2022-05-24 19:29:05.8778 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:29:05.8778 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:29:05.8778 | websocket_Closed 
+2022-05-24 19:29:09.9377 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:29:09.9379 | websocket_Closed 
+2022-05-24 19:29:10.9270 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:29:10.9270 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:29:10.9270 | websocket_Closed 
+2022-05-24 19:29:15.0032 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:29:15.0032 | websocket_Closed 
+2022-05-24 19:29:15.9851 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:29:15.9851 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:29:15.9851 | websocket_Closed 
+2022-05-24 19:29:20.0627 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:29:20.0627 | websocket_Closed 
+2022-05-24 19:29:21.0340 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:29:21.0340 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:29:21.0340 | websocket_Closed 
+2022-05-24 19:29:25.1424 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:29:25.1424 | websocket_Closed 
+2022-05-24 19:29:26.0919 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:29:26.0919 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:29:26.0919 | websocket_Closed 
+2022-05-24 19:29:30.1628 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:29:30.1628 | websocket_Closed 
+2022-05-24 19:29:31.1369 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:29:31.1369 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:29:31.1369 | websocket_Closed 
+2022-05-24 19:29:35.1837 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:29:35.1837 | websocket_Closed 
+2022-05-24 19:29:36.1791 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:29:36.1791 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:29:36.1791 | websocket_Closed 
+2022-05-24 19:29:40.2418 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:29:40.2418 | websocket_Closed 
+2022-05-24 19:29:41.1946 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:29:41.1946 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:29:41.1946 | websocket_Closed 
+2022-05-24 19:29:45.2605 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:29:45.2605 | websocket_Closed 
+2022-05-24 19:29:46.2222 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:29:46.2222 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:29:46.2222 | websocket_Closed 
+2022-05-24 19:29:50.2753 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:29:50.2753 | websocket_Closed 
+2022-05-24 19:29:51.2722 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:29:51.2722 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:29:51.2722 | websocket_Closed 
+2022-05-24 19:29:55.3605 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:29:55.3605 | websocket_Closed 
+2022-05-24 19:29:56.3256 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:29:56.3256 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:29:56.3256 | websocket_Closed 
+2022-05-24 19:30:00.3900 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:30:00.3900 | websocket_Closed 
+2022-05-24 19:30:01.3653 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:30:01.3653 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:30:01.3653 | websocket_Closed 
+2022-05-24 19:30:05.4081 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:30:05.4081 | websocket_Closed 
+2022-05-24 19:30:06.4220 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:30:06.4226 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:30:06.4226 | websocket_Closed 
+2022-05-24 19:30:10.4974 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:30:10.4974 | websocket_Closed 
+2022-05-24 19:30:11.4682 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:30:11.4682 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:30:11.4682 | websocket_Closed 
+2022-05-24 19:30:15.5343 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:30:15.5343 | websocket_Closed 
+2022-05-24 19:30:16.5166 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:30:16.5166 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:30:16.5166 | websocket_Closed 
+2022-05-24 19:30:20.5944 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:30:20.5944 | websocket_Closed 
+2022-05-24 19:30:21.5602 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:30:21.5602 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:30:21.5602 | websocket_Closed 
+2022-05-24 19:30:25.6150 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:30:25.6150 | websocket_Closed 
+2022-05-24 19:30:26.5971 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:30:26.5971 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:30:26.5971 | websocket_Closed 
+2022-05-24 19:30:30.6828 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:30:30.6828 | websocket_Closed 
+2022-05-24 19:30:31.6286 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:30:31.6286 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:30:31.6286 | websocket_Closed 
+2022-05-24 19:30:35.6784 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:30:35.6784 | websocket_Closed 
+2022-05-24 19:30:36.6725 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:30:36.6725 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:30:36.6725 | websocket_Closed 
+2022-05-24 19:30:40.7296 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:30:40.7296 | websocket_Closed 
+2022-05-24 19:30:41.7020 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:30:41.7020 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:30:41.7020 | websocket_Closed 
+2022-05-24 19:30:45.7530 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:30:45.7530 | websocket_Closed 
+2022-05-24 19:30:46.7503 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:30:46.7503 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:30:46.7503 | websocket_Closed 
+2022-05-24 19:30:50.7976 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:30:50.7976 | websocket_Closed 
+2022-05-24 19:30:51.7848 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:30:51.7848 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:30:51.7848 | websocket_Closed 
+2022-05-24 19:30:55.8430 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:30:55.8430 | websocket_Closed 
+2022-05-24 19:30:56.8348 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:30:56.8348 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:30:56.8348 | websocket_Closed 
+2022-05-24 19:31:00.9093 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:31:00.9093 | websocket_Closed 
+2022-05-24 19:31:01.8675 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:31:01.8675 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:31:01.8675 | websocket_Closed 
+2022-05-24 19:31:05.9209 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:31:05.9209 | websocket_Closed 
+2022-05-24 19:31:06.9028 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:31:06.9028 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:31:06.9028 | websocket_Closed 
+2022-05-24 19:31:10.9923 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:31:10.9923 | websocket_Closed 
+2022-05-24 19:31:11.9574 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:31:11.9574 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:31:11.9574 | websocket_Closed 
+2022-05-24 19:31:16.0351 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:31:16.0351 | websocket_Closed 
+2022-05-24 19:31:17.0030 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:31:17.0030 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:31:17.0030 | websocket_Closed 
+2022-05-24 19:31:21.1077 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:31:21.1077 | websocket_Closed 
+2022-05-24 19:31:22.0572 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:31:22.0572 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:31:22.0572 | websocket_Closed 
+2022-05-24 19:31:26.1333 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:31:26.1333 | websocket_Closed 
+2022-05-24 19:31:27.1066 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:31:27.1066 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:31:27.1066 | websocket_Closed 
+2022-05-24 19:31:31.1935 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:31:31.1935 | websocket_Closed 
+2022-05-24 19:31:32.1351 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:31:32.1351 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:31:32.1351 | websocket_Closed 
+2022-05-24 19:31:36.2473 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:31:36.2473 | websocket_Closed 
+2022-05-24 19:31:37.1861 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:31:37.1861 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:31:37.1861 | websocket_Closed 
+2022-05-24 19:31:41.2942 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:31:41.2942 | websocket_Closed 
+2022-05-24 19:31:42.2293 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:31:42.2293 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:31:42.2293 | websocket_Closed 
+2022-05-24 19:31:46.3054 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:31:46.3054 | websocket_Closed 
+2022-05-24 19:31:47.2712 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:31:47.2712 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:31:47.2712 | websocket_Closed 
+2022-05-24 19:31:51.3144 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:31:51.3144 | websocket_Closed 
+2022-05-24 19:31:52.3160 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:31:52.3160 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:31:52.3160 | websocket_Closed 
+2022-05-24 19:31:56.4113 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:31:56.4113 | websocket_Closed 
+2022-05-24 19:31:57.3480 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:31:57.3480 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:31:57.3480 | websocket_Closed 
+2022-05-24 19:32:01.4212 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:32:01.4212 | websocket_Closed 
+2022-05-24 19:32:02.4044 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:32:02.4044 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:32:02.4044 | websocket_Closed 
+2022-05-24 19:32:06.4462 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:32:06.4462 | websocket_Closed 
+2022-05-24 19:32:07.4334 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:32:07.4334 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:32:07.4334 | websocket_Closed 
+2022-05-24 19:32:11.4897 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:32:11.4897 | websocket_Closed 
+2022-05-24 19:32:12.4692 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:32:12.4692 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:32:12.4692 | websocket_Closed 
+2022-05-24 19:32:16.5277 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:32:16.5277 | websocket_Closed 
+2022-05-24 19:32:17.4922 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:32:17.4922 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:32:17.4922 | websocket_Closed 
+2022-05-24 19:32:21.5796 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:32:21.5796 | websocket_Closed 
+2022-05-24 19:32:22.5204 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:32:22.5204 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:32:22.5204 | websocket_Closed 
+2022-05-24 19:32:26.5829 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:32:26.5829 | websocket_Closed 
+2022-05-24 19:32:27.5609 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:32:27.5609 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:32:27.5609 | websocket_Closed 
+2022-05-24 19:32:31.6523 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:32:31.6523 | websocket_Closed 
+2022-05-24 19:32:32.5930 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:32:32.5930 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:32:32.5930 | websocket_Closed 
+2022-05-24 19:32:36.6701 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:32:36.6701 | websocket_Closed 
+2022-05-24 19:32:37.6507 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:32:37.6507 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:32:37.6507 | websocket_Closed 
+2022-05-24 19:32:41.7395 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:32:41.7395 | websocket_Closed 
+2022-05-24 19:32:42.7078 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:32:42.7078 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:32:42.7078 | websocket_Closed 
+2022-05-24 19:32:46.7809 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:32:46.7809 | websocket_Closed 
+2022-05-24 19:32:47.7487 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:32:47.7487 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:32:47.7487 | websocket_Closed 
+2022-05-24 19:32:51.8373 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:32:51.8373 | websocket_Closed 
+2022-05-24 19:32:52.7874 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:32:52.7874 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:32:52.7874 | websocket_Closed 
+2022-05-24 19:32:56.8634 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:32:56.8634 | websocket_Closed 
+2022-05-24 19:32:57.8430 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:32:57.8430 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:32:57.8430 | websocket_Closed 
+2022-05-24 19:33:01.9006 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:33:01.9006 | websocket_Closed 
+2022-05-24 19:33:02.8833 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:33:02.8833 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:33:02.8833 | websocket_Closed 
+2022-05-24 19:33:06.9500 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:33:06.9500 | websocket_Closed 
+2022-05-24 19:33:07.9073 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:33:07.9073 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:33:07.9073 | websocket_Closed 
+2022-05-24 19:33:11.9622 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:33:11.9622 | websocket_Closed 
+2022-05-24 19:33:12.9501 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:33:12.9501 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:33:12.9501 | websocket_Closed 
+2022-05-24 19:33:16.9904 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:33:16.9904 | websocket_Closed 
+2022-05-24 19:33:17.9846 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:33:17.9850 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:33:17.9850 | websocket_Closed 
+2022-05-24 19:33:22.0927 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:33:22.0927 | websocket_Closed 
+2022-05-24 19:33:23.0311 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:33:23.0311 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:33:23.0318 | websocket_Closed 
+2022-05-24 19:33:27.0831 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:33:27.0831 | websocket_Closed 
+2022-05-24 19:33:28.0544 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:33:28.0544 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:33:28.0544 | websocket_Closed 
+2022-05-24 19:33:32.1394 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:33:32.1394 | websocket_Closed 
+2022-05-24 19:33:33.0976 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:33:33.0976 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:33:33.0976 | websocket_Closed 
+2022-05-24 19:33:37.1689 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:33:37.1689 | websocket_Closed 
+2022-05-24 19:33:38.1413 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:33:38.1413 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:33:38.1413 | websocket_Closed 
+2022-05-24 19:33:42.2021 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:33:42.2021 | websocket_Closed 
+2022-05-24 19:33:43.1840 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:33:43.1840 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:33:43.1840 | websocket_Closed 
+2022-05-24 19:33:47.2402 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:33:47.2402 | websocket_Closed 
+2022-05-24 19:33:48.2238 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:33:48.2238 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:33:48.2238 | websocket_Closed 
+2022-05-24 19:33:52.3106 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:33:52.3106 | websocket_Closed 
+2022-05-24 19:33:53.2665 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:33:53.2665 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:33:53.2665 | websocket_Closed 
+2022-05-24 19:33:57.3484 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:33:57.3484 | websocket_Closed 
+2022-05-24 19:33:58.3170 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:33:58.3170 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:33:58.3170 | websocket_Closed 
+2022-05-24 19:34:02.3562 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:34:02.3562 | websocket_Closed 
+2022-05-24 19:34:03.3432 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:34:03.3432 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:34:03.3432 | websocket_Closed 
+2022-05-24 19:34:07.4265 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:34:07.4265 | websocket_Closed 
+2022-05-24 19:34:08.3944 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:34:08.3944 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:34:08.3944 | websocket_Closed 
+2022-05-24 19:34:12.4799 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:34:12.4799 | websocket_Closed 
+2022-05-24 19:34:13.4480 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:34:13.4480 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:34:13.4480 | websocket_Closed 
+2022-05-24 19:34:17.5644 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:34:17.5644 | websocket_Closed 
+2022-05-24 19:34:18.5149 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:34:18.5149 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:34:18.5149 | websocket_Closed 
+2022-05-24 19:34:22.6096 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:34:22.6096 | websocket_Closed 
+2022-05-24 19:34:23.5486 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:34:23.5486 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:34:23.5486 | websocket_Closed 
+2022-05-24 19:34:27.6006 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:34:27.6006 | websocket_Closed 
+2022-05-24 19:34:28.5941 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:34:28.5941 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:34:28.5941 | websocket_Closed 
+2022-05-24 19:34:32.6798 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:34:32.6798 | websocket_Closed 
+2022-05-24 19:34:33.6388 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:34:33.6388 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:34:33.6388 | websocket_Closed 
+2022-05-24 19:34:37.7081 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:34:37.7081 | websocket_Closed 
+2022-05-24 19:34:38.6898 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:34:38.6898 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:34:38.6898 | websocket_Closed 
+2022-05-24 19:34:42.7515 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:34:42.7515 | websocket_Closed 
+2022-05-24 19:34:43.7391 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:34:43.7391 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:34:43.7391 | websocket_Closed 
+2022-05-24 19:34:47.7986 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:34:47.7986 | websocket_Closed 
+2022-05-24 19:34:48.7816 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:34:48.7816 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:34:48.7816 | websocket_Closed 
+2022-05-24 19:34:52.8432 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:34:52.8432 | websocket_Closed 
+2022-05-24 19:34:53.8156 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:34:53.8156 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:34:53.8156 | websocket_Closed 
+2022-05-24 19:34:57.8770 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:34:57.8770 | websocket_Closed 
+2022-05-24 19:34:58.8400 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:34:58.8400 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:34:58.8400 | websocket_Closed 
+2022-05-24 19:35:02.9364 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:35:02.9364 | websocket_Closed 
+2022-05-24 19:35:03.8890 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:35:03.8890 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:35:03.8890 | websocket_Closed 
+2022-05-24 19:35:07.9693 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:35:07.9696 | websocket_Closed 
+2022-05-24 19:35:08.9398 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:35:08.9398 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:35:08.9398 | websocket_Closed 
+2022-05-24 19:35:13.0042 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:35:13.0042 | websocket_Closed 
+2022-05-24 19:35:13.9773 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:35:13.9773 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:35:13.9773 | websocket_Closed 
+2022-05-24 19:35:18.0305 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:35:18.0305 | websocket_Closed 
+2022-05-24 19:35:19.0272 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:35:19.0272 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:35:19.0272 | websocket_Closed 
+2022-05-24 19:35:23.1256 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:35:23.1256 | websocket_Closed 
+2022-05-24 19:35:24.0521 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:35:24.0521 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:35:24.0521 | websocket_Closed 
+2022-05-24 19:35:28.1473 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:35:28.1473 | websocket_Closed 
+2022-05-24 19:35:29.1132 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:35:29.1132 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:35:29.1132 | websocket_Closed 
+2022-05-24 19:35:33.1985 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:35:33.1985 | websocket_Closed 
+2022-05-24 19:35:34.1542 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:35:34.1542 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:35:34.1542 | websocket_Closed 
+2022-05-24 19:35:38.2468 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:35:38.2468 | websocket_Closed 
+2022-05-24 19:35:39.2065 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:35:39.2065 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:35:39.2065 | websocket_Closed 
+2022-05-24 19:35:43.3075 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:35:43.3075 | websocket_Closed 
+2022-05-24 19:35:44.2287 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:35:44.2287 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:35:44.2287 | websocket_Closed 
+2022-05-24 19:35:48.3056 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:35:48.3056 | websocket_Closed 
+2022-05-24 19:35:49.2602 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:35:49.2602 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:35:49.2602 | websocket_Closed 
+2022-05-24 19:35:53.3359 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:35:53.3359 | websocket_Closed 
+2022-05-24 19:35:54.3023 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:35:54.3023 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:35:54.3023 | websocket_Closed 
+2022-05-24 19:35:58.3666 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:35:58.3666 | websocket_Closed 
+2022-05-24 19:35:59.3481 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:35:59.3481 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:35:59.3481 | websocket_Closed 
+2022-05-24 19:36:03.4214 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:36:03.4214 | websocket_Closed 
+2022-05-24 19:36:04.4052 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:36:04.4052 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:36:04.4052 | websocket_Closed 
+2022-05-24 19:36:08.4726 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:36:08.4726 | websocket_Closed 
+2022-05-24 19:36:09.4510 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:36:09.4510 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:36:09.4510 | websocket_Closed 
+2022-05-24 19:36:13.5187 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:36:13.5187 | websocket_Closed 
+2022-05-24 19:36:14.5002 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:36:14.5002 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:36:14.5002 | websocket_Closed 
+2022-05-24 19:36:18.5654 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:36:18.5654 | websocket_Closed 
+2022-05-24 19:36:19.5478 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:36:19.5478 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:36:19.5478 | websocket_Closed 
+2022-05-24 19:36:23.5879 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:36:23.5879 | websocket_Closed 
+2022-05-24 19:36:24.5971 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:36:24.5971 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:36:24.5971 | websocket_Closed 
+2022-05-24 19:36:28.6793 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:36:28.6793 | websocket_Closed 
+2022-05-24 19:36:29.6479 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:36:29.6479 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:36:29.6479 | websocket_Closed 
+2022-05-24 19:36:33.7501 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:36:33.7505 | websocket_Closed 
+2022-05-24 19:36:34.6754 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:36:34.6754 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:36:34.6754 | websocket_Closed 
+2022-05-24 19:36:38.7505 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:36:38.7505 | websocket_Closed 
+2022-05-24 19:36:39.7194 |  Reconnect websocket WebSocketState:Closed 
+2022-05-24 19:36:39.7194 | websocket_Error:System.Net.Sockets.SocketException (10057): 由于套接字没有连接并且(当使用一个 sendto 调用发送数据报套接字时)没有提供地址，发送或接收数据的请求没有被接受。 
+2022-05-24 19:36:39.7194 | websocket_Closed 
+2022-05-24 19:36:43.7783 | websocket_Error:System.Net.Sockets.SocketException (10061): 由于目标计算机积极拒绝，无法连接。 
+2022-05-24 19:36:43.7783 | websocket_Closed 
