@@ -1,8 +1,0 @@
-2022-07-16 16:59:08.0163 | 请求方法：AIStudio.Wpf.ApiBusiness.ApiDataProvider.GetData
-参数:/D_Manage/D_UserMessage/GetUserList {}
-耗时:9252ms
-返回:{"Data":[{"UserName":"Admin","UserId":"Admin","UserNames":null,"UserIds":null,"Avatar":null,"Online":false,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00"},{"UserName":"alice","UserId":"1533367189195722752","UserNames":null,"UserIds":null,"Avatar":null,"Online":false,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00"},{"UserName":"bob","UserId":"1533367191016050688","UserNames":null,"UserIds":null,"Avatar":null,"Online":false,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00"},{"UserName":"智能助手","UserId":"smallAssistant","UserNames":null,"UserIds":null,"Avatar":"/Images/Usopp.jpg","Online":true,"IsGroup":false,"LastMessage":null,"LastDateTime":null,"Favorite":0,"IP":null,"ConnectedTime":"0001-01-01 00:00:00"}],"Success":true,"ErrorCode":0,"Msg":"请求成功！","Total":0} 
-2022-07-16 16:59:08.3695 | 请求方法：AIStudio.Wpf.ApiBusiness.ApiDataProvider.GetData
-参数:/D_Manage/D_UserMessage/GetPageHistoryDataList {"Search":{"userId":"smallAssistant","creatorId":"smallAssistant","markflag":true,"isGroup":false}}
-耗时:296ms
-返回:{"Data":[],"Success":true,"ErrorCode":0,"Msg":null,"Total":0} 
