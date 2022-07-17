@@ -68,7 +68,7 @@
                                 </TextBlock>
                                 <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
                                     <Hyperlink Command="{Binding DataContext.DeleteOneCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                               CommandParameter="{Binding Id}" 
+                                               CommandParameter="{Binding RealId}" 
                                                perm:PermissionHelper.HasPerm="OA_DefType.Delete"> 
                                         <TextBlock Text="删除" /> 
                                     </Hyperlink>

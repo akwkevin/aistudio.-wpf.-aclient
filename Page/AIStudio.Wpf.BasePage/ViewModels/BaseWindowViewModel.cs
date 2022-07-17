@@ -16,6 +16,7 @@ using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Threading.Tasks;
+using Prism.Commands;
 
 namespace AIStudio.Wpf.BasePage.ViewModels
 {
@@ -108,7 +109,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         {
             get
             {
-                return this._addCommand ?? (this._addCommand = new CanExecuteDelegateCommand(() => this.Edit()));
+                return this._addCommand ?? (this._addCommand = new DelegateCommand(() => this.Edit()));
             }
         }
 
@@ -117,7 +118,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         {
             get
             {
-                return this._editCommand ?? (this._editCommand = new CanExecuteDelegateCommand<T>(para => this.Edit(para)));
+                return this._editCommand ?? (this._editCommand = new DelegateCommand<T>(para => this.Edit(para)));
             }
         }
 
@@ -145,7 +146,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         {
             get
             {
-                return this._printCommand ?? (this._printCommand = new CanExecuteDelegateCommand(() => this.Print()));
+                return this._printCommand ?? (this._printCommand = new DelegateCommand(() => this.Print()));
             }
         }
 
@@ -154,7 +155,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         {
             get
             {
-                return this._deleteOneCommand ?? (this._deleteOneCommand = new CanExecuteDelegateCommand<string>(para => this.Delete(para)));
+                return this._deleteOneCommand ?? (this._deleteOneCommand = new DelegateCommand<string>(para => this.Delete(para)));
             }
         }
 
@@ -163,7 +164,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         {
             get
             {
-                return this._refreshCommand ?? (this._refreshCommand = new CanExecuteDelegateCommand(() => this.Search()));
+                return this._refreshCommand ?? (this._refreshCommand = new DelegateCommand(() => this.Search()));
             }
         }
 
@@ -172,7 +173,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         {
             get
             {
-                return this._searchCommand ?? (this._searchCommand = new CanExecuteDelegateCommand(() => this.Search()));
+                return this._searchCommand ?? (this._searchCommand = new DelegateCommand(() => this.Search()));
             }
         }
 
@@ -181,7 +182,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         {
             get
             {
-                return this._currentIndexChangedComamnd ?? (this._currentIndexChangedComamnd = new CanExecuteDelegateCommand<object>(para => this.Search(para)));
+                return this._currentIndexChangedComamnd ?? (this._currentIndexChangedComamnd = new DelegateCommand<object>(para => this.Search(para)));
             }
         }
 
