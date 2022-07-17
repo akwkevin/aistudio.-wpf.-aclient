@@ -93,12 +93,17 @@
                         </ac:FormItem>
                         <ac:FormItem ac:UniformGridEx.Span="2" Header="备注">
                             <TextBox Text="{Binding Remarks,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
+                        </ac:FormItem> 
+                        <ac:FormItem>
+                            <ac:FormItem.Header>
+                                <ComboBox x:Name="combox" ItemsSource="{Binding DataContext.Types, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" DisplayMemberPath="Name" SelectedValuePath="Name" SelectedValue="{Binding SubType}" />
+                            </ac:FormItem.Header>
+                            <DockPanel>
+                                <TextBlock DockPanel.Dock="Right" Text="{Binding Unit}"/>
+                                <TextBox Text="{Binding Flag,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
+                            </DockPanel>
                         </ac:FormItem>
-
-                        <ac:FormItem Header="{Binding Unit,TargetNullValue='数值'}" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
-                            <TextBox Text="{Binding Flag,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
-                        </ac:FormItem>
-                        <ac:FormItem Header="期望完成日期" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
+                        <ac:FormItem Header="预计日期" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
                             <DatePicker SelectedDate="{Binding ExpectedDate,Mode=TwoWay}"></DatePicker>
                         </ac:FormItem>
                         <ac:FormItem Header="附件" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
@@ -176,7 +181,7 @@
                             <RadioButton Margin="3" IsChecked="{Binding DataContext.Status, RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter=3}, ConverterParameter=3}" Content="驳回重提"/>
                             <RadioButton Margin="3" IsChecked="{Binding DataContext.Status, RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter=4}, ConverterParameter=4}" Content="否决"/>
                         </StackPanel>
-                        <TextBox Height="28" Margin="52,5,0,5" ac:ControlAttach.Watermark="意见" Text="{Binding DataContext.Remark, RelativeSource={RelativeSource AncestorType={x:Type UserControl}} ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" ></TextBox>
+                        <TextBox Margin="52,5,0,5" ac:ControlAttach.Watermark="意见" Text="{Binding DataContext.Remark, RelativeSource={RelativeSource AncestorType={x:Type UserControl}} ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" ></TextBox>
                     </StackPanel>
                     
                 </Grid>
