@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.25" />
+    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.26" />
     <PackageReference Include="AIStudio.Wpf.GridControls" Version="1.0.4" />
     <PackageReference Include="DryIoc.Microsoft.DependencyInjection.Extension" Version="1.0.0.2" />
     <PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />

@@ -85,6 +85,16 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             directory = basedir.Substring(0, basedir.IndexOf("Application"));
         }
 
+        public override async void Initialize()
+        {
+            if (IsInitialize)
+            {
+                return;
+            }
+            await GetDbTableInfo();
+            base.Initialize();          
+        }
+
         private async Task GetDbTableInfo()
         {
             var result = await _dataProvider.GetData<List<Base_DbLinkDTO>>($"/{Area}/BuildCode/GetAllDbLink");
@@ -95,6 +105,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             else
             {
                 Base_DbLinkDTO = new ObservableCollection<Base_DbLinkDTO>(result.Data);
+                LinkId = Base_DbLinkDTO.FirstOrDefault()?.Id;
             }
         }
 
@@ -105,10 +116,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 if (iswaiting == false)
                 {
                     ShowWait();
-                }
-
-                await GetDbTableInfo();
-                LinkId = Base_DbLinkDTO.FirstOrDefault()?.Id;
+                }                       
 
                 var result = await _dataProvider.GetData<List<BuildCode>>($"/{Area}/{typeof(BuildCode).Name.Replace("DTO", "")}/GetDbTableList", JsonConvert.SerializeObject(new { linkId = LinkId }));
                 if (!result.Success)

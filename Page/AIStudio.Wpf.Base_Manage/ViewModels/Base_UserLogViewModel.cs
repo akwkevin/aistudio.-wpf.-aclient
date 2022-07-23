@@ -126,18 +126,18 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_UserLogViewModel():base("Base_Manage", typeof(BaseEditViewModel<Base_UserLogDTO>), typeof(Base_UserlogEdit))
+        public Base_UserLogViewModel() : base("Base_Manage", typeof(BaseEditViewModel<Base_UserLogDTO>), typeof(Base_UserlogEdit))
         {
-            
+
         }
 
         public override void Initialize()
         {
-            base.Initialize();
             if (IsInitialize)
             {
                 return;
             }
+            base.Initialize();
             InitData();
         }
 
@@ -168,7 +168,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 if (iswaiting == false)
                 {
                     ShowWait();
-                }               
+                }
 
                 var data = new
                 {
@@ -181,7 +181,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                         logContent = LogContent,
                         logType = LogType,
                         opUserName = OpUserName,
-                        startTime = StartTime.HasValue? StartTime.Value.ToString("yyyy-MM-dd hh:mm:ss") : "",
+                        startTime = StartTime.HasValue ? StartTime.Value.ToString("yyyy-MM-dd hh:mm:ss") : "",
                         endTime = EndTime.HasValue ? EndTime.Value.ToString("yyyy-MM-dd hh:mm:ss") : "",
                     }
                 };
@@ -208,9 +208,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     HideWait();
                 }
             }
-        }      
+        }
 
-        protected override void Search(object para=null)
+        protected override void Search(object para = null)
         {
             base.Search(para);
         }
