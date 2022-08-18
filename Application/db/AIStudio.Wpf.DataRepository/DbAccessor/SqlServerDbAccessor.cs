@@ -1,11 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Linq;
-using System.Data.SqlClient;
-
 
 namespace AIStudio.Wpf.DataRepository
 {

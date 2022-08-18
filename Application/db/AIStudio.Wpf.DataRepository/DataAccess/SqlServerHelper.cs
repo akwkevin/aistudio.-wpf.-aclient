@@ -3,7 +3,7 @@ using AIStudio.Wpf.DataRepository;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using Extention = AIStudio.Wpf.DataRepository.Extention;
 
 namespace AIStudio.Wpf.DataRepository

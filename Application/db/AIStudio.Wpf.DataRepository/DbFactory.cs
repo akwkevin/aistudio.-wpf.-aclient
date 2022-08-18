@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Text;
 
 namespace AIStudio.Wpf.DataRepository
 {
@@ -50,7 +48,7 @@ namespace AIStudio.Wpf.DataRepository
             switch (dbType)
             {
                 //暂时只写了SqlServer，大家请自行添加
-                case DatabaseType.SqlServer: builder.UseSqlServer(conString, x => x.UseRowNumberForPaging()); break;
+                case DatabaseType.SqlServer: builder.UseSqlServer(conString, x => x.UseNetTopologySuite()); break;
                 case DatabaseType.SQLite:builder.UseSqlite(conString, x => x.UseNetTopologySuite());break;
                 default: throw new Exception("暂不支持该数据库！");
             }

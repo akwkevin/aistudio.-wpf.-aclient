@@ -363,7 +363,7 @@ namespace AIStudio.Wpf.DataRepository
 
         public override async Task<int> ExecuteSqlAsync(string sql, params (string paramterName, object paramterValue)[] parameters)
         {
-            return await _db.Database.ExecuteSqlCommandAsync(sql, CreateDbParamters(parameters).ToArray());
+            return await _db.Database.ExecuteSqlRawAsync(sql, CreateDbParamters(parameters).ToArray());
         }
 
         #endregion

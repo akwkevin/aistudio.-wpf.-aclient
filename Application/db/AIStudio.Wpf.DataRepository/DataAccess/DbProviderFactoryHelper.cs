@@ -3,6 +3,7 @@ using System;
 using System.Data.Common;
 using System.Linq;
 using Microsoft.Data.Sqlite;
+using Microsoft.Data.SqlClient;
 
 namespace AIStudio.Wpf.DataRepository
 {

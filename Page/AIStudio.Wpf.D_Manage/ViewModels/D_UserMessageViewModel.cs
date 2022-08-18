@@ -55,7 +55,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             {
                 SetProperty(ref _d_UserMessageEditViewModel, value);
             }
-        } 
+        }
 
         private ICommand _searchCommand;
         public new ICommand SearchCommand
@@ -93,13 +93,16 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
         {
             _operator = ContainerLocator.Current.Resolve<IOperator>();
             _wSocketClient = ContainerLocator.Current.Resolve<IWSocketClient>();
-            _wSocketClient.MessageReceived += _wSocketClient_MessageReceived;
+            if (_wSocketClient != null)
+            {
+                _wSocketClient.MessageReceived += _wSocketClient_MessageReceived;
+            }
             _userConfig = ContainerLocator.Current.Resolve<IUserConfig>();
 
             D_UserMessageEditViewModel = new D_UserMessageEditViewModel(null, "D_Manage", Identifier);
         }
 
-        public D_UserMessageViewModel(string[] id)//无效参数，做个标记
+        public D_UserMessageViewModel(string[] id) : this()//无效参数，做个标记
         {
 
         }
@@ -350,7 +353,10 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
         {
             if (disposing)
             {
-                _wSocketClient.MessageReceived -= _wSocketClient_MessageReceived;
+                if (_wSocketClient != null)
+                {
+                    _wSocketClient.MessageReceived -= _wSocketClient_MessageReceived;
+                }
             }
         }
 
@@ -361,7 +367,7 @@ namespace AIStudio.Wpf.D_Manage.ViewModels
             {
                 D_OnlineUserDTO a = (D_OnlineUserDTO)x;
                 D_OnlineUserDTO b = (D_OnlineUserDTO)y;
-  
+
                 if (a.Online && b.Online)
                 {
                     if (a.LastDateTime.HasValue && b.LastDateTime.HasValue)
