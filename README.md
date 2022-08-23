@@ -1,6 +1,6 @@
 # AClient
 
-写在前面，下载请选择net6或net5-new的分支
+写在前面，下载请选择net6或net5-new的分支（请勿使用VS2022预览版运行本库，推荐使用VS2019）
 
 使用的控件库地址https://gitee.com/akwkevin/AI-wpf-controls（麻烦大家点个星，谢谢大家）
 
