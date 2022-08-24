@@ -26,9 +26,8 @@ namespace AIStudio.Wpf.BasePage.Permission
         private static void OnHasPermPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
             if (DesignerHelper.IsInDesignMode) return;
-            FrameworkElement element = dependencyObject as FrameworkElement;
             string str = dependencyPropertyChangedEventArgs.NewValue as string;
-            if (element != null)
+            if (dependencyObject is FrameworkElement element)
             {
                 var _operator = ContainerLocator.Current.Resolve<IOperator>(); 
                 if (_operator != null)
@@ -47,7 +46,27 @@ namespace AIStudio.Wpf.BasePage.Permission
                 {
                     element.Visibility = Visibility.Collapsed;
                 }
-            }          
+            }      
+            else if (dependencyObject is Microsoft.Xaml.Behaviors.TriggerAction trigger)
+            {
+                var _operator = ContainerLocator.Current.Resolve<IOperator>();
+                if (_operator != null)
+                {
+                    var menu = _operator.SearchMenus.FirstOrDefault(p => p.WpfName != null && str.StartsWith(p.WpfName));
+                    if (menu != null && menu.NeedAction == false)
+                    {
+                        trigger.IsEnabled = true;
+                    }
+                    else if (_operator.Permissions == null || !_operator.Permissions.Contains(str))
+                    {
+                        trigger.IsEnabled = false;
+                    }
+                }
+                else
+                {
+                    trigger.IsEnabled = false;
+                }
+            }
         }
 
         public static readonly DependencyProperty IsCreatorProperty = DependencyProperty.RegisterAttached(

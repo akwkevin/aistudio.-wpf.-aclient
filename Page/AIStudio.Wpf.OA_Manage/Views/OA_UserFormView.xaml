@@ -156,7 +156,7 @@
             </DataGrid.Columns>        
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding EditCommand}" CommandParameter="{Binding SelectedItem, ElementName=table}"/>
+                    <i:InvokeCommandAction perm:PermissionHelper.HasPerm="OA_UserForm.Edit" Command="{Binding EditCommand}" CommandParameter="{Binding SelectedItem, ElementName=table}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </agc:FilterDataGrid>

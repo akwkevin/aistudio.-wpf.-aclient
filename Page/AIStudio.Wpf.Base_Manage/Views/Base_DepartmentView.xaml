@@ -60,15 +60,21 @@
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
                                         <Hyperlink Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                        CommandParameter="{Binding .}" Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock Text="编辑" /> </Hyperlink>
+                                                   CommandParameter="{Binding .}"
+                                                   perm:PermissionHelper.HasPerm="Base_Department.Edit" 
+                                                   Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock Text="编辑" /> </Hyperlink>
                                     </TextBlock>
                                     <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
                                         <Hyperlink Command="{Binding DataContext.SubAddCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                        CommandParameter="{Binding .}" Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock Text="新增" /> </Hyperlink>
+                                                   CommandParameter="{Binding .}" 
+                                                   perm:PermissionHelper.HasPerm="Base_Department.Edit" 
+                                                   Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock Text="新增" /> </Hyperlink>
                                     </TextBlock>
                                     <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
                                         <Hyperlink Command="{Binding DataContext.DeleteOneCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                        CommandParameter="{Binding Id}" Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock Text="删除" /> </Hyperlink>
+                                                   CommandParameter="{Binding Id}" 
+                                                   perm:PermissionHelper.HasPerm="Base_Department.Delete" 
+                                                   Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock Text="删除" /> </Hyperlink>
                                     </TextBlock>
                                 </StackPanel>
                             </DataTemplate>
@@ -78,7 +84,7 @@
 
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
-                        <i:InvokeCommandAction Command="{Binding EditCommand}" CommandParameter="{Binding SelectedItem, ElementName=table}"/>
+                        <i:InvokeCommandAction perm:PermissionHelper.HasPerm="Base_Department.Edit" Command="{Binding EditCommand}" CommandParameter="{Binding SelectedItem, ElementName=table}"/>
                     </i:EventTrigger>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding SelectedCommand}" CommandParameter="{Binding SelectedItem, ElementName=table}"/>
