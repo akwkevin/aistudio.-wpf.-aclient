@@ -322,52 +322,6 @@
             审批数据
             </summary>
         </member>
-        <member name="T:Coldairarrow.Api.Controllers.Protobuf_Test.DTOModels.AjaxResult_Protobuf">
-            <summary>
-            分页返回结果
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="P:Coldairarrow.Api.Controllers.Protobuf_Test.DTOModels.AjaxResult_Protobuf.Success">
-            <summary>
-            是否成功
-            </summary>
-        </member>
-        <member name="P:Coldairarrow.Api.Controllers.Protobuf_Test.DTOModels.AjaxResult_Protobuf.ErrorCode">
-            <summary>
-            错误代码
-            </summary>
-        </member>
-        <member name="P:Coldairarrow.Api.Controllers.Protobuf_Test.DTOModels.AjaxResult_Protobuf.Msg">
-            <summary>
-            返回消息
-            </summary>
-        </member>
-        <member name="P:Coldairarrow.Api.Controllers.Protobuf_Test.DTOModels.AjaxResult_Protobuf.Total">
-            <summary>
-            总记录数
-            </summary>
-        </member>
-        <member name="P:Coldairarrow.Api.Controllers.Protobuf_Test.DTOModels.PageInput_Protobuf.PageIndex">
-            <summary>
-            当前页码
-            </summary>
-        </member>
-        <member name="P:Coldairarrow.Api.Controllers.Protobuf_Test.DTOModels.PageInput_Protobuf.PageRows">
-            <summary>
-            每页行数
-            </summary>
-        </member>
-        <member name="P:Coldairarrow.Api.Controllers.Protobuf_Test.DTOModels.PageInput_Protobuf.SortField">
-            <summary>
-            排序列
-            </summary>
-        </member>
-        <member name="P:Coldairarrow.Api.Controllers.Protobuf_Test.DTOModels.PageInput_Protobuf.SortType">
-            <summary>
-            排序类型
-            </summary>
-        </member>
         <member name="M:Coldairarrow.Api.Controllers.Quartz_Manage.Quartz_TaskController.GetDataList(Coldairarrow.Util.PageInput{Coldairarrow.Business.Quartz_Manage.Quartz_TaskInputDTO})">
             <summary>
             获取所有的作业

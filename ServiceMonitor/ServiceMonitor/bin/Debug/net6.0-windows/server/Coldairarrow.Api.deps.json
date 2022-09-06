@@ -1612,31 +1612,6 @@
           "lib/netstandard2.0/Pomelo.JsonObject.dll": {}
         }
       },
-      "protobuf-net/3.1.17": {
-        "dependencies": {
-          "protobuf-net.Core": "3.1.17"
-        },
-        "runtime": {
-          "lib/net5.0/protobuf-net.dll": {
-            "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.1.17.6991"
-          }
-        },
-        "compile": {
-          "lib/net5.0/protobuf-net.dll": {}
-        }
-      },
-      "protobuf-net.Core/3.1.17": {
-        "runtime": {
-          "lib/net5.0/protobuf-net.Core.dll": {
-            "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.1.17.6991"
-          }
-        },
-        "compile": {
-          "lib/net5.0/protobuf-net.Core.dll": {}
-        }
-      },
       "QRCoder/1.4.1": {
         "dependencies": {
           "System.Drawing.Common": "5.0.0"
@@ -3039,44 +3014,6 @@
           "System.Xml.XPath": "4.0.1"
         }
       },
-      "Zaabee.Extensions/2022.8.2": {
-        "runtime": {
-          "lib/netcoreapp3.1/Zaabee.Extensions.dll": {
-            "assemblyVersion": "2022.8.2.0",
-            "fileVersion": "2022.8.2.0"
-          }
-        },
-        "compile": {
-          "lib/netcoreapp3.1/Zaabee.Extensions.dll": {}
-        }
-      },
-      "Zaabee.Protobuf/2022.16.4.4": {
-        "dependencies": {
-          "Zaabee.Extensions": "2022.8.2",
-          "Zaabee.Serializer.Abstractions": "2022.14.0",
-          "protobuf-net": "3.1.17"
-        },
-        "runtime": {
-          "lib/netstandard2.1/Zaabee.Protobuf.dll": {
-            "assemblyVersion": "2022.16.4.4",
-            "fileVersion": "2022.16.4.4"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.1/Zaabee.Protobuf.dll": {}
-        }
-      },
-      "Zaabee.Serializer.Abstractions/2022.14.0": {
-        "runtime": {
-          "lib/netstandard2.0/Zaabee.Serializer.Abstractions.dll": {
-            "assemblyVersion": "2022.14.0.0",
-            "fileVersion": "2022.14.0.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Zaabee.Serializer.Abstractions.dll": {}
-        }
-      },
       "ZooKeeperNetEx/3.4.12.4": {
         "runtime": {
           "lib/netstandard2.0/ZooKeeperNetEx.dll": {
@@ -3101,8 +3038,7 @@
           "WorkflowCore.Persistence.MySQL": "3.0.1",
           "WorkflowCore.Persistence.PostgreSQL": "3.3.0",
           "WorkflowCore.Persistence.SqlServer": "3.3.0",
-          "WorkflowCore.Persistence.Sqlite": "3.3.0",
-          "Zaabee.Protobuf": "2022.16.4.4"
+          "WorkflowCore.Persistence.Sqlite": "3.3.0"
         },
         "runtime": {
           "AIStudio.Service.dll": {}
@@ -5729,20 +5665,6 @@
       "path": "pomelo.jsonobject/2.2.1",
       "hashPath": "pomelo.jsonobject.2.2.1.nupkg.sha512"
     },
-    "protobuf-net/3.1.17": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-lN6JWutKqn1Aq/hI1BXcR7VbgHgcerUTMav2rTenflE28GWC2y1JoF9XPkoQdCkf24olStY00r68PHJhUpWFaw==",
-      "path": "protobuf-net/3.1.17",
-      "hashPath": "protobuf-net.3.1.17.nupkg.sha512"
-    },
-    "protobuf-net.Core/3.1.17": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-6PK/ZswVXHdUfMFEv9bI+jkNipuy9ifKRKRBAZlqFrbGXOwvREdMA2H53GTqTc6728PMA0VGvsbnjPAQ0Cx59A==",
-      "path": "protobuf-net.core/3.1.17",
-      "hashPath": "protobuf-net.core.3.1.17.nupkg.sha512"
-    },
     "QRCoder/1.4.1": {
       "type": "package",
       "serviceable": true,
@@ -6694,27 +6616,6 @@
       "sha512": "sha512-FLhdYJx4331oGovQypQ8JIw2kEmNzCsjVOVYY/16kZTUoquZG85oVn7yUhBE2OZt1yGPSXAL0HTEfzjlbNpM7Q==",
       "path": "system.xml.xpath.xdocument/4.0.1",
       "hashPath": "system.xml.xpath.xdocument.4.0.1.nupkg.sha512"
-    },
-    "Zaabee.Extensions/2022.8.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Wzy//QuHd7bnrMW7+kTJfWT9aBloGfHlnQekiOrh55N652OHZNR6M4gUke2SQB0Y0CEYc4pMKxqwFXjMVuO0jw==",
-      "path": "zaabee.extensions/2022.8.2",
-      "hashPath": "zaabee.extensions.2022.8.2.nupkg.sha512"
-    },
-    "Zaabee.Protobuf/2022.16.4.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-BdbEHZp9TIlCUPk+YkppfO5kbCDjaLrOpiNMGl6pBLEleZVKD4+LrPagy+fRBvkOLZLrXM/smtryO6Frzea9Rg==",
-      "path": "zaabee.protobuf/2022.16.4.4",
-      "hashPath": "zaabee.protobuf.2022.16.4.4.nupkg.sha512"
-    },
-    "Zaabee.Serializer.Abstractions/2022.14.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-J740EXZbtqjI8cUXMXgeLzhMUitCJz1XaUY5/vEXHKIbKA19Yisy7HIrT4ZVOV1jbMKr38alc/DZVLUuKrIfZg==",
-      "path": "zaabee.serializer.abstractions/2022.14.0",
-      "hashPath": "zaabee.serializer.abstractions.2022.14.0.nupkg.sha512"
     },
     "ZooKeeperNetEx/3.4.12.4": {
       "type": "package",

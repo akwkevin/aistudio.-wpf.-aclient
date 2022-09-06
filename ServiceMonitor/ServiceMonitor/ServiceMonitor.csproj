@@ -87,8 +87,10 @@
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\196e0aa2f47e4c6a87a6cc0b693a8e62\图片4.png" />
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\205fa6f5360247bb91efd315344f971d\20220213165323.jpg" />
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\2a76f7f250d3403bb78d529dfa505a28\11.xml" />
+    <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\30f4c66214dd4ba19a725f2bc7cb3617\mi_loudspeaker_box.png" />
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\31adf13fe75844b5979beeca4a8f0237\banner_3.png" />
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\41b041c263c04892a11f2056e3d0e048\cart.png" />
+    <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\43213baf1365471885e3f9446ef7eb66\banner_3.png" />
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\434b25843f4247719fa0741c8a445aa6\20220213165323.jpg" />
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\43edcc230b4f441384c34cee388eb9b7\banner_1.png" />
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\48fdd0d8063a416bb3263348ee724cfb\图片3.png" />
@@ -106,6 +108,7 @@
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\cfa9b49c7d4747898fa87d47dc210ff5\图片2.png" />
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\d2200f7e0886417098a22476861a5c48\11.xml" />
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\daf1c42cf6634edf8eeba357395edfc8\banner_3.png" />
+    <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\e58cc07f556a40dcadb995f33ef5c209\bg_2.png" />
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\eb9f13f9ada64ca3bf9ac67467c2e00b\bg_2.png" />
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\ec00d1ea71b04501b1bbee9ed17d9051\bg_2.png" />
     <Content Include="bin\Debug\net6.0-windows\server\wwwroot\Upload\f4302efce1554a03b29e23ad869c0c1d\图片3.png" />

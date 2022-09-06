@@ -55,6 +55,10 @@ namespace AIStudio.Core.Models
                 {
                     return "AIStudio.Wpf.LayoutPage.Views.StatisView";
                 }
+                else if (Code.StartsWith("/Agile_Development/Common_FormConfigQuery/List"))
+                {
+                    return "AIStudio.Wpf.Agile_Development.Views.Common_FormConfigQueryView";
+                }
 
                 if (Code.Contains("AIStudio.Wpf"))
                     return Code;
