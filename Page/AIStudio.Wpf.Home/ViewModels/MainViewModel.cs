@@ -4,11 +4,11 @@ using AIStudio.Core.Models;
 using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.Events;
 using AIStudio.Wpf.Business;
+using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.Home.Models;
 using AIStudio.Wpf.Home.Views;
 using AutoMapper;
-using Dataforge.PrismAvalonExtensions.Events;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Ioc;
@@ -21,10 +21,8 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
-using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Home.ViewModels
 {

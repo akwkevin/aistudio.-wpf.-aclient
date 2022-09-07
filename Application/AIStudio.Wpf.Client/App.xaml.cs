@@ -13,11 +13,12 @@ using AIStudio.Wpf.DataBusiness;
 using AIStudio.Wpf.Home;
 using AIStudio.Wpf.Home.ViewModels;
 using AIStudio.Wpf.OA_Manage;
+using AIStudio.Wpf.PrismAvalonExtensions;
+using AIStudio.Wpf.PrismAvalonExtensions.Regions;
 using AIStudio.Wpf.Quartz_Manage;
 using AutoMapper;
+using AvalonDock;
 using Castle.DynamicProxy;
-using Dataforge.PrismAvalonExtensions;
-using Dataforge.PrismAvalonExtensions.Regions;
 using DryIoc.Microsoft.DependencyInjection.Extension;
 using Microsoft.Extensions.DependencyInjection;
 using Prism.DryIoc;
@@ -27,7 +28,6 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Windows;
-using Xceed.Wpf.AvalonDock;
 
 namespace AIStudio.Wpf.Client
 {

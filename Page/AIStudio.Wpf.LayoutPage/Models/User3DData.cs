@@ -1,6 +1,6 @@
 ﻿using AIStudio.Core.Models;
 using AutoMapper;
-using Dataforge.PrismAvalonExtensions.ViewModels;
+using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
 using Newtonsoft.Json;
 using Prism.Mvvm;
 using Prism.Regions;

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:prism="http://prismlibrary.com/"
-             xmlns:dock="http://schemas.xceed.com/wpf/xaml/avalondock"
+             xmlns:dock="https://github.com/Dirkster99/AvalonDock"
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
              xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
              mc:Ignorable="d" 
@@ -13,7 +13,7 @@
         <dock:DockingManager x:Name="DManager" BorderBrush="Transparent"
                          prism:RegionManager.RegionName="{Binding RegionName}" >
             <dock:DockingManager.Theme>
-                <dock:MyMetroTheme/>
+                <dock:MyVs2013LightTheme/>
             </dock:DockingManager.Theme>
             <dock:DockingManager.DocumentHeaderTemplate>
                 <DataTemplate>

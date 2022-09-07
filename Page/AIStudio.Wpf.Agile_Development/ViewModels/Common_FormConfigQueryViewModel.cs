@@ -5,7 +5,7 @@ using AIStudio.Wpf.Agile_Development.Views;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
-using Dataforge.PrismAvalonExtensions.ViewModels;
+using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Ioc;

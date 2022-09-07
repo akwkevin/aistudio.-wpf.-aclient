@@ -12,7 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Application\api\AIStudio.Wpf.ApiBusiness\AIStudio.Wpf.ApiBusiness.csproj" />
     <ProjectReference Include="..\..\Application\db\AIStudio.Wpf.DataBusiness\AIStudio.Wpf.DataBusiness.csproj" />
-    <ProjectReference Include="..\..\Others\Xceed.Wpf\Dataforge.PrismAvalonExtensions\Dataforge.PrismAvalonExtensions.csproj" />
+    <ProjectReference Include="..\..\Others\Dirkster.AvalonDock\AIStudio.Wpf.PrismAvalonExtensions\AIStudio.Wpf.PrismAvalonExtensions.csproj" />
     <ProjectReference Include="..\..\Util\Accelerider.Extensions\Accelerider.Extensions.csproj" />
     <ProjectReference Include="..\..\Util\AIStudio.Core\AIStudio.Core.csproj" />
     <ProjectReference Include="..\..\Util\AIStudio.LocalConfiguration\AIStudio.LocalConfiguration.csproj" />

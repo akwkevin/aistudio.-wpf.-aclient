@@ -1,4 +1,4 @@
-﻿using Dataforge.PrismAvalonExtensions.ViewModels;
+﻿using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
 using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;

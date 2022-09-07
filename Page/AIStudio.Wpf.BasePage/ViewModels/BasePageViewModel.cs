@@ -1,6 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.Controls;
-using Dataforge.PrismAvalonExtensions.ViewModels;
+using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;

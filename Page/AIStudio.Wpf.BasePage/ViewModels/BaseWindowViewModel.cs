@@ -5,7 +5,6 @@ using AIStudio.Wpf.BasePage.Views;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
-using Dataforge.PrismAvalonExtensions.ViewModels;
 using Newtonsoft.Json;
 using Prism.Ioc;
 using Prism.Regions;
@@ -17,6 +16,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Threading.Tasks;
 using Prism.Commands;
+using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
 
 namespace AIStudio.Wpf.BasePage.ViewModels
 {

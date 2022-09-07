@@ -6,7 +6,6 @@ using AIStudio.Wpf.Business;
 using AIStudio.Wpf.LayoutPage.Models;
 using AIStudio.Wpf.LayoutPage.Views;
 using AIStudio.LocalConfiguration;
-using Dataforge.PrismAvalonExtensions.ViewModels;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -22,6 +21,7 @@ using Util.Panels;
 using Util.Panels.Controls;
 using Prism.Events;
 using AIStudio.Wpf.BasePage.Events;
+using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
 
 namespace AIStudio.Wpf.LayoutPage.ViewModels
 {

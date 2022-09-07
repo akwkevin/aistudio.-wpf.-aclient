@@ -2,7 +2,7 @@
     x:Class="AIStudio.Wpf.Client.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:prism="clr-namespace:Dataforge.PrismAvalonExtensions;assembly=Dataforge.PrismAvalonExtensions">
+    xmlns:prism="clr-namespace:AIStudio.Wpf.PrismAvalonExtensions;assembly=AIStudio.Wpf.PrismAvalonExtensions">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

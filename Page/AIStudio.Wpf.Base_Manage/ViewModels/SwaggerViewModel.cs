@@ -1,5 +1,5 @@
 ﻿using AIStudio.Core;
-using Dataforge.PrismAvalonExtensions.ViewModels;
+using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
 using Prism.Ioc;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
