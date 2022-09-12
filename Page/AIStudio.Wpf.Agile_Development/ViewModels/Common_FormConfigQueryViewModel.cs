@@ -204,10 +204,8 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
 
                 var data = new
                 {
-                    PageIndex = Pagination.PageIndex,
-                    PageRows = Pagination.PageRows,
-                    SortField = Pagination.SortField,
-                    SortType = Pagination.SortType,
+                    PageIndex = 0,
+                    PageRows = 500,
                     Search = new
                     {
                         keyword = Name,
@@ -455,7 +453,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             {
                 if (_userData.ItemSource.ContainsKey(itemsource))
                 {
-                    item.Converter = typeof(ObjectToStringConverter).FullName;
+                    item.Converter = typeof(ObjectToStringConverter).Name;
                     item.ConverterParameter = itemsource;                  
                 }
             }

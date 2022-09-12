@@ -5,7 +5,7 @@
     <Geometry x:Key="Checkmark">M 0,5.1 L 1.7,5.2 L 3.4,7.1 L 8,0.4 L 9.2,0 L 3.3,10.8 Z</Geometry>
 
     <!--树形-->
-    <HierarchicalDataTemplate x:Key="HamburgerMenuImageItem" DataType="{x:Type ac:HamburgerTreeMenuGlyphItem}" ItemsSource="{Binding Path=Children}">
+    <HierarchicalDataTemplate x:Key="HamburgerMenuImageItem" ItemsSource="{Binding Path=Children}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -50,7 +50,7 @@
     </HierarchicalDataTemplate>
 
     <!--左侧菜单栏-->
-    <HierarchicalDataTemplate x:Key="LeftHamburgerMenuImageItem" DataType="{x:Type ac:HamburgerTreeMenuGlyphItem}" ItemsSource="{Binding Path=Children}">
+    <HierarchicalDataTemplate x:Key="LeftHamburgerMenuImageItem" ItemsSource="{Binding Path=Children}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -103,7 +103,7 @@
     </HierarchicalDataTemplate>
 
     <!--顶部菜单栏-->
-    <HierarchicalDataTemplate x:Key="MenuItemDataTemplate" DataType="{x:Type ac:HamburgerTreeMenuGlyphItem}" ItemsSource="{Binding Path=Children}">
+    <HierarchicalDataTemplate x:Key="MenuItemDataTemplate" ItemsSource="{Binding Path=Children}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />

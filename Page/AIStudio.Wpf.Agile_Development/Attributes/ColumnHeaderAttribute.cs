@@ -144,7 +144,7 @@ namespace AIStudio.Wpf.Agile_Development.Attributes
                 dataGridColumnCustom.DisplayIndex = int.MaxValue;
                 dataGridColumnCustom.SortMemberPath = property.Name;
                 dataGridColumnCustom.CanUserSort = true;
-                dataGridColumnCustom.Converter = typeof(ObjectToStringConverter).FullName;
+                dataGridColumnCustom.Converter = typeof(ObjectToStringConverter).Name;
                 if (!string.IsNullOrEmpty(dic.Code))
                 {
                     dataGridColumnCustom.ConverterParameter = dic.Code;
