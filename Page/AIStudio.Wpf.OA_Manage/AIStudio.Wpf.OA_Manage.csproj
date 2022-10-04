@@ -10,7 +10,7 @@
   </ItemGroup>
  
   <ItemGroup>
-    <PackageReference Include="Aga.Diagrams.TestExtend" Version="1.2.0" />
+    <PackageReference Include="Aga.Diagrams.Extension" Version="1.2.1" />
     <PackageReference Include="System.Threading.Tasks.Extensions">
       <Version>4.5.4</Version>
     </PackageReference>

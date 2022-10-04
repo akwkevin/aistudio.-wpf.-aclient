@@ -1,4 +1,4 @@
-﻿using Aga.Diagrams.TestExtend.Flowchart;
+﻿using Aga.Diagrams.Extension.Flowchart;
 using AIStudio.Core;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Entity.DTOModels;

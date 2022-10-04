@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls" 
-             xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
+             xmlns:svg="https://gitee.com/akwkevin/aistudio.-wpf.-test/tree/master/Controls/AIStudio.Wpf.Svg2XamlExtension"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:AIStudio.Wpf.D_Manage.Views" 
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"

@@ -8,7 +8,7 @@
         Style="{StaticResource AIStudio.Styles.WindowBase.Custom}"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        CaptionHeight="36"
+        BorderThickness="2"
         mc:Ignorable="d"
         Title="{x:Static core:LocalSetting.Title}" Height="450" Width="800">
     <Grid>

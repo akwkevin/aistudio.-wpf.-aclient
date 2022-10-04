@@ -20,15 +20,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.27" />
+    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.28" />
     <PackageReference Include="AIStudio.Wpf.GridControls" Version="1.0.4" />
+    <PackageReference Include="AIStudio.Wpf.Svg2XamlExtension" Version="1.2.2" />
     <PackageReference Include="DryIoc.Microsoft.DependencyInjection.Extension" Version="1.0.0.2" />
     <PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
     <PackageReference Include="MahApps.Metro" Version="2.0.0" />
     <PackageReference Include="Prism.Container.Extensions" Version="8.0.62" />
     <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
-    <PackageReference Include="Util.Svg2XamlTestExtension" Version="1.2.7" />
     <PackageReference Include="AutoMapper">
       <Version>10.0.0</Version>
     </PackageReference>

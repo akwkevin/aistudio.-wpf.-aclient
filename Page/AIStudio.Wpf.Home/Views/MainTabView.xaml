@@ -6,7 +6,7 @@
              xmlns:prism="http://prismlibrary.com/"
              xmlns:dock="https://github.com/Dirkster99/AvalonDock"
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
-             xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
+             xmlns:svg="https://gitee.com/akwkevin/aistudio.-wpf.-test/tree/master/Controls/AIStudio.Wpf.Svg2XamlExtension"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>

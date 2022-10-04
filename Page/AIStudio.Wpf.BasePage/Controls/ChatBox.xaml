@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"           
              xmlns:controls="clr-namespace:AIStudio.Wpf.BasePage.Controls"
-             xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
+             xmlns:svg="https://gitee.com/akwkevin/aistudio.-wpf.-test/tree/master/Controls/AIStudio.Wpf.Svg2XamlExtension"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:converter="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
              xmlns:converter2="clr-namespace:AIStudio.Wpf.BasePage.Converters" 

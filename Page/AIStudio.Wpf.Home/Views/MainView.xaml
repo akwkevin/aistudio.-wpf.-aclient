@@ -7,7 +7,7 @@
              xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
+             xmlns:svg="https://gitee.com/akwkevin/aistudio.-wpf.-test/tree/master/Controls/AIStudio.Wpf.Svg2XamlExtension"
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
              xmlns:converter="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
              xmlns:converter2="clr-namespace:AIStudio.Wpf.BasePage.Converters;assembly=AIStudio.Wpf.BasePage"

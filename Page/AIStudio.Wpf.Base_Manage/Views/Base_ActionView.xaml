@@ -9,7 +9,7 @@
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
              xmlns:command="clr-namespace:AIStudio.Core.ExCommand;assembly=AIStudio.Core"
              xmlns:perm="clr-namespace:AIStudio.Wpf.BasePage.Permission;assembly=AIStudio.Wpf.BasePage"
-             xmlns:svg="clr-namespace:Svg2XamlTestExtension;assembly=Svg2XamlTestExtension"
+             xmlns:svg="https://gitee.com/akwkevin/aistudio.-wpf.-test/tree/master/Controls/AIStudio.Wpf.Svg2XamlExtension"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>

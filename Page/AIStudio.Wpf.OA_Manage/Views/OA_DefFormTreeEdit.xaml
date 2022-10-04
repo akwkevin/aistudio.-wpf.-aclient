@@ -6,7 +6,7 @@
              xmlns:local="AIStudio.Wpf.OA_Manage.Views"
              xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
-             xmlns:flowchart="clr-namespace:Aga.Diagrams.TestExtend.Flowchart;assembly=Aga.Diagrams.TestExtend"
+             xmlns:flowchart="clr-namespace:Aga.Diagrams.Extension.Flowchart;assembly=Aga.Diagrams.Extension"
              VerticalAlignment ="Center"
              HorizontalAlignment="Center"
              mc:Ignorable="d" >
@@ -31,7 +31,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
-                            <flowchart:OAFlowEditor x:Name="editor"                           
+                        <flowchart:OAFlowEditor x:Name="editor"                           
                                 FlowchartModel="{ac:ControlBinding FlowchartModel}" 
                                 Mode="ReadOnly"
                                 ac:ThemeChangedHelper.AcceptThemeChanged="True"/>
