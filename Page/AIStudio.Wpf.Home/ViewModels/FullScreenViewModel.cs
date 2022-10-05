@@ -14,8 +14,8 @@ namespace AIStudio.Wpf.Home.ViewModels
 {
     class FullScreenViewModel: MainViewModel
     {
-        public FullScreenViewModel(IContainerExtension container, IRegionManager regionManager, IEventAggregator aggregator, IOperator ioperator, IDataProvider dataProvider, IWSocketClient wSocketClient, IMapper mapper, IUserData userData)
-            :base(container,regionManager, aggregator, ioperator, dataProvider, wSocketClient, mapper, userData)
+        public FullScreenViewModel(IContainerExtension container, IRegionManager regionManager, IEventAggregator aggregator, IOperator ioperator, IDataProvider dataProvider, IMapper mapper, IUserData userData)
+            :base(container,regionManager, aggregator, ioperator, dataProvider, mapper, userData)
         {
 
         }

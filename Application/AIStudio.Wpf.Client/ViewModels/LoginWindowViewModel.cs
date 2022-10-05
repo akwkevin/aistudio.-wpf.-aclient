@@ -41,8 +41,6 @@ namespace AIStudio.Wpf.Client.ViewModels
             }
         }
 
-        public bool ApiMode { get { return (!string.IsNullOrEmpty(ServerIP) && ServerIP != LocalSetting.Standalone); } }
-
         private string _serverIP;
         public string ServerIP
         {
@@ -205,22 +203,6 @@ namespace AIStudio.Wpf.Client.ViewModels
 
                 if (LoginStatus == "Input")
                 {
-                    if (LocalSetting.ApiMode != ApiMode)
-                    {
-                        LocalSetting.SetAppSetting("ServerIP", ServerIP);
-
-                        if (Controls.MessageBox.Show("服务器模式在[前后端分离方式]与[客户端独立模式]发生了切换,需要重启生效,立即重启？") == MessageBoxResult.OK)
-                        {
-                            Process p = new Process();
-                            p.StartInfo.FileName = System.AppDomain.CurrentDomain.BaseDirectory + "AIStudio.Wpf.Client.exe";
-                            p.StartInfo.UseShellExecute = false;
-                            p.Start();
-                            
-                            _window.Close();
-                        }
-                        return;
-                    }
-
                     if (!string.IsNullOrEmpty(LocalSetting.VerifyMode))//如果开启了日志验证
                     {
                         LoginStatus = LocalSetting.VerifyMode;
@@ -249,7 +231,6 @@ namespace AIStudio.Wpf.Client.ViewModels
                     {
                         success = true;
                     }
-                    LocalSetting.TokenJson = _dataProvider.GetHeader().ToJson();
                 }
 
                 if (success)

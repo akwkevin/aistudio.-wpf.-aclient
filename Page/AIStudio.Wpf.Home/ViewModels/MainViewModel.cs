@@ -33,7 +33,6 @@ namespace AIStudio.Wpf.Home.ViewModels
         protected IEventAggregator _aggregator { get; }
         protected IOperator _operator { get; }
         protected IDataProvider _dataProvider { get; }
-        protected IWSocketClient _wSocketClient { get; }
         protected IMapper _mapper { get; }
         protected IUserData _userData { get; }
 
@@ -71,16 +70,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             set
             {
                 SetProperty(ref __operator, value);
-            }
-        }
-
-        private WSocketClient __wSocketClient;
-        public WSocketClient WSocketClient
-        {
-            get { return __wSocketClient; }
-            set
-            {
-                SetProperty(ref __wSocketClient, value);
             }
         }
 
@@ -245,14 +234,13 @@ namespace AIStudio.Wpf.Home.ViewModels
         }
         #endregion
 
-        public MainViewModel(IContainerExtension container, IRegionManager regionManager, IEventAggregator aggregator, IOperator ioperator, IDataProvider dataProvider, IWSocketClient wSocketClient, IMapper mapper, IUserData userData)
+        public MainViewModel(IContainerExtension container, IRegionManager regionManager, IEventAggregator aggregator, IOperator ioperator, IDataProvider dataProvider, IMapper mapper, IUserData userData)
         {
             _container = container;
             _regionManager = regionManager;
             _aggregator = aggregator;
             _operator = ioperator;
             _dataProvider = dataProvider;
-            _wSocketClient = wSocketClient;
             _mapper = mapper;
             _userData = userData;
 
@@ -410,7 +398,6 @@ namespace AIStudio.Wpf.Home.ViewModels
 
 
             Operator = _operator as Operator;
-            WSocketClient = _wSocketClient as WSocketClient;
 
             #region 菜单
             MenuItems = new ObservableCollection<AMenuItem>();
@@ -438,14 +425,6 @@ namespace AIStudio.Wpf.Home.ViewModels
                     BuildMenu(menuinfo.Data);
 
                     RefreshUserData();
-
-                    if (LocalSetting.ApiMode)
-                    {
-                        //连接socket
-                        _wSocketClient.InitAndStart(LocalSetting.ServerIP, $"{LocalSetting.ServerIP.Replace("http", "ws")}/ws?userName={_operator.Property.UserName}&userId={_operator.Property.Id}&avatar={_operator.Property.Avatar}");
-                        _wSocketClient.MessageReceived -= _wSocketClient_MessageReceived;
-                        _wSocketClient.MessageReceived += _wSocketClient_MessageReceived;
-                    }
                 }
                 catch (Exception ex)
                 {

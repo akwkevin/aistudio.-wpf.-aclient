@@ -11,12 +11,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Application\api\AIStudio.Wpf.ApiBusiness\AIStudio.Wpf.ApiBusiness.csproj" />
-    <ProjectReference Include="..\..\Application\db\AIStudio.Wpf.DataBusiness\AIStudio.Wpf.DataBusiness.csproj" />
+    <ProjectReference Include="..\..\Common\AIStudio.DbFactory\AIStudio.DbFactory.csproj" />
     <ProjectReference Include="..\..\Others\Dirkster.AvalonDock\AIStudio.Wpf.PrismAvalonExtensions\AIStudio.Wpf.PrismAvalonExtensions.csproj" />
-    <ProjectReference Include="..\..\Util\Accelerider.Extensions\Accelerider.Extensions.csproj" />
-    <ProjectReference Include="..\..\Util\AIStudio.Core\AIStudio.Core.csproj" />
-    <ProjectReference Include="..\..\Util\AIStudio.LocalConfiguration\AIStudio.LocalConfiguration.csproj" />
-    <ProjectReference Include="..\..\Util\AIStudio.Resource\AIStudio.Resource.csproj" />
+    <ProjectReference Include="..\..\Common\Accelerider.Extensions\Accelerider.Extensions.csproj" />
+    <ProjectReference Include="..\..\Common\AIStudio.Core\AIStudio.Core.csproj" />
+    <ProjectReference Include="..\..\Common\AIStudio.LocalConfiguration\AIStudio.LocalConfiguration.csproj" />
+    <ProjectReference Include="..\..\Common\AIStudio.Resource\AIStudio.Resource.csproj" />
   </ItemGroup>
 
   <ItemGroup>

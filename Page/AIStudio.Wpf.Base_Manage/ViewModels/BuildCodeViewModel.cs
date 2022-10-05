@@ -1,8 +1,8 @@
 ﻿using AIStudio.Core;
+using AIStudio.DbFactory.DataAccess;
 using AIStudio.Wpf.Base_Manage.Views;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Controls;
-using AIStudio.Wpf.DataRepository;
 using AIStudio.Wpf.Entity.DTOModels;
 using Newtonsoft.Json;
 using System;
@@ -257,8 +257,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     "Models",
                     $"{entityInfo.Key}.cs");
 
-                var theLink = Base_DbLinkDTO.FirstOrDefault(p => p.Id == LinkId);
-                var dbHelper = DbHelperFactory.GetDbHelper(theLink.DbType.ToEnum<DatabaseType>(), theLink.ConnectionStr);
+               
+                var dbHelper = GetTheDbHelper(LinkId);
 
                 string nameSpace = "AIStudio.Wpf.Entity.Models";
 
@@ -639,7 +639,13 @@ $"                    <Paragraph>{fieldDesc}</Paragraph>\r\n" +
         }
 
 
-      
-       
+        private DbHelper GetTheDbHelper(string linkId)
+        {
+            var theLink = Base_DbLinkDTO.FirstOrDefault(p => p.Id == linkId);
+            DbHelper dbHelper = DbHelperFactory.GetDbHelper(theLink.DbType.ToEnum<DatabaseType>(), theLink.ConnectionStr);
+
+            return dbHelper;
+        }
+
     }
 }

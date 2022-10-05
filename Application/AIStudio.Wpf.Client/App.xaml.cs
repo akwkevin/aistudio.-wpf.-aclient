@@ -8,8 +8,6 @@ using AIStudio.Wpf.Base_Manage;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Client.ViewModels;
 using AIStudio.Wpf.Client.Views;
-using AIStudio.Wpf.D_Manage;
-using AIStudio.Wpf.DataBusiness;
 using AIStudio.Wpf.Home;
 using AIStudio.Wpf.Home.ViewModels;
 using AIStudio.Wpf.OA_Manage;
@@ -41,7 +39,7 @@ namespace AIStudio.Wpf.Client
             System.Windows.FrameworkCompatibilityPreferences.KeepTextBoxDisplaySynchronizedWithTextProperty = false;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.Current.DispatcherUnhandledException += Application_DispatcherUnhandledException;
-   
+
 
         }
 
@@ -118,44 +116,28 @@ namespace AIStudio.Wpf.Client
         protected static readonly ProxyGenerator _generator = new ProxyGenerator();
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-           
+
             containerRegistry.RegisterSingleton<IOperator, Operator>();
             containerRegistry.RegisterSingleton<IUserData, UserData>();
-            containerRegistry.RegisterSingleton<IWSocketClient, WSocketClient>();
             containerRegistry.RegisterSingleton<IUserConfig, UserConfig>();
             containerRegistry.Register<ILogger, Logger>();
 
             //AutoMapper            
             containerRegistry.RegisterInstance<IMapper>(new MapperProvider(containerRegistry).GetMapper());//containerRegistry.RegisterInstance(typeof(IMapper), new MapperProvider(containerRegistry).GetMapper());
 
-            //api接口模式
-            if (LocalSetting.ApiMode)
-            {                
-                //containerRegistry.RegisterSingleton<IDataProvider, ApiDataProvider>();
-                containerRegistry.GetContainer().RegisterServices(services =>
-                {
-                    //注入AOP
-                    services.Add(new ServiceDescriptor(typeof(IDataProvider), serviceProvider =>
-                    {
-                        CastleInterceptor castleInterceptor = new CastleInterceptor(serviceProvider);
-
-                        return _generator.CreateInterfaceProxyWithTarget(typeof(IDataProvider), serviceProvider.GetService(typeof(ApiDataProvider)), castleInterceptor);
-                    }, ServiceLifetime.Singleton));
-
-                    services.AddHttpClient();
-                });
-            }
-            else//直接访问数据库模式，目前只实现了SqlServer，SQLite
+            //containerRegistry.RegisterSingleton<IDataProvider, ApiDataProvider>();
+            containerRegistry.GetContainer().RegisterServices(services =>
             {
-                containerRegistry.RegisterSingleton<IDataProvider, EFCoreDataProvider>();
-                containerRegistry.GetContainer().RegisterServices(services =>
+                //注入AOP
+                services.Add(new ServiceDescriptor(typeof(IDataProvider), serviceProvider =>
                 {
-                    services.AddEFCoreServices();
-                });
+                    CastleInterceptor castleInterceptor = new CastleInterceptor(serviceProvider);
 
-                //初始化数据
-                SeedData.EnsureSeedData();
-            }
+                    return _generator.CreateInterfaceProxyWithTarget(typeof(IDataProvider), serviceProvider.GetService(typeof(ApiDataProvider)), castleInterceptor);
+                }, ServiceLifetime.Singleton));
+
+                services.AddHttpClient();
+            });
         }
 
 
@@ -174,14 +156,6 @@ namespace AIStudio.Wpf.Client
             {
                 ModuleName = base_ManageModule.Name,
                 ModuleType = base_ManageModule.AssemblyQualifiedName,
-                InitializationMode = InitializationMode.WhenAvailable
-            });
-
-            var d_ManageModule = typeof(D_ManageModule);
-            moduleCatalog.AddModule(new ModuleInfo()
-            {
-                ModuleName = d_ManageModule.Name,
-                ModuleType = d_ManageModule.AssemblyQualifiedName,
                 InitializationMode = InitializationMode.WhenAvailable
             });
 
@@ -261,19 +235,11 @@ namespace AIStudio.Wpf.Client
 
         public IMapper GetMapper()
         {
-            if (LocalSetting.ApiMode)
+            var config = new MapperConfiguration(cfg =>
             {
-                var config = new MapperConfiguration(cfg =>
-                {
-                    cfg.AddMaps("AIStudio.Wpf.BasePage", "AIStudio.Core", "AIStudio.Wpf.LayoutPage");
-                });
-                return config.CreateMapper();
-            }
-            else
-            {
-                IMapper mapper = EFCoreDataProviderExtension.AddAutoMapper(new string[] { "AIStudio.Wpf.BasePage", "AIStudio.Core", "AIStudio.Wpf.LayoutPage" });
-                return mapper;
-            }
+                cfg.AddMaps("AIStudio.Wpf.BasePage", "AIStudio.Core", "AIStudio.Wpf.LayoutPage");
+            });
+            return config.CreateMapper();
         }
     }
 }

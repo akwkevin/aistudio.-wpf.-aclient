@@ -1,11 +1,8 @@
 ﻿using AIStudio.Core;
 using AIStudio.Core.ExCommand;
-using AIStudio.Core.Models;
 using AIStudio.Wpf.BasePage.Events;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business;
-using AIStudio.Wpf.D_Manage.ViewModels;
-using AIStudio.Wpf.D_Manage.Views;
 using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.OA_Manage.ViewModels;
 using AIStudio.Wpf.OA_Manage.Views;
@@ -130,40 +127,12 @@ namespace AIStudio.Wpf.Home.ViewModels
 
         protected IOperator _operator { get => ContainerLocator.Current.Resolve<IOperator>(); }
         protected IDataProvider _dataProvider { get => ContainerLocator.Current.Resolve<IDataProvider>(); }
-        protected IWSocketClient _wSocketClient { get => ContainerLocator.Current.Resolve<IWSocketClient>(); }
         protected IUserData _userData { get => ContainerLocator.Current.Resolve<IUserData>(); }
         protected IEventAggregator _aggregator { get => ContainerLocator.Current.Resolve<IEventAggregator>(); }
 
         public NoticeIconViewModel(string identifier)
         {
             Identifier = identifier;
-
-            _wSocketClient.MessageReceived -= _wSocketClient_MessageReceived;
-            _wSocketClient.MessageReceived += _wSocketClient_MessageReceived;
-        }
-
-        private void _wSocketClient_MessageReceived(WSMessageType type, string message)
-        {
-            if (type == WSMessageType.PushType)
-            {
-                var resmsg = JsonConvert.DeserializeObject<PushMessageData>(message);
-                Notice_Pagination.Total = resmsg.NoticeCount;
-                UserMail_Pagination.Total = resmsg.UserMailCount;
-                UserMessage_Pagination.Total = resmsg.UserMessageCount;
-                UserForm_Pagination.Total = resmsg.UserFormCount;
-                TotalCount = Notice_Pagination.Total + UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
-                var clearcache = resmsg.Clearcache;
-
-                if (clearcache.Contains("Base_User"))
-                {
-                    _userData.ClearBase_User();
-                }
-
-                if (clearcache.Contains("Base_Role"))
-                {
-                    _userData.ClearBase_Role();
-                }
-            }
         }
 
         private async void GetData()
@@ -342,9 +311,6 @@ namespace AIStudio.Wpf.Home.ViewModels
 
         private Dictionary<string, string> Dictionary = new Dictionary<string, string>()
         {
-            { "D_NoticeDTO", typeof(D_NoticeView).FullName },
-            { "D_UserMailDTO", typeof(D_UserMailIndexView).FullName},
-            { "D_UserMessageDTO", typeof(D_UserMessageView).FullName},
             { "OA_UserFormDTO", typeof(OA_UserFormView).FullName },
         };
 
@@ -358,22 +324,9 @@ namespace AIStudio.Wpf.Home.ViewModels
             var exCommandParameter = para as ExCommandParameter;
             var obj = (exCommandParameter.Sender as ListBox).SelectedItem;
 
-            if (obj is D_NoticeDTO)
-            {
-                await D_NoticeViewModel.EditShow(new D_NoticeDTO() { Id = (obj as D_NoticeDTO).Id }, Identifier);
-            }
-            else if (obj is D_UserMailDTO)
-            {
-                await D_UserMailViewModel.EditShow(new D_UserMailDTO() { Id = (obj as D_UserMailDTO).Id }, Identifier);
-            }
-            else if (obj is OA_UserFormDTO)
+            if (obj is OA_UserFormDTO)
             {
                 await OA_UserFormViewModel.EditShow(new OA_UserFormDTO() { Id = (obj as OA_UserFormDTO).Id }, Identifier);
-            }
-            if (obj is GroupData)
-            {
-                GroupData message = obj as GroupData;
-                D_UserMessageViewModel.EditShow(new string[] { message.CreatorId, message.CreatorName, message.Avatar, message.GroupId, message.GroupName, message.UserIds, message.UserNames });
             }
         }
     }

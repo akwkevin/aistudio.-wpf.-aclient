@@ -2,7 +2,6 @@
 using AIStudio.Core;
 using AIStudio.LocalConfiguration;
 using AIStudio.Wpf.Business;
-using AIStudio.Wpf.D_Manage.ViewModels;
 using AIStudio.Wpf.Entity.DTOModels;
 using Newtonsoft.Json;
 using Prism.Commands;
@@ -88,15 +87,6 @@ namespace ServiceMonitor
                 SetProperty(ref _systemInformation, value);
             }
         }
-        private D_UserMessageViewModel _d_UserMessageViewModel;
-        public D_UserMessageViewModel D_UserMessageViewModel
-        {
-            get { return _d_UserMessageViewModel; }
-            set
-            {
-                SetProperty(ref _d_UserMessageViewModel, value);
-            }
-        }
 
         private ICommand _startCommand;
         public ICommand StartCommand
@@ -136,7 +126,6 @@ namespace ServiceMonitor
 
         protected IDataProvider _dataProvider { get => ContainerLocator.Current.Resolve<IDataProvider>(); } 
         protected IOperator _operator { get => ContainerLocator.Current.Resolve<IOperator>(); }
-        protected IWSocketClient _wSocketClient { get => ContainerLocator.Current.Resolve<IWSocketClient>(); }
         protected IUserConfig _userConfig { get => ContainerLocator.Current.Resolve<IUserConfig>(); }
 
         protected ILogger _logger { get; }
@@ -231,14 +220,6 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
             await _dataProvider.GetToken("http://localhost:5000", "Admin", "Admin", 1, TimeSpan.FromSeconds(60));
 
             _operator.Property = new Base_UserDTO() { UserName = "人工助手", Id = "smallAssistant", Avatar = "pack://application:,,,/AIStudio.Resource;component/Images/Usopp.jpg" };
-
-            _wSocketClient.MessageReceived -= _wSocketClient_MessageReceived;
-            _wSocketClient.MessageReceived += _wSocketClient_MessageReceived;
-            _wSocketClient.InitAndStart($"http://localhost:{Port}", $"ws://localhost:{Port}/ws?userName={_operator.Property.UserName}&userId={_operator.Property.Id}&avatar={_operator.Property.Avatar}");
-
-
-            D_UserMessageViewModel = new D_UserMessageViewModel();
-            D_UserMessageViewModel.Initialize();
         }
 
         private void _wSocketClient_MessageReceived(WSMessageType type, string message)

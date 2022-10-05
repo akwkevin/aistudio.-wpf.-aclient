@@ -1249,7 +1249,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Application\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
-    <ProjectReference Include="..\..\Page\AIStudio.Wpf.D_Manage\AIStudio.Wpf.D_Manage.csproj" />
+    <ProjectReference Include="..\..\Page\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
   </ItemGroup>
 
   <ItemGroup>

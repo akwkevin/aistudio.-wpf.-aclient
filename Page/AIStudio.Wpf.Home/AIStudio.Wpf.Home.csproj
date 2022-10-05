@@ -15,7 +15,6 @@
     <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.Base_Manage\AIStudio.Wpf.Base_Manage.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.Agile_Development\AIStudio.Wpf.Agile_Development.csproj" />
-    <ProjectReference Include="..\AIStudio.Wpf.D_Manage\AIStudio.Wpf.D_Manage.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.LayoutPage\AIStudio.Wpf.LayoutPage.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.OA_Manage\AIStudio.Wpf.OA_Manage.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.Quartz_Manage\AIStudio.Wpf.Quartz_Manage.csproj" />

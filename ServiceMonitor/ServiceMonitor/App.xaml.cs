@@ -71,7 +71,6 @@ namespace ServiceMonitor
         {
             containerRegistry.RegisterSingleton<IOperator, Operator>();
             containerRegistry.RegisterSingleton<IUserData, UserData>();
-            containerRegistry.RegisterSingleton<IWSocketClient, WSocketClient>();
             containerRegistry.RegisterSingleton<IUserConfig, UserConfig>();
             containerRegistry.Register<ILogger, Logger>();
             //api接口模式

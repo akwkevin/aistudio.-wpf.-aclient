@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Util\AIStudio.AOP\AIStudio.AOP.csproj" />
-    <ProjectReference Include="..\..\Util\AIStudio.Core\AIStudio.Core.csproj" />
+    <ProjectReference Include="..\..\Common\AIStudio.AOP\AIStudio.AOP.csproj" />
+    <ProjectReference Include="..\..\Common\AIStudio.Core\AIStudio.Core.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.Entity\AIStudio.Wpf.Entity.csproj" />
   </ItemGroup>
   

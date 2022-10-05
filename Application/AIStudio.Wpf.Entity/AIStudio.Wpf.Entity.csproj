@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Util\AIStudio.Core\AIStudio.Core.csproj" />
+    <ProjectReference Include="..\..\Common\AIStudio.Core\AIStudio.Core.csproj" />
   </ItemGroup>
 
 </Project>

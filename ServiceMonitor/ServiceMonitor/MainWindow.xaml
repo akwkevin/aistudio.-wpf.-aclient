@@ -6,7 +6,6 @@
         xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
         xmlns:agc="https://gitee.com/akwkevin/AI-wpf-controls/tree/master/AIStudio.Wpf.GridControls"
         Identifier="RootWindow"
-        xmlns:chat="clr-namespace:AIStudio.Wpf.D_Manage.Views;assembly=AIStudio.Wpf.D_Manage"
         mc:Ignorable="d"
         Title="服务监控" Height="450" Width="800"
         Style="{StaticResource AIStudio.Styles.WindowBase}">
@@ -78,9 +77,6 @@
             </TabItem>
             <TabItem Header="系统信息">
                 <TextBlock Text="{Binding SystemInformation}" TextWrapping="Wrap"/>
-            </TabItem>
-            <TabItem Header="人工服务">
-                <chat:D_UserMessageView DataContext="{Binding D_UserMessageViewModel}"/>
             </TabItem>
             <TabItem Header="数据监控">
             </TabItem>
