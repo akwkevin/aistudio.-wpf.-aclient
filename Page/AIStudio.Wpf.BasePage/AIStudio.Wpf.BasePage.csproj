@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.28" />
+    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.30" />
     <PackageReference Include="AIStudio.Wpf.GridControls" Version="1.0.4" />
     <PackageReference Include="AIStudio.Wpf.Svg2XamlExtension" Version="1.2.2" />
     <PackageReference Include="DryIoc.Microsoft.DependencyInjection.Extension" Version="1.0.0.2" />

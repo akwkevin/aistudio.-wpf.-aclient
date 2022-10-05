@@ -1258,4 +1258,6 @@
     </None>
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties bin_4debug_4net6_10-windows_4sqlite_4appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>
