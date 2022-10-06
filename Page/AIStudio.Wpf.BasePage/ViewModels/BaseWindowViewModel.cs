@@ -56,16 +56,6 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             }
         }
 
-        private ComboBoxItem _conditionItem;
-        public ComboBoxItem ConditionItem
-        {
-            get { return _conditionItem; }
-            set
-            {
-                SetProperty(ref _conditionItem, value);
-            }
-        }
-
         private string _keyWord;
         public string KeyWord
         {
@@ -205,17 +195,18 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                     ShowWait();
                 }
 
+                SearchKeyValues = new Dictionary<string, object>();
+                if (!string.IsNullOrEmpty(Condition) && !string.IsNullOrEmpty(KeyWord))
+                {
+                    SearchKeyValues.Add(Condition, KeyWord);
+                }
+
                 var data = new
                 {
                     PageIndex = Pagination.PageIndex,
                     PageRows = Pagination.PageRows,
                     SortField = Pagination.SortField,
                     SortType = Pagination.SortType,
-                    Search = new
-                    {
-                        keyword = KeyWord,
-                        condition = ConditionItem?.Tag,
-                    },
                     SearchKeyValues = SearchKeyValues,
                 };
 

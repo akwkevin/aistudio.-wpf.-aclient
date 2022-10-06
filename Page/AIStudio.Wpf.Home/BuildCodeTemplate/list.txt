@@ -30,7 +30,11 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
-			    <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" SelectedItem="{Binding ConditionItem}"
+			    <ComboBox x:Name="combox" Width="120" Margin="3" 
+                          DisplayMemberPath="Text"
+                          SelectedValuePath="Value"
+                          SelectedValue="{Binding Condition}"
+                          SelectedIndex="0"
                           ac:ControlAttach.ClearTextButton="True"
                           Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
     %selectOptions%

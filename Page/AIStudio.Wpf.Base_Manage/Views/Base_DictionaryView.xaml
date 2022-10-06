@@ -28,8 +28,18 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
-                <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" ac:ControlAttach.ClearTextButton="True" SelectedItem="{Binding ConditionItem}">
-                    <ComboBoxItem Tag="Name">字典名</ComboBoxItem>
+                <ComboBox x:Name="combox" Width="120" Margin="3" 
+                         DisplayMemberPath="Text"
+                          SelectedValuePath="Value"
+                          SelectedValue="{Binding Condition}"
+                          SelectedIndex="0"
+                          ac:ControlAttach.ClearTextButton="True">
+                    <ComboBox.ItemsSource>
+                        <x:Array Type="core:SelectOption">
+                            <core:SelectOption Text="字典名" Value="Text"/>
+                            <core:SelectOption Text="备注" Value="Remark"/>
+                        </x:Array>
+                    </ComboBox.ItemsSource>
                 </ComboBox>
 			    <ac:SearchBar Width="220" Margin="4,3" 
                          Text="{Binding KeyWord}"

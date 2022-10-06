@@ -30,17 +30,24 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
-			    <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" SelectedItem="{Binding ConditionItem}"
+			    <ComboBox x:Name="combox" Width="120" Margin="3" 
+                          DisplayMemberPath="Text"
+                          SelectedValuePath="Value"
+                          SelectedValue="{Binding Condition}"
+                          SelectedIndex="0"
                           ac:ControlAttach.ClearTextButton="True"
                           Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
-    				<ComboBoxItem Tag="ParentId">父级Id</ComboBoxItem>
-				<ComboBoxItem Tag="Type">类型,菜单=0,页面=1,权限=2</ComboBoxItem>
-				<ComboBoxItem Tag="Name">权限名/菜单名</ComboBoxItem>
-				<ComboBoxItem Tag="Url">菜单地址</ComboBoxItem>
-				<ComboBoxItem Tag="Value">权限值</ComboBoxItem>
-				<ComboBoxItem Tag="NeedTest">是否需要权限(仅页面有效)</ComboBoxItem>
-				<ComboBoxItem Tag="Icon">图标</ComboBoxItem>
-				<ComboBoxItem Tag="Sort">排序</ComboBoxItem>
+                    <x:Array Type="core:SelectOption">
+                        <core:SelectOption Text="父级Id" Value="ParentId"/>
+                        <core:SelectOption Text="类型,菜单=0,页面=1,权限=2" Value="Type"/>
+                        <core:SelectOption Text="权限名/菜单名" Value="Name"/>
+                        <core:SelectOption Text="菜单地址" Value="Url"/>
+                        <core:SelectOption Text="权限值" Value="Url"/>
+                        <core:SelectOption Text="权限值" Value="Value"/>
+                        <core:SelectOption Text="是否需要权限(仅页面有效)" Value="NeedTest"/>
+                        <core:SelectOption Text="图标" Value="Icon"/>
+                        <core:SelectOption Text="排序" Value="Sort"/>
+                    </x:Array>
                 </ComboBox>
 			    <ac:SearchBar Width="220" Margin="4,3" 
                          Text="{Binding KeyWord}"

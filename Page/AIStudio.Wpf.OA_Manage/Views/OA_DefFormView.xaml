@@ -21,14 +21,22 @@
         </Grid.RowDefinitions>
         <DockPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
-                <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" SelectedItem="{Binding ConditionItem}" 
-                          ac:ControlAttach.ClearTextButton="True"
+                <ComboBox x:Name="combox" Width="120" Margin="3" 
+                          DisplayMemberPath="Text"
+                          SelectedValuePath="Value"
+                          SelectedValue="{Binding Condition}"
+                          SelectedIndex="0"
+                          ac:ControlAttach.ClearTextButton="True"                          
                           Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
-                    <ComboBoxItem Tag="Type">分类</ComboBoxItem>
-                    <ComboBoxItem Tag="Name">标题</ComboBoxItem>
-                    <ComboBoxItem Tag="Text">摘要</ComboBoxItem>
-                    <ComboBoxItem Tag="CreatorName">创建者</ComboBoxItem>
-                    <ComboBoxItem Tag="Status">状态</ComboBoxItem>
+                    <ComboBox.ItemsSource>
+                        <x:Array Type="core:SelectOption">
+                            <core:SelectOption Text="分类" Value="Type"/>
+                            <core:SelectOption Text="标题" Value="Name"/>
+                            <core:SelectOption Text="摘要" Value="Text"/>
+                            <core:SelectOption Text="创建者" Value="CreatorName"/>
+                            <core:SelectOption Text="状态" Value="Status"/>
+                        </x:Array>
+                    </ComboBox.ItemsSource>
                 </ComboBox>
                 <ac:SearchBar Width="220" Margin="4,3" 
                      Text="{Binding KeyWord}"

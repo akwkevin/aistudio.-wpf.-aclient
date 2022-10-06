@@ -86,17 +86,18 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     ShowWait();
                 }
 
+                SearchKeyValues = new Dictionary<string, object>();
+                if (!string.IsNullOrEmpty(Condition) && !string.IsNullOrEmpty(KeyWord))
+                {
+                    SearchKeyValues.Add(Condition, KeyWord);
+                }
                 var data = new
                 {
                     PageIndex = Pagination.PageIndex,
                     PageRows = Pagination.PageRows,
                     SortField = Pagination.SortField,
                     SortType = Pagination.SortType,
-                    Search = new
-                    {
-                        keyword = KeyWord,
-                        condition = ConditionItem?.Tag,
-                    }
+                    SearchKeyValues = SearchKeyValues,
                 };
 
                 var result = await _dataProvider.GetData<List<OA_DefFormDTO>>($"/{Area}/{typeof(OA_DefFormDTO).Name.Replace("DTO", "")}/{GetDataList}", JsonConvert.SerializeObject(data));

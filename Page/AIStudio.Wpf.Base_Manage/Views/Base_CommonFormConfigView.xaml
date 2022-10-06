@@ -33,10 +33,20 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
-                <ComboBox x:Name="combox" Width="120" Margin="3" Text="{Binding Condition}" SelectedItem="{Binding ConditionItem}" SelectedIndex="0"
+                <ComboBox x:Name="combox" Width="120" Margin="3" 
+                          DisplayMemberPath="Text"
+                          SelectedValuePath="Value"
+                          SelectedValue="{Binding Condition}"
+                          SelectedIndex="0"
                           ac:ControlAttach.ClearTextButton="True"
                           Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
-                    <ComboBoxItem Tag="Table">表名</ComboBoxItem>
+                    <ComboBox.ItemsSource>
+                        <x:Array Type="core:SelectOption">
+                            <core:SelectOption Text="表名" Value="Table"/>
+                            <core:SelectOption Text="列头" Value="Header"/>
+                            <core:SelectOption Text="属性名" Value="PropertyName"/>
+                        </x:Array>
+                    </ComboBox.ItemsSource>
                 </ComboBox>
 			    <ac:SearchBar Width="220" Margin="4,3" 
                          Text="{Binding KeyWord}"

@@ -8,7 +8,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
     {
         public Base_AppSecretViewModel():base("Base_Manage", typeof(Base_AppSecretEditViewModel), typeof(Base_AppSecretEdit))
         {
-
+            Condition = "AppName";
         }
 
         protected override void GetData(bool iswaiting = false)
