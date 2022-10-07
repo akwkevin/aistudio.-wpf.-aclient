@@ -24,7 +24,7 @@
         <Border Grid.Row="1">
             <ac:Form DataContext="{Binding Data}"
                                      ac:Form.ItemMargin="3"  
-                                     ac:Form.HeaderWidth="80"
+                                     ac:Form.HeaderWidth="100"
                                      ac:Form.HeaderMargin="0,0,3,0">
                 <ac:FormItem>
                     <ac:FormItem.Header>
@@ -48,38 +48,48 @@
                     <ac:FormItem.Header>
                         <TextBlock>
                             <Run Foreground="Red">*</Run>
+                            <Run>是否启动</Run>
+                        </TextBlock>
+                    </ac:FormItem.Header>
+                    <ToggleButton HorizontalAlignment="Left"
+                              IsChecked="{Binding IsEnabled}" 
+                              ac:ToggleButtonAttach.CheckedElement="启动"
+                              Content="停止"
+                              Style="{StaticResource AIStudio.Styles.ToggleButton.Switch}" />
+                </ac:FormItem>
+                <ac:FormItem>
+                    <ac:FormItem.Header>
+                        <TextBlock>
+                            <Run Foreground="Red">*</Run>
                             <Run>间隔(Cron)</Run>
                         </TextBlock>
                     </ac:FormItem.Header>
-                    <TextBox Text="{Binding Interval,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
+                    <TextBox Text="{Binding Cron,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
                 </ac:FormItem>
                 <ac:FormItem>
                     <ac:FormItem.Header>
                         <TextBlock>
                             <Run Foreground="Red">*</Run>
-                            <Run>ApiUrl</Run>
+                            <Run>任务类名</Run>
                         </TextBlock>
                     </ac:FormItem.Header>
-                    <TextBox Text="{Binding ApiUrl,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
-                </ac:FormItem>
-                <ac:FormItem Header="AuthKey">
-                    <TextBox Text="{Binding AuthKey,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
-                </ac:FormItem>
-                <ac:FormItem  Header="AuthValue">
-                    <TextBox Text="{Binding AuthValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
-                </ac:FormItem>
-                <ac:FormItem>
-                    <ac:FormItem.Header>
-                        <TextBlock>
-                            <Run Foreground="Red">*</Run>
-                            <Run>请求方式</Run>
-                        </TextBlock>
-                    </ac:FormItem.Header>
-                    <TextBox Text="{Binding RequestType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
+                    <TextBox Text="{Binding ActionClass,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
                 </ac:FormItem>
                 <ac:FormItem Header="描述">
                     <TextBox Text="{Binding Describe,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
                 </ac:FormItem>
+                <ac:FormItem Header="请求方式">
+                    <TextBox Text="{Binding RequestType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
+                </ac:FormItem>
+                <ac:FormItem Header="请求Url">
+                    <TextBox Text="{Binding ApiUrl,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
+                </ac:FormItem>
+                <ac:FormItem Header="请求Key">
+                    <TextBox Text="{Binding AuthKey,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
+                </ac:FormItem>
+                <ac:FormItem  Header="请求Value">
+                    <TextBox Text="{Binding AuthValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
+                </ac:FormItem>  
             </ac:Form>
         </Border>
         <StackPanel Grid.Row="2"

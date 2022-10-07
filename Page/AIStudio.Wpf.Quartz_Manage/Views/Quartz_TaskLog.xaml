@@ -26,9 +26,9 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"/>
             </Border>
-            <Border Grid.Row="1" VerticalAlignment="Bottom" BorderBrush="{DynamicResource GrayBrush4}" SnapsToDevicePixels="True" BorderThickness="0,1,0,1" >
+            <Border Grid.Row="1" VerticalAlignment="Bottom" BorderBrush="{DynamicResource MahApps.Brushes.Gray4}" SnapsToDevicePixels="True" BorderThickness="0,1,0,1" >
                 <ScrollViewer>
-                    <ListView x:Name="gridList" ItemsSource="{Binding Data}" Style="{StaticResource DefaultListView}"
+                    <ListView x:Name="gridList" ItemsSource="{Binding Data}"
                               Visibility="{Binding ElementName=gridList,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
                         <ListView.ItemTemplate>
                             <DataTemplate>

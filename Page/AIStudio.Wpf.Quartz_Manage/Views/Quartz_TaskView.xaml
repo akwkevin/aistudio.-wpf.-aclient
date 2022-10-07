@@ -49,9 +49,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="作业名称"  Binding="{Binding TaskName}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="分组"  Binding="{Binding GroupName}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="最后执行时间"  Binding="{Binding LastRunTime,StringFormat=yyyy-MM-dd HH:mm:ss}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="间隔(Cron)"  Binding="{Binding Interval}" IsReadOnly="True"/>
-                <DataGridTemplateColumn Header="状态" IsReadOnly="True">
+                <DataGridTextColumn Header="启用状态"  Binding="{Binding IsEnabled}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="执行状态" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -82,19 +81,45 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="描述"  Binding="{Binding Describe}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="任务类名"  Binding="{Binding ActionClass}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="描述"  Binding="{Binding Remark}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="请求方式"  Binding="{Binding RequestType}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="请求地址"  Binding="{Binding ApiUrl}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="请求Key"  Binding="{Binding AuthKey}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="请求Value"  Binding="{Binding AuthValue}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="排序"  Binding="{Binding Sort}" IsReadOnly="True"/>
                 <DataGridTemplateColumn Header="操作" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
+                                    <Hyperlink Command="{Binding DataContext.PauseOneCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                               CommandParameter="{Binding Id}" 
+                                               perm:PermissionHelper.HasPerm="Quartz_Task.Edit"> 
+                                        <TextBlock Text="暂停" /> 
+                                    </Hyperlink>
+                                </TextBlock>
+                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
+                                    <Hyperlink Command="{Binding DataContext.StartOneCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                               CommandParameter="{Binding Id}" 
+                                               perm:PermissionHelper.HasPerm="Quartz_Task.Edit"> 
+                                        <TextBlock Text="开启" /> 
+                                    </Hyperlink>
+                                </TextBlock>
+                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
+                                    <Hyperlink Command="{Binding DataContext.ToDoOneCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                               CommandParameter="{Binding Id}" 
+                                               perm:PermissionHelper.HasPerm="Quartz_Task.Edit"> 
+                                        <TextBlock Text="立即执行" /> 
+                                    </Hyperlink>
+                                </TextBlock>
                                 <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
                                     <Hyperlink Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                                    CommandParameter="{Binding .}"
                                                    perm:PermissionHelper.HasPerm="Quartz_Task.Edit">
                                         <TextBlock Text="编辑" />
                                     </Hyperlink>
-                                </TextBlock>
+                                </TextBlock>                              
                                 <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
                                     <Hyperlink Command="{Binding DataContext.DeleteOneCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                                CommandParameter="{Binding Id}" 

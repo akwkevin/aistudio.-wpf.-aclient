@@ -33,27 +33,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                     GetData();
                 }
             }
-        }
-
-        private ObservableCollection<D_NoticeDTO> _notice;
-        public ObservableCollection<D_NoticeDTO> Notice
-        {
-            get { return _notice; }
-            set
-            {
-                SetProperty(ref _notice, value);
-            }
-        }
-
-        private ObservableCollection<D_UserMailDTO> _userMail;
-        public ObservableCollection<D_UserMailDTO> UserMail
-        {
-            get { return _userMail; }
-            set
-            {
-                SetProperty(ref _userMail, value);
-            }
-        }
+        }      
 
         private ObservableCollection<GroupData> _userMessage;
         public ObservableCollection<GroupData> UserMessage
@@ -139,135 +119,10 @@ namespace AIStudio.Wpf.Home.ViewModels
         {
             switch (SelectedIndex)
             {
-                case 0: await GetNotice(); break;
-                case 1: await GetUserMail(); break;
-                case 2: await GetUserMessage(); break;
-                case 3: await GetUserForm(); break;
+                case 0: await GetUserForm(); break;
             }
         }
 
-        private async Task GetNotice()
-        {
-            try
-            {
-                ShowWait();
-
-                var data = new
-                {
-                    PageIndex = Notice_Pagination.PageIndex,
-                    PageRows = Notice_Pagination.PageRows,
-                    SortField = Notice_Pagination.SortField,
-                    SortType = Notice_Pagination.SortType,
-                    Search = new
-                    {
-                        userId = _operator?.Property?.Id,
-                        markflag = true,
-                    }
-                };
-
-                var result = await _dataProvider.GetData<List<D_NoticeDTO>>($"/D_Manage/D_Notice/GetPageHistoryDataList", JsonConvert.SerializeObject(data));
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
-                }
-                else
-                {
-                    Notice_Pagination.Total = result.Total;
-                    Notice = new ObservableCollection<D_NoticeDTO>(result.Data);
-                    TotalCount = Notice_Pagination.Total + UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                HideWait();
-            }
-        }
-
-        private async Task GetUserMail()
-        {
-            try
-            {
-                ShowWait();
-
-                var data = new
-                {
-                    PageIndex = UserMail_Pagination.PageIndex,
-                    PageRows = UserMail_Pagination.PageRows,
-                    SortField = UserMail_Pagination.SortField,
-                    SortType = UserMail_Pagination.SortType,
-                    Search = new
-                    {
-                        userId = _operator?.Property?.Id,
-                        markflag = true,
-                    }
-                };
-
-                var result = await _dataProvider.GetData<List<D_UserMailDTO>>($"/D_Manage/D_UserMail/GetPageHistoryDataList", JsonConvert.SerializeObject(data));
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
-                }
-                else
-                {
-                    UserMail_Pagination.Total = result.Total;
-                    UserMail = new ObservableCollection<D_UserMailDTO>(result.Data);
-                    TotalCount = Notice_Pagination.Total + UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                HideWait();
-            }
-        }
-
-        private async Task GetUserMessage()
-        {
-            try
-            {
-                ShowWait();
-
-                var data = new
-                {
-                    PageIndex = UserMessage_Pagination.PageIndex,
-                    PageRows = UserMessage_Pagination.PageRows,
-                    SortField = UserMessage_Pagination.SortField,
-                    SortType = UserMessage_Pagination.SortType,
-                    Search = new
-                    {
-                        userId = _operator?.Property?.Id,
-                        markflag = true,
-                    }
-                };
-
-                var result = await _dataProvider.GetData<List<GroupData>>($"/D_Manage/D_UserMessage/GetPageHistoryGroupDataList",JsonConvert.SerializeObject(data));
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
-                }
-                else
-                {
-                    UserMessage_Pagination.Total = result.Data.Sum(p => p.Total);
-                    UserMessage = new ObservableCollection<GroupData>(result.Data);
-                    TotalCount = Notice_Pagination.Total + UserMail_Pagination.Total + UserMessage_Pagination.Total + UserForm_Pagination.Total;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                HideWait();
-            }
-        }
 
         private async Task GetUserForm()
         {

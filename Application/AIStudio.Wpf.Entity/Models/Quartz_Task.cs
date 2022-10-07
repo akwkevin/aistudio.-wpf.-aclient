@@ -1,23 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AIStudio.Wpf.Entity.Models
 {
     public partial class Quartz_Task
     {
         public string Id { get; set; }
+        /// <summary>
+        /// 作业名称
+        /// </summary>
+        [MaxLength(255)]
         public string TaskName { get; set; }
+
+        [MaxLength(255)]
         public string GroupName { get; set; }
-        public string Interval { get; set; }
-        public string ApiUrl { get; set; }
-        public string AuthKey { get; set; }
-        public string AuthValue { get; set; }
-        public string Describe { get; set; }
+
+        /// <summary>
+        /// 启用状态
+        /// </summary>
+        public bool IsEnabled { get; set; } = true;
+
+        /// <summary>
+        /// Cron表达式
+        /// </summary>
+        [MaxLength(50)]
+        public string Cron { get; set; }
+
+        /// <summary>
+        /// 任务类名
+        /// </summary>
+        [MaxLength(500)]
+        public string ActionClass { get; set; }
+
+        [MaxLength(500)]
+        public string Remark { get; set; }
+
+        [MaxLength(50)]
         public string RequestType { get; set; }
-        public DateTime? LastRunTime { get; set; }
-        public int Status { get; set; }
-        public bool ForbidOperate { get; set; }
-        public bool ForbidEdit { get; set; }
+
+        [MaxLength(500)]
+        public string ApiUrl { get; set; }
+
+        [MaxLength(50)]
+        public string AuthKey { get; set; }
+
+        [MaxLength(500)]
+        public string AuthValue { get; set; }
+
+        /// <summary>
+        /// 排序
+        /// </summary>
+        public int Sort { get; set; }
         public bool Deleted { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime? ModifyTime { get; set; }

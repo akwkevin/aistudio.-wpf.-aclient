@@ -1,6 +1,7 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Controls;
+using AIStudio.Wpf.Controls.Commands;
 using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.Quartz_Manage.Views;
 using Newtonsoft.Json;
@@ -54,7 +55,34 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             get
             {
-                return this._logCommand ?? (this._logCommand = new CanExecuteDelegateCommand<Quartz_TaskDTO>(para => this.Log(para)));
+                return this._logCommand ?? (this._logCommand = new DelegateCommand<Quartz_TaskDTO>(para => this.Log(para)));
+            }
+        }
+
+        private ICommand _pauseOneCommand;
+        public ICommand PauseOneCommand
+        {
+            get
+            {
+                return this._pauseOneCommand ?? (this._pauseOneCommand = new DelegateCommand<string>(para => this.Pause(para)));
+            }
+        }
+
+        private ICommand _startOneCommand;
+        public ICommand StartOneCommand
+        {
+            get
+            {
+                return this._startOneCommand ?? (this._startOneCommand = new DelegateCommand<string>(para => this.Start(para)));
+            }
+        }
+
+        private ICommand _toDoOneCommand;
+        public ICommand ToDoOneCommand
+        {
+            get
+            {
+                return this._toDoOneCommand ?? (this._toDoOneCommand = new DelegateCommand<string>(para => this.ToDo(para)));
             }
         }
 
@@ -88,9 +116,17 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             base.Search(para);
         }
 
-        private async void Pause()
+        protected async void Pause(string id = null)
         {
-            List<string> ids = Data.Where(p => p.IsChecked).Select(p => p.Id).ToList();
+            List<string> ids = new List<string>();
+            if (string.IsNullOrEmpty(id))
+            {
+                ids.AddRange(Data.Where(p => p.IsChecked).Select(p => p.Id));
+            }
+            else
+            {
+                ids.Add(id);
+            }
 
             var sure = await MessageBoxDialog.Warning("确认暂停吗?", "提示", Identifier);
             if (sure == BaseDialogResult.OK)
@@ -117,9 +153,17 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             }
         }
 
-        private async void Start()
+        private async void Start(string id = null)
         {
-            List<string> ids = Data.Where(p => p.IsChecked).Select(p => p.Id).ToList();
+            List<string> ids = new List<string>();
+            if (string.IsNullOrEmpty(id))
+            {
+                ids.AddRange(Data.Where(p => p.IsChecked).Select(p => p.Id));
+            }
+            else
+            {
+                ids.Add(id);
+            }            
 
             var sure = await MessageBoxDialog.Warning("确认开始吗?", "提示", Identifier);
             if (sure == BaseDialogResult.OK)
@@ -146,9 +190,17 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             }
         }
 
-        private async void ToDo()
+        private async void ToDo(string id = null)
         {
-            List<string> ids = Data.Where(p => p.IsChecked).Select(p => p.Id).ToList();
+            List<string> ids = new List<string>();
+            if (string.IsNullOrEmpty(id))
+            {
+                ids.AddRange(Data.Where(p => p.IsChecked).Select(p => p.Id));
+            }
+            else
+            {
+                ids.Add(id);
+            }
 
             var sure = await MessageBoxDialog.Warning("确认立即执行吗?", "提示", Identifier);
             if (sure == BaseDialogResult.OK)
