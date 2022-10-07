@@ -89,7 +89,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_DepartmentViewModel() : base("Base_Manage", typeof(Base_DepartmentEditViewModel), typeof(Base_DepartmentEdit))
+        public Base_DepartmentViewModel() : base("Base_Manage", typeof(Base_DepartmentEditViewModel), typeof(Base_DepartmentEdit), "Name")
         {
             Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue };
         }
@@ -103,7 +103,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     ShowWait();
                 }
 
-                var result = await _dataProvider.GetData<List<Base_DepartmentTree>>($"/Base_Manage/Base_Department/GetTreeDataList");
+                var result = await _dataProvider.GetData<List<Base_DepartmentTree>>($"/Base_Manage/Base_Department/GetTreeDataList", GetDataJson());
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);
@@ -199,7 +199,17 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             {
                 WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
 
-                var result = await _dataProvider.GetData<List<Base_UserDTO>>($"/Base_Manage/Base_User/GetDataListByDepartment", JsonConvert.SerializeObject(new { id = para.Id }));
+                var searchKeyValues = new Dictionary<string, object>() 
+                {
+                    {"DepartmentId", para.Id }
+                };
+
+                var data = new
+                {
+                    SearchKeyValues = searchKeyValues,
+                };
+
+                var result = await _dataProvider.GetData<List<Base_UserDTO>>($"/Base_Manage/Base_User/GetDataList", JsonConvert.SerializeObject(data));
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);

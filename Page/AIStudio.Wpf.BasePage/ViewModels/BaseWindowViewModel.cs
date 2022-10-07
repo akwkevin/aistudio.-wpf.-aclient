@@ -23,13 +23,21 @@ namespace AIStudio.Wpf.BasePage.ViewModels
     public class BaseWindowViewModel<T> : NavigationDockWindowViewModel where T : class, IIsChecked
     {
         protected IDataProvider _dataProvider;
-        public BaseWindowViewModel(string area, Type type, Type editType, string getDataList = "GetDataList")
+        /// <summary>
+        /// VM基类
+        /// </summary>
+        /// <param name="区域"></param>
+        /// <param name="ViewModel类型"></param>
+        /// <param name="Edit控件"></param>
+        /// <param name="查询筛选条件的字段名，如果不赋值，那么查询条件不生效，如果无需查询条件，那么置为空。注：为了大家注意这个字段，故没有给初始值"></param>
+        /// <param name="getDataList"></param>
+        public BaseWindowViewModel(string area, Type type, Type editType, string condition, string getDataList = "GetDataList")
         {
             Area = area;
             GetDataList = getDataList;
             Type = type;
             EditType = editType;
-
+            Condition = condition;
             InitDataProvider();
         }
 
@@ -65,8 +73,6 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 SetProperty(ref _keyWord, value);
             }
         }
-
-        public Dictionary<string, object> SearchKeyValues { get; set; } = new Dictionary<string, object>();
 
         private ObservableCollection<T> _data;
         public ObservableCollection<T> Data
@@ -186,6 +192,26 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             WindowBase.HideWaiting(Identifier);
         }
 
+        protected virtual string GetDataJson()
+        {
+            var searchKeyValues = new Dictionary<string, object>();
+            if (!string.IsNullOrEmpty(Condition) && !string.IsNullOrEmpty(KeyWord))
+            {
+                searchKeyValues.Add(Condition, KeyWord);
+            }
+
+            var data = new
+            {
+                PageIndex = Pagination.PageIndex,
+                PageRows = Pagination.PageRows,
+                SortField = Pagination.SortField,
+                SortType = Pagination.SortType,
+                SearchKeyValues = searchKeyValues,
+            };
+
+            return JsonConvert.SerializeObject(data);
+        }
+
         protected virtual async void GetData(bool iswaiting = false)
         {
             try
@@ -195,22 +221,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                     ShowWait();
                 }
 
-                SearchKeyValues = new Dictionary<string, object>();
-                if (!string.IsNullOrEmpty(Condition) && !string.IsNullOrEmpty(KeyWord))
-                {
-                    SearchKeyValues.Add(Condition, KeyWord);
-                }
-
-                var data = new
-                {
-                    PageIndex = Pagination.PageIndex,
-                    PageRows = Pagination.PageRows,
-                    SortField = Pagination.SortField,
-                    SortType = Pagination.SortType,
-                    SearchKeyValues = SearchKeyValues,
-                };
-
-                var result = await _dataProvider.GetData<List<T>>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/{GetDataList}", JsonConvert.SerializeObject(data));
+                var result = await _dataProvider.GetData<List<T>>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/{GetDataList}", GetDataJson());
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);
@@ -369,6 +380,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 
         protected virtual void Search(object para = null)
         {
+            Pagination.PageIndex = 0;
             GetData();
         }
 

@@ -7,6 +7,7 @@ using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
 using Newtonsoft.Json;
+using org.mariuszgromada.math.mxparser.parsertokens;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Regions;
@@ -241,6 +242,21 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             }
         }
 
+
+        protected virtual string GetDataJson()
+        {
+            var data = new
+            {
+                PageIndex = Pagination.PageIndex,
+                PageRows = Pagination.PageRows,
+                SortField = Pagination.SortField,
+                SortType = Pagination.SortType,
+                SearchKeyValues = QueryConditionItem.ListToDictionary(QueryConditionItems),
+            };
+
+            return JsonConvert.SerializeObject(data);
+        }
+
         protected virtual async void GetData(bool iswaiting = false)
         {
             try
@@ -248,18 +264,9 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                 if (iswaiting == false)
                 {
                     ShowWait();
-                }
+                }               
 
-                var data = new
-                {
-                    PageIndex = Pagination.PageIndex,
-                    PageRows = Pagination.PageRows,
-                    SortField = Pagination.SortField,
-                    SortType = Pagination.SortType,
-                    SearchKeyValues = QueryConditionItem.ListToDictionary(QueryConditionItems),
-                };
-
-                var result = await _dataProvider.GetData<List<ExpandoObject>>($"/{Area}/{Name}/{GetDataList}", JsonConvert.SerializeObject(data));
+                var result = await _dataProvider.GetData<List<ExpandoObject>>($"/{Area}/{Name}/{GetDataList}", GetDataJson());
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);

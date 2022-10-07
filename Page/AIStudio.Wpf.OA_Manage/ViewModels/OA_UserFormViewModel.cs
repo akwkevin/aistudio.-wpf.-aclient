@@ -30,13 +30,13 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         protected IOperator _operator { get; }
 
-        public OA_UserFormViewModel() : base("OA_Manage", typeof(OA_UserFormEditViewModel), typeof(OA_UserFormEdit))
+        public OA_UserFormViewModel() : base("OA_Manage", typeof(OA_UserFormEditViewModel), typeof(OA_UserFormEdit), "DefFormName")
         {
             _operator = ContainerLocator.Current.Resolve<IOperator>();
         }
 
         //无效参数，做个标记
-        public OA_UserFormViewModel(string[] id) : base("OA_Manage", typeof(OA_UserFormEditViewModel), typeof(OA_UserFormEdit))
+        public OA_UserFormViewModel(string[] id) : base("OA_Manage", typeof(OA_UserFormEditViewModel), typeof(OA_UserFormEdit), "DefFormName")
         {
 
         }

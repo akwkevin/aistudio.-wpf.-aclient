@@ -78,7 +78,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         private string tmpFileText;
         private string savePath;
 
-        public BuildCodeViewModel() : base("Base_Manage", typeof(BuildCodeEditViewModel), typeof(BuildCodeEdit))
+        public BuildCodeViewModel() : base("Base_Manage", typeof(BuildCodeEditViewModel), typeof(BuildCodeEdit),"")
         {
             var basedir = AppDomain.CurrentDomain.BaseDirectory;
 

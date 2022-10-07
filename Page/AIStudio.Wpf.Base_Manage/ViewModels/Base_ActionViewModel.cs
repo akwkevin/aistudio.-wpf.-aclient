@@ -56,9 +56,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_ActionViewModel() : base("Base_Manage", typeof(Base_ActionEditViewModel), typeof(Base_ActionEdit), "GetMenuTreeList")
+        public Base_ActionViewModel() : base("Base_Manage", typeof(Base_ActionEditViewModel), typeof(Base_ActionEdit), "", "GetMenuTreeList")
         {
-            Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue };          
+            Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue };
         }
 
         protected override async void GetData(bool iswaiting = false)
@@ -70,7 +70,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     ShowWait();
                 }
 
-                var result = await _dataProvider.GetData<List<Base_ActionTree>>($"/Base_Manage/Base_Action/GetMenuTreeList");
+
+                var result = await _dataProvider.GetData<List<Base_ActionTree>>($"/Base_Manage/Base_Action/GetMenuTreeList", GetDataJson());
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);

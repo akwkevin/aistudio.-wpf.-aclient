@@ -6,10 +6,10 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
     public class Base_TestViewModel : BaseWindowViewModel<Base_TestDTO>
     {
-        public Base_TestViewModel():base("Base_Manage", typeof(Base_TestEditViewModel), typeof(Base_TestEdit))
+        public Base_TestViewModel() : base("Base_Manage", typeof(Base_TestEditViewModel), typeof(Base_TestEdit), "")
         {
-		
-        }        
+
+        }
 
         protected override void GetData(bool iswaiting = false)
         {
@@ -31,7 +31,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             base.Print(Data);
         }
 
-        protected override void Search(object para=null)
+        protected override void Search(object para = null)
         {
             base.Search(para);
         }

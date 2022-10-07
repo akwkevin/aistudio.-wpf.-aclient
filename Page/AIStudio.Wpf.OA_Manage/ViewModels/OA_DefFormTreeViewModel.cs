@@ -43,7 +43,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         }
 
         protected IUserData _userData { get; }
-        public OA_DefFormTreeViewModel() : base("OA_Manage", typeof(OA_DefFormTreeViewModel), null)
+        public OA_DefFormTreeViewModel() : base("OA_Manage", typeof(OA_DefFormTreeViewModel), null,"")
         {
             
         }

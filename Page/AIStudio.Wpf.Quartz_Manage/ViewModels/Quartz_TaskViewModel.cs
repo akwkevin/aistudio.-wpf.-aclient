@@ -58,7 +58,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             }
         }
 
-        public Quartz_TaskViewModel():base("Quartz_Manage", typeof(Quartz_TaskEditViewModel), typeof(Quartz_TaskEdit))
+        public Quartz_TaskViewModel():base("Quartz_Manage", typeof(Quartz_TaskEditViewModel), typeof(Quartz_TaskEdit), "TaskName")
         {
 	
         }

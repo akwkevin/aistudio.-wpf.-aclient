@@ -6,7 +6,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
     public class Base_CommonFormConfigViewModel : BaseWindowViewModel<Base_CommonFormConfigDTO>
     {
-        public Base_CommonFormConfigViewModel():base("Base_Manage", typeof(Base_CommonFormConfigEditViewModel), typeof(Base_CommonFormConfigEdit))
+        public Base_CommonFormConfigViewModel():base("Base_Manage", typeof(Base_CommonFormConfigEditViewModel), typeof(Base_CommonFormConfigEdit), "Table")
         {
 		
         }        

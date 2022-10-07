@@ -71,22 +71,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     ShowWait();
                 }
 
-                SearchKeyValues = new Dictionary<string, object>();
-                if (!string.IsNullOrEmpty(Condition) && !string.IsNullOrEmpty(KeyWord))
-                {
-                    SearchKeyValues.Add(Condition, KeyWord);
-                }
-
-                var data = new
-                {
-                    PageIndex = Pagination.PageIndex,
-                    PageRows = Pagination.PageRows,
-                    SortField = Pagination.SortField,
-                    SortType = Pagination.SortType,
-                    SearchKeyValues = SearchKeyValues,
-                };
-
-                var result = await _dataProvider.GetData<List<Base_DictionaryTree>>($"/Base_Manage/Base_Dictionary/GetTreeDataList", JsonConvert.SerializeObject(data));
+                var result = await _dataProvider.GetData<List<Base_DictionaryTree>>($"/Base_Manage/Base_Dictionary/GetTreeDataList", GetDataJson());
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);

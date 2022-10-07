@@ -13,7 +13,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
     public class Base_RoleViewModel : BaseWindowViewModel<Base_RoleDTO>
     {
-        public Base_RoleViewModel():base("Base_Manage", typeof(Base_RoleEditViewModel),typeof(Base_RoleEdit))
+        public Base_RoleViewModel():base("Base_Manage", typeof(Base_RoleEditViewModel),typeof(Base_RoleEdit),"RoleName")
         {
            
         }

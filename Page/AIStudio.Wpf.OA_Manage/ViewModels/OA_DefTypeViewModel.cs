@@ -52,7 +52,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        public OA_DefTypeViewModel():base("OA_Manage", typeof(OA_DefTypeEditViewModel), typeof(OA_DefTypeEdit))
+        public OA_DefTypeViewModel():base("OA_Manage", typeof(OA_DefTypeEditViewModel), typeof(OA_DefTypeEdit), "Name")
         {
 	
         }
@@ -66,21 +66,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     ShowWait();
                 }
 
-                SearchKeyValues = new Dictionary<string, object>();
-                if (!string.IsNullOrEmpty(Condition) && !string.IsNullOrEmpty(KeyWord))
-                {
-                    SearchKeyValues.Add(Condition, KeyWord);
-                }
-                var data = new
-                {
-                    PageIndex = Pagination.PageIndex,
-                    PageRows = Pagination.PageRows,
-                    SortField = Pagination.SortField,
-                    SortType = Pagination.SortType,
-                    SearchKeyValues = SearchKeyValues,
-                };
-
-                var result = await _dataProvider.GetData<List<OA_DefTypeTree>>($"/OA_Manage/OA_DefType/GetTreeDataList", JsonConvert.SerializeObject(data));
+                var result = await _dataProvider.GetData<List<OA_DefTypeTree>>($"/OA_Manage/OA_DefType/GetTreeDataList", GetDataJson());
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);

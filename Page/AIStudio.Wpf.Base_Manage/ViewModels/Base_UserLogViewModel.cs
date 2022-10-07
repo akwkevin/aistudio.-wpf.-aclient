@@ -126,7 +126,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_UserLogViewModel() : base("Base_Manage", typeof(BaseEditViewModel<Base_UserLogDTO>), typeof(Base_UserlogEdit))
+        public Base_UserLogViewModel() : base("Base_Manage", typeof(BaseEditViewModel<Base_UserLogDTO>), typeof(Base_UserlogEdit), "LogContent")
         {
 
         }

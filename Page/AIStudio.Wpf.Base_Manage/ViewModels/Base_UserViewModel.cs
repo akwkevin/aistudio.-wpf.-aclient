@@ -12,9 +12,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
     public class Base_UserViewModel : BaseWindowViewModel<Base_UserDTO>
     {
-        public Base_UserViewModel():base("Base_Manage", typeof(Base_UserEditViewModel), typeof(Base_UserEdit))
+        public Base_UserViewModel():base("Base_Manage", typeof(Base_UserEditViewModel), typeof(Base_UserEdit), "UserName")
         {
-            Condition = "UserName";
+           
         }
 
         protected override void GetData(bool iswaiting = false)

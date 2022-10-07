@@ -106,10 +106,22 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             this.PropertyChanged += CommonQueryViewModel_PropertyChanged;              
         }
 
-        protected override void GetData(bool iswaiting = false)
+        protected override string GetDataJson()
         {
-            SearchKeyValues = QueryConditionItem.ListToDictionary(QueryConditionItems);
+            var data = new
+            {
+                PageIndex = Pagination.PageIndex,
+                PageRows = Pagination.PageRows,
+                SortField = Pagination.SortField,
+                SortType = Pagination.SortType,
+                SearchKeyValues = QueryConditionItem.ListToDictionary(QueryConditionItems),
+            };
 
+            return JsonConvert.SerializeObject(data);
+        }
+
+        protected override void GetData(bool iswaiting = false)
+        {          
             base.GetData(iswaiting);
         }
 
