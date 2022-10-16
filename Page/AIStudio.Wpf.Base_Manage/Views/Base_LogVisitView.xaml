@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="AIStudio.Wpf.Base_Manage.Views.Base_LogSystemView"
+﻿<UserControl x:Class="AIStudio.Wpf.Base_Manage.Views.Base_LogVisitView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -25,9 +25,6 @@
                     <WrapPanel/>
                 </ItemsPanelTemplate>
             </ac:Form.ItemsPanel>
-            <ac:FormItem Header="类别">
-                <ComboBox MinWidth="100" ItemsSource="{Binding LogTypeList}" DisplayMemberPath="Text" SelectedValuePath="Value" Text="{Binding LogType}" />
-            </ac:FormItem>
             <ac:FormItem Header="操作人">
                 <TextBox MinWidth="100" Text="{Binding CreatorName}"/>
             </ac:FormItem>
@@ -55,8 +52,19 @@
                 <ac:SelectAllBahavior InitialState="False"/>
             </i:Interaction.Behaviors>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="内容"  Binding="{Binding Message}" Width="*" IsReadOnly="True"/>
-                <DataGridTextColumn Header="类别"  Binding="{Binding LogType}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="日志名称"  Binding="{Binding Name}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="是否成功"  Binding="{Binding IsSuccess}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="消息"  Binding="{Binding Message}" Width="*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="浏览器"  Binding="{Binding Browser}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="操作系统"  Binding="{Binding OperatingSystem}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="IP"  Binding="{Binding IP}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="请求路径"  Binding="{Binding Path}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="类名称"  Binding="{Binding ClassName}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="方法名称"  Binding="{Binding MethodName}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="请求方式"  Binding="{Binding RequestMethod}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="请求Body"  Binding="{Binding Body}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="返回结果"  Binding="{Binding Result}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="耗时"  Binding="{Binding ElapsedTime}" Width="Auto" IsReadOnly="True"/>
                 <DataGridTextColumn Header="操作人"  Binding="{Binding CreatorName}" Width="Auto" IsReadOnly="True"/>
                 <DataGridTextColumn Header="时间"  Binding="{Binding CreateTime,StringFormat=yyyy-MM-dd HH:mm:ss}" Width="Auto" IsReadOnly="True"/>                
             </DataGrid.Columns>

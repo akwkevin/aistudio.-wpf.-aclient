@@ -9,7 +9,13 @@ namespace AIStudio.Wpf.Entity.Models
         public DateTime CreateTime { get; set; }
         public string CreatorId { get; set; }
         public string CreatorName { get; set; }
+        public string TenantId { get; set; }
         public string LogType { get; set; }
         public string Message { get; set; }
+
+        /// <summary>
+        /// 日志时间
+        /// </summary>
+        public DateTime LogTime { get; set; }
     }
 }

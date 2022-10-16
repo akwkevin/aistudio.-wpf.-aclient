@@ -12,22 +12,8 @@ using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_LogSystemViewModel : BaseWindowViewModel<Base_LogSystemDTO>
+    public class Base_LogOperatingViewModel : BaseWindowViewModel<Base_LogOperatingDTO>
     {
-        private string _logType;
-        public string LogType
-        {
-            get { return _logType; }
-            set
-            {
-                if (_logType != value)
-                {
-                    _logType = value;
-                    RaisePropertyChanged("LogType");
-                }
-            }
-        }
-
         private string _creatorName;
         public string CreatorName
         {
@@ -68,57 +54,13 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     RaisePropertyChanged("EndTime");
                 }
             }
-        }
+        }     
 
-        private List<SelectOption> _logTypeList;
-        public List<SelectOption> LogTypeList
-        {
-            get { return _logTypeList; }
-            set
-            {
-                if (_logTypeList != value)
-                {
-                    _logTypeList = value;
-                    RaisePropertyChanged("LogTypeList");
-                }
-            }
-        }
-
-        public Base_LogSystemViewModel() : base("Base_Manage", null, null, "Message")
+        public Base_LogOperatingViewModel() : base("Base_Manage", null, null, "Message")
         {
 
         }
-
-        public override void Initialize()
-        {
-            if (IsInitialize)
-            {
-                return;
-            }
-            base.Initialize();
-            InitData();
-        }
-
-        private async void InitData()
-        {
-            await GetLogTypeList();
-        }
-
-        private async Task GetLogTypeList()
-        {
-            var result = await _dataProvider.GetData<List<SelectOption>>($"/Base_Manage/Base_LogSystem/GetLogTypeList");
-            if (!result.Success)
-            {
-                throw new Exception(result.Msg);
-            }
-            else
-            {
-                LogTypeList = result.Data;
-                LogTypeList.Insert(0, new SelectOption() { Value = "", Text = "" });
-                LogType = "";
-            }
-        }
-
+      
         protected override string GetDataJson()
         {
             var searchKeyValues = new Dictionary<string, object>();
@@ -126,10 +68,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             {
                 searchKeyValues.Add(Condition, KeyWord);
             }
-            if (!string.IsNullOrEmpty(LogType))
-            {
-                searchKeyValues.Add("LogType", LogType);
-            }
+           
             if (!string.IsNullOrEmpty(CreatorName))
             {
                 searchKeyValues.Add("CreatorName", CreatorName);
