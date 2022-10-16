@@ -6,11 +6,11 @@ using System.Windows.Documents;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    class Base_UserLogDocumentRenderer : IDocumentRenderer
+    class Base_LogSystemDocumentRenderer : IDocumentRenderer
     {
         public void Render(FlowDocument doc, object data)
         {
-            if (data is ObservableCollection<Base_UserLogDTO> items)
+            if (data is ObservableCollection<Base_LogSystemDTO> items)
             {
                 TableRowGroup groupDetails = doc.FindName("rowsDetails") as TableRowGroup;
 
@@ -23,7 +23,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 
-                    cell = new TableCell(new Paragraph(new Run(item.LogContent)));
+                    cell = new TableCell(new Paragraph(new Run(item.Message)));
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 

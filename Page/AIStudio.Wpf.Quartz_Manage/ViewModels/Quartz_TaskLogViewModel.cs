@@ -25,8 +25,8 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             }
         }
 
-        private ObservableCollection<Base_UserLogDTO> _data;
-        public ObservableCollection<Base_UserLogDTO> Data
+        private ObservableCollection<Base_LogSystemDTO> _data;
+        public ObservableCollection<Base_LogSystemDTO> Data
         {
             get { return _data; }
             set
@@ -81,13 +81,13 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                     }
                 };
 
-                var result = await _dataProvider.GetData<List<Base_UserLogDTO>>($"/Base_Manage/Base_UserLog/GetLogList", JsonConvert.SerializeObject(data));
+                var result = await _dataProvider.GetData<List<Base_LogSystemDTO>>($"/Base_Manage/Base_LogSystem/GetLogList", JsonConvert.SerializeObject(data));
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);
                 }
                 Pagination.Total = result.Total;
-                Data = new ObservableCollection<Base_UserLogDTO>(result.Data);
+                Data = new ObservableCollection<Base_LogSystemDTO>(result.Data);
 
             }
             catch (Exception ex)

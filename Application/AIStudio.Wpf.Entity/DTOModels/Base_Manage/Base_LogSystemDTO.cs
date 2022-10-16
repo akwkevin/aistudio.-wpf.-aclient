@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace AIStudio.Wpf.Entity.DTOModels
 {
-    public partial class Base_UserLogDTO : Base_UserLog, INotifyPropertyChanged, IIsChecked
+    public partial class Base_LogSystemDTO : Base_LogSystem, INotifyPropertyChanged, IIsChecked
     {
 
         private bool isChecked;
@@ -38,7 +38,7 @@ namespace AIStudio.Wpf.Entity.DTOModels
         }
     }
 
-    public partial class Base_UserLogDTO : IDataErrorInfo
+    public partial class Base_LogSystemDTO : IDataErrorInfo
     {
         [Browsable(false)]
         public string this[string columnName]
