@@ -406,15 +406,14 @@ namespace AIStudio.Wpf.Home.ViewModels
                 try
                 {
                     var control = WindowBase.ShowWaiting(WaitingStyle.Progress, Identifier, "正在获取用户信息");
-                    var userinfo = await _dataProvider.GetData<UserInfoPermissions>("/Base_Manage/Home/GetOperatorInfo");
+                    var userinfo = await _dataProvider.GetData<Base_UserDTO>("/Base_Manage/Home/GetOperatorInfo");
                     if (!userinfo.Success)
                     {
                         throw new System.Exception(userinfo.Msg);
                     }
 
-                    _operator.Property = userinfo.Data.UserInfo;
-                    _operator.Permissions = userinfo.Data.Permissions;
-                    _operator.Avatar = userinfo.Data.UserInfo.Avatar;
+                    _operator.Property = userinfo.Data;
+                    _operator.Avatar = userinfo.Data.Avatar;
 
                     control.WaitInfo = "正在获取菜单信息";
                     var menuinfo = await _dataProvider.GetData<List<Base_ActionTree>>("/Base_Manage/Home/GetOperatorMenuList");
@@ -477,8 +476,9 @@ namespace AIStudio.Wpf.Home.ViewModels
             MenuItems.Add(winStatus);
             SearchMenus = new ObservableCollection<AMenuItem>(AddTotalMenu(MenuItems));
 
-            _operator.MenuItems = MenuItems;
-            _operator.SearchMenus = SearchMenus;
+            _operator.MenuTrees = MenuItems;
+            _operator.Menus = SearchMenus;
+            _operator.Permissions = _operator.Menus.Where(p => p.PermissionValues != null).SelectMany(p => p.PermissionValues).ToList();
             #endregion
         }
 
@@ -528,7 +528,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             var nodes = base_Actions.Where(p => string.IsNullOrEmpty(p.ParentId));
             foreach (var node in nodes)
             {
-                AMenuItem aMenuItem = new AMenuItem() { Icon = node.Icon, Label = node.Text, Code = node.Url, Value = node.ValueInfo, Type = node.Type, ParentId = node.ParentId, Id = node.Id, NeedAction = node.NeedAction };
+                AMenuItem aMenuItem = new AMenuItem() { Icon = node.Icon, Label = node.Text, Code = node.Url, Value = node.ValueInfo, Type = node.Type, ParentId = node.ParentId, Id = node.Id, NeedAction = node.NeedAction, PermissionValues = node.PermissionValues };
                 if (aMenuItem.Type == 1)
                 {
                     aMenuItem.Command = MenuExcuteCommand;
@@ -544,7 +544,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             {
                 foreach (var node in parent.Children)
                 {
-                    AMenuItem aMenuItem = new AMenuItem() { Icon = node.Icon, Label = node.Text, Code = node.Url, Value = node.ValueInfo, Type = node.Type, ParentId = node.ParentId, Id = node.Id };
+                    AMenuItem aMenuItem = new AMenuItem() { Icon = node.Icon, Label = node.Text, Code = node.Url, Value = node.ValueInfo, Type = node.Type, ParentId = node.ParentId, Id = node.Id, NeedAction = node.NeedAction, PermissionValues = node.PermissionValues };
                     if (aMenuItem.Type == 1)
                     {
                         aMenuItem.Command = MenuExcuteCommand;

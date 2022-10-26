@@ -44,8 +44,8 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
                 Util.Panels.PanelType.MaximizedTilePanel
             };
 
-            MenuItems = _operator.MenuItems;
-            SearchMenus = _operator.SearchMenus;
+            MenuItems = _operator.MenuTrees;
+            SearchMenus = _operator.Menus;
         }
 
         public override async void OnNavigatedTo(NavigationContext navigationContext)

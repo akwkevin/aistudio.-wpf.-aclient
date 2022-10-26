@@ -22,10 +22,10 @@ namespace AIStudio.Wpf.Business
         List<string> Permissions { get; set; }
 
         //菜单树
-        ObservableCollection<AMenuItem> MenuItems { get; set; }
+        ObservableCollection<AMenuItem> MenuTrees { get; set; }
 
         //打平用于查询的菜单
-        ObservableCollection<AMenuItem> SearchMenus { get; set; }
+        ObservableCollection<AMenuItem> Menus { get; set; }
 
         #region 操作方法
 

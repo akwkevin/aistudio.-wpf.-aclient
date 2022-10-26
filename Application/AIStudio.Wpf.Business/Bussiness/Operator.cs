@@ -24,10 +24,10 @@ namespace AIStudio.Wpf.Business
         public List<string> Permissions { get; set; }      
 
         //菜单树
-        public ObservableCollection<AMenuItem> MenuItems { get; set; }
+        public ObservableCollection<AMenuItem> MenuTrees { get; set; }
 
         //打平用于查询的菜单
-        public ObservableCollection<AMenuItem> SearchMenus { get; set; }
+        public ObservableCollection<AMenuItem> Menus { get; set; }
 
     }
 }

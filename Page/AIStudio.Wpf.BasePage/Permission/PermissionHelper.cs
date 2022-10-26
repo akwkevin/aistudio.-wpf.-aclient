@@ -32,12 +32,12 @@ namespace AIStudio.Wpf.BasePage.Permission
                 var _operator = ContainerLocator.Current.Resolve<IOperator>(); 
                 if (_operator != null)
                 {
-                    var menu = _operator.SearchMenus.FirstOrDefault(p => p.WpfName != null && str.StartsWith(p.WpfName));
+                    var menu = _operator.Menus.FirstOrDefault(p => p.WpfName != null && str.StartsWith(p.WpfName));
                     if (menu != null && menu.NeedAction == false)
                     {
                         element.Visibility = Visibility.Visible;
                     }
-                    else if (_operator.Permissions == null || !_operator.Permissions.Contains(str))
+                    else if (_operator.Permissions == null || !_operator.Permissions.Any(p => p.Contains("(" + str + ")")))
                     {
                         element.Visibility = Visibility.Collapsed;
                     }
@@ -52,12 +52,12 @@ namespace AIStudio.Wpf.BasePage.Permission
                 var _operator = ContainerLocator.Current.Resolve<IOperator>();
                 if (_operator != null)
                 {
-                    var menu = _operator.SearchMenus.FirstOrDefault(p => p.WpfName != null && str.StartsWith(p.WpfName));
+                    var menu = _operator.Menus.FirstOrDefault(p => p.WpfName != null && str.StartsWith(p.WpfName));
                     if (menu != null && menu.NeedAction == false)
                     {
                         trigger.IsEnabled = true;
                     }
-                    else if (_operator.Permissions == null || !_operator.Permissions.Contains(str))
+                    else if (_operator.Permissions == null || !_operator.Permissions.Any(p => p.Contains("(" + str + ")")))
                     {
                         trigger.IsEnabled = false;
                     }

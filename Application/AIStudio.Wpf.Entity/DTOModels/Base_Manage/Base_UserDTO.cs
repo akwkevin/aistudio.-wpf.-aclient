@@ -34,7 +34,7 @@ namespace AIStudio.Wpf.Entity.DTOModels
                 return (RoleTypes)type;
             }
         }
-        public string DepartmentName { get; set; }
+        public string Base_DepartmentName { get; set; }
         public string DepartmentFullName { get; set; }
         public string SexText { get => Sex == 1 ? "男" : "女"; }
         public string BirthdayText { get => Birthday?.ToString("yyyy-MM-dd"); }
@@ -105,11 +105,11 @@ namespace AIStudio.Wpf.Entity.DTOModels
         }
     }
 
-    public class UserInfoPermissions
-    {
-        public Base_UserDTO UserInfo { get; set; }
+    //public class UserInfoPermissions
+    //{
+    //    public Base_UserDTO UserInfo { get; set; }
 
-        public List<string> Permissions { get; set; }
-    }
+    //    public List<string> Permissions { get; set; }
+    //}
 
 }

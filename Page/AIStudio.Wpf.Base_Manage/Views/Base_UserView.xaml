@@ -47,7 +47,7 @@
                 <DataGridTextColumn Header="姓名"  Binding="{Binding RealName}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="性别"  Binding="{Binding SexText}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="出生日期"  Binding="{Binding Birthday, StringFormat=yyyy-MM-dd}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="所属部门"  Binding="{Binding DepartmentName}" IsReadOnly="True" />
+                <DataGridTextColumn Header="所属部门"  Binding="{Binding Base_DepartmentName}" IsReadOnly="True" />
                 <DataGridTextColumn Header="所属角色" Binding="{Binding RoleNames}" IsReadOnly="True"/>
                 <DataGridTemplateColumn Header="操作" Width="*">
                     <DataGridTemplateColumn.CellTemplate>

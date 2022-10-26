@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace AIStudio.Core.Models
@@ -85,6 +86,7 @@ namespace AIStudio.Core.Models
         public string ParentId { get; set; }
 
         public bool NeedAction { get; set; }
+        public List<string> PermissionValues { get; set; }
 
         private bool isChecked;
         public bool IsChecked
@@ -97,8 +99,6 @@ namespace AIStudio.Core.Models
                 OnPropertyChanged("IsChecked");
             }
         }
-
-
 
         public void AddChildren(AMenuItem child)
         {

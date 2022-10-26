@@ -35,7 +35,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 
-                    cell = new TableCell(new Paragraph(new Run(item.DepartmentName)));
+                    cell = new TableCell(new Paragraph(new Run(item.Base_DepartmentName)));
                     cell.Style = styleCell;
                     row.Cells.Add(cell);
 

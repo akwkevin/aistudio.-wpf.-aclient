@@ -33,8 +33,8 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
 
             User3DData = new User3DData();
 
-            MenuItems = _operator.MenuItems;
-            SearchMenus = _operator.SearchMenus;
+            MenuItems = _operator.MenuTrees;
+            SearchMenus = _operator.Menus;
         }
 
 
