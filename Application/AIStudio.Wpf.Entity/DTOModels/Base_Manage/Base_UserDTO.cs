@@ -104,12 +104,4 @@ namespace AIStudio.Wpf.Entity.DTOModels
             }
         }
     }
-
-    //public class UserInfoPermissions
-    //{
-    //    public Base_UserDTO UserInfo { get; set; }
-
-    //    public List<string> Permissions { get; set; }
-    //}
-
 }
