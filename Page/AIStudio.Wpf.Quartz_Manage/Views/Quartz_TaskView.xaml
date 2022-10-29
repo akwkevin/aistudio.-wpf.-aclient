@@ -50,43 +50,13 @@
                 <DataGridTextColumn Header="作业名称"  Binding="{Binding TaskName}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="分组"  Binding="{Binding GroupName}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="启用状态"  Binding="{Binding IsEnabled}" IsReadOnly="True"/>
-                <DataGridTemplateColumn Header="执行状态" IsReadOnly="True">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name ="text" Text="运行中" VerticalAlignment="Center" Foreground="{DynamicResource MahApps.Brushes.Accent}" />
-                            </StackPanel>
-                            <DataTemplate.Triggers>
-                                <DataTrigger Binding="{Binding Status}" Value="1">
-                                    <Setter TargetName="text" Property="Text" Value="关闭"/>
-                                    <Setter TargetName="text" Property="Foreground" Value="Gray"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Status}" Value="2">
-                                    <Setter TargetName="text" Property="Text" Value="完成"/>
-                                    <Setter TargetName="text" Property="Foreground" Value="Green"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Status}" Value="3">
-                                    <Setter TargetName="text" Property="Text" Value="异常"/>
-                                    <Setter TargetName="text" Property="Foreground" Value="Red"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Status}" Value="4">
-                                    <Setter TargetName="text" Property="Text" Value="堵塞"/>
-                                    <Setter TargetName="text" Property="Foreground" Value="Red"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Status}" Value="5">
-                                    <Setter TargetName="text" Property="Text" Value="未知"/>
-                                    <Setter TargetName="text" Property="Foreground" Value="Gray"/>
-                                </DataTrigger>
-                            </DataTemplate.Triggers>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Cron"  Binding="{Binding Cron}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="任务类名"  Binding="{Binding ActionClass}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="描述"  Binding="{Binding Remark}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="请求方式"  Binding="{Binding RequestType}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="请求地址"  Binding="{Binding ApiUrl}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="请求Key"  Binding="{Binding AuthKey}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="请求Value"  Binding="{Binding AuthValue}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="密匙名"  Binding="{Binding AuthKey}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="密匙值"  Binding="{Binding AuthValue}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="排序"  Binding="{Binding Sort}" IsReadOnly="True"/>
                 <DataGridTemplateColumn Header="操作" Width="*">
                     <DataGridTemplateColumn.CellTemplate>

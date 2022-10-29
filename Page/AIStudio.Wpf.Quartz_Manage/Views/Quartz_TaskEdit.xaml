@@ -48,20 +48,20 @@
                     <ac:FormItem.Header>
                         <TextBlock>
                             <Run Foreground="Red">*</Run>
-                            <Run>是否启动</Run>
+                            <Run>启用</Run>
                         </TextBlock>
                     </ac:FormItem.Header>
                     <ToggleButton HorizontalAlignment="Left"
                               IsChecked="{Binding IsEnabled}" 
-                              ac:ToggleButtonAttach.CheckedElement="启动"
-                              Content="停止"
+                              ac:ToggleButtonAttach.CheckedElement="启用"
+                              Content="停用"
                               Style="{StaticResource AIStudio.Styles.ToggleButton.Switch}" />
                 </ac:FormItem>
                 <ac:FormItem>
                     <ac:FormItem.Header>
                         <TextBlock>
                             <Run Foreground="Red">*</Run>
-                            <Run>间隔(Cron)</Run>
+                            <Run>Cron</Run>
                         </TextBlock>
                     </ac:FormItem.Header>
                     <TextBox Text="{Binding Cron,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
@@ -81,13 +81,13 @@
                 <ac:FormItem Header="请求方式">
                     <TextBox Text="{Binding RequestType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
                 </ac:FormItem>
-                <ac:FormItem Header="请求Url">
+                <ac:FormItem Header="请求地址">
                     <TextBox Text="{Binding ApiUrl,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
                 </ac:FormItem>
-                <ac:FormItem Header="请求Key">
+                <ac:FormItem Header="密匙名">
                     <TextBox Text="{Binding AuthKey,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
                 </ac:FormItem>
-                <ac:FormItem  Header="请求Value">
+                <ac:FormItem  Header="密匙值">
                     <TextBox Text="{Binding AuthValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
                 </ac:FormItem>  
             </ac:Form>
