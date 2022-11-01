@@ -23,26 +23,12 @@
     <Resource Include="BuildCodeTemplate\FlowForm.txt" />
     <Resource Include="BuildCodeTemplate\FlowRenderer.txt" />
     <Resource Include="Images\default.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="BuildCodeTemplate\List.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="BuildCodeTemplate\EditForm.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="BuildCodeTemplate\Listcs.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="BuildCodeTemplate\EditFormcs.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="BuildCodeTemplate\EditFormviewmodel.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="BuildCodeTemplate\Listviewmodel.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="BuildCodeTemplate\DTO.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -68,5 +54,14 @@
       <HintPath>..\..\packages\ComeCapture.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Properties\DesignTimeResources.xaml" Condition="'$(DesignTime)'=='true' OR ('$(SolutionPath)'!='' AND Exists('$(SolutionPath)') AND '$(BuildingInsideVisualStudio)'!='true' AND '$(BuildingInsideExpressionBlend)'!='true')">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
+    </Page>
+  </ItemGroup>
+
 
 </Project>
