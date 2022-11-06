@@ -52,7 +52,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             get
             {
-                return this._deleteCommand ?? (this._deleteCommand = new CanExecuteDelegateCommand(() => this.Delete(), () => this.Data != null && this.Data.Count(p => p.IsChecked) > 0));
+                return this._deleteCommand ?? (this._deleteCommand = new CanExecuteDelegateCommand(() => this.Delete(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -142,7 +142,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             List<string> ids = new List<string>();
             if (string.IsNullOrEmpty(id))
             {
-                ids.AddRange(Data.Select(p => p as Base_ActionTree).Where(p => p.IsChecked).Select(p => p.Id));
+                ids.AddRange(Data.Select(p => p as Base_ActionTree).Where(p => p.IsChecked == true).Select(p => p.Id));
             }
             else
             {

@@ -13,6 +13,7 @@ namespace AIStudio.Core
     {
         public string Value { get; set; }
         public string Text { get; set; }
+        public string Remark { get; set; }
 
         public override string ToString()
         {

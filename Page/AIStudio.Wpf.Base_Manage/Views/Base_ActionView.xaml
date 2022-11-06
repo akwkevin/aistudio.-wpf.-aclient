@@ -26,8 +26,8 @@
         </StackPanel>
         <ac:TreeDataGrid Grid.Row="1" 
                     x:Name="table" 
-                    ItemsSource="{Binding Data}" 
-                    Margin="3"
+                    ItemsSource="{Binding Data}"                     
+                    Margin="3" 
                     AutoGenerateColumns="False">
             <i:Interaction.Behaviors>
                 <ac:SelectAllBahavior InitialState="False"/>

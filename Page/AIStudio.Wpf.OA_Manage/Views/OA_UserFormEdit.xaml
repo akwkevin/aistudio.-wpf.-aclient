@@ -96,7 +96,11 @@
                         </ac:FormItem> 
                         <ac:FormItem>
                             <ac:FormItem.Header>
-                                <ComboBox x:Name="combox" ItemsSource="{Binding DataContext.Types, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" DisplayMemberPath="Name" SelectedValuePath="Name" SelectedValue="{Binding SubType}" />
+                                <ComboBox x:Name="combox" 
+                                          ItemsSource="{Binding DataContext.Types, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                          DisplayMemberPath="Text" 
+                                          SelectedValuePath="Value" 
+                                          SelectedValue="{Binding SubType}" />
                             </ac:FormItem.Header>
                             <DockPanel>
                                 <TextBlock DockPanel.Dock="Right" Text="{Binding Unit}"/>

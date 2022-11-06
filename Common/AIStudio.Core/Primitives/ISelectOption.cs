@@ -10,5 +10,6 @@ namespace AIStudio.Core
     {
         string Value { get; set; }
         string Text { get; set; }
+        string Remark { get; set; }
     }
 }

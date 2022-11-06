@@ -106,8 +106,6 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                         throw new Exception(result.Msg);
                     }
                     Controls.MessageBox.Info("操作成功", windowIdentifier: Identifier);
-
-                    GetData(true);
                 }
                 catch (Exception ex)
                 {

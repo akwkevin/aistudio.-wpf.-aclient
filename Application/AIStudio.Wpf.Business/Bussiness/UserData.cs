@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using NPOI.HSSF.Record;
 using Prism.Ioc;
 using System;
 using System.Collections.Generic;
@@ -178,7 +179,7 @@ namespace AIStudio.Wpf.Business
 
         public async Task Init()
         {
-            ClearBase_User(); 
+            ClearBase_User();
             ClearBase_Role();
             ClearBase_Department();
             ClearBase_Dictionary();
@@ -203,23 +204,24 @@ namespace AIStudio.Wpf.Business
                 if (tree.Type == 0)
                 {
                     dics.Add(tree.Value, tree);
+                }
 
-                    if (tree.Children != null)
+                if (tree.Children?.Count > 0)
+                {
+                    var datas = tree.Children.Where(p => p.Type == 1);
+                    if (datas.Count() > 0)
                     {
-                        var datas = tree.Children.Where(p => p.Type == 1);
-                        if (datas.Count() > 0)
-                        {
-                            items.Add(tree.Value, new ObservableCollection<ISelectOption>(datas.Select(p => new SelectOption() { Value = p.Value, Text = p.Text })));
-                        }
+                        items.Add(tree.Value, new ObservableCollection<ISelectOption>(datas.Select(p => new SelectOption() { Value = p.Value, Text = p.Text, Remark = p.Remark })));
+                    }
 
-                        var subtrees = tree.Children.Where(p => p.Type == 0);
-                        if (subtrees.Count() > 0)
-                        {
-                            BuildDictionary(items, dics, subtrees);
-                        }
+                    foreach (var item in tree.Children)
+                    {
+                        BuildDictionary(items, dics, tree.Children);
                     }
                 }
             }
         }
+
+      
     }
 }

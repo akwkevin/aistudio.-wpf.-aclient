@@ -12,6 +12,8 @@ namespace AIStudio.Core
         public ControlType ControlType { get; set; }
         public string Code { get; set; }
 
+        public string Remark { get; set; }
+
         /// <summary>
         /// 孩子节点
         /// </summary>

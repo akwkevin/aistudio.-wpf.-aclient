@@ -41,57 +41,36 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         }
 
-        protected override async void GetData(bool iswaiting = false)
+        protected override string GetDataJson()
         {
-            try
+            var searchKeyValues = new Dictionary<string, object>();
+            if (!string.IsNullOrEmpty(Condition) && !string.IsNullOrEmpty(KeyWord))
             {
-                if (iswaiting == false)
-                {
-                    ShowWait();
-                }
-
-                var userId = Status == "processing" ? _operator?.Property.Id : "";
-                var applicantUserId = Status == "waiting" ? _operator?.Property.Id : "";
-                var alreadyUserIds = Status == "finish" ? _operator?.Property.Id : "";
-                var creatorId = Status == "created" ? _operator?.Property.Id : "";
-
-                var data = new
-                {
-                    PageIndex = Pagination.PageIndex,
-                    PageRows = Pagination.PageRows,
-                    SortField = Pagination.SortField,
-                    SortType = Pagination.SortType,
-                    Search = new
-                    {
-                        userId = userId,
-                        applicantUserId = applicantUserId,
-                        creatorId = creatorId,
-                        alreadyUserIds = alreadyUserIds,
-                    }
-                };
-
-                var result = await _dataProvider.GetData<List<OA_UserFormDTO>>("/OA_Manage/OA_UserForm/GetDataList", JsonConvert.SerializeObject(data));
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
-                }
-                else
-                {
-                    Pagination.Total = result.Total;
-                    Data = new ObservableCollection<OA_UserFormDTO>(result.Data);
-                }
+                searchKeyValues.Add(Condition, KeyWord);
             }
-            catch (Exception ex)
+
+            var userId = Status == "processing" ? _operator?.Property.Id : "";
+            var applicantUserId = Status == "waiting" ? _operator?.Property.Id : "";
+            var alreadyUserIds = Status == "finish" ? _operator?.Property.Id : "";
+            var creatorId = Status == "created" ? _operator?.Property.Id : "";
+
+            var data = new
             {
-                throw ex;
-            }
-            finally
-            {
-                if (iswaiting == false)
+                PageIndex = Pagination.PageIndex,
+                PageRows = Pagination.PageRows,
+                SortField = Pagination.SortField,
+                SortType = Pagination.SortType,
+                SearchKeyValues = searchKeyValues,
+                Search = new
                 {
-                    HideWait();
+                    userId = userId,
+                    applicantUserId = applicantUserId,
+                    creatorId = creatorId,
+                    alreadyUserIds = alreadyUserIds,
                 }
-            }
+            };
+
+            return JsonConvert.SerializeObject(data);
         }
 
         public static async Task<BaseDialogResult> EditShow(OA_UserFormDTO para, string identifier)

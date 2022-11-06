@@ -35,6 +35,11 @@ namespace AIStudio.Core
         public string Text { get; set; }
 
         /// <summary>
+        /// 备注
+        /// </summary>
+        public string Remark { get; set; }
+
+        /// <summary>
         /// 孩子节点
         /// </summary>
         public List<TreeModel> Children { get; set; }
@@ -42,7 +47,7 @@ namespace AIStudio.Core
         /// <summary>
         /// 孩子节点
         /// </summary>
-        public object children { get; set; }
+        //public object children { get; set; }
 
 
         private bool isExpanded = true;
@@ -104,6 +109,8 @@ namespace AIStudio.Core
                 RaisePropertyChanged("IsChecked");
             }
         }
+
+      
 
         private void SetChildChecked(bool isChecked)
         {

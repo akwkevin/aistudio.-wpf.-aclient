@@ -75,8 +75,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private List<OA_DefTypeDTO> _types;
-        public List<OA_DefTypeDTO> Types
+        private List<ISelectOption> _types;
+        public List<ISelectOption> Types
         {
             get { return _types; }
             set
@@ -105,9 +105,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         protected override async void InitData()
         {
-
             await GetUsers();
-            await GetTypes();
+            GetTypes();
         }
 
         protected override async void GetData(OA_UserFormDTO para)
@@ -123,7 +122,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 }
                 Data = result.Data;
                 await GetUsers();
-                await GetTypes();
+                GetTypes();
             }
             catch (Exception ex)
             {
@@ -140,25 +139,14 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             Users = await _userData.GetBase_User();
         }
 
-        private async Task GetTypes()
+        private void GetTypes()
         {
-            var data = new
-            {
-                Search = new
-                {
-                    condition = "Type",
-                    keyword = Data?.Type
-                }
-            };
-            var result = await _dataProvider.GetData<List<OA_DefTypeDTO>>($"/OA_Manage/OA_DefType/GetDataList", JsonConvert.SerializeObject(data));
-            if (!result.Success)
-            {
-                throw new Exception(result.Msg);
-            }
-            Types = result.Data;
+            _userData.ItemSource.TryGetValue(Data?.Type, out var types);
+
+            Types = new List<ISelectOption>(types??new ObservableCollection<ISelectOption>());
             if (string.IsNullOrEmpty(this.Data.Unit) && Types.Count > 0)
             {
-                this.Data.Unit = this.Types[0].Unit;
+                this.Data.Unit = this.Types[0].Remark;
             }
         }
 

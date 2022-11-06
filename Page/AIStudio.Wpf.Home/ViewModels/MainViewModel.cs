@@ -396,7 +396,6 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
             #endregion
 
-
             Operator = _operator as Operator;
 
             #region 菜单
