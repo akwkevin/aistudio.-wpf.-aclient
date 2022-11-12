@@ -426,7 +426,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    Controls.MessageBox.Error(ex.Message);
                 }
                 finally
                 {

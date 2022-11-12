@@ -144,7 +144,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    Controls.MessageBox.Error(ex.Message);
                 }
                 finally
                 {
@@ -181,7 +181,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    Controls.MessageBox.Error(ex.Message);
                 }
                 finally
                 {
@@ -218,7 +218,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    Controls.MessageBox.Error(ex.Message);
                 }
                 finally
                 {

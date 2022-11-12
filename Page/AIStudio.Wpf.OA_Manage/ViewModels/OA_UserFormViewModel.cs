@@ -119,8 +119,6 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                         {
                             eventName = "MyEvent",
                             eventKey = viewmodel.Data.Id + viewmodel.Data.CurrentStepId,
-                            UserId = _operator?.Property?.Id,
-                            UserName = _operator?.Property?.UserName,
                             Status = viewmodel.Status,
                             Remarks = viewmodel.Remark
                         };
@@ -136,7 +134,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    Controls.MessageBox.Error(ex.Message);
                 }
                 finally
                 {

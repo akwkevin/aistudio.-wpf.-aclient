@@ -231,7 +231,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             }
             catch (Exception ex)
             {
-                throw ex;
+                Controls.MessageBox.Error(ex.Message);
             }
             finally
             {
@@ -284,7 +284,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             }
             catch (Exception ex)
             {
-                throw ex;
+                Controls.MessageBox.Error(ex.Message);
             }
             finally
             {
@@ -349,7 +349,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             }
             catch (Exception ex)
             {
-                throw ex;
+                Controls.MessageBox.Error(ex.Message);
             }
             finally
             {
@@ -390,7 +390,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    Controls.MessageBox.Error(ex.Message);
                 }
                 finally
                 {

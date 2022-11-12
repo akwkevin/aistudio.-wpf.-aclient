@@ -91,7 +91,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Error(ex.Message);
             }
             finally
             {
