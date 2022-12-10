@@ -13,7 +13,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/AIStudio.Wpf.Home;component/Resources/MainViewResource.xaml" />
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary
+        </ResourceDictionary>
     </ac:ChildWindow.Resources>
     <Grid Width="350" Margin="5,0">
         <Grid.RowDefinitions>

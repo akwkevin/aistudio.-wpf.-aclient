@@ -10,7 +10,6 @@
              VerticalAlignment ="Center"
              HorizontalAlignment="Center"
              mc:Ignorable="d"
-             CanDragMove="False"
              Style="{StaticResource AIStudio.Styles.ChildWindow}">
     <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}"  CornerRadius="3">
         <Grid>

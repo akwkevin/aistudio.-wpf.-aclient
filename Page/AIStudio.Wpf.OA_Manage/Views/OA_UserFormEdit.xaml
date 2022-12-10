@@ -190,14 +190,14 @@
                     VerticalAlignment="Center"
                     Content="查看流程图"
                     Margin="5 0 5 0" 
-                    Command="{ac:ControlBinding OpenEditorCommand}"
+                    Command="{Binding OpenEditorCommand}"
                     CommandParameter="{Binding Data}">
             </Button>
             <Button
                     VerticalAlignment="Center"
                     Content="打印"
                     Margin="5 0 5 0"
-                    Command="{ac:ControlBinding PrintCommand}"
+                    Command="{Binding PrintCommand}"
                     CommandParameter="{Binding Data}">
             </Button>
         </StackPanel>
@@ -208,7 +208,7 @@
                     VerticalAlignment="Center"
                     Content="预览流程"
                     Margin="5 0 5 0"
-                    Command="{ac:ControlBinding PreStepCommand}"
+                    Command="{Binding PreStepCommand}"
                     CommandParameter="{Binding Data}"
                     Visibility="{Binding Data.Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=0}">
             </Button>

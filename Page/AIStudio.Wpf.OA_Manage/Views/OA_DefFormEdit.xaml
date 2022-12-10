@@ -9,7 +9,6 @@
              xmlns:converter="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
              xmlns:dd="https://gitee.com/akwkevin/aistudio.-wpf.-diagram"
              mc:Ignorable="d" 
-             CanDragMove="False"
              Style="{StaticResource AIStudio.Styles.ChildWindow}">
     <Grid>
         <Grid.RowDefinitions>

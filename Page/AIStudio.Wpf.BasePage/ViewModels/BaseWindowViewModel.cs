@@ -118,16 +118,6 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             }
         }
 
-        private ICommand _viewCommand;
-        public ICommand ViewCommand
-        {
-            get
-            {
-                return this._viewCommand ?? (this._viewCommand = new CanExecuteDelegateCommand<T>(para => this.View(para), para => para != null));
-            }
-        }
-
-
         private ICommand _deleteCommand;
         public ICommand DeleteCommand
         {
@@ -312,18 +302,6 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             {
                 HideWait();
             }
-        }
-
-
-
-        protected virtual async void View(T para)
-        {
-            var viewmodel = Activator.CreateInstance(Type, new object[] { para, Area, Identifier, "查看表单" }) as BaseEditViewModel<T>;
-            var dialog = Activator.CreateInstance(EditType, new object[] { viewmodel }) as BaseDialog;
-            var fButton = dialog.FindName("PART_AffirmativeButton") as Button;
-            fButton.Visibility = System.Windows.Visibility.Collapsed;
-            var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
-
         }
 
         protected virtual async void Delete(string id = null)
