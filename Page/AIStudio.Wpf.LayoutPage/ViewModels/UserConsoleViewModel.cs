@@ -140,7 +140,7 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
             var dialog = new UserConsoleEditView();
             var viewmodel = new UserConsoleEditViewModel(MenuItems, Identifier, dialog);
             dialog.DataContext = viewmodel;
-            var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
+            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
             if (res == DialogResult.OK)
             {
                 var control = InitControl(viewmodel.SelectedMenuItem.WpfCode);

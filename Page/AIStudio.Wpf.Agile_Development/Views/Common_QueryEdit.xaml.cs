@@ -5,7 +5,7 @@ namespace AIStudio.Wpf.Agile_Development.Views
     /// <summary>
     /// Base_UserQueryEdit.xaml 的交互逻辑
     /// </summary>
-    public partial class Common_QueryEdit : BaseDialog
+    public partial class Common_QueryEdit : ChildWindow
     {
         public Common_QueryEdit(object viewModel)
         {

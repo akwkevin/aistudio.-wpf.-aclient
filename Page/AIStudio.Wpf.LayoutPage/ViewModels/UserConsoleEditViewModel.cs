@@ -10,7 +10,7 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
 {
     class UserConsoleEditViewModel : Prism.Mvvm.BindableBase
     {
-        public UserConsoleEditViewModel(IEnumerable<AMenuItem> menuItems, string identifier, BaseDialog baseDialog)
+        public UserConsoleEditViewModel(IEnumerable<AMenuItem> menuItems, string identifier, ChildWindow baseDialog)
         {
             Identifier = identifier;
             MenuItems = new ObservableCollection<AMenuItem>(menuItems);
@@ -30,7 +30,7 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
         public AMenuItem SelectedMenuItem { get; private set; }
 
         protected string Identifier { get; set; } = LocalSetting.RootWindow;
-        private BaseDialog _baseDialog;
+        private ChildWindow _baseDialog;
 
         private ICommand _doubleClickAddDataCommand;
         public ICommand DoubleClickAddDataCommand

@@ -6,7 +6,7 @@ namespace AIStudio.Wpf.Base_Manage.Views
     /// <summary>
     /// Base_DepartmentEdit.xaml 的交互逻辑
     /// </summary>
-    public partial class Base_DepartmentEdit : BaseDialog
+    public partial class Base_DepartmentEdit : ChildWindow
     {
         public Base_DepartmentEdit(object viewModel)
         {

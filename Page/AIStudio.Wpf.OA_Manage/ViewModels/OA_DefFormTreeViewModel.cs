@@ -93,7 +93,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 else
                     return true;
             });
-            var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
+            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
             if (res == DialogResult.OK)
             {
                 try
@@ -122,7 +122,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         {
             OA_DefFormTreeEditViewModel viewmodel = new OA_DefFormTreeEditViewModel(para.json);
             OA_DefFormTreeEdit dialog = new OA_DefFormTreeEdit(viewmodel);
-            var res = await WindowBase.ShowDialogAsync2(dialog, Identifier);
+            var res = await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
         }
     }
 }

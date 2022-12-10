@@ -265,15 +265,30 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         protected virtual async void Edit(T para = null)
         {
             var viewmodel = GetEditViewModel(para);
-            var dialog = Activator.CreateInstance(EditType, new object[] { viewmodel }) as BaseDialog;
-            dialog.ValidationAction = (() =>
+            var dialog = Activator.CreateInstance(EditType, new object[] { viewmodel });
+            if (dialog is ChildWindow childwindow)
             {
-                return ValidationEdit(viewmodel);
-            });
-            var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
-            if (res == DialogResult.OK)
+                childwindow.ValidationAction = (() =>
+                {
+                    return ValidationEdit(viewmodel);
+                });
+                var res = (DialogResult)await WindowBase.ShowChildWindowAsync(childwindow, "编辑表单", Identifier);
+                if (res == DialogResult.OK)
+                {
+                    await SaveData(viewmodel.Data);
+                }
+            }
+            else if (dialog is BaseDialog baseDialog)
             {
-                await SaveData(viewmodel.Data);
+                baseDialog.ValidationAction = (() =>
+                {
+                    return ValidationEdit(viewmodel);
+                });
+                var res = (DialogResult)await WindowBase.ShowDialogAsync2(baseDialog, Identifier);
+                if (res == DialogResult.OK)
+                {
+                    await SaveData(viewmodel.Data);
+                }
             }
         }
 

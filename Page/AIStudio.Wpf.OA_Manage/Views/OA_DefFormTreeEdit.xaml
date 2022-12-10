@@ -1,4 +1,4 @@
-﻿<ac:BaseDialog x:Class="AIStudio.Wpf.OA_Manage.Views.OA_DefFormTreeEdit"
+﻿<ac:ChildWindow x:Class="AIStudio.Wpf.OA_Manage.Views.OA_DefFormTreeEdit"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,26 +11,18 @@
              HorizontalAlignment="Center"
              mc:Ignorable="d"
              CanDragMove="False"
-             Style="{StaticResource AIStudio.Styles.BaseDialog}">
+             Style="{StaticResource AIStudio.Styles.ChildWindow}">
     <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}"  CornerRadius="3">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="40" />
             </Grid.RowDefinitions>
-            <Border Background="{DynamicResource MahApps.Brushes.Accent}" CornerRadius="3,3,0,0">
-                <TextBlock Margin="10,0"
-                   Text="{Binding Title}"
-                   Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Left"/>
-            </Border>
-            <Border Grid.Row="1">
+            <Border Grid.Row="0">
                  <ScrollViewer>
-                    <Grid DataContext="{Binding Data}" Margin="10,0" Width="800" Height="600">
+                    <Grid Margin="10,0" Width="800" Height="600">
                         <dd:FlowchartEditor x:Name="editor"                           
-                                Data="{ac:ControlBinding FlowchartModel}" 
+                                Data="{Binding FlowchartModel}" 
                                 Mode="ReadOnly"
                                 ac:ThemeChangedHelper.AcceptThemeChanged="True">
                             <dd:FlowchartEditor.PropertiesBox>
@@ -61,7 +53,7 @@
                                                         <DataTemplate>
                                                             <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
                                                                 <ac:MultiComboBox BorderThickness="0" 
-                                                            ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type ac:BaseDialog}}}" 
+                                                            ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" 
                                                             core:CustomeSelectionValues.SelectedValues="{Binding UserIds}"
                                                             DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
                                                             </Grid>
@@ -76,7 +68,7 @@
                                                             <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
                                                                 <ac:MultiComboBox 
                                                             BorderThickness="0" 
-                                                            ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type ac:BaseDialog}}}" 
+                                                            ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" 
                                                             core:CustomeSelectionValues.SelectedValues="{Binding RoleIds}"
                                                             DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
                                                             </Grid>
@@ -92,7 +84,7 @@
                     </Grid>
 				</ScrollViewer>
             </Border>
-            <StackPanel Grid.Row="2"
+            <StackPanel Grid.Row="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right" Margin="10,0">
                 <Button x:Name="PART_AffirmativeButton" Visibility="Collapsed"
@@ -106,4 +98,4 @@
             </StackPanel>
         </Grid>
     </Border>
-</ac:BaseDialog>
+</ac:ChildWindow>

@@ -6,7 +6,7 @@ namespace AIStudio.Wpf.OA_Manage.Views
     /// <summary>
     /// OA_DefFormEdit.xaml 的交互逻辑
     /// </summary>
-    public partial class OA_DefFormTreeEdit : BaseDialog
+    public partial class OA_DefFormTreeEdit : ChildWindow
     {
         public OA_DefFormTreeEdit(object viewModel)
         {

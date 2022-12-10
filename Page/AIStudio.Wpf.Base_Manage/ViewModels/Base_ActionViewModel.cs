@@ -111,7 +111,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 else
                     return true;
             });
-            var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
+            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
             if (res == DialogResult.OK)
             {
                 try

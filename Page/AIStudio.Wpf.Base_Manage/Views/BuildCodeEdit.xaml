@@ -1,4 +1,4 @@
-﻿<ac:BaseDialog x:Class="AIStudio.Wpf.Base_Manage.Views.BuildCodeEdit"
+﻿<ac:ChildWindow x:Class="AIStudio.Wpf.Base_Manage.Views.BuildCodeEdit"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,21 +7,13 @@
              xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
              mc:Ignorable="d"
-             Style="{StaticResource AIStudio.Styles.BaseDialog}">
+             Style="{StaticResource AIStudio.Styles.ChildWindow}">
     <Grid Width="650">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
             <RowDefinition Height="*" />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
-        <Border Background="{DynamicResource MahApps.Brushes.Accent}" CornerRadius="3,3,0,0">
-            <TextBlock Margin="10,0"
-                   Text="{Binding Title}" 
-                   Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Left"/>
-        </Border>
-        <Border Grid.Row="1">
+        <Border Grid.Row="0">
             <ScrollViewer>
                 <ac:Form DataContext="{Binding Data}"
                                      ac:Form.ItemMargin="3"  
@@ -54,7 +46,7 @@
                 </ac:Form>
             </ScrollViewer>
         </Border>
-        <StackPanel Grid.Row="2"
+        <StackPanel Grid.Row="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right" Margin="10,0">
             <Button x:Name="PART_AffirmativeButton"
@@ -67,4 +59,4 @@
                     Margin="5 0 5 0" />
         </StackPanel>
     </Grid>
-</ac:BaseDialog>
+</ac:ChildWindow>

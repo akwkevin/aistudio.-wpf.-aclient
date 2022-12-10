@@ -327,7 +327,7 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
                 var viewmodel = new FormCodeEditViewModel(code, Data, Items);
                 var dialog = new FormCodeEdit(viewmodel);
 
-                var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
+                var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
 
                 if (res == DialogResult.OK)
                 {

@@ -6,7 +6,7 @@ namespace AIStudio.Wpf.Base_Manage.Views
     /// <summary>
     /// Base_UserEdit.xaml 的交互逻辑
     /// </summary>
-    public partial class BuildCodeEdit : BaseDialog
+    public partial class BuildCodeEdit : ChildWindow
     {
         public BuildCodeEdit(object viewModel)
         {

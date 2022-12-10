@@ -307,7 +307,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                 else
                     return true;
             });
-            var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
+            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
             if (res == DialogResult.OK)
             {
                 await SaveData(viewmodel.Data);
