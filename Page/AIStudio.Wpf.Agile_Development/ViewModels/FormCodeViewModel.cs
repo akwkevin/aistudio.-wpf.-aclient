@@ -327,9 +327,9 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
                 var viewmodel = new FormCodeEditViewModel(code, Data, Items);
                 var dialog = new FormCodeEdit(viewmodel);
 
-                var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
+                var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
 
-                if (res == BaseDialogResult.OK)
+                if (res == DialogResult.OK)
                 {
                     System.Windows.Clipboard.SetDataObject(viewmodel.Code);
                 }
@@ -486,9 +486,9 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
 
                         if (Data is OA_UserFormDTO oA_UserForm)
                         {
-                            oA_UserForm.Steps = new List<OAStep>()
+                            oA_UserForm.Steps = new List<OA_Step>()
                             {
-                                new OAStep()
+                                new OA_Step()
                                 {
                                     Id = "Id1",
                                     Label = "开始",
@@ -499,7 +499,7 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
                                     },
                                     Status = 100,
                                 },
-                                new OAStep()
+                                new OA_Step()
                                 {
                                     Id = "Id2",
                                     Label = "主管审批",
@@ -510,7 +510,7 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
                                     },
                                     Status = 10,
                                 },
-                                new OAStep()
+                                new OA_Step()
                                 {
                                     Id = "Id3",
                                     Label = "人力审批",
@@ -521,12 +521,12 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
                                     },
                                     Status = 0,
                                 },
-                                new OAStep()
+                                new OA_Step()
                                 {
                                     Id = "Id4",
                                     Label = "条件",
                                 },
-                                new OAStep()
+                                new OA_Step()
                                 {
                                     Id = "Id5",
                                     Label = "分管领导",
@@ -537,7 +537,7 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
                                     },
                                     Status = 0,
                                 },
-                                new OAStep()
+                                new OA_Step()
                                 {
                                     Id = "Id6",
                                     Label = "人力归档",
@@ -548,7 +548,7 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
                                     },
                                     Status = 0,
                                 },
-                                new OAStep()
+                                new OA_Step()
                                 {
                                     Id = "Id7",
                                     Label = "结束",

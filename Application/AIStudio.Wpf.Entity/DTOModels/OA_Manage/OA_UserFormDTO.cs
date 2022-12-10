@@ -60,12 +60,10 @@ namespace AIStudio.Wpf.Entity.DTOModels
 
         public string ExpectedDateString { get => ExpectedDate?.ToString("yyyy-MM-dd"); }
 
-        public string WorkflowJSON { get; set; }
-
         public List<OA_UserFormStepDTO> Comments { get; set; }
 
-        private List<OAStep> _steps;
-        public List<OAStep> Steps
+        private List<OA_Step> _steps;
+        public List<OA_Step> Steps
         {
             get { return _steps; }
             set

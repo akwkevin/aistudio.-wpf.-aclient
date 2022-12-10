@@ -7,8 +7,9 @@
              xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
              xmlns:converter="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
-             xmlns:flowchart="clr-namespace:Aga.Diagrams.Extension.Flowchart;assembly=Aga.Diagrams.Extension"
+             xmlns:dd="https://gitee.com/akwkevin/aistudio.-wpf.-diagram"
              mc:Ignorable="d" 
+             CanDragMove="False"
              Style="{StaticResource AIStudio.Styles.BaseDialog}">
     <Grid>
         <Grid.RowDefinitions>
@@ -25,138 +26,210 @@
         </Border>
         <Border Grid.Row="1">
             <ScrollViewer>
-                <Grid DataContext="{Binding Data}">
+                <Grid Width="800" Height="600">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <ac:Form 
+                    <Grid DataContext="{Binding Data}" >
+                        <ac:Form 
                                      ac:Form.ItemMargin="3"  
                                      ac:Form.HeaderWidth="80"
                                      ac:Form.HeaderMargin="0,0,3,0">
-                        <ac:Form.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <ac:UniformGridEx Columns="3" />
-                            </ItemsPanelTemplate>
-                        </ac:Form.ItemsPanel>
-                        <ac:FormItem>
-                            <HeaderedContentControl.Header>
-                                <TextBlock>
+                            <ac:Form.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ac:UniformGridEx Columns="3" />
+                                </ItemsPanelTemplate>
+                            </ac:Form.ItemsPanel>
+                            <ac:FormItem>
+                                <HeaderedContentControl.Header>
+                                    <TextBlock>
                                 <Run Foreground="Red">*</Run>
                                 <Run>分类</Run>
-                                </TextBlock>
-                            </HeaderedContentControl.Header>
-                            <ComboBox ItemsSource="{Binding DataContext.Types, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" DisplayMemberPath="Name" SelectedValuePath="Name" SelectedValue="{Binding Type}" />
-                        </ac:FormItem>
-                        <ac:FormItem>
-                            <ac:FormItem.Header>
-                                <TextBlock>
+                                    </TextBlock>
+                                </HeaderedContentControl.Header>
+                                <ComboBox ItemsSource="{Binding DataContext.Types, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" DisplayMemberPath="Text" SelectedValuePath="Text" SelectedValue="{Binding Type}" />
+                            </ac:FormItem>
+                            <ac:FormItem>
+                                <ac:FormItem.Header>
+                                    <TextBlock>
                                 <Run Foreground="Red">*</Run>
                                 <Run>标题</Run>
-                                </TextBlock>
-                            </ac:FormItem.Header>
-                            <TextBox Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
-                        </ac:FormItem>
-                        <ac:FormItem>
-                            <ac:FormItem.Header>
-                                <TextBlock>
+                                    </TextBlock>
+                                </ac:FormItem.Header>
+                                <TextBox Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
+                            </ac:FormItem>
+                            <ac:FormItem>
+                                <ac:FormItem.Header>
+                                    <TextBlock>
                                 <Run Foreground="Red">*</Run>
                                 <Run>摘要</Run>
-                                </TextBlock>
-                            </ac:FormItem.Header>
-                            <TextBox Text="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
-                        </ac:FormItem>
-                        <ac:FormItem>
-                            <ac:FormItem.Header>
-                                <TextBlock>
+                                    </TextBlock>
+                                </ac:FormItem.Header>
+                                <TextBox Text="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
+                            </ac:FormItem>
+                            <ac:FormItem>
+                                <ac:FormItem.Header>
+                                    <TextBlock>
                                 <Run Foreground="Red">*</Run>
                                 <Run>排序</Run>
-                                </TextBlock>
-                            </ac:FormItem.Header>
-                            <TextBox Text="{Binding Sort,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
-                        </ac:FormItem>
-                        <ac:FormItem>
-                        <ac:FormItem.Header>
-                            <TextBlock>
+                                    </TextBlock>
+                                </ac:FormItem.Header>
+                                <TextBox Text="{Binding Sort,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
+                            </ac:FormItem>
+                            <ac:FormItem>
+                                <ac:FormItem.Header>
+                                    <TextBlock>
                                 <Run Foreground="Red">*</Run>
                                 <Run>权限角色</Run>
-                            </TextBlock>
-                        </ac:FormItem.Header>
-                        <ac:MultiComboBox ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                    </TextBlock>
+                                </ac:FormItem.Header>
+                                <ac:MultiComboBox ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
                                             SelectedItems="{Binding DataContext.SelectedRoles, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                             DisplayMemberPath="Text" SelectedValuePath="Value">
-                            </ac:MultiComboBox>
-                        </ac:FormItem>
-                        <ac:FormItem>
-                            <ac:FormItem.Header>
-                                <TextBlock>
+                                </ac:MultiComboBox>
+                            </ac:FormItem>
+                            <ac:FormItem>
+                                <ac:FormItem.Header>
+                                    <TextBlock>
                                     <Run Foreground="Red">*</Run>
                                     <Run>流程图</Run>
-                                </TextBlock>
-                            </ac:FormItem.Header>
-                            <TextBox Text="{Binding WorkflowJSON,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
-                        </ac:FormItem>
-                    </ac:Form>
+                                    </TextBlock>
+                                </ac:FormItem.Header>
+                                <TextBox Text="{Binding WorkflowJSON,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}" Height="28"></TextBox>
+                            </ac:FormItem>
+                        </ac:Form>
+                    </Grid>
                     <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="200"/>
-                        </Grid.ColumnDefinitions>
-                        <flowchart:OAFlowEditor x:Name="editor"                           
-                                FlowchartModel="{ac:ControlBinding FlowchartModel}" 
-                                Mode="{ac:ControlBinding Mode}"
-                                ac:ThemeChangedHelper.AcceptThemeChanged="True"/>
-                        <ac:PropertiesView Grid.Column="1" Margin="5,0,0,0" NeedBrowsable="False" 
+                        <dd:FlowchartEditor x:Name="editor"                           
+                                Data="{Binding FlowchartModel}"
+                                GetDataFunc="{Binding GetFlowchartModel,Mode=OneWayToSource}"
+                                Mode="{Binding Mode}"
+                                ac:ThemeChangedHelper.AcceptThemeChanged="True">
+                            <dd:FlowchartEditor.PropertiesBox>
+                                <ControlTemplate>
+                                    <!--<dd:PropertiesView Width="200" CustomSetting="True"
                                                  IsEnabled="{ac:ControlBinding Mode,Converter={converter:ConverterValueMapToBool},ConverterParameter='Edit'}"
                                                  SelectedObject="{Binding ElementName=editor,Path=SelectedObject}">
-                            <ac:PropertiesView.Resources>
-                                <Style x:Key="ActTypeStyle" TargetType="{x:Type ContentControl}">
-                                    <Setter Property="ContentTemplate">
-                                        <Setter.Value>
-                                            <DataTemplate>
-                                                <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
-                                                    <ComboBox 
+                                        <dd:PropertiesView.Resources>
+                                            <Style x:Key="ActTypeStyle" TargetType="{x:Type ContentControl}">
+                                                <Setter Property="ContentTemplate">
+                                                    <Setter.Value>
+                                                        <DataTemplate>
+                                                            <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                                                                <ComboBox 
                                                             BorderThickness="0"                                                             
                                                             Text="{Binding ActType}" >
-                                                        <ComboBoxItem Content="or"/>
-                                                        <ComboBoxItem Content="and"/>
-                                                    </ComboBox>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                                <Style x:Key="UserIdsStyle" TargetType="{x:Type ContentControl}">
-                                    <Setter Property="ContentTemplate">
-                                        <Setter.Value>
-                                            <DataTemplate>
-                                                <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
-                                                    <ac:MultiComboBox BorderThickness="0" 
+                                                                    <ComboBoxItem Content="or"/>
+                                                                    <ComboBoxItem Content="and"/>
+                                                                </ComboBox>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                            <Style x:Key="UserIdsStyle" TargetType="{x:Type ContentControl}">
+                                                <Setter Property="ContentTemplate">
+                                                    <Setter.Value>
+                                                        <DataTemplate>
+                                                            <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                                                                <ac:MultiComboBox BorderThickness="0" 
                                                             ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type ac:BaseDialog}}}" 
                                                             core:CustomeSelectionValues.SelectedValues="{Binding UserIds}"
                                                             DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                                <Style x:Key="RoleIdsStyle" TargetType="{x:Type ContentControl}">
-                                    <Setter Property="ContentTemplate">
-                                        <Setter.Value>
-                                            <DataTemplate>
-                                                <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
-                                                    <ac:MultiComboBox 
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                            <Style x:Key="RoleIdsStyle" TargetType="{x:Type ContentControl}">
+                                                <Setter Property="ContentTemplate">
+                                                    <Setter.Value>
+                                                        <DataTemplate>
+                                                            <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                                                                <ac:MultiComboBox 
                                                             BorderThickness="0" 
                                                             ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type ac:BaseDialog}}}" 
                                                             core:CustomeSelectionValues.SelectedValues="{Binding RoleIds}"
                                                             DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </ac:PropertiesView.Resources>
-                        </ac:PropertiesView>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </dd:PropertiesView.Resources>
+                                    </dd:PropertiesView>-->
+
+                                    <Grid DataContext="{Binding SelectedObject,ElementName=editor}">
+                                        <Control x:Name="control" Width="200">
+                                            <Control.Style>                                                
+                                                <Style TargetType="Control">
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate>
+                                                                <Grid ac:GridHelper.ShowBorder="True">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="80"/>
+                                                                        <ColumnDefinition/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="Auto"/>
+                                                                        <RowDefinition Height="*"/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <TextBlock Text="Text" Margin="6,3" VerticalAlignment="Center"/>
+                                                                    <TextBox Grid.Column="1" Text="{Binding Text}"  BorderThickness="0" />
+                                                                </Grid>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Kind}" Value="Middle">
+                                                            <Setter Property="Template">
+                                                                <Setter.Value>
+                                                                    <ControlTemplate TargetType="Control">
+                                                                        <Grid ac:GridHelper.ShowBorder="True">
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="80"/>
+                                                                                <ColumnDefinition/>
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition Height="Auto"/>
+                                                                                <RowDefinition Height="Auto"/>
+                                                                                <RowDefinition Height="Auto"/>
+                                                                                <RowDefinition Height="Auto"/>
+                                                                                <RowDefinition Height="*"/>
+                                                                            </Grid.RowDefinitions>
+                                                                            <TextBlock Text="Text" Margin="6,3" VerticalAlignment="Center"/>
+                                                                            <TextBox Grid.Column="1" Text="{Binding Text}" BorderThickness="0" />
+                                                                            <TextBlock Text="用户" Grid.Row="1" Margin="6,3" VerticalAlignment="Center"/>
+                                                                            <ac:MultiComboBox Grid.Row="1" Grid.Column="1" BorderThickness="0" 
+                                                                                ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type ac:BaseDialog}}}" 
+                                                                                core:CustomeSelectionValues.SelectedValues="{Binding UserIds}"
+                                                                                DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
+                                                                            <TextBlock Text="角色" Grid.Row="2" Margin="6,3" VerticalAlignment="Center"/>
+                                                                            <ac:MultiComboBox Grid.Row="2" Grid.Column="1" BorderThickness="0" 
+                                                                                ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type ac:BaseDialog}}}" 
+                                                                                core:CustomeSelectionValues.SelectedValues="{Binding RoleIds}"
+                                                                                DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
+                                                                            <TextBlock Text="or/and" Grid.Row="3" Margin="6,3" VerticalAlignment="Center"/>
+                                                                            <ComboBox Grid.Row="3" Grid.Column="1" BorderThickness="0"                                                             
+                                                                                    Text="{Binding ActType}" >
+                                                                                <ComboBoxItem Content="or"/>
+                                                                                <ComboBoxItem Content="and"/>
+                                                                            </ComboBox>
+                                                                        </Grid>                                  
+                                                                    </ControlTemplate>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Control.Style>
+                                        </Control>
+                                    </Grid>
+                                </ControlTemplate>
+                            </dd:FlowchartEditor.PropertiesBox>
+                        </dd:FlowchartEditor>
                     </Grid>
                 </Grid>
             </ScrollViewer>

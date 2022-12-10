@@ -6,6 +6,7 @@
   </PropertyGroup>  
  
   <ItemGroup>
+    <ProjectReference Include="..\..\..\aistudio.-wpf.-diagram\AIStudio.Wpf.Flowchart\AIStudio.Wpf.Flowchart.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
   </ItemGroup>
  

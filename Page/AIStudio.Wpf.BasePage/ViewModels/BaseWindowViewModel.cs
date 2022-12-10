@@ -270,8 +270,8 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             {
                 return ValidationEdit(viewmodel);
             });
-            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
-            if (res == BaseDialogResult.OK)
+            var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
+            if (res == DialogResult.OK)
             {
                 await SaveData(viewmodel.Data);
             }
@@ -307,7 +307,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             var dialog = Activator.CreateInstance(EditType, new object[] { viewmodel }) as BaseDialog;
             var fButton = dialog.FindName("PART_AffirmativeButton") as Button;
             fButton.Visibility = System.Windows.Visibility.Collapsed;
-            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
+            var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
 
         }
 
@@ -329,7 +329,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         protected virtual async Task Delete(List<string> ids)
         {
             var sure = await MessageBoxDialog.Warning("确认删除吗?", "提示", Identifier);
-            if (sure == BaseDialogResult.OK)
+            if (sure == DialogResult.OK)
             {
                 try
                 {

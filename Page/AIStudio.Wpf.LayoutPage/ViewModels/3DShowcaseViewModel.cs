@@ -129,8 +129,8 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
             var viewmodel = new _3DShowcaseEditViewModel(MenuItems, User3DData.Data, Identifier);
             dialog.DataContext = viewmodel;
 
-            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
-            if (res == BaseDialogResult.OK)
+            var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
+            if (res == DialogResult.OK)
             {
                 List<_3DItemData> list = new List<_3DItemData>();
                 for (int i = 0; i < viewmodel._3DItems.Count; i++)

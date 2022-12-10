@@ -157,7 +157,7 @@ namespace AIStudio.Core
         /// <returns></returns>
         public static bool ContainsProperty(this object obj, string propertyName)
         {
-            return obj.GetType().GetProperty(propertyName, _bindingFlags) != null;
+            return obj.GetType()?.GetProperty(propertyName, _bindingFlags) != null;
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace AIStudio.Core
         /// <returns></returns>
         public static object GetPropertyValue(this object obj, string propertyName)
         {
-            return obj.GetType().GetProperty(propertyName, _bindingFlags).GetValue(obj);
+            return obj.GetType()?.GetProperty(propertyName, _bindingFlags)?.GetValue(obj);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace AIStudio.Core
         /// <returns></returns>
         public static void SetPropertyValue(this object obj, string propertyName, object value)
         {
-            obj.GetType().GetProperty(propertyName, _bindingFlags).SetValue(obj, value);
+            obj.GetType()?.GetProperty(propertyName, _bindingFlags)?.SetValue(obj, value);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace AIStudio.Core
         /// <returns></returns>
         public static bool ContainsField(this object obj, string fieldName)
         {
-            return obj.GetType().GetField(fieldName, _bindingFlags) != null;
+            return obj.GetType()?.GetField(fieldName, _bindingFlags) != null;
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace AIStudio.Core
         /// <returns></returns>
         public static object GetGetFieldValue(this object obj, string fieldName)
         {
-            return obj.GetType().GetField(fieldName, _bindingFlags).GetValue(obj);
+            return obj.GetType()?.GetField(fieldName, _bindingFlags)?.GetValue(obj);
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace AIStudio.Core
         /// <returns></returns>
         public static void SetFieldValue(this object obj, string fieldName, object value)
         {
-            obj.GetType().GetField(fieldName, _bindingFlags).SetValue(obj, value);
+            obj.GetType()?.GetField(fieldName, _bindingFlags)?.SetValue(obj, value);
         }
 
         /// <summary>

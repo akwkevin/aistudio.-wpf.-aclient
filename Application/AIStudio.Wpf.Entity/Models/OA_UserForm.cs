@@ -8,8 +8,9 @@ namespace AIStudio.Wpf.Entity.Models
         public string Id { get; set; }
         public string DefFormId { get; set; }
         public string DefFormName { get; set; }
-        public string DefFormJsonId { get; set; }
-        public int DefFormJsonVersion { get; set; }
+        public string JsonId { get; set; }
+        public int JsonVersion { get; set; }
+        public string WorkflowJSON { get; set; }
         public int Grade { get; set; }
         public double Flag { get; set; }
         public string Remarks { get; set; }

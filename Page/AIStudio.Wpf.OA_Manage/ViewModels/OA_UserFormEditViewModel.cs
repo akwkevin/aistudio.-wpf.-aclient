@@ -94,7 +94,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             _operator = ContainerLocator.Current.Resolve<IOperator>();
             if (Data == null)
             {
-                Data = new OA_UserFormDTO() { Type = type, DefFormId = key, DefFormName = title, DefFormJsonId = jsonId, DefFormJsonVersion = jsonVersion, WorkflowJSON = json, ApplicantUserId = _operator?.Property?.Id };
+                Data = new OA_UserFormDTO() { Type = type, DefFormId = key, DefFormName = title, JsonId = jsonId, JsonVersion = jsonVersion, WorkflowJSON = json, ApplicantUserId = _operator?.Property?.Id };
                 InitData();
             }
             else
@@ -155,7 +155,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             try
             {
                 ShowWait();
-                var result = await _dataProvider.GetData<List<OAStep>>($"/OA_Manage/OA_UserForm/PreStep", JsonConvert.SerializeObject(para));
+                var result = await _dataProvider.GetData<List<OA_Step>>($"/OA_Manage/OA_UserForm/PreStep", JsonConvert.SerializeObject(para));
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);

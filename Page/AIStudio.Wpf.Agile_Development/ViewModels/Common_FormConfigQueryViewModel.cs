@@ -307,8 +307,8 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                 else
                     return true;
             });
-            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
-            if (res == BaseDialogResult.OK)
+            var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
+            if (res == DialogResult.OK)
             {
                 await SaveData(viewmodel.Data);
             }
@@ -375,7 +375,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
         protected virtual async Task Delete(List<string> ids)
         {
             var sure = await MessageBoxDialog.Warning("确认删除吗?", "提示", Identifier);
-            if (sure == BaseDialogResult.OK)
+            if (sure == DialogResult.OK)
             {
                 try
                 {

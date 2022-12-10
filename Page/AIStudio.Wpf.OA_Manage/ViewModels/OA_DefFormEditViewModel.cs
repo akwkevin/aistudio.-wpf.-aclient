@@ -1,8 +1,6 @@
-﻿using Aga.Diagrams.Extension.Flowchart;
-using AIStudio.Core;
+﻿using AIStudio.Core;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Entity.DTOModels;
-using AIStudio.Wpf.OA_Manage.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,8 +12,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
     public class OA_DefFormEditViewModel : BaseEditViewModel<OA_DefFormDTO>
     {
-        private FlowchartModel _flowchartModel;
-        public FlowchartModel FlowchartModel
+        private string _flowchartModel;
+        public string FlowchartModel
         {
             get { return _flowchartModel; }
             set
@@ -24,7 +22,21 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        public OAData OAData { get; set; }
+
+        private Func<string> _getFlowchartModel;
+        public Func<string> GetFlowchartModel
+        {
+            get
+            {
+                return _getFlowchartModel;
+            }
+            set
+            {
+                SetProperty(ref _getFlowchartModel, value);
+            }
+        }
+
+        public OA_Data OAData { get; set; }
 
         private string _mode = "Edit";
         public string Mode
@@ -36,8 +48,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private List<OA_DefTypeDTO> _types;
-        public List<OA_DefTypeDTO> Types
+        private List<ISelectOption> _types;
+        public List<ISelectOption> Types
         {
             get { return _types; }
             set
@@ -83,9 +95,9 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 		protected override async void InitData()
 		{
 			Data = new OA_DefFormDTO();
-            OAData = new OAData();
-            FlowchartModel = new FlowchartModel();
-            await GetTypes();
+            OAData = new OA_Data();
+            FlowchartModel = "{}";
+            GetTypes();
             await GetRoles();
             await GetUsers();
         }
@@ -102,14 +114,12 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     throw new Exception(result.Msg);
                 }
                 Data = result.Data;
-                await GetTypes();
+                GetTypes();
                 await GetRoles();
                 await GetUsers();
 
-                OAData = Newtonsoft.Json.JsonConvert.DeserializeObject<OAData>(Data.WorkflowJSON);
-                FlowchartModel model = new FlowchartModel();
-                FlowChartHelper.G6ToFlowChart(OAData, model);
-                FlowchartModel = model;
+                OAData = Newtonsoft.Json.JsonConvert.DeserializeObject<OA_Data>(Data.WorkflowJSON);
+                FlowchartModel = Data.WorkflowJSON;
             }
             catch (Exception ex)
             {
@@ -120,23 +130,11 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 HideWait();
             }
         }   
-        private async Task GetTypes()
+        private void GetTypes()
         {
-            var data = new
-            {
-                Search = new
-                {
-                    condition = "Type",
-                    keyword = "分类"
-                }
-            };
+            _userData.ItemSource.TryGetValue("分类", out var types);
 
-            var result = await _dataProvider.GetData<List<OA_DefTypeDTO>>($"/OA_Manage/OA_DefType/GetDataList", JsonConvert.SerializeObject(data));
-            if (!result.Success)
-            {
-                throw new Exception(result.Msg);
-            }
-            Types = result.Data;
+            Types = new List<ISelectOption>(types ?? new ObservableCollection<ISelectOption>());
         }
 
         private async Task GetRoles()

@@ -3,10 +3,10 @@ using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
-using AIStudio.Wpf.OA_Manage.Models;
 using AIStudio.Wpf.OA_Manage.Views;
 using Newtonsoft.Json;
 using Prism.Ioc;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,6 +25,15 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             set
             {
                 SetProperty(ref _roles, value);
+            }
+        }
+
+        private ICommand _addCommand;
+        public ICommand AddCommand
+        {
+            get
+            {
+                return this._addCommand ?? (this._addCommand = new DelegateCommand(() => this.Edit()));
             }
         }
 
@@ -135,16 +144,19 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 else
                     return true;
             });
-            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
-            if (res == BaseDialogResult.OK)
+            var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
+            if (res == DialogResult.OK)
             {
                 try
                 {
                     ShowWait();
                     if (mode == "Edit")
                     {
-                        viewmodel.Data.Id = string.Empty;
-                        FlowChartHelper.FlowChartToG6(viewmodel.FlowchartModel, viewmodel.OAData);
+                        var json = viewmodel.GetFlowchartModel();
+                        var data = JsonConvert.DeserializeObject<OA_Data>(json);
+                        viewmodel.OAData.Nodes = data.Nodes;
+                        viewmodel.OAData.Links = data.Links;
+                        viewmodel.OAData.Groups = data.Groups;
                         viewmodel.Data.WorkflowJSON = JsonConvert.SerializeObject(viewmodel.OAData); 
                     }
                     viewmodel.Data.Value = viewmodel.SelectedRoles.Count == 0 ? null: "^" + string.Join("^" , viewmodel.SelectedRoles.Select(p => p.Value)) + "^";
@@ -184,7 +196,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         private async void Start(OA_DefFormDTO para)
         {            
             var sure = await MessageBoxDialog.Warning("确认启用吗?", "提示", Identifier);
-            if (sure == BaseDialogResult.OK)
+            if (sure == DialogResult.OK)
             {
                 try
                 {
@@ -211,7 +223,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         private async void Stop(OA_DefFormDTO para)
         {
             var sure = await MessageBoxDialog.Warning("确认停用吗?", "提示", Identifier);
-            if (sure == BaseDialogResult.OK)
+            if (sure == DialogResult.OK)
             {
                 try
                 {

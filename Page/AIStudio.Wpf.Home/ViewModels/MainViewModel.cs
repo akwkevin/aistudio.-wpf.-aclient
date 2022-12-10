@@ -796,8 +796,8 @@ namespace AIStudio.Wpf.Home.ViewModels
             var viewmodel = new ToolBarSetViewModel(MenuItems, _mapper.Map<List<AToolItem>>(ToolItems), Identifier);
             dialog.DataContext = viewmodel;
 
-            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
-            if (res == BaseDialogResult.OK)
+            var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, Identifier);
+            if (res == DialogResult.OK)
             {
                 var config = LocalSetting.GetWriteSection("usersetting", new UserSettingSection());
                 var section = config.Sections["usersetting"] as UserSettingSection;

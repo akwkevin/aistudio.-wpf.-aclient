@@ -1,6 +1,8 @@
 ﻿using Npgsql;
 using NpgsqlTypes;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data.Common;
 using System.Net;
 using System.Net.NetworkInformation;

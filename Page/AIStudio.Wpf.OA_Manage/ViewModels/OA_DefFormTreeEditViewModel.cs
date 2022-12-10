@@ -2,7 +2,6 @@
 using AIStudio.Core;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Entity.DTOModels;
-using AIStudio.Wpf.OA_Manage.Models;
 using Prism.Ioc;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
@@ -42,8 +41,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private FlowchartModel _flowchartModel;
-        public FlowchartModel FlowchartModel
+        private string _flowchartModel;
+        public string FlowchartModel
         {
             get { return _flowchartModel; }
             set
@@ -58,10 +57,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         {
             _userData = ContainerLocator.Current.Resolve<IUserData>();
 
-            var OAData = Newtonsoft.Json.JsonConvert.DeserializeObject<OAData>(workflowJSON);
-            FlowchartModel model = new FlowchartModel();
-            FlowChartHelper.G6ToFlowChart(OAData, model);
-            FlowchartModel = model;
+            var OAData = Newtonsoft.Json.JsonConvert.DeserializeObject<OA_Data>(workflowJSON);
+            FlowchartModel = workflowJSON;
             Title = title;
             GetRoles();
             GetUsers();

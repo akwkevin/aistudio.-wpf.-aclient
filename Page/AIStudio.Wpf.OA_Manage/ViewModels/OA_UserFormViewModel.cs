@@ -73,12 +73,12 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             return JsonConvert.SerializeObject(data);
         }
 
-        public static async Task<BaseDialogResult> EditShow(OA_UserFormDTO para, string identifier)
+        public static async Task<DialogResult> EditShow(OA_UserFormDTO para, string identifier)
         {
             var viewmodel = new OA_UserFormEditViewModel(para, "OA_Manage", "编辑表单");
             return await EditShow(viewmodel, identifier);
         }
-        public static async Task<BaseDialogResult> EditShow(OA_UserFormEditViewModel viewmodel, string identifier)
+        public static async Task<DialogResult> EditShow(OA_UserFormEditViewModel viewmodel, string identifier)
         {
             var dialog = new OA_UserFormEdit(viewmodel);
             dialog.ValidationAction = (() =>
@@ -91,7 +91,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 else
                     return true;
             });
-            var res = (BaseDialogResult)await WindowBase.ShowDialogAsync2(dialog, identifier);
+            var res = (DialogResult)await WindowBase.ShowDialogAsync2(dialog, identifier);
             return res;
         }
 
@@ -99,13 +99,13 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         {
             var viewmodel = new OA_UserFormEditViewModel(para, "OA_Manage", "编辑表单");
             var res = await EditShow(viewmodel, Identifier);
-            if (res == BaseDialogResult.Other1 || res == BaseDialogResult.Other2)
+            if (res == DialogResult.Other1 || res == DialogResult.Other2)
             {
                 try
                 {
                     ShowWait();
 
-                    if (res == BaseDialogResult.Other1)
+                    if (res == DialogResult.Other1)
                     {
                         var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/DisCardData", JsonConvert.SerializeObject(new { id = viewmodel.Data.Id }));
                         if (!result.Success)
@@ -113,7 +113,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                             throw new Exception(result.Msg);
                         }
                     }
-                    else if (res == BaseDialogResult.Other2)
+                    else if (res == DialogResult.Other2)
                     {
                         var data = new
                         {

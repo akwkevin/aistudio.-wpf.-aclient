@@ -6,10 +6,12 @@
              xmlns:local="AIStudio.Wpf.OA_Manage.Views"
              xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
-             xmlns:flowchart="clr-namespace:Aga.Diagrams.Extension.Flowchart;assembly=Aga.Diagrams.Extension"
+             xmlns:dd="https://gitee.com/akwkevin/aistudio.-wpf.-diagram"
              VerticalAlignment ="Center"
              HorizontalAlignment="Center"
-             mc:Ignorable="d" >
+             mc:Ignorable="d"
+             CanDragMove="False"
+             Style="{StaticResource AIStudio.Styles.BaseDialog}">
     <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}"  CornerRadius="3">
         <Grid>
             <Grid.RowDefinitions>
@@ -26,66 +28,67 @@
             </Border>
             <Border Grid.Row="1">
                  <ScrollViewer>
-                    <Grid DataContext="{Binding Data}" VerticalAlignment="Center" Margin="10,0">
-                        <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="200"/>
-                            </Grid.ColumnDefinitions>
-                        <flowchart:OAFlowEditor x:Name="editor"                           
-                                FlowchartModel="{ac:ControlBinding FlowchartModel}" 
+                    <Grid DataContext="{Binding Data}" Margin="10,0" Width="800" Height="600">
+                        <dd:FlowchartEditor x:Name="editor"                           
+                                Data="{ac:ControlBinding FlowchartModel}" 
                                 Mode="ReadOnly"
-                                ac:ThemeChangedHelper.AcceptThemeChanged="True"/>
-                        <ac:PropertiesView Grid.Column="1" Margin="5,0,0,0" NeedBrowsable="False"
+                                ac:ThemeChangedHelper.AcceptThemeChanged="True">
+                            <dd:FlowchartEditor.PropertiesBox>
+                                <ControlTemplate>
+                                    <dd:PropertiesView Width="200" CustomSetting="True"
                                              SelectedObject="{Binding ElementName=editor,Path=SelectedObject}"
                                              IsEnabled="False">
-                            <ac:PropertiesView.Resources>
-                                <Style x:Key="ActTypeStyle" TargetType="{x:Type ContentControl}">
-                                    <Setter Property="ContentTemplate">
-                                        <Setter.Value>
-                                            <DataTemplate>
-                                                <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
-                                                    <ComboBox 
+                                        <dd:PropertiesView.Resources>
+                                            <Style x:Key="ActTypeStyle" TargetType="{x:Type ContentControl}">
+                                                <Setter Property="ContentTemplate">
+                                                    <Setter.Value>
+                                                        <DataTemplate>
+                                                            <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                                                                <ComboBox 
                                                             BorderThickness="0"                                                             
                                                             Text="{Binding ActType}" >
-                                                        <ComboBoxItem Content="or"/>
-                                                        <ComboBoxItem Content="and"/>
-                                                    </ComboBox>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                                <Style x:Key="UserIdsStyle" TargetType="{x:Type ContentControl}">
-                                    <Setter Property="ContentTemplate">
-                                        <Setter.Value>
-                                            <DataTemplate>
-                                                <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
-                                                    <ac:MultiComboBox BorderThickness="0" 
+                                                                    <ComboBoxItem Content="or"/>
+                                                                    <ComboBoxItem Content="and"/>
+                                                                </ComboBox>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                            <Style x:Key="UserIdsStyle" TargetType="{x:Type ContentControl}">
+                                                <Setter Property="ContentTemplate">
+                                                    <Setter.Value>
+                                                        <DataTemplate>
+                                                            <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                                                                <ac:MultiComboBox BorderThickness="0" 
                                                             ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type ac:BaseDialog}}}" 
                                                             core:CustomeSelectionValues.SelectedValues="{Binding UserIds}"
                                                             DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                                <Style x:Key="RoleIdsStyle" TargetType="{x:Type ContentControl}">
-                                    <Setter Property="ContentTemplate">
-                                        <Setter.Value>
-                                            <DataTemplate>
-                                                <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
-                                                    <ac:MultiComboBox 
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                            <Style x:Key="RoleIdsStyle" TargetType="{x:Type ContentControl}">
+                                                <Setter Property="ContentTemplate">
+                                                    <Setter.Value>
+                                                        <DataTemplate>
+                                                            <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
+                                                                <ac:MultiComboBox 
                                                             BorderThickness="0" 
                                                             ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type ac:BaseDialog}}}" 
                                                             core:CustomeSelectionValues.SelectedValues="{Binding RoleIds}"
                                                             DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </ac:PropertiesView.Resources>
-                        </ac:PropertiesView>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </dd:PropertiesView.Resources>
+                                    </dd:PropertiesView>
+                                </ControlTemplate>
+                            </dd:FlowchartEditor.PropertiesBox>
+                        </dd:FlowchartEditor>                       
                     </Grid>
 				</ScrollViewer>
             </Border>

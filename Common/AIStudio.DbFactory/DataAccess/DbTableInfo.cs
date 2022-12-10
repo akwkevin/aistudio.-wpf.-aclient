@@ -1,4 +1,6 @@
-﻿namespace AIStudio.DbFactory.DataAccess
+﻿using System;
+
+namespace AIStudio.DbFactory.DataAccess
 {
     public class DbTableInfo 
     {   /// <summary>

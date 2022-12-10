@@ -1,4 +1,6 @@
-﻿namespace AIStudio.DbFactory.DataAccess
+﻿using System;
+
+namespace AIStudio.DbFactory.DataAccess
 {
     /// <summary>
     /// 数据库帮助类工厂

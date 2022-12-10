@@ -62,20 +62,6 @@ namespace ServiceMonitor
             }
         }
 
-        private ObservableCollection<D_OnlineUserDTO> _userDatas;
-        public ObservableCollection<D_OnlineUserDTO> UserDatas
-        {
-            get { return _userDatas; }
-            set
-            {
-                if (_userDatas != value)
-                {
-                    _userDatas = value;
-                    RaisePropertyChanged("UserDatas");
-                }
-            }
-        }
-
         protected ListCollectionView _view;
 
         private string _systemInformation;
@@ -222,13 +208,6 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
             _operator.Property = new Base_UserDTO() { UserName = "人工助手", Id = "smallAssistant", Avatar = "pack://application:,,,/AIStudio.Resource;component/Images/Usopp.jpg" };
         }
 
-        private void _wSocketClient_MessageReceived(WSMessageType type, string message)
-        {
-            if (type == WSMessageType.OnlineUser)
-            {
-                UserDatas = JsonConvert.DeserializeObject<ObservableCollection<D_OnlineUserDTO>>(message);
-            }
-        }
 
         private void Swagger()
         {

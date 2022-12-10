@@ -1,4 +1,6 @@
-﻿using System.Data.Common;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 
 namespace AIStudio.DbFactory.DataAccess
