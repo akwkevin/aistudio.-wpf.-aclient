@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Org.BouncyCastle.Crypto;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
@@ -46,12 +47,12 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private ICommand _copyCommand;
-        public ICommand CopyCommand
+        private ICommand _stopCommand;
+        public ICommand StopCommand
         {
             get
             {
-                return this._copyCommand ?? (this._copyCommand = new CanExecuteDelegateCommand<OA_DefFormDTO>(para => this.Edit(para, "Edit")));
+                return this._stopCommand ?? (this._stopCommand = new CanExecuteDelegateCommand(() => this.Stop(null), () => this.Data != null && this.Data.Count(p => p.IsChecked) > 0));
             }
         }
 
@@ -60,16 +61,25 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         {
             get
             {
-                return this._startCommand ?? (this._startCommand = new CanExecuteDelegateCommand<OA_DefFormDTO>(para => this.Start(para)));
+                return this._startCommand ?? (this._startCommand = new CanExecuteDelegateCommand(() => this.Start(null), () => this.Data != null && this.Data.Count(p => p.IsChecked) > 0));
             }
         }
 
-        private ICommand _stopCommand;
-        public ICommand StopCommand
+        private ICommand _startOneCommand;
+        public ICommand StartOneCommand
         {
             get
             {
-                return this._stopCommand ?? (this._stopCommand = new CanExecuteDelegateCommand<OA_DefFormDTO>(para => this.Stop(para)));
+                return this._startOneCommand ?? (this._startOneCommand = new CanExecuteDelegateCommand<string>(para => this.Start(para)));
+            }
+        }
+
+        private ICommand _stopOneCommand;
+        public ICommand StopOneCommand
+        {
+            get
+            {
+                return this._stopOneCommand ?? (this._stopOneCommand = new CanExecuteDelegateCommand<string>(para => this.Stop(para)));
             }
         }
 
@@ -128,14 +138,9 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         }
 
         //编辑情况下，不允许改变流程图
-        protected async void Edit(OA_DefFormDTO para = null, string mode = "ReadOnly")
+        protected override async void Edit(OA_DefFormDTO para = null)
         {
-            if (para == null)
-            {
-                mode = "Edit";
-            }
-            OA_DefFormEditViewModel viewmodel = new OA_DefFormEditViewModel(para, Area, mode == "Edit" ? "编辑表单":"复制表单");
-            viewmodel.Mode = mode;
+            OA_DefFormEditViewModel viewmodel = new OA_DefFormEditViewModel(para, Area,"编辑表单");
             OA_DefFormEdit dialog = new OA_DefFormEdit(viewmodel);
             dialog.ValidationAction = (() =>
             {
@@ -150,15 +155,14 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 try
                 {
                     ShowWait();
-                    if (mode == "Edit")
-                    {
-                        var json = viewmodel.GetFlowchartModel();
-                        var data = JsonConvert.DeserializeObject<OA_Data>(json);
-                        viewmodel.OAData.Nodes = data.Nodes;
-                        viewmodel.OAData.Links = data.Links;
-                        viewmodel.OAData.Groups = data.Groups;
-                        viewmodel.Data.WorkflowJSON = JsonConvert.SerializeObject(viewmodel.OAData); 
-                    }
+
+                    var json = viewmodel.GetFlowchartModel();
+                    var data = JsonConvert.DeserializeObject<OA_Data>(json);
+                    viewmodel.OAData.Nodes = data.Nodes;
+                    viewmodel.OAData.Links = data.Links;
+                    viewmodel.OAData.Groups = data.Groups;
+                    viewmodel.Data.JSONId = string.Empty;
+                    viewmodel.Data.WorkflowJSON = JsonConvert.SerializeObject(viewmodel.OAData);                     
                     viewmodel.Data.Value = viewmodel.SelectedRoles.Count == 0 ? null: "^" + string.Join("^" , viewmodel.SelectedRoles.Select(p => p.Value)) + "^";
                     var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
                     if (!result.Success)
@@ -193,16 +197,25 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             base.Search(para);
         }
 
-        private async void Start(OA_DefFormDTO para)
-        {            
-            var sure = await MessageBoxDialog.Warning("确认启用吗?", "提示", Identifier);
+        private async void Start(string id)
+        {
+            List<string> ids = new List<string>();
+            if (string.IsNullOrEmpty(id))
+            {
+                ids.AddRange(Data.Where(p => p.IsChecked).Select(p => p.Id));
+            }
+            else
+            {
+                ids.Add(id);
+            }
+            var sure = await MessageBoxDialog.Show("确认启用吗?", "提示", ControlStatus.Mid, Identifier);
             if (sure == DialogResult.OK)
             {
                 try
                 {
                     ShowWait();
  
-                    var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/StartData", JsonConvert.SerializeObject(para));
+                    var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/StartData", JsonConvert.SerializeObject(ids));
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);
@@ -220,16 +233,25 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private async void Stop(OA_DefFormDTO para)
+        private async void Stop(string id)
         {
-            var sure = await MessageBoxDialog.Warning("确认停用吗?", "提示", Identifier);
+            List<string> ids = new List<string>();
+            if (string.IsNullOrEmpty(id))
+            {
+                ids.AddRange(Data.Where(p => p.IsChecked).Select(p => p.Id));
+            }
+            else
+            {
+                ids.Add(id);
+            }
+            var sure = await MessageBoxDialog.Show("确认停用吗?", "提示", ControlStatus.Mid, Identifier);
             if (sure == DialogResult.OK)
             {
                 try
                 {
                     ShowWait();
 
-                    var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/StopData", JsonConvert.SerializeObject(para));
+                    var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/StopData", JsonConvert.SerializeObject(ids));
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);

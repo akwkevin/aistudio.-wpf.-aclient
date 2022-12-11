@@ -57,9 +57,6 @@ namespace AIStudio.Wpf.Entity.DTOModels
             get { return CurrentNode?.Replace("^", "").Trim().Replace(" ", ","); }
         }
 
-
-        public string ExpectedDateString { get => ExpectedDate?.ToString("yyyy-MM-dd"); }
-
         public List<OA_UserFormStepDTO> Comments { get; set; }
 
         private List<OA_Step> _steps;

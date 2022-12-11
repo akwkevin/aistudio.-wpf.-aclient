@@ -30,7 +30,8 @@ namespace AIStudio.Wpf.Entity.Models
         public string Type { get; set; }
         public string SubType { get; set; }
         public string Unit { get; set; }
-        public DateTime? ExpectedDate { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
         public string CurrentNode { get; set; }
         public bool Deleted { get; set; }
         public DateTime CreateTime { get; set; }

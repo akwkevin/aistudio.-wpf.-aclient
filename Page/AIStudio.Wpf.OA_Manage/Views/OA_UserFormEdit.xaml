@@ -12,7 +12,7 @@
              xmlns:perm="clr-namespace:AIStudio.Wpf.BasePage.Permission;assembly=AIStudio.Wpf.BasePage"
              mc:Ignorable="d"
              Style="{StaticResource AIStudio.Styles.ChildWindow}">
-    <Grid Width="720">
+    <Grid Width="1000">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="40" />
@@ -57,7 +57,12 @@
                                 <ac:UniformGridEx Columns="4" />
                             </ItemsPanelTemplate>
                         </ac:Form.ItemsPanel>
-                     
+                        <ac:FormItem Header="开始时间" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
+                            <DatePicker SelectedDate="{Binding StartTime,Mode=TwoWay}"></DatePicker>
+                        </ac:FormItem>
+                        <ac:FormItem Header="结束时间" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
+                            <DatePicker SelectedDate="{Binding EndTime,Mode=TwoWay}"></DatePicker>
+                        </ac:FormItem>
                         <ac:FormItem ac:UniformGridEx.Span="2">
                             <ac:FormItem.Header>
                                 <TextBlock>
@@ -74,7 +79,7 @@
                                 <Run>申请人</Run>
                                 </TextBlock>
                             </ac:FormItem.Header>
-                            <ComboBox ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding ApplicantUserId}" />
+                            <ComboBox ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding ApplicantUserId}" />
                         </ac:FormItem>
                         <ac:FormItem Header="紧急程度">
                             <ComboBox SelectedIndex="{Binding Grade}" >
@@ -89,7 +94,7 @@
                         <ac:FormItem>
                             <ac:FormItem.Header>
                                 <ComboBox x:Name="combox" 
-                                          ItemsSource="{Binding DataContext.Types, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                          ItemsSource="{Binding DataContext.Types, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" 
                                           DisplayMemberPath="Text" 
                                           SelectedValuePath="Value" 
                                           SelectedValue="{Binding SubType}" />
@@ -99,10 +104,7 @@
                                 <TextBox Text="{Binding Flag,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
                             </DockPanel>
                         </ac:FormItem>
-                        <ac:FormItem Header="预计日期" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
-                            <DatePicker SelectedDate="{Binding ExpectedDate,Mode=TwoWay}"></DatePicker>
-                        </ac:FormItem>
-                        <ac:FormItem Header="附件" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
+                        <ac:FormItem ac:UniformGridEx.Span="2" Header="附件" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
                             <controls:UploadFile File="{Binding Appendix,Mode=TwoWay}"></controls:UploadFile>
                         </ac:FormItem>  
                     </ac:Form>
@@ -172,12 +174,12 @@
 
                     <StackPanel Grid.Row="3" Visibility="{Binding Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=1}">
                         <StackPanel Margin="50,5,0,5" Orientation="Horizontal" >
-                            <RadioButton Margin="3" IsChecked="{Binding DataContext.Status, RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter=100}, ConverterParameter=100}" Content="通过"/>
-                            <RadioButton Margin="3" IsChecked="{Binding DataContext.Status, RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter=2}, ConverterParameter=2}" Content="驳回上一级"/>
-                            <RadioButton Margin="3" IsChecked="{Binding DataContext.Status, RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter=3}, ConverterParameter=3}" Content="驳回重提"/>
-                            <RadioButton Margin="3" IsChecked="{Binding DataContext.Status, RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Converter={converter:ConverterValueMapToBool Parameter=4}, ConverterParameter=4}" Content="否决"/>
+                            <RadioButton Margin="3" IsChecked="{Binding DataContext.Status, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}},Converter={converter:ConverterValueMapToBool Parameter=100}, ConverterParameter=100}" Content="通过"/>
+                            <RadioButton Margin="3" IsChecked="{Binding DataContext.Status, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}},Converter={converter:ConverterValueMapToBool Parameter=2}, ConverterParameter=2}" Content="驳回上一级"/>
+                            <RadioButton Margin="3" IsChecked="{Binding DataContext.Status, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}},Converter={converter:ConverterValueMapToBool Parameter=3}, ConverterParameter=3}" Content="驳回重提"/>
+                            <RadioButton Margin="3" IsChecked="{Binding DataContext.Status, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}},Converter={converter:ConverterValueMapToBool Parameter=4}, ConverterParameter=4}" Content="否决"/>
                         </StackPanel>
-                        <TextBox Margin="52,5,0,5" ac:ControlAttach.Watermark="意见" Text="{Binding DataContext.Remark, RelativeSource={RelativeSource AncestorType={x:Type UserControl}} ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" ></TextBox>
+                        <TextBox Margin="52,5,0,5" ac:ControlAttach.Watermark="意见" Text="{Binding DataContext.Remark, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}} ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" ></TextBox>
                     </StackPanel>
                     
                 </Grid>

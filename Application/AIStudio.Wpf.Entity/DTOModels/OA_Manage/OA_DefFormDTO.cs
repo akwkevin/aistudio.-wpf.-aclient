@@ -112,7 +112,7 @@ namespace AIStudio.Wpf.Entity.DTOModels
         }
     }
 
-    public class OA_DefFormTree : TreeModel
+    public class OA_DefFormTree : TreeModel<OA_DefFormTree>
     {
         public string title { get => Text; }
         public string value { get => Id; }
@@ -125,7 +125,5 @@ namespace AIStudio.Wpf.Entity.DTOModels
         public string json { get; set; }
 
         public string type { get; set; }
-
-        public new List<OA_DefFormTree> Children { get; set; }
     }
 }

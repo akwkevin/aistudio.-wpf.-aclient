@@ -44,8 +44,8 @@
                         <DatePicker SelectedDate="{Binding Birthday,Mode=TwoWay}"></DatePicker>
                     </ac:FormItem>
                     <ac:FormItem Header="所属部门">
-                        <ac:TreeSelect ItemsSource="{Binding DataContext.Departments, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
-                                         SelectedItem="{Binding DataContext.SelectedDepartment, RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Mode=TwoWay}"
+                        <ac:TreeSelect ItemsSource="{Binding DataContext.Departments, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" 
+                                         SelectedItem="{Binding DataContext.SelectedDepartment, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}},Mode=TwoWay}"
                                          DisplayMemberPath="Text">
                             <ac:TreeSelect.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">
@@ -57,8 +57,8 @@
                         </ac:TreeSelect>
                     </ac:FormItem>
                     <ac:FormItem Header="角色">
-                        <ac:MultiComboBox ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
-                                            SelectedItems="{Binding DataContext.SelectedRoles, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        <ac:MultiComboBox ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" 
+                                            SelectedItems="{Binding DataContext.SelectedRoles, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}"
                                             DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
                     </ac:FormItem>
                 </ac:Form>

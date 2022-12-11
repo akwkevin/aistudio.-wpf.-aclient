@@ -29,8 +29,8 @@
                         <TextBox Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
                     </ac:FormItem>
                     <ac:FormItem Header="上级部门">
-                        <ac:TreeSelect ItemsSource="{Binding DataContext.Departments, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
-                                         SelectedItem="{Binding DataContext.SelectedDepartment, RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Mode=TwoWay}"
+                        <ac:TreeSelect ItemsSource="{Binding DataContext.Departments, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" 
+                                         SelectedItem="{Binding DataContext.SelectedDepartment, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}},Mode=TwoWay}"
                                          DisplayMemberPath="Text">
                             <ac:TreeSelect.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">

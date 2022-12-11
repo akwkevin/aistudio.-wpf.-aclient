@@ -32,8 +32,8 @@
                             <TextBox Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
                         </ac:FormItem>
                         <ac:FormItem Header="上级菜单">
-                            <ac:TreeSelect ItemsSource="{Binding DataContext.ParentIdTreeData, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
-                                        SelectedItem="{Binding DataContext.SelectedParent, RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Mode=TwoWay}"
+                            <ac:TreeSelect ItemsSource="{Binding DataContext.ParentIdTreeData, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" 
+                                        SelectedItem="{Binding DataContext.SelectedParent, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}},Mode=TwoWay}"
                                         DisplayMemberPath="Text">
                                 <ac:TreeSelect.ItemTemplate>
                                     <HierarchicalDataTemplate ItemsSource="{Binding Children}">
@@ -103,11 +103,11 @@
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
                                                     <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
-                                                        <Hyperlink Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                        <Hyperlink Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}"
                                                             CommandParameter="{Binding .}" Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock x:Name="txtEdit" Text="编辑" /> </Hyperlink>
                                                     </TextBlock>
                                                     <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
-                                                        <Hyperlink Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                        <Hyperlink Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}"
                                                             CommandParameter="{Binding .}" Foreground="{DynamicResource MahApps.Brushes.Text}"> <TextBlock Text="删除" /> </Hyperlink>
                                                     </TextBlock>
                                                 </StackPanel>

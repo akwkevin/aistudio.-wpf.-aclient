@@ -128,7 +128,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                 ids.Add(id);
             }
 
-            var sure = await MessageBoxDialog.Warning("确认暂停吗?", "提示", Identifier);
+            var sure = await MessageBoxDialog.Show("确认暂停吗?", "提示", ControlStatus.Mid, Identifier);
             if (sure == DialogResult.OK)
             {
                 try
@@ -165,7 +165,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                 ids.Add(id);
             }            
 
-            var sure = await MessageBoxDialog.Warning("确认开始吗?", "提示", Identifier);
+            var sure = await MessageBoxDialog.Show("确认开始吗?", "提示", ControlStatus.Mid, Identifier);
             if (sure == DialogResult.OK)
             {
                 try
@@ -202,7 +202,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                 ids.Add(id);
             }
 
-            var sure = await MessageBoxDialog.Warning("确认立即执行吗?", "提示", Identifier);
+            var sure = await MessageBoxDialog.Show("确认立即执行吗?", "提示", ControlStatus.Mid, Identifier);
             if (sure == DialogResult.OK)
             {
                 try

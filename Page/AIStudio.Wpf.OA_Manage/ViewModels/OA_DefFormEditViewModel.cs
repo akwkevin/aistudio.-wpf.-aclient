@@ -132,7 +132,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         }   
         private void GetTypes()
         {
-            _userData.ItemSource.TryGetValue("分类", out var types);
+            _userData.ItemSource.TryGetValue("流程分类", out var types);
 
             Types = new List<ISelectOption>(types ?? new ObservableCollection<ISelectOption>());
         }

@@ -35,8 +35,8 @@
                         <TextBox Text="{Binding Code,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
                     </ac:FormItem>
                     <ac:FormItem Header="上级字典">
-                        <ac:TreeSelect ItemsSource="{Binding DataContext.ParentIdTreeData, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
-                                        SelectedItem="{Binding DataContext.SelectedParent, RelativeSource={RelativeSource AncestorType={x:Type UserControl}},Mode=TwoWay}"
+                        <ac:TreeSelect ItemsSource="{Binding DataContext.ParentIdTreeData, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" 
+                                        SelectedItem="{Binding DataContext.SelectedParent, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}},Mode=TwoWay}"
                                         DisplayMemberPath="Text">
                             <ac:TreeSelect.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">

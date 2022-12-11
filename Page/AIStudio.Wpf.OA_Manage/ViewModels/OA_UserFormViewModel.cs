@@ -63,10 +63,10 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 SearchKeyValues = searchKeyValues,
                 Search = new
                 {
-                    userId = userId,
-                    applicantUserId = applicantUserId,
-                    creatorId = creatorId,
-                    alreadyUserIds = alreadyUserIds,
+                    UserId = userId,
+                    ApplicantUserId = applicantUserId,
+                    CreatorId = creatorId,
+                    AlreadyUserIds = alreadyUserIds,
                 }
             };
 

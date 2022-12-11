@@ -35,7 +35,7 @@
                                     <Run>权限</Run>
                                 </TextBlock>
                             </ac:FormItem.Header>
-                            <TreeView x:Name="PART_TreeView" Margin="2" ItemsSource="{Binding DataContext.ActionsTreeData, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+                            <TreeView x:Name="PART_TreeView" Margin="2" ItemsSource="{Binding DataContext.ActionsTreeData, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}">
                                 <TreeView.ItemContainerStyle>
                                     <Style TargetType="TreeViewItem">
                                         <Setter Property="IsSelected" Value="{Binding IsSelected,Mode=TwoWay}" />

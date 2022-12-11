@@ -374,7 +374,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
 
         protected virtual async Task Delete(List<string> ids)
         {
-            var sure = await MessageBoxDialog.Warning("确认删除吗?", "提示", Identifier);
+            var sure = await MessageBoxDialog.Show("确认删除吗?", "提示", ControlStatus.Mid, Identifier);
             if (sure == DialogResult.OK)
             {
                 try
