@@ -135,8 +135,8 @@
                 <DataGridTextColumn Header="申请人及部门"  Binding="{Binding ApplicantUserAndDepartment}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="当前节点"  Binding="{Binding Current}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="当前审批人"  Binding="{Binding UserNamesAndRoles}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="创建日期"  Binding="{Binding StartTime,StringFormat=yyyy-MM-dd HH:mm:ss}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="开始日期"  Binding="{Binding EndTime,StringFormat=yyyy-MM-dd HH:mm:ss}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="开始日期"  Binding="{Binding StartTime,StringFormat=yyyy-MM-dd HH:mm:ss}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="结束日期"  Binding="{Binding EndTime,StringFormat=yyyy-MM-dd HH:mm:ss}" IsReadOnly="True"/>
                 <DataGridTemplateColumn Header="操作" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

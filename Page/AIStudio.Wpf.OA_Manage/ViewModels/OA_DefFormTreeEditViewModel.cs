@@ -1,5 +1,4 @@
-﻿using Aga.Diagrams.Extension.Flowchart;
-using AIStudio.Core;
+﻿using AIStudio.Core;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Entity.DTOModels;
 using Prism.Ioc;

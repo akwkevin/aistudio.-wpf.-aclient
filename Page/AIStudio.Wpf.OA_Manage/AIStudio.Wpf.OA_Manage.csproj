@@ -6,12 +6,11 @@
   </PropertyGroup>  
  
   <ItemGroup>
-    <ProjectReference Include="..\..\..\aistudio.-wpf.-diagram\AIStudio.Wpf.Flowchart\AIStudio.Wpf.Flowchart.csproj" />
     <ProjectReference Include="..\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
   </ItemGroup>
  
   <ItemGroup>
-    <PackageReference Include="Aga.Diagrams.Extension" Version="1.2.1" />
+    <PackageReference Include="AIStudio.Wpf.Flowchart" Version="1.0.1" />
     <PackageReference Include="System.Threading.Tasks.Extensions">
       <Version>4.5.4</Version>
     </PackageReference>
