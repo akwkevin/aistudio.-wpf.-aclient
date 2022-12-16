@@ -8,6 +8,7 @@ using System;
 using System.Linq;
 using AIStudio.Wpf.Controls;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
@@ -18,9 +19,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
            
         }
 
-        protected override void GetData(bool iswaiting = false)
+        protected override async Task GetData(bool iswaiting = false)
         {
-            base.GetData(iswaiting);
+            await base.GetData(iswaiting);
         }
 
         protected override async void Edit(Base_RoleDTO para = null)
@@ -60,9 +61,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        protected override void Delete(string id = null)
+        protected override async Task Delete(string id = null)
         {
-            base.Delete(id);
+            await base.Delete(id);
         }
 
         protected override void Print()

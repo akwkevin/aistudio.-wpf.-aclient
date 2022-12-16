@@ -95,7 +95,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             Roles = await _userData.GetBase_Role();
         }
 
-        protected override async void GetData(bool iswaiting = false)
+        protected override async Task GetData(bool iswaiting = false)
         {
             
             try
@@ -182,9 +182,9 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        protected override void Delete(string id = null)
+        protected override async Task Delete(string id = null)
         {
-            base.Delete(id);
+            await base.Delete(id);
         }
 
         protected override void Print()

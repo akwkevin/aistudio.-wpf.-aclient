@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using AIStudio.Wpf.Controls;
+using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
@@ -61,7 +62,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue };
         }
 
-        protected override async void GetData(bool iswaiting = false)
+        protected override async Task GetData(bool iswaiting = false)
         {
             try
             {
@@ -137,7 +138,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        protected override async void Delete(string id = null)
+        protected override async Task Delete(string id = null)
         {
             List<string> ids = new List<string>();
             if (string.IsNullOrEmpty(id))

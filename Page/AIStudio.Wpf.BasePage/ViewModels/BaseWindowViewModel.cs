@@ -202,7 +202,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             return JsonConvert.SerializeObject(data);
         }
 
-        protected virtual async void GetData(bool iswaiting = false)
+        protected virtual async Task GetData(bool iswaiting = false)
         {
             try
             {
@@ -304,7 +304,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             }
         }
 
-        protected virtual async void Delete(string id = null)
+        protected virtual async Task Delete(string id = null)
         {
             List<string> ids = new List<string>();
             if (string.IsNullOrEmpty(id))
@@ -377,8 +377,6 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             GetData();
         }
 
-
-
         protected BaseWindowViewModel()
         {
 
@@ -404,18 +402,11 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             {
                 Identifier = identifier;
             }
-
-            Initialize();
         }
 
-        public override void Initialize()
+        public override async Task OnLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (IsInitialize)
-            {
-                return;
-            }
-            base.Initialize();
-            GetData();
+            await GetData();
         }
 
     }

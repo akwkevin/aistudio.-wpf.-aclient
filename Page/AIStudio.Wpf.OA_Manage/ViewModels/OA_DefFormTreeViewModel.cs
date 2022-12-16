@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using AIStudio.Wpf.Controls;
+using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
@@ -48,7 +49,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             
         }
 
-        protected override async void GetData(bool iswaiting = false)
+        protected override async Task GetData(bool iswaiting = false)
         {
 
             try

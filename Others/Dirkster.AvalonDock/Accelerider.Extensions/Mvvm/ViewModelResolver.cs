@@ -1,6 +1,7 @@
 ﻿using Prism.Ioc;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Accelerider.Extensions.Mvvm
@@ -67,9 +68,13 @@ namespace Accelerider.Extensions.Mvvm
             })
             .IfInheritsFrom<IViewLoadedAndUnloadedAware>((view, viewModel) =>
             {
-                view.Loaded += (sender, e) => viewModel.OnLoaded();
-                view.Unloaded += (sender, e) => 
-                    viewModel.OnUnloaded();
+                view.Loaded += (sender, e) => viewModel.OnLoaded(sender, e);
+                view.Unloaded += (sender, e) =>  viewModel.OnUnloaded(sender, e);
+            })
+            .IfInheritsFrom<IViewLoadedAndUnloadedAwareAsync>((view, viewModel) =>
+            {
+                view.Loaded += async (sender, e) => await viewModel.OnLoaded(sender, e);
+                view.Unloaded += async (sender, e) => await viewModel.OnUnloaded(sender, e);
             })
             .IfInheritsFrom(typeof(IViewLoadedAndUnloadedAware<>), (view, viewModel, interfaceInstance) =>
             {
@@ -79,13 +84,28 @@ namespace Accelerider.Extensions.Mvvm
                     throw new InvalidOperationException();
                 }
 
-                var onLoadedMethod = interfaceInstance.GetMethod<Action<object>>("OnLoaded", viewType);
-                var onUnloadedMethod = interfaceInstance.GetMethod<Action<object>>("OnUnloaded", viewType);
+                var onLoadedMethod = interfaceInstance.GetMethod<Action<object, RoutedEventArgs>>("OnLoaded", viewType);
+                var onUnloadedMethod = interfaceInstance.GetMethod<Action<object, RoutedEventArgs>>("OnUnloaded", viewType);
 
-                view.Loaded += (sender, args) => onLoadedMethod(sender);
-                view.Unloaded += (sender, args) =>
-                    onUnloadedMethod(sender);
-            });
+                view.Loaded += (sender, args) => onLoadedMethod(sender, args);
+                view.Unloaded += (sender, args) =>  onUnloadedMethod(sender, args);
+            })
+             .IfInheritsFrom(typeof(IViewLoadedAndUnloadedAwareAsync<>), (view, viewModel, interfaceInstance) =>
+             {
+                 var viewType = view.GetType();
+                 if (interfaceInstance.GenericArguments.Single() != viewType)
+                 {
+                     throw new InvalidOperationException();
+                 }
+
+                 var onLoadedMethod = interfaceInstance.GetMethod<Action<object, RoutedEventArgs>>("OnLoaded", viewType);
+                 var onUnloadedMethod = interfaceInstance.GetMethod<Action<object, RoutedEventArgs>>("OnUnloaded", viewType);
+
+                 //待验证
+                 view.Loaded += (sender, args) => onLoadedMethod.BeginInvoke(sender, args, a => onLoadedMethod(sender, args), null);
+                 view.Unloaded += (sender, args) => onUnloadedMethod.BeginInvoke(sender, args, a => onUnloadedMethod(sender, args), null);
+             });
+
 
 
         public static IViewModelResolver IfInheritsFrom<TViewModel>(this IViewModelResolver @this, Action<FrameworkElement, TViewModel> configuration)

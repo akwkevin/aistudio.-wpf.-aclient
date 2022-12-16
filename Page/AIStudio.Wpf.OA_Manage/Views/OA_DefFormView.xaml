@@ -80,7 +80,18 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="权限角色"  Binding="{Binding Value, Converter={converter:SplitStringToStringConverter}}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="权限角色" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ac:MultiComboBox ItemsSource="{Binding DataContext.Roles, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                            SelectedItems="{Binding Roles}" IsReadOnly="True" Padding="0" BorderThickness="0"
+                                            DisplayMemberPath="Text" SelectedValuePath="Value" 
+                                            Visibility="{Binding Roles.Count,Converter={converter:IntVisibilityConverter}}">
+
+                            </ac:MultiComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="操作" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

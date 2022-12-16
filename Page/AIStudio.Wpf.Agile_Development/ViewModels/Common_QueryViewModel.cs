@@ -12,6 +12,7 @@ using System.Linq;
 using System.Windows.Input;
 using AIStudio.Wpf.Agile_Development.Views;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Agile_Development.ViewModels
 {
@@ -120,9 +121,9 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             return JsonConvert.SerializeObject(data);
         }
 
-        protected override void GetData(bool iswaiting = false)
+        protected override async Task GetData(bool iswaiting = false)
         {          
-            base.GetData(iswaiting);
+            await base.GetData(iswaiting);
         }
 
         public async void Submit()

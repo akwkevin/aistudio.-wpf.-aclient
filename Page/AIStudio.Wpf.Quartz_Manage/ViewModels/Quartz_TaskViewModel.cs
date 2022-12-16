@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AIStudio.Wpf.Quartz_Manage.ViewModels
@@ -91,9 +92,9 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
 	
         }
 
-        protected override void GetData(bool iswaiting = false)
+        protected override async Task GetData(bool iswaiting = false)
         {
-            base.GetData(iswaiting);
+            await base.GetData(iswaiting);
         }
 
         protected override void Edit(Quartz_TaskDTO para = null)
@@ -101,9 +102,9 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             base.Edit(para);
         }
 
-        protected override void Delete(string id = null)
+        protected override async Task Delete(string id = null)
         {
-            base.Delete(id);
+            await base.Delete(id);
         }
 
         protected override void Print()

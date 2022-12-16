@@ -93,12 +93,6 @@ namespace AIStudio.Wpf.PrismAvalonExtensions.ViewModels
             this.CanFloat = true;
         }
 
-        protected bool IsInitialize;
-        public virtual void Initialize()
-        {
-            IsInitialize = true;
-        }
-
         /// <summary>
         /// 释放标记
         /// </summary>

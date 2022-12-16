@@ -26,7 +26,7 @@ using System.Windows.Threading;
 
 namespace AIStudio.Wpf.Home.ViewModels
 {
-    public class MainViewModel : Prism.Mvvm.BindableBase, INavigationAware, IViewLoadedAndUnloadedAware
+    public class MainViewModel : Prism.Mvvm.BindableBase, INavigationAware, IViewLoadedAndUnloadedAwareAsync
     {
         protected IContainerExtension _container { get; }
         public IRegionManager _regionManager { get; set; }//这个很重要，与View进行绑定，不然RequestNavigate不好使
@@ -249,7 +249,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             _aggregator.GetEvent<MenuExcuteEvent>().Subscribe(MenuExcuteEventReceived, (ev) => { return ev.Item1 == Identifier; });
         }
 
-        public async void OnLoaded()
+        public async Task OnLoaded(object sender, RoutedEventArgs e)
         {
             if (_window == null)
             {
@@ -278,12 +278,13 @@ namespace AIStudio.Wpf.Home.ViewModels
             }
         }
 
-        public void OnUnloaded()
+        public Task OnUnloaded(object sender, RoutedEventArgs e)
         {
             if (_window != null)
             {
                 _window.PreviewKeyDown -= View_PreviewKeyDown;
             }
+            return Task.CompletedTask;
         }
 
         private void View_PreviewKeyDown(object sender, KeyEventArgs e)

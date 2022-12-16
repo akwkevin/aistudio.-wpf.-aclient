@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
@@ -85,14 +86,10 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             directory = basedir.Substring(0, basedir.IndexOf("Application"));
         }
 
-        public override async void Initialize()
+        public override async Task OnLoaded(object sender, RoutedEventArgs e)
         {
-            if (IsInitialize)
-            {
-                return;
-            }
             await GetDbTableInfo();
-            base.Initialize();          
+            await base.OnLoaded(sender, e);          
         }
 
         private async Task GetDbTableInfo()
@@ -109,7 +106,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        protected override async void GetData(bool iswaiting = false)
+        protected override async Task GetData(bool iswaiting = false)
         {
             try
             {

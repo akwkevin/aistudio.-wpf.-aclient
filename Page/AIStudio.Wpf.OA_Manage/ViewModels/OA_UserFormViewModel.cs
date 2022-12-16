@@ -107,7 +107,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
                     if (res == DialogResult.Other1)
                     {
-                        var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/DisCardData", JsonConvert.SerializeObject(new { id = viewmodel.Data.Id }));
+                        var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/DisCardData", JsonConvert.SerializeObject(new { id = viewmodel.Data.Id, remark = viewmodel.Data.Remarks }));
                         if (!result.Success)
                         {
                             throw new Exception(result.Msg);
@@ -148,9 +148,9 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             Edit(new OA_UserFormDTO() { Id = id[0] as string });
         }
 
-        protected override void Delete(string id = null)
+        protected override async Task Delete(string id = null)
         {
-            base.Delete(id);
+            await base.Delete(id);
         }
 
         protected override void Print()

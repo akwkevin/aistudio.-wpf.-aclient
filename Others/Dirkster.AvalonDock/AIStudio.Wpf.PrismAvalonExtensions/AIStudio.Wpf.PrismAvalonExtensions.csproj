@@ -21,6 +21,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\Accelerider.Extensions\Accelerider.Extensions.csproj" />
     <ProjectReference Include="..\AvalonDock.Themes.MyVS2013\AvalonDock.Themes.MyVS2013.csproj" />
   </ItemGroup>
   

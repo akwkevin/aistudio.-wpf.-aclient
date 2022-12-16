@@ -17,6 +17,7 @@ using System.Collections.ObjectModel;
 using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -257,7 +258,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             return JsonConvert.SerializeObject(data);
         }
 
-        protected virtual async void GetData(bool iswaiting = false)
+        protected virtual async Task GetData(bool iswaiting = false)
         {
             try
             {
@@ -418,19 +419,12 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             var items = value.Split(".");
             Area = items[0];
             Name = items[1];
-
-            Initialize();
         }
 
-        public override void Initialize()
+        public override async Task OnLoaded(object sender, RoutedEventArgs e)
         {
-            if (IsInitialize)
-            {
-                return;
-            }
-            base.Initialize();
             GetConfig();
-            GetData();
+            await GetData();
         }
 
         private DataGridColumnCustom GetDataGridColumnCustom(Base_CommonFormConfigDTO config)

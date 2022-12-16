@@ -19,7 +19,7 @@ using System.Net.Http;
 
 namespace AIStudio.Wpf.Client.ViewModels
 {
-    public partial class LoginWindowViewModel : DataErrorInfoBindableBase, IViewLoadedAndUnloadedAware<LoginWindow>
+    public partial class LoginWindowViewModel : DataErrorInfoBindableBase, IViewLoadedAndUnloadedAware
     {
         private ObservableCollection<LoginInfo> _loginInfo;
         public ObservableCollection<LoginInfo> LoginInfo
@@ -271,12 +271,12 @@ namespace AIStudio.Wpf.Client.ViewModels
             }
         }
 
-        public void OnLoaded(LoginWindow view)
+        public void OnLoaded(object view, RoutedEventArgs e)
         {
-            _window = view;
+            _window = view as LoginWindow;
         }
 
-        public void OnUnloaded(LoginWindow view)
+        public void OnUnloaded(object view, RoutedEventArgs e)
         {
             
         }

@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using AIStudio.Wpf.Controls;
+using System.Windows;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
@@ -89,19 +90,10 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         }
 
-        public override void Initialize()
-        {
-            if (IsInitialize)
-            {
-                return;
-            }
-            base.Initialize();
-            InitData();
-        }
-
-        private async void InitData()
+        public override async Task OnLoaded(object sender, RoutedEventArgs e)
         {
             await GetLogTypeList();
+            await base.OnLoaded(sender, e);
         }
 
         private async Task GetLogTypeList()
