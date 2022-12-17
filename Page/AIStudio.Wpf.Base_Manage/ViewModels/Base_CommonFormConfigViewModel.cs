@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_CommonFormConfigViewModel : BaseListViewModel<Base_CommonFormConfigDTO, Base_CommonFormConfigEdit>
+    public class Base_CommonFormConfigViewModel : BaseListWithEditViewModel<Base_CommonFormConfigDTO, Base_CommonFormConfigEdit>
     {
         public Base_CommonFormConfigViewModel()
         {

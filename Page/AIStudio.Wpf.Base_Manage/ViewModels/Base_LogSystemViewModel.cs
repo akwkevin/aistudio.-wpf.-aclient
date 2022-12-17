@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_LogSystemViewModel : BaseWindowViewModel<Base_LogSystemDTO>
+    public class Base_LogSystemViewModel : BaseListViewModel<Base_LogSystemDTO>
     {
         private string _logType;
         public string LogType
@@ -85,9 +85,10 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_LogSystemViewModel() : base("Base_Manage", null, null, "Message")
+        public Base_LogSystemViewModel()
         {
-
+            Area = "Base_Manage";
+            Condition = "Message";
         }
 
         public override async Task OnLoaded(object sender, RoutedEventArgs e)

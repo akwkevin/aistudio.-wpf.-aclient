@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_RoleViewModel : BaseListViewModel<Base_RoleDTO, Base_RoleEdit>
+    public class Base_RoleViewModel : BaseListWithEditViewModel<Base_RoleDTO, Base_RoleEdit>
     {
         public Base_RoleViewModel()
         {

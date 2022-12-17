@@ -1,20 +1,27 @@
 ﻿using AIStudio.Wpf.Base_Manage.Views;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Entity.DTOModels;
+using NPOI.SS.Formula.PTG;
 using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_DbLinkViewModel : BaseWindowViewModel<Base_DbLinkDTO>
+    public class Base_DbLinkViewModel : BaseListWithEditViewModel<Base_DbLinkDTO, Base_DbLinkEdit>
     {
-        public Base_DbLinkViewModel():base("Base_Manage", typeof(Base_DbLinkEditViewModel), typeof(Base_DbLinkEdit), "LinkName")
+        public Base_DbLinkViewModel()
         {
-
+            Area = "Base_Manage";
+            Condition = "LinkName";
         }
 
         protected override async Task GetData(bool iswaiting = false)
         {
             await base.GetData(iswaiting);
+        }
+
+        protected override BaseEditViewModel2<Base_DbLinkDTO> GetEditViewModel()
+        {
+            return new Base_DbLinkEditViewModel();
         }
 
         protected override void Edit(Base_DbLinkDTO para = null)

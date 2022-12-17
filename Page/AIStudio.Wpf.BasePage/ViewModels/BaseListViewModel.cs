@@ -1,28 +1,24 @@
 ﻿using AIStudio.Core;
-using AIStudio.Core.Models;
 using AIStudio.Core.Helpers;
+using AIStudio.Core.Models;
 using AIStudio.Wpf.BasePage.Views;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
-using AIStudio.Wpf.Entity.DTOModels;
+using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
 using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Ioc;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows.Controls;
-using System.Windows.Input;
 using System.Threading.Tasks;
-using Prism.Commands;
-using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
-using NPOI.SS.Formula.Functions;
-using Org.BouncyCastle.Crypto.Engines;
+using System.Windows.Input;
 
 namespace AIStudio.Wpf.BasePage.ViewModels
 {
-    public class BaseListViewModel<TData, EditForm> : NavigationDockWindowViewModel where TData : class, IIsChecked where EditForm : ChildWindow
+    public class BaseListViewModel<TData> : NavigationDockWindowViewModel where TData : class, IIsChecked 
     {
         protected IDataProvider _dataProvider { get { return ContainerLocator.Current.Resolve<IDataProvider>(); } }
 
@@ -62,7 +58,6 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             }
         }
 
-
         private TData _selectedItem;
         public TData SelectedItem
         {
@@ -72,9 +67,6 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 SetProperty(ref _selectedItem, value);
             }
         }
-
-
-
 
         public Core.Models.Pagination Pagination { get; set; } = new Core.Models.Pagination() { PageRows = 100 };
 
@@ -217,41 +209,10 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             }
         }
 
-        protected virtual async void Edit(TData para = null)
+        protected virtual void Edit(TData para = null)
         {
-            var dialog = CreateView<string>(para?.Id, Area, Identifier);
-            if (dialog is ChildWindow childwindow)
-            {
-                var res = (DialogResult)await WindowBase.ShowChildWindowAsync(childwindow, "编辑表单", Identifier);
-                if (res == DialogResult.OK)
-                {
-                    await GetData();
-                }
-            }
-        }
-
-        #region
-        public virtual ChildWindow CreateView<Options>(Options option, string area, string identifier)
-        {
-            var dialog = Activator.CreateInstance<EditForm>() as ChildWindow;
-            var viewmodel = GetEditViewModel();
-            viewmodel.Options = option;
-            viewmodel.Area = area;
-            viewmodel.Identifier = identifier;
-
-            dialog.ValidationActionAsync += () => { return viewmodel.ValidationAsync(); };
-            dialog.Loaded += async (sender, e) => { await viewmodel.OnLoaded(sender, e); };
-            dialog.Unloaded += async (sender, e) => { await viewmodel.OnUnloaded(sender, e); };
-            dialog.DataContext = viewmodel;
-
-            return dialog;
-        }
-
-        protected virtual BaseEditViewModel2<TData> GetEditViewModel()
-        {
-            return new BaseEditViewModel2<TData>();
-        }
-        #endregion
+          
+        }      
 
         protected virtual async Task Delete(string id = null)
         {
@@ -282,7 +243,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                     {
                         throw new Exception(result.Msg);
                     }
-                    GetData(true);
+                    await GetData(true);
                 }
                 catch (Exception ex)
                 {
@@ -318,27 +279,11 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             }
         }
 
-        protected virtual void Search(object para = null)
+        protected virtual async void Search(object para = null)
         {
             Pagination.PageIndex = 0;
-            GetData();
+            await GetData();
         }
-
-        protected BaseListViewModel()
-        {
-
-        }
-
-        public override void Dispose()
-        {
-            base.Dispose();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-        }
-
 
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
@@ -353,8 +298,14 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 
         public override async Task OnLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
+            await base.OnLoaded(sender, e);
             await GetData();
         }
 
+        public override async Task OnUnloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            await base.OnUnloaded(sender, e);
+            Dispose();
+        }
     }
 }

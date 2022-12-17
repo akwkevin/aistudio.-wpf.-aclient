@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_TestViewModel : BaseWindowViewModel<Base_TestDTO>
+    public class Base_TestViewModel : BaseListWithEditViewModel<Base_TestDTO, Base_TestEdit>
     {
-        public Base_TestViewModel() : base("Base_Manage", typeof(Base_TestEditViewModel), typeof(Base_TestEdit), "")
+        public Base_TestViewModel()
         {
-
+            Area = "Base_Manage";
         }
 
         protected override async Task GetData(bool iswaiting = false)

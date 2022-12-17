@@ -10,21 +10,8 @@ using System.Linq;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_TestEditViewModel : BaseEditViewModel<Base_TestDTO>
+    public class Base_TestEditViewModel : BaseEditViewModel2<Base_TestDTO>
     {
-        public Base_TestEditViewModel(Base_TestDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
-        {
-
-        }
-
-		protected override void InitData()
-		{
-			Data = new Base_TestDTO();
-		}
-
-        protected override void GetData(Base_TestDTO para)
-        {
-            base.GetData(para);
-        }       
+       
     }
 }

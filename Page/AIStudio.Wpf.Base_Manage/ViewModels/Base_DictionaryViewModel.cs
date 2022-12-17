@@ -15,7 +15,7 @@ using System.Windows.Input;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_DictionaryViewModel : BaseListViewModel<Base_DictionaryDTO, Base_DictionaryEdit>
+    public class Base_DictionaryViewModel : BaseListWithEditViewModel<Base_DictionaryDTO, Base_DictionaryEdit>
     {
         private ObservableCollection<IBaseTreeItemViewModel> _data;
         public new ObservableCollection<IBaseTreeItemViewModel> Data

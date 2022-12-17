@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_AppSecretViewModel : BaseListViewModel<Base_AppSecretDTO, Base_AppSecretEdit>
+    public class Base_AppSecretViewModel : BaseListWithEditViewModel<Base_AppSecretDTO, Base_AppSecretEdit>
     {
         public Base_AppSecretViewModel()
         {

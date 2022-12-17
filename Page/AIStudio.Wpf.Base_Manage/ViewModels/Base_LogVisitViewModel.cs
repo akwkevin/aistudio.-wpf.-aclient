@@ -12,7 +12,7 @@ using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_LogVisitViewModel : BaseWindowViewModel<Base_LogVisitDTO>
+    public class Base_LogVisitViewModel : BaseListViewModel<Base_LogVisitDTO>
     {
         private string _creatorName;
         public string CreatorName
@@ -56,9 +56,10 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }       
 
-        public Base_LogVisitViewModel() : base("Base_Manage", null, null, "Message")
+        public Base_LogVisitViewModel() 
         {
-
+            Area = "Base_Manage";
+            Condition = "Message";
         }    
 
         protected override string GetDataJson()

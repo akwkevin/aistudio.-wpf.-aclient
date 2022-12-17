@@ -12,7 +12,7 @@ using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_LogExceptionViewModel : BaseWindowViewModel<Base_LogExceptionDTO>
+    public class Base_LogExceptionViewModel : BaseListViewModel<Base_LogExceptionDTO>
     {
         private string _creatorName;
         public string CreatorName
@@ -56,9 +56,10 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_LogExceptionViewModel() : base("Base_Manage", null, null, "Message")
+        public Base_LogExceptionViewModel()
         {
-
+            Area = "Base_Manage";
+            Condition = "Message";
         }      
 
         protected override string GetDataJson()

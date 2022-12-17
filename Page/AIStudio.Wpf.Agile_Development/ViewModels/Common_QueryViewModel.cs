@@ -13,10 +13,12 @@ using System.Windows.Input;
 using AIStudio.Wpf.Agile_Development.Views;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using AIStudio.Wpf.BasePage.DTOModels;
+using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.Agile_Development.ViewModels
 {
-    class Common_QueryViewModel<T, Q> : BaseWindowViewModel<T> where T : class, IIsChecked, new()
+    class Common_QueryViewModel<T, Q> : BaseListViewModel<T> where T : class, IIsChecked, new()
     {
         private bool _queryConditionConfigIsOpen;
         public bool QueryConditionConfigIsOpen
@@ -64,7 +66,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             }
         }
 
-        public Common_QueryViewModel(string area, Type type, string getDataList = "GetDataList") : base(area, type, typeof(Common_QueryEdit), getDataList)
+        public Common_QueryViewModel()
         {
             var properties_query = typeof(Q).GetProperties();
             var queryConditionItems = new List<QueryConditionItem>();
@@ -147,6 +149,29 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             await SaveData(obj);
         }
 
+        public virtual async Task<bool> SaveData(T para)
+        {
+            try
+            {
+                ShowWait();
+                var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/SaveData", para.ToJson());
+                if (!result.Success)
+                {
+                    throw new Exception(result.Msg);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Error(ex.Message);
+                return false;
+            }
+            finally
+            {
+                HideWait();
+            }
+        }
+
         public void QueryConditionConfig()
         {
             QueryConditionConfigIsOpen = true;
@@ -158,17 +183,6 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             {
                 BaseControlItem.ObjectToList(SelectedItem, EditFormItems);
             }
-        }
-
-        protected override BaseEditViewModel<T> GetEditViewModel(T para = null)
-        {
-            return Activator.CreateInstance(Type, new object[] { EditFormItems.Where(p => p.ControlType != ControlType.Submit), para, Area, Identifier, "编辑表单" }) as BaseEditViewModel<T>;
-        }
-
-        protected override bool ValidationEdit(BaseEditViewModel<T> viewmodel)
-        {
-            BaseControlItem.ListToObject(viewmodel.Data, ((Common_QueryEditViewModel<T>)viewmodel).EditFormItems);
-            return base.ValidationEdit(viewmodel);
         }
     }
 }

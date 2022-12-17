@@ -12,7 +12,7 @@ using AIStudio.Wpf.Entity.Models;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_UserViewModel : BaseListViewModel<Base_UserDTO, Base_UserEdit>
+    public class Base_UserViewModel : BaseListWithEditViewModel<Base_UserDTO, Base_UserEdit>
     {
         public Base_UserViewModel()
         {

@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace AIStudio.Wpf.Quartz_Manage.ViewModels
 {
-    public class Quartz_TaskViewModel : BaseWindowViewModel<Quartz_TaskDTO>
+    public class Quartz_TaskViewModel : BaseListWithEditViewModel<Quartz_TaskDTO, Quartz_TaskEdit>
     {
         private ICommand _pauseCommand;
         public ICommand PauseCommand
@@ -87,14 +87,20 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             }
         }
 
-        public Quartz_TaskViewModel():base("Quartz_Manage", typeof(Quartz_TaskEditViewModel), typeof(Quartz_TaskEdit), "TaskName")
+        public Quartz_TaskViewModel()
         {
-	
+            Area = "Quartz_Manage";
+            Condition = "TaskName";
         }
 
         protected override async Task GetData(bool iswaiting = false)
         {
             await base.GetData(iswaiting);
+        }
+
+        protected override BaseEditViewModel2<Quartz_TaskDTO> GetEditViewModel()
+        {
+            return new Quartz_TaskEditViewModel();
         }
 
         protected override void Edit(Quartz_TaskDTO para = null)

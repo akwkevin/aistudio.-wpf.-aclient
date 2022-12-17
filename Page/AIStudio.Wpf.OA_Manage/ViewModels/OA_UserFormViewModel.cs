@@ -13,7 +13,7 @@ using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
-    public class OA_UserFormViewModel : BaseListViewModel<OA_UserFormDTO, OA_UserFormEdit>
+    public class OA_UserFormViewModel : BaseListWithEditViewModel<OA_UserFormDTO, OA_UserFormEdit>
     {
         private string _status = "processing";
         public string Status

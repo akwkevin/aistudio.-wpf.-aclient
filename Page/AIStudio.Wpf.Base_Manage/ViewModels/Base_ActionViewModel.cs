@@ -15,7 +15,7 @@ using AIStudio.Wpf.BasePage.Views;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_ActionViewModel : BaseListViewModel<Base_ActionDTO, Base_ActionEdit>
+    public class Base_ActionViewModel : BaseListWithEditViewModel<Base_ActionDTO, Base_ActionEdit>
     {
         private ObservableCollection<IBaseTreeItemViewModel> _data;
         public new ObservableCollection<IBaseTreeItemViewModel> Data

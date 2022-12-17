@@ -17,7 +17,7 @@ using Org.BouncyCastle.Crypto;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
-    public class OA_DefFormViewModel : BaseListViewModel<OA_DefFormDTO, OA_DefFormEdit>
+    public class OA_DefFormViewModel : BaseListWithEditViewModel<OA_DefFormDTO, OA_DefFormEdit>
     {
         private ObservableCollection<ISelectOption> _roles;
         public ObservableCollection<ISelectOption> Roles

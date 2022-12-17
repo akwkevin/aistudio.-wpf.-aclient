@@ -14,7 +14,7 @@ using System.Windows.Input;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
-    public class OA_DefFormTreeViewModel : BaseListViewModel<OA_DefFormDTO, OA_DefFormEdit>
+    public class OA_DefFormTreeViewModel : BaseListWithEditViewModel<OA_DefFormDTO, OA_DefFormEdit>
     {
         private ObservableCollection<OA_DefFormTree> _data;
         public new ObservableCollection<OA_DefFormTree> Data

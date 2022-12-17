@@ -109,23 +109,23 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
 
         public Core.Models.Pagination Pagination { get; set; } = new Core.Models.Pagination() { PageRows = 100 };
 
-        private ICommand _addCommand;
-        public ICommand AddCommand
-        {
-            get
-            {
-                return this._addCommand ?? (this._addCommand = new DelegateCommand(() => this.Edit()));
-            }
-        }
+        //private ICommand _addCommand;
+        //public ICommand AddCommand
+        //{
+        //    get
+        //    {
+        //        return this._addCommand ?? (this._addCommand = new DelegateCommand(() => this.Edit()));
+        //    }
+        //}
 
-        private ICommand _editCommand;
-        public ICommand EditCommand
-        {
-            get
-            {
-                return this._editCommand ?? (this._editCommand = new DelegateCommand<ExpandoObject>(para => this.Edit(para)));
-            }
-        }
+        //private ICommand _editCommand;
+        //public ICommand EditCommand
+        //{
+        //    get
+        //    {
+        //        return this._editCommand ?? (this._editCommand = new DelegateCommand<ExpandoObject>(para => this.Edit(para)));
+        //    }
+        //}
 
         private ICommand _deleteCommand;
         public ICommand DeleteCommand
@@ -293,25 +293,6 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                 {
                     HideWait();
                 }
-            }
-        }
-
-        protected virtual async void Edit(ExpandoObject para = null)
-        {
-            var viewmodel = new Common_FormConfigQueryEditViewModel(EditFormItems.Where(p => p.ControlType != ControlType.Submit), para, Area, Name, Identifier, "编辑表单");
-            var dialog = new Common_QueryEdit(viewmodel);
-            dialog.ValidationAction = (() =>
-            {
-                BaseControlItem.ListToObject(viewmodel.Data, viewmodel.EditFormItems);
-                if (!string.IsNullOrEmpty(((dynamic)viewmodel.Data).Error))
-                    throw new Exception(((dynamic)viewmodel.Data).Error);
-                else
-                    return true;
-            });
-            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
-            if (res == DialogResult.OK)
-            {
-                await SaveData(viewmodel.Data);
             }
         }
 

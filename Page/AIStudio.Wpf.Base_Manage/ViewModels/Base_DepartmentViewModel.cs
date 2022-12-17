@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_DepartmentViewModel : BaseListViewModel<Base_DepartmentDTO, Base_DepartmentEdit>
+    public class Base_DepartmentViewModel : BaseListWithEditViewModel<Base_DepartmentDTO, Base_DepartmentEdit>
     {
         private ObservableCollection<IBaseTreeItemViewModel> _data;
         public new ObservableCollection<IBaseTreeItemViewModel> Data
