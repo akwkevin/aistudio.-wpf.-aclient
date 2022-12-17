@@ -11,10 +11,11 @@ using System.Linq;
 using System.Windows.Input;
 using AIStudio.Wpf.Controls;
 using System.Threading.Tasks;
+using AIStudio.Wpf.BasePage.Views;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_ActionViewModel : BaseWindowViewModel<Base_ActionDTO>
+    public class Base_ActionViewModel : BaseListViewModel<Base_ActionDTO, Base_ActionEdit>
     {
         private ObservableCollection<IBaseTreeItemViewModel> _data;
         public new ObservableCollection<IBaseTreeItemViewModel> Data
@@ -57,8 +58,11 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_ActionViewModel() : base("Base_Manage", typeof(Base_ActionEditViewModel), typeof(Base_ActionEdit), "", "GetMenuTreeList")
+        public Base_ActionViewModel()
         {
+            Area = "Base_Manage";
+            Condition = "";
+            GetDataList = "GetMenuTreeList";
             Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue };
         }
 
@@ -95,47 +99,14 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        protected async void Edit(Base_ActionTree paraTree = null)
+        protected override BaseEditViewModel2<Base_ActionDTO> GetEditViewModel()
         {
-            var viewmodel = new Base_ActionEditViewModel(paraTree, Area, Identifier);
+            return new Base_ActionEditViewModel();
+        }
 
-            var dialog = new Base_ActionEdit(viewmodel);
-            dialog.ValidationAction = (() =>
-            {
-                if (!string.IsNullOrEmpty(viewmodel.Data.Error))
-                    return false;
-                else if (viewmodel.PermissionList.GroupBy(p => p.Value).Where(q => q.Count() > 1).Count() >= 1)
-                {
-                    MessageBox.Warning("权限值不能有重复值", windowIdentifier: Identifier);
-                    return false;
-                }
-                else
-                    return true;
-            });
-            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
-            if (res == DialogResult.OK)
-            {
-                try
-                {
-                    ShowWait();
-                    viewmodel.Data.ParentId = viewmodel.SelectedParent?.Id;
-                    viewmodel.Data.permissionList = new List<Base_ActionDTO>(viewmodel.PermissionList);
-                    var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Action/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.Success)
-                    {
-                        throw new Exception(result.Msg);
-                    }
-                    GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
-                }
-            }
+        protected void Edit(Base_ActionTree paraTree = null)
+        {
+            base.Edit(new Base_ActionDTO() { Id = paraTree.Id });
         }
 
         protected override async Task Delete(string id = null)

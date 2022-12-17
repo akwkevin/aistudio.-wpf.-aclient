@@ -8,11 +8,9 @@ namespace AIStudio.Wpf.Base_Manage.Views
     /// </summary>
     public partial class Base_RoleEdit : ChildWindow
     {
-        public Base_RoleEdit(object viewModel)
+        public Base_RoleEdit()
         {
             InitializeComponent();
-
-            this.DataContext = viewModel;
         }
     }
 }

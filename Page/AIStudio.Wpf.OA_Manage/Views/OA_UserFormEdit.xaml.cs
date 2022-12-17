@@ -8,11 +8,9 @@ namespace AIStudio.Wpf.OA_Manage.Views
     /// </summary>
     public partial class OA_UserFormEdit : ChildWindow
     {
-        public OA_UserFormEdit(object viewModel)
+        public OA_UserFormEdit()
         {
             InitializeComponent();
-
-            this.DataContext = viewModel;
         }
     }
 }

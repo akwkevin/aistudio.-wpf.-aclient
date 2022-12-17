@@ -11,10 +11,13 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using AIStudio.Wpf.Controls;
+using AIStudio.Wpf.GridControls.ViewModel;
+using System.Linq;
+using AIStudio.Core;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_ActionEditViewModel : BaseEditViewModel<Base_ActionDTO>
+    public class Base_ActionEditViewModel : BaseEditViewModel2<Base_ActionDTO>
     {
         private ObservableCollection<Base_ActionTree> _parentIdTreeData;
         public ObservableCollection<Base_ActionTree> ParentIdTreeData
@@ -73,38 +76,30 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_ActionEditViewModel(Base_ActionTree dataTree, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title, autoInit:false)
+        public Base_ActionEditViewModel() 
         {
-            if (dataTree == null)
-            {
-                InitData();
-            }
-            else
-            {
-                GetData(dataTree);
-            }
+
         }
 
-        protected override async void InitData()
-        {
-            Data = new Base_ActionDTO();
-            await GetParentIdTreeData();
-            PermissionList = new ObservableCollection<Base_ActionDTO>();
-        }
-
-        protected async void GetData(Base_ActionTree dataTree)
+        protected override async Task GetData(object option)
         {
             try
             {
                 WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
 
-                var result = await _dataProvider.GetData<Base_ActionDTO>($"/Base_Manage/Base_Action/GetTheData", JsonConvert.SerializeObject(new { id = dataTree.Id }));
-                if (!result.Success)
+                if (option is string id)
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<Base_ActionDTO>($"/Base_Manage/Base_Action/GetTheData", JsonConvert.SerializeObject(new { id = id }));
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    Data = result.Data;
                 }
-                Data = result.Data;
-
+                else
+                {
+                    Data = new Base_ActionDTO();
+                }
                 await GetParentIdTreeData();
                 await GetPermissionList();
             }
@@ -117,6 +112,49 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 WindowBase.HideWaiting(Identifier);
             }
         }
+
+        public override async Task<bool> SaveData()
+        {
+            try
+            {
+                ShowWait();
+                Data.ParentId = SelectedParent?.Id;
+                Data.permissionList = new List<Base_ActionDTO>(PermissionList);
+                var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(Base_ActionDTO).Name.Replace("DTO", "")}/SaveData", Data.ToJson());
+                if (!result.Success)
+                {
+                    throw new Exception(result.Msg);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Error(ex.Message);
+                return false;
+            }
+            finally
+            {
+                HideWait();
+            }
+        }
+
+        public override async Task<bool> ValidationAsync()
+        {
+            if (!string.IsNullOrEmpty(Data.Error))
+            {
+                MessageBox.Error(Data.Error, windowIdentifier: Identifier);
+                return false;
+            }
+            else if (PermissionList.GroupBy(p => p.Value).Where(q => q.Count() > 1).Count() >= 1)
+            {
+                MessageBox.Error("权限值不能有重复值", windowIdentifier: Identifier);
+                return false;
+            }
+            else
+            { 
+                return await SaveData();
+            }
+        } 
 
         private async Task GetParentIdTreeData()
         {

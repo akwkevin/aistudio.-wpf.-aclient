@@ -17,7 +17,7 @@ using Org.BouncyCastle.Crypto;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
-    public class OA_DefFormViewModel : BaseWindowViewModel<OA_DefFormDTO>
+    public class OA_DefFormViewModel : BaseListViewModel<OA_DefFormDTO, OA_DefFormEdit>
     {
         private ObservableCollection<ISelectOption> _roles;
         public ObservableCollection<ISelectOption> Roles
@@ -83,11 +83,11 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        protected IUserData _userData { get; }
-        public OA_DefFormViewModel():base("OA_Manage", typeof(OA_DefFormEditViewModel), typeof(OA_DefFormEdit), "Name")
+        protected IUserData _userData { get { return ContainerLocator.Current.Resolve<IUserData>(); } }
+        public OA_DefFormViewModel()
         {
-            _userData = ContainerLocator.Current.Resolve<IUserData>();
-                      
+            Area = "OA_Manage";
+            Condition = "Name";                      
         }
 
         private async Task GetRoles()
@@ -137,49 +137,9 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         }
 
-        //编辑情况下，不允许改变流程图
-        protected override async void Edit(OA_DefFormDTO para = null)
+        protected override BaseEditViewModel2<OA_DefFormDTO> GetEditViewModel()
         {
-            OA_DefFormEditViewModel viewmodel = new OA_DefFormEditViewModel(para, Area,"编辑表单");
-            OA_DefFormEdit dialog = new OA_DefFormEdit(viewmodel);
-            dialog.ValidationAction = (() =>
-            {
-                if (!string.IsNullOrEmpty(viewmodel.Data.Error))
-                    return false;
-                else
-                    return true;
-            });
-            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
-            if (res == DialogResult.OK)
-            {
-                try
-                {
-                    ShowWait();
-
-                    var json = viewmodel.GetFlowchartModel();
-                    var data = JsonConvert.DeserializeObject<OA_Data>(json);
-                    viewmodel.OAData.Nodes = data.Nodes;
-                    viewmodel.OAData.Links = data.Links;
-                    viewmodel.OAData.Groups = data.Groups;
-                    viewmodel.Data.JSONId = string.Empty;
-                    viewmodel.Data.WorkflowJSON = JsonConvert.SerializeObject(viewmodel.OAData);                     
-                    viewmodel.Data.Value = viewmodel.SelectedRoles.Count == 0 ? null: "^" + string.Join("^" , viewmodel.SelectedRoles.Select(p => p.Value)) + "^";
-                    var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.Success)
-                    {
-                        throw new Exception(result.Msg);
-                    }
-                    GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    Controls.MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
-                }
-            }
+            return new OA_DefFormEditViewModel();
         }
 
         protected override async Task Delete(string id = null)

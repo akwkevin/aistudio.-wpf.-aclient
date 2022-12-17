@@ -10,10 +10,11 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using AIStudio.Wpf.Controls;
 using System.Linq;
+using AIStudio.Wpf.GridControls.ViewModel;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_DepartmentEditViewModel : BaseEditViewModel<Base_DepartmentDTO>
+    public class Base_DepartmentEditViewModel : BaseEditViewModel2<Base_DepartmentDTO>
     {
         private ObservableCollection<ISelectOption> _departments;
         public ObservableCollection<ISelectOption> Departments
@@ -35,37 +36,31 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_DepartmentEditViewModel(Base_DepartmentTree dataTree, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title, autoInit:false)
+        public Base_DepartmentEditViewModel()
         {
-            if (dataTree == null)
-            {
-                InitData();
-            }
-            else
-            {
-                GetData(dataTree);
-            }
         }
 
-        protected override async void InitData()
-        {
-            Data = new Base_DepartmentDTO();
-            await GetDepartment();
-        }
-
-        protected async void GetData(Base_DepartmentTree dataTree)
+        protected override async Task GetData(object option)
         {
             try
             {
                 WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
 
-                var result = await _dataProvider.GetData<Base_DepartmentDTO>($"/Base_Manage/Base_Department/GetTheData", JsonConvert.SerializeObject(new { id = dataTree.Id }));
-                if (!result.Success)
+                if (option is string id)
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<Base_DepartmentDTO>($"/Base_Manage/Base_Department/GetTheData", JsonConvert.SerializeObject(new { id = id }));
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    Data = result.Data;
+                    await GetDepartment();
                 }
-                Data = result.Data;
-                await GetDepartment();
+                else
+                {
+                    Data = new Base_DepartmentDTO();
+                    await GetDepartment();
+                }
             }
             catch (Exception ex)
             {
@@ -74,6 +69,31 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             finally
             {
                 WindowBase.HideWaiting(Identifier);
+            }
+        }
+
+        public override async Task<bool> SaveData()
+        {
+            try
+            {
+                ShowWait();
+
+                Data.ParentId = SelectedDepartment?.Id;
+                var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Department/SaveData", Data.ToJson());
+                if (!result.Success)
+                {
+                    throw new Exception(result.Msg);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Error(ex.Message);
+                return false;
+            }
+            finally
+            {
+                HideWait();
             }
         }
 

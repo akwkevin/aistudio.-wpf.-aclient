@@ -10,9 +10,9 @@ using System.Linq;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_CommonFormConfigEditViewModel : BaseEditViewModel<Base_CommonFormConfigDTO>
+    public class Base_CommonFormConfigEditViewModel : BaseEditViewModel2<Base_CommonFormConfigDTO>
     {
-        public Base_CommonFormConfigEditViewModel(Base_CommonFormConfigDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
+        public Base_CommonFormConfigEditViewModel()
         {
         }
 
@@ -22,17 +22,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             {
                 return new string[] { "string", "bool", "int", "long", "double", "decimal", "datetime", "list" };
             }
-        }
-
-
-        protected override void InitData()
-        {
-            Data = new Base_CommonFormConfigDTO();
-        }
-
-        protected override void GetData(Base_CommonFormConfigDTO para)
-        {
-            base.GetData(para);
         }
     }
 }

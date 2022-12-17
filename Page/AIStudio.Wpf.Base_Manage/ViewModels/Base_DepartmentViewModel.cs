@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_DepartmentViewModel : BaseWindowViewModel<Base_DepartmentDTO>
+    public class Base_DepartmentViewModel : BaseListViewModel<Base_DepartmentDTO, Base_DepartmentEdit>
     {
         private ObservableCollection<IBaseTreeItemViewModel> _data;
         public new ObservableCollection<IBaseTreeItemViewModel> Data
@@ -68,16 +68,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             get
             {
-                return this._deleteCommand ?? (this._deleteCommand = new CanExecuteDelegateCommand(() => this.Delete(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
-            }
-        }
-
-        private ICommand _subAddCommand;
-        public ICommand SubAddCommand
-        {
-            get
-            {
-                return this._subAddCommand ?? (this._subAddCommand = new CanExecuteDelegateCommand<Base_DepartmentTree>(para => this.Edit(para, true)));
+                return this._deleteCommand ?? (this._deleteCommand = new CanExecuteDelegateCommand(async () => await this.Delete(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -90,8 +81,10 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_DepartmentViewModel() : base("Base_Manage", typeof(Base_DepartmentEditViewModel), typeof(Base_DepartmentEdit), "Name")
+        public Base_DepartmentViewModel()
         {
+            Area = "Base_Manage";
+            Condition = "Name";
             Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue };
         }
 
@@ -128,45 +121,14 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        protected async void Edit(Base_DepartmentTree paraTree = null, bool isSubAdd = false)
+        protected override BaseEditViewModel2<Base_DepartmentDTO> GetEditViewModel()
         {
-            var viewmodel = new Base_DepartmentEditViewModel(isSubAdd ? null : paraTree, Area, Identifier);
-            if (isSubAdd)
-            {
-                viewmodel.SelectedDepartment = TreeHelper.GetTreeModel(viewmodel.Departments.Select(p => p as TreeModel), paraTree.Id);
-            }
-            var dialog = new Base_DepartmentEdit(viewmodel);
-            dialog.ValidationAction = (() =>
-            {
-                if (!string.IsNullOrEmpty(viewmodel.Data.Error))
-                    return false;
-                else
-                    return true;
-            });
-            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
-            if (res == DialogResult.OK)
-            {
-                try
-                {
-                    ShowWait();
+            return new Base_DepartmentEditViewModel();
+        }
 
-                    viewmodel.Data.ParentId = viewmodel.SelectedDepartment?.Id;
-                    var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Department/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.Success)
-                    {
-                        throw new Exception(result.Msg);
-                    }
-                    GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
-                }
-            }
+        protected void Edit(Base_DepartmentTree paraTree = null)
+        {
+            base.Edit(new Base_DepartmentDTO() { Id = paraTree.Id });
         }
 
         protected override async Task Delete(string id = null)

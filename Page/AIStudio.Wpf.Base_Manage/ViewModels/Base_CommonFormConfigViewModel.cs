@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_CommonFormConfigViewModel : BaseWindowViewModel<Base_CommonFormConfigDTO>
+    public class Base_CommonFormConfigViewModel : BaseListViewModel<Base_CommonFormConfigDTO, Base_CommonFormConfigEdit>
     {
-        public Base_CommonFormConfigViewModel():base("Base_Manage", typeof(Base_CommonFormConfigEditViewModel), typeof(Base_CommonFormConfigEdit), "Table")
+        public Base_CommonFormConfigViewModel()
         {
-		
+            Area = "Base_Manage";
+            Condition = "Table";
         }        
 
         protected override async Task GetData(bool iswaiting = false)
@@ -17,10 +18,15 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             await base.GetData(iswaiting);
         }
 
+        protected override BaseEditViewModel2<Base_CommonFormConfigDTO> GetEditViewModel()
+        {
+            return new Base_CommonFormConfigEditViewModel();
+        }
+
         protected override void Edit(Base_CommonFormConfigDTO para = null)
         {
             base.Edit(para);
-        }
+        }      
 
         protected override async Task Delete(string id = null)
         {

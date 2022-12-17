@@ -1,6 +1,8 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.BasePage.ViewModels;
+using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
+using AIStudio.Wpf.GridControls.ViewModel;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
-    public class OA_DefFormEditViewModel : BaseEditViewModel<OA_DefFormDTO>
+    public class OA_DefFormEditViewModel : BaseEditViewModel2<OA_DefFormDTO>
     {
-        private string _flowchartModel;
+        private string _flowchartModel = "{}";
         public string FlowchartModel
         {
             get { return _flowchartModel; }
@@ -88,48 +90,73 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        public OA_DefFormEditViewModel(OA_DefFormDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
-        {
-        }
-
-		protected override async void InitData()
-		{
-			Data = new OA_DefFormDTO();
-            OAData = new OA_Data();
-            FlowchartModel = "{}";
-            GetTypes();
-            await GetRoles();
-            await GetUsers();
-        }
-
-        protected override async void GetData(OA_DefFormDTO para)
+        protected override async Task GetData(object para)
         {
             try
             {
                 ShowWait();
 
-                var result = await _dataProvider.GetData<OA_DefFormDTO>($"/OA_Manage/OA_DefForm/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
-                if (!result.Success)
+                if (para is string id)
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<OA_DefFormDTO>($"/OA_Manage/OA_DefForm/GetTheData", JsonConvert.SerializeObject(new { id = id }));
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    Data = result.Data;
                 }
-                Data = result.Data;
+                else
+                {
+                    Data = new OA_DefFormDTO();
+                }
                 GetTypes();
                 await GetRoles();
                 await GetUsers();
 
-                OAData = Newtonsoft.Json.JsonConvert.DeserializeObject<OA_Data>(Data.WorkflowJSON);
+                OAData = Newtonsoft.Json.JsonConvert.DeserializeObject<OA_Data>(Data.WorkflowJSON ?? "");
                 FlowchartModel = Data.WorkflowJSON;
             }
             catch (Exception ex)
             {
-                Controls.MessageBox.Error(ex.Message);
+                MessageBox.Error(ex.Message);
             }
             finally
             {
                 HideWait();
             }
-        }   
+        }
+
+        public override async Task<bool> SaveData()
+        {
+            try
+            {
+                ShowWait();
+                var json = GetFlowchartModel();
+                var data = JsonConvert.DeserializeObject<OA_Data>(json);
+                OAData.Nodes = data.Nodes;
+                OAData.Links = data.Links;
+                OAData.Groups = data.Groups;
+                Data.JSONId = string.Empty;
+                Data.WorkflowJSON = JsonConvert.SerializeObject(OAData);
+                Data.Value = SelectedRoles.Count == 0 ? null : "^" + string.Join("^", SelectedRoles.Select(p => p.Value)) + "^";
+                var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/SaveData", Data.ToJson());
+                if (!result.Success)
+                {
+                    throw new Exception(result.Msg);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Error(ex.Message);
+                return false;
+            }
+            finally
+            {
+                HideWait();
+            }
+        }
+
         private void GetTypes()
         {
             _userData.ItemSource.TryGetValue("流程分类", out var types);

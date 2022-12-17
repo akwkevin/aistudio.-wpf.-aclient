@@ -8,11 +8,9 @@ namespace AIStudio.Wpf.Base_Manage.Views
     /// </summary>
     public partial class Base_CommonFormConfigEdit : ChildWindow
     {
-        public Base_CommonFormConfigEdit(object viewModel)
+        public Base_CommonFormConfigEdit()
         {
             InitializeComponent();
-
-            this.DataContext = viewModel;
         }
     }
 }

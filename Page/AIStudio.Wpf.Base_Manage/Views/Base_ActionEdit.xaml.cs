@@ -9,11 +9,9 @@ namespace AIStudio.Wpf.Base_Manage.Views
     /// </summary>
     public partial class Base_ActionEdit : ChildWindow
     {
-        public Base_ActionEdit(object viewModel)
+        public Base_ActionEdit()
         {
             InitializeComponent();
-
-            this.DataContext = viewModel;
         }
     }
 }

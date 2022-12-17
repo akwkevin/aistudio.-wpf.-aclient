@@ -214,18 +214,19 @@
                     CommandParameter="{Binding Data}"
                     Visibility="{Binding Data.Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=0}">
             </Button>
-            <Button x:Name="PART_OtherButton"
-                    VerticalAlignment="Center"
+            <Button VerticalAlignment="Center"
                     Content="废弃"
                     Margin="5 0 5 0" 
+                    Command="{Binding DisCardCommand}"
                     ac:ControlAttach.Status="Danger"
                     perm:PermissionHelper.IsCreator="{Binding Data.CreatorId}"          
                     Visibility="{Binding Data.Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=1}">
             </Button>
-            <Button x:Name="PART_OtherButton2"
+            <Button 
                     VerticalAlignment="Center"
                     Content="审批"
-                    Margin="5 0 5 0"      
+                    Margin="5 0 5 0"   
+                    Command="{Binding EventDataCommand}"
                     perm:PermissionHelper.IsCreator="{Binding Data.UserIds}"          
                     Visibility="{Binding Data.Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=1}">
             </Button>

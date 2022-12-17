@@ -13,7 +13,7 @@ using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
-    public class OA_UserFormViewModel : BaseWindowViewModel<OA_UserFormDTO>
+    public class OA_UserFormViewModel : BaseListViewModel<OA_UserFormDTO, OA_UserFormEdit>
     {
         private string _status = "processing";
         public string Status
@@ -28,17 +28,12 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        protected IOperator _operator { get; }
+        protected IOperator _operator { get { return ContainerLocator.Current.Resolve<IOperator>(); } }
 
-        public OA_UserFormViewModel() : base("OA_Manage", typeof(OA_UserFormEditViewModel), typeof(OA_UserFormEdit), "DefFormName")
+        public OA_UserFormViewModel()
         {
-            _operator = ContainerLocator.Current.Resolve<IOperator>();
-        }
-
-        //无效参数，做个标记
-        public OA_UserFormViewModel(string[] id) : base("OA_Manage", typeof(OA_UserFormEditViewModel), typeof(OA_UserFormEdit), "DefFormName")
-        {
-
+            Area = "OA_Manage";
+            Condition = "DefFormName";
         }
 
         protected override string GetDataJson()
@@ -73,80 +68,10 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             return JsonConvert.SerializeObject(data);
         }
 
-        public static async Task<DialogResult> EditShow(OA_UserFormDTO para, string identifier)
+        protected override BaseEditViewModel2<OA_UserFormDTO> GetEditViewModel()
         {
-            var viewmodel = new OA_UserFormEditViewModel(para, "OA_Manage", "编辑表单");
-            return await EditShow(viewmodel, identifier);
-        }
-        public static async Task<DialogResult> EditShow(OA_UserFormEditViewModel viewmodel, string identifier)
-        {
-            var dialog = new OA_UserFormEdit(viewmodel);
-            dialog.ValidationAction = (() =>
-            {
-                if (string.IsNullOrEmpty(viewmodel.Remark))
-                {
-                    Controls.MessageBox.Info("请填写意见", windowIdentifier: identifier);
-                    return false;
-                }
-                else
-                    return true;
-            });
-            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", identifier);
-            return res;
-        }
-
-        protected override async void Edit(OA_UserFormDTO para = null)
-        {
-            var viewmodel = new OA_UserFormEditViewModel(para, "OA_Manage", "编辑表单");
-            var res = await EditShow(viewmodel, Identifier);
-            if (res == DialogResult.Other1 || res == DialogResult.Other2)
-            {
-                try
-                {
-                    ShowWait();
-
-                    if (res == DialogResult.Other1)
-                    {
-                        var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/DisCardData", JsonConvert.SerializeObject(new { id = viewmodel.Data.Id, remark = viewmodel.Data.Remarks }));
-                        if (!result.Success)
-                        {
-                            throw new Exception(result.Msg);
-                        }
-                    }
-                    else if (res == DialogResult.Other2)
-                    {
-                        var data = new
-                        {
-                            eventName = "MyEvent",
-                            eventKey = viewmodel.Data.Id + viewmodel.Data.CurrentStepId,
-                            Status = viewmodel.Status,
-                            Remarks = viewmodel.Remark
-                        };
-                        var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/EventData", JsonConvert.SerializeObject(data));
-                        if (!result.Success)
-                        {
-                            throw new Exception(result.Msg);
-                        }
-                        WindowBase.ShowMessageQueue(result.Msg, Identifier);
-                    }
-                    await Task.Delay(100);
-                    GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    Controls.MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
-                }
-            }
-        }
-
-        public void EditById(object[] id)
-        {
-            Edit(new OA_UserFormDTO() { Id = id[0] as string });
-        }
+            return new OA_UserFormEditViewModel();
+        }       
 
         protected override async Task Delete(string id = null)
         {

@@ -13,10 +13,11 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using AIStudio.Wpf.Controls;
 using System.Collections.ObjectModel;
+using AIStudio.Wpf.GridControls.ViewModel;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
-    public class OA_UserFormEditViewModel : BaseEditViewModel<OA_UserFormDTO>
+    public class OA_UserFormEditViewModel : BaseEditViewModel2<OA_UserFormDTO>
     {
         private int _status = 100;
         public int Status
@@ -52,7 +53,25 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         {
             get
             {
-                return this._preStepCommand ?? (this._preStepCommand = new DelegateCommand<OA_UserFormDTO>(para => this.PreStep(para)));
+                return this._preStepCommand ?? (this._preStepCommand = new DelegateCommand(() => this.PreStep()));
+            }
+        }
+
+        private ICommand _disCardCommand;
+        public ICommand DisCardCommand
+        {
+            get
+            {
+                return this._disCardCommand ?? (this._disCardCommand = new DelegateCommand(() => this.DisCard()));
+            }
+        }
+
+        private ICommand _eventDataCommand;
+        public ICommand EventDataCommand
+        {
+            get
+            {
+                return this._eventDataCommand ?? (this._eventDataCommand = new DelegateCommand(() => this.EventData()));
             }
         }
 
@@ -85,42 +104,27 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        protected IOperator _operator { get; }
+        protected IOperator _operator { get { return ContainerLocator.Current.Resolve<IOperator>(); } }
 
-        public OA_UserFormEditViewModel(OA_UserFormDTO data, string area, string identifier, string title = "编辑表单") : this(data, area, identifier, title, "", "", "", 0, "") { }
-
-        public OA_UserFormEditViewModel(OA_UserFormDTO data, string area, string identifier, string title, string type, string key, string jsonId, int jsonVersion, string json) : base(data, area, identifier, title, autoInit:false)
-        {
-            _operator = ContainerLocator.Current.Resolve<IOperator>();
-            if (Data == null)
-            {
-                Data = new OA_UserFormDTO() { Type = type, DefFormId = key, DefFormName = title, JsonId = jsonId, JsonVersion = jsonVersion, WorkflowJSON = json, ApplicantUserId = _operator?.Property?.Id };
-                InitData();
-            }
-            else
-            {
-                GetData(Data);
-            }
-        }
-
-        protected override async void InitData()
-        {
-            await GetUsers();
-            GetTypes();
-        }
-
-        protected override async void GetData(OA_UserFormDTO para)
+        protected override async Task GetData(object para)
         {
             try
             {
                 ShowWait();
 
-                var result = await _dataProvider.GetData<OA_UserFormDTO>($"/OA_Manage/OA_UserForm/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
-                if (!result.Success)
+                if (para is string id)
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<OA_UserFormDTO>($"/OA_Manage/OA_UserForm/GetTheData", JsonConvert.SerializeObject(new { id = id }));
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    Data = result.Data;
                 }
-                Data = result.Data;
+                else
+                {
+                    Data = new OA_UserFormDTO();
+                }
                 await GetUsers();
                 GetTypes();
             }
@@ -134,6 +138,47 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
+        public override async Task<bool> SaveData()
+        {
+            try
+            {
+                ShowWait();
+                var result = await _dataProvider.GetData<AjaxResult>("/OA_Manage/OA_UserForm/SaveData", Data.ToJson());
+                if (!result.Success)
+                {
+                    throw new Exception(result.Msg);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Error(ex.Message);
+                return false;
+            }
+            finally
+            {
+                HideWait();
+            }
+        }       
+
+        public override async Task<bool> ValidationAsync()
+        {
+            if (!string.IsNullOrEmpty(Data?.Error))
+            {
+                MessageBox.Info(Data.Error, windowIdentifier: Identifier);
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(Data.Id) && string.IsNullOrEmpty(Remark))
+            {
+                MessageBox.Info("请填写意见", windowIdentifier: Identifier);
+                return false;
+            }
+            else
+            {
+                return await SaveData();
+            }
+        }
+
         private async Task GetUsers()
         {
             Users = await _userData.GetBase_User();
@@ -143,24 +188,77 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         {
             _userData.ItemSource.TryGetValue(Data?.Type, out var types);
 
-            Types = new List<ISelectOption>(types??new ObservableCollection<ISelectOption>());
+            Types = new List<ISelectOption>(types ?? new ObservableCollection<ISelectOption>());
             if (string.IsNullOrEmpty(this.Data.Unit) && Types.Count > 0)
             {
                 this.Data.Unit = this.Types[0].Remark;
             }
         }
 
-        private async void PreStep(OA_UserFormDTO para)
+        private async void PreStep()
         {
             try
             {
                 ShowWait();
-                var result = await _dataProvider.GetData<List<OA_Step>>($"/OA_Manage/OA_UserForm/PreStep", JsonConvert.SerializeObject(para));
+                var result = await _dataProvider.GetData<List<OA_Step>>($"/OA_Manage/OA_UserForm/PreStep", Data.ToJson());
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);
                 }
                 Data.Steps = result.Data;
+            }
+            catch (Exception ex)
+            {
+                Controls.MessageBox.Error(ex.Message);
+            }
+            finally
+            {
+                HideWait();
+            }
+        }
+
+        private async void DisCard()
+        {
+            try
+            {
+                ShowWait();
+                var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/DisCardData",(new { id = Data.Id, remark = Data.Remarks }).ToJson());
+                if (!result.Success)
+                {
+                    throw new Exception(result.Msg);
+                }
+                View.Close();
+                WindowBase.ShowMessageQueue(result.Msg, Identifier);
+            }
+            catch (Exception ex)
+            {
+                Controls.MessageBox.Error(ex.Message);
+            }
+            finally
+            {
+                HideWait();
+            }
+        }
+
+        private async void EventData()
+        {
+            try
+            {
+                ShowWait();
+                var data = new
+                {
+                    eventName = "MyEvent",
+                    eventKey = Data.Id + Data.CurrentStepId,
+                    Status = Status,
+                    Remarks = Remark
+                };
+                var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/EventData", data.ToJson());
+                if (!result.Success)
+                {
+                    throw new Exception(result.Msg);
+                }
+                View.Close();
+                WindowBase.ShowMessageQueue(result.Msg, Identifier);
             }
             catch (Exception ex)
             {
@@ -187,8 +285,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         private async void OpenEditor(OA_UserFormDTO para)
         {
-            OA_DefFormTreeEditViewModel viewmodel = new OA_DefFormTreeEditViewModel(para.WorkflowJSON);
-            OA_DefFormTreeEdit dialog = new OA_DefFormTreeEdit(viewmodel);
+            OA_DefFormTreeEdit dialog = new OA_DefFormTreeEdit() { DataContext = new OA_DefFormTreeEditViewModel(para.WorkflowJSON) };
             var res = await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
         }
     }

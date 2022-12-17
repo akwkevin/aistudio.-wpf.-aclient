@@ -1,7 +1,10 @@
-﻿using AIStudio.Wpf.BasePage.DTOModels;
+﻿using AIStudio.Core;
+using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
+using AIStudio.Wpf.GridControls.ViewModel;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_RoleEditViewModel : BaseEditViewModel<Base_RoleDTO>
+    public class Base_RoleEditViewModel : BaseEditViewModel2<Base_RoleDTO>
     {
         private ObservableCollection<Base_ActionTree> _actionsTreeData;
         public ObservableCollection<Base_ActionTree> ActionsTreeData
@@ -33,24 +36,30 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_RoleEditViewModel(Base_RoleDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
+        public Base_RoleEditViewModel()
         {
 
         }
 
-        protected override async void GetData(Base_RoleDTO para)
+        protected override async Task GetData(object option)
         {
             try
             {
                 WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
 
-                var result = await _dataProvider.GetData<Base_RoleDTO>($"/Base_Manage/Base_Role/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
-                if (!result.Success)
+                if (option is string id)
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<Base_RoleDTO>($"/Base_Manage/Base_Role/GetTheData", JsonConvert.SerializeObject(new { id = id }));
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    Data = result.Data;
                 }
-                Data = result.Data;
-
+                else
+                {
+                    Data = new Base_RoleDTO();
+                }
                 await GetActionsTreeData();
                 //await GetAllActionList();
 
@@ -66,10 +75,28 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        protected override async void InitData()
+        public override async Task<bool> SaveData()
         {
-            Data = new Base_RoleDTO();
-            await GetActionsTreeData();
+            try
+            {
+                ShowWait();
+                Data.Actions = new ObservableCollection<string>(BaseTreeItemViewModelHelper.GetChecked(ActionsTreeData).OfType<Base_ActionTree>().Select(p => p.Id));
+                var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Role/SaveData", Data.ToJson());
+                if (!result.Success)
+                {
+                    throw new Exception(result.Msg);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Error(ex.Message);
+                return false;
+            }
+            finally
+            {
+                HideWait();
+            }
         }
 
         private async Task GetActionsTreeData()

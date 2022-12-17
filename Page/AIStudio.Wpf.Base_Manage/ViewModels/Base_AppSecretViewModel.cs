@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_AppSecretViewModel : BaseWindowViewModel<Base_AppSecretDTO>
+    public class Base_AppSecretViewModel : BaseListViewModel<Base_AppSecretDTO, Base_AppSecretEdit>
     {
-        public Base_AppSecretViewModel():base("Base_Manage", typeof(Base_AppSecretEditViewModel), typeof(Base_AppSecretEdit), "AppName")
+        public Base_AppSecretViewModel()
         {
-
+            Area = "Base_Manage";
+            Condition = "AppName";
         }
 
         protected override async Task GetData(bool iswaiting = false)

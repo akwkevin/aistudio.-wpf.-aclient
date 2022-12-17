@@ -1,19 +1,20 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business;
+using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
 using AIStudio.Wpf.OA_Manage.Views;
 using Newtonsoft.Json;
+using Prism.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
-using AIStudio.Wpf.Controls;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
-    public class OA_DefFormTreeViewModel : BaseWindowViewModel<OA_DefFormDTO>
+    public class OA_DefFormTreeViewModel : BaseListViewModel<OA_DefFormDTO, OA_DefFormEdit>
     {
         private ObservableCollection<OA_DefFormTree> _data;
         public new ObservableCollection<OA_DefFormTree> Data
@@ -44,9 +45,12 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         }
 
         protected IUserData _userData { get; }
-        public OA_DefFormTreeViewModel() : base("OA_Manage", typeof(OA_DefFormTreeViewModel), null,"")
+        protected IOperator _operator { get { return ContainerLocator.Current.Resolve<IOperator>(); } }
+
+        public OA_DefFormTreeViewModel() 
         {
-            
+            Area = "OA_Manage";
+            Condition = "";
         }
 
         protected override async Task GetData(bool iswaiting = false)
@@ -80,49 +84,30 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     HideWait();
                 }
             }
-
         }
 
         private async void Edit(OA_DefFormTree para)
         {
-            var viewmodel = new OA_UserFormEditViewModel(null, Area, Identifier, para.title, para.type, para.key, para.jsonId, para.jsonVersion, para.json);
-            var dialog = new OA_UserFormEdit(viewmodel);
-            dialog.ValidationAction = (() =>
-            {
-                if (!string.IsNullOrEmpty(viewmodel.Data.Error))
-                    return false;
-                else
-                    return true;
-            });
-            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
-            if (res == DialogResult.OK)
-            {
-                try
-                {
-                    ShowWait();
+            var dialog = Activator.CreateInstance<OA_UserFormEdit>() as ChildWindow;
+            var viewmodel = GetEditViewModel();
+            viewmodel.Options = new OA_UserFormDTO() { Type = para.type, DefFormId = para.key, DefFormName = para.title, JsonId = para.jsonId, JsonVersion = para.jsonVersion, WorkflowJSON = para.json, ApplicantUserId = _operator?.Property?.Id }; ;
+            viewmodel.Area = Area;
+            viewmodel.Identifier = Identifier;
+         
+            dialog.ValidationActionAsync += () => { return viewmodel.ValidationAsync(); };
+            dialog.Loaded += async (sender, e) => { await viewmodel.OnLoaded(sender, e); };
+            dialog.Unloaded += async (sender, e) => { await viewmodel.OnUnloaded(sender, e); };
+            dialog.DataContext = viewmodel;
 
-                    var result = await _dataProvider.GetData<AjaxResult>("/OA_Manage/OA_UserForm/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.Success)
-                    {
-                        throw new Exception(result.Msg);
-                    }
-                    Controls.MessageBox.Info("操作成功", windowIdentifier: Identifier);
-                }
-                catch (Exception ex)
-                {
-                    Controls.MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
-                }
+            if (dialog is ChildWindow childwindow)
+            {
+                var res = (DialogResult)await WindowBase.ShowChildWindowAsync(childwindow, "编辑表单", Identifier);
             }
         }
 
         private async void OpenEditor(OA_DefFormTree para)
         {
-            OA_DefFormTreeEditViewModel viewmodel = new OA_DefFormTreeEditViewModel(para.json);
-            OA_DefFormTreeEdit dialog = new OA_DefFormTreeEdit(viewmodel);
+            OA_DefFormTreeEdit dialog = new OA_DefFormTreeEdit() { DataContext = new OA_DefFormTreeEditViewModel(para.json) };
             var res = await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
         }
     }

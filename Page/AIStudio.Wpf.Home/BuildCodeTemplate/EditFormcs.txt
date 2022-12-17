@@ -8,11 +8,9 @@ namespace AIStudio.Wpf.%areaName%.Views
     /// </summary>
     public partial class %entityName%Edit : ChildWindow
     {
-        public %entityName%Edit(object viewModel)
+        public %entityName%Edit()
         {
             InitializeComponent();
-
-            this.DataContext = viewModel;
         }
     }
 }

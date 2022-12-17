@@ -17,7 +17,7 @@ using System.Windows.Input;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class BuildCodeViewModel : BaseWindowViewModel<BuildCode>
+    public class BuildCodeViewModel : BaseListViewModel<BuildCode, BuildCodeEdit>
     {
         private ObservableCollection<Base_DbLinkDTO> _base_DbLinkDTO;
         public ObservableCollection<Base_DbLinkDTO> Base_DbLinkDTO
@@ -79,8 +79,10 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         private string tmpFileText;
         private string savePath;
 
-        public BuildCodeViewModel() : base("Base_Manage", typeof(BuildCodeEditViewModel), typeof(BuildCodeEdit),"")
+        public BuildCodeViewModel()
         {
+            Area = "Base_Manage";
+            Condition = "";
             var basedir = AppDomain.CurrentDomain.BaseDirectory;
 
             directory = basedir.Substring(0, basedir.IndexOf("Application"));
@@ -138,61 +140,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 }
             }
         }
-
-        #region 此方法是服务端代码生成的,不在客户端里搞了,废弃
-        protected override async void Edit(BuildCode para = null)
-        {
-            var viewmodel = new BuildCodeEditViewModel(para, Identifier);
-            var dialog = new BuildCodeEdit(viewmodel);
-            dialog.ValidationAction = (() =>
-            {
-                if (viewmodel.BuildType.Any(p => p == true) == false)
-                    return false;
-
-                if (string.IsNullOrEmpty(viewmodel.AreaName))
-                    return false;
-
-                return true;
-            });
-            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
-            if (res == DialogResult.OK)
-            {
-                try
-                {
-                    ShowWait();
-
-                    List<string> ids = Data.Where(p => p.IsChecked).Select(p => p.TableName).ToList();
-                    List<int> types = viewmodel.BuildType.Take(4).Select((p, index) => new { value = p == true ? 1 : 0, index = index }).Where(p => p.value == 1).Select(p => p.index).ToList();
-
-                    if (types.Count > 0)
-                    {
-
-                        var data = new
-                        {
-                            linkId = LinkId,
-                            areaName = viewmodel.AreaName,
-                            tables = ids.ToArray(),
-                            buildTypes = types.ToArray()
-                        };
-
-                        var result = await _dataProvider.GetData<AjaxResult>("/Base_Manage/BuildCode/Build", JsonConvert.SerializeObject(data));
-                        if (!result.Success)
-                        {
-                            throw new Exception(result.Msg);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Controls.MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
-                }
-            }
-        }
-        #endregion
 
         private async void Generate()
         {

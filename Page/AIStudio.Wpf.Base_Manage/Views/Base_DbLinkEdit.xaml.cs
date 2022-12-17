@@ -8,11 +8,9 @@ namespace AIStudio.Wpf.Base_Manage.Views
     /// </summary>
     public partial class Base_DbLinkEdit : ChildWindow
     {
-        public Base_DbLinkEdit(object viewModel)
+        public Base_DbLinkEdit()
         {
             InitializeComponent();
-
-            this.DataContext = viewModel;
         }
     }
 }

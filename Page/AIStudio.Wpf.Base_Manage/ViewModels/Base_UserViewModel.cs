@@ -8,14 +8,16 @@ using System.Collections.Generic;
 using System.Linq;
 using AIStudio.Wpf.Controls;
 using System.Threading.Tasks;
+using AIStudio.Wpf.Entity.Models;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_UserViewModel : BaseWindowViewModel<Base_UserDTO>
+    public class Base_UserViewModel : BaseListViewModel<Base_UserDTO, Base_UserEdit>
     {
-        public Base_UserViewModel():base("Base_Manage", typeof(Base_UserEditViewModel), typeof(Base_UserEdit), "UserName")
+        public Base_UserViewModel()
         {
-           
+            Area = "Base_Manage";
+            Condition = "UserName";
         }
 
         protected override async Task GetData(bool iswaiting = false)
@@ -23,41 +25,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             await base.GetData(iswaiting);
         }
 
-        protected override async void Edit(Base_UserDTO para = null)
+        protected override BaseEditViewModel2<Base_UserDTO> GetEditViewModel()
         {
-            var viewmodel = new Base_UserEditViewModel(para, Area, Identifier);
-            var dialog = new Base_UserEdit(viewmodel);
-            dialog.ValidationAction = (() =>
-            {
-                if (!string.IsNullOrEmpty(viewmodel.Data.Error))
-                    return false;
-                else
-                    return true;
-            });
-            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
-            if (res == DialogResult.OK)
-            {
-                try
-                {
-                    ShowWait();
-                    viewmodel.Data.RoleIdList = viewmodel.SelectedRoles.Select(p => p.Value).ToList();
-                    viewmodel.Data.DepartmentId = viewmodel.SelectedDepartment?.Id;
-                    var result = await _dataProvider.GetData<AjaxResult>("/Base_Manage/Base_User/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.Success)
-                    {
-                        throw new Exception(result.Msg);
-                    }
-                    GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    Controls.MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
-                }
-            }
+            return new Base_UserEditViewModel();
         }
 
         protected override async Task Delete(string id = null)

@@ -236,8 +236,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
 
         private async void Log(Quartz_TaskDTO para)
         {
-            Quartz_TaskLogViewModel viewModel = new Quartz_TaskLogViewModel(para.GroupName + "." + para.TaskName, Identifier);
-            Quartz_TaskLog dialog = new Quartz_TaskLog(viewModel);
+            Quartz_TaskLog dialog = new Quartz_TaskLog() { DataContext = new Quartz_TaskLogViewModel(para.GroupName + "." + para.TaskName, Identifier) };
             await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
         }
     }

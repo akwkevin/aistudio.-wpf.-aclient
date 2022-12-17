@@ -1,7 +1,9 @@
 ﻿using AIStudio.Core;
+using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
+using AIStudio.Wpf.GridControls.ViewModel;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_UserEditViewModel : BaseEditViewModel<Base_UserDTO>
+    public class Base_UserEditViewModel : BaseEditViewModel2<Base_UserDTO>
     {
         private ObservableCollection<ISelectOption> _roles;
         public ObservableCollection<ISelectOption> Roles
@@ -51,33 +53,27 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             {
                 SetProperty(ref _selectedDepartment, value);
             }
-        }
+        }      
 
-       
-
-        public Base_UserEditViewModel(Base_UserDTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
-        {
-        }
-
-        protected override async void InitData()
-        {
-            Data = new Base_UserDTO();
-            await GetRoles();
-            await GetDepartment();
-        }
-
-        protected override async void GetData(Base_UserDTO para)
+        protected override async Task GetData(object para)
         {
             try
             {
                 WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
 
-                var result = await _dataProvider.GetData<Base_UserDTO>($"/{Area}/{typeof(Base_UserDTO).Name.Replace("DTO", "")}/GetTheData", JsonConvert.SerializeObject(new { id = para.Id }));
-                if (!result.Success)
+                if (para is string id)
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<Base_UserDTO>($"/{Area}/{typeof(Base_UserDTO).Name.Replace("DTO", "")}/GetTheData", JsonConvert.SerializeObject(new { id = id }));
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    Data = result.Data;
                 }
-                Data = result.Data;
+                else
+                {
+                    Data = new Base_UserDTO();
+                }
 
                 await GetRoles();
                 await GetDepartment();
@@ -89,6 +85,31 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             finally
             {
                 WindowBase.HideWaiting(Identifier);
+            }
+        }
+
+        public override async Task<bool> SaveData()
+        {
+            try
+            {
+                ShowWait();
+                Data.RoleIdList = SelectedRoles.Select(p => p.Value).ToList();
+                Data.DepartmentId = SelectedDepartment?.Id;
+                var result = await _dataProvider.GetData<AjaxResult>("/Base_Manage/Base_User/SaveData", Data.ToJson());
+                if (!result.Success)
+                {
+                    throw new Exception(result.Msg);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Error(ex.Message);
+                return false;
+            }
+            finally
+            {
+                HideWait();
             }
         }
 

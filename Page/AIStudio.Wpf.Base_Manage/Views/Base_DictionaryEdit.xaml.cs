@@ -8,11 +8,9 @@ namespace AIStudio.Wpf.Base_Manage.Views
     /// </summary>
     public partial class Base_DictionaryEdit : ChildWindow
     {
-        public Base_DictionaryEdit(object viewModel)
+        public Base_DictionaryEdit()
         {
             InitializeComponent();
-
-            this.DataContext = viewModel;
         }
     }
 }

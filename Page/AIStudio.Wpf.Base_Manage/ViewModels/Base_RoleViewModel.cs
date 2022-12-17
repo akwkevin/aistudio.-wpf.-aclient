@@ -12,11 +12,12 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_RoleViewModel : BaseWindowViewModel<Base_RoleDTO>
+    public class Base_RoleViewModel : BaseListViewModel<Base_RoleDTO, Base_RoleEdit>
     {
-        public Base_RoleViewModel():base("Base_Manage", typeof(Base_RoleEditViewModel),typeof(Base_RoleEdit),"RoleName")
+        public Base_RoleViewModel()
         {
-           
+            Area = "Base_Manage";
+            Condition = "RoleName";
         }
 
         protected override async Task GetData(bool iswaiting = false)
@@ -24,41 +25,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             await base.GetData(iswaiting);
         }
 
-        protected override async void Edit(Base_RoleDTO para = null)
+        protected override BaseEditViewModel2<Base_RoleDTO> GetEditViewModel()
         {
-            var viewmodel = new Base_RoleEditViewModel(para, Area, Identifier);
-
-            var dialog = new Base_RoleEdit(viewmodel);
-            dialog.ValidationAction = (() =>
-            {
-                if (!string.IsNullOrEmpty(viewmodel.Data.Error))
-                    return false;
-                else
-                    return true;
-            });
-            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
-            if (res == DialogResult.OK)
-            {
-                try
-                {
-                    ShowWait();
-                    viewmodel.Data.Actions = new ObservableCollection<string>(BaseTreeItemViewModelHelper.GetChecked(viewmodel.ActionsTreeData).OfType<Base_ActionTree>().Select(p => p.Id));
-                    var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Role/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.Success)
-                    {
-                        throw new Exception(result.Msg);
-                    }
-                    GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    Controls.MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
-                }
-            }
+            return new Base_RoleEditViewModel();
         }
 
         protected override async Task Delete(string id = null)

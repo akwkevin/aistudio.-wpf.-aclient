@@ -8,11 +8,9 @@ namespace AIStudio.Wpf.OA_Manage.Views
     /// </summary>
     public partial class OA_DefFormTreeEdit : ChildWindow
     {
-        public OA_DefFormTreeEdit(object viewModel)
+        public OA_DefFormTreeEdit()
         {
             InitializeComponent();
-
-            this.DataContext = viewModel;
         }
     }
 }

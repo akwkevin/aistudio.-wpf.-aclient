@@ -1,6 +1,4 @@
 ﻿using AIStudio.Wpf.Controls;
-using AIStudio.Wpf.Quartz_Manage.ViewModels;
-
 
 namespace AIStudio.Wpf.Quartz_Manage.Views
 {
@@ -9,11 +7,9 @@ namespace AIStudio.Wpf.Quartz_Manage.Views
     /// </summary>
     public partial class Quartz_TaskLog : ChildWindow
     {
-        public Quartz_TaskLog(object viewModel)
+        public Quartz_TaskLog()
         {
             InitializeComponent();
-
-            this.DataContext = viewModel;
         }
     }
 }

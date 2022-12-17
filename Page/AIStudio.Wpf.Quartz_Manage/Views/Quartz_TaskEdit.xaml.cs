@@ -8,11 +8,9 @@ namespace AIStudio.Wpf.Quartz_Manage.Views
     /// </summary>
     public partial class Quartz_TaskEdit : ChildWindow
     {
-        public Quartz_TaskEdit(object viewModel)
+        public Quartz_TaskEdit()
         {
             InitializeComponent();
-
-            this.DataContext = viewModel;
         }
     }
 }

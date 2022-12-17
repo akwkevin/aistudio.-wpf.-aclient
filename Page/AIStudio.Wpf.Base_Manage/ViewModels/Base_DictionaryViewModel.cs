@@ -15,7 +15,7 @@ using System.Windows.Input;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_DictionaryViewModel : BaseWindowViewModel<Base_DictionaryDTO>
+    public class Base_DictionaryViewModel : BaseListViewModel<Base_DictionaryDTO, Base_DictionaryEdit>
     {
         private ObservableCollection<IBaseTreeItemViewModel> _data;
         public new ObservableCollection<IBaseTreeItemViewModel> Data
@@ -58,8 +58,10 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_DictionaryViewModel():base("Base_Manage", typeof(Base_DictionaryEditViewModel), typeof(Base_DictionaryEdit), "GetMenuTreeList")
+        public Base_DictionaryViewModel()
         {
+            Area = "Base_Manage";
+            GetDataList = "GetMenuTreeList";
             Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue, SortType = "asc", SortField = "Sort" };
         }
 
@@ -95,41 +97,14 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        protected async void Edit(Base_DictionaryTree paraTree = null)
+        protected override BaseEditViewModel2<Base_DictionaryDTO> GetEditViewModel()
         {
-            var viewmodel = new Base_DictionaryEditViewModel(paraTree, Area, Identifier);
+            return new Base_DictionaryEditViewModel();
+        }
 
-            var dialog = new Base_DictionaryEdit(viewmodel);
-            dialog.ValidationAction = (() =>
-            {
-                if (!string.IsNullOrEmpty(viewmodel.Data.Error))
-                    return false;
-                else
-                    return true;
-            });
-            var res = (DialogResult)await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
-            if (res == DialogResult.OK)
-            {
-                try
-                {
-                    ShowWait();
-                    viewmodel.Data.ParentId = viewmodel.SelectedParent?.Id;
-                    var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Dictionary/SaveData", JsonConvert.SerializeObject(viewmodel.Data));
-                    if (!result.Success)
-                    {
-                        throw new Exception(result.Msg);
-                    }
-                    GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    Controls.MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
-                }
-            }
+        protected void Edit(Base_DictionaryTree paraTree = null)
+        {
+            base.Edit(new Base_DictionaryDTO() { Id = paraTree.Id });
         }
 
         protected override async Task Delete(string id = null)

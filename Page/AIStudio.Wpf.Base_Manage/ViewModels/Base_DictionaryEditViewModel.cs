@@ -11,10 +11,12 @@ using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.Controls;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using AIStudio.Core;
+using AIStudio.Wpf.GridControls.ViewModel;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_DictionaryEditViewModel : BaseEditViewModel<Base_DictionaryDTO>
+    public class Base_DictionaryEditViewModel : BaseEditViewModel2<Base_DictionaryDTO>
     {
         private ObservableCollection<Base_DictionaryTree> _parentIdTreeData;
         public ObservableCollection<Base_DictionaryTree> ParentIdTreeData
@@ -36,37 +38,28 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_DictionaryEditViewModel(Base_DictionaryTree dataTree, string area, string identifier, string title = "编辑表单") : base(null, area, identifier, title, autoInit:false)
+        public Base_DictionaryEditViewModel()
         {
-            if (dataTree == null)
-            {
-                InitData();
-            }
-            else
-            {
-                GetData(dataTree);
-            }
         }
 
-        protected override async void InitData()
-        {
-            Data = new Base_DictionaryDTO();
-            await GetParentIdTreeData();
-        }
-
-        protected async  void GetData(Base_DictionaryTree dataTree)
+        protected override async Task GetData(object option)
         {
             try
             {
                 WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
-
-                var result = await _dataProvider.GetData<Base_DictionaryDTO>($"/Base_Manage/Base_Dictionary/GetTheData", JsonConvert.SerializeObject(new { id = dataTree.Id }));
-                if (!result.Success)
+                if (option is string id)
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<Base_DictionaryDTO>($"/Base_Manage/Base_Dictionary/GetTheData", JsonConvert.SerializeObject(new { id = id }));
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    Data = result.Data;
                 }
-                Data = result.Data;
-
+                else
+                {
+                    Data = new Base_DictionaryDTO();
+                }
                 await GetParentIdTreeData();
             }
             catch (Exception ex)
@@ -76,6 +69,30 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             finally
             {
                 WindowBase.HideWaiting(Identifier);
+            }
+        }
+
+        public override async Task<bool> SaveData()
+        {
+            try
+            {
+                ShowWait();
+                Data.ParentId = SelectedParent?.Id;
+                var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Dictionary/SaveData", Data.ToJson());
+                if (!result.Success)
+                {
+                    throw new Exception(result.Msg);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Error(ex.Message);
+                return false;
+            }
+            finally
+            {
+                HideWait();
             }
         }
 

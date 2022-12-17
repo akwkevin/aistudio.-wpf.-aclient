@@ -181,7 +181,7 @@ namespace AIStudio.Wpf.Home.ViewModels
 
             if (obj is OA_UserFormDTO)
             {
-                await OA_UserFormViewModel.EditShow(new OA_UserFormDTO() { Id = (obj as OA_UserFormDTO).Id }, Identifier);
+                //(new OA_UserFormViewModel() { Identifier = Identifier }).Edit(new OA_UserFormDTO() { Id = (obj as OA_UserFormDTO).Id });
             }
         }
     }
