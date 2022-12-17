@@ -25,7 +25,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             await base.GetData(iswaiting);
         }
 
-        protected override BaseEditViewModel2<Base_UserDTO> GetEditViewModel()
+        protected override BaseEditViewModel<Base_UserDTO> GetEditViewModel()
         {
             return new Base_UserEditViewModel();
         }

@@ -68,7 +68,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             return JsonConvert.SerializeObject(data);
         }
 
-        protected override BaseEditViewModel2<OA_UserFormDTO> GetEditViewModel()
+        protected override BaseEditViewModel<OA_UserFormDTO> GetEditViewModel()
         {
             return new OA_UserFormEditViewModel();
         }       

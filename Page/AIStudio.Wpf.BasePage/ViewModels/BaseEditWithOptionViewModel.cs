@@ -51,11 +51,11 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 
         protected IDataProvider _dataProvider { get { return ContainerLocator.Current.Resolve<IDataProvider>(); } }
         protected IUserData _userData { get { return ContainerLocator.Current.Resolve<IUserData>(); } }
-        protected BaseEditFormView View { get; set; }
+        protected ChildWindow View { get; set; }
 
         public virtual async Task OnLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            View = sender as BaseEditFormView;
+            View = sender as ChildWindow;
 
             await GetData(Options);
         }

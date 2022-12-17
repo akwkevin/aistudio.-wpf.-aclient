@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_UserEditViewModel : BaseEditViewModel2<Base_UserDTO>
+    public class Base_UserEditViewModel : BaseEditViewModel<Base_UserDTO>
     {
         private ObservableCollection<ISelectOption> _roles;
         public ObservableCollection<ISelectOption> Roles

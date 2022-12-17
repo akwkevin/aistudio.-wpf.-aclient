@@ -137,7 +137,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         }
 
-        protected override BaseEditViewModel2<OA_DefFormDTO> GetEditViewModel()
+        protected override BaseEditViewModel<OA_DefFormDTO> GetEditViewModel()
         {
             return new OA_DefFormEditViewModel();
         }

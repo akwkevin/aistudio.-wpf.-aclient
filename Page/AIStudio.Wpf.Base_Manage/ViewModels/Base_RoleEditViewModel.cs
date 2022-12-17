@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_RoleEditViewModel : BaseEditViewModel2<Base_RoleDTO>
+    public class Base_RoleEditViewModel : BaseEditViewModel<Base_RoleDTO>
     {
         private ObservableCollection<Base_ActionTree> _actionsTreeData;
         public ObservableCollection<Base_ActionTree> ActionsTreeData

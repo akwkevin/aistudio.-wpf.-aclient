@@ -17,7 +17,7 @@ using AIStudio.Core;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_ActionEditViewModel : BaseEditViewModel2<Base_ActionDTO>
+    public class Base_ActionEditViewModel : BaseEditViewModel<Base_ActionDTO>
     {
         private ObservableCollection<Base_ActionTree> _parentIdTreeData;
         public ObservableCollection<Base_ActionTree> ParentIdTreeData

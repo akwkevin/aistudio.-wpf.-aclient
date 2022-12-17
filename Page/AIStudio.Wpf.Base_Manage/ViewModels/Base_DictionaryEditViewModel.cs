@@ -16,7 +16,7 @@ using AIStudio.Wpf.GridControls.ViewModel;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_DictionaryEditViewModel : BaseEditViewModel2<Base_DictionaryDTO>
+    public class Base_DictionaryEditViewModel : BaseEditViewModel<Base_DictionaryDTO>
     {
         private ObservableCollection<Base_DictionaryTree> _parentIdTreeData;
         public ObservableCollection<Base_DictionaryTree> ParentIdTreeData

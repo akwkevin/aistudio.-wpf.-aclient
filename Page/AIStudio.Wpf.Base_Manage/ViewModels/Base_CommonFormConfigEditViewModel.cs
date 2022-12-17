@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_CommonFormConfigEditViewModel : BaseEditViewModel2<Base_CommonFormConfigDTO>
+    public class Base_CommonFormConfigEditViewModel : BaseEditViewModel<Base_CommonFormConfigDTO>
     {
         public Base_CommonFormConfigEditViewModel()
         {

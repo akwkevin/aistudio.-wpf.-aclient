@@ -3,7 +3,7 @@ using AIStudio.Wpf.Entity.DTOModels;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_DbLinkEditViewModel : BaseEditViewModel2<Base_DbLinkDTO>
+    public class Base_DbLinkEditViewModel : BaseEditViewModel<Base_DbLinkDTO>
     {
      
     }

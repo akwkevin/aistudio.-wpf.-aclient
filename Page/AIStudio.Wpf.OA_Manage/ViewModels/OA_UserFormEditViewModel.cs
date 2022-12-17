@@ -17,7 +17,7 @@ using AIStudio.Wpf.GridControls.ViewModel;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
-    public class OA_UserFormEditViewModel : BaseEditViewModel2<OA_UserFormDTO>
+    public class OA_UserFormEditViewModel : BaseEditViewModel<OA_UserFormDTO>
     {
         private int _status = 100;
         public int Status

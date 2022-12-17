@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_TestEditViewModel : BaseEditViewModel2<Base_TestDTO>
+    public class Base_TestEditViewModel : BaseEditViewModel<Base_TestDTO>
     {
        
     }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
-    public class OA_DefFormEditViewModel : BaseEditViewModel2<OA_DefFormDTO>
+    public class OA_DefFormEditViewModel : BaseEditViewModel<OA_DefFormDTO>
     {
         private string _flowchartModel = "{}";
         public string FlowchartModel

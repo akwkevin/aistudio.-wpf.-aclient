@@ -14,7 +14,7 @@ using AIStudio.Wpf.GridControls.ViewModel;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_DepartmentEditViewModel : BaseEditViewModel2<Base_DepartmentDTO>
+    public class Base_DepartmentEditViewModel : BaseEditViewModel<Base_DepartmentDTO>
     {
         private ObservableCollection<ISelectOption> _departments;
         public ObservableCollection<ISelectOption> Departments

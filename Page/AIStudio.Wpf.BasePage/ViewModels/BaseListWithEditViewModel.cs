@@ -54,9 +54,9 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             return dialog;
         }
 
-        protected virtual BaseEditViewModel2<TData> GetEditViewModel()
+        protected virtual BaseEditViewModel<TData> GetEditViewModel()
         {
-            return new BaseEditViewModel2<TData>();
+            return new BaseEditViewModel<TData>();
         }
         #endregion
    

@@ -121,7 +121,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        protected override BaseEditViewModel2<Base_DepartmentDTO> GetEditViewModel()
+        protected override BaseEditViewModel<Base_DepartmentDTO> GetEditViewModel()
         {
             return new Base_DepartmentEditViewModel();
         }
