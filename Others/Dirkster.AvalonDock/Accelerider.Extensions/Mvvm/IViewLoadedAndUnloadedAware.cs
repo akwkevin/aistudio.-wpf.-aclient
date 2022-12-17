@@ -12,9 +12,9 @@ namespace Accelerider.Extensions.Mvvm
 
     public interface IViewLoadedAndUnloadedAware<in TView>
     {
-        void OnLoaded(TView view, RoutedEventArgs e);
+        void OnLoaded(TView view);
 
-        void OnUnloaded(TView view, RoutedEventArgs e);
+        void OnUnloaded(TView view);
     }
 
     public interface IViewLoadedAndUnloadedAwareAsync
@@ -22,12 +22,5 @@ namespace Accelerider.Extensions.Mvvm
         Task OnLoaded(object sender, RoutedEventArgs e);
 
         Task OnUnloaded(object sender, RoutedEventArgs e);
-    }
-
-    public interface IViewLoadedAndUnloadedAwareAsync<in TView>
-    {
-        Task OnLoaded(TView view, RoutedEventArgs e);
-
-        Task OnUnloaded(TView view, RoutedEventArgs e);
     }
 }

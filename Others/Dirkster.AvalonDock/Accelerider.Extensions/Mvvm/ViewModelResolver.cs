@@ -84,27 +84,12 @@ namespace Accelerider.Extensions.Mvvm
                     throw new InvalidOperationException();
                 }
 
-                var onLoadedMethod = interfaceInstance.GetMethod<Action<object, RoutedEventArgs>>("OnLoaded", viewType);
-                var onUnloadedMethod = interfaceInstance.GetMethod<Action<object, RoutedEventArgs>>("OnUnloaded", viewType);
+                var onLoadedMethod = interfaceInstance.GetMethod<Action<object>>("OnLoaded", viewType);
+                var onUnloadedMethod = interfaceInstance.GetMethod<Action<object>>("OnUnloaded", viewType);
 
-                view.Loaded += (sender, args) => onLoadedMethod(sender, args);
-                view.Unloaded += (sender, args) =>  onUnloadedMethod(sender, args);
-            })
-             .IfInheritsFrom(typeof(IViewLoadedAndUnloadedAwareAsync<>), (view, viewModel, interfaceInstance) =>
-             {
-                 var viewType = view.GetType();
-                 if (interfaceInstance.GenericArguments.Single() != viewType)
-                 {
-                     throw new InvalidOperationException();
-                 }
-
-                 var onLoadedMethod = interfaceInstance.GetMethod<Action<object, RoutedEventArgs>>("OnLoaded", viewType);
-                 var onUnloadedMethod = interfaceInstance.GetMethod<Action<object, RoutedEventArgs>>("OnUnloaded", viewType);
-
-                 //待验证
-                 view.Loaded += (sender, args) => onLoadedMethod.BeginInvoke(sender, args, a => onLoadedMethod(sender, args), null);
-                 view.Unloaded += (sender, args) => onUnloadedMethod.BeginInvoke(sender, args, a => onUnloadedMethod(sender, args), null);
-             });
+                view.Loaded += (sender, args) => onLoadedMethod(sender);
+                view.Unloaded += (sender, args) =>  onUnloadedMethod(sender);
+            });
 
 
 

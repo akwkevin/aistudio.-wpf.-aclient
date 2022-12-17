@@ -19,7 +19,7 @@ using System.Windows.Input;
 
 namespace ServiceMonitor
 {
-    class MainWindowViewModel : BindableBase, IViewLoadedAndUnloadedAware
+    class MainWindowViewModel : BindableBase, IViewLoadedAndUnloadedAwareAsync
     {
         private string _databaseType = "Sqlite";
         public string DatabaseType
@@ -182,10 +182,10 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
 
             await Task.Delay(1000);
 
-            Refresh();
+            await Refresh();
         }
 
-        private async void Refresh()
+        private async Task Refresh()
         {
             List<int> list_pid = CmdHelper.GetPidByPort(Port);
             if (list_pid.Count == 0)
@@ -215,14 +215,14 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
 
         }
 
-        public void OnLoaded()
+        public async Task OnLoaded(object sender, RoutedEventArgs e)
         {
-            Refresh();
+            await Refresh();
         }
 
-        public void OnUnloaded()
+        public Task OnUnloaded(object sender, RoutedEventArgs e)
         {
-          
+          return Task.CompletedTask;
         }
     }
 }
