@@ -88,7 +88,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public override async Task<bool> SaveData()
+        protected override async Task<bool> SaveData()
         {
             try
             {

@@ -100,7 +100,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             await base.GetData(iswaiting);
         }
 
-        protected override BaseEditViewModel<Quartz_TaskDTO> GetEditViewModel()
+        protected override IBaseEditViewModel GetEditViewModel()
         {
             return new Quartz_TaskEditViewModel();
         }

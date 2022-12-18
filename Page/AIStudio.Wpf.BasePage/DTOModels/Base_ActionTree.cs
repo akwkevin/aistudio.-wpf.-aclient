@@ -8,7 +8,7 @@ using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.BasePage.DTOModels
 {
-    public class Base_ActionTree : BaseTreeItemViewModel, INotifyPropertyChanged
+    public class Base_ActionTree : BaseTreeItemViewModel, INotifyPropertyChanged, IIsChecked
     {
         public string Id { get; set; }
 
@@ -49,5 +49,7 @@ namespace AIStudio.Wpf.BasePage.DTOModels
                 AddChildRange(_children ?? new ObservableCollection<Base_ActionTree>());
             }
         }
+
+        public string Error { get; set; }
     }
 }

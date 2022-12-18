@@ -20,7 +20,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             await base.GetData(iswaiting);
         }
 
-        protected override BaseEditViewModel<Base_CommonFormConfigDTO> GetEditViewModel()
+        protected override IBaseEditViewModel GetEditViewModel()
         {
             return new Base_CommonFormConfigEditViewModel();
         }

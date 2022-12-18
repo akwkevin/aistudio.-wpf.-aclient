@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.BasePage.ViewModels
 {
-    public class BaseEditWithOptionViewModel<TData, Option> : Prism.Mvvm.BindableBase, IViewLoadedAndUnloadedAwareAsync where TData : class, IIsChecked
+    public class BaseEditWithOptionViewModel<TData, Option> : Prism.Mvvm.BindableBase, IBaseEditWithOptionViewModel<Option> where TData : class, IIsChecked
     {
         private string _title;
         public string Title
@@ -99,7 +99,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             }
         }
 
-        public virtual async Task<bool> SaveData()
+        protected virtual async Task<bool> SaveData()
         {
             try
             {
@@ -169,5 +169,13 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 //执行基本的清理代码
             }
         }
+    }
+
+    public interface IBaseEditWithOptionViewModel<Option> : IViewLoadedAndUnloadedAwareAsync
+    {
+        Option Options { get; set; }
+        string Identifier { get; set; }
+        string Area { get; set; }
+        Task<bool> ValidationAsync();
     }
 }

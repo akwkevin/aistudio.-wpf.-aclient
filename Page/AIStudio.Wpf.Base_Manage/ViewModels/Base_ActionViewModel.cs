@@ -15,22 +15,8 @@ using AIStudio.Wpf.BasePage.Views;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_ActionViewModel : BaseListWithEditViewModel<Base_ActionDTO, Base_ActionEdit>
+    public class Base_ActionViewModel : BaseListWithEditViewModel<Base_ActionTree, Base_ActionEdit>
     {
-        private ObservableCollection<IBaseTreeItemViewModel> _data;
-        public new ObservableCollection<IBaseTreeItemViewModel> Data
-        {
-            get { return _data; }
-            set
-            {
-                if (_data != value)
-                {
-                    _data = value;
-                    RaisePropertyChanged("Data");
-                }
-            }
-        }
-
         private ICommand _addCommand;
         public new ICommand AddCommand
         {
@@ -67,61 +53,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             Pagination.PageRows = Int32.MaxValue;
         }
 
-        protected override async Task GetData(bool iswaiting = false)
-        {
-            try
-            {
-                if (iswaiting == false)
-                {
-                    ShowWait();
-                }
-
-                var result = await _dataProvider.GetData<List<Base_ActionTree>>($"/Base_Manage/Base_Action/GetMenuTreeList", GetDataJson());
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
-                }
-                else
-                {
-                    Data = new ObservableCollection<IBaseTreeItemViewModel>(result.Data);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                if (iswaiting == false)
-                {
-                    HideWait();
-                }
-            }
-        }
-
-        protected override async Task Delete(string id = null)
-        {
-            List<string> ids = new List<string>();
-            if (string.IsNullOrEmpty(id))
-            {
-                ids.AddRange(Data.Select(p => p as Base_ActionTree).Where(p => p.IsChecked == true).Select(p => p.Id));
-            }
-            else
-            {
-                ids.Add(id);
-            }
-
-            await base.Delete(ids);
-        }
-
-        protected override BaseEditViewModel<Base_ActionDTO> GetEditViewModel()
+        protected override IBaseEditViewModel GetEditViewModel()
         {
             return new Base_ActionEditViewModel();
-        }
-
-        protected void Edit(Base_ActionTree paraTree = null)
-        {
-            base.Edit(new Base_ActionDTO() { Id = paraTree?.Id });
-        }       
+        }   
     }
 }
