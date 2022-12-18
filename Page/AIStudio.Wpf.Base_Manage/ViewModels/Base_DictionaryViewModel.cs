@@ -4,8 +4,7 @@ using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
-using AIStudio.Wpf.Entity.Models;
-using Newtonsoft.Json;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -36,7 +35,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             get
             {
-                return this._addCommand ?? (this._addCommand = new CanExecuteDelegateCommand(() => this.Edit()));
+                return this._addCommand ?? (this._addCommand = new DelegateCommand(() => this.Edit()));
             }
         }
 
@@ -54,15 +53,19 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             get
             {
-                return this._deleteCommand ?? (this._deleteCommand = new CanExecuteDelegateCommand(() => this.Delete(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
+                return this._deleteCommand ?? (this._deleteCommand = new CanExecuteDelegateCommand(async () => await this.Delete(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
         public Base_DictionaryViewModel()
         {
             Area = "Base_Manage";
-            GetDataList = "GetMenuTreeList";
-            Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue, SortType = "asc", SortField = "Sort" };
+            GetDataList = "GetMenuTreeList";         
+            NewTitle = "新建字典";
+            EditTitle = "编辑字典";
+            Pagination.PageRows = Int32.MaxValue;
+            Pagination.SortField = "Sort";
+            Pagination.SortType = "asc";
         }
 
         protected override async Task GetData(bool iswaiting = false)
@@ -104,7 +107,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         protected void Edit(Base_DictionaryTree paraTree = null)
         {
-            base.Edit(new Base_DictionaryDTO() { Id = paraTree.Id });
+            base.Edit(new Base_DictionaryDTO() { Id = paraTree?.Id });
         }
 
         protected override async Task Delete(string id = null)

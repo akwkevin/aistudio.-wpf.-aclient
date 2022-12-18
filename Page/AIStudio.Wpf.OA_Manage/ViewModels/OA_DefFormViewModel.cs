@@ -29,30 +29,12 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             }
         }
 
-        private ICommand _addCommand;
-        public ICommand AddCommand
-        {
-            get
-            {
-                return this._addCommand ?? (this._addCommand = new DelegateCommand(() => this.Edit()));
-            }
-        }
-
-        private ICommand _editCommand;
-        public new ICommand EditCommand
-        {
-            get
-            {
-                return this._editCommand ?? (this._editCommand = new CanExecuteDelegateCommand<OA_DefFormDTO>(para => this.Edit(para)));
-            }
-        }
-
         private ICommand _stopCommand;
         public ICommand StopCommand
         {
             get
             {
-                return this._stopCommand ?? (this._stopCommand = new CanExecuteDelegateCommand(() => this.Stop(null), () => this.Data != null && this.Data.Count(p => p.IsChecked) > 0));
+                return this._stopCommand ?? (this._stopCommand = new CanExecuteDelegateCommand(() => this.Stop(null), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -61,7 +43,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         {
             get
             {
-                return this._startCommand ?? (this._startCommand = new CanExecuteDelegateCommand(() => this.Start(null), () => this.Data != null && this.Data.Count(p => p.IsChecked) > 0));
+                return this._startCommand ?? (this._startCommand = new CanExecuteDelegateCommand(() => this.Start(null), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -70,7 +52,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         {
             get
             {
-                return this._startOneCommand ?? (this._startOneCommand = new CanExecuteDelegateCommand<string>(para => this.Start(para)));
+                return this._startOneCommand ?? (this._startOneCommand = new DelegateCommand<string>(para => this.Start(para)));
             }
         }
 
@@ -79,7 +61,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         {
             get
             {
-                return this._stopOneCommand ?? (this._stopOneCommand = new CanExecuteDelegateCommand<string>(para => this.Stop(para)));
+                return this._stopOneCommand ?? (this._stopOneCommand = new DelegateCommand<string>(para => this.Stop(para)));
             }
         }
 
@@ -162,7 +144,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             List<string> ids = new List<string>();
             if (string.IsNullOrEmpty(id))
             {
-                ids.AddRange(Data.Where(p => p.IsChecked).Select(p => p.Id));
+                ids.AddRange(Data.Where(p => p.IsChecked == true).Select(p => p.Id));
             }
             else
             {
@@ -180,7 +162,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     {
                         throw new Exception(result.Msg);
                     }
-                    GetData(true);
+                    await GetData(true);
                 }
                 catch (Exception ex)
                 {
@@ -198,7 +180,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             List<string> ids = new List<string>();
             if (string.IsNullOrEmpty(id))
             {
-                ids.AddRange(Data.Where(p => p.IsChecked).Select(p => p.Id));
+                ids.AddRange(Data.Where(p => p.IsChecked == true).Select(p => p.Id));
             }
             else
             {
@@ -216,7 +198,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     {
                         throw new Exception(result.Msg);
                     }
-                    GetData(true);
+                    await GetData(true);
                 }
                 catch (Exception ex)
                 {

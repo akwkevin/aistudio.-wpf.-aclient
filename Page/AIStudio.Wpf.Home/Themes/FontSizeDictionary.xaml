@@ -51,6 +51,8 @@
     <system:Double x:Key="AIStudio.Notice.Width">300</system:Double>
     <system:Double x:Key="AIStudio.Notice.Height">96</system:Double>
 
+    <system:Double x:Key="AIStudio.Title.Size">18</system:Double>
     <system:Double x:Key="AIStudio.Font.Size">12</system:Double>
+    <FontFamily x:Key="AIStudio.Fonts.Family">Microsoft YaHei UI</FontFamily>
 
 </ResourceDictionary>

@@ -100,8 +100,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
         /// </summary>
         public new bool CanUserSort { get; set; } = true;
 
-        private bool _isChecked;
-        public bool IsChecked
+        private bool? _isChecked = false;
+        public bool? IsChecked
         {
             get { return _isChecked; }
             set

@@ -17,8 +17,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
         [Required(ErrorMessage = "请输入应用名")]
         public new string AppName { get; set; }
 
-        private bool isChecked;
-        public bool IsChecked
+        private bool? isChecked = false;
+        public bool? IsChecked
         {
             get { return isChecked; }
             set
@@ -29,7 +29,7 @@ namespace AIStudio.Wpf.Entity.DTOModels
                     RaisePropertyChanged("IsChecked");
                 }
             }
-        }      
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -79,5 +79,5 @@ namespace AIStudio.Wpf.Entity.DTOModels
                 return results.FirstOrDefault()?.ErrorMessage;
             }
         }
-    }   
+    }
 }

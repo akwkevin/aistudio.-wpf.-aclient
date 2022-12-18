@@ -14,8 +14,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
         [Required(ErrorMessage = "角色名不能为空")]
         public new string RoleName { get; set; }
 
-        private bool isChecked;
-        public bool IsChecked
+        private bool? isChecked = false;
+        public bool? IsChecked
         {
             get { return isChecked; }
             set

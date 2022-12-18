@@ -46,7 +46,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             try
             {
-                WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
+                ShowWait();
                 if (option is string id)
                 {
                     var result = await _dataProvider.GetData<Base_DictionaryDTO>($"/Base_Manage/Base_Dictionary/GetTheData", JsonConvert.SerializeObject(new { id = id }));
@@ -68,7 +68,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
             finally
             {
-                WindowBase.HideWaiting(Identifier);
+                HideWait();
             }
         }
 

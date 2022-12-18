@@ -10,8 +10,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
 {
     public partial class Quartz_TaskDTO : Quartz_Task, INotifyPropertyChanged, IIsChecked
     {
-        private bool isChecked;
-        public bool IsChecked
+        private bool? isChecked = false;
+        public bool? IsChecked
         {
             get { return isChecked; }
             set

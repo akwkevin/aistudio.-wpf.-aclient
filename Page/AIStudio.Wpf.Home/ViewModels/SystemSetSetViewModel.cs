@@ -333,6 +333,7 @@ namespace AIStudio.Wpf.Home.ViewModels
             resourceDictionary["MahApps.Font.Size.ToggleSwitch.Header"] = LocalSetting.FontSize;
             resourceDictionary["MahApps.Font.Size.ColorPicker.TabItemHeader"] = LocalSetting.FontSize;
 
+            resourceDictionary["AIStudio.Title.Size"] = LocalSetting.FontSize + 6;
             resourceDictionary["AIStudio.Font.Size"] = LocalSetting.FontSize;
             resourceDictionary["AIStudio.Icon.Size.Minimum"] = LocalSetting.FontSize - 4;
             resourceDictionary["AIStudio.Icon.Size.Small"] = LocalSetting.FontSize - 2;

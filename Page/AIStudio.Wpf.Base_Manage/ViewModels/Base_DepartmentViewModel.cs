@@ -85,7 +85,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             Area = "Base_Manage";
             Condition = "Name";
-            Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue };
+            NewTitle = "新建部门";
+            EditTitle = "编辑部门";
+            Pagination.PageRows = Int32.MaxValue;
         }
 
         protected override async Task GetData(bool iswaiting = false)
@@ -128,7 +130,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         protected void Edit(Base_DepartmentTree paraTree = null)
         {
-            base.Edit(new Base_DepartmentDTO() { Id = paraTree.Id });
+            base.Edit(new Base_DepartmentDTO() { Id = paraTree?.Id });
         }
 
         protected override async Task Delete(string id = null)
@@ -160,7 +162,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             try
             {
-                WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
+                ShowWait();
 
                 var searchKeyValues = new Dictionary<string, object>() 
                 {
@@ -185,7 +187,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
             finally
             {
-                WindowBase.HideWaiting(Identifier);
+                HideWait();
             }
         }
     }

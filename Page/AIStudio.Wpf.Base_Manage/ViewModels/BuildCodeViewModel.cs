@@ -62,7 +62,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             get
             {
-                return this._addCommand ?? (this._addCommand = new CanExecuteDelegateCommand(() => this.Edit(), () => Data != null && Data.Count(p => p.IsChecked) > 0));
+                return this._addCommand ?? (this._addCommand = new CanExecuteDelegateCommand(() => this.Edit(), () => Data != null && Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -71,7 +71,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             get
             {
-                return this._generateCommand ?? (this._generateCommand = new CanExecuteDelegateCommand(() => this.Generate(), () => Data != null && Data.Count(p => p.IsChecked) > 0));
+                return this._generateCommand ?? (this._generateCommand = new CanExecuteDelegateCommand(() => this.Generate(), () => Data != null && Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -146,7 +146,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             try
             {
                 ShowWait();
-                List<string> ids = Data.Where(p => p.IsChecked).Select(p => p.TableName).ToList();
+                List<string> ids = Data.Where(p => p.IsChecked == true).Select(p => p.TableName).ToList();
                 var data = new
                 {
                     linkId = LinkId,

@@ -54,16 +54,17 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             get
             {
-                return this._deleteCommand ?? (this._deleteCommand = new CanExecuteDelegateCommand(() => this.Delete(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
+                return this._deleteCommand ?? (this._deleteCommand = new CanExecuteDelegateCommand(async () => await this.Delete(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
         public Base_ActionViewModel()
         {
             Area = "Base_Manage";
-            Condition = "";
             GetDataList = "GetMenuTreeList";
-            Pagination = new Core.Models.Pagination() { PageRows = Int32.MaxValue };
+            NewTitle = "新建权限";
+            EditTitle = "编辑权限";
+            Pagination.PageRows = Int32.MaxValue;
         }
 
         protected override async Task GetData(bool iswaiting = false)
@@ -74,7 +75,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 {
                     ShowWait();
                 }
-
 
                 var result = await _dataProvider.GetData<List<Base_ActionTree>>($"/Base_Manage/Base_Action/GetMenuTreeList", GetDataJson());
                 if (!result.Success)
@@ -99,16 +99,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        protected override BaseEditViewModel<Base_ActionDTO> GetEditViewModel()
-        {
-            return new Base_ActionEditViewModel();
-        }
-
-        protected void Edit(Base_ActionTree paraTree = null)
-        {
-            base.Edit(new Base_ActionDTO() { Id = paraTree.Id });
-        }
-
         protected override async Task Delete(string id = null)
         {
             List<string> ids = new List<string>();
@@ -124,14 +114,14 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             await base.Delete(ids);
         }
 
-        protected override void Print()
+        protected override BaseEditViewModel<Base_ActionDTO> GetEditViewModel()
         {
-            base.Print(Data);
+            return new Base_ActionEditViewModel();
         }
 
-        protected override void Search(object para = null)
+        protected void Edit(Base_ActionTree paraTree = null)
         {
-            base.Search(para);
-        }
+            base.Edit(new Base_ActionDTO() { Id = paraTree?.Id });
+        }       
     }
 }

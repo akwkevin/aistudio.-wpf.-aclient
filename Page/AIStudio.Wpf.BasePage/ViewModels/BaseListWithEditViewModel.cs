@@ -24,12 +24,15 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 {
     public class BaseListWithEditViewModel<TData, EditForm> : BaseListViewModel<TData> where TData : class, IIsChecked where EditForm : ChildWindow
     {
-        protected virtual async void Edit(TData para = null)
+        protected string NewTitle { get; set; } = "新建表单";
+        protected string EditTitle { get; set; } = "编辑表单";
+
+        protected override async void Edit(TData para = null)
         {
             var dialog = CreateView<string>(para?.Id, Area, Identifier);
             if (dialog is ChildWindow childwindow)
             {
-                var res = (DialogResult)await WindowBase.ShowChildWindowAsync(childwindow, "编辑表单", Identifier);
+                var res = (DialogResult)await WindowBase.ShowChildWindowAsync(childwindow, para == null ? NewTitle : EditTitle, Identifier);
                 if (res == DialogResult.OK)
                 {
                     await GetData();

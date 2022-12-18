@@ -9,7 +9,7 @@ namespace AIStudio.Core.Models
     public interface IIsChecked
     {
         string Id { get; set; }
-        bool IsChecked { get; set; }
+        bool? IsChecked { get; set; }
 
         string Error { get; }
     }

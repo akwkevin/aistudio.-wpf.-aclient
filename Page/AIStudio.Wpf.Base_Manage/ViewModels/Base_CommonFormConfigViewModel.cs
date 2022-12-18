@@ -11,6 +11,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             Area = "Base_Manage";
             Condition = "Table";
+            NewTitle = "新建表单";
+            EditTitle = "编辑表单";
         }        
 
         protected override async Task GetData(bool iswaiting = false)

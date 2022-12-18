@@ -66,7 +66,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             try
             {
-                var control = WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
+                WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
 
                 var data = new
                 {
@@ -96,7 +96,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             }
             finally
             {
-                AIStudio.Wpf.Controls.WindowBase.HideWaiting(Identifier);
+                WindowBase.HideWaiting(Identifier);
             }
         }
 

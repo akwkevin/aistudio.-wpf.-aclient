@@ -93,7 +93,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         {
             get
             {
-                return this._deleteCommand ?? (this._deleteCommand = new CanExecuteDelegateCommand(async () => await this.Delete(), () => this.Data != null && this.Data.Count(p => p.IsChecked) > 0));
+                return this._deleteCommand ?? (this._deleteCommand = new CanExecuteDelegateCommand(async () => await this.Delete(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -144,7 +144,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 
         protected void ShowWait()
         {
-            WindowBase.ShowWaiting(WaitingStyle.Progress, Identifier, "正在获取数据");
+            WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
         }
 
         protected void HideWait()
@@ -219,7 +219,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             List<string> ids = new List<string>();
             if (string.IsNullOrEmpty(id))
             {
-                ids.AddRange(Data.Where(p => p.IsChecked).Select(p => p.Id));
+                ids.AddRange(Data.Where(p => p.IsChecked == true).Select(p => p.Id));
             }
             else
             {

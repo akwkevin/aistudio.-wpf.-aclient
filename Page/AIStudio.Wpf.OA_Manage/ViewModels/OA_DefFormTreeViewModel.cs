@@ -50,7 +50,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         public OA_DefFormTreeViewModel() 
         {
             Area = "OA_Manage";
-            Condition = "";
+            NewTitle = "新建流程";
+            EditTitle = "编辑流程";
         }
 
         protected override async Task GetData(bool iswaiting = false)
@@ -58,11 +59,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
             try
             {
-                if (iswaiting == false)
-                {
-                    ShowWait();
-                }
-
+                await Task.Delay(10000);
                 var result = await _dataProvider.GetData<List<OA_DefFormTree>>("/OA_Manage/OA_DefForm/GetTreeDataList");
                 if (!result.Success)
                 {
@@ -101,14 +98,14 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
             if (dialog is ChildWindow childwindow)
             {
-                var res = (DialogResult)await WindowBase.ShowChildWindowAsync(childwindow, "编辑表单", Identifier);
+                var res = (DialogResult)await WindowBase.ShowChildWindowAsync(childwindow, "发起流程", Identifier);
             }
         }
 
         private async void OpenEditor(OA_DefFormTree para)
         {
             OA_DefFormTreeEdit dialog = new OA_DefFormTreeEdit() { DataContext = new OA_DefFormTreeEditViewModel(para.json) };
-            var res = await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
+            var res = await WindowBase.ShowChildWindowAsync(dialog, "查看流程", Identifier);
         }
     }
 }

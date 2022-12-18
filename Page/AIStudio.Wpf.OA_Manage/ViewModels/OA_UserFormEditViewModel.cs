@@ -286,7 +286,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         private async void OpenEditor(OA_UserFormDTO para)
         {
             OA_DefFormTreeEdit dialog = new OA_DefFormTreeEdit() { DataContext = new OA_DefFormTreeEditViewModel(para.WorkflowJSON) };
-            var res = await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
+            var res = await WindowBase.ShowChildWindowAsync(dialog, "查看流程", Identifier);
         }
     }
 }

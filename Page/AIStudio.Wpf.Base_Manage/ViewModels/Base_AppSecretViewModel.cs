@@ -11,6 +11,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             Area = "Base_Manage";
             Condition = "AppName";
+            NewTitle = "新建密钥";
+            EditTitle = "编辑密钥";
         }
 
         protected override async Task GetData(bool iswaiting = false)

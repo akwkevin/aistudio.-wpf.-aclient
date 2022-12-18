@@ -20,7 +20,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             get
             {
-                return this._pauseCommand ?? (this._pauseCommand = new CanExecuteDelegateCommand(() => this.Pause(), () => this.Data != null && this.Data.Count(p => p.IsChecked) > 0));
+                return this._pauseCommand ?? (this._pauseCommand = new CanExecuteDelegateCommand(() => this.Pause(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -29,7 +29,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             get
             {
-                return this._startCommand ?? (this._startCommand = new CanExecuteDelegateCommand(() => this.Start(), () => this.Data != null && this.Data.Count(p => p.IsChecked) > 0));
+                return this._startCommand ?? (this._startCommand = new CanExecuteDelegateCommand(() => this.Start(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -38,7 +38,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             get
             {
-                return this._toDoCommand ?? (this._toDoCommand = new CanExecuteDelegateCommand(() => this.ToDo(), () => this.Data != null && this.Data.Count(p => p.IsChecked) > 0));
+                return this._toDoCommand ?? (this._toDoCommand = new CanExecuteDelegateCommand(() => this.ToDo(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -47,7 +47,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             get
             {
-                return this._editFirstCommand ?? (this._editFirstCommand = new CanExecuteDelegateCommand(() => this.EditFirst(), () => this.Data != null && this.Data.Count(p => p.IsChecked) > 0));
+                return this._editFirstCommand ?? (this._editFirstCommand = new CanExecuteDelegateCommand(() => this.EditFirst(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -91,6 +91,8 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             Area = "Quartz_Manage";
             Condition = "TaskName";
+            NewTitle = "新建任务";
+            EditTitle = "编辑任务";
         }
 
         protected override async Task GetData(bool iswaiting = false)
@@ -128,7 +130,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             List<string> ids = new List<string>();
             if (string.IsNullOrEmpty(id))
             {
-                ids.AddRange(Data.Where(p => p.IsChecked).Select(p => p.Id));
+                ids.AddRange(Data.Where(p => p.IsChecked == true).Select(p => p.Id));
             }
             else
             {
@@ -147,7 +149,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                     {
                         throw new Exception(result.Msg);
                     }
-                    GetData(true);
+                    await GetData(true);
                 }
                 catch (Exception ex)
                 {
@@ -165,7 +167,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             List<string> ids = new List<string>();
             if (string.IsNullOrEmpty(id))
             {
-                ids.AddRange(Data.Where(p => p.IsChecked).Select(p => p.Id));
+                ids.AddRange(Data.Where(p => p.IsChecked == true).Select(p => p.Id));
             }
             else
             {
@@ -184,7 +186,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                     {
                         throw new Exception(result.Msg);
                     }
-                    GetData(true);
+                    await GetData(true);
                 }
                 catch (Exception ex)
                 {
@@ -202,7 +204,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             List<string> ids = new List<string>();
             if (string.IsNullOrEmpty(id))
             {
-                ids.AddRange(Data.Where(p => p.IsChecked).Select(p => p.Id));
+                ids.AddRange(Data.Where(p => p.IsChecked == true).Select(p => p.Id));
             }
             else
             {
@@ -221,7 +223,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                     {
                         throw new Exception(result.Msg);
                     }
-                    GetData(true);
+                    await GetData(true);
                 }
                 catch (Exception ex)
                 {
@@ -236,14 +238,14 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
 
         private void EditFirst()
         {
-            var para = Data.FirstOrDefault(p => p.IsChecked);
+            var para = Data.FirstOrDefault(p => p.IsChecked  == true);
             Edit(para);
         }
 
         private async void Log(Quartz_TaskDTO para)
         {
             Quartz_TaskLog dialog = new Quartz_TaskLog() { DataContext = new Quartz_TaskLogViewModel(para.GroupName + "." + para.TaskName, Identifier) };
-            await WindowBase.ShowChildWindowAsync(dialog, "编辑表单", Identifier);
+            await WindowBase.ShowChildWindowAsync(dialog, "查看日志", Identifier);
         }
     }
 }

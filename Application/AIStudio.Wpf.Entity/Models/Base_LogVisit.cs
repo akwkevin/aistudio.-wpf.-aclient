@@ -26,7 +26,7 @@ namespace AIStudio.Wpf.Entity.Models
         /// 创建人
         /// </summary>
         [MaxLength(255)]
-        public string? CreatorName { get; set; }
+        public string CreatorName { get; set; }
 
         /// <summary>
         /// 租户Id

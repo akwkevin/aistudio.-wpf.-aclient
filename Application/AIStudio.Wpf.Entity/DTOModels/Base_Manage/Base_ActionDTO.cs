@@ -53,8 +53,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
             }
         }
 
-        private bool isChecked;
-        public bool IsChecked
+        private bool? isChecked = false;
+        public bool? IsChecked
         {
             get { return isChecked; }
             set

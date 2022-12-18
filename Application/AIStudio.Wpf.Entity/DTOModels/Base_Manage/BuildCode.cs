@@ -20,8 +20,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
 
         public List<SubBuildCode> SubBuildCode { get; set; }
 
-        private bool isChecked;
-        public bool IsChecked
+        private bool? isChecked = false;
+        public bool? IsChecked
         {
             get { return isChecked; }
             set
@@ -73,8 +73,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
 
         public string TempPath { get; set; }
 
-        private bool isChecked = true;
-        public bool IsChecked
+        private bool? isChecked = true;
+        public bool? IsChecked
         {
             get { return isChecked; }
             set

@@ -20,9 +20,9 @@ namespace AIStudio.Wpf.Agile_Development.Models
 
     public partial class Base_UserDTO : Prism.Mvvm.BindableBase, IIsChecked
     {
-        private bool _isChecked;
+        private bool? _isChecked = false;
         //[ColumnHeader(Ignore = true)]
-        public bool IsChecked
+        public bool? IsChecked
         {
             get { return _isChecked; }
             set

@@ -59,7 +59,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             try
             {
-                WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
+                ShowWait();
 
                 if (para is string id)
                 {
@@ -84,7 +84,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
             finally
             {
-                WindowBase.HideWaiting(Identifier);
+                HideWait();
             }
         }
 

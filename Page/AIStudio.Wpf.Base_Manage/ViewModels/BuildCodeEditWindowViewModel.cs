@@ -70,11 +70,11 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         }
 
         private ICommand _oKCommand;
-        public new ICommand OKCommand
+        public ICommand OKCommand
         {
             get
             {
-                return this._oKCommand ?? (this._oKCommand = new CanExecuteDelegateCommand(() => this.OK(), () => Data != null && Data.Count(p => p.IsChecked) > 0));
+                return this._oKCommand ?? (this._oKCommand = new CanExecuteDelegateCommand(() => this.OK(), () => Data != null && Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -85,7 +85,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             get
             {
-                return this._saveTempCommand ?? (this._saveTempCommand = new CanExecuteDelegateCommand(() => this.SaveTemp(), () => Data != null && Data.Count(p => p.IsChecked) > 0));
+                return this._saveTempCommand ?? (this._saveTempCommand = new CanExecuteDelegateCommand(() => this.SaveTemp(), () => Data != null && Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -113,9 +113,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private void OK()
         {
-            foreach (var item in Data.Where(p => p.IsChecked))
+            foreach (var item in Data.Where(p => p.IsChecked == true))
             {
-                foreach (var subitem in item.SubBuildCode.Where(p => p.IsChecked))
+                foreach (var subitem in item.SubBuildCode.Where(p => p.IsChecked == true))
                 {
                     if (IsCover || !File.Exists(subitem.Path))
                         FileHelper.WriteTxt(subitem.Code, subitem.Path, Encoding.UTF8, FileMode.Create);
@@ -131,9 +131,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             if (folder.ShowDialog() == DialogResult.OK)
             {
                 var path = folder.SelectedPath;
-                foreach (var item in Data.Where(p => p.IsChecked))
+                foreach (var item in Data.Where(p => p.IsChecked == true))
                 {
-                    foreach (var subitem in item.SubBuildCode.Where(p => p.IsChecked))
+                    foreach (var subitem in item.SubBuildCode.Where(p => p.IsChecked == true))
                     {
                         var file = $"{path}\\{subitem.FileName}.{subitem.Suffix}";
                         if (IsCover || !File.Exists(file))

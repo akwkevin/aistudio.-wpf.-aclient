@@ -15,8 +15,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
         [Required(ErrorMessage = "申请人不能为空")]
         public new string ApplicantUserId { get; set; }
 
-        private bool _isChecked;
-        public bool IsChecked
+        private bool? _isChecked = false;
+        public bool? IsChecked
         {
             get { return _isChecked; }
             set

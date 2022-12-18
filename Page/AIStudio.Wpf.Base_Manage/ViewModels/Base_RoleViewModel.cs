@@ -18,6 +18,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             Area = "Base_Manage";
             Condition = "RoleName";
+            NewTitle = "新建角色";
+            EditTitle = "编辑角色";
         }
 
         protected override async Task GetData(bool iswaiting = false)

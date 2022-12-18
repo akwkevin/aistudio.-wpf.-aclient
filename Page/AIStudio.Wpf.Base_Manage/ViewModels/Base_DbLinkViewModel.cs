@@ -12,6 +12,8 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             Area = "Base_Manage";
             Condition = "LinkName";
+            NewTitle = "新建连接";
+            EditTitle = "编辑连接";
         }
 
         protected override async Task GetData(bool iswaiting = false)

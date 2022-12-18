@@ -18,8 +18,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
         [Required(ErrorMessage = "摘要不能为空")]
         public new string Text { get; set; }
 
-        private bool _isChecked;
-        public bool IsChecked
+        private bool? _isChecked = false;
+        public bool? IsChecked
         {
             get { return _isChecked; }
             set

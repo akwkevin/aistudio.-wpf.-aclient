@@ -41,8 +41,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
         public string newPwd { get; set; }
         public string roleIdsJson { get; set; }
 
-        private bool isChecked;
-        public bool IsChecked
+        private bool? isChecked = false;
+        public bool? IsChecked
         {
             get { return isChecked; }
             set

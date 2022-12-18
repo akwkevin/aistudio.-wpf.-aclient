@@ -327,7 +327,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                 {
                     throw new Exception(result.Msg);
                 }
-                GetData(true);
+                await GetData(true);
             }
             catch (Exception ex)
             {
@@ -368,7 +368,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                     {
                         throw new Exception(result.Msg);
                     }
-                    GetData(true);
+                    await GetData(true);
                 }
                 catch (Exception ex)
                 {
@@ -382,9 +382,9 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
         }
 
 
-        protected virtual void Search(object para = null)
+        protected virtual async void Search(object para = null)
         {
-            GetData();
+            await GetData();
         }
 
         public override void OnNavigatedTo(NavigationContext navigationContext)

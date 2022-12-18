@@ -10,8 +10,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
 {
     public partial class Base_DepartmentDTO : Base_Department, INotifyPropertyChanged, IIsChecked
     {
-        private bool isChecked;
-        public bool IsChecked
+        private bool? isChecked = false;
+        public bool? IsChecked
         {
             get { return isChecked; }
             set

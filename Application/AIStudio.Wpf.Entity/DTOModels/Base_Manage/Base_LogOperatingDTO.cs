@@ -11,8 +11,8 @@ namespace AIStudio.Wpf.Entity.DTOModels
     public partial class Base_LogOperatingDTO : Base_LogOperating, INotifyPropertyChanged, IIsChecked
     {
 
-        private bool isChecked;
-        public bool IsChecked
+        private bool? isChecked = false;
+        public bool? IsChecked
         {
             get { return isChecked; }
             set

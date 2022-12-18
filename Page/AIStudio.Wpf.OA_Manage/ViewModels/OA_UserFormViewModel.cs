@@ -34,6 +34,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         {
             Area = "OA_Manage";
             Condition = "DefFormName";
+            EditTitle = "审批流程";
         }
 
         protected override string GetDataJson()
@@ -71,7 +72,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
         protected override BaseEditViewModel<OA_UserFormDTO> GetEditViewModel()
         {
             return new OA_UserFormEditViewModel();
-        }       
+        }
 
         protected override async Task Delete(string id = null)
         {

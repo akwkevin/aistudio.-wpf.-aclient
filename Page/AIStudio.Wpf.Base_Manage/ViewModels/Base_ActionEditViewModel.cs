@@ -85,7 +85,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             try
             {
-                WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
+                ShowWait();
 
                 if (option is string id)
                 {
@@ -95,13 +95,14 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                         throw new Exception(result.Msg);
                     }
                     Data = result.Data;
+                    await GetPermissionList();
                 }
                 else
                 {
                     Data = new Base_ActionDTO();
+                    PermissionList = new ObservableCollection<Base_ActionDTO>();
                 }
-                await GetParentIdTreeData();
-                await GetPermissionList();
+                await GetParentIdTreeData();              
             }
             catch (Exception ex)
             {
@@ -109,7 +110,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
             finally
             {
-                WindowBase.HideWaiting(Identifier);
+                HideWait();
             }
         }
 
@@ -120,7 +121,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                 ShowWait();
                 Data.ParentId = SelectedParent?.Id;
                 Data.permissionList = new List<Base_ActionDTO>(PermissionList);
-                var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(Base_ActionDTO).Name.Replace("DTO", "")}/SaveData", Data.ToJson());
+                var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(Base_ActionDTO).Name.Replace("DTO", "").Replace("Tree","")}/SaveData", Data.ToJson());
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);
