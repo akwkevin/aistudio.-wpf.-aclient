@@ -17,33 +17,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
     public class Base_ActionViewModel : BaseListWithEditViewModel<Base_ActionTree, Base_ActionEdit>
     {
-        private ICommand _addCommand;
-        public new ICommand AddCommand
-        {
-            get
-            {
-                return this._addCommand ?? (this._addCommand = new CanExecuteDelegateCommand(() => this.Edit()));
-            }
-        }
-
-        private ICommand _editCommand;
-        public new ICommand EditCommand
-        {
-            get
-            {
-                return this._editCommand ?? (this._editCommand = new CanExecuteDelegateCommand<Base_ActionTree>(para => this.Edit(para)));
-            }
-        }
-
-        private ICommand _deleteCommand;
-        public new ICommand DeleteCommand
-        {
-            get
-            {
-                return this._deleteCommand ?? (this._deleteCommand = new CanExecuteDelegateCommand(async () => await this.Delete(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
-            }
-        }
-
         public Base_ActionViewModel()
         {
             Area = "Base_Manage";

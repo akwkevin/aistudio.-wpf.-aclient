@@ -14,22 +14,8 @@ using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class Base_DepartmentViewModel : BaseListWithEditViewModel<Base_DepartmentDTO, Base_DepartmentEdit>
+    public class Base_DepartmentViewModel : BaseListWithEditViewModel<Base_DepartmentTree, Base_DepartmentEdit>
     {
-        private ObservableCollection<IBaseTreeItemViewModel> _data;
-        public new ObservableCollection<IBaseTreeItemViewModel> Data
-        {
-            get { return _data; }
-            set
-            {
-                if (_data != value)
-                {
-                    _data = value;
-                    RaisePropertyChanged("Data");
-                }
-            }
-        }
-
         private ObservableCollection<Base_UserDTO> _data2;
         public ObservableCollection<Base_UserDTO> Data2
         {
@@ -41,34 +27,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     _data2 = value;
                     RaisePropertyChanged("Data2");
                 }
-            }
-        }
-
-
-        private ICommand _addCommand;
-        public new ICommand AddCommand
-        {
-            get
-            {
-                return this._addCommand ?? (this._addCommand = new CanExecuteDelegateCommand(() => this.Edit()));
-            }
-        }
-
-        private ICommand _editCommand;
-        public new ICommand EditCommand
-        {
-            get
-            {
-                return this._editCommand ?? (this._editCommand = new CanExecuteDelegateCommand<Base_DepartmentTree>(para => this.Edit(para)));
-            }
-        }
-
-        private ICommand _deleteCommand;
-        public new ICommand DeleteCommand
-        {
-            get
-            {
-                return this._deleteCommand ?? (this._deleteCommand = new CanExecuteDelegateCommand(async () => await this.Delete(), () => this.Data != null && this.Data.Count(p => p.IsChecked == true) > 0));
             }
         }
 
@@ -84,78 +42,16 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         public Base_DepartmentViewModel()
         {
             Area = "Base_Manage";
+            GetDataList = "GetTreeDataList";
             Condition = "Name";
             NewTitle = "新建部门";
             EditTitle = "编辑部门";
             Pagination.PageRows = Int32.MaxValue;
-        }
-
-        protected override async Task GetData(bool iswaiting = false)
-        {
-            try
-            {
-                if (iswaiting == false)
-                {
-                    ShowWait();
-                }
-
-                var result = await _dataProvider.GetData<List<Base_DepartmentTree>>($"/Base_Manage/Base_Department/GetTreeDataList", GetDataJson());
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
-                }
-                else
-                {
-                    Data = new ObservableCollection<IBaseTreeItemViewModel>(result.Data);
-                    Data2 = null;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                if (iswaiting == false)
-                {
-                    HideWait();
-                }
-            }
-        }
+        }       
 
         protected override IBaseEditViewModel GetEditViewModel()
         {
             return new Base_DepartmentEditViewModel();
-        }
-
-        protected void Edit(Base_DepartmentTree paraTree = null)
-        {
-            base.Edit(new Base_DepartmentDTO() { Id = paraTree?.Id });
-        }
-
-        protected override async Task Delete(string id = null)
-        {
-            List<string> ids = new List<string>();
-            if (string.IsNullOrEmpty(id))
-            {
-                ids.AddRange(Data.Select(p => p as Base_DepartmentTree).Where(p => p.IsChecked == true).Select(p => p.Id));
-            }
-            else
-            {
-                ids.Add(id);
-            }
-
-            await base.Delete(ids);
-        }
-
-        protected override void Print()
-        {
-            base.Print(Data);
-        }
-
-        protected override void Search(object para = null)
-        {
-            base.Search(para);
         }
 
         private async void Selected(Base_DepartmentTree para)

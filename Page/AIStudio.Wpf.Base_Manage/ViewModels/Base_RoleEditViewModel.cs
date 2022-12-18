@@ -36,11 +36,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_RoleEditViewModel()
-        {
-
-        }
-
         protected override async Task GetData(object option)
         {
             try

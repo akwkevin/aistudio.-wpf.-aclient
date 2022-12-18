@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using AIStudio.Core.Models;
 using AIStudio.Wpf.Controls;
 
 namespace AIStudio.Wpf.BasePage.DTOModels
 {
-    public class Base_DepartmentTree : BaseTreeItemViewModel, INotifyPropertyChanged
+    public class Base_DepartmentTree : BaseTreeItemViewModel, INotifyPropertyChanged, IIsChecked
     {
         public string Id { get; set; }
 
@@ -28,5 +29,8 @@ namespace AIStudio.Wpf.BasePage.DTOModels
                 AddChildRange(_children ?? new ObservableCollection<Base_DepartmentTree>());
             }
         }
+
+
+        public string Error { get; set; }
     }
 }
