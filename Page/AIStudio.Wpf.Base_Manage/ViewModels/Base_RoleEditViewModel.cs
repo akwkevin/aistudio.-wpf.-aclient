@@ -1,5 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.BasePage.DTOModels;
+using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
@@ -38,59 +39,35 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         protected override async Task GetData(object option)
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-
-                if (option is string id)
+                try
                 {
-                    var result = await _dataProvider.GetData<Base_RoleDTO>($"/Base_Manage/Base_Role/GetTheData", JsonConvert.SerializeObject(new { id = id }));
-                    if (!result.Success)
-                    {
-                        throw new Exception(result.Msg);
-                    }
-                    Data = result.Data;
+                    await base.GetData(option);
+                    await GetActionsTreeData();                 
+                    SetChecked(ActionsTreeData);
                 }
-                else
+                catch (Exception ex)
                 {
-                    Data = new Base_RoleDTO();
+                    Controls.MessageBox.Error(ex.Message);
                 }
-                await GetActionsTreeData();
-                //await GetAllActionList();
-
-                SetChecked(ActionsTreeData);
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
             }
         }
 
         protected override async Task<bool> SaveData()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                Data.Actions = new ObservableCollection<string>(BaseTreeItemViewModelHelper.GetChecked(ActionsTreeData).OfType<Base_ActionTree>().Select(p => p.Id));
-                var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Role/SaveData", Data.ToJson());
-                if (!result.Success)
+                try
                 {
-                    throw new Exception(result.Msg);
+                    Data.Actions = new ObservableCollection<string>(BaseTreeItemViewModelHelper.GetChecked(ActionsTreeData).OfType<Base_ActionTree>().Select(p => p.Id));
+                    return await base.SaveData();
                 }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-                return false;
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    MessageBox.Error(ex.Message);
+                    return false;
+                }
             }
         }
 
@@ -104,7 +81,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             else
             {
                 ActionsTreeData = new ObservableCollection<Base_ActionTree>(result.Data);
-            }
+            }            
         }
 
         private async Task GetAllActionList()
@@ -124,14 +101,14 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             if (trees == null || Data == null) return;
 
-            foreach(var tree in trees)
+            foreach (var tree in trees)
             {
                 if (Data.Actions.Any(p => p == tree.Id))
                 {
                     tree.SetChecked(true);
                 }
                 SetChecked(tree.Children);
-            }            
-        }     
+            }
+        }
     }
 }

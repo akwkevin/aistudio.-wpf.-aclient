@@ -1,5 +1,6 @@
 ﻿using AIStudio.Core;
 using AIStudio.Wpf.BasePage.DTOModels;
+using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
@@ -57,59 +58,36 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         protected override async Task GetData(object para)
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-
-                if (para is string id)
+                try
                 {
-                    var result = await _dataProvider.GetData<Base_UserDTO>($"/{Area}/{typeof(Base_UserDTO).Name.Replace("DTO", "")}/GetTheData", JsonConvert.SerializeObject(new { id = id }));
-                    if (!result.Success)
-                    {
-                        throw new Exception(result.Msg);
-                    }
-                    Data = result.Data;
+                    await base.GetData(para);
+                    await GetRoles();
+                    await GetDepartment();                    
                 }
-                else
+                catch (Exception ex)
                 {
-                    Data = new Base_UserDTO();
+                    Controls.MessageBox.Error(ex.Message);
                 }
-
-                await GetRoles();
-                await GetDepartment();
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
             }
         }
 
         protected override async Task<bool> SaveData()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                Data.RoleIdList = SelectedRoles.Select(p => p.Value).ToList();
-                Data.DepartmentId = SelectedDepartment?.Id;
-                var result = await _dataProvider.GetData<AjaxResult>("/Base_Manage/Base_User/SaveData", Data.ToJson());
-                if (!result.Success)
+                try
                 {
-                    throw new Exception(result.Msg);
+                    Data.RoleIdList = SelectedRoles.Select(p => p.Value).ToList();
+                    Data.DepartmentId = SelectedDepartment?.Id;                  
+                    return await base.SaveData();
                 }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-                return false;
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    MessageBox.Error(ex.Message);
+                    return false;
+                }
             }
         }
 

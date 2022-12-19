@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
@@ -92,68 +93,63 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         protected override async Task GetData(object para)
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-
-                if (para is string id)
+                try
                 {
-                    var result = await _dataProvider.GetData<OA_DefFormDTO>($"/OA_Manage/OA_DefForm/GetTheData", JsonConvert.SerializeObject(new { id = id }));
-                    if (!result.Success)
+                    if (para is string id)
                     {
-                        throw new Exception(result.Msg);
+                        var result = await _dataProvider.GetData<OA_DefFormDTO>($"/OA_Manage/OA_DefForm/GetTheData", JsonConvert.SerializeObject(new { id = id }));
+                        if (!result.Success)
+                        {
+                            throw new Exception(result.Msg);
+                        }
+                        Data = result.Data;
                     }
-                    Data = result.Data;
-                }
-                else
-                {
-                    Data = new OA_DefFormDTO();
-                }
-                GetTypes();
-                await GetRoles();
-                await GetUsers();
+                    else
+                    {
+                        Data = new OA_DefFormDTO();
+                    }
+                    GetTypes();
+                    await GetRoles();
+                    await GetUsers();
 
-                OAData = Newtonsoft.Json.JsonConvert.DeserializeObject<OA_Data>(Data.WorkflowJSON ?? "");
-                FlowchartModel = Data.WorkflowJSON;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
+                    OAData = Newtonsoft.Json.JsonConvert.DeserializeObject<OA_Data>(Data.WorkflowJSON ?? "");
+                    FlowchartModel = Data.WorkflowJSON;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Error(ex.Message);
+                }
             }
         }
 
         protected override async Task<bool> SaveData()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                var json = GetFlowchartModel();
-                var data = JsonConvert.DeserializeObject<OA_Data>(json);
-                OAData.Nodes = data.Nodes;
-                OAData.Links = data.Links;
-                OAData.Groups = data.Groups;
-                Data.JSONId = string.Empty;
-                Data.WorkflowJSON = JsonConvert.SerializeObject(OAData);
-                Data.Value = SelectedRoles.Count == 0 ? null : "^" + string.Join("^", SelectedRoles.Select(p => p.Value)) + "^";
-                var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/SaveData", Data.ToJson());
-                if (!result.Success)
+                try
                 {
-                    throw new Exception(result.Msg);
+                    var json = GetFlowchartModel();
+                    var data = JsonConvert.DeserializeObject<OA_Data>(json);
+                    OAData.Nodes = data.Nodes;
+                    OAData.Links = data.Links;
+                    OAData.Groups = data.Groups;
+                    Data.JSONId = string.Empty;
+                    Data.WorkflowJSON = JsonConvert.SerializeObject(OAData);
+                    Data.Value = SelectedRoles.Count == 0 ? null : "^" + string.Join("^", SelectedRoles.Select(p => p.Value)) + "^";
+                    var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/SaveData", Data.ToJson());
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    return true;
                 }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-                return false;
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    MessageBox.Error(ex.Message);
+                    return false;
+                }
             }
         }
 

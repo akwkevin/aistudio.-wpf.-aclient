@@ -1,6 +1,7 @@
 ﻿using AIStudio.Core;
 using AIStudio.Core.Helpers;
 using AIStudio.Core.Models;
+using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.BasePage.Views;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
@@ -142,16 +143,6 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             }
         }
 
-        protected void ShowWait()
-        {
-            WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
-        }
-
-        protected void HideWait()
-        {
-            WindowBase.HideWaiting(Identifier);
-        }
-
         protected virtual string GetDataJson()
         {
             var searchKeyValues = new Dictionary<string, object>();
@@ -172,39 +163,31 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             return JsonConvert.SerializeObject(data);
         }
 
-        protected virtual async Task GetData(bool iswaiting = false)
+        protected virtual async Task GetData()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                if (iswaiting == false)
+                try
                 {
-                    ShowWait();
-                }
 
-                var result = await _dataProvider.GetData<List<TData>>($"/{Area}/{typeof(TData).Name.Replace("DTO", "").Replace("Tree","")}/{GetDataList}", GetDataJson());
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
-                }
-                else
-                {
-                    Pagination.Total = result.Total;
-                    Data = new ObservableCollection<TData>(result.Data);
-                    if (Data.Any())
+                    var result = await _dataProvider.GetData<List<TData>>($"/{Area}/{typeof(TData).Name.Replace("DTO", "").Replace("Tree", "")}/{GetDataList}", GetDataJson());
+                    if (!result.Success)
                     {
-                        SelectedItem = Data.FirstOrDefault();
+                        throw new Exception(result.Msg);
+                    }
+                    else
+                    {
+                        Pagination.Total = result.Total;
+                        Data = new ObservableCollection<TData>(result.Data);
+                        if (Data.Any())
+                        {
+                            SelectedItem = Data.FirstOrDefault();
+                        }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                if (iswaiting == false)
+                catch (Exception ex)
                 {
-                    HideWait();
+                    MessageBox.Error(ex.Message);
                 }
             }
         }
@@ -234,24 +217,21 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             var sure = await MessageBoxDialog.Show("确认删除吗?", "提示", ControlStatus.Mid, Identifier);
             if (sure == DialogResult.OK)
             {
-                try
+                using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
                 {
-                    ShowWait();
-
-                    var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(TData).Name.Replace("DTO", "").Replace("Tree", "")}/DeleteData", JsonConvert.SerializeObject(ids));
-                    if (!result.Success)
+                    try
                     {
-                        throw new Exception(result.Msg);
+                        var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(TData).Name.Replace("DTO", "").Replace("Tree", "")}/DeleteData", JsonConvert.SerializeObject(ids));
+                        if (!result.Success)
+                        {
+                            throw new Exception(result.Msg);
+                        }
+                        await GetData();
                     }
-                    await GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Error(ex.Message);
+                    }
                 }
             }
         }

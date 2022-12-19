@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Controls.Commands;
@@ -95,9 +96,9 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             EditTitle = "编辑任务";
         }
 
-        protected override async Task GetData(bool iswaiting = false)
+        protected override async Task GetData()
         {
-            await base.GetData(iswaiting);
+            await base.GetData();
         }
 
         protected override IBaseEditViewModel GetEditViewModel()
@@ -140,24 +141,21 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             var sure = await MessageBoxDialog.Show("确认暂停吗?", "提示", ControlStatus.Mid, Identifier);
             if (sure == DialogResult.OK)
             {
-                try
+                using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
                 {
-                    ShowWait();
-
-                    var result = await _dataProvider.GetData<AjaxResult>($"/Quartz_Manage/Quartz_Task/PauseData", JsonConvert.SerializeObject(ids));
-                    if (!result.Success)
+                    try
                     {
-                        throw new Exception(result.Msg);
+                        var result = await _dataProvider.GetData<AjaxResult>($"/Quartz_Manage/Quartz_Task/PauseData", JsonConvert.SerializeObject(ids));
+                        if (!result.Success)
+                        {
+                            throw new Exception(result.Msg);
+                        }
+                        await GetData();
                     }
-                    await GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    Controls.MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
+                    catch (Exception ex)
+                    {
+                        Controls.MessageBox.Error(ex.Message);
+                    }
                 }
             }
         }
@@ -177,24 +175,21 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             var sure = await MessageBoxDialog.Show("确认开始吗?", "提示", ControlStatus.Mid, Identifier);
             if (sure == DialogResult.OK)
             {
-                try
+                using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
                 {
-                    ShowWait();
-
-                    var result = await _dataProvider.GetData<AjaxResult>($"/Quartz_Manage/Quartz_Task/StartData", JsonConvert.SerializeObject(ids));
-                    if (!result.Success)
+                    try
                     {
-                        throw new Exception(result.Msg);
+                        var result = await _dataProvider.GetData<AjaxResult>($"/Quartz_Manage/Quartz_Task/StartData", JsonConvert.SerializeObject(ids));
+                        if (!result.Success)
+                        {
+                            throw new Exception(result.Msg);
+                        }
+                        await GetData();
                     }
-                    await GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    Controls.MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
+                    catch (Exception ex)
+                    {
+                        Controls.MessageBox.Error(ex.Message);
+                    }
                 }
             }
         }
@@ -214,24 +209,21 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             var sure = await MessageBoxDialog.Show("确认立即执行吗?", "提示", ControlStatus.Mid, Identifier);
             if (sure == DialogResult.OK)
             {
-                try
+                using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
                 {
-                    ShowWait();
-
-                    var result = await _dataProvider.GetData<AjaxResult>($"/Quartz_Manage/Quartz_Task/ToDoData", JsonConvert.SerializeObject(ids));
-                    if (!result.Success)
+                    try
                     {
-                        throw new Exception(result.Msg);
+                        var result = await _dataProvider.GetData<AjaxResult>($"/Quartz_Manage/Quartz_Task/ToDoData", JsonConvert.SerializeObject(ids));
+                        if (!result.Success)
+                        {
+                            throw new Exception(result.Msg);
+                        }
+                        await GetData();
                     }
-                    await GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    Controls.MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
+                    catch (Exception ex)
+                    {
+                        Controls.MessageBox.Error(ex.Message);
+                    }
                 }
             }
         }

@@ -14,6 +14,7 @@ using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.GridControls.ViewModel;
 using System.Linq;
 using AIStudio.Core;
+using AIStudio.Wpf.BasePage.Models;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
@@ -39,7 +40,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        private ObservableCollection<Base_ActionDTO> _permissionList;
+        private ObservableCollection<Base_ActionDTO> _permissionList = new ObservableCollection<Base_ActionDTO>();
         public ObservableCollection<Base_ActionDTO> PermissionList
         {
             get { return _permissionList; }
@@ -83,77 +84,49 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         protected override async Task GetData(object option)
         {
-            try
-            {
-                ShowWait();
-
-                if (option is string id)
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
+            {              
+                try
                 {
-                    var result = await _dataProvider.GetData<Base_ActionDTO>($"/Base_Manage/Base_Action/GetTheData", JsonConvert.SerializeObject(new { id = id }));
-                    if (!result.Success)
-                    {
-                        throw new Exception(result.Msg);
-                    }
-                    Data = result.Data;
-                    await GetPermissionList();
+                    await base.GetData(option);
+                    await GetParentIdTreeData();                  
+                    await GetPermissionList();                   
                 }
-                else
+                catch (Exception ex)
                 {
-                    Data = new Base_ActionDTO();
-                    PermissionList = new ObservableCollection<Base_ActionDTO>();
+                    Controls.MessageBox.Error(ex.Message);
                 }
-                await GetParentIdTreeData();              
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
             }
         }
 
         protected override async Task<bool> SaveData()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                Data.ParentId = SelectedParent?.Id;
-                Data.permissionList = new List<Base_ActionDTO>(PermissionList);
-                var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(Base_ActionDTO).Name.Replace("DTO", "").Replace("Tree","")}/SaveData", Data.ToJson());
-                if (!result.Success)
+                try
                 {
-                    throw new Exception(result.Msg);
+                    Data.ParentId = SelectedParent?.Id;
+                    Data.permissionList = new List<Base_ActionDTO>(PermissionList);
+                    return await base.SaveData();
                 }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-                return false;
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    MessageBox.Error(ex.Message);
+                    return false;
+                }
             }
         }
 
         public override async Task<bool> ValidationAsync()
         {
-            if (!string.IsNullOrEmpty(Data.Error))
-            {
-                MessageBox.Error(Data.Error, windowIdentifier: Identifier);
-                return false;
-            }
-            else if (PermissionList.GroupBy(p => p.Value).Where(q => q.Count() > 1).Count() >= 1)
+            if (PermissionList.GroupBy(p => p.Value).Where(q => q.Count() > 1).Count() >= 1)
             {
                 MessageBox.Error("权限值不能有重复值", windowIdentifier: Identifier);
                 return false;
             }
             else
             { 
-                return await SaveData();
+                return await base.ValidationAsync();
             }
         } 
 
@@ -173,14 +146,17 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetPermissionList()
         {
-            var result = await _dataProvider.GetData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetPermissionList", JsonConvert.SerializeObject(new { parentId = Data.Id }));
-            if (!result.Success)
+            if (!string.IsNullOrEmpty(Data?.Id))
             {
-                throw new Exception(result.Msg);
-            }
-            else
-            {
-                PermissionList = new ObservableCollection<Base_ActionDTO>(result.Data);
+                var result = await _dataProvider.GetData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetPermissionList", JsonConvert.SerializeObject(new { parentId = Data.Id }));
+                if (!result.Success)
+                {
+                    throw new Exception(result.Msg);
+                }
+                else
+                {
+                    PermissionList = new ObservableCollection<Base_ActionDTO>(result.Data);
+                }
             }
         }
 

@@ -18,6 +18,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
+using AIStudio.Wpf.BasePage.Models;
 
 namespace AIStudio.Wpf.LayoutPage.ViewModels
 {
@@ -42,9 +43,8 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
         {
             base.OnNavigatedTo(navigationContext);
 
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
                 User3DData = _userConfig.ReadConfig<User3DData>(this, Identifier);
                 for (int i = 0; i < User3DData.Data.Count; i++)
                 {
@@ -58,11 +58,6 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
                     }));
                 }
             }
-            finally
-            {
-                HideWait();
-            }
-
         }
 
         private ObservableCollection<AMenuItem> SearchMenus { get; set; }

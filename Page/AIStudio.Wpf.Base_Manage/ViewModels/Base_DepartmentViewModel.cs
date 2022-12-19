@@ -11,6 +11,7 @@ using System.Linq;
 using System.Windows.Input;
 using AIStudio.Wpf.Controls;
 using System.Threading.Tasks;
+using AIStudio.Wpf.BasePage.Models;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
@@ -56,34 +57,31 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async void Selected(Base_DepartmentTree para)
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-
-                var searchKeyValues = new Dictionary<string, object>() 
+                try
+                {
+                    var searchKeyValues = new Dictionary<string, object>()
                 {
                     {"DepartmentId", para.Id }
                 };
 
-                var data = new
-                {
-                    SearchKeyValues = searchKeyValues,
-                };
+                    var data = new
+                    {
+                        SearchKeyValues = searchKeyValues,
+                    };
 
-                var result = await _dataProvider.GetData<List<Base_UserDTO>>($"/Base_Manage/Base_User/GetDataList", JsonConvert.SerializeObject(data));
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<List<Base_UserDTO>>($"/Base_Manage/Base_User/GetDataList", JsonConvert.SerializeObject(data));
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    Data2 = new ObservableCollection<Base_UserDTO>(result.Data);
                 }
-                Data2 = new ObservableCollection<Base_UserDTO>(result.Data);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    MessageBox.Error(ex.Message);
+                }
             }
         }
     }

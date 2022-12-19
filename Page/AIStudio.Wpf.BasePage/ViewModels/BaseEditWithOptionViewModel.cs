@@ -1,6 +1,7 @@
 ﻿using Accelerider.Extensions.Mvvm;
 using AIStudio.Core;
 using AIStudio.Core.Models;
+using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.BasePage.Views;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
@@ -67,58 +68,53 @@ namespace AIStudio.Wpf.BasePage.ViewModels
 
         protected virtual async Task GetData(Option option)
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-
-                if (option is string id)
+                try
                 {
-                    var result = await _dataProvider.GetData<TData>($"/{Area}/{typeof(TData).Name.Replace("DTO", "")}/GetTheData", JsonConvert.SerializeObject(new { id = id }));
-                    if (!result.Success)
+                    if (option is string id)
                     {
-                        throw new Exception(result.Msg);
+                        var result = await _dataProvider.GetData<TData>($"/{Area}/{typeof(TData).Name.Replace("DTO", "")}/GetTheData", JsonConvert.SerializeObject(new { id = id }));
+                        if (!result.Success)
+                        {
+                            throw new Exception(result.Msg);
+                        }
+                        Data = result.Data;
                     }
-                    Data = result.Data;
+                    else if (option is TData data)
+                    {
+                        Data = data;
+                    }
+                    else
+                    {
+                        Data = System.Activator.CreateInstance<TData>();
+                    }
                 }
-                else if (option is TData data)
+                catch (Exception ex)
                 {
-                    Data = data;
+                    MessageBox.Error(ex.Message);
                 }
-                else
-                {
-                    Data = System.Activator.CreateInstance<TData>();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
             }
         }
 
         protected virtual async Task<bool> SaveData()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(TData).Name.Replace("DTO", "")}/SaveData", Data.ToJson());
-                if (!result.Success)
+                try
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(TData).Name.Replace("DTO", "")}/SaveData", Data.ToJson());
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    return true;
                 }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-                return false;
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    MessageBox.Error(ex.Message);
+                    return false;
+                }
             }
         }
 
@@ -133,16 +129,6 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             {
                 return await SaveData();
             }
-        }
-
-        protected void ShowWait()
-        {
-            WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
-        }
-
-        protected void HideWait()
-        {
-            WindowBase.HideWaiting(Identifier);
         }
 
 

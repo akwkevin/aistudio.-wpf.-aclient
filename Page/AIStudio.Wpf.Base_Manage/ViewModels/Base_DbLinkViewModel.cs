@@ -14,31 +14,11 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             Condition = "LinkName";
             NewTitle = "新建连接";
             EditTitle = "编辑连接";
-        }
-
-        protected override async Task GetData(bool iswaiting = false)
-        {
-            await base.GetData(iswaiting);
-        }
+        }      
 
         protected override IBaseEditViewModel GetEditViewModel()
         {
             return new Base_DbLinkEditViewModel();
-        }
-
-        protected override void Edit(Base_DbLinkDTO para = null)
-        {
-            base.Edit(para);
-        }
-
-        protected override async Task Delete(string id = null)
-        {
-            await base.Delete(id);
-        }
-
-        protected override void Search(object para=null)
-        {
-            base.Search(para);
-        }
+        }      
     }
 }

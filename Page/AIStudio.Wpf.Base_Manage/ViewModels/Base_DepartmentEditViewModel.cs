@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using AIStudio.Wpf.Controls;
 using System.Linq;
 using AIStudio.Wpf.GridControls.ViewModel;
+using AIStudio.Wpf.BasePage.Models;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
@@ -42,58 +43,34 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         protected override async Task GetData(object option)
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-
-                if (option is string id)
+                try
                 {
-                    var result = await _dataProvider.GetData<Base_DepartmentDTO>($"/Base_Manage/Base_Department/GetTheData", JsonConvert.SerializeObject(new { id = id }));
-                    if (!result.Success)
-                    {
-                        throw new Exception(result.Msg);
-                    }
-                    Data = result.Data;
-                    await GetDepartment();
+                    await base.GetData(option);
+                    await GetDepartment();                  
                 }
-                else
+                catch (Exception ex)
                 {
-                    Data = new Base_DepartmentDTO();
-                    await GetDepartment();
+                    MessageBox.Error(ex.Message);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
             }
         }
 
         protected override async Task<bool> SaveData()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-
-                Data.ParentId = SelectedDepartment?.Id;
-                var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Department/SaveData", Data.ToJson());
-                if (!result.Success)
+                try
                 {
-                    throw new Exception(result.Msg);
+                    Data.ParentId = SelectedDepartment?.Id;                  
+                    return await base.SaveData();
                 }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-                return false;
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    MessageBox.Error(ex.Message);
+                    return false;
+                }
             }
         }
 

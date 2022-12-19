@@ -22,6 +22,7 @@ using Util.Panels.Controls;
 using Prism.Events;
 using AIStudio.Wpf.BasePage.Events;
 using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
+using AIStudio.Wpf.BasePage.Models;
 
 namespace AIStudio.Wpf.LayoutPage.ViewModels
 {
@@ -52,9 +53,8 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
         {
             base.OnNavigatedTo(navigationContext);
 
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
                 await System.Threading.Tasks.Task.Delay(500);//偷下懒，延迟等待界面Loaded，再初始化布局
                 UserConsoleData = _userConfig.ReadConfig<UserConsoleData>(this, Identifier);
                 foreach (var item in UserConsoleData.Data)
@@ -62,10 +62,6 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
                     var control = InitControl(item.Type);
                     item.Content = control;
                 }
-            }
-            finally
-            {
-                HideWait();
             }
         }
 

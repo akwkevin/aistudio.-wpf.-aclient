@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.Controls;
+using AIStudio.Wpf.BasePage.Models;
 
 namespace AIStudio.Wpf.Agile_Development.ViewModels
 {
@@ -123,9 +124,9 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             return JsonConvert.SerializeObject(data);
         }
 
-        protected override async Task GetData(bool iswaiting = false)
+        protected override async Task GetData()
         {          
-            await base.GetData(iswaiting);
+            await base.GetData();
         }
 
         public async void Submit()
@@ -151,24 +152,22 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
 
         public virtual async Task<bool> SaveData(T para)
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/SaveData", para.ToJson());
-                if (!result.Success)
+                try
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/SaveData", para.ToJson());
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    return true;
                 }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-                return false;
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    MessageBox.Error(ex.Message);
+                    return false;
+                }
             }
         }
 

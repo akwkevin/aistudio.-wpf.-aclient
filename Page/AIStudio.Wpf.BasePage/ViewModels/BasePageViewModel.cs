@@ -22,15 +22,5 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 Identifier = identifier;
             }
         }
-
-        protected void ShowWait()
-        {
-            WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
-        }
-
-        protected void HideWait()
-        {
-            WindowBase.HideWaiting(Identifier);
-        }
     }
 }

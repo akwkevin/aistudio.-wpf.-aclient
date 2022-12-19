@@ -12,9 +12,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             Area = "Base_Manage";
         }
 
-        protected override async Task GetData(bool iswaiting = false)
+        protected override async Task GetData()
         {
-            await base.GetData(iswaiting);
+            await base.GetData();
         }
 
         protected override void Edit(Base_TestDTO para = null)

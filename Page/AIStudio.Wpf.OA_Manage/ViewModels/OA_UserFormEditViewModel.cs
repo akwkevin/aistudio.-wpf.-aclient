@@ -14,6 +14,7 @@ using System.Windows.Input;
 using AIStudio.Wpf.Controls;
 using System.Collections.ObjectModel;
 using AIStudio.Wpf.GridControls.ViewModel;
+using AIStudio.Wpf.BasePage.Models;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
@@ -108,56 +109,51 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         protected override async Task GetData(object para)
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-
-                if (para is string id)
+                try
                 {
-                    var result = await _dataProvider.GetData<OA_UserFormDTO>($"/OA_Manage/OA_UserForm/GetTheData", JsonConvert.SerializeObject(new { id = id }));
-                    if (!result.Success)
+                    if (para is string id)
                     {
-                        throw new Exception(result.Msg);
+                        var result = await _dataProvider.GetData<OA_UserFormDTO>($"/OA_Manage/OA_UserForm/GetTheData", JsonConvert.SerializeObject(new { id = id }));
+                        if (!result.Success)
+                        {
+                            throw new Exception(result.Msg);
+                        }
+                        Data = result.Data;
                     }
-                    Data = result.Data;
+                    else
+                    {
+                        Data = new OA_UserFormDTO();
+                    }
+                    await GetUsers();
+                    GetTypes();
                 }
-                else
+                catch (Exception ex)
                 {
-                    Data = new OA_UserFormDTO();
+                    Controls.MessageBox.Error(ex.Message);
                 }
-                await GetUsers();
-                GetTypes();
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
             }
         }
 
         protected override async Task<bool> SaveData()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                var result = await _dataProvider.GetData<AjaxResult>("/OA_Manage/OA_UserForm/SaveData", Data.ToJson());
-                if (!result.Success)
+                try
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<AjaxResult>("/OA_Manage/OA_UserForm/SaveData", Data.ToJson());
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    return true;
                 }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-                return false;
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    MessageBox.Error(ex.Message);
+                    return false;
+                }
             }
         }       
 
@@ -197,76 +193,70 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         private async void PreStep()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                var result = await _dataProvider.GetData<List<OA_Step>>($"/OA_Manage/OA_UserForm/PreStep", Data.ToJson());
-                if (!result.Success)
+                try
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<List<OA_Step>>($"/OA_Manage/OA_UserForm/PreStep", Data.ToJson());
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    Data.Steps = result.Data;
                 }
-                Data.Steps = result.Data;
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    Controls.MessageBox.Error(ex.Message);
+                }
             }
         }
 
         private async void DisCard()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/DisCardData",(new { id = Data.Id, remark = Data.Remarks }).ToJson());
-                if (!result.Success)
+                try
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/DisCardData", (new { id = Data.Id, remark = Data.Remarks }).ToJson());
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    View.Close();
+                    WindowBase.ShowMessageQueue(result.Msg, Identifier);
                 }
-                View.Close();
-                WindowBase.ShowMessageQueue(result.Msg, Identifier);
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    Controls.MessageBox.Error(ex.Message);
+                }
             }
         }
 
         private async void EventData()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                var data = new
+                try
                 {
-                    eventName = "MyEvent",
-                    eventKey = Data.Id + Data.CurrentStepId,
-                    Status = Status,
-                    Remarks = Remark
-                };
-                var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/EventData", data.ToJson());
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
+                    var data = new
+                    {
+                        eventName = "MyEvent",
+                        eventKey = Data.Id + Data.CurrentStepId,
+                        Status = Status,
+                        Remarks = Remark
+                    };
+                    var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/EventData", data.ToJson());
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    View.Close();
+                    WindowBase.ShowMessageQueue(result.Msg, Identifier);
                 }
-                View.Close();
-                WindowBase.ShowMessageQueue(result.Msg, Identifier);
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    Controls.MessageBox.Error(ex.Message);
+                }
             }
         }
 

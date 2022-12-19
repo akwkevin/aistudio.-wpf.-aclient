@@ -1,6 +1,7 @@
 ﻿using AIStudio.Core;
 using AIStudio.DbFactory.DataAccess;
 using AIStudio.Wpf.Base_Manage.Views;
+using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
@@ -108,73 +109,60 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        protected override async Task GetData(bool iswaiting = false)
+        protected override async Task GetData()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                if (iswaiting == false)
+                try
                 {
-                    ShowWait();
-                }                       
-
-                var result = await _dataProvider.GetData<List<BuildCode>>($"/{Area}/{typeof(BuildCode).Name.Replace("DTO", "")}/GetDbTableList", JsonConvert.SerializeObject(new { linkId = LinkId }));
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<List<BuildCode>>($"/{Area}/{typeof(BuildCode).Name.Replace("DTO", "")}/GetDbTableList", JsonConvert.SerializeObject(new { linkId = LinkId }));
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    else
+                    {
+                        Pagination.Total = result.Total;
+                        Data = new ObservableCollection<BuildCode>(result.Data);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Pagination.Total = result.Total;
-                    Data = new ObservableCollection<BuildCode>(result.Data);
-                }
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                if (iswaiting == false)
-                {
-                    HideWait();
+                    Controls.MessageBox.Error(ex.Message);
                 }
             }
         }
 
         private async void Generate()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                List<string> ids = Data.Where(p => p.IsChecked == true).Select(p => p.TableName).ToList();
-                var data = new
+                try
                 {
-                    linkId = LinkId,
-                    tables = ids.ToArray(),
-                };
+                    List<string> ids = Data.Where(p => p.IsChecked == true).Select(p => p.TableName).ToList();
+                    var data = new
+                    {
+                        linkId = LinkId,
+                        tables = ids.ToArray(),
+                    };
 
-                var result = await _dataProvider.GetData<Dictionary<string, List<TableInfo>>>("/Base_Manage/BuildCode/GetDbTableInfo",
-                    JsonConvert.SerializeObject(data));
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<Dictionary<string, List<TableInfo>>>("/Base_Manage/BuildCode/GetDbTableInfo",
+                        JsonConvert.SerializeObject(data));
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+
+                    List<BuildCode> buildCode = Generate(AreaName,
+                        result.Data, false, true);
+                    BuildCodeEditWindow window = new BuildCodeEditWindow();
+                    window.DataContext = new BuildCodeEditWindowViewModel(buildCode, AreaName, Identifier, "代码生成器");
+                    window.Show();
                 }
-
-                HideWait();
-
-                List<BuildCode> buildCode = Generate(AreaName,
-                    result.Data, false, true);
-                BuildCodeEditWindow window = new BuildCodeEditWindow();
-                window.DataContext = new BuildCodeEditWindowViewModel(buildCode, AreaName, Identifier, "代码生成器");
-                window.Show();
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    Controls.MessageBox.Error(ex.Message);
+                }
             }
         }
 

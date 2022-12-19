@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Org.BouncyCastle.Crypto;
+using AIStudio.Wpf.BasePage.Models;
 
 namespace AIStudio.Wpf.OA_Manage.ViewModels
 {
@@ -77,46 +78,35 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             Roles = await _userData.GetBase_Role();
         }
 
-        protected override async Task GetData(bool iswaiting = false)
+        protected override async Task GetData()
         {
-            
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                if (iswaiting == false)
+                try
                 {
-                    ShowWait();
-                }
-
-                var result = await _dataProvider.GetData<List<OA_DefFormDTO>>($"/{Area}/{typeof(OA_DefFormDTO).Name.Replace("DTO", "")}/{GetDataList}", GetDataJson());
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
-                }
-                else
-                {
-                    Pagination.Total = result.Total;
-                    Data = new ObservableCollection<OA_DefFormDTO>(result.Data);
-
-                    await GetRoles();
-                    foreach (var item in Data)
+                    var result = await _dataProvider.GetData<List<OA_DefFormDTO>>($"/{Area}/{typeof(OA_DefFormDTO).Name.Replace("DTO", "")}/{GetDataList}", GetDataJson());
+                    if (!result.Success)
                     {
-                        if (item.ValueRoles != null)
-                            item.Roles = Roles.Where(p => item.ValueRoles.Contains(p.Value)).ToList();
-                    }                    
-                }
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                if (iswaiting == false)
-                {
-                    HideWait();
-                }
-            }
+                        throw new Exception(result.Msg);
+                    }
+                    else
+                    {
+                        Pagination.Total = result.Total;
+                        Data = new ObservableCollection<OA_DefFormDTO>(result.Data);
 
+                        await GetRoles();
+                        foreach (var item in Data)
+                        {
+                            if (item.ValueRoles != null)
+                                item.Roles = Roles.Where(p => item.ValueRoles.Contains(p.Value)).ToList();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Controls.MessageBox.Error(ex.Message);
+                }
+            }
         }
 
         protected override IBaseEditViewModel GetEditViewModel()
@@ -153,24 +143,22 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             var sure = await MessageBoxDialog.Show("确认启用吗?", "提示", ControlStatus.Mid, Identifier);
             if (sure == DialogResult.OK)
             {
-                try
+                using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
                 {
-                    ShowWait();
- 
-                    var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/StartData", JsonConvert.SerializeObject(ids));
-                    if (!result.Success)
+                    try
                     {
-                        throw new Exception(result.Msg);
+
+                        var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/StartData", JsonConvert.SerializeObject(ids));
+                        if (!result.Success)
+                        {
+                            throw new Exception(result.Msg);
+                        }
+                        await GetData();
                     }
-                    await GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    Controls.MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
+                    catch (Exception ex)
+                    {
+                        Controls.MessageBox.Error(ex.Message);
+                    }
                 }
             }
         }
@@ -189,24 +177,21 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             var sure = await MessageBoxDialog.Show("确认停用吗?", "提示", ControlStatus.Mid, Identifier);
             if (sure == DialogResult.OK)
             {
-                try
+                using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
                 {
-                    ShowWait();
-
-                    var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/StopData", JsonConvert.SerializeObject(ids));
-                    if (!result.Success)
+                    try
                     {
-                        throw new Exception(result.Msg);
+                        var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/StopData", JsonConvert.SerializeObject(ids));
+                        if (!result.Success)
+                        {
+                            throw new Exception(result.Msg);
+                        }
+                        await GetData();
                     }
-                    await GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    Controls.MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
+                    catch (Exception ex)
+                    {
+                        Controls.MessageBox.Error(ex.Message);
+                    }
                 }
             }
         }

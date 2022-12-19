@@ -2,6 +2,7 @@
 using AIStudio.Wpf.Agile_Development.Models;
 using AIStudio.Wpf.Agile_Development.Views;
 using AIStudio.Wpf.BasePage.Converters;
+using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
@@ -341,10 +342,8 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
         {
             if (para is Form form)
             {
-                try
+                using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
                 {
-                    ShowWait();
-
                     await form.Dispatcher.BeginInvoke(new Action(() =>
                     {
                         SelectedType = typeof(Base_UserDTO_Test);
@@ -365,11 +364,6 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
                         FormSetting.BodyWidth = "*";
                     }));
                 }
-                finally
-                {
-                    HideWait();
-                }
-
             }
         }
 
@@ -377,10 +371,8 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
         {
             if (para is Form form)
             {
-                try
+                using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
                 {
-                    ShowWait();
-
                     await form.Dispatcher.BeginInvoke(new Action(() =>
                     {
                         SelectedType = typeof(OA_UserFormDTO);
@@ -570,10 +562,6 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
                         }
                     }));
                 }
-                finally
-                {
-                    HideWait();
-                }
             }
         }
 
@@ -581,9 +569,8 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
         {
             if (para is Form form)
             {
-                try
+                using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
                 {
-                    ShowWait();
 
                     await form.Dispatcher.BeginInvoke(new Action(() =>
                     {
@@ -603,11 +590,7 @@ $"<ac:Form xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" x
                         FormSetting.PanelType = FormPanelType.WrapPanel;
                         FormSetting.HeaderWidth = "Auto";
                         FormSetting.BodyWidth = "150";
-                    }));
-                }
-                finally
-                {
-                    HideWait();
+                    }));              
                 }
             }
         }

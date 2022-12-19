@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
@@ -54,31 +55,25 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             EditTitle = "编辑流程";
         }
 
-        protected override async Task GetData(bool iswaiting = false)
+        protected override async Task GetData()
         {
-
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                await Task.Delay(10000);
-                var result = await _dataProvider.GetData<List<OA_DefFormTree>>("/OA_Manage/OA_DefForm/GetTreeDataList");
-                if (!result.Success)
+                try
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<List<OA_DefFormTree>>("/OA_Manage/OA_DefForm/GetTreeDataList");
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    else
+                    {
+                        Data = new ObservableCollection<OA_DefFormTree>(result.Data);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Data = new ObservableCollection<OA_DefFormTree>(result.Data);
-                }
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                if (iswaiting == false)
-                {
-                    HideWait();
+                    Controls.MessageBox.Error(ex.Message);
                 }
             }
         }

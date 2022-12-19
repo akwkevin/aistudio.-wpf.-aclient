@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using AIStudio.Core;
 using AIStudio.Wpf.GridControls.ViewModel;
+using AIStudio.Wpf.BasePage.Models;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
@@ -38,61 +39,36 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             }
         }
 
-        public Base_DictionaryEditViewModel()
-        {
-        }
-
         protected override async Task GetData(object option)
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                if (option is string id)
+                try
                 {
-                    var result = await _dataProvider.GetData<Base_DictionaryDTO>($"/Base_Manage/Base_Dictionary/GetTheData", JsonConvert.SerializeObject(new { id = id }));
-                    if (!result.Success)
-                    {
-                        throw new Exception(result.Msg);
-                    }
-                    Data = result.Data;
+                    await base.GetData(option);
+                    await GetParentIdTreeData();                   
                 }
-                else
+                catch (Exception ex)
                 {
-                    Data = new Base_DictionaryDTO();
+                    Controls.MessageBox.Error(ex.Message);
                 }
-                await GetParentIdTreeData();
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
             }
         }
 
         protected override async Task<bool> SaveData()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                Data.ParentId = SelectedParent?.Id;
-                var result = await _dataProvider.GetData<AjaxResult>($"/Base_Manage/Base_Dictionary/SaveData", Data.ToJson());
-                if (!result.Success)
+                try
                 {
-                    throw new Exception(result.Msg);
+                    Data.ParentId = SelectedParent?.Id;                  
+                    return await base.SaveData();
                 }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Error(ex.Message);
-                return false;
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    MessageBox.Error(ex.Message);
+                    return false;
+                }
             }
         }
 
