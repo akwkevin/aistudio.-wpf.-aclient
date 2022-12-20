@@ -11,6 +11,7 @@ namespace AIStudio.Wpf.Entity.Models
         public string CreatorName { get; set; }
         public string TenantId { get; set; }
         public string LogType { get; set; }
+        public string Name { get; set; }
         public string Message { get; set; }
 
         /// <summary>

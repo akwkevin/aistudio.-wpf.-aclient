@@ -65,7 +65,8 @@
                             <Run>任务类名</Run>
                         </TextBlock>
                     </ac:FormItem.Header>
-                    <TextBox Text="{Binding ActionClass,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>
+                    <ComboBox ItemsSource="{Binding DataContext.JobOptions, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" 
+                              SelectedValue="{Binding ActionClass,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
                 </ac:FormItem>
                 <ac:FormItem Header="描述">
                     <TextBox Text="{Binding Describe,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  ></TextBox>

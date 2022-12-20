@@ -57,6 +57,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="内容"  Binding="{Binding Message}" Width="*" IsReadOnly="True"/>
                 <DataGridTextColumn Header="类别"  Binding="{Binding LogType}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="名称"  Binding="{Binding Name}" Width="Auto" IsReadOnly="True"/>
                 <DataGridTextColumn Header="操作人"  Binding="{Binding CreatorName}" Width="Auto" IsReadOnly="True"/>
                 <DataGridTextColumn Header="时间"  Binding="{Binding CreateTime,StringFormat=yyyy-MM-dd HH:mm:ss}" Width="Auto" IsReadOnly="True"/>                
             </DataGrid.Columns>

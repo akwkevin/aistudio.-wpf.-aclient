@@ -11,10 +11,10 @@ namespace AIStudio.Wpf.BasePage.Models
 {
     public class WaitFor : IDisposable
     {
-        public string Identifier;
-        public int HashCode;
-        public int Counter;
-        public static ConcurrentDictionary<int, WaitFor> WaitForList = new ConcurrentDictionary<int, WaitFor>();
+        private string Identifier;
+        private int HashCode;
+        private int Counter;
+        private static ConcurrentDictionary<int, WaitFor> WaitForList = new ConcurrentDictionary<int, WaitFor>();
 
         public static WaitFor GetWaitFor(int hashcode, string identifier, string text = "正在获取数据")
         {
@@ -28,7 +28,7 @@ namespace AIStudio.Wpf.BasePage.Models
             return waitFor;
         }
 
-        public WaitFor(int hashcode, string identifier, string text = "正在获取数据")
+        private WaitFor(int hashcode, string identifier, string text = "正在获取数据")
         {
             HashCode = hashcode;
             Identifier = identifier;

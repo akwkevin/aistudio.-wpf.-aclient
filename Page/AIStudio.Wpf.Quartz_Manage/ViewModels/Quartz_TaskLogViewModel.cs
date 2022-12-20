@@ -1,4 +1,5 @@
 ﻿using AIStudio.Core;
+using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
@@ -46,57 +47,51 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
 
         public string Identifier { get; set; } = LocalSetting.RootWindow;
 
-        protected IDataProvider _dataProvider { get; }
+        protected IDataProvider _dataProvider { get { return ContainerLocator.Current.Resolve<IDataProvider>(); } }
 
         public Core.Models.Pagination Pagination { get; set; } = new Core.Models.Pagination() { PageRows = 100 };
 
         private string FullName { get; set; }
-        public Quartz_TaskLogViewModel(string fullname, string identifier, string title = "记录")
+        public Quartz_TaskLogViewModel(string fullname, string identifier)
         {
-            _dataProvider = ContainerLocator.Current.Resolve<IDataProvider>();
-
             Identifier = identifier;
             FullName = fullname;
-            Title = title;
             GetData();            
         }
 
 
         protected async void GetData()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, "正在获取数据");
-
-                var data = new
+                try
                 {
-                    PageIndex = Pagination.PageIndex,
-                    PageRows = Pagination.PageRows,
-                    SortField = Pagination.SortField,
-                    SortType = Pagination.SortType,
-                    Search = new
+                    var data = new
                     {
-                        logType = LogType.系统任务,
-                        logContent = FullName,
+                        PageIndex = Pagination.PageIndex,
+                        PageRows = Pagination.PageRows,
+                        SortField = Pagination.SortField,
+                        SortType = Pagination.SortType,
+                        SearchKeyValues = new Dictionary<string, object>()
+                        {
+                            {"LogType", UserLogType.系统任务.ToString() },
+                            {"Name", FullName}
+                        }
+                    };
+
+                    var result = await _dataProvider.GetData<List<Base_LogSystemDTO>>($"/Base_Manage/Base_LogSystem/GetDataList", JsonConvert.SerializeObject(data));
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
                     }
-                };
+                    Pagination.Total = result.Total;
+                    Data = new ObservableCollection<Base_LogSystemDTO>(result.Data);
 
-                var result = await _dataProvider.GetData<List<Base_LogSystemDTO>>($"/Base_Manage/Base_LogSystem/GetLogList", JsonConvert.SerializeObject(data));
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
                 }
-                Pagination.Total = result.Total;
-                Data = new ObservableCollection<Base_LogSystemDTO>(result.Data);
-
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                WindowBase.HideWaiting(Identifier);
+                catch (Exception ex)
+                {
+                    Controls.MessageBox.Error(ex.Message);
+                }
             }
         }
 

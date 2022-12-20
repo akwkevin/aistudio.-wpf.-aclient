@@ -6,6 +6,7 @@
              xmlns:local="AIStudio.Wpf.Quartz_Manage.Views"
              xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"           
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
+             xmlns:agc="https://gitee.com/akwkevin/AI-wpf-controls/tree/master/AIStudio.Wpf.GridControls"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:command="clr-namespace:AIStudio.Core.ExCommand;assembly=AIStudio.Core"
              xmlns:converter="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
@@ -14,42 +15,39 @@
              mc:Ignorable="d" 
              Style="{StaticResource AIStudio.Styles.ChildWindow}">
     <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}"  CornerRadius="3">
-        <Grid Width="800">
+        <Grid Width="800" Height="1000">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="40" />
             </Grid.RowDefinitions>
-            <Border Grid.Row="0" VerticalAlignment="Bottom" BorderBrush="{DynamicResource MahApps.Brushes.Gray4}" SnapsToDevicePixels="True" BorderThickness="0,1,0,1" >
-                <ScrollViewer>
-                    <ListView x:Name="gridList" ItemsSource="{Binding Data}"
-                              Visibility="{Binding ElementName=gridList,Path=Items.Count,Converter={converter:IntVisibilityConverter}}" Style="{StaticResource AIStudio.Styles.ListView}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock VerticalAlignment="Center" Text="{Binding CreateTime}"></TextBlock>
-                                    <TextBlock VerticalAlignment="Center" Text="{Binding LogContent}"></TextBlock>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ScrollViewer>
-            </Border>
-            <StackPanel Grid.Row="1" Orientation="Horizontal"
-                     Margin="10,0">
-                <ac:Pagination Grid.Row="2" 
+            <agc:FilterDataGrid Grid.Row="0" 
+                  x:Name="table" 
+                  ItemsSource="{Binding Data}"
+                  LayoutName="{Binding Title}"
+                  Margin="3"                  
+                  AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="内容"  Binding="{Binding Message}" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="类别"  Binding="{Binding LogType}" Width="Auto" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="名称"  Binding="{Binding Name}" Width="Auto" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="操作人"  Binding="{Binding CreatorName}" Width="Auto" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="时间"  Binding="{Binding CreateTime,StringFormat=yyyy-MM-dd HH:mm:ss}" Width="Auto" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </agc:FilterDataGrid>
+            <ac:Pagination Grid.Row="1" 
                          x:Name="pagination"
                          ControlStyle="Plain" 
                          CurrentIndex="{Binding Pagination.PageIndex,Mode=TwoWay}"  
                          Total="{Binding Pagination.Total}"
                          PageSize="{Binding Pagination.PageRows,Mode=TwoWay}"
-                         Height="Auto" HorizontalAlignment="Right" >
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="CurrentIndexChanged">
-                            <command:ExInvokeCommandAction Command="{Binding CurrentIndexChangedComamnd}" CommandParameter="{Binding ElementName=pagination}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </ac:Pagination>
-            </StackPanel>
+                         HorizontalAlignment="Right" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="CurrentIndexChanged">
+                        <command:ExInvokeCommandAction Command="{Binding CurrentIndexChangedComamnd}" CommandParameter="{Binding ElementName=pagination}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ac:Pagination>
             <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right" Margin="10,0">
