@@ -208,10 +208,9 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                 {
                     PageIndex = 0,
                     PageRows = 500,
-                    Search = new
+                    SearchKeyValues = new Dictionary<string, object>()
                     {
-                        keyword = Name,
-                        condition = "Table",
+                        {"Table", Name }
                     }
                 };
 
@@ -223,6 +222,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
 
                 QueryConditionItems = new ObservableCollection<QueryConditionItem>(result.Data.Where(p => p.Type == 0).OrderBy(p => p.DisplayIndex).Select((p, index) => GetQueryConditionItem(p)));
                 QueryConditionItems.Add(new QueryConditionItem() { Header = "新增", ControlType = Core.ControlType.Add, Visibility = System.Windows.Visibility.Visible });
+                QueryConditionItems.Add(new QueryConditionItem() { Header = "复制", ControlType = Core.ControlType.Copy, Visibility = System.Windows.Visibility.Visible });
                 QueryConditionItems.Add(new QueryConditionItem() { Header = "删除", ControlType = Core.ControlType.Delete, Visibility = System.Windows.Visibility.Visible });
                 QueryConditionItems.Add(new QueryConditionItem() { Header = "查询", ControlType = Core.ControlType.Query, Visibility = System.Windows.Visibility.Visible });
 

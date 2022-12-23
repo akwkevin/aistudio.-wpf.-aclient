@@ -14,25 +14,35 @@ namespace AIStudio.Wpf.BasePage.Models
         private string Identifier;
         private int HashCode;
         private int Counter;
+        private BusyBox BusyBox;
         private static ConcurrentDictionary<int, WaitFor> WaitForList = new ConcurrentDictionary<int, WaitFor>();
 
-        public static WaitFor GetWaitFor(int hashcode, string identifier, string text = "正在获取数据")
+        public static WaitFor GetWaitFor(int hashcode, string identifier, string text = "正在获取数据", WaitingStyle waitingStyle = WaitingStyle.Busy)
         {
             WaitFor waitFor;
             if (!WaitForList.TryGetValue(hashcode, out waitFor))
             {
-                waitFor = new WaitFor(hashcode, identifier, text);
+                waitFor = new WaitFor(hashcode, identifier, text, waitingStyle);
                 WaitForList.TryAdd(hashcode, waitFor);
+            }
+            else
+            {
+                waitFor.BusyBox.WaitInfo = text;
             }
             Interlocked.Increment(ref waitFor.Counter);
             return waitFor;
         }
 
-        private WaitFor(int hashcode, string identifier, string text = "正在获取数据")
+        private WaitFor(int hashcode, string identifier, string text = "正在获取数据", WaitingStyle waitingStyle = WaitingStyle.Busy)
         {
             HashCode = hashcode;
             Identifier = identifier;
-            WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, text);
+            BusyBox = WindowBase.ShowWaiting(WaitingStyle.Busy, Identifier, text);
+        }
+
+        public void SetText(string text)
+        {
+            BusyBox.WaitInfo = text;
         }
 
         public void Dispose()

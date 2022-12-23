@@ -279,7 +279,8 @@ namespace AIStudio.Wpf.BasePage.ViewModels
         public override async Task OnLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
             await base.OnLoaded(sender, e);
-            await GetData();
+            if (Data == null)
+                await GetData();
         }
 
         public override async Task OnUnloaded(object sender, System.Windows.RoutedEventArgs e)

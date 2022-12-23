@@ -3,6 +3,7 @@ using AIStudio.Core;
 using AIStudio.Core.Models;
 using AIStudio.Wpf.BasePage.DTOModels;
 using AIStudio.Wpf.BasePage.Events;
+using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
@@ -256,7 +257,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 await InitData();
                 InitOption();
 
-                _window = WindowBase.GetWindowBase(Identifier);  
+                _window = WindowBase.GetWindowBase(Identifier);
             }
 
             _window.PreviewKeyDown -= View_PreviewKeyDown;
@@ -291,6 +292,7 @@ namespace AIStudio.Wpf.Home.ViewModels
         {
             KeyExcute(e.KeyboardDevice.Modifiers == ModifierKeys.None ? e.Key.ToString() : e.KeyboardDevice.Modifiers.ToString() + "+" + e.Key.ToString());
         }
+
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
             var identifier = navigationContext.Parameters["Identifier"] as string;
@@ -378,127 +380,120 @@ namespace AIStudio.Wpf.Home.ViewModels
 
         public async virtual Task InitData()
         {
-            #region 工具栏
-            var section = LocalSetting.GetSection("usersetting") as UserSettingSection;
-            if (section?.WindowItems[Identifier] != null)
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier, "正在获取用户信息", WaitingStyle.Progress))
             {
-                ToolItems = new ObservableCollection<AToolItem>(section.WindowItems[Identifier].ToolItems.ChangeType<List<AToolItem>>());
+                #region 工具栏
+                var section = LocalSetting.GetSection("usersetting") as UserSettingSection;
+                if (section?.WindowItems[Identifier] != null)
+                {
+                    ToolItems = new ObservableCollection<AToolItem>(section.WindowItems[Identifier].ToolItems.ChangeType<List<AToolItem>>());
+                }
+                #endregion
+
+                #region 窗体布局
+                Type type = WindowSetting.GetType();//获得类型  
+                foreach (PropertyInfo sp in type.GetProperties())//获得类型的属性字段  
+                {
+                    var key = sp.Name;
+
+                    var data = typeof(LocalSetting).GetProperty(key)?.GetValue(typeof(LocalSetting));
+                    sp.SetValue(WindowSetting, data);
+                }
+                #endregion
+
+                Operator = _operator as Operator;
+
+                #region 菜单
+                MenuItems = new ObservableCollection<AMenuItem>();
+                if (_operator.UserName != "LocalUser")
+                {
+                    try
+                    {
+                        var userinfo = await _dataProvider.GetData<Base_UserDTO>("/Base_Manage/Home/GetOperatorInfo");
+                        if (!userinfo.Success)
+                        {
+                            throw new System.Exception(userinfo.Msg);
+                        }
+
+                        _operator.Property = userinfo.Data;
+                        _operator.Avatar = userinfo.Data.Avatar;
+
+                        waitfor.SetText("正在获取菜单信息");
+                        var menuinfo = await _dataProvider.GetData<List<Base_ActionTree>>("/Base_Manage/Home/GetOperatorMenuList");
+                        if (!menuinfo.Success)
+                        {
+                            throw new System.Exception(menuinfo.Msg);
+                        }
+                        BuildMenu(menuinfo.Data);
+
+                        RefreshUserData();
+                    }
+                    catch (Exception ex)
+                    {
+                        Controls.MessageBox.Error(ex.Message);
+                    }
+                }
+
+#if DEBUG
+                AMenuItem code = new AMenuItem() { Icon = "code", Label = "开发", Code = "Demo", Type = 0 };
+                MenuItems.Add(code);
+
+                if (_operator.UserName != "LocalUser")
+                {
+                    code.AddChildren(new AMenuItem() { Label = "数据库连接", Code = "/Base_Manage/Base_DbLinkView/", Type = 1, Command = MenuExcuteCommand });
+                    code.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1, Command = MenuExcuteCommand });
+                    code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1, Command = MenuExcuteCommand });
+                    code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1, Command = MenuExcuteCommand });
+                    code.AddChildren(new AMenuItem() { Label = "表单Form", Code = "/Agile_Development/FormView/", Type = 1, Command = MenuExcuteCommand });
+                    code.AddChildren(new AMenuItem() { Label = "表单-代码生成", Code = "/Agile_Development/FormCodeView/", Type = 1, Command = MenuExcuteCommand });
+                    code.AddChildren(new AMenuItem() { Label = "crud-用户管理", Code = "/Agile_Development/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
+                }
+#endif
+                var tool = new AMenuItem() { Icon = "tool", Label = "工具", Code = "Tool", Type = 0, Command = MenuExcuteCommand };
+                var setting = new AMenuItem() { Icon = "setting", Label = "系统设置", Code = "Setting", Type = 1, Command = MenuExcuteCommand };
+                var newWindow = new AMenuItem() { Icon = "windows", Label = (string)Application.Current.Resources["新增窗口"], Code = "NewWindow", Type = 1, Command = MenuExcuteCommand };
+                var screenshot = new AMenuItem() { Icon = "screenshot", Label = (string)Application.Current.Resources["截屏"], Code = "Screenshot", Type = 1, Command = MenuExcuteCommand };
+
+                tool.AddChildren(setting);
+                tool.AddChildren(newWindow);
+                tool.AddChildren(screenshot);
+                MenuItems.Add(tool);
+
+                var winStatus = new AMenuItem() { Icon = "windows", Label = (string)Application.Current.Resources["窗口"], Code = "WinStatus", Type = 0, Command = MenuExcuteCommand };
+                var showTitleBar = new AMenuItem() { Label = (string)Application.Current.Resources["标题显示"], Code = "ShowTitleBar", Type = 1, IsChecked = WindowBase.GetWindowStatus("ShowTitleBar", Identifier), Command = MenuExcuteCommand };
+                var showInTaskbar = new AMenuItem() { Label = (string)Application.Current.Resources["任务栏显示"], Code = "ShowInTaskbar", Type = 1, IsChecked = WindowBase.GetWindowStatus("ShowInTaskbar", Identifier), Command = MenuExcuteCommand };
+                var topmost = new AMenuItem() { Label = (string)Application.Current.Resources["总在最前"], Code = "Topmost", Type = 1, IsChecked = WindowBase.GetWindowStatus("Topmost", Identifier), Command = MenuExcuteCommand };
+                var toggleFullScreen = new AMenuItem() { Label = (string)Application.Current.Resources["最大化全屏"], Code = "ToggleFullScreen", Type = 1, IsChecked = WindowBase.GetWindowStatus("ToggleFullScreen", Identifier), Command = MenuExcuteCommand };
+                var notifyIcon = new AMenuItem() { Label = (string)Application.Current.Resources["托盘显示"], Code = "ShowNotifyIcon", Type = 1, Command = MenuExcuteCommand };
+
+                winStatus.AddChildren(showTitleBar);
+                winStatus.AddChildren(showInTaskbar);
+                winStatus.AddChildren(topmost);
+                winStatus.AddChildren(toggleFullScreen);
+                winStatus.AddChildren(notifyIcon);
+
+                MenuItems.Add(winStatus);
+                SearchMenus = new ObservableCollection<AMenuItem>(AddTotalMenu(MenuItems));
+
+                _operator.MenuTrees = MenuItems;
+                _operator.Menus = SearchMenus;
+                _operator.Permissions = _operator.Menus.Where(p => p.PermissionValues != null).SelectMany(p => p.PermissionValues).ToList();
+                #endregion
             }
-            #endregion
+        }
 
-            #region 窗体布局
-            Type type = WindowSetting.GetType();//获得类型  
-            foreach (PropertyInfo sp in type.GetProperties())//获得类型的属性字段  
-            {
-                var key = sp.Name;
-
-                var data = typeof(LocalSetting).GetProperty(key)?.GetValue(typeof(LocalSetting));
-                sp.SetValue(WindowSetting, data);
-            }
-            #endregion
-
-            Operator = _operator as Operator;
-
-            #region 菜单
-            MenuItems = new ObservableCollection<AMenuItem>();
-            if (_operator.UserName != "LocalUser")
+        private async void RefreshUserData()
+        {
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier, "正在刷新内存", WaitingStyle.Progress))
             {
                 try
                 {
-                    var control = WindowBase.ShowWaiting(WaitingStyle.Progress, Identifier, "正在获取用户信息");
-                    var userinfo = await _dataProvider.GetData<Base_UserDTO>("/Base_Manage/Home/GetOperatorInfo");
-                    if (!userinfo.Success)
-                    {
-                        throw new System.Exception(userinfo.Msg);
-                    }
-
-                    _operator.Property = userinfo.Data;
-                    _operator.Avatar = userinfo.Data.Avatar;
-
-                    control.WaitInfo = "正在获取菜单信息";
-                    var menuinfo = await _dataProvider.GetData<List<Base_ActionTree>>("/Base_Manage/Home/GetOperatorMenuList");
-                    if (!menuinfo.Success)
-                    {
-                        throw new System.Exception(menuinfo.Msg);
-                    }
-                    BuildMenu(menuinfo.Data);
-
-                    RefreshUserData();
+                    await _userData.Init();
                 }
                 catch (Exception ex)
                 {
                     Controls.MessageBox.Error(ex.Message);
                 }
-                finally
-                {
-                    WindowBase.HideWaiting(Identifier);
-                }
-            }
-
-#if DEBUG
-            AMenuItem code = new AMenuItem() { Icon = "code", Label = "开发", Code = "Demo", Type = 0 };
-            MenuItems.Add(code);
-
-            if (_operator.UserName != "LocalUser")
-            {
-                code.AddChildren(new AMenuItem() { Label = "数据库连接", Code = "/Base_Manage/Base_DbLinkView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "表单Form", Code = "/Agile_Development/FormView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "表单-代码生成", Code = "/Agile_Development/FormCodeView/", Type = 1, Command = MenuExcuteCommand });
-                code.AddChildren(new AMenuItem() { Label = "crud-用户管理", Code = "/Agile_Development/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });                
-            }
-#endif
-            var tool = new AMenuItem() { Icon = "tool", Label = "工具", Code = "Tool", Type = 0, Command = MenuExcuteCommand };
-            var setting = new AMenuItem() { Icon = "setting", Label = "系统设置", Code = "Setting", Type = 1, Command = MenuExcuteCommand };
-            var newWindow = new AMenuItem() { Icon = "windows", Label = (string)Application.Current.Resources["新增窗口"], Code = "NewWindow", Type = 1, Command = MenuExcuteCommand };
-            var screenshot = new AMenuItem() { Icon = "screenshot", Label = (string)Application.Current.Resources["截屏"], Code = "Screenshot", Type = 1, Command = MenuExcuteCommand };
-
-            tool.AddChildren(setting);
-            tool.AddChildren(newWindow);
-            tool.AddChildren(screenshot);
-            MenuItems.Add(tool);
-
-            var winStatus = new AMenuItem() { Icon = "windows", Label = (string)Application.Current.Resources["窗口"], Code = "WinStatus", Type = 0, Command = MenuExcuteCommand };
-            var showTitleBar = new AMenuItem() { Label = (string)Application.Current.Resources["标题显示"], Code = "ShowTitleBar", Type = 1, IsChecked = WindowBase.GetWindowStatus("ShowTitleBar", Identifier), Command = MenuExcuteCommand };
-            var showInTaskbar = new AMenuItem() { Label = (string)Application.Current.Resources["任务栏显示"], Code = "ShowInTaskbar", Type = 1, IsChecked = WindowBase.GetWindowStatus("ShowInTaskbar", Identifier), Command = MenuExcuteCommand };
-            var topmost = new AMenuItem() { Label = (string)Application.Current.Resources["总在最前"], Code = "Topmost", Type = 1, IsChecked = WindowBase.GetWindowStatus("Topmost", Identifier), Command = MenuExcuteCommand };
-            var toggleFullScreen = new AMenuItem() { Label = (string)Application.Current.Resources["最大化全屏"], Code = "ToggleFullScreen", Type = 1, IsChecked = WindowBase.GetWindowStatus("ToggleFullScreen", Identifier), Command = MenuExcuteCommand };
-            var notifyIcon = new AMenuItem() { Label = (string)Application.Current.Resources["托盘显示"], Code = "ShowNotifyIcon", Type = 1, Command = MenuExcuteCommand };
-
-            winStatus.AddChildren(showTitleBar);
-            winStatus.AddChildren(showInTaskbar);
-            winStatus.AddChildren(topmost);
-            winStatus.AddChildren(toggleFullScreen);
-            winStatus.AddChildren(notifyIcon);
-
-            MenuItems.Add(winStatus);
-            SearchMenus = new ObservableCollection<AMenuItem>(AddTotalMenu(MenuItems));
-
-            _operator.MenuTrees = MenuItems;
-            _operator.Menus = SearchMenus;
-            _operator.Permissions = _operator.Menus.Where(p => p.PermissionValues != null).SelectMany(p => p.PermissionValues).ToList();
-            #endregion
-        }
-
-        private async void RefreshUserData(bool showWait = false)
-        {
-            try
-            {
-                if (showWait)
-                {
-                    WindowBase.ShowWaiting(WaitingStyle.Progress, Identifier, "正在刷新内存");
-                }
-                await _userData.Init();
-            }
-            catch(Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                WindowBase.HideWaiting(Identifier);
             }
         }
 
@@ -510,9 +505,9 @@ namespace AIStudio.Wpf.Home.ViewModels
 
             code.AddChildren(new AMenuItem() { Icon = "profile", Label = "本地日志", Code = "Logs" });
             code.AddChildren(new AMenuItem() { Icon = "bug", Label = "问题反馈", Code = "FeetBack" });
-            code.AddChildren(new AMenuItem() { Icon = "mail", Label = "技术支持", Code = "Support"});
-            code.AddChildren(new AMenuItem() { Icon = "coffee", Label = "帮助", Code = "Helper"});
-            code.AddChildren(new AMenuItem() { Icon = "star", Label = "关于", Code = "About"});
+            code.AddChildren(new AMenuItem() { Icon = "mail", Label = "技术支持", Code = "Support" });
+            code.AddChildren(new AMenuItem() { Icon = "coffee", Label = "帮助", Code = "Helper" });
+            code.AddChildren(new AMenuItem() { Icon = "star", Label = "关于", Code = "About" });
         }
 
         private void _wSocketClient_MessageReceived(WSMessageType type, string message)
@@ -570,7 +565,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 }
             }
             return list;
-        }  
+        }
 
         private void SettingChanged(string key)
         {
@@ -695,13 +690,13 @@ namespace AIStudio.Wpf.Home.ViewModels
                         else
                         {
                             WindowBase.SetWindowStatus("ShowTitleBar", Identifier, true);
-                            WindowBase.SetWindowStatus("ToggleFullScreen", Identifier, false); 
+                            WindowBase.SetWindowStatus("ToggleFullScreen", Identifier, false);
                         }
                         break;
                     }
                 case "Refresh":
                     {
-                        RefreshUserData(true);
+                        RefreshUserData();
                         break;
                     }
                     #endregion
