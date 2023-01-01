@@ -97,7 +97,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetDbTableInfo()
         {
-            var result = await _dataProvider.GetData<List<Base_DbLinkDTO>>($"/{Area}/BuildCode/GetAllDbLink");
+            var result = await _dataProvider.PostData<List<Base_DbLinkDTO>>($"/{Area}/BuildCode/GetAllDbLink");
             if (!result.Success)
             {
                 throw new Exception(result.Msg);
@@ -115,7 +115,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
             {
                 try
                 {
-                    var result = await _dataProvider.GetData<List<BuildCode>>($"/{Area}/{typeof(BuildCode).Name.Replace("DTO", "")}/GetDbTableList", JsonConvert.SerializeObject(new { linkId = LinkId }));
+                    var result = await _dataProvider.PostData<List<BuildCode>>($"/{Area}/{typeof(BuildCode).Name.Replace("DTO", "")}/GetDbTableList", JsonConvert.SerializeObject(new { linkId = LinkId }));
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);
@@ -146,7 +146,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                         tables = ids.ToArray(),
                     };
 
-                    var result = await _dataProvider.GetData<Dictionary<string, List<TableInfo>>>("/Base_Manage/BuildCode/GetDbTableInfo",
+                    var result = await _dataProvider.PostData<Dictionary<string, List<TableInfo>>>("/Base_Manage/BuildCode/GetDbTableInfo",
                         JsonConvert.SerializeObject(data));
                     if (!result.Success)
                     {

@@ -74,7 +74,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 {
                     if (option is string id)
                     {
-                        var result = await _dataProvider.GetData<TData>($"/{Area}/{typeof(TData).Name.Replace("DTO", "")}/GetTheData", JsonConvert.SerializeObject(new { id = id }));
+                        var result = await _dataProvider.PostData<TData>($"/{Area}/{typeof(TData).Name.Replace("DTO", "")}/GetTheData", JsonConvert.SerializeObject(new { id = id }));
                         if (!result.Success)
                         {
                             throw new Exception(result.Msg);
@@ -103,7 +103,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             {
                 try
                 {
-                    var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(TData).Name.Replace("DTO", "")}/SaveData", Data.ToJson());
+                    var result = await _dataProvider.PostData<AjaxResult>($"/{Area}/{typeof(TData).Name.Replace("DTO", "")}/SaveData", Data.ToJson());
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);

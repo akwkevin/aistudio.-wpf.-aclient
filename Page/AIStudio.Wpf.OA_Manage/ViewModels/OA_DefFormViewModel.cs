@@ -84,7 +84,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             {
                 try
                 {
-                    var result = await _dataProvider.GetData<List<OA_DefFormDTO>>($"/{Area}/{typeof(OA_DefFormDTO).Name.Replace("DTO", "")}/{GetDataList}", GetDataJson());
+                    var result = await _dataProvider.PostData<List<OA_DefFormDTO>>($"/{Area}/{typeof(OA_DefFormDTO).Name.Replace("DTO", "")}/{GetDataList}", GetDataJson());
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);
@@ -148,7 +148,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     try
                     {
 
-                        var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/StartData", JsonConvert.SerializeObject(ids));
+                        var result = await _dataProvider.PostData<AjaxResult>($"/OA_Manage/OA_DefForm/StartData", JsonConvert.SerializeObject(ids));
                         if (!result.Success)
                         {
                             throw new Exception(result.Msg);
@@ -181,7 +181,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 {
                     try
                     {
-                        var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/StopData", JsonConvert.SerializeObject(ids));
+                        var result = await _dataProvider.PostData<AjaxResult>($"/OA_Manage/OA_DefForm/StopData", JsonConvert.SerializeObject(ids));
                         if (!result.Success)
                         {
                             throw new Exception(result.Msg);

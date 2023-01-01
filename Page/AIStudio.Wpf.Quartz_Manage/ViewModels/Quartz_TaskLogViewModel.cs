@@ -90,7 +90,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
                         }
                     };
 
-                    var result = await _dataProvider.GetData<List<Base_LogSystemDTO>>($"/Base_Manage/Base_LogSystem/GetDataList", JsonConvert.SerializeObject(data));
+                    var result = await _dataProvider.PostData<List<Base_LogSystemDTO>>($"/Base_Manage/Base_LogSystem/GetDataList", JsonConvert.SerializeObject(data));
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);

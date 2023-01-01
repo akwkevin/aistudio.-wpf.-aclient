@@ -409,7 +409,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                 {
                     try
                     {
-                        var userinfo = await _dataProvider.GetData<Base_UserDTO>("/Base_Manage/Home/GetOperatorInfo");
+                        var userinfo = await _dataProvider.PostData<Base_UserDTO>("/Base_Manage/Home/GetOperatorInfo");
                         if (!userinfo.Success)
                         {
                             throw new System.Exception(userinfo.Msg);
@@ -419,7 +419,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                         _operator.Avatar = userinfo.Data.Avatar;
 
                         waitfor.SetText("正在获取菜单信息");
-                        var menuinfo = await _dataProvider.GetData<List<Base_ActionTree>>("/Base_Manage/Home/GetOperatorMenuList");
+                        var menuinfo = await _dataProvider.PostData<List<Base_ActionTree>>("/Base_Manage/Home/GetOperatorMenuList");
                         if (!menuinfo.Success)
                         {
                             throw new System.Exception(menuinfo.Msg);

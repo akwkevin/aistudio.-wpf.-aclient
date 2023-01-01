@@ -74,7 +74,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetParentIdTreeData()
         {
-            var result = await _dataProvider.GetData<List<Base_DictionaryTree>>($"/Base_Manage/Base_Dictionary/GetTreeDataList");
+            var result = await _dataProvider.PostData<List<Base_DictionaryTree>>($"/Base_Manage/Base_Dictionary/GetTreeDataList");
             if (!result.Success)
             {
                 throw new Exception(result.Msg);

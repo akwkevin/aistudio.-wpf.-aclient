@@ -99,7 +99,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetLogTypeList()
         {
-            var result = await _dataProvider.GetData<List<SelectOption>>($"/Base_Manage/Base_LogSystem/GetLogTypeList");
+            var result = await _dataProvider.PostData<List<SelectOption>>($"/Base_Manage/Base_LogSystem/GetLogTypeList");
             if (!result.Success)
             {
                 throw new Exception(result.Msg);

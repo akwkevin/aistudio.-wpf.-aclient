@@ -115,7 +115,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 {
                     if (para is string id)
                     {
-                        var result = await _dataProvider.GetData<OA_UserFormDTO>($"/OA_Manage/OA_UserForm/GetTheData", JsonConvert.SerializeObject(new { id = id }));
+                        var result = await _dataProvider.PostData<OA_UserFormDTO>($"/OA_Manage/OA_UserForm/GetTheData", JsonConvert.SerializeObject(new { id = id }));
                         if (!result.Success)
                         {
                             throw new Exception(result.Msg);
@@ -146,7 +146,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             {
                 try
                 {
-                    var result = await _dataProvider.GetData<AjaxResult>("/OA_Manage/OA_UserForm/SaveData", Data.ToJson());
+                    var result = await _dataProvider.PostData<AjaxResult>("/OA_Manage/OA_UserForm/SaveData", Data.ToJson());
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);
@@ -197,7 +197,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             {
                 try
                 {
-                    var result = await _dataProvider.GetData<List<OA_Step>>($"/OA_Manage/OA_UserForm/PreStep", Data.ToJson());
+                    var result = await _dataProvider.PostData<List<OA_Step>>($"/OA_Manage/OA_UserForm/PreStep", Data.ToJson());
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);
@@ -217,7 +217,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             {
                 try
                 {
-                    var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/DisCardData", (new { id = Data.Id, remark = Data.Remarks }).ToJson());
+                    var result = await _dataProvider.PostData<AjaxResult>($"/OA_Manage/OA_UserForm/DisCardData", (new { id = Data.Id, remark = Data.Remarks }).ToJson());
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);
@@ -245,7 +245,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                         Status = Status,
                         Remarks = Remark
                     };
-                    var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_UserForm/EventData", data.ToJson());
+                    var result = await _dataProvider.PostData<AjaxResult>($"/OA_Manage/OA_UserForm/EventData", data.ToJson());
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);

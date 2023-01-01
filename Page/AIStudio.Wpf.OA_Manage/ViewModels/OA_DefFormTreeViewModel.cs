@@ -61,7 +61,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             {
                 try
                 {
-                    var result = await _dataProvider.GetData<List<OA_DefFormTree>>("/OA_Manage/OA_DefForm/GetTreeDataList");
+                    var result = await _dataProvider.PostData<List<OA_DefFormTree>>("/OA_Manage/OA_DefForm/GetTreeDataList");
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);

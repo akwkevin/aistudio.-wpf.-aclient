@@ -142,7 +142,7 @@ namespace AIStudio.Wpf.Home.ViewModels
                     }
                 };
 
-                var result = await _dataProvider.GetData<List<OA_UserFormDTO>>($"/OA_Manage/OA_UserForm/GetPageHistoryDataList", JsonConvert.SerializeObject(data));
+                var result = await _dataProvider.PostData<List<OA_UserFormDTO>>($"/OA_Manage/OA_UserForm/GetPageHistoryDataList", JsonConvert.SerializeObject(data));
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);

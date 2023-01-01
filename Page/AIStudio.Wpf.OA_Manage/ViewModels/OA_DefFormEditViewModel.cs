@@ -99,7 +99,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 {
                     if (para is string id)
                     {
-                        var result = await _dataProvider.GetData<OA_DefFormDTO>($"/OA_Manage/OA_DefForm/GetTheData", JsonConvert.SerializeObject(new { id = id }));
+                        var result = await _dataProvider.PostData<OA_DefFormDTO>($"/OA_Manage/OA_DefForm/GetTheData", JsonConvert.SerializeObject(new { id = id }));
                         if (!result.Success)
                         {
                             throw new Exception(result.Msg);
@@ -138,7 +138,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                     Data.JSONId = string.Empty;
                     Data.WorkflowJSON = JsonConvert.SerializeObject(OAData);
                     Data.Value = SelectedRoles.Count == 0 ? null : "^" + string.Join("^", SelectedRoles.Select(p => p.Value)) + "^";
-                    var result = await _dataProvider.GetData<AjaxResult>($"/OA_Manage/OA_DefForm/SaveData", Data.ToJson());
+                    var result = await _dataProvider.PostData<AjaxResult>($"/OA_Manage/OA_DefForm/SaveData", Data.ToJson());
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);

@@ -170,7 +170,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 try
                 {
 
-                    var result = await _dataProvider.GetData<List<TData>>($"/{Area}/{typeof(TData).Name.Replace("DTO", "").Replace("Tree", "")}/{GetDataList}", GetDataJson());
+                    var result = await _dataProvider.PostData<List<TData>>($"/{Area}/{typeof(TData).Name.Replace("DTO", "").Replace("Tree", "")}/{GetDataList}", GetDataJson());
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);
@@ -221,7 +221,7 @@ namespace AIStudio.Wpf.BasePage.ViewModels
                 {
                     try
                     {
-                        var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(TData).Name.Replace("DTO", "").Replace("Tree", "")}/DeleteData", JsonConvert.SerializeObject(ids));
+                        var result = await _dataProvider.PostData<AjaxResult>($"/{Area}/{typeof(TData).Name.Replace("DTO", "").Replace("Tree", "")}/DeleteData", JsonConvert.SerializeObject(ids));
                         if (!result.Success)
                         {
                             throw new Exception(result.Msg);

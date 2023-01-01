@@ -132,7 +132,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetParentIdTreeData()
         {
-            var result = await _dataProvider.GetData<List<Base_ActionTree>>($"/Base_Manage/Base_Action/GetMenuTreeList");
+            var result = await _dataProvider.PostData<List<Base_ActionTree>>($"/Base_Manage/Base_Action/GetMenuTreeList");
             if (!result.Success)
             {
                 throw new Exception(result.Msg);
@@ -148,7 +148,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         {
             if (!string.IsNullOrEmpty(Data?.Id))
             {
-                var result = await _dataProvider.GetData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetPermissionList", JsonConvert.SerializeObject(new { parentId = Data.Id }));
+                var result = await _dataProvider.PostData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetPermissionList", JsonConvert.SerializeObject(new { parentId = Data.Id }));
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);

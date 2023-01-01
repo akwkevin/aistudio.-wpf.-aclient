@@ -73,7 +73,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetActionsTreeData()
         {
-            var result = await _dataProvider.GetData<List<Base_ActionTree>>($"/Base_Manage/Base_Action/GetActionTreeList");
+            var result = await _dataProvider.PostData<List<Base_ActionTree>>($"/Base_Manage/Base_Action/GetActionTreeList");
             if (!result.Success)
             {
                 throw new Exception(result.Msg);
@@ -86,7 +86,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
 
         private async Task GetAllActionList()
         {
-            var result = await _dataProvider.GetData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetAllActionList");
+            var result = await _dataProvider.PostData<List<Base_ActionDTO>>($"/Base_Manage/Base_Action/GetAllActionList");
             if (!result.Success)
             {
                 throw new Exception(result.Msg);

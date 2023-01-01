@@ -205,7 +205,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                     }
                 };
 
-                var result = await _dataProvider.GetData<List<Base_CommonFormConfigDTO>>(ConfigUrl, JsonConvert.SerializeObject(data));
+                var result = await _dataProvider.PostData<List<Base_CommonFormConfigDTO>>(ConfigUrl, JsonConvert.SerializeObject(data));
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);
@@ -248,7 +248,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             {
                 try
                 {
-                    var result = await _dataProvider.GetData<List<ExpandoObject>>($"/{Area}/{Name}/{GetDataList}", GetDataJson());
+                    var result = await _dataProvider.PostData<List<ExpandoObject>>($"/{Area}/{Name}/{GetDataList}", GetDataJson());
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);
@@ -313,7 +313,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             {
                 try
                 {
-                    var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{Name}/SaveData", para.ToJson());
+                    var result = await _dataProvider.PostData<AjaxResult>($"/{Area}/{Name}/SaveData", para.ToJson());
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);
@@ -351,7 +351,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                 {
                     try
                     {
-                        var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{Name}/DeleteData", JsonConvert.SerializeObject(ids));
+                        var result = await _dataProvider.PostData<AjaxResult>($"/{Area}/{Name}/DeleteData", JsonConvert.SerializeObject(ids));
                         if (!result.Success)
                         {
                             throw new Exception(result.Msg);

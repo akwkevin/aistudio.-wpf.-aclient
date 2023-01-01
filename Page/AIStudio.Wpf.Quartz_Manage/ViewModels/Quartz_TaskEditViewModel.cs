@@ -34,7 +34,7 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             try
             {
-                var result = await _dataProvider.GetData<List<string>>($"/Quartz_Manage/Quartz_Task/GetJobOptions");
+                var result = await _dataProvider.PostData<List<string>>($"/Quartz_Manage/Quartz_Task/GetJobOptions");
                 if (!result.Success)
                 {
                     throw new Exception(result.Msg);

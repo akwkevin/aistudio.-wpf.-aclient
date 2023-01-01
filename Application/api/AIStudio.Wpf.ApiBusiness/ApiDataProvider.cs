@@ -78,7 +78,7 @@ namespace AIStudio.Wpf.ApiBusiness
         }
 
         [LoggerAttribute]
-        public async Task<AjaxResult<T>> GetData<T>(string url, Dictionary<string, string> data)
+        public async Task<AjaxResult<T>> PostData<T>(string url, Dictionary<string, string> data)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace AIStudio.Wpf.ApiBusiness
         }
 
         [LoggerAttribute]
-        public async Task<AjaxResult<T>> GetData<T>(string url, string json)
+        public async Task<AjaxResult<T>> PostData<T>(string url, string json)
         {
             try
             {
@@ -126,9 +126,9 @@ namespace AIStudio.Wpf.ApiBusiness
         }
 
         [LoggerAttribute]
-        public async Task<AjaxResult<T>> GetData<T>(string url, object data)
+        public async Task<AjaxResult<T>> PostData<T>(string url, object data)
         {
-            return await GetData<T>(url, JsonConvert.SerializeObject(data));
+            return await PostData<T>(url, JsonConvert.SerializeObject(data));
         }
 
         /// <summary>

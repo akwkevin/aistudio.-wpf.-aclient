@@ -156,7 +156,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             {
                 try
                 {
-                    var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/SaveData", para.ToJson());
+                    var result = await _dataProvider.PostData<AjaxResult>($"/{Area}/{typeof(T).Name.Replace("DTO", "")}/SaveData", para.ToJson());
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);

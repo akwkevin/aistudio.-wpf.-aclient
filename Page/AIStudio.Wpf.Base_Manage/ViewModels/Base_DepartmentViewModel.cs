@@ -71,7 +71,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                         SearchKeyValues = searchKeyValues,
                     };
 
-                    var result = await _dataProvider.GetData<List<Base_UserDTO>>($"/Base_Manage/Base_User/GetDataList", JsonConvert.SerializeObject(data));
+                    var result = await _dataProvider.PostData<List<Base_UserDTO>>($"/Base_Manage/Base_User/GetDataList", JsonConvert.SerializeObject(data));
                     if (!result.Success)
                     {
                         throw new Exception(result.Msg);
