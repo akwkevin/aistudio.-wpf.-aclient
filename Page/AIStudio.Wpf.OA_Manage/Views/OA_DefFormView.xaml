@@ -96,7 +96,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
+                                <!--<TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
                                     <Hyperlink Command="{Binding DataContext.StartOneCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                         CommandParameter="{Binding Id}" 
                                         perm:PermissionHelper.HasPerm="OA_DefForm.Edit"> 
@@ -109,7 +109,7 @@
                                         perm:PermissionHelper.HasPerm="OA_DefForm.Edit">
                                         <TextBlock Text="停用" /> 
                                     </Hyperlink>
-                                </TextBlock>
+                                </TextBlock>-->
                                 <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
                                     <Hyperlink Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                         CommandParameter="{Binding .}" 

@@ -2,6 +2,7 @@
 using AIStudio.Wpf.Agile_Development.Commons;
 using AIStudio.Wpf.Agile_Development.Converter;
 using AIStudio.Wpf.Agile_Development.Views;
+using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Entity.DTOModels;
@@ -9,6 +10,7 @@ using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
 using Newtonsoft.Json;
 using org.mariuszgromada.math.mxparser.parsertokens;
 using Prism.Commands;
+using Prism.Common;
 using Prism.Ioc;
 using Prism.Regions;
 using System;
@@ -38,9 +40,9 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
 
         protected string Identifier { get; set; } = LocalSetting.RootWindow;
         protected string Area { get; set; }
-        public string Name { get; set; }
-        public string ConfigUrl { get; set; } = "/Base_Manage/Base_CommonFormConfig/GetDataList";
+        protected string Name { get; set; }
 
+        protected string ConfigUrl { get; set; } = "/Base_Manage/Base_CommonFormConfig/GetDataList";
         protected string GetDataList { get; set; } = "GetDataList";
 
         private bool _queryConditionConfigIsOpen;
@@ -104,28 +106,14 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             set
             {
                 SetProperty(ref _selectedItem, value);
+                RaisePropertyChanged(nameof(IsNew));
             }
         }
 
         public Core.Models.Pagination Pagination { get; set; } = new Core.Models.Pagination() { PageRows = 100 };
 
-        //private ICommand _addCommand;
-        //public ICommand AddCommand
-        //{
-        //    get
-        //    {
-        //        return this._addCommand ?? (this._addCommand = new DelegateCommand(() => this.Edit()));
-        //    }
-        //}
-
-        //private ICommand _editCommand;
-        //public ICommand EditCommand
-        //{
-        //    get
-        //    {
-        //        return this._editCommand ?? (this._editCommand = new DelegateCommand<ExpandoObject>(para => this.Edit(para)));
-        //    }
-        //}
+        protected string IdName { get; set; } = "Id";
+        public bool IsNew { get { return SelectedItem == null || !SelectedItem.ContainsKey(IdName) || string.IsNullOrEmpty(((IDictionary<string, object>)SelectedItem)[IdName]?.ToString()); } }
 
         private ICommand _deleteCommand;
         public ICommand DeleteCommand
@@ -133,6 +121,24 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             get
             {
                 return this._deleteCommand ?? (this._deleteCommand = new CanExecuteDelegateCommand(() => this.Delete(), () => this.Data != null && this.Data.Count(p => ((dynamic)p).IsChecked) > 0));
+            }
+        }
+
+        private ICommand _addCommand;
+        public ICommand AddCommand
+        {
+            get
+            {
+                return this._addCommand ?? (this._addCommand = new DelegateCommand(() => this.Add()));
+            }
+        }
+
+        private ICommand _copyCommand;
+        public ICommand CopyCommand
+        {
+            get
+            {
+                return this._copyCommand ?? (this._copyCommand = new DelegateCommand(() => this.Copy()));
             }
         }
 
@@ -172,16 +178,6 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             }
         }
 
-        protected void ShowWait()
-        {
-            WindowBase.ShowWaiting(WaitingStyle.Progress, Identifier, "正在获取数据");
-        }
-
-        protected void HideWait()
-        {
-            WindowBase.HideWaiting(Identifier);
-        }
-
         public void QueryConditionConfig()
         {
             QueryConditionConfigIsOpen = true;
@@ -195,15 +191,10 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             }
         }
 
-        protected virtual async void GetConfig(bool iswaiting = false)
+        protected virtual async void GetConfig()
         {
             try
             {
-                if (iswaiting == false)
-                {
-                    ShowWait();
-                }
-
                 var data = new
                 {
                     PageIndex = 0,
@@ -234,13 +225,6 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             {
                 Controls.MessageBox.Error(ex.Message);
             }
-            finally
-            {
-                if (iswaiting == false)
-                {
-                    HideWait();
-                }
-            }
         }
 
 
@@ -255,87 +239,91 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
                 SearchKeyValues = QueryConditionItem.ListToDictionary(QueryConditionItems),
             };
 
-            return JsonConvert.SerializeObject(data);
+            return data.ToJson();
         }
 
-        protected virtual async Task GetData(bool iswaiting = false)
+        protected virtual async Task GetData()
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                if (iswaiting == false)
+                try
                 {
-                    ShowWait();
-                }               
-
-                var result = await _dataProvider.GetData<List<ExpandoObject>>($"/{Area}/{Name}/{GetDataList}", GetDataJson());
-                if (!result.Success)
-                {
-                    throw new Exception(result.Msg);
-                }
-                else
-                {
-                    Pagination.Total = result.Total;
-                    result.Data.ForEach(p => ((dynamic)p).IsChecked = false);
-                    Data = new ObservableCollection<ExpandoObject>(result.Data);
-                    if (Data.Any())
+                    var result = await _dataProvider.GetData<List<ExpandoObject>>($"/{Area}/{Name}/{GetDataList}", GetDataJson());
+                    if (!result.Success)
                     {
-                        SelectedItem = Data.FirstOrDefault();
+                        throw new Exception(result.Msg);
+                    }
+                    else
+                    {
+                        Pagination.Total = result.Total;
+                        result.Data.ForEach(p => ((dynamic)p).IsChecked = false);
+                        Data = new ObservableCollection<ExpandoObject>(result.Data);
+
+                        if (SelectedItem != null && SelectedItem.ContainsKey(IdName))
+                        {
+                            SelectedItem = Data.FirstOrDefault(p => ((IDictionary<string, object>)p)[IdName] == ((IDictionary<string, object>)SelectedItem)[IdName]);
+                        }
+                        else if (Data?.Any() == true)
+                        {
+                            SelectedItem = Data.FirstOrDefault();
+                        }
+                        else
+                        {
+                            SelectedItem = null;
+                        }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                if (iswaiting == false)
+                catch (Exception ex)
                 {
-                    HideWait();
+                    Controls.MessageBox.Error(ex.Message);
                 }
             }
         }
 
         public async void Submit()
         {
-            ExpandoObject obj;
-            if (SelectedItem == null)
+            var title = SelectedItem == null ? "新增数据" : "修改数据";
+            var content = SelectedItem == null ? "确定要提交新增数据？" : "确定要提交修改数据？";
+            var sure = await MessageBoxDialog.Show(content, title, ControlStatus.Mid, Identifier);
+            if (sure == DialogResult.OK)
             {
-                obj = new ExpandoObject();
-            }
-            else
-            {
-                obj = SelectedItem.DeepClone();
-            }
+                ExpandoObject obj;
+                if (SelectedItem == null)
+                {
+                    obj = new ExpandoObject();
+                }
+                else
+                {
+                    obj = SelectedItem.DeepClone();
+                }
 
-            BaseControlItem.ListToObject(obj, EditFormItems);
-            if (!string.IsNullOrEmpty(((dynamic)obj).Error))
-            {
-                throw new Exception(((dynamic)obj).Error);
-            }
+                BaseControlItem.ListToObject(obj, EditFormItems);
+                if (!string.IsNullOrEmpty(((dynamic)obj).Error))
+                {
+                    Controls.MessageBox.Error(((dynamic)obj).Error);
+                }
 
-            await SaveData(obj);
+                await SaveData(obj);
+            }
         }
 
         protected virtual async Task SaveData(ExpandoObject para)
         {
-            try
+            using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
-                ShowWait();
-                var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{Name}/SaveData", JsonConvert.SerializeObject(para));
-                if (!result.Success)
+                try
                 {
-                    throw new Exception(result.Msg);
+                    var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{Name}/SaveData", para.ToJson());
+                    if (!result.Success)
+                    {
+                        throw new Exception(result.Msg);
+                    }
+                    await GetData();
                 }
-                await GetData(true);
-            }
-            catch (Exception ex)
-            {
-                Controls.MessageBox.Error(ex.Message);
-            }
-            finally
-            {
-                HideWait();
+                catch (Exception ex)
+                {
+                    Controls.MessageBox.Error(ex.Message);
+                }
             }
         }
 
@@ -344,7 +332,7 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             List<string> ids = new List<string>();
             if (string.IsNullOrEmpty(id))
             {
-                ids.AddRange(Data.Where(p => ((dynamic)p).IsChecked).Select(p => (string)((dynamic)p).Id));
+                ids.AddRange(Data.Where(p => ((dynamic)p).IsChecked).Select(p => ((IDictionary<string, object>)p)[IdName]?.ToString()));
             }
             else
             {
@@ -359,24 +347,21 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
             var sure = await MessageBoxDialog.Show("确认删除吗?", "提示", ControlStatus.Mid, Identifier);
             if (sure == DialogResult.OK)
             {
-                try
+                using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
                 {
-                    ShowWait();
-
-                    var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{Name}/DeleteData", JsonConvert.SerializeObject(ids));
-                    if (!result.Success)
+                    try
                     {
-                        throw new Exception(result.Msg);
+                        var result = await _dataProvider.GetData<AjaxResult>($"/{Area}/{Name}/DeleteData", JsonConvert.SerializeObject(ids));
+                        if (!result.Success)
+                        {
+                            throw new Exception(result.Msg);
+                        }
+                        await GetData();
                     }
-                    await GetData(true);
-                }
-                catch (Exception ex)
-                {
-                    Controls.MessageBox.Error(ex.Message);
-                }
-                finally
-                {
-                    HideWait();
+                    catch (Exception ex)
+                    {
+                        Controls.MessageBox.Error(ex.Message);
+                    }
                 }
             }
         }
@@ -385,6 +370,20 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
         protected virtual async void Search(object para = null)
         {
             await GetData();
+        }
+
+        protected virtual void Add()
+        {
+            SelectedItem = null;
+        }
+
+        protected virtual void Copy()
+        {
+            var idItem = EditFormItems.FirstOrDefault(p => p.PropertyName == IdName);
+            if (idItem != null)
+                idItem.Value = null;
+            _selectedItem = null;//不要触发EditFormItems赋值事件
+            RaisePropertyChanged(nameof(IsNew));
         }
 
         public override void OnNavigatedTo(NavigationContext navigationContext)
@@ -404,8 +403,15 @@ namespace AIStudio.Wpf.Agile_Development.ViewModels
 
         public override async Task OnLoaded(object sender, RoutedEventArgs e)
         {
-            GetConfig();
-            await GetData();
+            await base.OnLoaded(sender, e);
+            if (Data == null)
+            {
+                using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
+                {
+                    GetConfig();
+                    await GetData();
+                }
+            }
         }
 
         private DataGridColumnCustom GetDataGridColumnCustom(Base_CommonFormConfigDTO config)

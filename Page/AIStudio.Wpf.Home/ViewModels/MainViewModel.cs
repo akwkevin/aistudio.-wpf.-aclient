@@ -755,12 +755,13 @@ namespace AIStudio.Wpf.Home.ViewModels
 
             if (item.Type == 1)
             {
+                string url = item.WpfCode;
                 NavigationParameters paras = new NavigationParameters();
                 paras.Add("Title", item.Label);
                 paras.Add("Glyph", item.Icon);
                 paras.Add("Identifier", Identifier);
                 paras.Add("Value", item.Value);
-                _regionManager.RequestNavigate(RegionName, item.WpfCode, NavigationComplete, paras);
+                _regionManager.RequestNavigate(RegionName, url, NavigationComplete, paras);
             }
         }
 

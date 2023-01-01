@@ -23,7 +23,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             {
                 if (SetProperty(ref _status, value))
                 {
-                    GetData();
+                    Search();
                 }
             }
         }
@@ -66,7 +66,7 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                 }
             };
 
-            return JsonConvert.SerializeObject(data);
+            return data.ToJson();
         }
 
         protected override IBaseEditViewModel GetEditViewModel()

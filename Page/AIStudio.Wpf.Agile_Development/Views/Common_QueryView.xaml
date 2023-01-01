@@ -9,6 +9,7 @@
              xmlns:local="clr-namespace:AIStudio.Wpf.Agile_Development.Views"
              xmlns:attribute="clr-namespace:AIStudio.Wpf.Agile_Development"
              xmlns:converter="clr-namespace:AIStudio.Wpf.Agile_Development.Converter"
+             xmlns:converter2="clr-namespace:AIStudio.Core.Converters;assembly=AIStudio.Core"
              xmlns:core="clr-namespace:AIStudio.Core;assembly=AIStudio.Core"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -103,6 +104,10 @@
             </i:Interaction.Triggers>
         </ac:Pagination>
 
+        <Grid Grid.Row="2" HorizontalAlignment="Left" Margin="3,0,0,0" VerticalAlignment="Center">
+            <ac:Icon Kind="file-o" ac:ControlAttach.Status="Danger" Visibility="{Binding IsNew,Converter={converter2:ConverterBoolToVisibility}}"/>
+            <ac:Icon Kind="edit" ac:ControlAttach.Status="Mid" Visibility="{Binding IsNew, Converter={converter2:ConverterBoolToOppositeVisibility}}"/>
+        </Grid>
         <ac:Form Grid.Row="3" HeaderWidth="Auto" ItemMargin="3" HeaderMargin="0,0,3,0" ItemsSource="{Binding EditFormItems}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>

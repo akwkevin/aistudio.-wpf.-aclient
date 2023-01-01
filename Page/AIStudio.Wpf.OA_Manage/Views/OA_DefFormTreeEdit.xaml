@@ -13,12 +13,8 @@
              Style="{StaticResource AIStudio.Styles.ChildWindow}">
     <Border Background="{DynamicResource MahApps.Brushes.ThemeBackground}"  CornerRadius="3">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="40" />
-            </Grid.RowDefinitions>
-            <Border Grid.Row="0">
-                 <ScrollViewer>
+            <Border>
+                <ScrollViewer>
                     <Grid Margin="10,0" Width="800" Height="600">
                         <dd:FlowchartEditor x:Name="editor"                           
                                 Data="{Binding FlowchartModel}" 
@@ -79,22 +75,10 @@
                                     </dd:PropertiesView>
                                 </ControlTemplate>
                             </dd:FlowchartEditor.PropertiesBox>
-                        </dd:FlowchartEditor>                       
+                        </dd:FlowchartEditor>
                     </Grid>
-				</ScrollViewer>
+                </ScrollViewer>
             </Border>
-            <StackPanel Grid.Row="1"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right" Margin="10,0">
-                <Button x:Name="PART_AffirmativeButton" Visibility="Collapsed"
-                    VerticalAlignment="Center"
-                    Content="确定"
-                    Margin="0 0 5 0" />
-                <Button x:Name="PART_NegativeButton" 
-                    VerticalAlignment="Center"
-                    Content="关闭"
-                    Margin="5 0 5 0" />
-            </StackPanel>
         </Grid>
     </Border>
 </ac:ChildWindow>

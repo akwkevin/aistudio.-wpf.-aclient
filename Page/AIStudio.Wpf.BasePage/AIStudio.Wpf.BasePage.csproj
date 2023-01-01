@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\AIStudio.Wpf.Controls\Controls\AIStudio.Wpf.Controls\AIStudio.Wpf.Controls\AIStudio.Wpf.Controls.csproj" />
     <ProjectReference Include="..\..\Application\api\AIStudio.Wpf.ApiBusiness\AIStudio.Wpf.ApiBusiness.csproj" />
     <ProjectReference Include="..\..\Common\AIStudio.DbFactory\AIStudio.DbFactory.csproj" />
     <ProjectReference Include="..\..\Others\Dirkster.AvalonDock\AIStudio.Wpf.PrismAvalonExtensions\AIStudio.Wpf.PrismAvalonExtensions.csproj" />
@@ -20,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--<PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.42" />-->
+    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.44" />
     <PackageReference Include="AIStudio.Wpf.GridControls" Version="1.0.5" />
     <PackageReference Include="AIStudio.Wpf.Svg2XamlExtension" Version="1.2.2" />
     <PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />

@@ -80,8 +80,8 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
 
         private async void Edit(OA_DefFormTree para)
         {
-            var dialog = Activator.CreateInstance<OA_UserFormEdit>() as ChildWindow;
-            var viewmodel = GetEditViewModel();
+            var dialog = new OA_UserFormEdit();
+            var viewmodel = new OA_UserFormEditViewModel();
             viewmodel.Options = new OA_UserFormDTO() { Type = para.type, DefFormId = para.key, DefFormName = para.title, JsonId = para.jsonId, JsonVersion = para.jsonVersion, WorkflowJSON = para.json, ApplicantUserId = _operator?.Property?.Id }; ;
             viewmodel.Area = Area;
             viewmodel.Identifier = Identifier;

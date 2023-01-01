@@ -57,11 +57,11 @@
                                 <ac:UniformGridEx Columns="4" />
                             </ItemsPanelTemplate>
                         </ac:Form.ItemsPanel>
-                        <ac:FormItem Header="开始时间" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
-                            <DatePicker SelectedDate="{Binding StartTime,Mode=TwoWay}"></DatePicker>
+                        <ac:FormItem Header="开始时间">
+                            <ac:DateTimePicker SelectedDateTime="{Binding StartTime,Mode=TwoWay}"></ac:DateTimePicker>
                         </ac:FormItem>
-                        <ac:FormItem Header="结束时间" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
-                            <DatePicker SelectedDate="{Binding EndTime,Mode=TwoWay}"></DatePicker>
+                        <ac:FormItem Header="结束时间">
+                            <ac:DateTimePicker SelectedDateTime="{Binding EndTime,Mode=TwoWay}"></ac:DateTimePicker>
                         </ac:FormItem>
                         <ac:FormItem ac:UniformGridEx.Span="2">
                             <ac:FormItem.Header>
@@ -97,14 +97,11 @@
                                           ItemsSource="{Binding DataContext.Types, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" 
                                           DisplayMemberPath="Text" 
                                           SelectedValuePath="Value" 
-                                          SelectedValue="{Binding SubType}" />
+                                          SelectedValue="{Binding SubType}"/>
                             </ac:FormItem.Header>
-                            <DockPanel>
-                                <TextBlock DockPanel.Dock="Right" Text="{Binding Unit}"/>
-                                <TextBox Text="{Binding Flag,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
-                            </DockPanel>
+                            <TextBox Text="{Binding Flag,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
                         </ac:FormItem>
-                        <ac:FormItem ac:UniformGridEx.Span="2" Header="附件" Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
+                        <ac:FormItem ac:UniformGridEx.Span="2" Header="附件" >
                             <controls:UploadFile File="{Binding Appendix,Mode=TwoWay}"></controls:UploadFile>
                         </ac:FormItem>  
                     </ac:Form>

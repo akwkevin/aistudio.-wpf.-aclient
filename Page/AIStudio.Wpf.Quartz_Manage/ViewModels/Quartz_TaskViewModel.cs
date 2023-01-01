@@ -4,6 +4,7 @@ using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Controls;
 using AIStudio.Wpf.Controls.Commands;
 using AIStudio.Wpf.Entity.DTOModels;
+using AIStudio.Wpf.GridControls.ViewModel;
 using AIStudio.Wpf.Quartz_Manage.Views;
 using Newtonsoft.Json;
 using System;
@@ -236,7 +237,11 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
 
         private async void Log(Quartz_TaskDTO para)
         {
-            Quartz_TaskLog dialog = new Quartz_TaskLog() { DataContext = new Quartz_TaskLogViewModel(para.GroupName + "." + para.TaskName, Identifier) };
+            var viewmodel = new Quartz_TaskLogViewModel(para.GroupName + "." + para.TaskName, Identifier);
+            Quartz_TaskLog dialog = new Quartz_TaskLog();
+            dialog.Loaded += async (sender, e) => { await viewmodel.OnLoaded(sender, e); };
+            dialog.Unloaded += async (sender, e) => { await viewmodel.OnUnloaded(sender, e); };
+            dialog.DataContext = viewmodel;
             await WindowBase.ShowChildWindowAsync(dialog, "查看日志", Identifier);
         }
     }

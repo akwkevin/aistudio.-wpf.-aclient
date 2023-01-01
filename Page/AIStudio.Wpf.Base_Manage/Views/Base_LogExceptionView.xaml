@@ -30,9 +30,9 @@
             </ac:FormItem>
             <ac:FormItem Header="时间">
                 <StackPanel Orientation="Horizontal">
-                    <ac:DateTimeUpDown MinWidth="150" Format="Custom" FormatString="yyyy-MM-dd HH:mm:ss" Value="{Binding StartTime,Mode=TwoWay}"></ac:DateTimeUpDown>
+                    <ac:DateTimeUpDown MinWidth="150" Format="Custom" FormatString="yyyy-MM-dd HH:mm:ss" Value="{Binding StartTime,Mode=TwoWay}" ButtonSpinnerLocation="UpDown"></ac:DateTimeUpDown>
                     <TextBlock Foreground="{DynamicResource MahApps.Brushes.Text}">-</TextBlock>
-                    <ac:DateTimeUpDown MinWidth="150" Format="Custom" FormatString="yyyy-MM-dd HH:mm:ss" Value="{Binding EndTime,Mode=TwoWay}"></ac:DateTimeUpDown>
+                    <ac:DateTimeUpDown MinWidth="150" Format="Custom" FormatString="yyyy-MM-dd HH:mm:ss" Value="{Binding EndTime,Mode=TwoWay}" ButtonSpinnerLocation="UpDown"></ac:DateTimeUpDown>
                 </StackPanel>
             </ac:FormItem>           
             <ac:SearchBar Width="220" 

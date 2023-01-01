@@ -32,6 +32,7 @@
                         <core:SelectOption Text="分类" Value="Type"/>
                         <core:SelectOption Text="标题" Value="DefFormName"/>
                         <core:SelectOption Text="摘要" Value="Text"/>
+                        <core:SelectOption Text="创建者" Value="CreatorName"/>
                         <core:SelectOption Text="申请人" Value="ApplicantUser"/>
                         <core:SelectOption Text="审批人" Value="UserNames"/>
                     </x:Array>

@@ -211,13 +211,10 @@ namespace AIStudio.Wpf.Business
                     var datas = tree.Children.Where(p => p.Type == 1);
                     if (datas.Count() > 0)
                     {
-                        items.Add(tree.Value, new ObservableCollection<ISelectOption>(datas.Select(p => new SelectOption() { Value = p.Value, Text = p.Text, Remark = p.Remark })));
+                        items.Add(tree.Value, new ObservableCollection<ISelectOption>(datas.Select(p => new SelectOption() { Value = p.Value, Text = p.Text })));
                     }
-
-                    foreach (var item in tree.Children)
-                    {
-                        BuildDictionary(items, dics, tree.Children);
-                    }
+                   
+                    BuildDictionary(items, dics, tree.Children);                    
                 }
             }
         }

@@ -122,6 +122,10 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
                         }
                         Data = result.Data;
                     }
+                    else if (para is OA_UserFormDTO formDTO)
+                    {
+                        Data = formDTO;
+                    }
                     else
                     {
                         Data = new OA_UserFormDTO();
@@ -185,10 +189,6 @@ namespace AIStudio.Wpf.OA_Manage.ViewModels
             _userData.ItemSource.TryGetValue(Data?.Type, out var types);
 
             Types = new List<ISelectOption>(types ?? new ObservableCollection<ISelectOption>());
-            if (string.IsNullOrEmpty(this.Data.Unit) && Types.Count > 0)
-            {
-                this.Data.Unit = this.Types[0].Remark;
-            }
         }
 
         private async void PreStep()

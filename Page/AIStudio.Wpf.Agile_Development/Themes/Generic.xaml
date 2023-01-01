@@ -233,6 +233,11 @@
             <Button Content="{Binding Header}" Command="{Binding DataContext.AddCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button.Focus}"/>
         </StackPanel>
     </ControlTemplate>
+    <ControlTemplate x:Key="CopyTemplate">
+        <StackPanel Orientation="Horizontal" Margin="2" Visibility="{Binding Visibility}">
+            <Button Content="{Binding Header}" Command="{Binding DataContext.CopyCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button.Focus}"/>
+        </StackPanel>
+    </ControlTemplate>
     <ControlTemplate x:Key="DeleteTemplate">
         <StackPanel Orientation="Horizontal" Margin="2" Visibility="{Binding Visibility}">
             <Button Content="{Binding Header}" Command="{Binding DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" Style="{DynamicResource AIStudio.Styles.Button.Focus}"/>
@@ -303,6 +308,9 @@
             </DataTrigger>
             <DataTrigger Binding="{Binding ControlType}" Value="Add">
                 <Setter Property="Template" Value="{StaticResource AddTemplate}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ControlType}" Value="Copy">
+                <Setter Property="Template" Value="{StaticResource CopyTemplate}"/>
             </DataTrigger>
             <DataTrigger Binding="{Binding ControlType}" Value="Delete">
                 <Setter Property="Template" Value="{StaticResource DeleteTemplate}"/>

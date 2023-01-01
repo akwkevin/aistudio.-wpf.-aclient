@@ -62,7 +62,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
+                                <!--<TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
                                     <Hyperlink Command="{Binding DataContext.PauseOneCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                                CommandParameter="{Binding Id}" 
                                                perm:PermissionHelper.HasPerm="Quartz_Task.Edit"> 
@@ -82,7 +82,7 @@
                                                perm:PermissionHelper.HasPerm="Quartz_Task.Edit"> 
                                         <TextBlock Text="立即执行" /> 
                                     </Hyperlink>
-                                </TextBlock>
+                                </TextBlock>-->
                                 <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
                                     <Hyperlink Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                                    CommandParameter="{Binding .}"

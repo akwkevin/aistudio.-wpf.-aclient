@@ -1,4 +1,5 @@
-﻿using AIStudio.Core;
+﻿using Accelerider.Extensions.Mvvm;
+using AIStudio.Core;
 using AIStudio.Wpf.BasePage.Models;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.Controls;
@@ -10,11 +11,13 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace AIStudio.Wpf.Quartz_Manage.ViewModels
 {
-    public class Quartz_TaskLogViewModel : BindableBase
+    public class Quartz_TaskLogViewModel : BindableBase, IViewLoadedAndUnloadedAwareAsync
     {
         private string _title;
         public string Title
@@ -56,11 +59,19 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
         {
             Identifier = identifier;
             FullName = fullname;
-            GetData();            
         }
 
+        public async Task OnLoaded(object sender, RoutedEventArgs e)
+        {
+            await GetData();
+        }
 
-        protected async void GetData()
+        public Task OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            return Task.CompletedTask;
+        }
+
+        protected async Task GetData()
         {
             using (var waitfor = WaitFor.GetWaitFor(this.GetHashCode(), Identifier))
             {
@@ -95,9 +106,11 @@ namespace AIStudio.Wpf.Quartz_Manage.ViewModels
             }
         }
 
-        protected void Search(object para = null)
+        protected async void Search(object para = null)
         {
-            GetData();
+            await GetData();
         }
+
+
     }
 }
