@@ -65,8 +65,6 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
         }
 
         public ObservableCollection<ISeries> Series { get; set; }
-
-        public string Title { get; set; } = "任务处理数量";
     }
 
     class StatisPart2ViewModel
@@ -98,8 +96,6 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
                 DataLabelsPosition = DataLabelsPosition.Start
             }
         };
-
-        public string Title { get; set; } = "本月办理任务";
     }
 
     class StatisPart3ViewModel
@@ -123,8 +119,6 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
         }
 
         public IEnumerable<ISeries> Series { get; set; }
-
-        public string Title { get; set; } = "任务类型分布";
     }
 
     class StatisPart4ViewModel : BindableBase
@@ -138,8 +132,6 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
          .WithLabelsPosition(PolarLabelsPosition.ChartCenter)
          .AddValue(30, "gauge value", SKColors.YellowGreen, SKColors.Red) // defines the value and the color // mark
          .BuildSeries();
-
-        public string Title { get; set; } = "任务等级";
     }
 
     class StatisPart5ViewModel
@@ -174,8 +166,6 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
                 GeometrySize = 40
             }
         };
-
-        public string Title { get; set; } = "任务走势";
     }
 
     public class MyGeometry : LiveChartsCore.SkiaSharpView.Drawing.Geometries.SVGPathGeometry
@@ -227,8 +217,6 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
                 Values = new List<double> { 4, 8, 2, 8, 9, 5, 3 }
             }
         };
-
-        public string Title { get; set; } = "累计任务";
     }
 
     class StatisPart7ViewModel : BindableBase
@@ -295,7 +283,5 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
                 Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun" }
             }
         };
-
-        public string Title { get; set; } = "任务分布";
     }
 }
