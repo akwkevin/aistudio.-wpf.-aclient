@@ -1,8 +1,12 @@
 ﻿using AIStudio.Wpf.PrismAvalonExtensions.ViewModels;
-using LiveCharts;
-using LiveCharts.Defaults;
-using LiveCharts.Wpf;
+using LiveChartsCore;
+using LiveChartsCore.Defaults;
+using LiveChartsCore.Measure;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Drawing;
+using LiveChartsCore.SkiaSharpView.Painting;
 using Prism.Mvvm;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,314 +30,272 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
 
     class StatisPart1ViewModel
     {
+        private int _index = 0;
+        private readonly Random _random = new();
+        private readonly ObservableCollection<ObservablePoint> _observableValues;
+
         public StatisPart1ViewModel()
         {
-            SeriesCollection = new SeriesCollection
+            // Use ObservableCollections to let the chart listen for changes (or any INotifyCollectionChanged). // mark
+            _observableValues = new ObservableCollection<ObservablePoint>
             {
-                new ColumnSeries
-                {
-                    Title = "2021",
-                    Values = new ChartValues<double> { 10, 50, 39, 50, 60, 70, 36 }
-                }
+                // Use the ObservableValue or ObservablePoint types to let the chart listen for property changes // mark
+                // or use any INotifyPropertyChanged implementation // mark
+                new ObservablePoint(_index++, 2),
+                new(_index++, 5), // the ObservablePoint type is redundant and inferred by the compiler (C# 9 and above)
+                new(_index++, 4),
+                new(_index++, 5),
+                new(_index++, 2),
+                new(_index++, 6),
+                new(_index++, 6),
+                new(_index++, 6),
+                new(_index++, 4),
+                new(_index++, 2),
+                new(_index++, 3),
+                new(_index++, 8)
             };
 
-            Labels = new[] { "1月", "2月", "3月", "4月", "5月", "6月", "7月", };
-            Formatter = value => value.ToString("N");
+            Series = new ObservableCollection<ISeries>
+            {
+                new ColumnSeries<ObservablePoint>
+                {
+                    Values = _observableValues
+                }
+            };
         }
 
-        public SeriesCollection SeriesCollection { get; set; }
-        public string[] Labels { get; set; }
-        public Func<double, string> Formatter { get; set; }
+        public ObservableCollection<ISeries> Series { get; set; }
+
+        public string Title { get; set; } = "任务处理数量";
     }
 
     class StatisPart2ViewModel
     {
-        public StatisPart2ViewModel()
+        public ISeries[] Series { get; set; } =
         {
-            SeriesCollection = new SeriesCollection
+            new RowSeries<int>
             {
-                new RowSeries
-                {
-                    Title = "2021",
-                    Values = new ChartValues<double> { 10, 50, 39, 50, 60 }
-                }
-            };
+                Values = new List<int> { 8, -3, 4 },
+                Stroke = null,
+                DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45)),
+                DataLabelsSize = 14,
+                DataLabelsPosition = DataLabelsPosition.End
+            },
+            new RowSeries<int>
+            {
+                Values = new List<int> { 4, -6, 5 },
+                Stroke = null,
+                DataLabelsPaint = new SolidColorPaint(new SKColor(250, 250, 250)),
+                DataLabelsSize = 14,
+                DataLabelsPosition = DataLabelsPosition.Middle
+            },
+            new RowSeries<int>
+            {
+                Values = new List<int> { 6, -9, 3 },
+                Stroke = null,
+                DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45)),
+                DataLabelsSize = 14,
+                DataLabelsPosition = DataLabelsPosition.Start
+            }
+        };
 
-            Labels = new[] { "周一", "周二", "周三", "周四", "周五" };
-            Formatter = value => value.ToString("N");
-        }
-
-        public SeriesCollection SeriesCollection { get; set; }
-        public string[] Labels { get; set; }
-        public Func<double, string> Formatter { get; set; }
+        public string Title { get; set; } = "本月办理任务";
     }
 
     class StatisPart3ViewModel
     {
         public StatisPart3ViewModel()
         {
-            PointLabel = chartPoint =>
-            string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+            // you could convert any IEnumerable to a pie series collection
+            var data = new double[] { 2, 4, 1, 4, 3 };
+
+            // Series = data.AsLiveChartsPieSeries(); this could be enough in some cases // mark
+            // but you can customize the series properties using the following overload: // mark
+
+            Series = data.AsLiveChartsPieSeries((value, series) =>
+            {
+                // here you can configure the series assigned to each value.
+                series.Name = $"Series for value {value}";
+                series.DataLabelsPaint = new SolidColorPaint(new SKColor(30, 30, 30));
+                series.DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Outer;
+                series.DataLabelsFormatter = p => $"{p.PrimaryValue} / {p.StackedValue!.Total} ({p.StackedValue.Share:P2})";
+            });
         }
 
-        public Func<ChartPoint, string> PointLabel { get; set; }
+        public IEnumerable<ISeries> Series { get; set; }
 
-        private void Chart_OnDataClick(object sender, ChartPoint chartpoint)
-        {
-            var chart = (LiveCharts.Wpf.PieChart)chartpoint.ChartView;
-
-            //clear selected slice.
-            foreach (PieSeries series in chart.Series)
-                series.PushOut = 0;
-
-            var selectedSeries = (PieSeries)chartpoint.SeriesView;
-            selectedSeries.PushOut = 8;
-        }
+        public string Title { get; set; } = "任务类型分布";
     }
 
     class StatisPart4ViewModel : BindableBase
     {
-        public StatisPart4ViewModel()
-        {
-            Value = 70;
-        }
+        public IEnumerable<ISeries> Series { get; set; }
+         = new GaugeBuilder()
+         .WithLabelsSize(50)
+         .WithInnerRadius(75)
+         .WithBackgroundInnerRadius(75)
+         .WithBackground(new SolidColorPaint(new SKColor(100, 181, 246, 90)))
+         .WithLabelsPosition(PolarLabelsPosition.ChartCenter)
+         .AddValue(30, "gauge value", SKColors.YellowGreen, SKColors.Red) // defines the value and the color // mark
+         .BuildSeries();
 
-        private double _value;
-
-        public double Value
-        {
-            get { return _value; }
-            set
-            {
-                _value = value;
-                RaisePropertyChanged("Value");
-            }
-        }
+        public string Title { get; set; } = "任务等级";
     }
 
     class StatisPart5ViewModel
     {
-        public StatisPart5ViewModel()
+        public ISeries[] Series { get; set; } =
         {
-            SeriesCollection = new SeriesCollection
+            new LineSeries<double>
             {
-                new LineSeries
-                {
-                    Title = "Series 1",
-                    Values = new ChartValues<double> { 4, 6, 5, 2 ,7 }
-                },
-                new LineSeries
-                {
-                    Title = "Series 2",
-                    Values = new ChartValues<double> { 6, 7, 3, 4 ,6 }
-                }
-            };
+                Values = new double[] { 3, 1, 4, 3, 2, -5, -2 },
+                GeometrySize = 10,
+                Fill = null
+            },
 
-            Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May" };
-            YFormatter = value => value.ToString("C");
-
-            //modifying the series collection will animate and update the chart
-            SeriesCollection.Add(new LineSeries
+            // use the second argument type to specify the geometry to draw for every point
+            // there are already many predefined geometries in the
+            // LiveChartsCore.SkiaSharpView.Drawing.Geometries namespace
+            new LineSeries<double, LiveChartsCore.SkiaSharpView.Drawing.Geometries.RectangleGeometry>
             {
-                Values = new ChartValues<double> { 5, 3, 2, 4 },
-                LineSmoothness = 0 //straight lines, 1 really smooth lines
-            });
+                Values = new double[] { 3, 3, -3, -2, -4, -3, -1 },
+                Fill = null
+            },
 
-            //modifying any series values will also animate and update the chart
-            SeriesCollection[2].Values.Add(5d);
+            // you can also define your own SVG geometry
+            new LineSeries<double, MyGeometry>
+            {
+                Values = new double[] { -2, 2, 1, 3, -1, 4, 3 },
 
+                Stroke = new SolidColorPaint(SKColors.DarkOliveGreen, 3),
+                Fill = null,
+                GeometryStroke = null,
+                GeometryFill = new SolidColorPaint(SKColors.DarkOliveGreen),
+                GeometrySize = 40
+            }
+        };
+
+        public string Title { get; set; } = "任务走势";
+    }
+
+    public class MyGeometry : LiveChartsCore.SkiaSharpView.Drawing.Geometries.SVGPathGeometry
+    {
+        // the static field is important to prevent the svg path is parsed multiple times // mark
+        // Icon from Google Material Icons font.
+        // https://fonts.google.com/icons?selected=Material%20Icons%20Outlined%3Atask_alt%3A
+        public static SKPath svgPath = SKPath.ParseSvgPathData(
+            "M22,5.18L10.59,16.6l-4.24-4.24l1.41-1.41l2.83,2.83l10-10L22,5.18z M19.79,10.22C19.92,10.79,20,11.39,20,12 " +
+            "c0,4.42-3.58,8-8,8s-8-3.58-8-8c0-4.42,3.58-8,8-8c1.58,0,3.04,0.46,4.28,1.25l1.44-1.44C16.1,2.67,14.13,2,12,2C6.48,2,2,6.48,2,12 " +
+            "c0,5.52,4.48,10,10,10s10-4.48,10-10c0-1.19-0.22-2.33-0.6-3.39L19.79,10.22z");
+
+        public MyGeometry()
+            : base(svgPath)
+        { }
+
+        public override void OnDraw(SkiaSharpDrawingContext context, SKPaint paint)
+        {
+            // lets also draw a white circle as background before the svg path is drawn
+            // this will just make things look better
+
+            using (var backgroundPaint = new SKPaint())
+            {
+                backgroundPaint.Style = SKPaintStyle.Fill;
+                backgroundPaint.Color = SKColors.White;
+
+                var r = Width / 2;
+                context.Canvas.DrawCircle(X + r, Y + r, r, backgroundPaint);
+            }
+
+            base.OnDraw(context, paint);
         }
-
-        public SeriesCollection SeriesCollection { get; set; }
-        public string[] Labels { get; set; }
-        public Func<double, string> YFormatter { get; set; }
     }
 
     class StatisPart6ViewModel : BindableBase
     {
-        public StatisPart6ViewModel()
+        public ISeries[] Series { get; set; } =
         {
-            SeriesCollection = new SeriesCollection
+            new StackedAreaSeries<double>
             {
-                new StackedAreaSeries
-                {
-                    Title = "Africa",
-                    Values = new ChartValues<DateTimePoint>
-                    {
-                        new DateTimePoint(new DateTime(2014, 1, 1), .228),
-                        new DateTimePoint(new DateTime(2015, 1, 1), .285),
-                        new DateTimePoint(new DateTime(2016, 1, 1), .366),
-                        new DateTimePoint(new DateTime(2017, 1, 1), .478),
-                        new DateTimePoint(new DateTime(2018, 1, 1), .629),
-                        new DateTimePoint(new DateTime(2019, 1, 1), .808),
-                        new DateTimePoint(new DateTime(2020, 1, 1), 1.031),
-                        new DateTimePoint(new DateTime(2021, 1, 1), 1.110)
-                    },
-                    LineSmoothness = 0
-                },
-                new StackedAreaSeries
-                {
-                    Title = "N & S America",
-                    Values = new ChartValues<DateTimePoint>
-                    {
-                        new DateTimePoint(new DateTime(2014, 1, 1), .339),
-                        new DateTimePoint(new DateTime(2015, 1, 1), .424),
-                        new DateTimePoint(new DateTime(2016, 1, 1), .519),
-                        new DateTimePoint(new DateTime(2017, 1, 1), .618),
-                        new DateTimePoint(new DateTime(2018, 1, 1), .727),
-                        new DateTimePoint(new DateTime(2019, 1, 1), .841),
-                        new DateTimePoint(new DateTime(2020, 1, 1), .942),
-                        new DateTimePoint(new DateTime(2021, 1, 1), .972)
-                    },
-                    LineSmoothness = 0
-                },
-                new StackedAreaSeries
-                {
-                    Title = "Asia",
-                    Values = new ChartValues<DateTimePoint>
-                    {
-                        new DateTimePoint(new DateTime(2014, 1, 1), 1.395),
-                        new DateTimePoint(new DateTime(2015, 1, 1), 1.694),
-                        new DateTimePoint(new DateTime(2016, 1, 1), 2.128),
-                        new DateTimePoint(new DateTime(2017, 1, 1), 2.634),
-                        new DateTimePoint(new DateTime(2018, 1, 1), 3.213),
-                        new DateTimePoint(new DateTime(2019, 1, 1), 3.717),
-                        new DateTimePoint(new DateTime(2020, 1, 1), 4.165),
-                        new DateTimePoint(new DateTime(2021, 1, 1), 4.298)
-                    },
-                    LineSmoothness = 0
-                },
-                new StackedAreaSeries
-                {
-                    Title = "Europe",
-                    Values = new ChartValues<DateTimePoint>
-                    {
-                        new DateTimePoint(new DateTime(2014, 1, 1), .549),
-                        new DateTimePoint(new DateTime(2015, 1, 1), .605),
-                        new DateTimePoint(new DateTime(2016, 1, 1), .657),
-                        new DateTimePoint(new DateTime(2017, 1, 1), .694),
-                        new DateTimePoint(new DateTime(2018, 1, 1), .723),
-                        new DateTimePoint(new DateTime(2019, 1, 1), .729),
-                        new DateTimePoint(new DateTime(2020, 1, 1), .740),
-                        new DateTimePoint(new DateTime(2021, 1, 1), .742)
-                    },
-                    LineSmoothness = 0
-                }
-            };
-
-            XFormatter = val => new DateTime((long)val).ToString("yyyy");
-            YFormatter = val => val.ToString("N") + " M";
-
-        }
-
-        public SeriesCollection SeriesCollection { get; set; }
-        public Func<double, string> XFormatter { get; set; }
-
-        private Func<double, string> _yFormatter;
-        public Func<double, string> YFormatter
-        {
-            get { return _yFormatter; }
-            set
+                Values = new List<double> { 3, 2, 3, 5, 3, 4, 6 }
+            },
+            new StackedAreaSeries<double>
             {
-                _yFormatter = value;
-                RaisePropertyChanged("YFormatter");
+                Values = new List<double> { 6, 5, 6, 3, 8, 5, 2 }
+            },
+            new StackedAreaSeries<double>
+            {
+                Values = new List<double> { 4, 8, 2, 8, 9, 5, 3 }
             }
-        }
+        };
 
-        public StackMode StackMode { get; set; }
-
-        private void ChangeStackModeOnClick(object sender, RoutedEventArgs e)
-        {
-            foreach (var series in SeriesCollection.Cast<StackedAreaSeries>())
-            {
-                series.StackMode = series.StackMode == StackMode.Percentage
-                    ? StackMode.Values
-                    : StackMode.Percentage;
-            }
-
-            if (((StackedAreaSeries)SeriesCollection[0]).StackMode == StackMode.Values)
-            {
-                YFormatter = val => val.ToString("N") + " M";
-            }
-            else
-            {
-                YFormatter = val => val.ToString("P");
-            }
-        }
+        public string Title { get; set; } = "累计任务";
     }
 
     class StatisPart7ViewModel : BindableBase
     {
-        public StatisPart7ViewModel()
+        public ISeries[] Series { get; set; } =
         {
-            var now = DateTime.Now;
-
-            _values = new ChartValues<GanttPoint>
+            new HeatSeries<WeightedPoint>
             {
-                new GanttPoint(now.Ticks, now.AddDays(2).Ticks),
-                new GanttPoint(now.AddDays(1).Ticks, now.AddDays(3).Ticks),
-                new GanttPoint(now.AddDays(3).Ticks, now.AddDays(5).Ticks),
-                new GanttPoint(now.AddDays(5).Ticks, now.AddDays(8).Ticks),
-                new GanttPoint(now.AddDays(6).Ticks, now.AddDays(10).Ticks),
-                new GanttPoint(now.AddDays(7).Ticks, now.AddDays(14).Ticks),
-                new GanttPoint(now.AddDays(9).Ticks, now.AddDays(12).Ticks),
-                new GanttPoint(now.AddDays(9).Ticks, now.AddDays(14).Ticks),
-                new GanttPoint(now.AddDays(10).Ticks, now.AddDays(11).Ticks),
-                new GanttPoint(now.AddDays(12).Ticks, now.AddDays(16).Ticks),
-                new GanttPoint(now.AddDays(15).Ticks, now.AddDays(17).Ticks),
-                new GanttPoint(now.AddDays(18).Ticks, now.AddDays(19).Ticks)
-            };
-
-            Series = new SeriesCollection
-            {
-                new RowSeries
+                HeatMap = new[]
                 {
-                    Values = _values,
-                    DataLabels = true
-                }
-            };
-            Formatter = value => new DateTime((long)value).ToString("dd MMM");
+                    new SKColor(255, 241, 118).AsLvcColor(), // the first element is the "coldest"
+                    SKColors.DarkSlateGray.AsLvcColor(),
+                    SKColors.Blue.AsLvcColor() // the last element is the "hottest"
+                },
+                Values = new ObservableCollection<WeightedPoint>
+                {
+                    // Charles
+                    new(0, 0, 150), // Jan
+                    new(0, 1, 123), // Feb
+                    new(0, 2, 310), // Mar
+                    new(0, 3, 225), // Apr
+                    new(0, 4, 473), // May
+                    new(0, 5, 373), // Jun
 
-            var labels = new List<string>();
-            for (var i = 0; i < 12; i++)
-                labels.Add("Task " + i);
-            Labels = labels.ToArray();
+                    // Richard
+                    new(1, 0, 432), // Jan
+                    new(1, 1, 312), // Feb
+                    new(1, 2, 135), // Mar
+                    new(1, 3, 78), // Apr
+                    new(1, 4, 124), // May
+                    new(1, 5, 423), // Jun
 
-            ResetZoomOnClick(null, null);
-        }
+                    // Ana
+                    new(2, 0, 543), // Jan
+                    new(2, 1, 134), // Feb
+                    new(2, 2, 524), // Mar
+                    new(2, 3, 315), // Apr
+                    new(2, 4, 145), // May
+                    new(2, 5, 80), // Jun
 
-        private readonly ChartValues<GanttPoint> _values;
-
-        public SeriesCollection Series { get; set; }
-        public Func<double, string> Formatter { get; set; }
-        public string[] Labels { get; set; }
-
-        private double _from;
-        public double From
-        {
-            get { return _from; }
-            set
-            {
-                _from = value;
-                RaisePropertyChanged("From");
+                    // Mari
+                    new(3, 0, 90), // Jan
+                    new(3, 1, 123), // Feb
+                    new(3, 2, 70), // Mar
+                    new(3, 3, 123), // Apr
+                    new(3, 4, 432), // May
+                    new(3, 5, 142), // Jun
+                },
             }
-        }
+        };
 
-        private double _to;
-        public double To
-        {
-            get { return _to; }
-            set
+            public Axis[] XAxes { get; set; } =
             {
-                _to = value;
-                RaisePropertyChanged("To");
+            new Axis
+            {
+                Labels = new[] { "Charles", "Richard", "Ana", "Mari" }
             }
-        }
+        };
 
-        private void ResetZoomOnClick(object sender, RoutedEventArgs e)
-        {
-            From = _values.First().StartPoint;
-            To = _values.Last().EndPoint;
-        }
+            public Axis[] YAxes { get; set; } =
+            {
+            new Axis
+            {
+                Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun" }
+            }
+        };
+
+        public string Title { get; set; } = "任务分布";
     }
 }
