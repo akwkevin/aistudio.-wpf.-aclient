@@ -1,4 +1,4 @@
-#  AIStudio.Wpf.AClient 全新升级
+#  AIStudio.Wpf.AClient 全新升级 【6.0正式上线，20230102】
 
 写在前面，下载请选择net6-new的分支（推荐使用VS2022，或者VS2019最新版），[历史版本可查看net5-new和net6,别的版本不推荐使用]
 
@@ -12,14 +12,9 @@ Wpf客户端，AIStudio.Wpf.AClient
 
 #### 软件架构
 本框架使用Prism做MVVM，优点咱就不说了，主要了容器注入，消息和DI，比自己写省很多事。网上有很多标准的MVVM的使用方法，但是没有形成一个系统级的框架。本框架从登录到具体业务的使用，还有自动升级都搭建完成，没有大神写的那么好，只是起个抛砖引玉的作用。
-后端使用ASP.net core，采用的是Colder.Admin.AntdVue的框架，强烈推荐大家去看，我在其基础上增加了一些功能.
-本项目使用的控件库Util.Controls也是开源的， **完全兼容MahApps.Metro** ，可以与MahApps.Metro同时使用，大家可在我的码云上下载。
+后端使用ASP.net core，采用的是AIStudio.Blazor.App的框架（与BS使用相同后台）.
 
 其它技术特点：AOP,MAP
-
-网页客户端浏览地址http://121.36.12.76:5001/ **(抱歉，已过期，请使用本地启动)** 
-（账号密码：Admin，Admin）
-接口浏览地址http://121.36.12.76:5000/swagger/index.html**(抱歉，已过期，请使用本地启动)** 
 
 #### 快速预览
 Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.exe.Config
@@ -93,6 +88,41 @@ protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
 
 #### 大屏界面（可拖拽，可全屏）
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0912/103244_4abe087a_4799126.png "屏幕截图.png")
+
+#### 6.0的框架如下,2023-01-02
+├─Application
+│  ├─AIStudio.Wpf.Business 
+│  │  ├─AOP
+│  │  ├─Bussiness 
+│  │  ├─IBussiness
+│  │  ├─ILogger 
+│  │  ├─Logger
+│  ├─AIStudio.Wpf.Client（启动项目）
+│  ├─AIStudio.Wpf.Entity
+│  │  ├─DTOModels
+│  │  ├─Models
+│  ├─api
+│  │  └─AIStudio.Wpf.ApiBusiness （向后台请求方法）
+├─Common
+│  ├─AIStudio.AOP
+│  ├─AIStudio.Core
+│  ├─AIStudio.DbFactory   （代码生成使用）
+│  ├─AIStudio.LocalConfiguration
+│  └─AIStudio.Resource
+├─Others
+│  ├─Dirkster.AvalonDock （主界面Tab控件）
+│  │  ├─Accelerider.Extensions   
+│  │  ├─AIStudio.Wpf.PrismAvalonExtensions  （Prism扩展）
+├─Page
+│  ├─AIStudio.Wpf.Agile_Development  （通用crud配置方法实现）
+│  ├─AIStudio.Wpf.BasePage （ViewModel的基类）
+│  ├─AIStudio.Wpf.Base_Manage （基础管理类）
+│  ├─AIStudio.Wpf.Home (主界面)
+│  ├─AIStudio.Wpf.LayoutPage （我的控制台）
+│  ├─AIStudio.Wpf.OA_Manage （工作流程）
+│  └─AIStudio.Wpf.Quartz_Manage （任务管理）
+├─ServiceMonitor（本地服务启动）
+│  └─ServiceMonitor
 
 #### 3.0新增功能如下，2022-06-01
 
