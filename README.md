@@ -89,6 +89,7 @@ protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
 #### 大屏界面（可拖拽，可全屏）
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0912/103244_4abe087a_4799126.png "屏幕截图.png")
 
+```
 #### 6.0的框架如下,2023-01-02
 ├─Application
 │  ├─AIStudio.Wpf.Business 
@@ -123,6 +124,7 @@ protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
 │  └─AIStudio.Wpf.Quartz_Manage （任务管理）
 ├─ServiceMonitor（本地服务启动）
 │  └─ServiceMonitor
+```
 
 #### 3.0新增功能如下，2022-06-01
 
