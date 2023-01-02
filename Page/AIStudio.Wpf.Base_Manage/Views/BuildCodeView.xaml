@@ -19,16 +19,16 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Margin="3" Content="刷新" ac:IconAttach.Geometry="{StaticResource RefreshGeometry}" ac:ControlAttach.Status="Success" Command="{Binding RefreshCommand}"></Button>
-            <Button Margin="3" Content="生成代码" Command="{Binding AddCommand}" Visibility="Collapsed"></Button>
-            <Button Margin="3" Content="生成代码" Command="{Binding GenerateCommand}"></Button>
+            <Button Margin="3" Content="刷新" ac:IconAttach.Geometry="{StaticResource RefreshGeometry}" ac:ControlAttach.Status="Success" Command="{Binding RefreshCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+            <Button Margin="3" Content="生成代码" Command="{Binding GenerateCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
             <TextBlock Text="选择数据库" Margin="3"></TextBlock>
             <ComboBox Margin="3"
                       MinWidth="100"
                       ItemsSource="{Binding Base_DbLinkDTO}" 
                       SelectedValue="{Binding LinkId}"
                       DisplayMemberPath="LinkName" 
-                      SelectedValuePath="Id" />
+                      SelectedValuePath="Id" 
+                      Style="{StaticResource AIStudio.Styles.ComboBox}"/>
         </StackPanel>
         <agc:FilterDataGrid Grid.Row="1" 
                   x:Name="table" 

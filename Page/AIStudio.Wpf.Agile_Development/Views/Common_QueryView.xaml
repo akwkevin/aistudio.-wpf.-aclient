@@ -58,7 +58,7 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel x:Name="panel" Orientation="Horizontal" Margin="2">
-                                    <CheckBox IsChecked="{Binding Visibility,Converter={converter:ConverterValueMapToBool Parameter='Collapsed'},ConverterParameter='Visible',Mode=TwoWay}"/>
+                                    <CheckBox IsChecked="{Binding Visibility,Converter={converter:ConverterValueMapToBool Parameter='Collapsed'},ConverterParameter='Visible',Mode=TwoWay}" Style="{StaticResource AIStudio.Styles.CheckBox}"/>
                                     <TextBlock Text="{Binding Header}" Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}" Margin="0,0,0,0" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <DataTemplate.Triggers>

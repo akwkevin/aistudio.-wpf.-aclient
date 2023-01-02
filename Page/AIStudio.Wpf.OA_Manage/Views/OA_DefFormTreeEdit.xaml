@@ -32,8 +32,9 @@
                                                         <DataTemplate>
                                                             <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
                                                                 <ComboBox 
-                                                            BorderThickness="0"                                                             
-                                                            Text="{Binding ActType}" >
+                                                                    BorderThickness="0"                                                             
+                                                                    Text="{Binding ActType}" 
+                                                                    Style="{StaticResource AIStudio.Styles.ComboBox}">
                                                                     <ComboBoxItem Content="or"/>
                                                                     <ComboBoxItem Content="and"/>
                                                                 </ComboBox>

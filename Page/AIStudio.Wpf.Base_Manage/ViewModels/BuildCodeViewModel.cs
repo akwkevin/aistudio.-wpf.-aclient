@@ -18,7 +18,7 @@ using System.Windows.Input;
 
 namespace AIStudio.Wpf.Base_Manage.ViewModels
 {
-    public class BuildCodeViewModel : BaseListWithEditViewModel<BuildCode, BuildCodeEdit>
+    public class BuildCodeViewModel : BaseListViewModel<BuildCode>
     {
         private ObservableCollection<Base_DbLinkDTO> _base_DbLinkDTO;
         public ObservableCollection<Base_DbLinkDTO> Base_DbLinkDTO

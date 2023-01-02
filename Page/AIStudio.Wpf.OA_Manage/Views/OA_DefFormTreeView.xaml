@@ -21,7 +21,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Margin="3" Content="刷新" Command="{Binding RefreshCommand}"></Button>
+            <Button Margin="3" Content="刷新" Command="{Binding RefreshCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
         </StackPanel>
         <TreeView Grid.Row="1" ItemsSource="{Binding Data}">
             <TreeView.ItemTemplate>

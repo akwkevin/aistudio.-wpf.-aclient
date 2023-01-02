@@ -60,7 +60,7 @@
                         </StackPanel>
                     </ac:FormItem>
                     <ac:FormItem Header="数据类型">
-                        <ComboBox ac:EnumHelper.Enum="{x:Type core:ControlType}" SelectedItem="{Binding ControlType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></ComboBox>
+                        <ComboBox ac:EnumHelper.Enum="{x:Type core:ControlType}" SelectedItem="{Binding ControlType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}" Style="{StaticResource AIStudio.Styles.ComboBox}"></ComboBox>
                     </ac:FormItem>
                     <ac:FormItem Header="描述">
                         <TextBox Text="{Binding Remark,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
@@ -78,11 +78,13 @@
             <Button x:Name="PART_AffirmativeButton"
                     VerticalAlignment="Center"
                     Content="确定"
-                    Margin="0 0 5 0" />
+                    Margin="0 0 5 0"
+                    Style="{StaticResource AIStudio.Styles.Button}"/>
             <Button x:Name="PART_NegativeButton"
                     VerticalAlignment="Center"
                     Content="取消"
-                    Margin="5 0 5 0" />
+                    Margin="5 0 5 0" 
+                    Style="{StaticResource AIStudio.Styles.Button}"/>
         </StackPanel>
     </Grid>
 </ac:ChildWindow>

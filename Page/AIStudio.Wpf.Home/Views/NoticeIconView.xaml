@@ -70,7 +70,7 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </ListBox>
-                                <Button Command="{Binding MoreCommand}" CommandParameter="OA_UserFormDTO" HorizontalAlignment="Right" Content ="查看更多" />
+                                <Button Command="{Binding MoreCommand}" CommandParameter="OA_UserFormDTO" HorizontalAlignment="Right" Content ="查看更多" Style="{StaticResource AIStudio.Styles.Button}"/>
                             </StackPanel>
                         </TabItem>
                         <!--<i:Interaction.Triggers>

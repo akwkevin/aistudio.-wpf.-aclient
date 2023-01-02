@@ -130,7 +130,8 @@
                         Command="{Binding LoginCommand}"
                         Content="登录"
                         IsDefault="True"
-                        TabIndex="4" Cursor="Hand" />
+                        TabIndex="4" Cursor="Hand" 
+                        Style="{StaticResource AIStudio.Styles.Button}"/>
                 </Grid>
                 <TextBlock
                     Grid.Row="2"

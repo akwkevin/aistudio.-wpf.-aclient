@@ -8,7 +8,7 @@
         Identifier="RootWindow"
         mc:Ignorable="d"
         Title="服务监控" Height="450" Width="800"
-        Style="{StaticResource AIStudio.Styles.WindowBase}">
+        Style="{StaticResource AIStudio.Styles.WindowBase}" Icon="/server.ico">
     <Grid>
         <TabControl>
             <TabItem Header="启动服务">
@@ -32,47 +32,18 @@
                             </Ellipse.Style>
                         </Ellipse>
                         <TextBlock Text="数据库类型：" VerticalAlignment="Center" Margin="2"/>
-                        <ComboBox SelectedIndex="0" Width="100" Text="{Binding DatabaseType}" Margin="2">
+                        <ComboBox SelectedIndex="0" Width="100" Text="{Binding DatabaseType}" Margin="2" Style="{StaticResource AIStudio.Styles.ComboBox}">
                             <ComboBoxItem Content="Sqlite"/>
                             <ComboBoxItem Content="SqlServer"/>
                         </ComboBox>
                         <TextBlock Text="端口号：" VerticalAlignment="Center" Margin="2"/>
                         <TextBox Text="{Binding Port}" Width="60" Margin="2"/>
-                        <CheckBox IsChecked="{Binding CreateNoWindow}" Content="不在控制台显示" Margin="2"/>
-                        <Button Command="{Binding StartCommand}" Content="启动服务" Margin="2"/>
-                        <Button Command="{Binding StopCommand}" Content="停止服务" Margin="2"/>
-                        <Button Command="{Binding RefreshCommand}" Content="刷新" Margin="2"/>
-                        <Button Command="{Binding SwaggerCommand}" Content="查看接口" Margin="2"/>
+                        <CheckBox IsChecked="{Binding CreateNoWindow}" Content="不在控制台显示" Margin="2" Style="{StaticResource AIStudio.Styles.CheckBox}"/>
+                        <Button Command="{Binding StartCommand}" Content="启动服务" Margin="2" Style="{StaticResource AIStudio.Styles.Button}"/>
+                        <Button Command="{Binding StopCommand}" Content="停止服务" Margin="2" Style="{StaticResource AIStudio.Styles.Button}"/>
+                        <Button Command="{Binding RefreshCommand}" Content="刷新" Margin="2" Style="{StaticResource AIStudio.Styles.Button}"/>
+                        <Button Command="{Binding SwaggerCommand}" Content="查看接口" Margin="2" Style="{StaticResource AIStudio.Styles.Button}"/>
                     </StackPanel>
-                    <agc:FilterDataGrid 
-                        Grid.Row="1" 
-                        ItemsSource="{Binding UserDatas}"  
-                        LayoutName="服务监控"
-                        AutoGenerateColumns="False"
-                        CanUserAddRows="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="用户名" Binding="{Binding UserName}"/>
-                            <DataGridTextColumn Header="用户Id" Binding="{Binding UserId}"/>
-                            <DataGridTextColumn Header="最后登录的IP" Binding="{Binding IP}"/>
-                            <DataGridTextColumn Header="最后登录的时间" Binding="{Binding ConnectedTime, StringFormat=yyyy-MM-dd HH:mm:ss}"/>
-                            <DataGridTemplateColumn Header="操作" Width="*">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
-                                    <Hyperlink Command="{Binding DataContext.SendCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                        CommandParameter="{Binding .}" > <TextBlock Text="发消息" /> </Hyperlink>
-                                </TextBlock>
-                                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
-                                    <Hyperlink Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                        CommandParameter="{Binding Id}" > <TextBlock Text="强制下线" /> </Hyperlink>
-                                </TextBlock>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </agc:FilterDataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="系统信息">

@@ -20,7 +20,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Button x:Name="PART_NegativeButton" Width="26" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="1" Padding="1 2 1 2" />
+        <Button x:Name="PART_NegativeButton" Width="26" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="1" Padding="1 2 1 2" Style="{StaticResource AIStudio.Styles.Button}"/>
         <Grid Grid.Row="1" Height="280">
             <TreeView x:Name="treeview" ItemsSource="{Binding MenuItems}" ItemTemplate="{StaticResource HamburgerMenuImageItem}">
                 <i:Interaction.Triggers>

@@ -44,7 +44,7 @@
                                     <Run>数据库类型</Run>
                             </TextBlock>
                         </ac:FormItem.Header>
-                        <ComboBox x:Name="combox" Text="{Binding DbType}">
+                        <ComboBox x:Name="combox" Text="{Binding DbType}" Style="{StaticResource AIStudio.Styles.ComboBox}">
                             <ComboBoxItem>SqlServer</ComboBoxItem>
                             <ComboBoxItem>MySql</ComboBoxItem>
                             <ComboBoxItem>Oracle</ComboBoxItem>
@@ -61,11 +61,13 @@
             <Button x:Name="PART_AffirmativeButton"
                     VerticalAlignment="Center"
                     Content="确定"
-                    Margin="0 0 5 0" />
+                    Margin="0 0 5 0" 
+                    Style="{StaticResource AIStudio.Styles.Button}"/>
             <Button x:Name="PART_NegativeButton"
                     VerticalAlignment="Center"
                     Content="取消"
-                    Margin="5 0 5 0" />
+                    Margin="5 0 5 0" 
+                    Style="{StaticResource AIStudio.Styles.Button}"/>
         </StackPanel>
     </Grid>
 </ac:ChildWindow>

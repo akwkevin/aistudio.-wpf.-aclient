@@ -166,7 +166,10 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
                     if (control.DataContext is NavigationDockWindowViewModel)
                     {
                         NavigationContext context = new NavigationContext(null, null);
-                        context.Parameters.Add("Identifier", Identifier);
+                      
+                        context.Parameters.Add("Identifier", Identifier);                      
+                        context.Parameters.Add("Value", SearchMenus.FirstOrDefault(p => p.WpfCode == fullname).Value);
+
                         (control.DataContext as NavigationDockWindowViewModel).OnNavigatedTo(context);
                     }
 

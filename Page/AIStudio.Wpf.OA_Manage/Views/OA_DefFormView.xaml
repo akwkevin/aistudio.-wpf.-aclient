@@ -27,7 +27,8 @@
                           SelectedValue="{Binding Condition}"
                           SelectedIndex="0"
                           ac:ControlAttach.ClearTextButton="True"                          
-                          Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}">
+                          Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}"
+                          Style="{StaticResource AIStudio.Styles.ComboBox}">
                     <ComboBox.ItemsSource>
                         <x:Array Type="core:SelectOption">
                             <core:SelectOption Text="分类" Value="Type"/>
@@ -44,11 +45,11 @@
                 </ac:SearchBar>
             </StackPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                <Button ac:IconAttach.Geometry="{StaticResource AddGeometry}" perm:PermissionHelper.HasPerm="OA_DefForm.Add" Margin="3" Content="新建" Command="{Binding AddCommand}"></Button>
-                <Button ac:IconAttach.Geometry="{StaticResource PauseGeometry}" perm:PermissionHelper.HasPerm="OA_DefForm.Edit" Margin="3" Content="停用"  Command="{Binding StopCommand}" ></Button>
-                <Button ac:IconAttach.Geometry="{StaticResource PlayGeometry}" perm:PermissionHelper.HasPerm="OA_DefForm.Edit" Margin="3" Content="开启"   Command="{Binding StartCommand}" ></Button>
-                <Button ac:IconAttach.Geometry="{StaticResource RemoveGeometry}" perm:PermissionHelper.HasPerm="OA_DefForm.Delete" ac:ControlAttach.Status="Danger" Margin="3" Content="删除" Command="{Binding DeleteCommand}"></Button>
-                <Button ac:IconAttach.Geometry="{StaticResource RefreshGeometry}" ac:ControlAttach.Status="Success" Margin="3" Content="刷新" Command="{Binding RefreshCommand}"></Button>
+                <Button ac:IconAttach.Geometry="{StaticResource AddGeometry}" perm:PermissionHelper.HasPerm="OA_DefForm.Add" Margin="3" Content="新建" Command="{Binding AddCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+                <Button ac:IconAttach.Geometry="{StaticResource PauseGeometry}" perm:PermissionHelper.HasPerm="OA_DefForm.Edit" Margin="3" Content="停用"  Command="{Binding StopCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+                <Button ac:IconAttach.Geometry="{StaticResource PlayGeometry}" perm:PermissionHelper.HasPerm="OA_DefForm.Edit" Margin="3" Content="开启"   Command="{Binding StartCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+                <Button ac:IconAttach.Geometry="{StaticResource RemoveGeometry}" perm:PermissionHelper.HasPerm="OA_DefForm.Delete" ac:ControlAttach.Status="Danger" Margin="3" Content="删除" Command="{Binding DeleteCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+                <Button ac:IconAttach.Geometry="{StaticResource RefreshGeometry}" ac:ControlAttach.Status="Success" Margin="3" Content="刷新" Command="{Binding RefreshCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
             </StackPanel>           
         </DockPanel>
         <agc:FilterDataGrid Grid.Row="1" 

@@ -22,9 +22,9 @@
             <Border Padding="5" Margin="2" BorderThickness="1" CornerRadius="3" BorderBrush="{DynamicResource MahApps.Brushes.Text}">
                 <DockPanel>
                     <StackPanel DockPanel.Dock="Bottom">
-                        <CheckBox Margin="2" IsChecked="{Binding IsCover}" Content="覆盖保存"></CheckBox>
-                        <Button Margin="2" Content="保存到所选文件夹" Command="{Binding SaveTempCommand}"/>
-                        <Button Margin="2" Content="点击生成" Command="{Binding OKCommand}" ac:ControlAttach.Status="Success"/>
+                        <CheckBox Margin="2" IsChecked="{Binding IsCover}" Content="覆盖保存" Style="{StaticResource AIStudio.Styles.CheckBox}"></CheckBox>
+                        <Button Margin="2" Content="保存到所选文件夹" Command="{Binding SaveTempCommand}" Style="{StaticResource AIStudio.Styles.Button}"/>
+                        <Button Margin="2" Content="点击生成" Command="{Binding OKCommand}" ac:ControlAttach.Status="Success" Style="{StaticResource AIStudio.Styles.Button}"/>
                     </StackPanel>
                     <StackPanel>
                         <TextBlock Text="Model" FontSize="28" Margin="2"/>
@@ -32,7 +32,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <CheckBox IsChecked="{Binding IsChecked}"></CheckBox>
+                                        <CheckBox IsChecked="{Binding IsChecked}" Style="{StaticResource AIStudio.Styles.CheckBox}"></CheckBox>
                                         <TextBlock Text="{Binding TableName}"></TextBlock>
                                     </StackPanel>
                                 </DataTemplate>
@@ -48,7 +48,7 @@
                     <TabControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox IsChecked="{Binding IsChecked}"></CheckBox>
+                                <CheckBox IsChecked="{Binding IsChecked}" Style="{StaticResource AIStudio.Styles.CheckBox}"></CheckBox>
                                 <TextBlock Margin="2,0,0,0" Text="{Binding Name}" />
                             </StackPanel>
                         </DataTemplate>

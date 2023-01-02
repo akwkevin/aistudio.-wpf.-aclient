@@ -48,7 +48,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <TextBlock Margin="2" Text="布局类型" VerticalAlignment="Center"/>
-                        <ComboBox Margin="2" Grid.Column="1" IsEditable="False" SelectedIndex="1" ItemsSource="{Binding PanelTypes}" SelectedItem="{Binding UserConsoleData.PanelType}" Width="200" VerticalAlignment="Center" HorizontalAlignment="Left" Background="Transparent" >
+                        <ComboBox Margin="2" Grid.Column="1" IsEditable="False" SelectedIndex="1" ItemsSource="{Binding PanelTypes}" SelectedItem="{Binding UserConsoleData.PanelType}" Width="200" VerticalAlignment="Center" HorizontalAlignment="Left" Background="Transparent" Style="{StaticResource AIStudio.Styles.ComboBox}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=., Converter={StaticResource EnumDescriptionConverter}}" />

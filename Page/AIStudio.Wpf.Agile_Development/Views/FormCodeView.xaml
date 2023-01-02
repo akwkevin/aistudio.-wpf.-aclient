@@ -50,7 +50,7 @@
             </GroupBox>
             <GroupBox Grid.Row="1" Header="表单对象" ac:ControlAttach.CornerRadius="0" Margin="2">
                 <DockPanel>
-                    <ComboBox DockPanel.Dock="Top" ItemsSource="{Binding Types}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedType}"/>
+                    <ComboBox DockPanel.Dock="Top" ItemsSource="{Binding Types}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedType}" Style="{StaticResource AIStudio.Styles.ComboBox}"/>
                     <ac:PropertiesView SelectedObject="{Binding Data}"/>
                 </DockPanel>
             </GroupBox>
@@ -83,8 +83,8 @@
                 </ac:Form>
             </ScrollViewer>
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="清除" Margin="2" Command="{Binding ClearCommand}" CommandParameter="{Binding ElementName=items}"/>
-                    <Button Content="生成" Margin="2" Command="{Binding BulidCommand}" CommandParameter="{Binding ElementName=items}"/>
+                    <Button Content="清除" Margin="2" Command="{Binding ClearCommand}" CommandParameter="{Binding ElementName=items}" Style="{StaticResource AIStudio.Styles.Button}"/>
+                    <Button Content="生成" Margin="2" Command="{Binding BulidCommand}" CommandParameter="{Binding ElementName=items}" Style="{StaticResource AIStudio.Styles.Button}"/>
                 </StackPanel>
             </Grid>           
         </GroupBox>
@@ -101,7 +101,7 @@
                                 <Setter.Value>
                                     <DataTemplate>
                                         <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
-                                            <ComboBox BorderThickness="0" Padding="0" ItemsSource="{Binding DataContext.Paths, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectedValue="{Binding Path}" IsEditable="True" />
+                                            <ComboBox BorderThickness="0" Padding="0" ItemsSource="{Binding DataContext.Paths, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectedValue="{Binding Path}" IsEditable="True" Style="{StaticResource AIStudio.Styles.ComboBox}"/>
                                         </Grid>
                                     </DataTemplate>
                                 </Setter.Value>
@@ -112,7 +112,7 @@
                                 <Setter.Value>
                                     <DataTemplate>
                                         <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
-                                            <ComboBox BorderThickness="0" Padding="0" ItemsSource="{Binding DataContext.ItemsSources, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectedValue="{Binding ItemsSource}" IsEditable="True"/>
+                                            <ComboBox BorderThickness="0" Padding="0" ItemsSource="{Binding DataContext.ItemsSources, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectedValue="{Binding ItemsSource}" IsEditable="True" Style="{StaticResource AIStudio.Styles.ComboBox}"/>
                                         </Grid>
                                     </DataTemplate>
                                 </Setter.Value>

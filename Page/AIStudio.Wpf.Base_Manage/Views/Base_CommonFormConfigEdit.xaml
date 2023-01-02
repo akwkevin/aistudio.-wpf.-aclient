@@ -57,7 +57,7 @@
                                     <Run>属性类型</Run>
                             </TextBlock>
                         </ac:FormItem.Header>
-                        <ComboBox ItemsSource="{Binding DataContext.PropertyTypes, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" SelectedItem="{Binding PropertyType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></ComboBox>
+                        <ComboBox ItemsSource="{Binding DataContext.PropertyTypes, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" SelectedItem="{Binding PropertyType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}" Style="{StaticResource AIStudio.Styles.ComboBox}"></ComboBox>
                     </ac:FormItem>
                     <ac:FormItem>
                         <ac:FormItem.Header>
@@ -90,7 +90,7 @@
                         </StackPanel>
                     </ac:FormItem>
                     <ac:FormItem Header="控件类型">
-                        <ComboBox ac:EnumHelper.Enum="{x:Type core:ControlType}" SelectedItem="{Binding ControlType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}">
+                        <ComboBox ac:EnumHelper.Enum="{x:Type core:ControlType}" SelectedItem="{Binding ControlType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}" Style="{StaticResource AIStudio.Styles.ComboBox}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding .,Converter={StaticResource EnumDescriptionConverter}}"/>
@@ -99,10 +99,10 @@
                         </ComboBox>
                     </ac:FormItem>
                     <ac:FormItem Header="只读">
-                        <CheckBox IsChecked="{Binding IsReadOnly,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"></CheckBox>
+                        <CheckBox IsChecked="{Binding IsReadOnly,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource AIStudio.Styles.CheckBox}"></CheckBox>
                     </ac:FormItem>
                     <ac:FormItem Header="必输项">
-                        <CheckBox IsChecked="{Binding IsRequired,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" ></CheckBox>
+                        <CheckBox IsChecked="{Binding IsRequired,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource AIStudio.Styles.CheckBox}"></CheckBox>
                     </ac:FormItem>
                     <ac:FormItem Header="字典名">
                         <TextBox Text="{Binding ItemSource,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
@@ -120,7 +120,7 @@
                         <TextBox Text="{Binding ConverterParameter,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
                     </ac:FormItem>
                     <ac:FormItem Header="对齐方式">
-                        <ComboBox ac:EnumHelper.Enum="{x:Type HorizontalAlignment}" SelectedItem="{Binding HorizontalAlignment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}">
+                        <ComboBox ac:EnumHelper.Enum="{x:Type HorizontalAlignment}" SelectedItem="{Binding HorizontalAlignment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}" Style="{StaticResource AIStudio.Styles.ComboBox}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding .,Converter={StaticResource EnumDescriptionConverter}}"/>
@@ -138,10 +138,10 @@
                         <TextBox Text="{Binding Width,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsReadOnly="{ Binding Disabled}"></TextBox>
                     </ac:FormItem>
                     <ac:FormItem Header="是否可以重排">
-                        <CheckBox IsChecked="{Binding CanUserReorder,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"></CheckBox>
+                        <CheckBox IsChecked="{Binding CanUserReorder,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource AIStudio.Styles.CheckBox}"></CheckBox>
                     </ac:FormItem>
                     <ac:FormItem Header="是否可以调整大小">
-                        <CheckBox IsChecked="{Binding CanUserResize,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"></CheckBox>
+                        <CheckBox IsChecked="{Binding CanUserResize,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource AIStudio.Styles.CheckBox}"></CheckBox>
                     </ac:FormItem>
                     <ac:FormItem Header="是否可以排序">
                         <CheckBox IsChecked="{Binding CanUserSort,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"></CheckBox>
@@ -162,11 +162,13 @@
             <Button x:Name="PART_AffirmativeButton"
                     VerticalAlignment="Center"
                     Content="确定"
-                    Margin="0 0 5 0" />
+                    Margin="0 0 5 0" 
+                    Style="{StaticResource AIStudio.Styles.Button}"/>
             <Button x:Name="PART_NegativeButton"
                     VerticalAlignment="Center"
                     Content="取消"
-                    Margin="5 0 5 0" />
+                    Margin="5 0 5 0" 
+                    Style="{StaticResource AIStudio.Styles.Button}"/>
         </StackPanel>
     </Grid>
 </ac:ChildWindow>

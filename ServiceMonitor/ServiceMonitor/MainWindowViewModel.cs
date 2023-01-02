@@ -149,7 +149,7 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
             p.Start();
 
             p.StandardInput.WriteLine("cd server");
-            p.StandardInput.WriteLine($"dotnet Coldairarrow.Api.dll --urls http://*:{Port}");
+            p.StandardInput.WriteLine($"dotnet AIStudio.Api.dll --urls http://*:{Port}");
 
             await Task.Delay(10000);
 
@@ -180,7 +180,7 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
             CmdHelper.PidKill(list_pid);
             MessageBox.Show("操作完成");
 
-            await Task.Delay(1000);
+            await Task.Delay(3000);
 
             await Refresh();
         }
@@ -202,10 +202,6 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
             }
 
             IsRunning = true;
-
-            await _dataProvider.GetToken("http://localhost:5000", "Admin", "Admin", 1, TimeSpan.FromSeconds(60));
-
-            _operator.Property = new Base_UserDTO() { UserName = "人工助手", Id = "smallAssistant", Avatar = "pack://application:,,,/AIStudio.Resource;component/Images/Usopp.jpg" };
         }
 
 

@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>server.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -122,6 +123,9 @@
     <Content Include="bin\Debug\net6.0-windows\sqlite\appsettings.json" />
     <Content Include="bin\Debug\net6.0-windows\sqlserver\appsettings.json" />
     <Content Include="bin\Debug\net6.0-windows\Users\LoginInfo.xml" />
+    <Content Include="server.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -158,7 +162,6 @@
     <None Include="bin\Debug\net6.0-windows\Castle.Core.AsyncInterceptor.dll" />
     <None Include="bin\Debug\net6.0-windows\Castle.Core.dll" />
     <None Include="bin\Debug\net6.0-windows\ControlzEx.dll" />
-    <None Include="bin\Debug\net6.0-windows\cs\Microsoft.QualityTools.Testing.Fakes.resources.dll" />
     <None Include="bin\Debug\net6.0-windows\Dapper.dll" />
     <None Include="bin\Debug\net6.0-windows\Dataforge.PrismAvalonExtensions.dll" />
     <None Include="bin\Debug\net6.0-windows\Dataforge.PrismAvalonExtensions.pdb" />

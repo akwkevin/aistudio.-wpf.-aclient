@@ -27,13 +27,13 @@
                 </ac:SearchBar>
             </StackPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                <Button Margin="3" Content="新建" ac:IconAttach.Geometry="{StaticResource AddGeometry}" perm:PermissionHelper.HasPerm="Quartz_Task.Add" Command="{Binding AddCommand}"></Button>
-                <Button Margin="3" Content="暂停" ac:IconAttach.Geometry="{StaticResource PauseGeometry}" perm:PermissionHelper.HasPerm="Quartz_Task.Edit" Command="{Binding PauseCommand}" ></Button>
-                <Button Margin="3" Content="开启" ac:IconAttach.Geometry="{StaticResource PlayGeometry}" perm:PermissionHelper.HasPerm="Quartz_Task.Edit" Command="{Binding StartCommand}" ></Button>
-                <Button Margin="3" Content="立即执行" ac:IconAttach.Geometry="{StaticResource NextGeometry}" perm:PermissionHelper.HasPerm="Quartz_Task.Edit" Command="{Binding ToDoCommand}"></Button>
-                <Button Margin="3" Content="修改" ac:IconAttach.Geometry="{StaticResource EditGeometry}" perm:PermissionHelper.HasPerm="Quartz_Task.Edit" Command="{Binding EditFirstCommand}"></Button>
-                <Button Margin="3" Content="删除" ac:IconAttach.Geometry="{StaticResource RemoveGeometry}" perm:PermissionHelper.HasPerm="Quartz_Task.Delete" ac:ControlAttach.Status="Danger" Command="{Binding DeleteCommand}" ></Button>
-                <Button Margin="3" Content="刷新" ac:IconAttach.Geometry="{StaticResource RefreshGeometry}" ac:ControlAttach.Status="Success" Command="{Binding RefreshCommand}"></Button>
+                <Button Margin="3" Content="新建" ac:IconAttach.Geometry="{StaticResource AddGeometry}" perm:PermissionHelper.HasPerm="Quartz_Task.Add" Command="{Binding AddCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+                <Button Margin="3" Content="暂停" ac:IconAttach.Geometry="{StaticResource PauseGeometry}" perm:PermissionHelper.HasPerm="Quartz_Task.Edit" Command="{Binding PauseCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+                <Button Margin="3" Content="开启" ac:IconAttach.Geometry="{StaticResource PlayGeometry}" perm:PermissionHelper.HasPerm="Quartz_Task.Edit" Command="{Binding StartCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+                <Button Margin="3" Content="立即执行" ac:IconAttach.Geometry="{StaticResource NextGeometry}" perm:PermissionHelper.HasPerm="Quartz_Task.Edit" Command="{Binding ToDoCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+                <Button Margin="3" Content="修改" ac:IconAttach.Geometry="{StaticResource EditGeometry}" perm:PermissionHelper.HasPerm="Quartz_Task.Edit" Command="{Binding EditFirstCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+                <Button Margin="3" Content="删除" ac:IconAttach.Geometry="{StaticResource RemoveGeometry}" perm:PermissionHelper.HasPerm="Quartz_Task.Delete" ac:ControlAttach.Status="Danger" Command="{Binding DeleteCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+                <Button Margin="3" Content="刷新" ac:IconAttach.Geometry="{StaticResource RefreshGeometry}" ac:ControlAttach.Status="Success" Command="{Binding RefreshCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
             </StackPanel>          
         </DockPanel>
         <agc:FilterDataGrid 

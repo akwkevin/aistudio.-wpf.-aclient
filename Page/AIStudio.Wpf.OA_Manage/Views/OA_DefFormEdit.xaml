@@ -39,7 +39,7 @@
                                 <Run>分类</Run>
                                     </TextBlock>
                                 </HeaderedContentControl.Header>
-                                <ComboBox ItemsSource="{Binding DataContext.Types, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" DisplayMemberPath="Text" SelectedValuePath="Text" SelectedValue="{Binding Type}" />
+                                <ComboBox ItemsSource="{Binding DataContext.Types, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" DisplayMemberPath="Text" SelectedValuePath="Text" SelectedValue="{Binding Type}" Style="{StaticResource AIStudio.Styles.ComboBox}"/>
                             </ac:FormItem>
                             <ac:FormItem>
                                 <ac:FormItem.Header>
@@ -152,7 +152,8 @@
                                                                                 DisplayMemberPath="Text" SelectedValuePath="Value"></ac:MultiComboBox>
                                                                             <TextBlock Text="or/and" Grid.Row="3" Margin="6,3" VerticalAlignment="Center"/>
                                                                             <ComboBox Grid.Row="3" Grid.Column="1" BorderThickness="0"                                                             
-                                                                                    Text="{Binding ActType}" >
+                                                                                      Text="{Binding ActType}" 
+                                                                                      Style="{StaticResource AIStudio.Styles.ComboBox}">
                                                                                 <ComboBoxItem Content="or"/>
                                                                                 <ComboBoxItem Content="and"/>
                                                                             </ComboBox>
@@ -179,11 +180,13 @@
             <Button x:Name="PART_AffirmativeButton"
                     VerticalAlignment="Center"
                     Content="确定"
-                    Margin="0 0 5 0" />
+                    Margin="0 0 5 0" 
+                    Style="{StaticResource AIStudio.Styles.Button}"/>
             <Button x:Name="PART_NegativeButton"
                     VerticalAlignment="Center"
                     Content="取消"
-                    Margin="5 0 5 0" />
+                    Margin="5 0 5 0" 
+                    Style="{StaticResource AIStudio.Styles.Button}"/>
         </StackPanel>
     </Grid>
 </ac:ChildWindow>

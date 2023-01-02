@@ -337,14 +337,16 @@ namespace AIStudio.Wpf.Home.ViewModels
             var item = SearchMenus.FirstOrDefault(p => p.Label == title);
             if (item != null)
             {
+                string url = item.WpfCode;
                 NavigationParameters paras = new NavigationParameters();
                 paras.Add("Title", item.Label);
                 paras.Add("Glyph", item.Icon);
                 paras.Add("Identifier", Identifier);
+                paras.Add("Value", item.Value);
 
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)delegate
                 {
-                    _regionManager.RequestNavigate(RegionName, item.WpfCode, NavigationComplete, paras);
+                    _regionManager.RequestNavigate(RegionName, url, NavigationComplete, paras);
                 });
             }
         }
@@ -436,19 +438,22 @@ namespace AIStudio.Wpf.Home.ViewModels
 
 #if DEBUG
                 AMenuItem code = new AMenuItem() { Icon = "code", Label = "开发", Code = "Demo", Type = 0 };
-                MenuItems.Add(code);
-
-                if (_operator.UserName != "LocalUser")
-                {
-                    code.AddChildren(new AMenuItem() { Label = "数据库连接", Code = "/Base_Manage/Base_DbLinkView/", Type = 1, Command = MenuExcuteCommand });
-                    code.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1, Command = MenuExcuteCommand });
-                    code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1, Command = MenuExcuteCommand });
-                    code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1, Command = MenuExcuteCommand });
-                    code.AddChildren(new AMenuItem() { Label = "表单Form", Code = "/Agile_Development/FormView/", Type = 1, Command = MenuExcuteCommand });
-                    code.AddChildren(new AMenuItem() { Label = "表单-代码生成", Code = "/Agile_Development/FormCodeView/", Type = 1, Command = MenuExcuteCommand });
-                    code.AddChildren(new AMenuItem() { Label = "crud-用户管理", Code = "/Agile_Development/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
-                }
+                code.AddChildren(new AMenuItem() { Label = "数据库连接", Code = "/Base_Manage/Base_DbLinkView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "代码生成", Code = "/Base_Manage/BuildCodeView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "Swagger", Code = "/Base_Manage/SwaggerView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "文件上传", Code = "/Base_Manage/UploadView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "表单Form", Code = "/Agile_Development/FormView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "表单-代码生成", Code = "/Agile_Development/FormCodeView/", Type = 1, Command = MenuExcuteCommand });
+                code.AddChildren(new AMenuItem() { Label = "crud-用户管理", Code = "/Agile_Development/Base_UserQueryView/", Type = 1, Command = MenuExcuteCommand });
+                MenuItems.Add(code);                
 #endif
+                var console = new AMenuItem() { Icon = "desktop", Label = "自定义显示", Code = "Console", Type = 0, Command = MenuExcuteCommand };
+                var userconsole = new AMenuItem() { Icon = "layout", Label = "我的控制台", Code = "/Home/UserConsole", Type = 1, Command = MenuExcuteCommand };
+                var _3dshowcase = new AMenuItem() { Icon = "inbox", Label = "3D展台", Code = "/Home/_3DShowcase", Type = 1, Command = MenuExcuteCommand };
+                console.AddChildren(userconsole);
+                console.AddChildren(_3dshowcase);
+                MenuItems.Add(console);
+
                 var tool = new AMenuItem() { Icon = "tool", Label = "工具", Code = "Tool", Type = 0, Command = MenuExcuteCommand };
                 var setting = new AMenuItem() { Icon = "setting", Label = "系统设置", Code = "Setting", Type = 1, Command = MenuExcuteCommand };
                 var newWindow = new AMenuItem() { Icon = "windows", Label = (string)Application.Current.Resources["新增窗口"], Code = "NewWindow", Type = 1, Command = MenuExcuteCommand };

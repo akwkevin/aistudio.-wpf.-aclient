@@ -71,7 +71,7 @@
                     </ac:Form>
                     <GroupBox Header="页面权限" Style="{x:Null}">
                         <StackPanel Orientation="Vertical">
-                            <Button Margin="3" Content="添加权限" Command="{Binding AddCommand}" HorizontalAlignment="Left"></Button>
+                            <Button Margin="3" Content="添加权限" Command="{Binding AddCommand}" HorizontalAlignment="Left" Style="{StaticResource AIStudio.Styles.Button}"></Button>
                             <DataGrid Grid.Row="1" x:Name="table" ItemsSource="{Binding PermissionList}" AutoGenerateColumns="False" >
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn Header="权限名" >
@@ -133,11 +133,13 @@
             <Button x:Name="PART_AffirmativeButton"
                     VerticalAlignment="Center"
                     Content="确定"
-                    Margin="0 0 5 0" />
+                    Margin="0 0 5 0" 
+                    Style="{StaticResource AIStudio.Styles.Button}"/>
             <Button x:Name="PART_NegativeButton"
                     VerticalAlignment="Center"
                     Content="取消"
-                    Margin="5 0 5 0" />
+                    Margin="5 0 5 0" 
+                    Style="{StaticResource AIStudio.Styles.Button}"/>
         </StackPanel>
     </Grid>
 </ac:ChildWindow>

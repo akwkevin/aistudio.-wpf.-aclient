@@ -19,10 +19,10 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button ac:IconAttach.Geometry="{StaticResource AddGeometry}" perm:PermissionHelper.HasPerm="Base_Action.Add" Margin="3" Content="新建" Command="{Binding AddCommand}"></Button>
-            <Button ac:IconAttach.Geometry="{StaticResource RemoveGeometry}" perm:PermissionHelper.HasPerm="Base_Action.Delete" ac:ControlAttach.Status="Danger" Margin="3" Content="删除" Command="{Binding DeleteCommand}"></Button>
-            <Button ac:IconAttach.Geometry="{StaticResource PrintGeometry}" ac:ControlAttach.Status="Info" Margin="3" Content="打印" Command="{Binding PrintCommand}"></Button>
-            <Button ac:IconAttach.Geometry="{StaticResource RefreshGeometry}" ac:ControlAttach.Status="Success" Margin="3" Content="刷新" Command="{Binding RefreshCommand}"></Button>
+            <Button ac:IconAttach.Geometry="{StaticResource AddGeometry}" perm:PermissionHelper.HasPerm="Base_Action.Add" Margin="3" Content="新建" Command="{Binding AddCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+            <Button ac:IconAttach.Geometry="{StaticResource RemoveGeometry}" perm:PermissionHelper.HasPerm="Base_Action.Delete" ac:ControlAttach.Status="Danger" Margin="3" Content="删除" Command="{Binding DeleteCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+            <Button ac:IconAttach.Geometry="{StaticResource PrintGeometry}" ac:ControlAttach.Status="Info" Margin="3" Content="打印" Command="{Binding PrintCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+            <Button ac:IconAttach.Geometry="{StaticResource RefreshGeometry}" ac:ControlAttach.Status="Success" Margin="3" Content="刷新" Command="{Binding RefreshCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
         </StackPanel>
         <ac:TreeDataGrid Grid.Row="1" 
                     x:Name="table" 

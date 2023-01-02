@@ -52,7 +52,8 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
                 new(_index++, 4),
                 new(_index++, 2),
                 new(_index++, 3),
-                new(_index++, 8)
+                new(_index++, 8),
+                new(_index++, 3)
             };
 
             Series = new ObservableCollection<ISeries>
@@ -121,7 +122,7 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
         public IEnumerable<ISeries> Series { get; set; }
     }
 
-    class StatisPart4ViewModel : BindableBase
+    class StatisPart4ViewModel 
     {
         public IEnumerable<ISeries> Series { get; set; }
          = new GaugeBuilder()
@@ -200,7 +201,7 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
         }
     }
 
-    class StatisPart6ViewModel : BindableBase
+    class StatisPart6ViewModel 
     {
         public ISeries[] Series { get; set; } =
         {
@@ -219,7 +220,7 @@ namespace AIStudio.Wpf.LayoutPage.ViewModels
         };
     }
 
-    class StatisPart7ViewModel : BindableBase
+    class StatisPart7ViewModel
     {
         public ISeries[] Series { get; set; } =
         {

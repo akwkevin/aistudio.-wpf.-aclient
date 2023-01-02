@@ -228,7 +228,7 @@
                 </Grid>
             </GroupBox>
             <GroupBox Header="{DynamicResource 字体选择}" ac:ControlAttach.CornerRadius="0">
-                <ComboBox ItemsSource="{Binding SystemFontFamilies}" SelectedItem="{Binding FontFamily}" DisplayMemberPath="Source"  />
+                <ComboBox ItemsSource="{Binding SystemFontFamilies}" SelectedItem="{Binding FontFamily}" DisplayMemberPath="Source"  Style="{StaticResource AIStudio.Styles.ComboBox}"/>
             </GroupBox>
             <GroupBox Header="{DynamicResource 语言设置}" ac:ControlAttach.CornerRadius="0">
                 <ToggleButton HorizontalAlignment="Left"

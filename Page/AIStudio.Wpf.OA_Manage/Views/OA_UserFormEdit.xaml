@@ -79,10 +79,10 @@
                                 <Run>申请人</Run>
                                 </TextBlock>
                             </ac:FormItem.Header>
-                            <ComboBox ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding ApplicantUserId}" />
+                            <ComboBox ItemsSource="{Binding DataContext.Users, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding ApplicantUserId}" Style="{StaticResource AIStudio.Styles.ComboBox}"/>
                         </ac:FormItem>
                         <ac:FormItem Header="紧急程度">
-                            <ComboBox SelectedIndex="{Binding Grade}" >
+                            <ComboBox SelectedIndex="{Binding Grade}" Style="{StaticResource AIStudio.Styles.ComboBox}">
                                 <ComboBoxItem Content="正常"/>
                                 <ComboBoxItem Content="紧急"/>
                                 <ComboBoxItem Content="特急"/>
@@ -97,7 +97,8 @@
                                           ItemsSource="{Binding DataContext.Types, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" 
                                           DisplayMemberPath="Text" 
                                           SelectedValuePath="Value" 
-                                          SelectedValue="{Binding SubType}"/>
+                                          SelectedValue="{Binding SubType}"
+                                          Style="{StaticResource AIStudio.Styles.ComboBox}"/>
                             </ac:FormItem.Header>
                             <TextBox Text="{Binding Flag,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  IsReadOnly="{ Binding Disabled}"></TextBox>
                         </ac:FormItem>
@@ -190,14 +191,16 @@
                     Content="查看流程图"
                     Margin="5 0 5 0" 
                     Command="{Binding OpenEditorCommand}"
-                    CommandParameter="{Binding Data}">
+                    CommandParameter="{Binding Data}"
+                    Style="{StaticResource AIStudio.Styles.Button}">
             </Button>
             <Button
                     VerticalAlignment="Center"
                     Content="打印"
                     Margin="5 0 5 0"
                     Command="{Binding PrintCommand}"
-                    CommandParameter="{Binding Data}">
+                    CommandParameter="{Binding Data}"
+                    Style="{StaticResource AIStudio.Styles.Button}">
             </Button>
         </StackPanel>
         <StackPanel Grid.Row="2"
@@ -209,7 +212,8 @@
                     Margin="5 0 5 0"
                     Command="{Binding PreStepCommand}"
                     CommandParameter="{Binding Data}"
-                    Visibility="{Binding Data.Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=0}">
+                    Visibility="{Binding Data.Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=0}"
+                    Style="{StaticResource AIStudio.Styles.Button}">
             </Button>
             <Button VerticalAlignment="Center"
                     Content="废弃"
@@ -217,7 +221,8 @@
                     Command="{Binding DisCardCommand}"
                     ac:ControlAttach.Status="Danger"
                     perm:PermissionHelper.IsCreator="{Binding Data.CreatorId}"          
-                    Visibility="{Binding Data.Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=1}">
+                    Visibility="{Binding Data.Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=1}"
+                    Style="{StaticResource AIStudio.Styles.Button}">
             </Button>
             <Button 
                     VerticalAlignment="Center"
@@ -225,18 +230,21 @@
                     Margin="5 0 5 0"   
                     Command="{Binding EventDataCommand}"
                     perm:PermissionHelper.IsCreator="{Binding Data.UserIds}"          
-                    Visibility="{Binding Data.Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=1}">
+                    Visibility="{Binding Data.Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=1}"
+                    Style="{StaticResource AIStudio.Styles.Button}">
             </Button>
             <Button x:Name="PART_AffirmativeButton"
                     VerticalAlignment="Center"
                     Content="提交"
                     Margin="5 0 5 0"                    
-                    Visibility="{Binding Data.Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=0}">
+                    Visibility="{Binding Data.Status,Converter={converter:ConverterValueMapSetToVisibility}, ConverterParameter=0}"
+                    Style="{StaticResource AIStudio.Styles.Button}">
             </Button>
             <Button x:Name="PART_NegativeButton"
                     VerticalAlignment="Center"
                     Content="关闭"
-                    Margin="5 0 5 0" />
+                    Margin="5 0 5 0" 
+                    Style="{StaticResource AIStudio.Styles.Button}"/>
         </StackPanel>
     </Grid>
 </ac:ChildWindow>

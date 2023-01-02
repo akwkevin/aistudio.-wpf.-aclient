@@ -109,7 +109,7 @@
                                         </Grid>
                                     </ac:Badged>                                   
                                 </Grid>
-                                <Button x:Name="closebtn"  Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" CommandParameter="{Binding }" Foreground="{DynamicResource DangerBrush}" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Collapsed"></Button>
+                                <Button x:Name="closebtn"  Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" CommandParameter="{Binding }" Foreground="{DynamicResource DangerBrush}" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Collapsed" Style="{StaticResource AIStudio.Styles.Button.Window.Close}"></Button>
                             </Grid>
                             <DataTemplate.Triggers>
                                 <DataTrigger Binding="{Binding IsSelected,RelativeSource={RelativeSource TemplatedParent}}" Value="True">
@@ -127,7 +127,7 @@
                                     <Setter.Value>
                                         <DataTemplate>
                                             <Grid DataContext="{Binding Path=DataContext,RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}">
-                                                <ComboBox BorderThickness="0" ItemsSource="{Binding DataContext.Glyphs, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" SelectedValue="{Binding Glyph}" />
+                                                <ComboBox BorderThickness="0" ItemsSource="{Binding DataContext.Glyphs, RelativeSource={RelativeSource AncestorType={x:Type ac:ChildWindow}}}" SelectedValue="{Binding Glyph}" Style="{StaticResource AIStudio.Styles.ComboBox}"/>
                                             </Grid>
                                         </DataTemplate>
                                     </Setter.Value>
@@ -144,12 +144,14 @@
                     Height="25"
                     MinWidth="60"
                     Content="确定"
-                    Margin="0 0 5 0" />
+                    Margin="0 0 5 0" 
+                    Style="{StaticResource AIStudio.Styles.Button}"/>
                 <Button x:Name="PART_NegativeButton"
                     Height="25"
                     MinWidth="60"
                     Content="取消"
-                    Margin="5 0 5 0" />
+                    Margin="5 0 5 0" 
+                    Style="{StaticResource AIStudio.Styles.Button}"/>
             </StackPanel>
         </Grid>
     </Border>
