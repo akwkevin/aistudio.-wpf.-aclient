@@ -131,7 +131,6 @@ namespace AIStudio.Wpf.BasePage.ViewModels
             }
         }
 
-
         protected BaseEditWithOptionViewModel()
         {
 
