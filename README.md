@@ -1,6 +1,6 @@
-# AClient
+#  AIStudio.Wpf.AClient 全新升级
 
-写在前面，下载请选择net6或net5-new的分支（请勿使用VS2022预览版运行本库，推荐使用VS2019）
+写在前面，下载请选择net6-new的分支（推荐使用VS2022，或者VS2019最新版），[历史版本可查看net5-new和net6,别的版本不推荐使用]
 
 使用的控件库地址https://gitee.com/akwkevin/AI-wpf-controls（麻烦大家点个星，谢谢大家）
 
@@ -37,30 +37,12 @@ Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.ex
     <add key="TitleAccent" value="Normal" />
     <add key="ToolBarLocation" value="Top" />
     <add key="Version" value="1.0.20201115-rc3" />
-    <add key="ServerIP" value="http://121.36.12.76:5000" />
+    <add key="ServerIP" value="http://localhost:5000" />
     <add key="UpdateAddress" value="http://121.36.12.76:5000/update" />
   </appSettings>
 ```
 
-
- **快速预览方式1：** 其中ServerIP就是后台接口地址，http://121.36.12.76:5000可直接使用。**(抱歉，已过期，请使用本地启动)** 
-
-账号密码：Admin，Admin。
-
- **快速预览方式2** ：不需要服务器，客户端直接使用SQLite本地数据，客户端独立运行。账号密码Admin, Admin
-```
-<add key="ServerIP" value=""/> 
-<add key="UpdateAddress" value="http://121.36.12.76:5000/Update/AutoUpdater.xml"/>
-<add key="ConString" value="Data Source=Admin.db"/>
-<add key="DatabaseType" value="SQLite"/>
-<add key="DeleteMode" value="Logic"/>
-```
-注释掉ServerIP，那么是使用efcore获取数据，改变ConString和DatabaseType即可。另外，默认数据库删除模式为软删除。
-
- **快速预览方式3** ：启动ServiceMonitor，点击启动服务，待本地服务启动后，可运行客户端进行连接。
-```
-<add key="ServerIP" value="http://localhost:5000" />
-```
+启动ServiceMonitor，点击启动服务，待本地服务启动后，可运行客户端进行连接。
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0822/170817_84186e95_4799126.png "屏幕截图.png")
 
