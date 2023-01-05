@@ -1,0 +1,1219 @@
+卷 资料 的文件夹 PATH 列表
+卷序列号为 4809-0636
+F:.
+├─Application
+│  ├─AIStudio.Wpf.Business
+│  │  ├─AOP
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          └─ref
+│  │  ├─Bussiness
+│  │  ├─IBussiness
+│  │  ├─ILogger
+│  │  ├─Logger
+│  │  └─obj
+│  │      └─Debug
+│  │          └─net6-windows
+│  │              ├─ref
+│  │              └─refint
+│  ├─AIStudio.Wpf.Client
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─ar
+│  │  │          ├─archives
+│  │  │          ├─ca-ES
+│  │  │          ├─cs
+│  │  │          ├─cs-CZ
+│  │  │          ├─da
+│  │  │          ├─DataGridInfos
+│  │  │          ├─de
+│  │  │          ├─es
+│  │  │          ├─fr
+│  │  │          ├─hu
+│  │  │          ├─Images
+│  │  │          │  └─Gifs
+│  │  │          ├─it
+│  │  │          ├─ja
+│  │  │          ├─ja-JP
+│  │  │          ├─ko
+│  │  │          ├─logs
+│  │  │          │  ├─2022-10-05
+│  │  │          │  ├─2022-10-06
+│  │  │          │  ├─2022-10-07
+│  │  │          │  ├─2022-10-08
+│  │  │          │  ├─2022-10-16
+│  │  │          │  ├─2022-10-23
+│  │  │          │  ├─2022-10-24
+│  │  │          │  ├─2022-10-26
+│  │  │          │  ├─2022-10-29
+│  │  │          │  ├─2022-11-05
+│  │  │          │  ├─2022-11-06
+│  │  │          │  ├─2022-11-12
+│  │  │          │  ├─2022-11-13
+│  │  │          │  ├─2022-11-15
+│  │  │          │  ├─2022-11-17
+│  │  │          │  ├─2022-11-18
+│  │  │          │  ├─2022-11-25
+│  │  │          │  ├─2022-11-26
+│  │  │          │  ├─2022-12-03
+│  │  │          │  ├─2022-12-05
+│  │  │          │  ├─2022-12-06
+│  │  │          │  ├─2022-12-07
+│  │  │          │  ├─2022-12-08
+│  │  │          │  ├─2022-12-09
+│  │  │          │  ├─2022-12-11
+│  │  │          │  ├─2022-12-12
+│  │  │          │  ├─2022-12-14
+│  │  │          │  ├─2022-12-15
+│  │  │          │  ├─2022-12-16
+│  │  │          │  ├─2022-12-17
+│  │  │          │  ├─2022-12-18
+│  │  │          │  ├─2022-12-19
+│  │  │          │  ├─2022-12-20
+│  │  │          │  ├─2022-12-23
+│  │  │          │  ├─2022-12-27
+│  │  │          │  ├─2022-12-28
+│  │  │          │  ├─2022-12-29
+│  │  │          │  ├─2023-01-01
+│  │  │          │  └─2023-01-02
+│  │  │          ├─nl
+│  │  │          ├─nl-BE
+│  │  │          ├─pl
+│  │  │          ├─pt
+│  │  │          ├─pt-BR
+│  │  │          ├─ref
+│  │  │          ├─ro
+│  │  │          ├─ru
+│  │  │          ├─runtimes
+│  │  │          │  ├─alpine-x64
+│  │  │          │  │  └─native
+│  │  │          │  ├─linux
+│  │  │          │  │  └─lib
+│  │  │          │  │      └─netcoreapp2.0
+│  │  │          │  ├─linux-arm
+│  │  │          │  │  └─native
+│  │  │          │  ├─linux-arm64
+│  │  │          │  │  └─native
+│  │  │          │  ├─linux-armel
+│  │  │          │  │  └─native
+│  │  │          │  ├─linux-mips64
+│  │  │          │  │  └─native
+│  │  │          │  ├─linux-musl-x64
+│  │  │          │  │  └─native
+│  │  │          │  ├─linux-s390x
+│  │  │          │  │  └─native
+│  │  │          │  ├─linux-x64
+│  │  │          │  │  └─native
+│  │  │          │  ├─linux-x86
+│  │  │          │  │  └─native
+│  │  │          │  ├─osx
+│  │  │          │  │  ├─lib
+│  │  │          │  │  │  └─netcoreapp2.0
+│  │  │          │  │  └─native
+│  │  │          │  ├─osx-arm64
+│  │  │          │  │  └─native
+│  │  │          │  ├─osx-x64
+│  │  │          │  │  └─native
+│  │  │          │  ├─unix
+│  │  │          │  │  └─lib
+│  │  │          │  │      ├─net6.0
+│  │  │          │  │      ├─netcoreapp2.1
+│  │  │          │  │      └─netcoreapp3.1
+│  │  │          │  ├─win
+│  │  │          │  │  └─lib
+│  │  │          │  │      ├─net6.0
+│  │  │          │  │      ├─netcoreapp2.0
+│  │  │          │  │      ├─netcoreapp2.1
+│  │  │          │  │      ├─netcoreapp3.1
+│  │  │          │  │      └─netstandard2.0
+│  │  │          │  ├─win-arm
+│  │  │          │  │  └─native
+│  │  │          │  ├─win-arm64
+│  │  │          │  │  └─native
+│  │  │          │  ├─win-x64
+│  │  │          │  │  └─native
+│  │  │          │  └─win-x86
+│  │  │          │      └─native
+│  │  │          ├─sk
+│  │  │          ├─sv
+│  │  │          ├─svg
+│  │  │          │  ├─fill
+│  │  │          │  ├─outline
+│  │  │          │  └─twotone
+│  │  │          ├─th
+│  │  │          ├─tr
+│  │  │          ├─Users
+│  │  │          ├─zh
+│  │  │          ├─zh-Hans
+│  │  │          ├─zh-Hant
+│  │  │          └─zh-tw
+│  │  ├─obj
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─ref
+│  │  │          ├─refint
+│  │  │          └─Views
+│  │  ├─Properties
+│  │  │  └─PublishProfiles
+│  │  ├─Update
+│  │  ├─ViewModels
+│  │  └─Views
+│  ├─AIStudio.Wpf.Entity
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          └─ref
+│  │  ├─DTOModels
+│  │  │  ├─Base_Manage
+│  │  │  ├─OA_Manage
+│  │  │  └─Quartz_Manage
+│  │  ├─Models
+│  │  └─obj
+│  │      └─Debug
+│  │          └─net6-windows
+│  │              ├─ref
+│  │              └─refint
+│  ├─api
+│  │  └─AIStudio.Wpf.ApiBusiness
+│  │      ├─bin
+│  │      │  └─Debug
+│  │      │      └─net6-windows
+│  │      │          └─ref
+│  │      ├─Models
+│  │      └─obj
+│  │          └─Debug
+│  │              └─net6-windows
+│  │                  ├─ref
+│  │                  └─refint
+│  └─interface
+│      └─AIStudio.Wpf.IBussiness
+│          └─AIStudio.Wpf.IBusiness
+├─Common
+│  ├─AIStudio.AOP
+│  │  ├─Abstraction
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          └─ref
+│  │  └─obj
+│  │      └─Debug
+│  │          └─net6-windows
+│  │              ├─ref
+│  │              └─refint
+│  ├─AIStudio.Core
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          └─ref
+│  │  ├─ClassLibrary
+│  │  ├─Command
+│  │  ├─Configuration
+│  │  ├─ControlHelpers
+│  │  ├─Converters
+│  │  ├─DI
+│  │  ├─Enum
+│  │  ├─ExCommand
+│  │  ├─Extention
+│  │  ├─Helper
+│  │  ├─Models
+│  │  ├─obj
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─ref
+│  │  │          └─refint
+│  │  ├─Primitives
+│  │  ├─Properties
+│  │  └─Validation
+│  ├─AIStudio.DbFactory
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      ├─net6-windows
+│  │  │      └─net6.0
+│  │  │          └─ref
+│  │  ├─DataAccess
+│  │  └─obj
+│  │      └─Debug
+│  │          ├─net6-windows
+│  │          │  ├─ref
+│  │          │  └─refint
+│  │          └─net6.0
+│  │              ├─ref
+│  │              └─refint
+│  ├─AIStudio.LocalConfiguration
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          └─ref
+│  │  ├─Helper
+│  │  ├─Interfaces
+│  │  ├─Models
+│  │  └─obj
+│  │      └─Debug
+│  │          └─net6-windows
+│  │              ├─ref
+│  │              └─refint
+│  └─AIStudio.Resource
+│      ├─bin
+│      │  └─Debug
+│      │      └─net6-windows
+│      │          ├─ref
+│      │          └─svg
+│      │              ├─fill
+│      │              ├─outline
+│      │              └─twotone
+│      ├─Brushs
+│      ├─Images
+│      ├─obj
+│      │  └─Debug
+│      │      └─net6-windows
+│      │          ├─Brushs
+│      │          ├─ref
+│      │          ├─refint
+│      │          └─Themes
+│      ├─Properties
+│      ├─svg
+│      │  ├─fill
+│      │  ├─outline
+│      │  └─twotone
+│      └─Themes
+├─Others
+│  ├─ControlzEx
+│  │  ├─.github
+│  │  │  └─ISSUE_TEMPLATE
+│  │  ├─src
+│  │  │  ├─ControlzEx
+│  │  │  │  ├─Automation
+│  │  │  │  │  └─Peers
+│  │  │  │  ├─Behaviors
+│  │  │  │  ├─Controls
+│  │  │  │  ├─Internal
+│  │  │  │  ├─Microsoft.Windows.Shell
+│  │  │  │  │  └─Standard
+│  │  │  │  ├─Native
+│  │  │  │  ├─Properties
+│  │  │  │  ├─Themes
+│  │  │  │  └─Theming
+│  │  │  ├─ControlzEx.Showcase
+│  │  │  │  ├─Themes
+│  │  │  │  │  └─Themes
+│  │  │  │  ├─Theming
+│  │  │  │  └─Views
+│  │  │  └─ControlzEx.Tests
+│  │  │      ├─Controls
+│  │  │      ├─Native
+│  │  │      ├─Properties
+│  │  │      ├─TestClasses
+│  │  │      ├─Themes
+│  │  │      │  └─Themes
+│  │  │      └─Theming
+│  │  ├─Wiki
+│  │  └─XamlStyler
+│  │      └─Options
+│  ├─Dirkster.AvalonDock
+│  │  ├─Accelerider.Extensions
+│  │  │  ├─bin
+│  │  │  │  └─Debug
+│  │  │  │      └─net6-windows
+│  │  │  │          └─ref
+│  │  │  ├─Mvvm
+│  │  │  └─obj
+│  │  │      └─Debug
+│  │  │          └─net6-windows
+│  │  │              ├─ref
+│  │  │              └─refint
+│  │  ├─AIStudio.Wpf.PrismAvalonExtensions
+│  │  │  ├─bin
+│  │  │  │  └─Debug
+│  │  │  │      └─net6-windows
+│  │  │  │          └─ref
+│  │  │  ├─DockStrategies
+│  │  │  ├─Events
+│  │  │  ├─obj
+│  │  │  │  └─Debug
+│  │  │  │      └─net6-windows
+│  │  │  │          ├─ref
+│  │  │  │          └─refint
+│  │  │  ├─Properties
+│  │  │  ├─Regions
+│  │  │  └─ViewModels
+│  │  └─AvalonDock.Themes.MyVS2013
+│  │      ├─bin
+│  │      │  └─Debug
+│  │      │      └─net6-windows
+│  │      │          └─ref
+│  │      ├─obj
+│  │      │  └─Debug
+│  │      │      └─net6-windows
+│  │      │          ├─ref
+│  │      │          ├─refint
+│  │      │          └─Themes
+│  │      │              ├─Icons
+│  │      │              └─Menu
+│  │      ├─Properties
+│  │      └─Themes
+│  │          ├─Icons
+│  │          └─Menu
+│  ├─gong-wpf-dragdrop
+│  │  ├─.github
+│  │  ├─screenshots
+│  │  ├─src
+│  │  │  ├─GongSolutions.WPF.DragDrop
+│  │  │  │  ├─Icons
+│  │  │  │  ├─Properties
+│  │  │  │  └─Utilities
+│  │  │  └─Showcase
+│  │  │      ├─CustomControls
+│  │  │      ├─Models
+│  │  │      ├─Properties
+│  │  │      ├─ViewModels
+│  │  │      └─Views
+│  │  └─XamlStyler
+│  │      └─Options
+│  ├─MahApps.Metro
+│  │  ├─.github
+│  │  │  └─ISSUE_TEMPLATE
+│  │  ├─docs
+│  │  ├─src
+│  │  │  ├─MahApps.Metro
+│  │  │  │  ├─Accessibility
+│  │  │  │  ├─Actions
+│  │  │  │  ├─Assets
+│  │  │  │  ├─Automation
+│  │  │  │  │  └─Peers
+│  │  │  │  ├─Behaviors
+│  │  │  │  ├─Controls
+│  │  │  │  │  ├─ColorPicker
+│  │  │  │  │  ├─Dialogs
+│  │  │  │  │  ├─HamburgerMenu
+│  │  │  │  │  │  └─MenuItems
+│  │  │  │  │  ├─Helper
+│  │  │  │  │  ├─SplitView
+│  │  │  │  │  └─TimePicker
+│  │  │  │  ├─Converters
+│  │  │  │  ├─Lang
+│  │  │  │  ├─Markup
+│  │  │  │  ├─Properties
+│  │  │  │  ├─Styles
+│  │  │  │  │  ├─Clean
+│  │  │  │  │  ├─Themes
+│  │  │  │  │  └─VS
+│  │  │  │  ├─Themes
+│  │  │  │  │  ├─ColorPicker
+│  │  │  │  │  └─Dialogs
+│  │  │  │  ├─Theming
+│  │  │  │  └─ValueBoxes
+│  │  │  ├─MahApps.Metro.Samples
+│  │  │  │  ├─MahApps.Metro.Caliburn.Demo
+│  │  │  │  │  ├─Controls
+│  │  │  │  │  ├─Properties
+│  │  │  │  │  ├─Resources
+│  │  │  │  │  ├─Services
+│  │  │  │  │  ├─ViewModels
+│  │  │  │  │  │  └─Flyouts
+│  │  │  │  │  └─Views
+│  │  │  │  │      └─Flyouts
+│  │  │  │  └─MahApps.Metro.Demo
+│  │  │  │      ├─Assets
+│  │  │  │      │  └─Photos
+│  │  │  │      ├─Behaviors
+│  │  │  │      ├─Core
+│  │  │  │      ├─ExampleViews
+│  │  │  │      ├─ExampleWindows
+│  │  │  │      ├─HamburgerMenuRipple
+│  │  │  │      ├─Markup
+│  │  │  │      ├─Models
+│  │  │  │      ├─Navigation
+│  │  │  │      ├─Properties
+│  │  │  │      └─ValueConverter
+│  │  │  └─Mahapps.Metro.Tests
+│  │  │      ├─TestHelpers
+│  │  │      ├─Tests
+│  │  │      └─Views
+│  │  ├─Visual Studio Templates
+│  │  └─XamlStyler
+│  │      └─Options
+│  ├─Prism8
+│  │  ├─Containers
+│  │  │  ├─Prism.DryIoc.Shared
+│  │  │  └─Prism.Unity.Shared
+│  │  ├─Prism.Core
+│  │  │  ├─Commands
+│  │  │  ├─Common
+│  │  │  ├─Events
+│  │  │  ├─Extensions
+│  │  │  ├─Ioc
+│  │  │  │  └─Internals
+│  │  │  ├─Modularity
+│  │  │  ├─Mvvm
+│  │  │  ├─Navigation
+│  │  │  └─Properties
+│  │  └─Wpf
+│  │      ├─Prism.DryIoc.Wpf
+│  │      │  └─Properties
+│  │      ├─Prism.Unity.Wpf
+│  │      │  └─Properties
+│  │      └─Prism.Wpf
+│  │          ├─Common
+│  │          ├─Extensions
+│  │          ├─Interactivity
+│  │          ├─Ioc
+│  │          ├─Modularity
+│  │          ├─Mvvm
+│  │          ├─Properties
+│  │          ├─Regions
+│  │          │  └─Behaviors
+│  │          └─Services
+│  │              └─Dialogs
+│  ├─WpfAnimatedGif
+│  │  └─WpfAnimatedGif
+│  │      └─Decoding
+│  └─Xceed.Wpf
+│      ├─Dataforge.PrismAvalonExtensions
+│      │  ├─DockStrategies
+│      │  ├─Events
+│      │  ├─Properties
+│      │  ├─Regions
+│      │  └─ViewModels
+│      ├─Dataforge.PrismAvalonExtensions.Test
+│      │  ├─ViewModels
+│      │  └─Views
+│      ├─Xceed.Wpf.AvalonDock
+│      │  ├─Commands
+│      │  ├─Controls
+│      │  │  └─Shell
+│      │  │      └─Standard
+│      │  ├─Converters
+│      │  ├─Layout
+│      │  │  └─Serialization
+│      │  ├─Properties
+│      │  └─Themes
+│      │      └─Generic
+│      │          └─Images
+│      ├─Xceed.Wpf.AvalonDock.Themes.Aero
+│      │  ├─Controls
+│      │  ├─Images
+│      │  └─Properties
+│      ├─Xceed.Wpf.AvalonDock.Themes.Metro
+│      │  ├─Images
+│      │  └─Properties
+│      ├─Xceed.Wpf.AvalonDock.Themes.MyMetro
+│      │  ├─Images
+│      │  └─Properties
+│      ├─Xceed.Wpf.AvalonDock.Themes.VS2010
+│      │  ├─Images
+│      │  └─Properties
+│      ├─Xceed.Wpf.DataGrid
+│      │  ├─(CollectionView)
+│      │  │  ├─(DataVirtualization)
+│      │  │  └─(ForeignKeys)
+│      │  ├─(enums)
+│      │  ├─(ForeignKeys)
+│      │  ├─(Generator)
+│      │  ├─Automation
+│      │  ├─Converters
+│      │  ├─Export
+│      │  │  └─(Clipboard)
+│      │  ├─FilterCriteria
+│      │  ├─Markup
+│      │  ├─Properties
+│      │  ├─Stats
+│      │  ├─themes
+│      │  │  ├─Aero
+│      │  │  │  └─Resources
+│      │  │  ├─Aero2
+│      │  │  │  └─Resources
+│      │  │  ├─Classic
+│      │  │  │  └─Resources
+│      │  │  ├─Common
+│      │  │  ├─Controls
+│      │  │  ├─Luna
+│      │  │  │  └─Resources
+│      │  │  ├─Royale
+│      │  │  │  └─Resources
+│      │  │  ├─Windows7
+│      │  │  │  └─Resources
+│      │  │  └─Zune
+│      │  │      └─Resources
+│      │  ├─Utils
+│      │  │  ├─Collections
+│      │  │  ├─Data
+│      │  │  ├─Math
+│      │  │  ├─Wpf
+│      │  │  │  ├─DragDrop
+│      │  │  │  └─Markup
+│      │  │  └─XmlSerialization
+│      │  ├─ValidationRules
+│      │  └─Views
+│      │      ├─(ColumnVirtualization)
+│      │      ├─(Enums)
+│      │      └─(TableflowView)
+│      ├─Xceed.Wpf.Toolkit
+│      │  ├─AutoSelectTextBox
+│      │  │  └─Implementation
+│      │  ├─BusyIndicator
+│      │  │  ├─Implementation
+│      │  │  │  └─Converters
+│      │  │  └─Themes
+│      │  ├─ButtonSpinner
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─Calculator
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─CalculatorUpDown
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─CheckComboBox
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─CheckListBox
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─ChildWindow
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─Chromes
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─CollectionControl
+│      │  │  ├─Images
+│      │  │  ├─Implementation
+│      │  │  │  └─Converters
+│      │  │  └─Themes
+│      │  ├─ColorCanvas
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─ColorPicker
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─Core
+│      │  │  ├─Converters
+│      │  │  ├─Input
+│      │  │  ├─Media
+│      │  │  │  └─Animation
+│      │  │  └─Utilities
+│      │  ├─DateTimePicker
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─DateTimeUpDown
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─DropDownButton
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─IconButton
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─Magnifier
+│      │  │  ├─Implementation
+│      │  │  │  └─Converters
+│      │  │  └─Themes
+│      │  ├─MaskedTextBox
+│      │  │  └─Implementation
+│      │  ├─MessageBox
+│      │  │  ├─Icons
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─MultiLineTextEditor
+│      │  │  ├─Images
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─NumericUpDown
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─Obselete
+│      │  │  └─MaskedTextBox
+│      │  │      └─Implementation
+│      │  ├─Panels
+│      │  ├─Pie
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─Primitives
+│      │  │  └─Themes
+│      │  │      ├─Aero2
+│      │  │      └─Generic
+│      │  ├─Properties
+│      │  ├─PropertyGrid
+│      │  │  ├─Images
+│      │  │  ├─Implementation
+│      │  │  │  ├─Attributes
+│      │  │  │  ├─Commands
+│      │  │  │  ├─Converters
+│      │  │  │  ├─Definitions
+│      │  │  │  └─Editors
+│      │  │  └─Themes
+│      │  ├─RangeSlider
+│      │  │  ├─Implementation
+│      │  │  │  └─Converters
+│      │  │  └─Themes
+│      │  ├─RichTextBox
+│      │  │  └─Formatters
+│      │  ├─RichTextBoxFormatBar
+│      │  │  ├─Images
+│      │  │  └─Themes
+│      │  ├─SplitButton
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─StyleableWindow
+│      │  │  └─Implementation
+│      │  │      └─Converters
+│      │  ├─Themes
+│      │  │  ├─Aero
+│      │  │  ├─Aero2
+│      │  │  └─Generic
+│      │  │      └─Images
+│      │  ├─TimelinePanel
+│      │  │  └─Implementation
+│      │  ├─TimePicker
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─TimeSpanUpDown
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─WatermarkComboBox
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─WatermarkPasswordBox
+│      │  │  └─Implementation
+│      │  ├─WatermarkTextBox
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  ├─Wizard
+│      │  │  ├─Implementation
+│      │  │  └─Themes
+│      │  └─Zoombox
+│      │      ├─Resources
+│      │      └─Themes
+│      └─Xceed.Wpf.Toolkit.LiveExplorer
+│          ├─CodeFiles
+│          ├─Core
+│          │  ├─CodeFormatting
+│          │  └─Converters
+│          ├─Properties
+│          ├─Resources
+│          ├─Samples
+│          │  ├─AvalonDock
+│          │  │  ├─Images
+│          │  │  └─Views
+│          │  ├─BusyIndicator
+│          │  │  ├─Converters
+│          │  │  ├─Images
+│          │  │  ├─Resources
+│          │  │  └─Views
+│          │  ├─Button
+│          │  │  ├─Resources
+│          │  │  └─Views
+│          │  ├─Calculator
+│          │  │  └─Views
+│          │  ├─Chart
+│          │  │  ├─Converters
+│          │  │  ├─OpenSourceImages
+│          │  │  ├─Photo
+│          │  │  └─Views
+│          │  ├─CheckLists
+│          │  │  └─Views
+│          │  ├─Color
+│          │  │  └─Views
+│          │  ├─DataGrid
+│          │  │  ├─Converters
+│          │  │  ├─OpenSourceImages
+│          │  │  └─Views
+│          │  ├─DateTime
+│          │  │  ├─Converters
+│          │  │  └─Views
+│          │  ├─FilePicker
+│          │  │  ├─OpenSourceImages
+│          │  │  └─Views
+│          │  ├─Gauge
+│          │  │  ├─OpenSourceImages
+│          │  │  ├─Resources
+│          │  │  └─Views
+│          │  ├─ListBox
+│          │  │  ├─Converters
+│          │  │  ├─OpenSourceImages
+│          │  │  ├─Resources
+│          │  │  └─Views
+│          │  ├─Magnifier
+│          │  │  ├─Converters
+│          │  │  ├─Resources
+│          │  │  └─Views
+│          │  ├─MaterialControls
+│          │  │  ├─Converters
+│          │  │  ├─Data
+│          │  │  ├─OpenSourceImages
+│          │  │  ├─Resources
+│          │  │  └─Views
+│          │  ├─MultiCalendar
+│          │  │  ├─OpenSourceImages
+│          │  │  ├─Resources
+│          │  │  └─Views
+│          │  ├─Numeric
+│          │  │  └─Views
+│          │  ├─Panels
+│          │  │  ├─Converters
+│          │  │  ├─OpenSourceImages
+│          │  │  └─Views
+│          │  ├─Pie
+│          │  │  ├─Converters
+│          │  │  └─Views
+│          │  ├─PileFlowPanel
+│          │  │  ├─Converters
+│          │  │  ├─OpenSourceImages
+│          │  │  └─Views
+│          │  ├─PropertyGrid
+│          │  │  ├─Converters
+│          │  │  ├─OpenSourceImages
+│          │  │  ├─Resources
+│          │  │  └─Views
+│          │  ├─RangeSlider
+│          │  │  ├─Converters
+│          │  │  └─Views
+│          │  ├─Rating
+│          │  │  ├─OpenSourceImages
+│          │  │  └─Views
+│          │  ├─SlideShow
+│          │  │  ├─OpenSourceImages
+│          │  │  ├─Resources
+│          │  │  └─Views
+│          │  ├─Text
+│          │  │  ├─OpenSourceImages
+│          │  │  ├─Resources
+│          │  │  └─Views
+│          │  ├─Theming
+│          │  │  ├─Converters
+│          │  │  ├─Images
+│          │  │  ├─ItemTemplates
+│          │  │  ├─OpenSourceImages
+│          │  │  └─Views
+│          │  ├─TimelinePanel
+│          │  │  └─Views
+│          │  ├─TimeSpan
+│          │  │  └─Views
+│          │  ├─ToggleSwitch
+│          │  │  ├─Converters
+│          │  │  ├─OpenSourceImages
+│          │  │  ├─Resources
+│          │  │  └─Views
+│          │  ├─WatermarkComboBox
+│          │  │  ├─Resources
+│          │  │  └─Views
+│          │  ├─Window
+│          │  │  ├─Converters
+│          │  │  ├─Resources
+│          │  │  └─Views
+│          │  ├─Wizard
+│          │  │  └─Views
+│          │  └─Zoombox
+│          │      ├─Converters
+│          │      ├─Resources
+│          │      └─Views
+│          └─Service References
+│              └─NorthwindDataService
+├─packages
+├─Page
+│  ├─AIStudio.Wpf.Agile_Development
+│  │  ├─Attacheds
+│  │  ├─Attributes
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─ref
+│  │  │          └─svg
+│  │  │              ├─fill
+│  │  │              ├─outline
+│  │  │              └─twotone
+│  │  ├─Commons
+│  │  ├─Converter
+│  │  ├─Extensions
+│  │  ├─Models
+│  │  ├─obj
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─Properties
+│  │  │          ├─ref
+│  │  │          ├─refint
+│  │  │          ├─Themes
+│  │  │          └─Views
+│  │  ├─Properties
+│  │  ├─Themes
+│  │  ├─ViewModels
+│  │  └─Views
+│  ├─AIStudio.Wpf.BasePage
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─ref
+│  │  │          └─svg
+│  │  │              ├─fill
+│  │  │              ├─outline
+│  │  │              └─twotone
+│  │  ├─Controls
+│  │  ├─Converters
+│  │  ├─DTOModels
+│  │  ├─Events
+│  │  ├─Images
+│  │  ├─Models
+│  │  ├─obj
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─Controls
+│  │  │          ├─Properties
+│  │  │          ├─ref
+│  │  │          ├─refint
+│  │  │          ├─Themes
+│  │  │          └─Views
+│  │  ├─Permission
+│  │  ├─Properties
+│  │  ├─Themes
+│  │  ├─ViewModels
+│  │  └─Views
+│  ├─AIStudio.Wpf.Base_Manage
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─ref
+│  │  │          └─svg
+│  │  │              ├─fill
+│  │  │              ├─outline
+│  │  │              └─twotone
+│  │  ├─obj
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─Properties
+│  │  │          ├─ref
+│  │  │          ├─refint
+│  │  │          └─Views
+│  │  ├─Properties
+│  │  ├─ViewModels
+│  │  └─Views
+│  ├─AIStudio.Wpf.D_Manage
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  └─obj
+│  │      └─Debug
+│  │          └─net6-windows
+│  │              ├─ref
+│  │              └─refint
+│  ├─AIStudio.Wpf.Home
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─Images
+│  │  │          │  └─Gifs
+│  │  │          ├─ref
+│  │  │          └─svg
+│  │  │              ├─fill
+│  │  │              ├─outline
+│  │  │              └─twotone
+│  │  ├─BuildCodeTemplate
+│  │  ├─Images
+│  │  ├─Models
+│  │  ├─obj
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─Properties
+│  │  │          ├─ref
+│  │  │          ├─refint
+│  │  │          ├─Resources
+│  │  │          ├─Themes
+│  │  │          └─Views
+│  │  │              └─ManageViews
+│  │  ├─Properties
+│  │  ├─Resources
+│  │  ├─Themes
+│  │  ├─ViewModels
+│  │  └─Views
+│  │      └─ManageViews
+│  ├─AIStudio.Wpf.LayoutPage
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─ref
+│  │  │          └─svg
+│  │  │              ├─fill
+│  │  │              ├─outline
+│  │  │              └─twotone
+│  │  ├─Models
+│  │  ├─obj
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─Properties
+│  │  │          ├─ref
+│  │  │          ├─refint
+│  │  │          └─Views
+│  │  │              └─SubViews
+│  │  ├─Properties
+│  │  ├─ViewModels
+│  │  └─Views
+│  │      └─SubViews
+│  ├─AIStudio.Wpf.OA_Manage
+│  │  ├─bin
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─Images
+│  │  │          │  └─Gifs
+│  │  │          ├─ref
+│  │  │          └─svg
+│  │  │              ├─fill
+│  │  │              ├─outline
+│  │  │              └─twotone
+│  │  ├─obj
+│  │  │  └─Debug
+│  │  │      └─net6-windows
+│  │  │          ├─Properties
+│  │  │          ├─ref
+│  │  │          ├─refint
+│  │  │          └─Views
+│  │  ├─Properties
+│  │  ├─ViewModels
+│  │  └─Views
+│  └─AIStudio.Wpf.Quartz_Manage
+│      ├─bin
+│      │  └─Debug
+│      │      └─net6-windows
+│      │          ├─ref
+│      │          └─svg
+│      │              ├─fill
+│      │              ├─outline
+│      │              └─twotone
+│      ├─obj
+│      │  └─Debug
+│      │      └─net6-windows
+│      │          ├─Properties
+│      │          ├─ref
+│      │          ├─refint
+│      │          ├─Themes
+│      │          └─Views
+│      ├─Properties
+│      ├─ViewModels
+│      └─Views
+├─ServiceMonitor
+│  └─ServiceMonitor
+│      ├─bin
+│      │  └─Debug
+│      │      └─net6.0-windows
+│      │          ├─ca-ES
+│      │          ├─cs
+│      │          ├─cs-CZ
+│      │          ├─de
+│      │          ├─es
+│      │          ├─fr
+│      │          ├─hu
+│      │          ├─it
+│      │          ├─ja
+│      │          ├─ko
+│      │          ├─nl-BE
+│      │          ├─pl
+│      │          ├─pt
+│      │          ├─pt-BR
+│      │          ├─ro
+│      │          ├─ru
+│      │          ├─runtimes
+│      │          │  ├─linux
+│      │          │  │  └─lib
+│      │          │  │      └─netcoreapp2.0
+│      │          │  ├─linux-x64
+│      │          │  │  └─native
+│      │          │  ├─osx
+│      │          │  │  └─lib
+│      │          │  │      └─netcoreapp2.0
+│      │          │  ├─osx-x64
+│      │          │  │  └─native
+│      │          │  ├─unix
+│      │          │  │  └─lib
+│      │          │  │      └─netcoreapp2.1
+│      │          │  ├─win
+│      │          │  │  └─lib
+│      │          │  │      ├─netcoreapp2.0
+│      │          │  │      └─netcoreapp2.1
+│      │          │  ├─win-arm64
+│      │          │  │  └─native
+│      │          │  ├─win-x64
+│      │          │  │  └─native
+│      │          │  └─win-x86
+│      │          │      └─native
+│      │          ├─server
+│      │          │  ├─cs
+│      │          │  ├─de
+│      │          │  ├─es
+│      │          │  ├─fr
+│      │          │  ├─it
+│      │          │  ├─ja
+│      │          │  ├─ko
+│      │          │  ├─OA_Manage
+│      │          │  │  └─Steps
+│      │          │  ├─pl
+│      │          │  ├─pt-BR
+│      │          │  ├─ru
+│      │          │  ├─runtimes
+│      │          │  │  ├─alpine-x64
+│      │          │  │  │  └─native
+│      │          │  │  ├─linux
+│      │          │  │  │  └─lib
+│      │          │  │  │      └─netcoreapp2.0
+│      │          │  │  ├─linux-arm
+│      │          │  │  │  └─native
+│      │          │  │  ├─linux-arm64
+│      │          │  │  │  └─native
+│      │          │  │  ├─linux-armel
+│      │          │  │  │  └─native
+│      │          │  │  ├─linux-mips64
+│      │          │  │  │  └─native
+│      │          │  │  ├─linux-musl-x64
+│      │          │  │  │  └─native
+│      │          │  │  ├─linux-s390x
+│      │          │  │  │  └─native
+│      │          │  │  ├─linux-x64
+│      │          │  │  │  └─native
+│      │          │  │  ├─linux-x86
+│      │          │  │  │  └─native
+│      │          │  │  ├─osx
+│      │          │  │  │  └─lib
+│      │          │  │  │      └─netcoreapp2.0
+│      │          │  │  ├─osx-arm64
+│      │          │  │  │  └─native
+│      │          │  │  ├─osx-x64
+│      │          │  │  │  └─native
+│      │          │  │  ├─unix
+│      │          │  │  │  └─lib
+│      │          │  │  │      ├─net6.0
+│      │          │  │  │      ├─netcoreapp2.1
+│      │          │  │  │      └─netcoreapp3.1
+│      │          │  │  ├─win
+│      │          │  │  │  └─lib
+│      │          │  │  │      ├─net6.0
+│      │          │  │  │      ├─net7.0
+│      │          │  │  │      ├─netcoreapp2.0
+│      │          │  │  │      ├─netcoreapp2.1
+│      │          │  │  │      ├─netcoreapp3.1
+│      │          │  │  │      └─netstandard2.0
+│      │          │  │  ├─win-arm
+│      │          │  │  │  └─native
+│      │          │  │  ├─win-arm64
+│      │          │  │  │  └─native
+│      │          │  │  ├─win-x64
+│      │          │  │  │  └─native
+│      │          │  │  └─win-x86
+│      │          │  │      └─native
+│      │          │  ├─tr
+│      │          │  ├─zh-Hans
+│      │          │  └─zh-Hant
+│      │          ├─sqlite
+│      │          ├─sqlserver
+│      │          ├─sv
+│      │          ├─svg
+│      │          │  ├─fill
+│      │          │  ├─outline
+│      │          │  └─twotone
+│      │          ├─tr
+│      │          ├─zh-Hans
+│      │          └─zh-Hant
+│      └─obj
+│          └─Debug
+│              └─net6.0-windows
+│                  ├─ref
+│                  └─refint
+├─SetUp
+│  ├─AIStudio.Wpf.Bootstrapper
+│  │  ├─AIStudio.Wpf.Bootstrapper
+│  │  └─AIStudio.Wpf.BootstrapperCustomBA
+│  │      ├─Images
+│  │      │  └─adImage
+│  │      │      └─imageButton
+│  │      ├─Models
+│  │      ├─Properties
+│  │      ├─Resources
+│  │      │  └─Slider
+│  │      ├─ViewModels
+│  │      └─Views
+│  ├─AIStudio.Wpf.Install
+│  ├─AIStudio.Wpf.WixSetUp
+│  │  └─content
+│  ├─AIStudio.Wpf.WixXmlGenerate
+│  │  ├─BuildCodeTemplate
+│  │  └─Properties
+│  ├─AutoUpdater.NET
+│  │  ├─AutoUpdater.NET
+│  │  │  ├─build
+│  │  │  ├─Properties
+│  │  │  └─Resources
+│  │  ├─AutoUpdaterTest
+│  │  │  └─Properties
+│  │  ├─AutoUpdaterTestWPF
+│  │  │  └─Properties
+│  │  ├─Logo
+│  │  └─ZipExtractor
+│  │      ├─Properties
+│  │      └─Resources
+│  └─NetSparkle
+│      ├─.github
+│      │  └─workflows
+│      ├─doc
+│      │  └─generated
+│      ├─Extras
+│      │  ├─Release Notes Template
+│      │  └─Sample Update AppCast
+│      │      ├─MetaData
+│      │      └─Server Root
+│      │          ├─1.0.1
+│      │          └─1.0.2
+│      ├─nuget
+│      │  ├─core
+│      │  ├─tools
+│      │  └─winformsnetframework
+│      ├─src
+│      │  ├─NetSparkle
+│      │  │  ├─AppCastHandlers
+│      │  │  ├─ArtWork
+│      │  │  ├─AssemblyAccessors
+│      │  │  ├─Configurations
+│      │  │  ├─Downloaders
+│      │  │  ├─Enums
+│      │  │  ├─Events
+│      │  │  ├─Interfaces
+│      │  │  ├─Libraries
+│      │  │  ├─Properties
+│      │  │  └─SignatureVerifiers
+│      │  ├─NetSparkle.Samples.Avalonia
+│      │  │  └─Assets
+│      │  ├─NetSparkle.Samples.DownloadedExe
+│      │  │  └─Properties
+│      │  ├─NetSparkle.Samples.HandleEventsYourself
+│      │  ├─NetSparkle.Samples.NetCore.WinForms
+│      │  ├─NetSparkle.Samples.NetCore.WPF
+│      │  ├─NetSparkle.Samples.NetFramework.WinForms
+│      │  │  └─Properties
+│      │  ├─NetSparkle.Samples.NetFramework.WPF
+│      │  │  └─Properties
+│      │  ├─NetSparkle.Shared
+│      │  ├─NetSparkle.Tests
+│      │  │  └─Properties
+│      │  ├─NetSparkle.Tests.AppCastGenerator
+│      │  ├─NetSparkle.Tools.AppCastGenerator
+│      │  │  └─Properties
+│      │  ├─NetSparkle.Tools.DSAHelper
+│      │  │  └─Properties
+│      │  ├─NetSparkle.UI.Avalonia
+│      │  │  ├─Controls
+│      │  │  ├─Helpers
+│      │  │  ├─Interfaces
+│      │  │  ├─Lib
+│      │  │  └─ViewModels
+│      │  ├─NetSparkle.UI.WinForms.NetCore
+│      │  ├─NetSparkle.UI.WinForms.NetFramework
+│      │  │  └─Properties
+│      │  ├─NetSparkle.UI.WPF
+│      │  │  ├─Controls
+│      │  │  ├─Helpers
+│      │  │  ├─Interfaces
+│      │  │  ├─Properties
+│      │  │  └─ViewModels
+│      │  └─NetSparkle.Xamarin
+│      │      └─Properties
+│      └─TestAppFiles
+└─TestUnit
+    ├─TestHelpers
+    └─Tests
