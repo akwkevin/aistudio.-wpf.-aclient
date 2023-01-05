@@ -1,6 +1,35 @@
-# AClient
+#  AIStudio.Wpf.AClient 全新升级 【6.0正式上线，2023-01-02】
 
-写在前面，下载请选择net6或net5-new的分支（请勿使用VS2022预览版运行本库，推荐使用VS2019）
+写在前面，下载请选择net6-new的分支（推荐使用VS2022，或者VS2019最新版），[历史版本可查看net5-new和net6,别的版本不推荐使用],
+
+原先使用本框架的朋友注意了，后台使用全新框架AIStudio.Blazor.App（C#的BS版本后台同框架）
+
+本框架包括或后续将实现的内容：
+
+1.自动升级（待部署）
+
+2.采用Prism.DryIoc，而不采用Prism.Unity的原因
+
+3.AvlonDock的Prism实现步骤。
+
+4.使用AOP实现日志记录，AOP还可以帮我们做什么。
+
+5.代码生成器实现的思路。
+
+6.工作流的实现思路（包括工作流编辑器与后台实现）
+
+7.如何制作安装包（可自定义安装界面）。
+
+8.本地服务的启动思路。
+
+9.通用crud配置方法实现，无需定义类，只需要在数据库添加数据即可。
+
+10.拖拽式编程实现。
+
+11.与BS（blazor）使用相同的结构模式，如果BS与CS进行代码统一。
+
+12.Prism区域窗口多开，如何实现区域注册隔离。
+
 
 使用的控件库地址https://gitee.com/akwkevin/AI-wpf-controls（麻烦大家点个星，谢谢大家）
 
@@ -12,14 +41,9 @@ Wpf客户端，AIStudio.Wpf.AClient
 
 #### 软件架构
 本框架使用Prism做MVVM，优点咱就不说了，主要了容器注入，消息和DI，比自己写省很多事。网上有很多标准的MVVM的使用方法，但是没有形成一个系统级的框架。本框架从登录到具体业务的使用，还有自动升级都搭建完成，没有大神写的那么好，只是起个抛砖引玉的作用。
-后端使用ASP.net core，采用的是Colder.Admin.AntdVue的框架，强烈推荐大家去看，我在其基础上增加了一些功能.
-本项目使用的控件库Util.Controls也是开源的， **完全兼容MahApps.Metro** ，可以与MahApps.Metro同时使用，大家可在我的码云上下载。
+后端使用ASP.net core，采用的是AIStudio.Blazor.App的框架（与BS使用相同后台）.
 
 其它技术特点：AOP,MAP
-
-网页客户端浏览地址http://121.36.12.76:5001/ **(抱歉，已过期，请使用本地启动)** 
-（账号密码：Admin，Admin）
-接口浏览地址http://121.36.12.76:5000/swagger/index.html**(抱歉，已过期，请使用本地启动)** 
 
 #### 快速预览
 Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.exe.Config
@@ -37,30 +61,12 @@ Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.ex
     <add key="TitleAccent" value="Normal" />
     <add key="ToolBarLocation" value="Top" />
     <add key="Version" value="1.0.20201115-rc3" />
-    <add key="ServerIP" value="http://121.36.12.76:5000" />
+    <add key="ServerIP" value="http://localhost:5000" />
     <add key="UpdateAddress" value="http://121.36.12.76:5000/update" />
   </appSettings>
 ```
 
-
- **快速预览方式1：** 其中ServerIP就是后台接口地址，http://121.36.12.76:5000可直接使用。**(抱歉，已过期，请使用本地启动)** 
-
-账号密码：Admin，Admin。
-
- **快速预览方式2** ：不需要服务器，客户端直接使用SQLite本地数据，客户端独立运行。账号密码Admin, Admin
-```
-<add key="ServerIP" value=""/> 
-<add key="UpdateAddress" value="http://121.36.12.76:5000/Update/AutoUpdater.xml"/>
-<add key="ConString" value="Data Source=Admin.db"/>
-<add key="DatabaseType" value="SQLite"/>
-<add key="DeleteMode" value="Logic"/>
-```
-注释掉ServerIP，那么是使用efcore获取数据，改变ConString和DatabaseType即可。另外，默认数据库删除模式为软删除。
-
- **快速预览方式3** ：启动ServiceMonitor，点击启动服务，待本地服务启动后，可运行客户端进行连接。
-```
-<add key="ServerIP" value="http://localhost:5000" />
-```
+启动ServiceMonitor，点击启动服务，待本地服务启动后，可运行客户端进行连接。
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0822/170817_84186e95_4799126.png "屏幕截图.png")
 
@@ -111,6 +117,44 @@ protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
 
 #### 大屏界面（可拖拽，可全屏）
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0912/103244_4abe087a_4799126.png "屏幕截图.png")
+
+#### 6.0的框架如下,2023-01-02
+
+```
+├─Application
+│  ├─AIStudio.Wpf.Business 
+│  │  ├─AOP
+│  │  ├─Bussiness 
+│  │  ├─IBussiness
+│  │  ├─ILogger 
+│  │  ├─Logger
+│  ├─AIStudio.Wpf.Client（启动项目）
+│  ├─AIStudio.Wpf.Entity
+│  │  ├─DTOModels
+│  │  ├─Models
+│  ├─api
+│  │  └─AIStudio.Wpf.ApiBusiness （向后台请求方法）
+├─Common
+│  ├─AIStudio.AOP
+│  ├─AIStudio.Core
+│  ├─AIStudio.DbFactory   （代码生成使用）
+│  ├─AIStudio.LocalConfiguration
+│  └─AIStudio.Resource
+├─Others
+│  ├─Dirkster.AvalonDock （主界面Tab控件）
+│  │  ├─Accelerider.Extensions   
+│  │  ├─AIStudio.Wpf.PrismAvalonExtensions  （Prism扩展）
+├─Page
+│  ├─AIStudio.Wpf.Agile_Development  （通用crud配置方法实现）
+│  ├─AIStudio.Wpf.BasePage （ViewModel的基类）
+│  ├─AIStudio.Wpf.Base_Manage （基础管理类）
+│  ├─AIStudio.Wpf.Home (主界面)
+│  ├─AIStudio.Wpf.LayoutPage （我的控制台）
+│  ├─AIStudio.Wpf.OA_Manage （工作流程）
+│  └─AIStudio.Wpf.Quartz_Manage （任务管理）
+├─ServiceMonitor（本地服务启动）
+│  └─ServiceMonitor
+```
 
 #### 3.0新增功能如下，2022-06-01
 
