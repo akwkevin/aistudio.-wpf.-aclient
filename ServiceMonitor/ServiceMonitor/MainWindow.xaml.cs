@@ -28,7 +28,14 @@ namespace ServiceMonitor
         {
             InitializeComponent();
 
+            this.DataContext = new MainWindowViewModel();
             this.Closing += MainWindow_Closing;
+            this.Loaded += MainWindow_Loaded;
+        }
+
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+           await (this.DataContext as MainWindowViewModel).Refresh();
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)

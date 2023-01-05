@@ -47,13 +47,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.44" />
     <PackageReference Include="Prism.Core" Version="8.1.97" />
     <PackageReference Include="System.Management" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Application\AIStudio.Wpf.Business\AIStudio.Wpf.Business.csproj" />
-    <ProjectReference Include="..\..\Page\AIStudio.Wpf.BasePage\AIStudio.Wpf.BasePage.csproj" />
+    <PackageReference Include="MahApps.Metro" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

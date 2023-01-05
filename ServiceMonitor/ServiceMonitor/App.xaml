@@ -1,7 +1,8 @@
-﻿<prism:MyPrismApplication x:Class="ServiceMonitor.App"
+﻿<Application x:Class="WpfApp1.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:prism="clr-namespace:AIStudio.Wpf.PrismAvalonExtensions;assembly=AIStudio.Wpf.PrismAvalonExtensions">
+             xmlns:local="clr-namespace:ServiceMonitor"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,4 +16,4 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-</prism:MyPrismApplication>
+</Application>

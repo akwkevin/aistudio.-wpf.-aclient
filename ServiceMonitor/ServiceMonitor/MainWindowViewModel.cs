@@ -1,15 +1,7 @@
-﻿using Accelerider.Extensions.Mvvm;
-using AIStudio.Core;
-using AIStudio.LocalConfiguration;
-using AIStudio.Wpf.Business;
-using AIStudio.Wpf.Entity.DTOModels;
-using Newtonsoft.Json;
-using Prism.Commands;
-using Prism.Ioc;
+﻿using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +11,7 @@ using System.Windows.Input;
 
 namespace ServiceMonitor
 {
-    class MainWindowViewModel : BindableBase, IViewLoadedAndUnloadedAwareAsync
+    class MainWindowViewModel : BindableBase
     {
         private string _databaseType = "Sqlite";
         public string DatabaseType
@@ -110,12 +102,6 @@ namespace ServiceMonitor
             }
         }
 
-        protected IDataProvider _dataProvider { get => ContainerLocator.Current.Resolve<IDataProvider>(); } 
-        protected IOperator _operator { get => ContainerLocator.Current.Resolve<IOperator>(); }
-        protected IUserConfig _userConfig { get => ContainerLocator.Current.Resolve<IUserConfig>(); }
-
-        protected ILogger _logger { get; }
-
         public MainWindowViewModel()
         {     
             SystemInformation =
@@ -185,7 +171,7 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
             await Refresh();
         }
 
-        private async Task Refresh()
+        public async Task Refresh()
         {
             List<int> list_pid = CmdHelper.GetPidByPort(Port);
             if (list_pid.Count == 0)
@@ -209,16 +195,6 @@ $"RAM: {(DisplayDataSize)(SystemInfo.TotalVisibleMemorySize * 1024)};";
         {
             System.Diagnostics.Process.Start("explorer.exe", $"http://localhost:{Port}/swagger/index.html");
 
-        }
-
-        public async Task OnLoaded(object sender, RoutedEventArgs e)
-        {
-            await Refresh();
-        }
-
-        public Task OnUnloaded(object sender, RoutedEventArgs e)
-        {
-          return Task.CompletedTask;
         }
     }
 }
