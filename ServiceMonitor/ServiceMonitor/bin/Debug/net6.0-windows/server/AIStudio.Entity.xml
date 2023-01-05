@@ -1,0 +1,1333 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AIStudio.Entity</name>
+    </assembly>
+    <members>
+        <member name="P:AIStudio.Entity.KeyBaseEntity`1.Id">
+            <summary>
+            自然主键
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.ReadOnlyBaseEntity`1.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.ReadOnlyBaseEntity`1.CreatorId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.ReadOnlyBaseEntity`1.CreatorName">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.ReadOnlyBaseEntity`1.TenantId">
+            <summary>
+            租户Id
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.PhysicDeleteBaseEntity`1">
+            <summary>
+            泛型实体基类(物理删除，无Deleted)
+            </summary>
+            <typeparam name="TPrimaryKey">主键类型</typeparam>
+        </member>
+        <member name="P:AIStudio.Entity.PhysicDeleteBaseEntity`1.ModifyTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.PhysicDeleteBaseEntity`1.ModifyId">
+            <summary>
+            修改人Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.PhysicDeleteBaseEntity`1.ModifyName">
+            <summary>
+            修改人
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.BaseEntity`1">
+            <summary>
+            泛型实体基类，软删除
+            </summary>
+            <typeparam name="TPrimaryKey">主键类型</typeparam>
+        </member>
+        <member name="P:AIStudio.Entity.BaseEntity`1.Deleted">
+            <summary>
+            否已删除
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.KeyBaseEntity">
+            <summary>
+            主键基类
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.ReadOnlyBaseEntity">
+            <summary>
+            定义默认主键类型为String的只读实体基类
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.PhysicDeleteBaseEntity">
+            <summary>
+            定义默认主键类型为String的硬删除实体基类
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.BaseEntity">
+            <summary>
+            定义默认主键类型为String的实体基类
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_Action">
+            <summary>
+            系统权限表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Action.ParentId">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Action.Type">
+            <summary>
+            类型,菜单=0,页面=1,权限=2
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Action.Name">
+            <summary>
+            权限名/菜单名
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Action.Url">
+            <summary>
+            菜单地址
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Action.Value">
+            <summary>
+            权限值
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Action.NeedAction">
+            <summary>
+            是否需要权限(仅页面有效)
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Action.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Action.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_AppSecret">
+            <summary>
+            应用密钥表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_AppSecret.AppId">
+            <summary>
+            应用Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_AppSecret.AppSecret">
+            <summary>
+            应用密钥
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_AppSecret.AppName">
+            <summary>
+            应用名
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_CommonFormConfig">
+            <summary>
+            通用表单查询配置表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.Table">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.Header">
+            <summary>
+            列头
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.PropertyName">
+            <summary>
+            属性名
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.PropertyType">
+            <summary>
+            属性类型
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.DisplayIndex">
+            <summary>
+            显示索引
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.Type">
+            <summary>
+            配置类型 查询=0，列表=1
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.StringFormat">
+            <summary>
+            格式化
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.Visibility">
+            <summary>
+            是否显示 Visible = 0,Hidden = 1,Collapsed = 2
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.ControlType">
+            <summary>
+            控件类型，仅控件框使用
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.IsReadOnly">
+            <summary>
+            只读
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.IsRequired">
+            <summary>
+            必输项
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.ItemSource">
+            <summary>
+            字典名
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.Value">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.Regex">
+            <summary>
+            正则校验表达式
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.ErrorMessage">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.SortMemberPath">
+            <summary>
+            排序名
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.Converter">
+            <summary>
+            转换器
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.ConverterParameter">
+            <summary>
+            转换参数
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.HorizontalAlignment">
+            <summary>
+            对齐方式 Left = 0,Center = 1,Right = 2,Stretch = 3
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.MaxWidth">
+            <summary>
+            最大宽度
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.MinWidth">
+            <summary>
+            最小宽度
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.Width">
+            <summary>
+            列表宽度
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.CanUserReorder">
+            <summary>
+            是否可以重排
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.CanUserResize">
+            <summary>
+            是否可以调整大小
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.CanUserSort">
+            <summary>
+            是否可以排序
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.CellStyle">
+            <summary>
+            单元格样式，暂未实现
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.HeaderStyle">
+            <summary>
+            列头样式，赞未实现
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.BackgroundExpression">
+            <summary>
+            背景颜色触发公式
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_CommonFormConfig.ForegroundExpression">
+            <summary>
+            前景颜色触发公式
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_DbLink">
+            <summary>
+            数据库连接表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_DbLink.LinkName">
+            <summary>
+            连接名
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_DbLink.ConnectionStr">
+            <summary>
+            连接字符串
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_DbLink.DbType">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_Department">
+            <summary>
+            部门表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Department.Name">
+            <summary>
+            部门名
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Department.ParentId">
+            <summary>
+            上级部门Id
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_Dictionary">
+            <summary>
+            系统字典表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Dictionary.ParentId">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Dictionary.Type">
+            <summary>
+            类型,字典项=0,数据集=1
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Dictionary.ControlType">
+            <summary>
+            数据类型
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Dictionary.Value">
+            <summary>
+            数据值
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Dictionary.Code">
+            <summary>
+            Value相同，使用Code区分，暂时没启用
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Dictionary.Text">
+            <summary>
+            显示值
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Dictionary.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Dictionary.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_LogException">
+            <summary>
+            异常记录表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogException.EventId">
+            <summary>
+            异常事件Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogException.Name">
+            <summary>
+            异常名称
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogException.Message">
+            <summary>
+            异常消息
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogException.ClassName">
+            <summary>
+            类名称
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogException.MethodName">
+            <summary>
+            方法名称
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogException.ExceptionSource">
+            <summary>
+            异常源
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogException.StackTrace">
+            <summary>
+            堆栈信息
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogException.Parameters">
+            <summary>
+            请求参数
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogException.LogTime">
+            <summary>
+            异常时间
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_LogOperating">
+            <summary>
+            操作表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.Name">
+            <summary>
+            日志名称
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.IsSuccess">
+            <summary>
+            是否执行成功
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.Message">
+            <summary>
+            具体消息
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.Browser">
+            <summary>
+            浏览器
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.OperatingSystem">
+            <summary>
+            操作系统
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.Ip">
+            <summary>
+            IP
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.Url">
+            <summary>
+            完整请求地址
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.Path">
+            <summary>
+            请求路径
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.ClassName">
+            <summary>
+            类名称
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.MethodName">
+            <summary>
+            方法名称
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.RequestMethod">
+            <summary>
+            请求方式
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.Body">
+            <summary>
+            请求Body
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.Result">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.ElapsedTime">
+            <summary>
+            耗时（毫秒）
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.LogTime">
+            <summary>
+            操作时间
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogOperating.TenantId">
+            <summary>
+            租户Id
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_LogSystem">
+            <summary>
+            操作记录表
+            </summary> 
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogSystem.LogType">
+            <summary>
+            日志类型
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogSystem.Name">
+            <summary>
+            日志名称
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogSystem.Message">
+            <summary>
+            日志内容
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogSystem.LogTime">
+            <summary>
+            日志时间
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_LogVisit">
+            <summary>
+            访问日志表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.Name">
+            <summary>
+            日志名称
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.IsSuccess">
+            <summary>
+            是否执行成功
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.Message">
+            <summary>
+            具体消息
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.Browser">
+            <summary>
+            浏览器
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.OperatingSystem">
+            <summary>
+            操作系统
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.Ip">
+            <summary>
+            IP
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.Url">
+            <summary>
+            完整请求地址
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.Path">
+            <summary>
+            请求路径
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.ClassName">
+            <summary>
+            类名称
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.MethodName">
+            <summary>
+            方法名称
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.RequestMethod">
+            <summary>
+            请求方式
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.Body">
+            <summary>
+            请求Body
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.Result">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.ElapsedTime">
+            <summary>
+            耗时（毫秒）
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_LogVisit.LogTime">
+            <summary>
+            日志时间
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_Role">
+            <summary>
+            系统角色表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Role.RoleName">
+            <summary>
+            角色名
+            </summary>    
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_RoleAction">
+            <summary>
+            角色权限表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_RoleAction.RoleId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_RoleAction.ActionId">
+            <summary>
+            权限Id
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_Test">
+            <summary>
+            Base_Test
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.Id">
+            <summary>
+            自然主键
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.ParentId">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.Type">
+            <summary>
+            类型,菜单=0,页面=1,权限=2
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.Name">
+            <summary>
+            权限名/菜单名
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.Url">
+            <summary>
+            菜单地址
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.Value">
+            <summary>
+            权限值
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.NeedTest">
+            <summary>
+            是否需要权限(仅页面有效)
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.Deleted">
+            <summary>
+            否已删除
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.ModifyTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.CreatorId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.CreatorName">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.ModifyId">
+            <summary>
+            修改人Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.ModifyName">
+            <summary>
+            修改人
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_Test.TenantId">
+            <summary>
+            租户Id
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_User">
+            <summary>
+            系统用户表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_User.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_User.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_User.RealName">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_User.Sex">
+            <summary>
+            性别
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_User.Birthday">
+            <summary>
+            出生日期
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_User.DepartmentId">
+            <summary>
+            所属部门Id
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Base_Manage.Base_UserRole">
+            <summary>
+            用户角色表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_UserRole.Id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_UserRole.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_UserRole.CreatorId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_UserRole.CreatorName">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_UserRole.Deleted">
+            <summary>
+            否已删除
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_UserRole.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Base_Manage.Base_UserRole.RoleId">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.DTO.OA_Manage.OA_Data">
+            <summary>
+            OA_Data
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Data.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Data.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+            <value>
+            The version.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Data.DataType">
+            <summary>
+            Gets or sets the type of the data.
+            </summary>
+            <value>
+            The type of the data.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Data.FirstStart">
+            <summary>
+            Gets or sets a value indicating whether [first start].
+            </summary>
+            <value>
+              <c>true</c> if [first start]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Data.Steps">
+            <summary>
+            Gets or sets the steps.
+            </summary>
+            <value>
+            The steps.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Data.CurrentStepIds">
+            <summary>
+            Gets or sets the current step ids.
+            </summary>
+            <value>
+            The current step ids.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Data.MyEvent">
+            <summary>
+            Gets or sets my event.
+            </summary>
+            <value>
+            My event.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Data.Flag">
+            <summary>
+            Gets or sets the flag.
+            </summary>
+            <value>
+            The flag.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Data.Nodes">
+            <summary>
+            Gets or sets the nodes.
+            </summary>
+            <value>
+            The nodes.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Data.Links">
+            <summary>
+            Gets or sets the links.
+            </summary>
+            <value>
+            The links.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Data.Groups">
+            <summary>
+            Gets or sets the groups.
+            </summary>
+            <value>
+            The groups.
+            </value>
+        </member>
+        <member name="T:AIStudio.Entity.DTO.OA_Manage.OA_Step">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Step.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Step.Label">
+            <summary>
+            Gets or sets the label.
+            </summary>
+            <value>
+            The label.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Step.StepType">
+            <summary>
+            Gets or sets the type of the step.
+            </summary>
+            <value>
+            The type of the step.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Step.PreStepId">
+            <summary>
+            Gets or sets the pre step identifier.
+            </summary>
+            <value>
+            The pre step identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Step.NextStepId">
+            <summary>
+            Gets or sets the next step identifier.
+            </summary>
+            <value>
+            The next step identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Step.Status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>
+            The status.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Step.ActRules">
+            <summary>
+            Gets or sets the act rules.
+            </summary>
+            <value>
+            The act rules.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_Step.SelectNextStep">
+            <summary>
+            Gets or sets the select next step.
+            </summary>
+            <value>
+            The select next step.
+            </value>
+        </member>
+        <member name="T:AIStudio.Entity.DTO.OA_Manage.CurrentStepId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.CurrentStepId.StepId">
+            <summary>
+            Gets or sets the step identifier.
+            </summary>
+            <value>
+            The step identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.CurrentStepId.StepLabel">
+            <summary>
+            Gets or sets the step label.
+            </summary>
+            <value>
+            The step label.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.CurrentStepId.ActRules">
+            <summary>
+            Gets or sets the act rules.
+            </summary>
+            <value>
+            The act rules.
+            </value>
+        </member>
+        <member name="T:AIStudio.Entity.DTO.OA_Manage.ActRule">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.ActRule.UserIds">
+            <summary>
+            Gets or sets the user ids.
+            </summary>
+            <value>
+            The user ids.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.ActRule.UserNames">
+            <summary>
+            Gets or sets the user names.
+            </summary>
+            <value>
+            The user names.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.ActRule.RoleIds">
+            <summary>
+            Gets or sets the role ids.
+            </summary>
+            <value>
+            The role ids.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.ActRule.RoleNames">
+            <summary>
+            Gets or sets the role names.
+            </summary>
+            <value>
+            The role names.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.ActRule.ActType">
+            <summary>
+            Gets or sets the type of the act.
+            </summary>
+            <value>
+            The type of the act.
+            </value>
+        </member>
+        <member name="T:AIStudio.Entity.DTO.OA_Manage.MyEvent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.MyEvent.EventName">
+            <summary>
+            Gets or sets the name of the event.
+            </summary>
+            <value>
+            The name of the event.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.MyEvent.EventKey">
+            <summary>
+            Gets or sets the event key.
+            </summary>
+            <value>
+            The event key.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.MyEvent.Status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>
+            The status.
+            </value>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.MyEvent.Remarks">
+            <summary>
+            Gets or sets the remarks.
+            </summary>
+            <value>
+            The remarks.
+            </value>
+        </member>
+        <member name="T:AIStudio.Entity.DTO.OA_Manage.StepType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.StepType.Start">
+            <summary>
+            The start
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.StepType.Middle">
+            <summary>
+            The middle
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.StepType.End">
+            <summary>
+            The end
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.StepType.Normal">
+            <summary>
+            The normal
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.StepType.Data">
+            <summary>
+            The data
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.StepType.Decide">
+            <summary>
+            The decide
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.StepType.COBegin">
+            <summary>
+            The co begin
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.StepType.COEnd">
+            <summary>
+            The co end
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.DTO.OA_Manage.OA_Status">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.OA_Status.Default">
+            <summary>
+            The default
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.OA_Status.Being">
+            <summary>
+            The being
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.OA_Status.Goback">
+            <summary>
+            The goback
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.OA_Status.Restart">
+            <summary>
+            The restart
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.OA_Status.Reject">
+            <summary>
+            The reject
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.OA_Status.Discard">
+            <summary>
+            The discard
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.OA_Status.Suspend">
+            <summary>
+            The suspend
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.OA_Status.Resume">
+            <summary>
+            The resume
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.OA_Status.Fail">
+            <summary>
+            The fail
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.OA_Status.PartialApproval">
+            <summary>
+            The partial approval
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.DTO.OA_Manage.OA_Status.Approve">
+            <summary>
+            The approve
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_UserFormInputDTO.UserId">
+            <summary>
+            审批进行中
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_UserFormInputDTO.ApplicantUserId">
+            <summary>
+            等待审批中
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_UserFormInputDTO.CreatorId">
+            <summary>
+            创建的
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.DTO.OA_Manage.OA_UserFormInputDTO.AlreadyUserIds">
+            <summary>
+            审批过
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.ActionType">
+            <summary>
+            类型,菜单=0,页面=1,权限=2
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.DictionaryType">
+            <summary>
+            类型,字典项=0,数据集=1
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.EmailStatus.Draft">
+            <summary>
+            草稿中
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.EmailStatus.Published">
+            <summary>
+            已发布
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.EmailStatus.Withdraw">
+            <summary>
+            撤回
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.NoticeMode.All">
+            <summary>
+            所有
+            </summary>        
+        </member>
+        <member name="F:AIStudio.Entity.NoticeMode.User">
+            <summary>
+            用户
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.NoticeMode.Role">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.NoticeMode.Department">
+            <summary>
+            部门
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.NoticeStatus.Draft">
+            <summary>
+            草稿中
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.NoticeStatus.Published">
+            <summary>
+            已发布
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.NoticeStatus.Withdraw">
+            <summary>
+            撤回
+            </summary>
+        </member>
+        <member name="F:AIStudio.Entity.NoticeType.Normal">
+            <summary>
+            普通通告
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.RoleTypes">
+            <summary>
+            系统角色类型
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Enum.UserLogType">
+            <summary>
+            系统日志类型
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.OA_Manage.OA_DefForm">
+            <summary>
+            OA表单定义
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.OA_Manage.OA_DefForm.Value">
+            <summary>
+            权限值
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.OA_Manage.OA_UserForm">
+            <summary>
+            OA表单流程
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.OA_Manage.OA_UserFormStep">
+            <summary>
+            OA表单流程
+            </summary>
+        </member>
+        <member name="T:AIStudio.Entity.Quartz_Manage.Quartz_Task">
+            <summary>
+            任务管理表
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Quartz_Manage.Quartz_Task.TaskName">
+            <summary>
+            作业名称
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Quartz_Manage.Quartz_Task.IsEnabled">
+            <summary>
+            启用状态
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Quartz_Manage.Quartz_Task.Cron">
+            <summary>
+            Cron表达式
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Quartz_Manage.Quartz_Task.ActionClass">
+            <summary>
+            任务类名
+            </summary>
+        </member>
+        <member name="P:AIStudio.Entity.Quartz_Manage.Quartz_Task.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+    </members>
+</doc>

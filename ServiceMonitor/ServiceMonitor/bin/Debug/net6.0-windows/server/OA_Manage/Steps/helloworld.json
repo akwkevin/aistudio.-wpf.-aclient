@@ -1,0 +1,16 @@
+{
+  "Id": "OAHelloWorld",
+  "Version": 0,
+  "Steps": [
+    {
+      "Id": "Hello",
+      "HelloName": "kevin",
+      "StepType": "AIStudio.Business.OA_Manage.Steps.Test.OAHelloWorld, AIStudio.Business",
+      "NextStepId": "Bye"
+    },
+    {
+      "Id": "Bye",
+      "StepType": "AIStudio.Business.OA_Manage.Steps.Test.OAGoodbyeWorld, AIStudio.Business"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+﻿{
+  "Id": "371406339383365",
+  "Version": 0,
+  "DataType": "AIStudio.Entity.DTO.OA_Manage.OA_Data, AIStudio.Entity",
+  "FirstStart": true,
+  "Steps": [
+    {
+      "Id": "de79d6e2-92b6-4bf1-a5f1-354f9659301e",
+      "Label": "开始",
+      "StepType": "AIStudio.Business.OA_Manage.Steps.OAStartStep, AIStudio.Business",
+      "PreStepId": null,
+      "NextStepId": "7abb7cd7-ffec-4204-8485-22990e2b3d83",
+      "Status": 0,
+      "ActRules": {
+        "UserIds": null,
+        "UserNames": null,
+        "RoleIds": null,
+        "RoleNames": null,
+        "ActType": null
+      },
+      "SelectNextStep": {}
+    },
+    {
+      "Id": "7abb7cd7-ffec-4204-8485-22990e2b3d83",
+      "Label": "财务人力同时审批",
+      "StepType": "AIStudio.Business.OA_Manage.Steps.OAMiddleStep, AIStudio.Business",
+      "PreStepId": null,
+      "NextStepId": "6c38111d-7c90-45f7-ab32-e1b64652b9eb",
+      "Status": 0,
+      "ActRules": {
+        "UserIds": [ "Admin", "Bob", "Alice" ],
+        "UserNames": null,
+        "RoleIds": null,
+        "RoleNames": null,
+        "ActType": "and"
+      },
+      "SelectNextStep": {}
+    },
+    {
+      "Id": "6c38111d-7c90-45f7-ab32-e1b64652b9eb",
+      "Label": "结束",
+      "StepType": "AIStudio.Business.OA_Manage.Steps.OAEndStep, AIStudio.Business",
+      "PreStepId": null,
+      "NextStepId": null,
+      "Status": 0,
+      "ActRules": {
+        "UserIds": null,
+        "UserNames": null,
+        "RoleIds": null,
+        "RoleNames": null,
+        "ActType": null
+      },
+      "SelectNextStep": {}
+    }
+  ],
+  "CurrentStepIds": [],
+  "MyEvent": null,
+  "Flag": 0.0,
+  "Nodes": [
+    {
+      "Kind": 1,
+      "UserIds": null,
+      "RoleIds": null,
+      "ActType": null,
+      "Id": "de79d6e2-92b6-4bf1-a5f1-354f9659301e",
+      "ParentId": null,
+      "Name": "开始节点",
+      "Color": "#1890ff",
+      "Label": "开始",
+      "Width": 100.0,
+      "Height": 80.0,
+      "X": 137.5,
+      "Y": 22.5,
+      "Type": "FlowchartNode",
+      "ZIndex": 0,
+      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right" ]
+    },
+    {
+      "Kind": 3,
+      "UserIds": [ "Admin", "Bob", "Alice" ],
+      "RoleIds": null,
+      "ActType": "and",
+      "Id": "7abb7cd7-ffec-4204-8485-22990e2b3d83",
+      "ParentId": null,
+      "Name": "中间节点",
+      "Color": "#1890ff",
+      "Label": "财务人力同时审批",
+      "Width": 100.0,
+      "Height": 80.0,
+      "X": 137.5,
+      "Y": 147.5,
+      "Type": "FlowchartNode",
+      "ZIndex": 0,
+      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right" ]
+    },
+    {
+      "Kind": 2,
+      "UserIds": null,
+      "RoleIds": null,
+      "ActType": null,
+      "Id": "6c38111d-7c90-45f7-ab32-e1b64652b9eb",
+      "ParentId": null,
+      "Name": "结束节点",
+      "Color": "#1890ff",
+      "Label": "结束",
+      "Width": 100.0,
+      "Height": 80.0,
+      "X": 137.5,
+      "Y": 272.5,
+      "Type": "FlowchartNode",
+      "ZIndex": 0,
+      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right" ]
+    }
+  ],
+  "Links": [
+    {
+      "Id": "38b72d9b-ff08-4438-b3d7-3844c963c30a",
+      "Color": null,
+      "SelectedColor": null,
+      "Width": 2.0,
+      "Label": null,
+      "SourceId": "de79d6e2-92b6-4bf1-a5f1-354f9659301e",
+      "TargetId": "7abb7cd7-ffec-4204-8485-22990e2b3d83",
+      "SourcePortAlignment": "Bottom",
+      "TargetPortAlignment": "Top",
+      "Type": "DiagramLink",
+      "Router": null,
+      "PathGenerator": null,
+      "SourceMarkerPath": null,
+      "SourceMarkerWidth": null,
+      "TargetMarkerPath": null,
+      "TargetMarkerWidth": null
+    },
+    {
+      "Id": "45324421-99cc-4945-b5f3-d85f6b210497",
+      "Color": null,
+      "SelectedColor": null,
+      "Width": 2.0,
+      "Label": null,
+      "SourceId": "7abb7cd7-ffec-4204-8485-22990e2b3d83",
+      "TargetId": "6c38111d-7c90-45f7-ab32-e1b64652b9eb",
+      "SourcePortAlignment": "Bottom",
+      "TargetPortAlignment": "Top",
+      "Type": "DiagramLink",
+      "Router": null,
+      "PathGenerator": null,
+      "SourceMarkerPath": null,
+      "SourceMarkerWidth": null,
+      "TargetMarkerPath": null,
+      "TargetMarkerWidth": null
+    }
+  ],
+  "Groups": null
+}

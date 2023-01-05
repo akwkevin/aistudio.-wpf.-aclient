@@ -1,0 +1,3059 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AIStudio.Util</name>
+    </assembly>
+    <members>
+        <member name="T:AIStudio.Util.Common.AjaxResult">
+            <summary>
+            Ajax请求结果
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.Common.AjaxResult.Success">
+            <summary>
+            是否成功
+            </summary>
+            <value>
+              <c>true</c> if success; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.AjaxResult.Code">
+            <summary>
+            错误代码
+            </summary>
+            <value>
+            The code.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.AjaxResult.Msg">
+            <summary>
+            返回消息
+            </summary>
+            <value>
+            The MSG.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.AjaxResult.Data">
+            <summary>
+            返回数据
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.AjaxResult.Total">
+            <summary>
+            Gets or sets the total.
+            </summary>
+            <value>
+            The total.
+            </value>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult.#ctor(System.Int32,System.String,System.Object,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:AIStudio.Util.Common.AjaxResult"/> class.
+            </summary>
+            <param name="code">The code.</param>
+            <param name="message">The message.</param>
+            <param name="data">The data.</param>
+            <param name="success">if set to <c>true</c> [success].</param>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult.Status200OK(System.String,System.Object)">
+            <summary>
+            Status200s the ok.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="data">The data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult.Status400BadRequest(System.String,System.Object)">
+            <summary>
+            Status400s the bad request.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="data">The data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult.Status401Unauthorized(System.String,System.Object)">
+            <summary>
+            Status401s the unauthorized.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="data">The data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult.Status403Forbidden(System.String,System.Object)">
+            <summary>
+            Status403s the forbidden.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="data">The data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult.Status404NotFound(System.String,System.Object)">
+            <summary>
+            Status404s the not found.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="data">The data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult.Status409Conflict(System.String,System.Object)">
+            <summary>
+            Status409s the conflict.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="data">The data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult.Status500InternalServerError(System.String,System.Object)">
+            <summary>
+            Status500s the internal server error.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="data">The data.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Util.Common.UploadResult">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.Common.UploadResult.name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.UploadResult.status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>
+            The status.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.UploadResult.thumbUrl">
+            <summary>
+            Gets or sets the thumb URL.
+            </summary>
+            <value>
+            The thumb URL.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.UploadResult.url">
+            <summary>
+            Gets or sets the URL.
+            </summary>
+            <value>
+            The URL.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.UploadResult.uploaded">
+            <summary>
+            Gets or sets the uploaded.
+            </summary>
+            <value>
+            The uploaded.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.Common.AjaxResult`1">
+            <summary>
+            Ajax请求结果
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.Common.AjaxResult`1.Data">
+            <summary>
+            返回数据
+            </summary>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult`1.Status200OK(System.String,`0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult`1.Status400BadRequest(System.String,`0)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult`1.Status401Unauthorized(System.String,`0)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult`1.Status403Forbidden(System.String,`0)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult`1.Status404NotFound(System.String,`0)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult`1.Status409Conflict(System.String,`0)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.AjaxResult`1.Status500InternalServerError(System.String,`0)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Util.Common.AjaxResultMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.AjaxResultMessage.Status200OK">
+            <summary>
+            The status200 ok
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.AjaxResultMessage.Status400BadRequest">
+            <summary>
+            The status400 bad request
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.AjaxResultMessage.Status401Unauthorized">
+            <summary>
+            The status401 unauthorized
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.AjaxResultMessage.Status403Forbidden">
+            <summary>
+            The status403 forbidden
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.AjaxResultMessage.Status404NotFound">
+            <summary>
+            The status404 not found
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.AjaxResultMessage.Status409Conflict">
+            <summary>
+            The status409 conflict
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.AjaxResultMessage.Status500InternalServerError">
+            <summary>
+            The status500 internal server error
+            </summary>
+        </member>
+        <member name="T:AIStudio.Util.Common.StatusCodes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status100Continue">
+            <summary>
+            The status100 continue
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status412PreconditionFailed">
+            <summary>
+            The status412 precondition failed
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status413RequestEntityTooLarge">
+            <summary>
+            The status413 request entity too large
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status413PayloadTooLarge">
+            <summary>
+            The status413 payload too large
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status414RequestUriTooLong">
+            <summary>
+            The status414 request URI too long
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status414UriTooLong">
+            <summary>
+            The status414 URI too long
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status415UnsupportedMediaType">
+            <summary>
+            The status415 unsupported media type
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status416RequestedRangeNotSatisfiable">
+            <summary>
+            The status416 requested range not satisfiable
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status416RangeNotSatisfiable">
+            <summary>
+            The status416 range not satisfiable
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status417ExpectationFailed">
+            <summary>
+            The status417 expectation failed
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status418ImATeapot">
+            <summary>
+            The status418 im a teapot
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status419AuthenticationTimeout">
+            <summary>
+            The status419 authentication timeout
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status421MisdirectedRequest">
+            <summary>
+            The status421 misdirected request
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status422UnprocessableEntity">
+            <summary>
+            The status422 unprocessable entity
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status423Locked">
+            <summary>
+            The status423 locked
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status424FailedDependency">
+            <summary>
+            The status424 failed dependency
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status426UpgradeRequired">
+            <summary>
+            The status426 upgrade required
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status428PreconditionRequired">
+            <summary>
+            The status428 precondition required
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status429TooManyRequests">
+            <summary>
+            The status429 too many requests
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status431RequestHeaderFieldsTooLarge">
+            <summary>
+            The status431 request header fields too large
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status451UnavailableForLegalReasons">
+            <summary>
+            The status451 unavailable for legal reasons
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status500InternalServerError">
+            <summary>
+            The status500 internal server error
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status501NotImplemented">
+            <summary>
+            The status501 not implemented
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status502BadGateway">
+            <summary>
+            The status502 bad gateway
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status503ServiceUnavailable">
+            <summary>
+            The status503 service unavailable
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status504GatewayTimeout">
+            <summary>
+            The status504 gateway timeout
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status505HttpVersionNotsupported">
+            <summary>
+            The status505 HTTP version notsupported
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status506VariantAlsoNegotiates">
+            <summary>
+            The status506 variant also negotiates
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status507InsufficientStorage">
+            <summary>
+            The status507 insufficient storage
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status508LoopDetected">
+            <summary>
+            The status508 loop detected
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status411LengthRequired">
+            <summary>
+            The status411 length required
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status510NotExtended">
+            <summary>
+            The status510 not extended
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status410Gone">
+            <summary>
+            The status410 gone
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status408RequestTimeout">
+            <summary>
+            The status408 request timeout
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status101SwitchingProtocols">
+            <summary>
+            The status101 switching protocols
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status102Processing">
+            <summary>
+            The status102 processing
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status200OK">
+            <summary>
+            The status200 ok
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status201Created">
+            <summary>
+            The status201 created
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status202Accepted">
+            <summary>
+            The status202 accepted
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status203NonAuthoritative">
+            <summary>
+            The status203 non authoritative
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status204NoContent">
+            <summary>
+            The status204 no content
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status205ResetContent">
+            <summary>
+            The status205 reset content
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status206PartialContent">
+            <summary>
+            The status206 partial content
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status207MultiStatus">
+            <summary>
+            The status207 multi status
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status208AlreadyReported">
+            <summary>
+            The status208 already reported
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status226IMUsed">
+            <summary>
+            The status226 im used
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status300MultipleChoices">
+            <summary>
+            The status300 multiple choices
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status301MovedPermanently">
+            <summary>
+            The status301 moved permanently
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status302Found">
+            <summary>
+            The status302 found
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status303SeeOther">
+            <summary>
+            The status303 see other
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status304NotModified">
+            <summary>
+            The status304 not modified
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status305UseProxy">
+            <summary>
+            The status305 use proxy
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status306SwitchProxy">
+            <summary>
+            The status306 switch proxy
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status307TemporaryRedirect">
+            <summary>
+            The status307 temporary redirect
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status308PermanentRedirect">
+            <summary>
+            The status308 permanent redirect
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status400BadRequest">
+            <summary>
+            The status400 bad request
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status401Unauthorized">
+            <summary>
+            The status401 unauthorized
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status402PaymentRequired">
+            <summary>
+            The status402 payment required
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status403Forbidden">
+            <summary>
+            The status403 forbidden
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status404NotFound">
+            <summary>
+            The status404 not found
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status405MethodNotAllowed">
+            <summary>
+            The status405 method not allowed
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status406NotAcceptable">
+            <summary>
+            The status406 not acceptable
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status407ProxyAuthenticationRequired">
+            <summary>
+            The status407 proxy authentication required
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status409Conflict">
+            <summary>
+            The status409 conflict
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Common.StatusCodes.Status511NetworkAuthenticationRequired">
+            <summary>
+            The status511 network authentication required
+            </summary>
+        </member>
+        <member name="T:AIStudio.Util.Common.DictionaryTreeModel">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:AIStudio.Util.Common.TreeModel" />
+        </member>
+        <member name="P:AIStudio.Util.Common.DictionaryTreeModel.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.DictionaryTreeModel.Code">
+            <summary>
+            Gets or sets the code.
+            </summary>
+            <value>
+            The code.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.DictionaryTreeModel.Children">
+            <summary>
+            孩子节点
+            </summary>
+        </member>
+        <member name="T:AIStudio.Util.Common.HistorySearch">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.Common.HistorySearch.StartTime">
+            <summary>
+            Gets or sets the start time.
+            </summary>
+            <value>
+            The start time.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.HistorySearch.EndTime">
+            <summary>
+            Gets or sets the end time.
+            </summary>
+            <value>
+            The end time.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.Common.IdInputDTO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.Common.IdInputDTO.id">
+            <summary>
+            id
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.Common.IKeyBaseEntity`1">
+            <summary>
+            实力类主键
+            </summary>
+            <typeparam name="TPrimaryKey">The type of the primary key.</typeparam>
+        </member>
+        <member name="P:AIStudio.Util.Common.IKeyBaseEntity`1.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.Common.IKeyBaseEntity">
+            <summary>
+            字符串实力类主键
+            </summary>
+        </member>
+        <member name="T:AIStudio.Util.Common.ISelectOption">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.Common.ISelectOption.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.ISelectOption.Text">
+            <summary>
+            Gets or sets the text.
+            </summary>
+            <value>
+            The text.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.Common.OptionListInputDTO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.Common.OptionListInputDTO.selectedValues">
+            <summary>
+            Gets or sets the selected values.
+            </summary>
+            <value>
+            The selected values.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.OptionListInputDTO.q">
+            <summary>
+            Gets or sets the q.
+            </summary>
+            <value>
+            The q.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.Common.PageInput">
+            <summary>
+            分页查询基类
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.Common.PageInput.PageIndex">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.Common.PageInput.PageRows">
+            <summary>
+            每页行数
+            </summary>
+        </member>
+        <member name="T:AIStudio.Util.Common.PageInput`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <seealso cref="T:AIStudio.Util.Common.PageInput" />
+        </member>
+        <member name="P:AIStudio.Util.Common.PageInput`1.Search">
+            <summary>
+            Gets or sets the search.
+            </summary>
+            <value>
+            The search.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.Common.PageResult`1">
+            <summary>
+            分页返回结果
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:AIStudio.Util.Common.Pagination">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.Common.Pagination.PageIndex">
+            <summary>
+            当前页码
+            </summary>
+            <value>
+            The index of the page.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.Pagination.PageRows">
+            <summary>
+            每页行数
+            </summary>
+            <value>
+            The page rows.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.Pagination.SortField">
+            <summary>
+            排序列
+            </summary>
+            <value>
+            The sort field.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.Pagination._sortType">
+            <summary>
+            Gets or sets the type of the sort.
+            </summary>
+            <value>
+            The type of the sort.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.Pagination.SortType">
+            <summary>
+            排序类型
+            </summary>
+            <value>
+            The type of the sort.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.Pagination.Total">
+            <summary>
+            总记录数
+            </summary>
+            <value>
+            The total.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.Pagination.PageCount">
+            <summary>
+            总页数
+            </summary>
+            <value>
+            The page count.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.Common.SearchInput">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.Common.SearchInput.SortField">
+            <summary>
+            排序列
+            </summary>
+            <value>
+            The sort field.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.SearchInput._sortType">
+            <summary>
+            Gets or sets the type of the sort.
+            </summary>
+            <value>
+            The type of the sort.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.SearchInput.SortType">
+            <summary>
+            排序类型
+            </summary>
+            <value>
+            The type of the sort.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.SearchInput.SearchKeyValues">
+            <summary>
+            Gets or sets the search key values.
+            </summary>
+            <value>
+            The search key values.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.Common.SearchInput`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <seealso cref="T:AIStudio.Util.Common.SearchInput" />
+        </member>
+        <member name="P:AIStudio.Util.Common.SearchInput`1.Search">
+            <summary>
+            Gets or sets the search.
+            </summary>
+            <value>
+            The search.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.Common.SelectOption">
+            <summary>
+            前端SelectOption
+            </summary>
+            <seealso cref="T:AIStudio.Util.Common.ISelectOption" />
+        </member>
+        <member name="P:AIStudio.Util.Common.SelectOption.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.SelectOption.Text">
+            <summary>
+            Gets or sets the text.
+            </summary>
+            <value>
+            The text.
+            </value>
+        </member>
+        <member name="M:AIStudio.Util.Common.SelectOption.ToString">
+            <summary>
+            Converts to string.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:AIStudio.Util.Common.TreeModel">
+            <summary>
+            树模型（可以作为父类）
+            </summary>
+            <seealso cref="T:AIStudio.Util.Common.SelectOption" />
+            <seealso cref="T:AIStudio.Util.Common.IKeyBaseEntity" />
+        </member>
+        <member name="P:AIStudio.Util.Common.TreeModel.Id">
+            <summary>
+            唯一标识Id
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.TreeModel.ParentId">
+            <summary>
+            父Id
+            </summary>
+            <value>
+            The parent identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.TreeModel.Level">
+            <summary>
+            节点深度
+            </summary>
+            <value>
+            The level.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.TreeModel.Children">
+            <summary>
+            孩子节点
+            </summary>
+            <value>
+            The children.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.TreeModel.IsExpand">
+            <summary>
+            Gets or sets a value indicating whether this instance is expand.
+            </summary>
+            <value>
+              <c>true</c> if this instance is expand; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.Common.TreeModel`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <seealso cref="T:AIStudio.Util.Common.SelectOption" />
+            <seealso cref="T:AIStudio.Util.Common.IKeyBaseEntity" />
+        </member>
+        <member name="P:AIStudio.Util.Common.TreeModel`1.Children">
+            <summary>
+            孩子节点
+            </summary>
+        </member>
+        <member name="T:AIStudio.Util.Common.TreeHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeHelper.GetTreeModel(System.Collections.Generic.IEnumerable{AIStudio.Util.Common.TreeModel},System.String)">
+            <summary>
+            构建树
+            </summary>
+            <param name="trees">The trees.</param>
+            <param name="id">The identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeHelper.GetTreeToList(System.Collections.Generic.IEnumerable{AIStudio.Util.Common.TreeModel})">
+            <summary>
+            获取所有树的节点
+            </summary>
+            <param name="trees">The trees.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeHelper.BuildTree``1(System.Collections.Generic.List{``0})">
+            <summary>
+            建造树结构
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="allNodes">所有的节点</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeHelper.GetChildren``1(System.Collections.Generic.List{``0},``0,System.Boolean)">
+            <summary>
+            获取所有子节点
+            注：包括自己
+            </summary>
+            <typeparam name="T">节点类型</typeparam>
+            <param name="allNodes">所有节点</param>
+            <param name="parentNode">父节点</param>
+            <param name="includeSelf">是否包括自己</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeHelper._GetChildren``1(System.Collections.Generic.List{``0},``0)">
+            <summary>
+            获取所有子节点
+            </summary>
+            <typeparam name="T">树模型（TreeModel或继承它的模型）</typeparam>
+            <param name="nodes">所有节点列表</param>
+            <param name="parentNode">父节点Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeHelper.HaveChildren``1(System.Collections.Generic.List{``0},System.String)">
+            <summary>
+            判断当前节点是否有子节点
+            </summary>
+            <typeparam name="T">树模型</typeparam>
+            <param name="nodes">所有节点</param>
+            <param name="nodeId">当前节点Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeHelper.GetTreeToList``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Gets the tree to list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="trees">The trees.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeHelper.BuildGenericsTree``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Builds the generics tree.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="allNodes">All nodes.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeHelper._GetGenericsChildren``1(System.Collections.Generic.List{``0},``0)">
+            <summary>
+            Gets the generics children.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="nodes">The nodes.</param>
+            <param name="parentNode">The parent node.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Util.Common.TreeOption`1">
+            <summary>
+            暂时未使用，先放在这里
+            </summary>
+            <typeparam name="T"></typeparam>
+            <seealso cref="T:AIStudio.Util.Common.SelectOption" />
+            <seealso cref="T:AIStudio.Util.Common.IKeyBaseEntity" />
+        </member>
+        <member name="P:AIStudio.Util.Common.TreeOption`1.Id">
+            <summary>
+            唯一标识Id
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.TreeOption`1.ParentId">
+            <summary>
+            父Id
+            </summary>
+            <value>
+            The parent identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.TreeOption`1.Level">
+            <summary>
+            节点深度
+            </summary>
+            <value>
+            The level.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.TreeOption`1.Entity">
+            <summary>
+            实体数据
+            </summary>
+            <value>
+            The entity.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.TreeOption`1.IsExpand">
+            <summary>
+            Gets or sets a value indicating whether this instance is expand.
+            </summary>
+            <value>
+              <c>true</c> if this instance is expand; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.Common.TreeOption`1.Children">
+            <summary>
+            孩子节点
+            </summary>
+            <value>
+            The children.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.Common.TreeOption">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:AIStudio.Util.Common.SelectOption" />
+            <seealso cref="T:AIStudio.Util.Common.IKeyBaseEntity" />
+        </member>
+        <member name="T:AIStudio.Util.Common.TreeOptionHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeOptionHelper.GetTreeModel``1(System.Collections.Generic.IEnumerable{AIStudio.Util.Common.TreeOption{``0}},System.String)">
+            <summary>
+            Gets the tree model.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="trees">The trees.</param>
+            <param name="id">The identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeOptionHelper.GetTreeToList``1(System.Collections.Generic.IEnumerable{AIStudio.Util.Common.TreeOption{``0}})">
+            <summary>
+            Gets the tree to list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="trees">The trees.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeOptionHelper.BuildTree``1(System.Collections.Generic.List{AIStudio.Util.Common.TreeOption{``0}})">
+            <summary>
+            建造树结构
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="allNodes">所有的节点</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeOptionHelper.GetChildren``1(System.Collections.Generic.List{AIStudio.Util.Common.TreeOption{``0}},AIStudio.Util.Common.TreeOption{``0},System.Boolean)">
+            <summary>
+            获取所有子节点
+            注：包括自己
+            </summary>
+            <typeparam name="T">节点类型</typeparam>
+            <param name="allNodes">所有节点</param>
+            <param name="parentNode">父节点</param>
+            <param name="includeSelf">是否包括自己</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeOptionHelper._GetChildren``1(System.Collections.Generic.List{AIStudio.Util.Common.TreeOption{``0}},AIStudio.Util.Common.TreeOption{``0})">
+            <summary>
+            获取所有子节点
+            </summary>
+            <typeparam name="T">树模型（TreeModel或继承它的模型）</typeparam>
+            <param name="nodes">所有节点列表</param>
+            <param name="parentNode">父节点Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Common.TreeOptionHelper.HaveChildren``1(System.Collections.Generic.List{AIStudio.Util.Common.TreeOption{``0}},System.String)">
+            <summary>
+            判断当前节点是否有子节点
+            </summary>
+            <typeparam name="T">树模型</typeparam>
+            <param name="nodes">所有节点</param>
+            <param name="nodeId">当前节点Id</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Util.DiagramEntity.DiagramData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramData.Nodes">
+            <summary>
+            Gets or sets the nodes.
+            </summary>
+            <value>
+            The nodes.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramData.Links">
+            <summary>
+            Gets or sets the links.
+            </summary>
+            <value>
+            The links.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramData.Groups">
+            <summary>
+            Gets or sets the groups.
+            </summary>
+            <value>
+            The groups.
+            </value>
+        </member>
+        <member name="M:AIStudio.Util.DiagramEntity.DiagramData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:AIStudio.Util.DiagramEntity.DiagramData"/> class.
+            </summary>
+        </member>
+        <member name="T:AIStudio.Util.DiagramEntity.DiagramGroup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramGroup.FlowNodeIds">
+            <summary>
+            Gets or sets the flow node ids.
+            </summary>
+            <value>
+            The flow node ids.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.DiagramEntity.DiagramLink">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.Color">
+            <summary>
+            Gets or sets the color.
+            </summary>
+            <value>
+            The color.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.SelectedColor">
+            <summary>
+            Gets or sets the color of the selected.
+            </summary>
+            <value>
+            The color of the selected.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.Width">
+            <summary>
+            Gets or sets the width.
+            </summary>
+            <value>
+            The width.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.Label">
+            <summary>
+            Gets or sets the label.
+            </summary>
+            <value>
+            The label.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.SourceId">
+            <summary>
+            Gets or sets the source identifier.
+            </summary>
+            <value>
+            The source identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.TargetId">
+            <summary>
+            Gets or sets the target identifier.
+            </summary>
+            <value>
+            The target identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.SourcePortAlignment">
+            <summary>
+            Gets or sets the source port alignment.
+            </summary>
+            <value>
+            The source port alignment.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.TargetPortAlignment">
+            <summary>
+            Gets or sets the target port alignment.
+            </summary>
+            <value>
+            The target port alignment.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.Router">
+            <summary>
+            Gets or sets the router.
+            </summary>
+            <value>
+            The router.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.PathGenerator">
+            <summary>
+            Gets or sets the path generator.
+            </summary>
+            <value>
+            The path generator.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.SourceMarkerPath">
+            <summary>
+            Gets or sets the source marker path.
+            </summary>
+            <value>
+            The source marker path.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.SourceMarkerWidth">
+            <summary>
+            Gets or sets the width of the source marker.
+            </summary>
+            <value>
+            The width of the source marker.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.TargetMarkerPath">
+            <summary>
+            Gets or sets the target marker path.
+            </summary>
+            <value>
+            The target marker path.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramLink.TargetMarkerWidth">
+            <summary>
+            Gets or sets the width of the target marker.
+            </summary>
+            <value>
+            The width of the target marker.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.DiagramEntity.DiagramNode">
+            <summary>
+            DiagramNode
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramNode.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramNode.ParentId">
+            <summary>
+            Gets or sets the parent identifier.
+            </summary>
+            <value>
+            The parent identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramNode.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramNode.Color">
+            <summary>
+            Gets or sets the color.
+            </summary>
+            <value>
+            The color.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramNode.Label">
+            <summary>
+            Gets or sets the label.
+            </summary>
+            <value>
+            The label.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramNode.Width">
+            <summary>
+            Gets or sets the width.
+            </summary>
+            <value>
+            The width.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramNode.Height">
+            <summary>
+            Gets or sets the height.
+            </summary>
+            <value>
+            The height.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramNode.X">
+            <summary>
+            Gets or sets the x.
+            </summary>
+            <value>
+            The x.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramNode.Y">
+            <summary>
+            Gets or sets the y.
+            </summary>
+            <value>
+            The y.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramNode.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramNode.ZIndex">
+            <summary>
+            Gets or sets the index of the z.
+            </summary>
+            <value>
+            The index of the z.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.DiagramNode.PortAlignmentList">
+            <summary>
+            Gets or sets the port alignment list.
+            </summary>
+            <value>
+            The port alignment list.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.DiagramEntity.FlowchartGroup">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:AIStudio.Util.DiagramEntity.DiagramGroup" />
+        </member>
+        <member name="T:AIStudio.Util.DiagramEntity.FlowchartLink">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:AIStudio.Util.DiagramEntity.DiagramLink" />
+        </member>
+        <member name="T:AIStudio.Util.DiagramEntity.FlowchartNode">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:AIStudio.Util.DiagramEntity.DiagramNode" />
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.FlowchartNode.Kind">
+            <summary>
+            Gets or sets the kind.
+            </summary>
+            <value>
+            The kind.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.FlowchartNode.UserIds">
+            <summary>
+            Gets or sets the user ids.
+            </summary>
+            <value>
+            The user ids.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.FlowchartNode.RoleIds">
+            <summary>
+            Gets or sets the role ids.
+            </summary>
+            <value>
+            The role ids.
+            </value>
+        </member>
+        <member name="P:AIStudio.Util.DiagramEntity.FlowchartNode.ActType">
+            <summary>
+            Gets or sets the type of the act.
+            </summary>
+            <value>
+            The type of the act.
+            </value>
+        </member>
+        <member name="T:AIStudio.Util.DiagramEntity.NodeKinds">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.DiagramEntity.NodeKinds.Normal">
+            <summary>
+            节点
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.DiagramEntity.NodeKinds.Start">
+            <summary>
+            开始
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.DiagramEntity.NodeKinds.End">
+            <summary>
+            结束
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.DiagramEntity.NodeKinds.Middle">
+            <summary>
+            中间节点
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.DiagramEntity.NodeKinds.Decide">
+            <summary>
+            条件节点
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.DiagramEntity.NodeKinds.COBegin">
+            <summary>
+            并行开始
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.DiagramEntity.NodeKinds.COEnd">
+            <summary>
+            并行结束
+            </summary>
+        </member>
+        <member name="T:AIStudio.Util.Extention">
+            <summary>
+            拓展类
+            </summary>
+            <summary>
+            拓展方法静态类
+            </summary>
+            <summary>
+            
+            </summary>
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToString(System.Byte[])">
+            <summary>
+            byte[]转string
+            注：默认使用UTF8编码
+            </summary>
+            <param name="bytes">byte[]数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToString(System.Byte[],System.Text.Encoding)">
+            <summary>
+            byte[]转string
+            </summary>
+            <param name="bytes">byte[]数组</param>
+            <param name="encoding">指定编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToBase64String(System.Byte[])">
+            <summary>
+            将byte[]转为Base64字符串
+            </summary>
+            <param name="bytes">字节数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToBinString(System.Byte)">
+            <summary>
+            转为二进制字符串
+            </summary>
+            <param name="aByte">字节</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToBinString(System.Byte[])">
+            <summary>
+            转为二进制字符串
+            注:一个字节转为8位二进制
+            </summary>
+            <param name="bytes">字节数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.To0XString(System.Byte[])">
+            <summary>
+            Byte数组转为对应的16进制字符串
+            </summary>
+            <param name="bytes">Byte数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.To0XString(System.Byte)">
+            <summary>
+            Byte数组转为对应的16进制字符串
+            </summary>
+            <param name="aByte">一个Byte</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToASCIIString(System.Byte[])">
+            <summary>
+            转为ASCII字符串（一个字节对应一个字符）
+            </summary>
+            <param name="bytes">字节数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToASCIIString(System.Byte)">
+            <summary>
+            转为ASCII字符串（一个字节对应一个字符）
+            </summary>
+            <param name="aByte">字节数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.GetXOR(System.Byte[])">
+            <summary>
+            获取异或值
+            注：每个字节异或
+            </summary>
+            <param name="bytes">字节数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToInt(System.Byte[])">
+            <summary>
+            将字节数组转为Int类型
+            </summary>
+            <param name="bytes">字节数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToFile(System.Byte[],System.String)">
+            <summary>
+            将字节数组保存为文件
+            </summary>
+            <param name="bytes">字节数组</param>
+            <param name="path">文件完成路径</param>
+        </member>
+        <member name="M:AIStudio.Util.Extention.CloneObject(System.Object)">
+            <summary>
+            复制对象, 仅复制对象相同属性的值. 浅拷贝.
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.CloneObject``1(``0)">
+            <summary>
+            复制对象, 仅复制对象相同属性的值. 浅拷贝.
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.CopyProperties(System.Object,System.Object)">
+            <summary>
+            复制对象相同属性的值.
+            </summary>
+        </member>
+        <member name="M:AIStudio.Util.Extention.CopyProperties(System.Object,System.Type)">
+            <summary>
+            Object to Object. 将一个对象转换为指定类型的对象.
+            注意: destination内的Property必需在source内存在.
+            </summary>
+        </member>
+        <member name="M:AIStudio.Util.Extention.SetPropertyValue(System.Object,System.Reflection.PropertyInfo,System.Object)">
+            <summary>
+            给对象的属性赋值
+            </summary>
+            <param name="instance">对象实例</param>
+            <param name="prop">对象实例的属性信息</param>
+            <param name="value">其他对象属性的值</param>
+        </member>
+        <member name="M:AIStudio.Util.Extention.GetValueOfObject(System.Object,System.String)">
+            <summary>
+            获取对象指定属性的值
+            </summary>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToList``1(System.Data.DataTable)">
+            <summary>
+            DataTable转List
+            </summary>
+            <typeparam name="T">转换类型</typeparam>
+            <param name="dt">数据源</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToCsvStr(System.Data.DataTable)">
+             <summary>
+            将DataTable转换为标准的CSV字符串
+             </summary>
+             <param name="dt">数据表</param>
+             <returns>返回标准的CSV</returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.GetWeekOfYear(System.DateTime)">
+              <summary> 
+             获取某一日期是该年中的第几周
+              </summary> 
+              <param name="dateTime"> 日期 </param> 
+              <returns> 该日期在该年中的周数 </returns> 
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToJsTimestamp(System.DateTime)">
+            <summary>
+            获取Js格式的timestamp
+            </summary>
+            <param name="dateTime">日期</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.JsGetTime(System.DateTime)">
+            <summary>
+            获取js中的getTime()
+            </summary>
+            <param name="dt">日期</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.Default(System.DateTime)">
+            <summary>
+            返回默认时间1970-01-01
+            </summary>
+            <param name="dt">时间日期</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToLocalTime(System.DateTime)">
+            <summary>
+            转为本地时间
+            </summary>
+            <param name="time">时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToUnixTimeStamp(System.DateTime)">
+            <summary>
+            转为转换为Unix时间戳格式(精确到秒)
+            </summary>
+            <param name="time">时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToEnum``1(System.String)">
+            <summary>
+            Converts to enum.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="str">The string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.GetDescription(System.Enum)">
+            <summary>
+            Gets the description.
+            </summary>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.AddProperty(System.Dynamic.ExpandoObject,System.String,System.Object)">
+            <summary>
+            添加属性
+            </summary>
+            <param name="expandoObj">动态对象</param>
+            <param name="propertyName">属性名</param>
+            <param name="value">属性值</param>
+        </member>
+        <member name="M:AIStudio.Util.Extention.SetProperty(System.Dynamic.ExpandoObject,System.String,System.Object)">
+            <summary>
+            设置属性
+            </summary>
+            <param name="expandoObj">动态对象</param>
+            <param name="propertyName">属性名</param>
+            <param name="value">属性值</param>
+        </member>
+        <member name="M:AIStudio.Util.Extention.GetProperty(System.Dynamic.ExpandoObject,System.String)">
+            <summary>
+            获取属性
+            </summary>
+            <param name="expandoObj">动态对象</param>
+            <param name="propertyName">属性名</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.GetProperties(System.Dynamic.ExpandoObject)">
+            <summary>
+            获取所有属性
+            </summary>
+            <param name="expandoObj">动态对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.RemoveProperty(System.Dynamic.ExpandoObject,System.String)">
+            <summary>
+            删除属性
+            </summary>
+            <param name="expandoObj">动态对象</param>
+            <param name="propertyName">属性名</param>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToDataTable(System.Collections.Generic.IEnumerable{System.Dynamic.ExpandoObject})">
+            <summary>
+            将动态属性对象ExpandoObject列表转为DataTable
+            </summary>
+            <param name="dataList">数据源</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToSequentialGuid(System.Guid)">
+            <summary>
+            转为有序的GUID
+            注：长度为50字符
+            </summary>
+            <param name="guid">新的GUID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.Copy``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+            <summary>
+            复制序列中的数据
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="iEnumberable">原数据</param>
+            <param name="startIndex">原数据开始复制的起始位置</param>
+            <param name="length">需要复制的数据长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            给IEnumerable拓展ForEach方法
+            </summary>
+            <typeparam name="T">模型类</typeparam>
+            <param name="iEnumberable">数据源</param>
+            <param name="func">方法</param>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Int32})">
+            <summary>
+            给IEnumerable拓展ForEach方法
+            </summary>
+            <typeparam name="T">模型类</typeparam>
+            <param name="iEnumberable">数据源</param>
+            <param name="func">方法</param>
+        </member>
+        <member name="M:AIStudio.Util.Extention.CastToList``1(System.Collections.IEnumerable)">
+            <summary>
+            IEnumerable转换为List'T'
+            </summary>
+            <typeparam name="T">参数</typeparam>
+            <param name="source">数据源</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToDataTable``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            将IEnumerable'T'转为对应的DataTable
+            </summary>
+            <typeparam name="T">数据模型</typeparam>
+            <param name="iEnumberable">数据源</param>
+            <returns>
+            DataTable
+            </returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.AddRange``1(System.Collections.ObjectModel.ObservableCollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds the range.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="oc">The oc.</param>
+            <param name="collection">The collection.</param>
+            <exception cref="T:System.ArgumentNullException">collection</exception>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToAscllStr(System.Int32)">
+            <summary>
+            int转Ascll字符
+            </summary>
+            <param name="ascllCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToDateTime_From_JsGetTime(System.Int64)">
+            <summary>
+            jsGetTime转为DateTime
+            </summary>
+            <param name="jsGetTime">js中Date.getTime()</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.IsNullOrEmpty(System.Object)">
+            <summary>
+            判断是否为Null或者空
+            </summary>
+            <param name="obj">对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.EntityToJson(System.Object)">
+            <summary>
+            实体类转json数据，速度快
+            </summary>
+            <param name="t">实体类</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.DeepClone``1(``0)">
+            <summary>
+            深复制
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="obj">对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ContainsProperty(System.Object,System.String)">
+            <summary>
+            是否拥有某属性
+            </summary>
+            <param name="obj">对象</param>
+            <param name="propertyName">属性名</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.GetPropertyValue(System.Object,System.String)">
+            <summary>
+            获取某属性值
+            </summary>
+            <param name="obj">对象</param>
+            <param name="propertyName">属性名</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.SetPropertyValue(System.Object,System.String,System.Object)">
+            <summary>
+            设置某属性值
+            </summary>
+            <param name="obj">对象</param>
+            <param name="propertyName">属性名</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ContainsField(System.Object,System.String)">
+            <summary>
+            是否拥有某字段
+            </summary>
+            <param name="obj">对象</param>
+            <param name="fieldName">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.GetGetFieldValue(System.Object,System.String)">
+            <summary>
+            获取某字段值
+            </summary>
+            <param name="obj">对象</param>
+            <param name="fieldName">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.SetFieldValue(System.Object,System.String,System.Object)">
+            <summary>
+            设置某字段值
+            </summary>
+            <param name="obj">对象</param>
+            <param name="fieldName">字段名</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ChangeType(System.Object,System.Type)">
+            <summary>
+            改变实体类型
+            </summary>
+            <param name="obj">对象</param>
+            <param name="targetType">目标类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ChangeType``1(System.Object)">
+            <summary>
+            改变实体类型
+            </summary>
+            <typeparam name="T">目标泛型</typeparam>
+            <param name="obj">对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ChangeType_ByConvert(System.Object,System.Type)">
+            <summary>
+            改变类型
+            </summary>
+            <param name="obj">原对象</param>
+            <param name="targetType">目标类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ReadToBytes(System.IO.Stream)">
+            <summary>
+            将流Stream转为byte数组
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ReadToString(System.IO.Stream)">
+            <summary>
+            将流读为字符串
+            注：默认使用UTF-8编码
+            </summary>
+            <param name="stream">流</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ReadToString(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            将流读为字符串
+            注：使用指定编码
+            </summary>
+            <param name="stream">流</param>
+            <param name="encoding">指定编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToBytes_FromBase64Str(System.String)">
+            <summary>
+            转为字节数组
+            </summary>
+            <param name="base64Str">base64字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToMD5String(System.String)">
+            <summary>
+            转换为MD5加密后的字符串（默认加密为32位）
+            </summary>
+            <param name="str">The string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.IsMd5(System.String,System.Int32)">
+            <summary>
+            验证指定长度的MD5
+            </summary>
+            <param name="str">字符串</param>
+            <param name="length">MD5长度（默认32）</param>
+            <returns>
+              <c>true</c> if the specified length is MD5; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToMD5String16(System.String)">
+            <summary>
+            转换为MD5加密后的字符串（16位）
+            </summary>
+            <param name="str">The string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.Base64Encode(System.String)">
+            <summary>
+            Base64加密
+            注:默认采用UTF8编码
+            </summary>
+            <param name="source">待加密的明文</param>
+            <returns>
+            加密后的字符串
+            </returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.Base64Encode(System.String,System.Text.Encoding)">
+            <summary>
+            Base64加密
+            </summary>
+            <param name="source">待加密的明文</param>
+            <param name="encoding">加密采用的编码方式</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.Base64Decode(System.String)">
+            <summary>
+            Base64解密
+            注:默认使用UTF8编码
+            </summary>
+            <param name="result">待解密的密文</param>
+            <returns>
+            解密后的字符串
+            </returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.Base64Decode(System.String,System.Text.Encoding)">
+            <summary>
+            Base64解密
+            </summary>
+            <param name="result">待解密的密文</param>
+            <param name="encoding">解密采用的编码方式，注意和加密时采用的方式一致</param>
+            <returns>
+            解密后的字符串
+            </returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.Base64UrlEncode(System.String)">
+            <summary>
+            Base64Url编码
+            </summary>
+            <param name="text">待编码的文本字符串</param>
+            <returns>
+            编码的文本字符串
+            </returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.Base64UrlDecode(System.String)">
+            <summary>
+            Base64Url解码
+            </summary>
+            <param name="base64UrlStr">使用Base64Url编码后的字符串</param>
+            <returns>
+            解码后的内容
+            </returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToSHA1Bytes(System.String)">
+            <summary>
+            计算SHA1摘要
+            注：默认使用UTF8编码
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToSHA1Bytes(System.String,System.Text.Encoding)">
+            <summary>
+            计算SHA1摘要
+            </summary>
+            <param name="str">字符串</param>
+            <param name="encoding">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToSHA1String(System.String)">
+            <summary>
+            转为SHA1哈希加密字符串
+            注：默认使用UTF8编码
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToSHA1String(System.String,System.Text.Encoding)">
+            <summary>
+            转为SHA1哈希
+            </summary>
+            <param name="str">字符串</param>
+            <param name="encoding">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToSHA256String(System.String)">
+            <summary>
+            SHA256加密
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToHMACSHA256String(System.String,System.String)">
+            <summary>
+            HMACSHA256算法
+            </summary>
+            <param name="text">内容</param>
+            <param name="secret">密钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToInt(System.String)">
+            <summary>
+            string转int
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToLong(System.String)">
+            <summary>
+            string转long
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToInt_FromBinString(System.String)">
+            <summary>
+            二进制字符串转为Int
+            </summary>
+            <param name="str">二进制字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToInt0X(System.String)">
+            <summary>
+            将16进制字符串转为Int
+            </summary>
+            <param name="str">数值</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToDouble(System.String)">
+            <summary>
+            转换为double
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToBytes(System.String)">
+            <summary>
+            string转byte[]
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToBytes(System.String,System.Text.Encoding)">
+            <summary>
+            string转byte[]
+            </summary>
+            <param name="str">字符串</param>
+            <param name="theEncoding">需要的编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.To0XBytes(System.String)">
+            <summary>
+            将16进制字符串转为Byte数组
+            </summary>
+            <param name="str">16进制字符串(2个16进制字符表示一个Byte)</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToASCIIBytes(System.String)">
+            <summary>
+            将ASCII码形式的字符串转为对应字节数组
+            注：一个字节一个ASCII码字符
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToDateTime(System.String)">
+            <summary>
+            转换为日期格式
+            </summary>
+            <param name="str">The string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.RemoveAt(System.String)">
+            <summary>
+            删除Json字符串中键中的@符号
+            </summary>
+            <param name="jsonStr">json字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToEntity``1(System.String)">
+            <summary>
+            json数据转实体类,仅仅应用于单个实体类，速度非常快
+            </summary>
+            <typeparam name="T">泛型参数</typeparam>
+            <param name="json">json字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToFirstUpperStr(System.String)">
+            <summary>
+            转为首字母大写
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToFirstLowerStr(System.String)">
+            <summary>
+            转为首字母小写
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToIPEndPoint(System.String)">
+            <summary>
+            转为网络终结点IPEndPoint
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+            =
+        </member>
+        <member name="M:AIStudio.Util.Extention.IsWeakPwd(System.String)">
+            <summary>
+            是否为弱密码
+            注:密码必须包含数字、小写字母、大写字母和其他符号中的两种并且长度大于8
+            </summary>
+            <param name="pwd">密码</param>
+            <returns>
+              <c>true</c> if [is weak password] [the specified password]; otherwise, <c>false</c>.
+            </returns>
+            <exception cref="T:System.Exception">pwd不能为空</exception>
+        </member>
+        <member name="M:AIStudio.Util.Extention.EnsureEndsWith(System.String,System.Char)">
+            <summary>
+            Ensures the ends with.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="c">The c.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.EnsureEndsWith(System.String,System.Char,System.StringComparison)">
+            <summary>
+            Ensures the ends with.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="c">The c.</param>
+            <param name="comparisonType">Type of the comparison.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">str</exception>
+        </member>
+        <member name="M:AIStudio.Util.Extention.EnsureEndsWith(System.String,System.Char,System.Boolean,System.Globalization.CultureInfo)">
+            <summary>
+            Ensures the ends with.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="c">The c.</param>
+            <param name="ignoreCase">if set to <c>true</c> [ignore case].</param>
+            <param name="culture">The culture.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">str</exception>
+        </member>
+        <member name="M:AIStudio.Util.Extention.EnsureStartsWith(System.String,System.Char)">
+            <summary>
+            Ensures the starts with.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="c">The c.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.EnsureStartsWith(System.String,System.Char,System.StringComparison)">
+            <summary>
+            Ensures the starts with.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="c">The c.</param>
+            <param name="comparisonType">Type of the comparison.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">str</exception>
+        </member>
+        <member name="M:AIStudio.Util.Extention.EnsureStartsWith(System.String,System.Char,System.Boolean,System.Globalization.CultureInfo)">
+            <summary>
+            Ensures the starts with.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="c">The c.</param>
+            <param name="ignoreCase">if set to <c>true</c> [ignore case].</param>
+            <param name="culture">The culture.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">str</exception>
+        </member>
+        <member name="M:AIStudio.Util.Extention.IsNullOrEmpty(System.String)">
+            <summary>
+            Determines whether [is null or empty].
+            </summary>
+            <param name="str">The string.</param>
+            <returns>
+              <c>true</c> if [is null or empty] [the specified string]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.IsNullOrWhiteSpace(System.String)">
+            <summary>
+            Determines whether [is null or white space].
+            </summary>
+            <param name="str">The string.</param>
+            <returns>
+              <c>true</c> if [is null or white space] [the specified string]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.Left(System.String,System.Int32)">
+            <summary>
+            Lefts the specified length.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="len">The length.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">str</exception>
+            <exception cref="T:System.ArgumentException">len argument can not be bigger than given string's length!</exception>
+        </member>
+        <member name="M:AIStudio.Util.Extention.NormalizeLineEndings(System.String)">
+            <summary>
+            Normalizes the line endings.
+            </summary>
+            <param name="str">The string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.NthIndexOf(System.String,System.Char,System.Int32)">
+            <summary>
+            NTHs the index of.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="c">The c.</param>
+            <param name="n">The n.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">str</exception>
+        </member>
+        <member name="M:AIStudio.Util.Extention.RemovePostFix(System.String,System.String[])">
+            <summary>
+            Removes the post fix.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="postFixes">The post fixes.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.RemovePreFix(System.String,System.String[])">
+            <summary>
+            Removes the pre fix.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="preFixes">The pre fixes.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.Right(System.String,System.Int32)">
+            <summary>
+            Rights the specified length.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="len">The length.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">str</exception>
+            <exception cref="T:System.ArgumentException">len argument can not be bigger than given string's length!</exception>
+        </member>
+        <member name="M:AIStudio.Util.Extention.Split(System.String,System.String)">
+            <summary>
+            Splits the specified separator.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="separator">The separator.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.Split(System.String,System.String,System.StringSplitOptions)">
+            <summary>
+            Splits the specified separator.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="separator">The separator.</param>
+            <param name="options">The options.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.SplitToLines(System.String)">
+            <summary>
+            Splits to lines.
+            </summary>
+            <param name="str">The string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.SplitToLines(System.String,System.StringSplitOptions)">
+            <summary>
+            Splits to lines.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="options">The options.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToCamelCase(System.String,System.Boolean)">
+            <summary>
+            Converts to camelcase.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="invariantCulture">if set to <c>true</c> [invariant culture].</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToCamelCase(System.String,System.Globalization.CultureInfo)">
+            <summary>
+            Converts to camelcase.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="culture">The culture.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToSentenceCase(System.String,System.Boolean)">
+            <summary>
+            Converts to sentencecase.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="invariantCulture">if set to <c>true</c> [invariant culture].</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToSentenceCase(System.String,System.Globalization.CultureInfo)">
+            <summary>
+            Converts to sentencecase.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="culture">The culture.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToEnum``1(System.String,System.Boolean)">
+            <summary>
+            Converts to enum.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value">The value.</param>
+            <param name="ignoreCase">if set to <c>true</c> [ignore case].</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">value</exception>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToMd5(System.String)">
+            <summary>
+            Converts to md5.
+            </summary>
+            <param name="str">The string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToPascalCase(System.String,System.Boolean)">
+            <summary>
+            Converts to pascalcase.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="invariantCulture">if set to <c>true</c> [invariant culture].</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ToPascalCase(System.String,System.Globalization.CultureInfo)">
+            <summary>
+            Converts to pascalcase.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="culture">The culture.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.Truncate(System.String,System.Int32)">
+            <summary>
+            Truncates the specified maximum length.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="maxLength">The maximum length.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.TruncateWithPostfix(System.String,System.Int32)">
+            <summary>
+            Truncates the with postfix.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="maxLength">The maximum length.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.TruncateWithPostfix(System.String,System.Int32,System.String)">
+            <summary>
+            Truncates the with postfix.
+            </summary>
+            <param name="str">The string.</param>
+            <param name="maxLength">The maximum length.</param>
+            <param name="postfix">The postfix.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Extention.ObjToString(System.Object)">
+            <summary>
+            Objects to string.
+            </summary>
+            <param name="obj">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Util.JsonExtention">
+            <summary>
+            拓展类
+            </summary>
+        </member>
+        <member name="M:AIStudio.Util.JsonExtention.#cctor">
+            <summary>
+            Initializes the <see cref="T:AIStudio.Util.JsonExtention"/> class.
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.JsonExtention.DefaultJsonSetting">
+            <summary>
+            The default json setting
+            </summary>
+        </member>
+        <member name="M:AIStudio.Util.JsonExtention.ToJson(System.Object)">
+            <summary>
+            将对象序列化成Json字符串
+            </summary>
+            <param name="obj">需要序列化的对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.JsonExtention.ToObject``1(System.String)">
+            <summary>
+            将Json字符串反序列化为对象
+            </summary>
+            <typeparam name="T">对象类型</typeparam>
+            <param name="jsonStr">Json字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.JsonExtention.ToObject(System.String,System.Type)">
+            <summary>
+            将Json字符串反序列化为对象
+            </summary>
+            <param name="jsonStr">json字符串</param>
+            <param name="type">对象类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.AesHelper.AesEncryptor(System.String,System.String)">
+            <summary>
+            AES 算法加密(ECB模式) 将明文加密，加密后进行base64编码，返回密文
+            </summary>
+            <param name="EncryptStr">明文</param>
+            <param name="Key">密钥</param>
+            <returns>加密后base64编码的密文</returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.AesHelper.AesDecryptor(System.String,System.String)">
+            <summary>
+            AES 算法解密(ECB模式) 将密文base64解码进行解密，返回明文
+            </summary>
+            <param name="DecryptStr">密文</param>
+            <param name="Key">密钥</param>
+            <returns>明文</returns>
+        </member>
+        <member name="T:AIStudio.Util.Helper.DateTimeExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DateTimeExtensions.FromUnixTimeSeconds(System.Int64)">
+            <summary>
+            时间戳转本地时间-时间戳精确到秒
+            </summary>
+            <param name="seconds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DateTimeExtensions.FromUnixTimeMilliseconds(System.Int64)">
+            <summary>
+            时间戳转本地时间-时间戳精确到毫秒
+            </summary>
+            <param name="milliseconds">The milliseconds.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DateTimeExtensions.ToUnixTimeSeconds(System.Nullable{System.DateTime})">
+            <summary>
+            时间转时间戳Unix-时间戳精确到秒
+            </summary>
+            <param name="dateTime">The date time.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DateTimeExtensions.ToUnixTimeMilliseconds(System.Nullable{System.DateTime})">
+            <summary>
+            时间转时间戳Unix-时间戳精确到毫秒
+            </summary>
+            <param name="dateTime">The date time.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DateTimeExtensions.ToUnixTimeSeconds(System.DateTime)">
+            <summary>
+            时间转时间戳Unix-时间戳精确到秒
+            </summary>
+            <param name="dateTime">The date time.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DateTimeExtensions.ToUnixTimeMilliseconds(System.DateTime)">
+            <summary>
+            时间转时间戳Unix-时间戳精确到毫秒
+            </summary>
+            <param name="dateTime">The date time.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Util.Helper.DirFileHelper">
+            <summary>
+            文件操作夹
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Helper.DirFileHelper.Encoding">
+            <summary>
+            The encoding
+            </summary>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.IsExistDirectory(System.String)">
+            <summary>
+            Determines whether [is exist directory] [the specified directory path].
+            </summary>
+            <param name="directoryPath">The directory path.</param>
+            <returns>
+              <c>true</c> if [is exist directory] [the specified directory path]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.IsExistFile(System.String)">
+            <summary>
+            Determines whether [is exist file] [the specified file path].
+            </summary>
+            <param name="filePath">The file path.</param>
+            <returns>
+              <c>true</c> if [is exist file] [the specified file path]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.GetFileNames(System.String)">
+            <summary>
+            Gets the file names.
+            </summary>
+            <param name="directoryPath">The directory path.</param>
+            <returns></returns>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.GetDirectories(System.String)">
+            <summary>
+            Gets the directories.
+            </summary>
+            <param name="directoryPath">The directory path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.GetFileNames(System.String,System.String,System.Boolean)">
+            <summary>
+            Gets the file names.
+            </summary>
+            <param name="directoryPath">The directory path.</param>
+            <param name="searchPattern">The search pattern.</param>
+            <param name="isSearchChild">if set to <c>true</c> [is search child].</param>
+            <returns></returns>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.IsEmptyDirectory(System.String)">
+            <summary>
+            Determines whether [is empty directory] [the specified directory path].
+            </summary>
+            <param name="directoryPath">The directory path.</param>
+            <returns>
+              <c>true</c> if [is empty directory] [the specified directory path]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.Contains(System.String,System.String)">
+            <summary>
+            Determines whether this instance contains the object.
+            </summary>
+            <param name="directoryPath">The directory path.</param>
+            <param name="searchPattern">The search pattern.</param>
+            <returns>
+              <c>true</c> if [contains] [the specified directory path]; otherwise, <c>false</c>.
+            </returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.Contains(System.String,System.String,System.Boolean)">
+            <summary>
+            Determines whether this instance contains the object.
+            </summary>
+            <param name="directoryPath">The directory path.</param>
+            <param name="searchPattern">The search pattern.</param>
+            <param name="isSearchChild">if set to <c>true</c> [is search child].</param>
+            <returns>
+              <c>true</c> if [contains] [the specified directory path]; otherwise, <c>false</c>.
+            </returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.CreateDir(System.String)">
+            <summary>
+            Creates the dir.
+            </summary>
+            <param name="dir">The dir.</param>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.DeleteDir(System.String)">
+            <summary>
+            Deletes the dir.
+            </summary>
+            <param name="dir">The dir.</param>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.DeleteFile(System.String)">
+            <summary>
+            Deletes the file.
+            </summary>
+            <param name="file">The file.</param>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.CreateFile(System.String,System.String)">
+            <summary>
+            Creates the file.
+            </summary>
+            <param name="dir">The dir.</param>
+            <param name="pagestr">The pagestr.</param>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.MoveFile(System.String,System.String)">
+            <summary>
+            Moves the file.
+            </summary>
+            <param name="dir1">The dir1.</param>
+            <param name="dir2">The dir2.</param>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.CopyFile(System.String,System.String)">
+            <summary>
+            Copies the file.
+            </summary>
+            <param name="dir1">The dir1.</param>
+            <param name="dir2">The dir2.</param>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.GetDateDir">
+            <summary>
+            Gets the date dir.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.GetDateFile">
+            <summary>
+            Gets the date file.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.CopyFolder(System.String,System.String)">
+            <summary>
+            Copies the folder.
+            </summary>
+            <param name="varFromDirectory">The variable from directory.</param>
+            <param name="varToDirectory">The variable to directory.</param>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.ExistsFile(System.String)">
+            <summary>
+            Existses the file.
+            </summary>
+            <param name="FilePath">The file path.</param>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.DeleteFolderFiles(System.String,System.String)">
+            <summary>
+            Deletes the folder files.
+            </summary>
+            <param name="varFromDirectory">The variable from directory.</param>
+            <param name="varToDirectory">The variable to directory.</param>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.GetFileName(System.String)">
+            <summary>
+            Gets the name of the file.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.CreateDirectory(System.String)">
+            <summary>
+            Creates the directory.
+            </summary>
+            <param name="directoryPath">The directory path.</param>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.CreateFile(System.String)">
+            <summary>
+            Creates the file.
+            </summary>
+            <param name="filePath">The file path.</param>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.CreateFile(System.String,System.Byte[])">
+            <summary>
+            Creates the file.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <param name="buffer">The buffer.</param>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.GetLineCount(System.String)">
+            <summary>
+            Gets the line count.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.GetFileSize(System.String)">
+            <summary>
+            Gets the size of the file.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.GetDirectories(System.String,System.String,System.Boolean)">
+            <summary>
+            Gets the directories.
+            </summary>
+            <param name="directoryPath">The directory path.</param>
+            <param name="searchPattern">The search pattern.</param>
+            <param name="isSearchChild">if set to <c>true</c> [is search child].</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.WriteText(System.String,System.String)">
+            <summary>
+            Writes the text.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <param name="text">The text.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.AppendText(System.String,System.String)">
+            <summary>
+            Appends the text.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <param name="content">The content.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.WriteFile(System.String,System.String)">
+            <summary>
+            Writes the file.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <param name="content">The content.</param>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.ReadFile(System.String)">
+            <summary>
+            Reads the file.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.ReadFile(System.String,System.Text.Encoding)">
+            <summary>
+            Reads the file.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <param name="encoding">The encoding.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.ReadFileLines(System.String)">
+            <summary>
+            Reads the file lines.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.ReadLastLines(System.String)">
+            <summary>
+            Reads the last lines.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.Copy(System.String,System.String)">
+            <summary>
+            Copies the specified source file path.
+            </summary>
+            <param name="sourceFilePath">The source file path.</param>
+            <param name="destFilePath">The dest file path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.Move(System.String,System.String)">
+            <summary>
+            Moves the specified source file path.
+            </summary>
+            <param name="sourceFilePath">The source file path.</param>
+            <param name="descDirectoryPath">The desc directory path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.GetFileNameNoExtension(System.String)">
+            <summary>
+            Gets the file name no extension.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.GetExtension(System.String)">
+            <summary>
+            Gets the extension.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.ClearDirectory(System.String)">
+            <summary>
+            Clears the directory.
+            </summary>
+            <param name="directoryPath">The directory path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.ClearFile(System.String)">
+            <summary>
+            Clears the file.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.DirFileHelper.DeleteDirectory(System.String)">
+            <summary>
+            Deletes the directory.
+            </summary>
+            <param name="directoryPath">The directory path.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Util.Helper.EnumHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AIStudio.Util.Helper.EnumHelper.ToOptionList(System.Type)">
+            <summary>
+            将枚举类型转为选项列表
+            注：value为值,text为显示内容
+            </summary>
+            <param name="enumType">枚举类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.EnumHelper.ToMultipleText(System.Collections.Generic.List{System.Int32},System.Type)">
+            <summary>
+            多选枚举转为对应文本,逗号隔开
+            </summary>
+            <param name="values">多个值</param>
+            <param name="enumType">枚举类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.EnumHelper.ToMultipleText(System.String,System.Type)">
+            <summary>
+            多选枚举转为对应文本,逗号隔开
+            </summary>
+            <param name="values">多个值逗号隔开</param>
+            <param name="enumType">枚举类型</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Util.Helper.SequentialGuidType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Helper.SequentialGuidType.AsString">
+            <summary>
+            用于 MySql 和 PostgreSql.
+            当使用 <see cref="M:System.Guid.ToString" /> 方法进行格式化时连续.
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Helper.SequentialGuidType.AsBinary">
+            <summary>
+            用于 Oracle.
+            当使用 <see cref="M:System.Guid.ToByteArray" /> 方法进行格式化时连续.
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Helper.SequentialGuidType.AtEnd">
+            <summary>
+            用以 SqlServer.
+            连续性体现于 GUID 的第4块（Data4）.
+            </summary>
+        </member>
+        <member name="T:AIStudio.Util.Helper.GuidHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Helper.GuidHelper.Rfc4122Version4">
+            <summary>
+            The RFC4122 version4
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Helper.GuidHelper.Rfc4122Variant">
+            <summary>
+            The RFC4122 variant
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Helper.GuidHelper.FilterHighBit">
+            <summary>
+            The filter high bit
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Helper.GuidHelper.FilterLowBit">
+            <summary>
+            The filter low bit
+            </summary>
+        </member>
+        <member name="F:AIStudio.Util.Helper.GuidHelper._randomNumberGenerator">
+            <summary>
+            The random number generator
+            </summary>
+        </member>
+        <member name="P:AIStudio.Util.Helper.GuidHelper.SequentialGuidType">
+            <summary>
+            连续 Guid 类型，默认：AsString.
+            </summary>
+            <value>
+            The type of the sequential unique identifier.
+            </value>
+        </member>
+        <member name="M:AIStudio.Util.Helper.GuidHelper.Next">
+            <summary>
+            生成连续 Guid.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.GuidHelper.NextOld(AIStudio.Util.Helper.SequentialGuidType)">
+            <summary>
+            生成连续 Guid（生成的 Guid 并不符合 RFC 4122 标准）.
+            来源：Abp. from jhtodd/SequentialGuid https://github.com/jhtodd/SequentialGuid/blob/master/SequentialGuid/Classes/SequentialGuid.cs .
+            </summary>
+            <param name="guidType">Type of the unique identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.GuidHelper.Next(AIStudio.Util.Helper.SequentialGuidType)">
+            <summary>
+            生成连续 Guid.
+            </summary>
+            <param name="guidType">Type of the unique identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Util.Helper.LinqHelper">
+            <summary>
+            Linq操作帮助类
+            </summary>
+        </member>
+        <member name="M:AIStudio.Util.Helper.LinqHelper.True``1">
+            <summary>
+            创建初始条件为True的表达式
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Util.Helper.LinqHelper.False``1">
+            <summary>
+            创建初始条件为False的表达式
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Util.Mapper.MapAttribute">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:AIStudio.Util.Mapper.MapAttribute.#ctor(System.Type[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:AIStudio.Util.Mapper.MapAttribute"/> class.
+            </summary>
+            <param name="targetTypes">The target types.</param>
+        </member>
+        <member name="P:AIStudio.Util.Mapper.MapAttribute.TargetTypes">
+            <summary>
+            Gets the target types.
+            </summary>
+            <value>
+            The target types.
+            </value>
+        </member>
+    </members>
+</doc>

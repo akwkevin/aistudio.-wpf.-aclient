@@ -1,0 +1,154 @@
+﻿{
+  "Id": "371406356226117",
+  "Version": 0,
+  "DataType": "AIStudio.Entity.DTO.OA_Manage.OA_Data, AIStudio.Entity",
+  "FirstStart": true,
+  "Steps": [
+    {
+      "Id": "cdb5e645-6f04-47f7-8f39-6c77a0ae11a7",
+      "Label": "开始",
+      "StepType": "AIStudio.Business.OA_Manage.Steps.OAStartStep, AIStudio.Business",
+      "PreStepId": null,
+      "NextStepId": "c63624f5-1157-4b1b-ba0e-12266a208431",
+      "Status": 0,
+      "ActRules": {
+        "UserIds": null,
+        "UserNames": null,
+        "RoleIds": null,
+        "RoleNames": null,
+        "ActType": null
+      },
+      "SelectNextStep": {}
+    },
+    {
+      "Id": "c63624f5-1157-4b1b-ba0e-12266a208431",
+      "Label": "或签",
+      "StepType": "AIStudio.Business.OA_Manage.Steps.OAMiddleStep, AIStudio.Business",
+      "PreStepId": null,
+      "NextStepId": "3d115269-7bfa-4fb7-9986-14737256eba7",
+      "Status": 0,
+      "ActRules": {
+        "UserIds": [ "Admin", "Bob", "Alice" ],
+        "UserNames": null,
+        "RoleIds": null,
+        "RoleNames": null,
+        "ActType": "or"
+      },
+      "SelectNextStep": {}
+    },
+    {
+      "Id": "3d115269-7bfa-4fb7-9986-14737256eba7",
+      "Label": "结束",
+      "StepType": "AIStudio.Business.OA_Manage.Steps.OAEndStep, AIStudio.Business",
+      "PreStepId": null,
+      "NextStepId": null,
+      "Status": 0,
+      "ActRules": {
+        "UserIds": null,
+        "UserNames": null,
+        "RoleIds": null,
+        "RoleNames": null,
+        "ActType": null
+      },
+      "SelectNextStep": {}
+    }
+  ],
+  "CurrentStepIds": [],
+  "MyEvent": null,
+  "Flag": 0.0,
+  "Nodes": [
+    {
+      "Kind": 1,
+      "UserIds": null,
+      "RoleIds": null,
+      "ActType": null,
+      "Id": "cdb5e645-6f04-47f7-8f39-6c77a0ae11a7",
+      "ParentId": null,
+      "Name": "开始节点",
+      "Color": "#1890ff",
+      "Label": "开始",
+      "Width": 100.0,
+      "Height": 80.0,
+      "X": 137.5,
+      "Y": 22.5,
+      "Type": "FlowchartNode",
+      "ZIndex": 0,
+      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right" ]
+    },
+    {
+      "Kind": 3,
+      "UserIds": [ "Admin", "Bob", "Alice" ],
+      "RoleIds": null,
+      "ActType": "or",
+      "Id": "c63624f5-1157-4b1b-ba0e-12266a208431",
+      "ParentId": null,
+      "Name": "中间节点",
+      "Color": "#1890ff",
+      "Label": "或签",
+      "Width": 100.0,
+      "Height": 80.0,
+      "X": 137.5,
+      "Y": 147.5,
+      "Type": "FlowchartNode",
+      "ZIndex": 0,
+      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right" ]
+    },
+    {
+      "Kind": 2,
+      "UserIds": null,
+      "RoleIds": null,
+      "ActType": null,
+      "Id": "3d115269-7bfa-4fb7-9986-14737256eba7",
+      "ParentId": null,
+      "Name": "结束节点",
+      "Color": "#1890ff",
+      "Label": "结束",
+      "Width": 100.0,
+      "Height": 80.0,
+      "X": 137.5,
+      "Y": 272.5,
+      "Type": "FlowchartNode",
+      "ZIndex": 0,
+      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right" ]
+    }
+  ],
+  "Links": [
+    {
+      "Id": "0009f318-211b-4c54-90c7-f46c9f517a9f",
+      "Color": null,
+      "SelectedColor": null,
+      "Width": 2.0,
+      "Label": null,
+      "SourceId": "cdb5e645-6f04-47f7-8f39-6c77a0ae11a7",
+      "TargetId": "c63624f5-1157-4b1b-ba0e-12266a208431",
+      "SourcePortAlignment": "Bottom",
+      "TargetPortAlignment": "Top",
+      "Type": "DiagramLink",
+      "Router": null,
+      "PathGenerator": null,
+      "SourceMarkerPath": null,
+      "SourceMarkerWidth": null,
+      "TargetMarkerPath": null,
+      "TargetMarkerWidth": null
+    },
+    {
+      "Id": "126381bc-fdab-4352-993f-231962054d90",
+      "Color": null,
+      "SelectedColor": null,
+      "Width": 2.0,
+      "Label": null,
+      "SourceId": "c63624f5-1157-4b1b-ba0e-12266a208431",
+      "TargetId": "3d115269-7bfa-4fb7-9986-14737256eba7",
+      "SourcePortAlignment": "Bottom",
+      "TargetPortAlignment": "Top",
+      "Type": "DiagramLink",
+      "Router": null,
+      "PathGenerator": null,
+      "SourceMarkerPath": null,
+      "SourceMarkerWidth": null,
+      "TargetMarkerPath": null,
+      "TargetMarkerWidth": null
+    }
+  ],
+  "Groups": null
+}

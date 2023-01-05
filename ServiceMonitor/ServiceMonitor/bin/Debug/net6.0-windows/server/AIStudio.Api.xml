@@ -1,0 +1,2294 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AIStudio.Api</name>
+    </assembly>
+    <members>
+        <member name="T:AIStudio.Api.Controllers.ApiControllerBase">
+            <summary>
+            对外接口基控制器,会把json转成参数
+            </summary>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.Base_ActionController">
+            <summary>
+            系统权限
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_ActionController.#ctor(AIStudio.IBusiness.Base_Manage.IBase_ActionBusiness)">
+            <summary>
+            系统权限控制器
+            </summary>
+            <param name="actionBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_ActionController.GetAllActionList">
+            <summary>
+            获取所有权限列表
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_ActionController.GetMenuTreeList(AIStudio.Entity.DTO.Base_Manage.InputDTO.Base_ActionsInputDTO)">
+            <summary>
+            获取菜单树
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_ActionController.GetActionTreeList(AIStudio.Entity.DTO.Base_Manage.InputDTO.Base_ActionsInputDTO)">
+            <summary>
+            获取角色权限设置树
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_ActionController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            根据Id获取权限
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_ActionController.GetPermissionList(AIStudio.Entity.DTO.Base_Manage.InputDTO.Base_ActionsInputDTO)">
+            <summary>
+            获取动作权限列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_ActionController.SaveData(AIStudio.Entity.DTO.Base_Manage.InputDTO.Base_ActionEditInputDTO)">
+            <summary>
+            保存权限数据
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_ActionController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除权限数据
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.Base_AppSecretController">
+            <summary>
+            应用密钥
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_AppSecretController.#ctor(AIStudio.IBusiness.Base_Manage.IBase_AppSecretBusiness)">
+            <summary>
+            应用密钥控制器
+            </summary>
+            <param name="appSecretBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_AppSecretController.GetDataList(AIStudio.Util.Common.PageInput)">
+            <summary>
+            获取应用密钥列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_AppSecretController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            根据Id获取应用密钥
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_AppSecretController.SaveData(AIStudio.Entity.Base_Manage.Base_AppSecret)">
+            <summary>
+            保存应用密钥
+            </summary>
+            <param name="theData">保存的数据</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_AppSecretController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除应用密钥
+            </summary>
+            <param name="ids">id数组,JSON数组</param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.Base_CommonFormConfigController">
+            <summary>
+            通用查询配置
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_CommonFormConfigController.#ctor(AIStudio.IBusiness.Base_Manage.IBase_CommonFormConfigBusiness)">
+            <summary>
+            通用查询配置控制器
+            </summary>
+            <param name="base_CommonFormConfigBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_CommonFormConfigController.GetDataList(AIStudio.Util.Common.PageInput)">
+            <summary>
+            获取通用查询配置列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_CommonFormConfigController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            根据Id获取通用查询配置
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_CommonFormConfigController.SaveData(AIStudio.Entity.Base_Manage.Base_CommonFormConfig)">
+            <summary>
+            保存通用查询配置
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_CommonFormConfigController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除通用查询配置
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.Base_DbLinkController">
+            <summary>
+            数据库连接
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DbLinkController.#ctor(AIStudio.IBusiness.Base_Manage.IBase_DbLinkBusiness)">
+            <summary>
+            数据库连接控制器
+            </summary>
+            <param name="dbLinkBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DbLinkController.GetDataList(AIStudio.Util.Common.PageInput)">
+            <summary>
+            获取数据库连接列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DbLinkController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            根据Id获取数据库连接
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DbLinkController.SaveData(AIStudio.Entity.Base_Manage.Base_DbLink)">
+            <summary>
+            保存数据库连接
+            </summary>
+            <param name="theData">保存的数据</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DbLinkController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除数据库连接
+            </summary>
+            <param name="ids">id数组,JSON数组</param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.Base_DepartmentController">
+            <summary>
+            部门
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DepartmentController.#ctor(AIStudio.IBusiness.Base_Manage.IBase_DepartmentBusiness)">
+            <summary>
+            部门控制器
+            </summary>
+            <param name="departmentBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DepartmentController.GetTreeDataList(AIStudio.Util.Common.SearchInput)">
+            <summary>
+            获取部门树
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DepartmentController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            根据Id获取部门
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DepartmentController.SaveData(AIStudio.Entity.Base_Manage.Base_Department)">
+            <summary>
+            保存部门
+            </summary>
+            <param name="theData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DepartmentController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除部门
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.Base_DictionaryController">
+            <summary>
+            系统字典
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DictionaryController.#ctor(AIStudio.IBusiness.Base_Manage.IBase_DictionaryBusiness)">
+            <summary>
+            系统字典控制器
+            </summary>
+            <param name="base_DictionaryBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DictionaryController.GetDataList(AIStudio.Util.Common.SearchInput)">
+            <summary>
+            获取数据系统字典列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DictionaryController.GetTreeDataList(AIStudio.Util.Common.SearchInput)">
+            <summary>
+            获取系统字典树
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DictionaryController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            根据Id获取系统字典
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DictionaryController.SaveData(AIStudio.Entity.Base_Manage.Base_Dictionary)">
+            <summary>
+            保存系统字典
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_DictionaryController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除系统字典
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.Base_LogExceptionController">
+            <summary>
+            异常日志
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_LogExceptionController.#ctor(AIStudio.IBusiness.Base_Manage.IBase_LogExceptionBusiness)">
+            <summary>
+            异常日志控制器
+            </summary>
+            <param name="logBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_LogExceptionController.GetDataList(AIStudio.Util.Common.PageInput{AIStudio.Util.Common.HistorySearch})">
+            <summary>
+            获取异常日志历史列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.Base_LogOperatingController">
+            <summary>
+            操作日志
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_LogOperatingController.#ctor(AIStudio.IBusiness.Base_Manage.IBase_LogOperatingBusiness)">
+            <summary>
+            操作日志控制器
+            </summary>
+            <param name="logBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_LogOperatingController.GetDataList(AIStudio.Util.Common.PageInput{AIStudio.Util.Common.HistorySearch})">
+            <summary>
+            获取操作日志历史列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.Base_LogSystemController">
+            <summary>
+            系统日志
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_LogSystemController.#ctor(AIStudio.IBusiness.Base_Manage.IBase_LogSystemBusiness)">
+            <summary>
+            系统日志控制器
+            </summary>
+            <param name="logBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_LogSystemController.GetDataList(AIStudio.Util.Common.PageInput{AIStudio.Util.Common.HistorySearch})">
+            <summary>
+            获取系统日志历史列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_LogSystemController.GetLogTypeList">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.Base_LogVisitController">
+            <summary>
+            访问日志
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_LogVisitController.#ctor(AIStudio.IBusiness.Base_Manage.IBase_LogVisitBusiness)">
+            <summary>
+            访问日志控制器
+            </summary>
+            <param name="logBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_LogVisitController.GetDataList(AIStudio.Util.Common.PageInput{AIStudio.Util.Common.HistorySearch})">
+            <summary>
+            获取访问日志历史列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.Base_RoleController">
+            <summary>
+            系统角色
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_RoleController.#ctor(AIStudio.IBusiness.Base_Manage.IBase_RoleBusiness)">
+            <summary>
+            系统角色控制器
+            </summary>
+            <param name="roleBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_RoleController.GetDataList(AIStudio.Util.Common.PageInput)">
+            <summary>
+            获取系统角色列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_RoleController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            根据Id获取系统角色
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_RoleController.GetOptionList(AIStudio.Util.Common.PageInput)">
+            <summary>
+            获取系统角色下拉数据源
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_RoleController.SaveData(AIStudio.Entity.DTO.Base_Manage.InputDTO.Base_RoleEditInputDTO)">
+            <summary>
+            保存系统角色
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_RoleController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除系统角色
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.Base_TestController">
+            <summary>
+            Base_Test
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_TestController.#ctor(AIStudio.IBusiness.Base_Manage.IBase_TestBusiness)">
+            <summary>
+            Base_Test控制器
+            </summary>
+            <param name="Base_TestBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_TestController.GetDataList(AIStudio.Util.Common.PageInput)">
+            <summary>
+            获取Base_Test列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_TestController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            根据Id获取Base_Test
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_TestController.SaveData(AIStudio.Entity.Base_Manage.Base_Test)">
+            <summary>
+            保存Base_Test
+            </summary>
+            <param name="theData">保存的数据</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_TestController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除Base_Test
+            </summary>
+            <param name="ids">id数组,JSON数组</param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.Base_UserController">
+            <summary>
+            系统用户
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_UserController.#ctor(AIStudio.IBusiness.Base_Manage.IBase_UserBusiness)">
+            <summary>
+            系统用户控制器
+            </summary>
+            <param name="userBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_UserController.GetDataList(AIStudio.Util.Common.PageInput)">
+            <summary>
+            获取系统用户列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_UserController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            根据Id获取系统用户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_UserController.GetOptionList(AIStudio.Util.Common.PageInput)">
+            <summary>
+            获取系统用户下拉数据源
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_UserController.SaveData(AIStudio.Entity.DTO.Base_Manage.InputDTO.Base_UserEditInputDTO)">
+            <summary>
+            保存系统用户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.Base_UserController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除系统用户
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.BuildCodeController">
+            <summary>
+            代码生成
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.BuildCodeController.#ctor(AIStudio.IBusiness.Base_Manage.IBuildCodeBusiness)">
+            <summary>
+            代码生成控制器
+            </summary>
+            <param name="buildCodeBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.BuildCodeController.GetAllDbLink">
+            <summary>
+            获取连接数据库列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.BuildCodeController.GetDbTableList(AIStudio.Entity.DTO.Base_Manage.InputDTO.DbTablesInputDTO)">
+            <summary>
+            获取连接数据库的所有表信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.BuildCodeController.Build(AIStudio.Entity.DTO.Base_Manage.InputDTO.BuildInputDTO)">
+            <summary>
+            代码生成
+            </summary>
+            <param name="input"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.BuildCodeController.GetDbTableInfo(AIStudio.Entity.DTO.Base_Manage.InputDTO.BuildInputDTO)">
+            <summary>
+            获取多个表信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.HomeController">
+            <summary>
+            首页控制器
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.HomeController.#ctor(AIStudio.IBusiness.Base_Manage.IHomeBusiness)">
+            <summary>
+            首页控制器
+            </summary>
+            <param name="homeBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.HomeController.SubmitLogin(AIStudio.Entity.DTO.Base_Manage.InputDTO.LoginInputDTO)">
+            <summary>
+            用户登录(获取token)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.HomeController.RefreshToken(AIStudio.Entity.DTO.Base_Manage.InputDTO.RefreshTokenInputDTO)">
+            <summary>
+            刷新Token(Headers返回新的Token和刷新Token)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.HomeController.SubmitLogout">
+            <summary>
+            用户退出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.HomeController.ChangePwd(AIStudio.Entity.DTO.Base_Manage.InputDTO.ChangePwdInputDTO)">
+            <summary>
+            修改密码
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.HomeController.GetOperatorInfo">
+            <summary>
+            获取操作员信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.HomeController.GetOperatorMenuList">
+            <summary>
+            获取操作员菜单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Base_Manage.UploadController">
+            <summary>
+            文件上传
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.UploadController.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            文件上传控制器
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.UploadController.UploadFileByForm">
+            <summary>
+            上传文件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.UploadController.GetAbsolutePath(System.String)">
+            <summary>
+            获取路径
+            </summary>
+            <param name="virtualPath"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController">
+            <summary>
+            流程定义
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.#ctor(AIStudio.Business.OA_Manage.IOA_DefFormBusiness)">
+            <summary>
+            流程定义控制器
+            </summary>
+            <param name="oA_DefFormBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.GetDataList(AIStudio.Util.Common.PageInput)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="input">分页参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.GetTreeDataList(AIStudio.Util.Common.SearchInput)">
+            <summary>
+            获取树列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            获取详情
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.SaveData(AIStudio.Entity.DTO.OA_Manage.OA_DefFormDTO)">
+            <summary>
+            保存
+            </summary>
+            <param name="data">保存的数据</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.StartData(System.Collections.Generic.List{System.String})">
+            <summary>
+            启动数据
+            </summary>
+            <param name="ids"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.StopData(System.Collections.Generic.List{System.String})">
+            <summary>
+            停用数据
+            </summary>
+            <param name="ids"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="ids">id数组,JSON数组</param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController">
+            <summary>
+            流程控制
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.#ctor(AIStudio.Business.OA_Manage.IOA_UserFormBusiness)">
+            <summary>
+            流程控制器
+            </summary>
+            <param name="oA_UserFormBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.GetDataList(AIStudio.Util.Common.PageInput{AIStudio.Entity.DTO.OA_Manage.OA_UserFormInputDTO})">
+            <summary>
+            获取列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            获取详情
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.PreStep(AIStudio.Entity.DTO.OA_Manage.OA_UserFormDTO)">
+            <summary>
+            预览
+            </summary>
+            <param name="data">保存的数据</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.SaveData(AIStudio.Entity.DTO.OA_Manage.OA_UserFormDTO)">
+            <summary>
+            保存
+            </summary>
+            <param name="data">保存的数据</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="ids">id数组,JSON数组</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.EventData(AIStudio.Entity.DTO.OA_Manage.MyEvent)">
+            <summary>
+            审批数据
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.DisCardData(AIStudio.Business.OA_Manage.DisCardInput)">
+            <summary>
+            废弃数据
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.Suspend(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.Resume(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.Terminate(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController">
+            <summary>
+            作业调度
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.#ctor(AIStudio.Business.Quartz_Manage.IQuartz_TaskBusiness)">
+            <summary>
+            作业调度控制器
+            </summary>
+            <param name="quartz_TaskBusiness"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.GetDataList(AIStudio.Util.Common.PageInput)">
+            <summary>
+            作业调度列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            获取指定Id的作业任务
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.SaveData(AIStudio.Entity.Quartz_Manage.Quartz_Task)">
+            <summary>
+            保存作业任务
+            </summary>
+            <param name="theData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除作业任务
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.PauseData(System.Collections.Generic.List{System.String})">
+            <summary>
+            暂停作业任务
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.StartData(System.Collections.Generic.List{System.String})">
+            <summary>
+            启动作业任务
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.TodoData(System.Collections.Generic.List{System.String})">
+            <summary>
+            立即执行作业任务
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.GetJobOptions">
+            <summary>
+            获取作业类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.AccountController">
+            <summary>
+            jwt验证，测试角色权限
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AccountController.GetToken">
+            <summary>
+            获取token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AccountController.GetTest">
+            <summary>
+            Test
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AccountController.GetTestAdmin">
+            <summary>
+            Role TestAdmin
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AccountController.GetTestUser">
+            <summary>
+            Role TestUser
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AccountController.GetTestAdminOrUser">
+            <summary>
+            Role TestAdmin,TestUser
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.AccountPermissionController">
+            <summary>
+            jwt验证，测试Permissions权限
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AccountPermissionController.UserCreate">
+            <summary>
+            Create 权限,Test已赋权
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AccountPermissionController.UserUpdate">
+            <summary>
+            Update 权限,Test已赋权
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AccountPermissionController.UserDelete">
+            <summary>
+            Delete 权限,Test没有赋权
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.AOPTestController">
+            <summary>
+            测试TestAOP注入.
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.Controller" />
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.Controller" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.AOPTestController._valuesService">
+            <summary>
+            The values service
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AOPTestController.#ctor(AIStudio.Api.Controllers.Test.IValuesService)">
+            <summary>
+            AOPTestController
+            </summary>
+            <param name="valuesService">The values service.</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AOPTestController.Get">
+            <summary>
+            GET api/values
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AOPTestController.Get(System.Int32)">
+            <summary>
+            GET api/AOPTest/Get/5
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AOPTestController.Get2(System.String)">
+            <summary>
+            GET api/AOPTest/Get2?id=5
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AOPTestController.Get3(System.String,System.String)">
+            <summary>
+            GET api/AOPTest/Get3?id=5&amp;id2=6
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="id2">The id2.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AOPTestController.Get4(AIStudio.Api.Controllers.Test.ApiModel)">
+            <summary>
+            GET api/AOPTest/Get4?Id=5&amp;Url=6&amp;PageId=7
+            </summary>
+            <param name="model">The model.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AOPTestController.Get5(System.String,System.String)">
+            <summary>
+            GET api/AOPTest/Get5?Id=5&amp;Url=6&amp;PageId=7
+            </summary>
+            <param name="schoolName"></param>
+            <param name="classNum"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AOPTestController.Get6(System.String,System.Int32)">
+            <summary>
+            GET api/AOPTest/Get6?Id=5&amp;Url=6&amp;PageId=7
+            </summary>
+            <param name="pageNum"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.AOPTestController.Get7(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            GET api/AOPTest/Get5?Id=5&amp;Url=6&amp;PageId=7
+            </summary>
+            <param name="schoolName"></param>
+            <param name="classNum"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.ApiModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.ApiModel.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.ApiModel.Url">
+            <summary>
+            Gets or sets the URL.
+            </summary>
+            <value>
+            The URL.
+            </value>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.ApiModel.PageId">
+            <summary>
+            Gets or sets the page identifier.
+            </summary>
+            <value>
+            The page identifier.
+            </value>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.IValuesService">
+            <summary>
+            IValuesService
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.IValuesService.FindAll">
+            <summary>
+            Finds all.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.IValuesService.Find(System.Int32)">
+            <summary>
+            Finds the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.ValuesService">
+            <summary>
+            ValuesService
+            </summary>
+            <seealso cref="T:AIStudio.Api.Controllers.Test.IValuesService" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.ValuesService._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.ValuesService.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.ValuesService})">
+            <summary>
+            ValuesService
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.ValuesService.FindAll">
+            <summary>
+            FindAll
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.ValuesService.Find(System.Int32)">
+            <summary>
+            Find
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.ActivityWorkflow">
+            <summary>
+            ActivityWorkflow
+            </summary>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.CompensatingWorkflow">
+            <summary>
+            CompensatingWorkflow
+            </summary>
+            <seealso cref="T:WorkflowCore.Interface.IWorkflow" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.SamplesWorkflow.CompensatingWorkflow._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.CompensatingWorkflow.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.CompensatingWorkflow})">
+            <summary>
+            CompensatingWorkflow
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.CompensatingWorkflow.Id">
+            <summary>
+            Gets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.CompensatingWorkflow.Version">
+            <summary>
+            Gets the version.
+            </summary>
+            <value>
+            The version.
+            </value>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.CompensatingWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{System.Object})">
+            <summary>
+            Builds the specified builder.
+            </summary>
+            <param name="builder">The builder.</param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.Task1">
+            <summary>
+            Task1
+            </summary>
+            <seealso cref="T:WorkflowCore.Models.StepBody" />
+            <seealso cref="T:AIStudio.Common.DI.ITransientDependency" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.SamplesWorkflow.Task1._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.Task1.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.Task1})">
+            <summary>
+            Task1
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.Task1.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context">The context.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.Task2">
+            <summary>
+            Task2
+            </summary>
+            <seealso cref="T:WorkflowCore.Models.StepBody" />
+            <seealso cref="T:AIStudio.Common.DI.ITransientDependency" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.SamplesWorkflow.Task2._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.Task2.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.Task2})">
+            <summary>
+            Task2
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.Task2.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context">The context.</param>
+            <returns></returns>
+            <exception cref="M:AIStudio.Api.Controllers.Test.ValidationTestController.Exception"></exception>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.Task3">
+            <summary>
+            Task3
+            </summary>
+            <seealso cref="T:WorkflowCore.Models.StepBody" />
+            <seealso cref="T:AIStudio.Common.DI.ITransientDependency" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.SamplesWorkflow.Task3._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.Task3.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.Task3})">
+            <summary>
+            Task3
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.Task3.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context">The context.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask1">
+            <summary>
+            UndoTask1
+            </summary>
+            <seealso cref="T:WorkflowCore.Models.StepBody" />
+            <seealso cref="T:AIStudio.Common.DI.ITransientDependency" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask1._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask1.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask1})">
+            <summary>
+            UndoTask1
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask1.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Runs the specified context.
+            </summary>
+            <param name="context">The context.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask2">
+            <summary>
+            UndoTask2
+            </summary>
+            <seealso cref="T:WorkflowCore.Models.StepBody" />
+            <seealso cref="T:AIStudio.Common.DI.ITransientDependency" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask2._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask2.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask2})">
+            <summary>
+            UndoTask2
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask2.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Runs the specified context.
+            </summary>
+            <param name="context">The context.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask3">
+            <summary>
+            UndoTask3
+            </summary>
+            <seealso cref="T:WorkflowCore.Models.StepBody" />
+            <seealso cref="T:AIStudio.Common.DI.ITransientDependency" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask3._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask3.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask3})">
+            <summary>
+            UndoTask3
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.UndoTask3.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context">The context.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.DeferSampleWorkflow">
+            <summary>
+            DeferSampleWorkflow
+            </summary>
+            <seealso cref="T:WorkflowCore.Interface.IWorkflow" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.SamplesWorkflow.DeferSampleWorkflow._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.DeferSampleWorkflow.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.DeferSampleWorkflow})">
+            <summary>
+            DeferSampleWorkflow
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.DeferSampleWorkflow.Id">
+            <summary>
+            Id
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.DeferSampleWorkflow.Version">
+            <summary>
+            Version
+            </summary>
+            <value>
+            The version.
+            </value>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.DeferSampleWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{System.Object})">
+            <summary>
+            Build
+            </summary>
+            <param name="builder">The builder.</param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.SleepStep">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:WorkflowCore.Models.StepBody" />
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.SleepStep.Period">
+            <summary>
+            Gets or sets the period.
+            </summary>
+            <value>
+            The period.
+            </value>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.SleepStep.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Runs the specified context.
+            </summary>
+            <param name="context">The context.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.EventSampleWorkflow">
+            <summary>
+            EventSampleWorkflow
+            </summary>
+            <seealso cref="!:WorkflowCore.Interface.IWorkflow&lt;AIStudio.Api.Controllers.Test.SamplesWorkflow.MyDataClass&gt;" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.SamplesWorkflow.EventSampleWorkflow._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.EventSampleWorkflow.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.EventSampleWorkflow})">
+            <summary>
+            EventSampleWorkflow
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.EventSampleWorkflow.Id">
+            <summary>
+            Gets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.EventSampleWorkflow.Version">
+            <summary>
+            Gets the version.
+            </summary>
+            <value>
+            The version.
+            </value>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.EventSampleWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{AIStudio.Api.Controllers.Test.SamplesWorkflow.MyDataClass})">
+            <summary>
+            Builds the specified builder.
+            </summary>
+            <param name="builder">The builder.</param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.FlakyConnectionWorkflow">
+            <summary>
+            FlakyConnectionWorkflow
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.FlakyConnectionWorkflow.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.FlakyConnectionWorkflow.Version">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.FlakyConnectionWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{AIStudio.Api.Controllers.Test.SamplesWorkflow.FlakyConnectionParams})">
+            <summary>
+            Build
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.FlakyConnectionParams">
+            <summary>
+            FlakyConnectionParams
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.FlakyConnectionParams.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.FlakyConnection">
+            <summary>
+            FlakyConnection
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.FlakyConnection.SucceedAfterAttempts">
+            <summary>
+            SucceedAfterAttempts
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.FlakyConnection.RunAsync(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            RunAsync
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+            <exception cref="T:System.TimeoutException"></exception>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.LogMessage">
+            <summary>
+            LogMessage
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.LogMessage.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.LogMessage})">
+            <summary>
+            LogMessage
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.LogMessage.Message">
+            <summary>
+            Message
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.LogMessage.RunAsync(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            RunAsync
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.ForEachSyncWorkflow">
+            <summary>
+            ForEachSyncWorkflow
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.ForEachSyncWorkflow.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.ForEachSyncWorkflow.Version">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.ForEachSyncWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{System.Object})">
+            <summary>
+            Build
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.ForEachWorkflow">
+            <summary>
+            ForEachWorkflow
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.ForEachWorkflow.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.ForEachWorkflow.Version">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.ForEachWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{System.Object})">
+            <summary>
+            Build
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.DisplayContext">
+            <summary>
+            DisplayContext
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.DisplayContext.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.DisplayContext})">
+            <summary>
+            DisplayContext
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.DisplayContext.Item">
+            <summary>
+            Item
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.DisplayContext.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.DoSomething">
+            <summary>
+            DoSomething
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.DoSomething.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.DoSomething})">
+            <summary>
+            DoSomething
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.DoSomething.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.SayGoodbye">
+            <summary>
+            SayGoodbye
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.SayGoodbye.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.SayGoodbye})">
+            <summary>
+            SayGoodbye
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.SayGoodbye.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.SayHello">
+            <summary>
+            SayHello
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.SayHello.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.SayHello})">
+            <summary>
+            SayHello
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.SayHello.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.HelloWorldWorkflow">
+            <summary>
+            HelloWorldWorkflow
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.HelloWorldWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{System.Object})">
+            <summary>
+            Build
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.HelloWorldWorkflow.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.HelloWorldWorkflow.Version">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.GoodbyeWorld">
+            <summary>
+            GoodbyeWorld
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.GoodbyeWorld.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.GoodbyeWorld})">
+            <summary>
+            GoodbyeWorld
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.GoodbyeWorld.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.HelloWorld">
+            <summary>
+            HelloWorld
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.HelloWorld.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.HelloWorld})">
+            <summary>
+            HelloWorld
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.HelloWorld.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.IfWorkflow">
+            <summary>
+            IfWorkflow
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.IfWorkflow.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.IfWorkflow.Version">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.IfWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{AIStudio.Api.Controllers.Test.SamplesWorkflow.MyData})">
+            <summary>
+            Build
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.PrintMessage">
+            <summary>
+            PrintMessage
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.PrintMessage.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.PrintMessage})">
+            <summary>
+            PrintMessage
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.PrintMessage.Message">
+            <summary>
+            Message
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.PrintMessage.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.MultipleOutcomeWorkflow">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:WorkflowCore.Interface.IWorkflow" />
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.MultipleOutcomeWorkflow.Id">
+            <summary>
+            Gets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.MultipleOutcomeWorkflow.Version">
+            <summary>
+            Gets the version.
+            </summary>
+            <value>
+            The version.
+            </value>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.MultipleOutcomeWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{System.Object})">
+            <summary>
+            Builds the specified builder.
+            </summary>
+            <param name="builder">The builder.</param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskA">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:WorkflowCore.Models.StepBody" />
+            <seealso cref="T:AIStudio.Common.DI.ITransientDependency" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskA._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskA.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskA})">
+            <summary>
+            TaskA
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskA.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Runs the specified context.
+            </summary>
+            <param name="context">The context.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskB">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:WorkflowCore.Models.StepBody" />
+            <seealso cref="T:AIStudio.Common.DI.ITransientDependency" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskB._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskB.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskB})">
+            <summary>
+            TaskB
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskB.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Runs the specified context.
+            </summary>
+            <param name="context">The context.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskC">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:WorkflowCore.Models.StepBody" />
+            <seealso cref="T:AIStudio.Common.DI.ITransientDependency" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskC._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskC.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskC})">
+            <summary>
+            TaskC
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskC.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Runs the specified context.
+            </summary>
+            <param name="context">The context.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskD">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:WorkflowCore.Models.StepBody" />
+            <seealso cref="T:AIStudio.Common.DI.ITransientDependency" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskD._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskD.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskD})">
+            <summary>
+            TaskD
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.TaskD.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Runs the specified context.
+            </summary>
+            <param name="context">The context.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.OutcomeWorkflow">
+            <summary>
+            OutcomeWorkflow
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.OutcomeWorkflow.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.OutcomeWorkflow.Version">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.OutcomeWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{AIStudio.Api.Controllers.Test.SamplesWorkflow.MyData})">
+            <summary>
+            Build
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.ParallelWorkflow">
+            <summary>
+            ParallelWorkflow
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.ParallelWorkflow.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.ParallelWorkflow.Version">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.ParallelWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{AIStudio.Api.Controllers.Test.SamplesWorkflow.MyData})">
+            <summary>
+            Build
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.PassingDataWorkflow">
+            <summary>
+            PassingDataWorkflow
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.PassingDataWorkflow.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.PassingDataWorkflow})">
+            <summary>
+            PassingDataWorkflow
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.PassingDataWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{AIStudio.Api.Controllers.Test.SamplesWorkflow.MyDataClass})">
+            <summary>
+            Build
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.PassingDataWorkflow.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.PassingDataWorkflow.Version">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.MyDataClass">
+            <summary>
+            MyDataClass
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.MyDataClass.Value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.MyDataClass.Value1">
+            <summary>
+            Value1
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.MyDataClass.Value2">
+            <summary>
+            Value2
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.MyDataClass.Value3">
+            <summary>
+            Value3
+            </summary>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.AddNumbers">
+            <summary>
+            AddNumbers
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.AddNumbers.Input1">
+            <summary>
+            Input1
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.AddNumbers.Input2">
+            <summary>
+            Input2
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.AddNumbers.Output">
+            <summary>
+            Output
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.AddNumbers.RunAsync(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            RunAsync
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.PassingDataWorkflow2">
+            <summary>
+            PassingDataWorkflow2
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.PassingDataWorkflow2.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.PassingDataWorkflow2})">
+            <summary>
+            PassingDataWorkflow2
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.PassingDataWorkflow2.Build(WorkflowCore.Interface.IWorkflowBuilder{System.Collections.Generic.Dictionary{System.String,System.Int32}})">
+            <summary>
+            Build
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.PassingDataWorkflow2.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.PassingDataWorkflow2.Version">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.RecurSampleWorkflow">
+            <summary>
+            RecurSampleWorkflow
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.RecurSampleWorkflow.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.RecurSampleWorkflow})">
+            <summary>
+            RecurSampleWorkflow
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.RecurSampleWorkflow.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.RecurSampleWorkflow.Version">
+            <summary>
+            Verison
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.RecurSampleWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{AIStudio.Api.Controllers.Test.SamplesWorkflow.MyData})">
+            <summary>
+            Build
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.ScheduleWorkflow">
+            <summary>
+            ScheduleWorkflow
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.ScheduleWorkflow.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.ScheduleWorkflow})">
+            <summary>
+            ScheduleWorkflow
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.SimpleDecisionWorkflow">
+            <summary>
+            SimpleDecisionWorkflow
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.SimpleDecisionWorkflow.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.SimpleDecisionWorkflow.Version">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.SimpleDecisionWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{System.Object})">
+            <summary>
+            Build
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.RandomOutput">
+            <summary>
+            RandomOutput
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.RandomOutput.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.RandomOutput})">
+            <summary>
+            RandomOutput
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.RandomOutput.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.CustomMessage">
+            <summary>
+            CustomMessage
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.CustomMessage.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.SamplesWorkflow.CustomMessage})">
+            <summary>
+            CustomMessage
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.CustomMessage.Message">
+            <summary>
+            Message
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.CustomMessage.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.WhileWorkflow">
+            <summary>
+            WhileWorkflow
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.WhileWorkflow.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.WhileWorkflow.Version">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.WhileWorkflow.Build(WorkflowCore.Interface.IWorkflowBuilder{AIStudio.Api.Controllers.Test.SamplesWorkflow.MyData})">
+            <summary>
+            Build
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.MyData">
+            <summary>
+            MyData
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.MyData.Counter">
+            <summary>
+            Counter
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.MyData.Value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.MyData.Request">
+            <summary>
+            Request
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.MyData.ApprovedBy">
+            <summary>
+            ApprovedBy
+            </summary>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.SamplesWorkflow.IncrementStep">
+            <summary>
+            IncrementStep
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.IncrementStep.Value1">
+            <summary>
+            Value1
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.SamplesWorkflow.IncrementStep.Value2">
+            <summary>
+            Value2
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.SamplesWorkflow.IncrementStep.Run(WorkflowCore.Interface.IStepExecutionContext)">
+            <summary>
+            Run
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.ValidationTestController">
+            <summary>
+            测试数据校验
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.ValidationTestController.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.ValidationTestController})">
+            <summary>
+            ValidationTestController
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.ValidationTestController.TraditionValidation(AIStudio.Api.Controllers.Test.TestModel)">
+            <summary>
+            1.使用代码校验
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.ValidationTestController.ModelValidation(AIStudio.Api.Controllers.Test.TestModel)">
+            <summary>
+            2.使用模型校验
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.ValidationTestController.List(System.Collections.Generic.List{AIStudio.Api.Controllers.Test.TestModel})">
+            <summary>
+            使用模型校验
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.ValidationTestController.Exception">
+            <summary>
+            异常测试
+            </summary>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.TestModel">
+            <summary>
+            测试模型
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.TestModel.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.TestModel.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.TestModel.Other">
+            <summary>
+            其它
+            </summary>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.WeatherForecastController">
+            <summary>
+            工程自带Api
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.WeatherForecastController.Summaries">
+            <summary>
+            The summaries
+            </summary>
+        </member>
+        <member name="F:AIStudio.Api.Controllers.Test.WeatherForecastController._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.WeatherForecastController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:AIStudio.Api.Controllers.Test.WeatherForecastController"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WeatherForecastController.Get">
+            <summary>
+            获取WeatherForecast
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.WeatherForecast">
+            <summary>
+            天气预报
+            </summary>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.WeatherForecast.Date">
+            <summary>
+            日期
+            </summary>
+            <value>
+            The date.
+            </value>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.WeatherForecast.TemperatureC">
+            <summary>
+            温度C
+            </summary>
+            <value>
+            The temperature c.
+            </value>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.WeatherForecast.TemperatureF">
+            <summary>
+            温度F
+            </summary>
+            <value>
+            The temperature f.
+            </value>
+        </member>
+        <member name="P:AIStudio.Api.Controllers.Test.WeatherForecast.Summary">
+            <summary>
+            汇总
+            </summary>
+            <value>
+            The summary.
+            </value>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Test.WorkflowTestController">
+            <summary>
+            工作流测试
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.WorkflowTestController},WorkflowCore.Interface.IWorkflowHost)">
+            <summary>
+            工作流测试控制器
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample01">
+            <summary>
+            HelloWorld
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample02">
+            <summary>
+            条件分支
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample03">
+            <summary>
+            输入输出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample04">
+            <summary>
+            等待事件Event触发
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample05">
+            <summary>
+            等待3s执行
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample06">
+            <summary>
+            多结果测试
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample07">
+            <summary>
+            Foreach循环
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample08">
+            <summary>
+            异步Foreach循环
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample09">
+            <summary>
+            While循环
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample10">
+            <summary>
+            If分支
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample11">
+            <summary>
+            条件复杂分支
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample12">
+            <summary>
+            并行运行
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample13">
+            <summary>
+            重复执行
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample14">
+            <summary>
+            执行作业
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample15">
+            <summary>
+            报错重试
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample16">
+            <summary>
+            等待激活
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample17">
+            <summary>
+            中间件，如日志打印，重试等
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.SeedData">
+            <summary>
+            初始化数据
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.SeedData.EnsureSeedData(System.IServiceProvider)">
+            <summary>
+            开始初始化
+            </summary>
+            <param name="provider"></param>
+        </member>
+        <member name="M:AIStudio.Api.SeedData.EnsureSeedQuartzData(System.IServiceProvider)">
+            <summary>
+            初始化调度作业数据
+            </summary>
+            <param name="provider"></param>
+        </member>
+        <member name="M:AIStudio.Api.SeedData.EnsureSeedWorkflow(System.IServiceProvider)">
+            <summary>
+            初始化工作流
+            </summary>
+            <param name="provider"></param>
+        </member>
+        <member name="T:AIStudio.Api.Startup">
+            <summary>
+            启动类，只是便于多个项目共享启动代码
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Startup.Run(System.String[],System.Action{Microsoft.Extensions.DependencyInjection.IServiceCollection},System.Action{Microsoft.AspNetCore.Builder.WebApplication})">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <param name="serviceAction"></param>
+            <param name="applicationAction"></param>
+        </member>
+    </members>
+</doc>
