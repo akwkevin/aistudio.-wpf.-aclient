@@ -175,21 +175,18 @@ F:.
 ©¦  ©¦          ©¸©¤net6-windows
 ©¦  ©¦              ©À©¤ref
 ©¦  ©¦              ©¸©¤refint
-©¦  ©À©¤api
-©¦  ©¦  ©¸©¤AIStudio.Wpf.ApiBusiness
-©¦  ©¦      ©À©¤bin
-©¦  ©¦      ©¦  ©¸©¤Debug
-©¦  ©¦      ©¦      ©¸©¤net6-windows
-©¦  ©¦      ©¦          ©¸©¤ref
-©¦  ©¦      ©À©¤Models
-©¦  ©¦      ©¸©¤obj
-©¦  ©¦          ©¸©¤Debug
-©¦  ©¦              ©¸©¤net6-windows
-©¦  ©¦                  ©À©¤ref
-©¦  ©¦                  ©¸©¤refint
-©¦  ©¸©¤interface
-©¦      ©¸©¤AIStudio.Wpf.IBussiness
-©¦          ©¸©¤AIStudio.Wpf.IBusiness
+©¦  ©¸©¤api
+©¦      ©¸©¤AIStudio.Wpf.ApiBusiness
+©¦          ©À©¤bin
+©¦          ©¦  ©¸©¤Debug
+©¦          ©¦      ©¸©¤net6-windows
+©¦          ©¦          ©¸©¤ref
+©¦          ©À©¤Models
+©¦          ©¸©¤obj
+©¦              ©¸©¤Debug
+©¦                  ©¸©¤net6-windows
+©¦                      ©À©¤ref
+©¦                      ©¸©¤refint
 ©À©¤Common
 ©¦  ©À©¤AIStudio.AOP
 ©¦  ©¦  ©À©¤Abstraction
@@ -888,15 +885,6 @@ F:.
 ©¦  ©¦  ©À©¤Properties
 ©¦  ©¦  ©À©¤ViewModels
 ©¦  ©¦  ©¸©¤Views
-©¦  ©À©¤AIStudio.Wpf.D_Manage
-©¦  ©¦  ©À©¤bin
-©¦  ©¦  ©¦  ©¸©¤Debug
-©¦  ©¦  ©¦      ©¸©¤net6-windows
-©¦  ©¦  ©¸©¤obj
-©¦  ©¦      ©¸©¤Debug
-©¦  ©¦          ©¸©¤net6-windows
-©¦  ©¦              ©À©¤ref
-©¦  ©¦              ©¸©¤refint
 ©¦  ©À©¤AIStudio.Wpf.Home
 ©¦  ©¦  ©À©¤bin
 ©¦  ©¦  ©¦  ©¸©¤Debug
