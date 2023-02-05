@@ -46,7 +46,9 @@ Wpf客户端，AIStudio.Wpf.AClient
 其它技术特点：AOP,MAP
 
 #### 快速预览
-Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.exe.Config
+Wpf客户端下载可以直接运行，默认配置文件 AIStudio.Wpf.Client.exe.Config 
+
+登录账号:Admin，密码:Admin
 
 ```
 <appSettings>
