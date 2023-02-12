@@ -10,7 +10,7 @@
   </ItemGroup>
  
   <ItemGroup>
-    <PackageReference Include="AIStudio.Wpf.Flowchart" Version="1.0.6" />
+    <PackageReference Include="AIStudio.Wpf.Flowchart" Version="1.0.7" />
     <PackageReference Include="System.Threading.Tasks.Extensions">
       <Version>4.5.4</Version>
     </PackageReference>

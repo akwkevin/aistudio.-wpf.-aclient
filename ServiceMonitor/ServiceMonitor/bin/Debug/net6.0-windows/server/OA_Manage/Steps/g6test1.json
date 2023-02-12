@@ -105,7 +105,7 @@
       "Y": 22.5,
       "Type": "FlowchartNode",
       "ZIndex": 0,
-      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right" ]
+      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right" ]
     },
     {
       "Kind": 3,
@@ -123,7 +123,7 @@
       "Y": 147.5,
       "Type": "FlowchartNode",
       "ZIndex": 0,
-      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right" ]
+      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right" ]
     },
     {
       "Kind": 3,
@@ -141,7 +141,7 @@
       "Y": 272.5,
       "Type": "FlowchartNode",
       "ZIndex": 0,
-      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right" ]
+      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right" ]
     },
     {
       "Kind": 3,
@@ -159,7 +159,7 @@
       "Y": 397.5,
       "Type": "FlowchartNode",
       "ZIndex": 0,
-      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right" ]
+      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right" ]
     },
     {
       "Kind": 2,
@@ -177,7 +177,7 @@
       "Y": 522.5,
       "Type": "FlowchartNode",
       "ZIndex": 0,
-      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right", "Top", "Bottom", "Left", "Right" ]
+      "PortAlignmentList": [ "Top", "Bottom", "Left", "Right" ]
     }
   ],
   "Links": [

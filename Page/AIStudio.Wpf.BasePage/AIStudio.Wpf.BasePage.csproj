@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.46" />
+    <PackageReference Include="AIStudio.Wpf.Controls" Version="1.1.49" />
     <PackageReference Include="AIStudio.Wpf.GridControls" Version="1.0.5" />
     <PackageReference Include="AIStudio.Wpf.Svg2XamlExtension" Version="1.2.2" />
     <PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
