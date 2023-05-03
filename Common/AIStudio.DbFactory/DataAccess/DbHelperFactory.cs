@@ -20,8 +20,8 @@ namespace AIStudio.DbFactory.DataAccess
                 case DatabaseType.SqlServer: return new SqlServerHelper(conString);
                 case DatabaseType.MySql: return new MySqlHelper(conString);
                 case DatabaseType.Oracle: return new OracleHelper(conString);
-                case DatabaseType.PostgreSql: return new PostgreSqlHelper(conString);
-                case DatabaseType.SQLite: return new SQLiterHelper(conString);
+                case DatabaseType.PostgreSQL: return new PostgreSqlHelper(conString);
+                case DatabaseType.Sqlite: return new SQLiterHelper(conString);
                 default: throw new Exception("暂不支持");
             }
         }

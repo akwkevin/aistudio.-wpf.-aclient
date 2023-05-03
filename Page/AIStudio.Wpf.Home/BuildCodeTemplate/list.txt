@@ -38,7 +38,9 @@
                           ac:ControlAttach.ClearTextButton="True"
                           Visibility="{Binding ElementName=combox,Path=Items.Count,Converter={converter:IntVisibilityConverter}}"
                           Style="{StaticResource AIStudio.Styles.ComboBox}">
+                    <x:Array Type="core:SelectOption">
     %selectOptions%
+                    </x:Array>
                 </ComboBox>
 			    <ac:SearchBar Width="220" Margin="4,3" 
                          Text="{Binding KeyWord}"

@@ -27,13 +27,13 @@ namespace AIStudio.DbFactory.DataAccess
         Oracle,
 
         /// <summary>
-        /// PostgreSql数据库
+        /// PostgreSQL数据库
         /// </summary>
-        PostgreSql,
+        PostgreSQL,
 
         /// <summary>
-        /// SQLite数据库
+        /// Sqlite数据库
         /// </summary>
-        SQLite
+        Sqlite
     }
 }

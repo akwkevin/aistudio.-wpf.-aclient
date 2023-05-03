@@ -21,7 +21,7 @@ namespace AIStudio.DbFactory.DataAccess
         /// </summary>
         /// <param name="conString">完整连接字符串</param>
         public PostgreSqlHelper(string conString)
-            : base(DatabaseType.PostgreSql, conString)
+            : base(DatabaseType.PostgreSQL, conString)
         {
 
         }

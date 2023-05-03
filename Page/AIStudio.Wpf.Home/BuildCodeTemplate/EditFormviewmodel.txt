@@ -7,24 +7,28 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using AIStudio.Core;
+using AIStudio.Wpf.BasePage.Models;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.%areaName%.ViewModels
 {
     public class %entityName%EditViewModel : BaseEditViewModel<%entityName%DTO>
     {
-        public %entityName%EditViewModel(%entityName%DTO data, string area, string identifier, string title = "编辑表单") : base(data, area, identifier, title)
+        protected override async Task GetData(object option)
         {
-
+           await base.GetData(option);
         }
 
-		protected override void InitData()
-		{
-			Data = new %entityName%DTO();
-		}
-
-        protected override void GetData(%entityName%DTO para)
+        protected override async Task<bool> SaveData()
         {
-            base.GetData(para);
-        }       
+            return await base.SaveData();
+        }
+
+        public override async Task<bool> ValidationAsync()
+        {
+           return await base.ValidationAsync();
+        }
     }
 }

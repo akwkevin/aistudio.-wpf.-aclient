@@ -1,19 +1,20 @@
-﻿using AIStudio.Wpf.Base_Manage.Views;
+﻿using AIStudio.Wpf.%areaName%.Views;
 using AIStudio.Wpf.BasePage.ViewModels;
 using AIStudio.Wpf.Entity.DTOModels;
+using System.Threading.Tasks;
 
 namespace AIStudio.Wpf.%areaName%.ViewModels
 {
-    public class %entityName%ViewModel : BaseWindowViewModel<%entityName%DTO>
+    public class %entityName%ViewModel : BaseListWithEditViewModel<%entityName%DTO, %entityName%Edit>
     {
-        public %entityName%ViewModel():base("%areaName%", typeof(%entityName%EditViewModel), typeof(%entityName%Edit))
+        public %entityName%ViewModel()
         {
-		
-        }        
-
-        protected override void GetData(bool iswaiting = false)
+		    Area = "%areaName%";
+        }      
+        
+        protected override async Task GetData()
         {
-            base.GetData(iswaiting);
+            await base.GetData();
         }
 
         protected override void Edit(%entityName%DTO para = null)
@@ -21,9 +22,9 @@ namespace AIStudio.Wpf.%areaName%.ViewModels
             base.Edit(para);
         }
 
-        protected override void Delete(string id = null)
+        protected override async Task Delete(string id = null)
         {
-            base.Delete(id);
+            await base.Delete(id);
         }
 
         protected override void Print()
@@ -31,9 +32,9 @@ namespace AIStudio.Wpf.%areaName%.ViewModels
             base.Print(Data);
         }
 
-        protected override void Search(object para=null)
+        protected override void Search(object para = null)
         {
             base.Search(para);
-        }
+        }     
     }
 }

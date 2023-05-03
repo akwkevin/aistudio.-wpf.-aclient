@@ -9,9 +9,9 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
     {
         public Base_TestViewModel()
         {
-            Area = "Base_Manage";
-        }
-
+		    Area = "Base_Manage";
+        }      
+        
         protected override async Task GetData()
         {
             await base.GetData();
@@ -35,6 +35,6 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
         protected override void Search(object para = null)
         {
             base.Search(para);
-        }
+        }     
     }
 }

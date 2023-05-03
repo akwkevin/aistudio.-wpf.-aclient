@@ -265,7 +265,7 @@ namespace AIStudio.Wpf.Base_Manage.ViewModels
                     var fieldDesc = aField.Description;
 
                     selectOptionsList.Add(
-                        $"				<ComboBoxItem Tag=\"{aField.Name}\">{fieldDesc}</ComboBoxItem>");
+                        $"				<core:SelectOption Text=\"{fieldDesc}\" Value=\"{aField.Name}\"/>");
 
                     listColumnsList.Add(
                         $"				<DataGridTextColumn Header=\"{fieldDesc}\"  Binding=\"{{Binding {aField.Name}}}\" IsReadOnly=\"True\"/>");
