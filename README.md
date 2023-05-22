@@ -4,6 +4,8 @@
 
 原先使用本框架的朋友注意了，后台使用全新框架AIStudio.Blazor.App（C#的BS版本后台同框架）
 
+另外感谢【一位极少露面的靓仔】提供的[启动说明](https://gitee.com/akwkevin/aistudio.-wpf.-aclient/blob/net6-new/%E7%AE%80%E6%98%93%E5%90%AF%E5%8A%A8%E8%AF%B4%E6%98%8E.docx)。
+
 本框架包括或后续将实现的内容：
 
 1.自动升级（待部署）
