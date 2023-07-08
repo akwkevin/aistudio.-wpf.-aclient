@@ -180,7 +180,7 @@ protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
 ![输入图片说明](image.png)
 读取数据库配置，生成DataGrid,完全不需要类，后台完成相关接口，前台不需要更改任何代码，只需要在数据库插入脚本即可。
 
-#### 捐助 如果您觉得我们的开源软件对你有所帮助，请扫下方二维码打赏我们一杯咖啡。(可以联系我，在下面添加特别鸣谢，谢谢。)
+#### 捐助 如果您觉得我们的开源软件对你有所帮助，请扫下方二维码打赏我们一杯咖啡，开源不易，感谢您的支持。(可以联系我，在下面添加特别鸣谢，谢谢。)
 
 <img src="Image90d797c820ea33386617d32c148e1a9.jpg" width=30% >
 
