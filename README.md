@@ -195,6 +195,8 @@ QQ技术交流群:51286643（进群提供服务端的开源代码地址）（如
 #### 更多
 界面截图请到博客介绍：https://www.cnblogs.com/akwkevin/p/14534441.html
 
+#### 强烈谴责咸鱼上有人卖这个框架 https://m.tb.cn/h.5Y8eFNd?tk=cOpodGawTCU CZ3457 
+
 相关介绍文章如下：
 
 <section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="font-size: 16px; color: black; padding: 0 10px; line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; word-break: break-word; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://www.cnblogs.com/akwkevin/p/16297628.html" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">管理系统-Wpf客户端框架（OA，聊天，定时任务）3.0发布</a></p>
