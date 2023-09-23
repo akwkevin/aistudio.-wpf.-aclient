@@ -23,5 +23,7 @@ namespace AIStudio.Wpf.Business
         Task<AjaxResult<T>> PostData<T>(string url, object data);
 
         Task<UploadResult> UploadFileByForm(string path);
+
+        Task<UploadResult> UploadFileChunck(string path, Action<double> progressAction);
     }
 }

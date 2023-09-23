@@ -3,12 +3,15 @@ using AIStudio.Core;
 using AIStudio.Wpf.Business;
 using AIStudio.Wpf.DataBusiness.AOP;
 using Newtonsoft.Json;
+using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Policy;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AIStudio.Wpf.ApiBusiness
 {
@@ -211,8 +214,62 @@ namespace AIStudio.Wpf.ApiBusiness
                 data.Add(new StreamContent(fStream, (int)fStream.Length), "file", Path.GetFileName(path));
 
                 var content = await PostAsync(string.Format("{0}/Base_Manage/Upload/UploadFileByForm", Url), data, TimeOut, Header.GetHeader());
-                var result = JsonConvert.DeserializeObject<UploadResult>(content);
+                var result = JsonConvert.DeserializeObject<AjaxResult<UploadResult>>(content)?.Data;
 
+                fStream.Close();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return new UploadResult() { status = ex.Message };
+            }
+        }
+
+        /// <summary>
+        /// 上传文件
+        /// </summary>
+        /// <typeparam name="T">类型</typeparam>
+        /// <param name="primaryKeyColumn">类型的主键，目前系统都是id</param>
+        /// <param name="ids">需要删除的id列表</param>
+        /// <returns></returns>
+        public async Task<UploadResult> UploadFileChunck(string path, Action<double> progressAction)
+        {
+            try
+            {
+                var fStream = File.OpenRead(path);
+                int chunckSize = 2097152;//2MB
+                int totalChunks = (int)(fStream.Length / chunckSize);
+                if (fStream.Length % chunckSize != 0)
+                {
+                    totalChunks++;
+                }
+
+                double progress = 0d;
+                progressAction?.Invoke(progress);
+
+                var tempDirectory = Guid.NewGuid().ToString("N");
+                UploadResult result = null;
+                for (int i = 0; i < totalChunks; i++)
+                {
+                    long positon = (i * (long)chunckSize);
+                    int toRead = (int)Math.Min(fStream.Length - positon, chunckSize);
+                    byte[] buffer = new byte[toRead];
+                    await fStream.ReadAsync(buffer, 0, buffer.Length);
+
+                    using (MultipartFormDataContent data = new MultipartFormDataContent())
+                    {
+                        data.Add(new StringContent(tempDirectory ?? ""), "tempDirectory");
+                        data.Add(new StringContent(i.ToString()), "index");
+                        data.Add(new StringContent(totalChunks.ToString()), "total");
+                        data.Add(new ByteArrayContent(buffer), "file", Path.GetFileName(path));
+
+                        var content = await PostAsync(string.Format("{0}/Base_Manage/Upload/UploadFileChunck", Url), data, TimeOut, Header.GetHeader());
+                        result = JsonConvert.DeserializeObject<AjaxResult<UploadResult>>(content)?.Data;
+
+                        progress += 1d / totalChunks;
+                        progressAction?.Invoke(progress);
+                    }
+                }
                 fStream.Close();
                 return result;
             }

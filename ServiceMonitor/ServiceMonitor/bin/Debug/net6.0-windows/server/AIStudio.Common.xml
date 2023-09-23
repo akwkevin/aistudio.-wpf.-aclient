@@ -2855,6 +2855,23 @@
             </summary>
             <param name="context">The <see cref="T:Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext" />.</param>
         </member>
+        <member name="T:AIStudio.Common.Filter.FilterAttribute.IgnoreRequestRecordAttribute">
+            <summary>
+            忽略请求记录
+            </summary>
+        </member>
+        <member name="M:AIStudio.Common.Filter.FilterAttribute.IgnoreRequestRecordAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Action执行之前执行
+            </summary>
+            <param name="context">过滤器上下文</param>
+        </member>
+        <member name="M:AIStudio.Common.Filter.FilterAttribute.IgnoreRequestRecordAttribute.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            Action执行完毕之后执行
+            </summary>
+            <param name="context"></param>
+        </member>
         <member name="T:AIStudio.Common.Filter.FilterAttribute.NoFormatResponseAttribute">
             <summary>
             返回结果不进行格式化

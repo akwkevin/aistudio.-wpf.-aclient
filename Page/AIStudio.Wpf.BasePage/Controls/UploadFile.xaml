@@ -26,6 +26,8 @@
                         Files="{Binding Files,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}"
                         MaxCount="{TemplateBinding MaxCount}"
                         File="{Binding File,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}"
+                        Progress="{Binding Progress,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}"
+                        BigFileUpload="{TemplateBinding BigFileUpload}"
                         Disable="{TemplateBinding Disable}"></ac:UploadFile>
                 </ControlTemplate>
             </Setter.Value>

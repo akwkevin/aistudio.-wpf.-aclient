@@ -49,21 +49,36 @@ namespace AIStudio.Wpf.BasePage.Controls
             {
                 _uploadFile.Upload = async (path) =>
                 {
-                    var result = await _dataProvider.UploadFileByForm(path);
-                    if (result.status == "done")
+                    if (BigFileUpload == false)
                     {
-                        return new Tuple<string, string>(result.url, result.name);
+                        var result = await _dataProvider.UploadFileByForm(path);
+                        if (result.status == "done")
+                        {
+                            return new Tuple<string, string>(result.url, result.name);
+                        }
+                        else
+                        {
+                            return new Tuple<string, string>("", "");
+                        }
                     }
                     else
                     {
-                        return new Tuple<string, string>("", "");
+                        var result = await _dataProvider.UploadFileChunck(path, progress => { Progress = progress; });
+                        if (result.status == "done")
+                        {
+                            return new Tuple<string, string>(result.url, result.name);
+                        }
+                        else
+                        {
+                            return new Tuple<string, string>("", "");
+                        }
                     }
                 };
             }
         }
 
         public static readonly DependencyProperty UploadFileTypeProperty = DependencyProperty.Register(
-                "UploadFileType", typeof(AIStudio.Wpf.Controls.UploadFileType), typeof(UploadFile), new PropertyMetadata(AIStudio.Wpf.Controls.UploadFileType.File));
+                nameof(UploadFileType), typeof(AIStudio.Wpf.Controls.UploadFileType), typeof(UploadFile), new PropertyMetadata(AIStudio.Wpf.Controls.UploadFileType.File));
 
         public AIStudio.Wpf.Controls.UploadFileType UploadFileType
         {
@@ -72,7 +87,7 @@ namespace AIStudio.Wpf.BasePage.Controls
         }
 
         public static readonly DependencyProperty FilesProperty = DependencyProperty.Register(
-            "Files", typeof(ObservableCollection<string>), typeof(UploadFile));
+            nameof(Files), typeof(ObservableCollection<string>), typeof(UploadFile));
 
         public ObservableCollection<string> Files
         {
@@ -81,7 +96,7 @@ namespace AIStudio.Wpf.BasePage.Controls
         }
 
         public static readonly DependencyProperty MaxCountProperty = DependencyProperty.Register(
-            "MaxCount", typeof(int), typeof(UploadFile), new PropertyMetadata(1));
+            nameof(MaxCount), typeof(int), typeof(UploadFile), new PropertyMetadata(1));
 
         public int MaxCount
         {
@@ -90,7 +105,7 @@ namespace AIStudio.Wpf.BasePage.Controls
         }
 
         public static readonly DependencyProperty FileProperty = DependencyProperty.Register(
-            "File", typeof(string), typeof(UploadFile), new PropertyMetadata(default(string)));
+           nameof(File), typeof(string), typeof(UploadFile), new PropertyMetadata(default(string)));
 
         public string File
         {
@@ -99,12 +114,36 @@ namespace AIStudio.Wpf.BasePage.Controls
         }
 
         public static readonly DependencyProperty DisableProperty = DependencyProperty.Register(
-           "Disable", typeof(bool), typeof(UploadFile), new PropertyMetadata(false));
+           nameof(Disable), typeof(bool), typeof(UploadFile), new PropertyMetadata(false));
 
         public bool Disable
         {
             get { return (bool)this.GetValue(DisableProperty); }
             set { this.SetValue(DisableProperty, value); }
+        }
+
+        public static readonly DependencyProperty ProgressProperty = DependencyProperty.Register(
+         nameof(Progress), typeof(double), typeof(UploadFile), new PropertyMetadata(1d));
+
+        public double Progress
+        {
+            get
+            {
+                return (double)this.GetValue(ProgressProperty);
+            }
+            set
+            {
+                this.SetValue(ProgressProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty BigFileUploadProperty = DependencyProperty.Register(
+             nameof(BigFileUpload), typeof(bool), typeof(UploadFile), new PropertyMetadata(false));
+
+        public bool BigFileUpload
+        {
+            get { return (bool)this.GetValue(BigFileUploadProperty); }
+            set { this.SetValue(BigFileUploadProperty, value); }
         }
 
     } 

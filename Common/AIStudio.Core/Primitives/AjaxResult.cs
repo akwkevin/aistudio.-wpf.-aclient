@@ -39,11 +39,13 @@
 
     public class UploadResult
     {
+        public int index { get; set; }
         public string name { get; set; }
         public string status { get; set; }
         public string thumbUrl { get; set; }
         public string url { get; set; }
         public int uploaded { get; set; }
+       
     } 
 
 

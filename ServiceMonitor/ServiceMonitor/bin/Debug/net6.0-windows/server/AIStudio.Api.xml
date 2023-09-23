@@ -562,7 +562,7 @@
             文件上传
             </summary>
         </member>
-        <member name="M:AIStudio.Api.Controllers.Base_Manage.UploadController.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.UploadController.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Base_Manage.UploadController},Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
             文件上传控制器
             </summary>
@@ -574,6 +574,43 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.UploadController.UploadFilesByForm">
+            <summary>
+            上传文件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.UploadController.UploadFileChunck(Microsoft.AspNetCore.Http.IFormFile,System.String,System.Int32,System.Int32)">
+            <summary>
+            上传附件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.UploadController.FileMerge(System.String,System.String)">
+            <summary>
+            合并文件
+            </summary>
+            <param name="tmpDirectory">临时上传目录</param>        
+            <param name="path">上传目录</param>
+            <param name="saveFileName">保存之后新文件名</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.UploadController.Save(System.IO.Stream,System.String,System.String)">
+            <summary>
+            文件保存到本地
+            </summary>
+            <param name="stream"></param>
+            <param name="path"></param>
+            <param name="saveName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.UploadController.GetMD5Value(System.Object)">
+            <summary>
+            计算文件的MD5值
+            </summary>
+            <param name="obj">类型只能为string or stream，否则将会抛出错误</param>
+            <returns>文件的MD5值</returns>
+        </member>
         <member name="M:AIStudio.Api.Controllers.Base_Manage.UploadController.GetAbsolutePath(System.String)">
             <summary>
             获取路径
@@ -581,200 +618,85 @@
             <param name="virtualPath"></param>
             <returns></returns>
         </member>
-        <member name="T:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController">
-            <summary>
-            流程定义
-            </summary>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.#ctor(AIStudio.Business.OA_Manage.IOA_DefFormBusiness)">
-            <summary>
-            流程定义控制器
-            </summary>
-            <param name="oA_DefFormBus"></param>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.GetDataList(AIStudio.Util.Common.PageInput)">
-            <summary>
-            获取列表
-            </summary>
-            <param name="input">分页参数</param>
-            <returns></returns>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.GetTreeDataList(AIStudio.Util.Common.SearchInput)">
-            <summary>
-            获取树列表
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
-            <summary>
-            获取详情
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.SaveData(AIStudio.Entity.DTO.OA_Manage.OA_DefFormDTO)">
-            <summary>
-            保存
-            </summary>
-            <param name="data">保存的数据</param>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.StartData(System.Collections.Generic.List{System.String})">
-            <summary>
-            启动数据
-            </summary>
-            <param name="ids"></param>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.StopData(System.Collections.Generic.List{System.String})">
-            <summary>
-            停用数据
-            </summary>
-            <param name="ids"></param>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.DeleteData(System.Collections.Generic.List{System.String})">
-            <summary>
-            删除数据
-            </summary>
-            <param name="ids">id数组,JSON数组</param>
-        </member>
-        <member name="T:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController">
-            <summary>
-            流程控制
-            </summary>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.#ctor(AIStudio.Business.OA_Manage.IOA_UserFormBusiness)">
-            <summary>
-            流程控制器
-            </summary>
-            <param name="oA_UserFormBus"></param>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.GetDataList(AIStudio.Util.Common.PageInput{AIStudio.Entity.DTO.OA_Manage.OA_UserFormInputDTO})">
-            <summary>
-            获取列表
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
-            <summary>
-            获取详情
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.PreStep(AIStudio.Entity.DTO.OA_Manage.OA_UserFormDTO)">
-            <summary>
-            预览
-            </summary>
-            <param name="data">保存的数据</param>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.SaveData(AIStudio.Entity.DTO.OA_Manage.OA_UserFormDTO)">
-            <summary>
-            保存
-            </summary>
-            <param name="data">保存的数据</param>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.DeleteData(System.Collections.Generic.List{System.String})">
-            <summary>
-            删除数据
-            </summary>
-            <param name="ids">id数组,JSON数组</param>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.EventData(AIStudio.Entity.DTO.OA_Manage.MyEvent)">
-            <summary>
-            审批数据
-            </summary>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.DisCardData(AIStudio.Business.OA_Manage.DisCardInput)">
-            <summary>
-            废弃数据
-            </summary>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.Suspend(AIStudio.Util.Common.IdInputDTO)">
+        <member name="M:AIStudio.Api.Controllers.Base_Manage.UploadController.GetUploadPath">
             <summary>
             
             </summary>
-            <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.Resume(AIStudio.Util.Common.IdInputDTO)">
+        <member name="T:AIStudio.Api.Controllers.Test.DummyFileController">
             <summary>
             
             </summary>
-            <param name="input"></param>
-            <returns></returns>
         </member>
-        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.Terminate(AIStudio.Util.Common.IdInputDTO)">
+        <member name="M:AIStudio.Api.Controllers.Test.DummyFileController.#ctor(Microsoft.Extensions.Logging.ILogger{AIStudio.Api.Controllers.Test.DummyFileController})">
             <summary>
             
             </summary>
-            <param name="input"></param>
-            <returns></returns>
+            <param name="logger"></param>
         </member>
-        <member name="T:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController">
+        <member name="M:AIStudio.Api.Controllers.Test.DummyFileController.GetFile(System.Int32)">
             <summary>
-            作业调度
+            Return the ordered bytes array according to the size.
             </summary>
+            <param name="size">Size of the data</param>
+            <returns>File stream</returns>
         </member>
-        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.#ctor(AIStudio.Business.Quartz_Manage.IQuartz_TaskBusiness)">
+        <member name="M:AIStudio.Api.Controllers.Test.DummyFileController.GetFileWithNameNoHeader(System.String,System.Int32)">
             <summary>
-            作业调度控制器
+            Return the file stream with header or not. Filename just used in URL.
             </summary>
-            <param name="quartz_TaskBusiness"></param>
+            <param name="fileName">The file name</param>        
+            <param name="size">Query param of the file size</param>
+            <returns>File stream</returns>
         </member>
-        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.GetDataList(AIStudio.Util.Common.PageInput)">
+        <member name="M:AIStudio.Api.Controllers.Test.DummyFileController.GetFileWithName(System.String,System.Int32)">
             <summary>
-            作业调度列表
+            Return the file stream with header or not. Filename just used in URL.
             </summary>
-            <returns></returns>
+            <param name="fileName">The file name</param>        
+            <param name="size">Query param of the file size</param>
+            <returns>File stream</returns>
         </member>
-        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+        <member name="M:AIStudio.Api.Controllers.Test.DummyFileController.GetFileWithContentDisposition(System.String,System.Int32)">
             <summary>
-            获取指定Id的作业任务
+            Return the file stream with header content-length and filename.
             </summary>
-            <param name="input"></param>
-            <returns></returns>
+            <param name="fileName">The file name</param>
+            <param name="size">Size of the File</param>
+            <returns>File stream</returns>
         </member>
-        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.SaveData(AIStudio.Entity.Quartz_Manage.Quartz_Task)">
+        <member name="M:AIStudio.Api.Controllers.Test.DummyFileController.GetFileWithNoAcceptRange(System.String,System.Int32)">
             <summary>
-            保存作业任务
+            Return the file stream with header content-length and filename.
             </summary>
-            <param name="theData"></param>
-            <returns></returns>
+            <param name="fileName">The file name</param>
+            <param name="size">Size of the File</param>
+            <returns>File stream</returns>
         </member>
-        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.DeleteData(System.Collections.Generic.List{System.String})">
+        <member name="M:AIStudio.Api.Controllers.Test.DummyFileController.GetFileWithNameOnRedirectUrl(System.String,System.Int32)">
             <summary>
-            删除作业任务
+            Return the file stream with header or not. Filename just used in URL.
             </summary>
-            <param name="ids"></param>
-            <returns></returns>
+            <param name="fileName">The file name</param>        
+            <param name="size">Query param of the file size</param>
+            <returns>File stream</returns>
         </member>
-        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.PauseData(System.Collections.Generic.List{System.String})">
+        <member name="M:AIStudio.Api.Controllers.Test.DummyFileController.GetOverflowedFile(System.Int32,System.Int32)">
             <summary>
-            暂停作业任务
+            Return the filled stream according to the size and failure after specific offset.
             </summary>
-            <param name="ids"></param>
-            <returns></returns>
+            <param name="size">Size of the data</param>
+            <param name="offset">failure offset</param>
+            <returns>File stream</returns>
         </member>
-        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.StartData(System.Collections.Generic.List{System.String})">
+        <member name="M:AIStudio.Api.Controllers.Test.DummyFileController.GetSlowFile(System.Int32,System.Int32)">
             <summary>
-            启动作业任务
+            Return the filled stream according to the size and timeout after specific offset.
             </summary>
-            <param name="ids"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.TodoData(System.Collections.Generic.List{System.String})">
-            <summary>
-            立即执行作业任务
-            </summary>
-            <param name="ids"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.GetJobOptions">
-            <summary>
-            获取作业类型
-            </summary>
-            <returns></returns>
+            <param name="size">Size of the data</param>
+            <param name="offset">timeout offset</param>
+            <returns>File stream</returns>
         </member>
         <member name="T:AIStudio.Api.Controllers.Test.AccountController">
             <summary>
@@ -2251,6 +2173,218 @@
         <member name="M:AIStudio.Api.Controllers.Test.WorkflowTestController.Sample17">
             <summary>
             中间件，如日志打印，重试等
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Download.Mock.DummyData">
+            <summary>
+            Class with helper methods to create random data
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Download.Mock.DummyData.GenerateRandomBytes(System.Int32)">
+            <summary>
+            Generates random bytes
+            </summary>
+            <param name="length">amount of bytes</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Download.Mock.DummyData.GenerateOrderedBytes(System.Int32)">
+            <summary>
+            Generates a Byte-Array with ascending values ([0,1,2,3,...,254,255,0,1,2,...])
+            </summary>
+            <param name="length"></param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController">
+            <summary>
+            流程定义
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.#ctor(AIStudio.Business.OA_Manage.IOA_DefFormBusiness)">
+            <summary>
+            流程定义控制器
+            </summary>
+            <param name="oA_DefFormBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.GetDataList(AIStudio.Util.Common.PageInput)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="input">分页参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.GetTreeDataList(AIStudio.Util.Common.SearchInput)">
+            <summary>
+            获取树列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            获取详情
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.SaveData(AIStudio.Entity.DTO.OA_Manage.OA_DefFormDTO)">
+            <summary>
+            保存
+            </summary>
+            <param name="data">保存的数据</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.StartData(System.Collections.Generic.List{System.String})">
+            <summary>
+            启动数据
+            </summary>
+            <param name="ids"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.StopData(System.Collections.Generic.List{System.String})">
+            <summary>
+            停用数据
+            </summary>
+            <param name="ids"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_DefFormController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="ids">id数组,JSON数组</param>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController">
+            <summary>
+            流程控制
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.#ctor(AIStudio.Business.OA_Manage.IOA_UserFormBusiness)">
+            <summary>
+            流程控制器
+            </summary>
+            <param name="oA_UserFormBus"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.GetDataList(AIStudio.Util.Common.PageInput{AIStudio.Entity.DTO.OA_Manage.OA_UserFormInputDTO})">
+            <summary>
+            获取列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            获取详情
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.PreStep(AIStudio.Entity.DTO.OA_Manage.OA_UserFormDTO)">
+            <summary>
+            预览
+            </summary>
+            <param name="data">保存的数据</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.SaveData(AIStudio.Entity.DTO.OA_Manage.OA_UserFormDTO)">
+            <summary>
+            保存
+            </summary>
+            <param name="data">保存的数据</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="ids">id数组,JSON数组</param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.EventData(AIStudio.Entity.DTO.OA_Manage.MyEvent)">
+            <summary>
+            审批数据
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.DisCardData(AIStudio.Business.OA_Manage.DisCardInput)">
+            <summary>
+            废弃数据
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.Suspend(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.Resume(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.OA_Manage.OA_UserFormController.Terminate(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController">
+            <summary>
+            作业调度
+            </summary>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.#ctor(AIStudio.Business.Quartz_Manage.IQuartz_TaskBusiness)">
+            <summary>
+            作业调度控制器
+            </summary>
+            <param name="quartz_TaskBusiness"></param>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.GetDataList(AIStudio.Util.Common.PageInput)">
+            <summary>
+            作业调度列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.GetTheData(AIStudio.Util.Common.IdInputDTO)">
+            <summary>
+            获取指定Id的作业任务
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.SaveData(AIStudio.Entity.Quartz_Manage.Quartz_Task)">
+            <summary>
+            保存作业任务
+            </summary>
+            <param name="theData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.DeleteData(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除作业任务
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.PauseData(System.Collections.Generic.List{System.String})">
+            <summary>
+            暂停作业任务
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.StartData(System.Collections.Generic.List{System.String})">
+            <summary>
+            启动作业任务
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.TodoData(System.Collections.Generic.List{System.String})">
+            <summary>
+            立即执行作业任务
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AIStudio.Api.Controllers.Quartz_Manage.Quartz_TaskController.GetJobOptions">
+            <summary>
+            获取作业类型
             </summary>
             <returns></returns>
         </member>

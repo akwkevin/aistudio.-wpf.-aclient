@@ -15,6 +15,8 @@
             <basepage:UploadFile Margin="3" UploadFileType="Image"></basepage:UploadFile>
             <basepage:UploadFile Margin="3" MaxCount="3" UploadFileType="Image"></basepage:UploadFile>
             <basepage:UploadFile Margin="3" UploadFileType="Image" IsEnabled="False"></basepage:UploadFile>
+            <TextBlock Text="大文件上传" Style="{StaticResource AIStudio.Styles.TextBlock}"/>
+            <basepage:UploadFile Margin="3" BigFileUpload="True"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="AIStudio.Wpf.Base_Manage.Views.DownloadView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AIStudio.Wpf.Base_Manage.Views"
+             xmlns:ac="https://gitee.com/akwkevin/AI-wpf-controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button ac:IconAttach.Geometry="{StaticResource PlayGeometry}" Margin="3" Content="开始下载" Command="{Binding StartCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+            <Button ac:IconAttach.Geometry="{StaticResource PauseGeometry}" ac:ControlAttach.Status="Danger" Margin="3" Content="暂停下载" Command="{Binding PauseCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+            <Button ac:IconAttach.Geometry="{StaticResource PlayGeometry}" ac:ControlAttach.Status="Success" Margin="3" Content="恢复下载" Command="{Binding ResumeCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+            <Button ac:IconAttach.Geometry="{StaticResource StopGeometry}" ac:ControlAttach.Status="Info" Margin="3" Content="退出下载" Command="{Binding EscapeCommand}" Style="{StaticResource AIStudio.Styles.Button}"></Button>
+        </StackPanel>
+        <TextBlock Margin="3" Text="{Binding Message}" Style="{StaticResource AIStudio.Styles.TextBlock}"/>
+        <ProgressBar Margin="3" Value="{Binding Progress}" Maximum="10000" Style="{StaticResource AIStudio.Styles.ProgressBar}"/>
+        <TextBlock Margin="3" Text="分块" Style="{StaticResource AIStudio.Styles.TextBlock}"/>   
+        <ItemsControl ItemsSource="{Binding ChildProgresses}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <ProgressBar Margin="3" ac:ControlAttach.Status="Success" Value="{Binding Progress}" Maximum="10000" Style="{StaticResource AIStudio.Styles.ProgressBar}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>
