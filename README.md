@@ -1,5 +1,7 @@
 #  AIStudio.Wpf.AClient 全新升级 【6.0正式上线，2023-01-02】
 
+#### 感谢【一位极少露面的靓仔】提供的[启动说明文档](https://gitee.com/akwkevin/aistudio.-wpf.-aclient/blob/net6-new/%E7%AE%80%E6%98%93%E5%90%AF%E5%8A%A8%E8%AF%B4%E6%98%8E.docx)。
+
 写在前面，下载请选择net6-new的分支（推荐使用VS2022，或者VS2019最新版），[历史版本可查看net5-new和net6,别的版本不推荐使用],
 
 原先使用本框架的朋友注意了，后台使用全新框架AIStudio.Blazor.App（C#的BS版本后台同框架）
@@ -177,6 +179,12 @@ protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
 #### 通用crud方法2：
 ![输入图片说明](image.png)
 读取数据库配置，生成DataGrid,完全不需要类，后台完成相关接口，前台不需要更改任何代码，只需要在数据库插入脚本即可。
+
+#### 捐助 如果您觉得我们的开源软件对你有所帮助，请扫下方二维码打赏我们一杯咖啡，开源不易，感谢您的支持。(可以联系我，在下面添加特别鸣谢，谢谢。)
+
+<img src="Image90d797c820ea33386617d32c148e1a9.jpg" width=30% >
+
+<img src="Imageda3cc91baa07eb81acebf9fc1246a01.jpg" width=30%>
 
 #### 技术交流
 个人QQ:80267720
